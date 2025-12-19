@@ -4,6 +4,7 @@ rvm:
   - 2.7
   - 3.0
   - 3.1
+  - 2.6
 script:
   - bundle install --path vendor/bundle
   - bundle exec rspec
