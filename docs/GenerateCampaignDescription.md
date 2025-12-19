@@ -1,0 +1,22 @@
+# TalonOne::GenerateCampaignDescription
+
+## Properties
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **campaign_id** | **Integer** | ID of a campaign. |  |
+| **ruleset_id** | **Integer** | ID of a ruleset. |  |
+| **currency** | **String** | Currency for the campaign. |  |
+
+## Example
+
+```ruby
+require 'talon_one'
+
+instance = TalonOne::GenerateCampaignDescription.new(
+  campaign_id: null,
+  ruleset_id: null,
+  currency: null
+)
+```
+

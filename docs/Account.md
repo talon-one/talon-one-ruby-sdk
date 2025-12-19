@@ -1,0 +1,52 @@
+# TalonOne::Account
+
+## Properties
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **Integer** | The internal ID of this entity. |  |
+| **created** | **Time** | The time this entity was created. |  |
+| **modified** | **Time** | The time this entity was last modified. |  |
+| **company_name** | **String** |  |  |
+| **domain_name** | **String** | Subdomain Name for yourcompany.talon.one. |  |
+| **state** | **String** | State of the account (active, deactivated). |  |
+| **billing_email** | **String** | The billing email address associated with your company account. |  |
+| **plan_name** | **String** | The name of your booked plan. | [optional] |
+| **plan_expires** | **Time** | The point in time at which your current plan expires. | [optional] |
+| **application_limit** | **Integer** | The maximum number of Applications covered by your plan. | [optional] |
+| **user_limit** | **Integer** | The maximum number of Campaign Manager Users covered by your plan. | [optional] |
+| **campaign_limit** | **Integer** | The maximum number of Campaigns covered by your plan. | [optional] |
+| **api_limit** | **Integer** | The maximum number of Integration API calls covered by your plan per billing period. | [optional] |
+| **application_count** | **Integer** | The current number of Applications in your account. |  |
+| **user_count** | **Integer** | The current number of Campaign Manager Users in your account. |  |
+| **campaigns_active_count** | **Integer** | The current number of active Campaigns in your account. |  |
+| **campaigns_inactive_count** | **Integer** | The current number of inactive Campaigns in your account. |  |
+| **attributes** | **Object** | Arbitrary properties associated with this campaign. | [optional] |
+
+## Example
+
+```ruby
+require 'talon_one'
+
+instance = TalonOne::Account.new(
+  id: 6,
+  created: 2020-06-10T09:05:27.993483Z,
+  modified: 2021-09-12T10:12:42Z,
+  company_name: null,
+  domain_name: null,
+  state: null,
+  billing_email: null,
+  plan_name: null,
+  plan_expires: null,
+  application_limit: null,
+  user_limit: null,
+  campaign_limit: null,
+  api_limit: null,
+  application_count: null,
+  user_count: null,
+  campaigns_active_count: null,
+  campaigns_inactive_count: null,
+  attributes: null
+)
+```
+

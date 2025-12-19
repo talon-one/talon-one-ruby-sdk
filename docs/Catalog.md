@@ -1,0 +1,34 @@
+# TalonOne::Catalog
+
+## Properties
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **Integer** | The internal ID of this entity. |  |
+| **created** | **Time** | The time this entity was created. |  |
+| **account_id** | **Integer** | The ID of the account that owns this entity. |  |
+| **modified** | **Time** | The time this entity was last modified. |  |
+| **name** | **String** | The cart item catalog name. |  |
+| **description** | **String** | A description of this cart item catalog. |  |
+| **subscribed_applications_ids** | **Array&lt;Integer&gt;** | A list of the IDs of the applications that are subscribed to this catalog. | [optional] |
+| **version** | **Integer** | The current version of this catalog. |  |
+| **created_by** | **Integer** | The ID of user who created this catalog. |  |
+
+## Example
+
+```ruby
+require 'talon_one'
+
+instance = TalonOne::Catalog.new(
+  id: 6,
+  created: 2020-06-10T09:05:27.993483Z,
+  account_id: 3886,
+  modified: 2021-09-12T10:12:42Z,
+  name: seafood,
+  description: seafood catalog,
+  subscribed_applications_ids: [1, 2, 3],
+  version: 6,
+  created_by: 6
+)
+```
+

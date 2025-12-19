@@ -1,0 +1,48 @@
+# TalonOne::Environment
+
+## Properties
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **Integer** | The internal ID of this entity. |  |
+| **created** | **Time** | The time this entity was created. |  |
+| **application_id** | **Integer** | The ID of the Application that owns this entity. |  |
+| **slots** | [**Array&lt;SlotDef&gt;**](SlotDef.md) | The slots defined for this application. |  |
+| **functions** | [**Array&lt;FunctionDef&gt;**](FunctionDef.md) | The functions defined for this application. |  |
+| **templates** | [**Array&lt;TemplateDef&gt;**](TemplateDef.md) | The templates defined for this application. |  |
+| **variables** | **String** | A stringified version of the environment&#39;s Talang variables scope. |  |
+| **giveaways_pools** | [**Array&lt;GiveawaysPool&gt;**](GiveawaysPool.md) | The giveaways pools that the application is subscribed to. | [optional] |
+| **loyalty_programs** | [**Array&lt;LoyaltyProgram&gt;**](LoyaltyProgram.md) | The loyalty programs that the application is subscribed to. | [optional] |
+| **achievements** | [**Array&lt;Achievement&gt;**](Achievement.md) | The achievements, linked to the campaigns, belonging to the application. | [optional] |
+| **attributes** | [**Array&lt;Attribute&gt;**](Attribute.md) | The attributes that the application is subscribed to. | [optional] |
+| **additional_costs** | [**Array&lt;AccountAdditionalCost&gt;**](AccountAdditionalCost.md) | The additional costs that the application is subscribed to. | [optional] |
+| **audiences** | [**Array&lt;Audience&gt;**](Audience.md) | The audiences contained in the account which the application belongs to. | [optional] |
+| **collections** | [**Array&lt;Collection&gt;**](Collection.md) | The account-level collections that the application is subscribed to. | [optional] |
+| **application_cart_item_filters** | [**Array&lt;ApplicationCIF&gt;**](ApplicationCIF.md) | The cart item filters belonging to the Application. | [optional] |
+| **price_types** | [**Array&lt;PriceType&gt;**](PriceType.md) | The price types that this Application can use. | [optional] |
+
+## Example
+
+```ruby
+require 'talon_one'
+
+instance = TalonOne::Environment.new(
+  id: 6,
+  created: 2020-06-10T09:05:27.993483Z,
+  application_id: 322,
+  slots: null,
+  functions: null,
+  templates: null,
+  variables: null,
+  giveaways_pools: null,
+  loyalty_programs: null,
+  achievements: null,
+  attributes: null,
+  additional_costs: null,
+  audiences: null,
+  collections: null,
+  application_cart_item_filters: null,
+  price_types: null
+)
+```
+

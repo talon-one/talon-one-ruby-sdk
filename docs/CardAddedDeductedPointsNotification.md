@@ -1,0 +1,46 @@
+# TalonOne::CardAddedDeductedPointsNotification
+
+## Properties
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **profile_integration_ids** | **Array&lt;String&gt;** | The integration ID of the customer profile to whom points were added or deducted. |  |
+| **loyalty_program_id** | **Integer** | The ID of the loyalty program. |  |
+| **subledger_id** | **String** | The ID of the subledger within the loyalty program where these points were added or deducted. |  |
+| **amount** | **Float** | The amount of added or deducted loyalty points. |  |
+| **reason** | **String** | The reason for the points addition or deduction. |  |
+| **type_of_change** | **String** | The notification source, that is, it indicates whether the points were added or deducted via one of the following routes:  - [The Campaign Manager](/docs/product/getting-started)  - [Management API](/management-api#tag/Loyalty)  - [Rule Engine](/docs/product/applications/evaluation-order-for-rules-and-filters)  |  |
+| **employee_name** | **String** | The name of the employee who added or deducted points. |  |
+| **user_id** | **Integer** | The ID of the employee who added or deducted points. |  |
+| **operation** | **String** | The action (addition or deduction) made with loyalty points. |  |
+| **start_date** | **Time** | The start date for loyalty points. | [optional] |
+| **expiry_date** | **Time** | The expiration date for loyalty points. | [optional] |
+| **session_integration_id** | **String** | The integration ID of the session through which the points were earned or lost. |  |
+| **notification_type** | **String** | The type of notification. |  |
+| **card_identifier** | **String** | Loyalty card identification number. |  |
+| **users_per_card_limit** | **Integer** | The max amount of user profiles with whom a card can be shared. This can be set to &#x60;0&#x60; for no limit. |  |
+
+## Example
+
+```ruby
+require 'talon_one'
+
+instance = TalonOne::CardAddedDeductedPointsNotification.new(
+  profile_integration_ids: [&quot;yJSObdNNtOetCHWHPFuz&quot;,&quot;test-user-4zoj1c&quot;],
+  loyalty_program_id: 5,
+  subledger_id: sub-123,
+  amount: 10.99,
+  reason: Compensation,
+  type_of_change: null,
+  employee_name: Franziska Schneider,
+  user_id: 25,
+  operation: null,
+  start_date: 2023-01-24T14:15:22Z,
+  expiry_date: 2024-01-24T14:15:22Z,
+  session_integration_id: cc53e4fa-547f-4f5e-8333-76e05c381f67,
+  notification_type: null,
+  card_identifier: 123-456-789ATBC,
+  users_per_card_limit: 10
+)
+```
+

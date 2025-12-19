@@ -1,0 +1,20 @@
+# TalonOne::UpdatePicklist
+
+## Properties
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **type** | **String** | The type of allowed values in the picklist. If the type &#x60;time&#x60; is chosen, it must be an RFC3339 timestamp string. |  |
+| **values** | **Array&lt;String&gt;** | The list of allowed values provided by this picklist. |  |
+
+## Example
+
+```ruby
+require 'talon_one'
+
+instance = TalonOne::UpdatePicklist.new(
+  type: string,
+  values: [Jeans, Shirt, Coat]
+)
+```
+
