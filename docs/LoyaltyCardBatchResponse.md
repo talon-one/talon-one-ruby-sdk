@@ -10,7 +10,7 @@
 ## Example
 
 ```ruby
-require 'talon_one'
+require 'talon_one_sdk'
 
 instance = TalonOne::LoyaltyCardBatchResponse.new(
   number_of_cards_generated: 5000,

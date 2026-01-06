@@ -13,15 +13,15 @@ Generator version: 7.13.0-SNAPSHOT
 =end
 
 $:.push File.expand_path("../lib", __FILE__)
-require "talon_one/version"
+require "talon_one_sdk/version"
 
 Gem::Specification.new do |s|
-  s.name        = "talon_one"
+  s.name        = "talon_one_sdk"
   s.version     = TalonOne::VERSION
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Talon.One GmbH"]
   s.email       = ["devs@talon.one"]
-  s.homepage    = "https://github.com/talon-one/talon_one.rb/"
+  s.homepage    = "https://github.com/talon-one/talon-one-ruby-sdk/"
   s.summary     = "Talon.One API Ruby Gem"
   s.description = "The Talon.One API is used to manage applications and campaigns, as well as to integrate with your application. The operations in the _Integration API_ section are used to integrate with our platform, while the other operations are used to manage applications and campaigns."
   s.license     = "MIT"
@@ -33,7 +33,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'rspec', '~> 3.6', '>= 3.6.0'
 
   s.files         = %x[git ls-files -z].split("\x0").reject { |f| f.match(%r{^(test|spec|\.openapi-generator)/}) } -
-                    %w[.gitignore .openapi-generator-ignore .rubocop.yml .travis.yml git_push.sh]
+                    %w[.gitignore .openapi-generator-ignore .rubocop.yml .travis.yml git_push.sh talon_one.gemspec]
   s.test_files    = `find spec/*`.split("\n")
   s.executables   = []
   s.require_paths = ["lib"]

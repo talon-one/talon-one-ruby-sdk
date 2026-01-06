@@ -10,7 +10,7 @@
 ## Example
 
 ```ruby
-require 'talon_one'
+require 'talon_one_sdk'
 
 instance = TalonOne::MultipleAudiences.new(
   account_id: 3886,

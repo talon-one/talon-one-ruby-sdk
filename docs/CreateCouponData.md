@@ -15,7 +15,7 @@
 ## Example
 
 ```ruby
-require 'talon_one'
+require 'talon_one_sdk'
 
 instance = TalonOne::CreateCouponData.new(
   data: [{&quot;id&quot;:1,&quot;created&quot;:&quot;2023-01-31T15:19:25.18417+01:00&quot;,&quot;campaignId&quot;:1,&quot;value&quot;:&quot;73KXKKFP&quot;,&quot;usageLimit&quot;:1,&quot;reservationLimit&quot;:0,&quot;usageCounter&quot;:0,&quot;attributes&quot;:{},&quot;reservation&quot;:true,&quot;batchId&quot;:&quot;nqylhnni&quot;},{&quot;id&quot;:2,&quot;created&quot;:&quot;2023-01-31T15:19:25.18417+01:00&quot;,&quot;campaignId&quot;:1,&quot;value&quot;:&quot;BH3CXXLW&quot;,&quot;usageLimit&quot;:1,&quot;reservationLimit&quot;:0,&quot;usageCounter&quot;:0,&quot;attributes&quot;:{},&quot;reservation&quot;:true,&quot;batchId&quot;:&quot;nqylhnni&quot;}],

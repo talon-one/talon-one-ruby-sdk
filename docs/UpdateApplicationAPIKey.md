@@ -9,7 +9,7 @@
 ## Example
 
 ```ruby
-require 'talon_one'
+require 'talon_one_sdk'
 
 instance = TalonOne::UpdateApplicationAPIKey.new(
   time_offset: 100000

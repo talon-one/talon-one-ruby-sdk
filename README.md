@@ -13,7 +13,7 @@ This SDK supports all of the operations of Talon.One's Integration API and Manag
 Add this to the Gemfile:
 
 ```shell
-gem 'talon_one', '~> 25.26'
+gem 'talon_one_sdk', '~> 25.26'
 ```
 
 ### Build a gem
@@ -21,7 +21,7 @@ gem 'talon_one', '~> 25.26'
 To build the Ruby code into a gem:
 
 ```shell
-gem build talon_one.gemspec
+gem build talon_one_sdk.gemspec
 ```
 
 ### Local installation
@@ -29,17 +29,17 @@ gem build talon_one.gemspec
 To install the gem locally:
 
 ```shell
-gem install ./talon_one-25.26.gem
+gem install ./talon_one_sdk-25.26.gem
 ```
 
-For development, run `gem install --dev ./talon_one-25.26.gem` to install the development dependencies.
+For development, run `gem install --dev ./talon_one_sdk-25.26.gem` to install the development dependencies.
 
 ### RubyGems
 
-The SDK is available on [RubyGems](https://rubygems.org/gems/talon_one). To install it, run:
+The SDK is available on [RubyGems](https://rubygems.org/gems/talon_one_sdk). To install it, run:
 
 ```shell
-gem install talon_one
+gem install talon_one_sdk
 ```
 
 ## Getting started
@@ -50,7 +50,7 @@ The following code shows an example of using the Integration API:
 
 ```ruby
 # Load the gem
-require 'talon_one'
+require 'talon_one_sdk'
 
 # Setup authorization
 TalonOne.configure do |config|
@@ -144,7 +144,7 @@ The following code shows an example of using the Management API:
 
 ```ruby
 # Load the gem
-require 'talon_one'
+require 'talon_one_sdk'
 
 # Setup authorization
 TalonOne.configure do |config|

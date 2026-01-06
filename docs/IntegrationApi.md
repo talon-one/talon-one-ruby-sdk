@@ -50,7 +50,7 @@ Returns the best prior price based on historical pricing data for the specified 
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -131,7 +131,7 @@ Create an audience. The audience can be created directly from scratch or can com
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: api_key_v1
@@ -202,7 +202,7 @@ Create a coupon reservation for the specified customer profiles on the specified
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: api_key_v1
@@ -275,7 +275,7 @@ Creates a referral code for an advocate. The code will be valid for the referral
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: api_key_v1
@@ -346,7 +346,7 @@ Creates unique referral codes for multiple advocates. The code will be valid for
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: api_key_v1
@@ -421,7 +421,7 @@ Remove all members from this audience.
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: api_key_v1
@@ -491,7 +491,7 @@ Delete an audience created by a third-party integration.  **Warning:** This endp
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: api_key_v1
@@ -561,7 +561,7 @@ Remove all the coupon reservations from the provided customer profile integratio
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: api_key_v1
@@ -633,7 +633,7 @@ Delete all attributes on the customer profile and on entities that reference thi
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: api_key_v1
@@ -703,7 +703,7 @@ Generate a loyalty card in a specified [card-based loyalty program](https://docs
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: api_key_v1
@@ -776,7 +776,7 @@ Retrieve all progress history of a given customer in the given achievement.
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: api_key_v1
@@ -861,7 +861,7 @@ Retrieve all the achievements available to a given customer and their progress i
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: api_key_v1
@@ -946,7 +946,7 @@ Return the customer inventory regarding entities referencing this customer profi
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: api_key_v1
@@ -1031,7 +1031,7 @@ Get the details of the given customer session.  You can get the same data via ot
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: api_key_v1
@@ -1102,7 +1102,7 @@ Retrieve loyalty ledger balances for the given Integration ID in the specified l
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: api_key_v1
@@ -1185,7 +1185,7 @@ Retrieve loyalty balances for the given loyalty card in the specified loyalty pr
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: api_key_v1
@@ -1264,7 +1264,7 @@ Get paginated results of loyalty points for a given loyalty card identifier in a
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: api_key_v1
@@ -1353,7 +1353,7 @@ Retrieve loyalty transaction logs for the given loyalty card in the specified lo
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: api_key_v1
@@ -1446,7 +1446,7 @@ Get paginated results of loyalty points for a given Integration ID in the specif
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: api_key_v1
@@ -1535,7 +1535,7 @@ Retrieve paginated results of loyalty transaction logs for the given Integration
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: api_key_v1
@@ -1628,7 +1628,7 @@ Return all customers that have this coupon marked as reserved. This includes har
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: api_key_v1
@@ -1699,7 +1699,7 @@ Link customer profile to card
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: api_key_v1
@@ -1774,7 +1774,7 @@ Reopen a closed [customer session](https://docs.talon.one/docs/dev/concepts/enti
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: api_key_v1
@@ -1845,7 +1845,7 @@ Create a new return request for the specified cart items.  This endpoint automat
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: api_key_v1
@@ -1922,7 +1922,7 @@ Perform the following actions for a given cart item catalog:  - Add an item to t
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: api_key_v1
@@ -1995,7 +1995,7 @@ Triggers a custom event.  To use this endpoint: 1. Define a [custom event](https
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: api_key_v1
@@ -2074,7 +2074,7 @@ Update the specified profile attributes to the provided values for all customers
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: api_key_v1
@@ -2146,7 +2146,7 @@ Update the name of the given audience created by a third-party integration. Send
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: api_key_v1
@@ -2219,7 +2219,7 @@ Add customer profiles to or remove them from an audience.  The endpoint supports
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: api_key_v1
@@ -2289,7 +2289,7 @@ Update or create a [Customer Profile](https://docs.talon.one/docs/dev/concepts/e
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: api_key_v1
@@ -2368,7 +2368,7 @@ Update (or create) up to 1000 [customer profiles](https://docs.talon.one/docs/de
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: api_key_v1
@@ -2443,7 +2443,7 @@ Update or create a [customer session](https://docs.talon.one/docs/dev/concepts/e
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: api_key_v1

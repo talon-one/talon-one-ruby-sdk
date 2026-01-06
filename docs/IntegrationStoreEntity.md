@@ -9,7 +9,7 @@
 ## Example
 
 ```ruby
-require 'talon_one'
+require 'talon_one_sdk'
 
 instance = TalonOne::IntegrationStoreEntity.new(
   store_integration_id: STORE-001

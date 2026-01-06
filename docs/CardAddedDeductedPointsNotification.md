@@ -23,7 +23,7 @@
 ## Example
 
 ```ruby
-require 'talon_one'
+require 'talon_one_sdk'
 
 instance = TalonOne::CardAddedDeductedPointsNotification.new(
   profile_integration_ids: [&quot;yJSObdNNtOetCHWHPFuz&quot;,&quot;test-user-4zoj1c&quot;],

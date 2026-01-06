@@ -23,7 +23,7 @@
 ## Example
 
 ```ruby
-require 'talon_one'
+require 'talon_one_sdk'
 
 instance = TalonOne::ApplicationSession.new(
   id: 6,

@@ -16,7 +16,7 @@
 ## Example
 
 ```ruby
-require 'talon_one'
+require 'talon_one_sdk'
 
 instance = TalonOne::Binding.new(
   name: my property,

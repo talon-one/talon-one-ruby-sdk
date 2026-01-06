@@ -23,7 +23,7 @@
 ## Example
 
 ```ruby
-require 'talon_one'
+require 'talon_one_sdk'
 
 instance = TalonOne::EffectEntity.new(
   campaign_id: 244,

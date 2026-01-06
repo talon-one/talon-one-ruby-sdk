@@ -13,7 +13,7 @@
 ## Example
 
 ```ruby
-require 'talon_one'
+require 'talon_one_sdk'
 
 instance = TalonOne::UpdateReferral.new(
   friend_profile_integration_id: BZGGC2454PA,

@@ -17,7 +17,7 @@
 ## Example
 
 ```ruby
-require 'talon_one'
+require 'talon_one_sdk'
 
 instance = TalonOne::NewCouponsForMultipleRecipients.new(
   usage_limit: 100,

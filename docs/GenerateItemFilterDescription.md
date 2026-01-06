@@ -9,7 +9,7 @@
 ## Example
 
 ```ruby
-require 'talon_one'
+require 'talon_one_sdk'
 
 instance = TalonOne::GenerateItemFilterDescription.new(
   item_filter: [&quot;filter&quot;,[&quot;.&quot;,&quot;Session&quot;,&quot;CartItems&quot;],[[&quot;Item&quot;],[&quot;catch&quot;,false,[&quot;and&quot;,[&quot;!&#x3D;&quot;,[&quot;.&quot;,&quot;Item&quot;,&quot;Attributes&quot;,&quot;c_productType&quot;],&quot;egiftcard&quot;]]]]]

@@ -18,7 +18,7 @@
 ## Example
 
 ```ruby
-require 'talon_one'
+require 'talon_one_sdk'
 
 instance = TalonOne::ExpiringCouponsData.new(
   coupon_value: XMAS-20-2021,

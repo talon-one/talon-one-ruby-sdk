@@ -21,7 +21,7 @@
 ## Example
 
 ```ruby
-require 'talon_one'
+require 'talon_one_sdk'
 
 instance = TalonOne::Referral.new(
   id: 6,

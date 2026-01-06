@@ -11,7 +11,7 @@
 ## Example
 
 ```ruby
-require 'talon_one'
+require 'talon_one_sdk'
 
 instance = TalonOne::UpdateCustomerProfileV2409Response.new(
   message: Too many requests are updating this profile at the same time,

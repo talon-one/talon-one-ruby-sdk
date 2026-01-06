@@ -10,7 +10,7 @@
 ## Example
 
 ```ruby
-require 'talon_one'
+require 'talon_one_sdk'
 
 instance = TalonOne::ScimServiceProviderConfigResponseFilter.new(
   max_results: null,

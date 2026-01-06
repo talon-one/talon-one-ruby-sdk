@@ -14,7 +14,7 @@
 ## Example
 
 ```ruby
-require 'talon_one'
+require 'talon_one_sdk'
 
 instance = TalonOne::CouponsNotificationData.new(
   type_of_change: campaign_manager,

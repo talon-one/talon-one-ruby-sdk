@@ -11,7 +11,7 @@
 ## Example
 
 ```ruby
-require 'talon_one'
+require 'talon_one_sdk'
 
 instance = TalonOne::UpdateLoyaltyProgramTier.new(
   id: 6,

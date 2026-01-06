@@ -10,7 +10,7 @@
 ## Example
 
 ```ruby
-require 'talon_one'
+require 'talon_one_sdk'
 
 instance = TalonOne::MultipleCustomerProfileIntegrationRequestItem.new(
   attributes: {Language&#x3D;english, ShippingCountry&#x3D;DE},

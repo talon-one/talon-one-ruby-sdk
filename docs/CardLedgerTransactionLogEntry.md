@@ -22,7 +22,7 @@
 ## Example
 
 ```ruby
-require 'talon_one'
+require 'talon_one_sdk'
 
 instance = TalonOne::CardLedgerTransactionLogEntry.new(
   transaction_uuid: ce59f12a-f53b-4014-a745-636d93f2bd3f,

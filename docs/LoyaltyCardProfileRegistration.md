@@ -10,7 +10,7 @@
 ## Example
 
 ```ruby
-require 'talon_one'
+require 'talon_one_sdk'
 
 instance = TalonOne::LoyaltyCardProfileRegistration.new(
   integration_id: R195412,

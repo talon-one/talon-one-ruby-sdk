@@ -10,7 +10,7 @@
 ## Example
 
 ```ruby
-require 'talon_one'
+require 'talon_one_sdk'
 
 instance = TalonOne::GetIntegrationCouponRequest.new(
   campaign_ids: [1,2,3],

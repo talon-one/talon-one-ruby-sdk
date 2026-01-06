@@ -16,7 +16,7 @@
 ## Example
 
 ```ruby
-require 'talon_one'
+require 'talon_one_sdk'
 
 instance = TalonOne::StrikethroughChangedItem.new(
   id: 1,

@@ -11,7 +11,7 @@
 ## Example
 
 ```ruby
-require 'talon_one'
+require 'talon_one_sdk'
 
 instance = TalonOne::MessageLogResponse.new(
   created_at: 2021-07-20T22:00:50Z,

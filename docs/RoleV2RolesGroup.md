@@ -12,7 +12,7 @@
 ## Example
 
 ```ruby
-require 'talon_one'
+require 'talon_one_sdk'
 
 instance = TalonOne::RoleV2RolesGroup.new(
   applications: {1&#x3D;{application&#x3D;Application permission set}, 3&#x3D;{campaign&#x3D;Campaign manager permission set}, 4&#x3D;{draftCampaign&#x3D;Campaign read-only permission set}, 5&#x3D;{tools&#x3D;Tools permission set}},

@@ -95,8 +95,8 @@ jobs:
           GEM_HOST_API_KEY: ${{ secrets.RUBYGEM_PUBLISHING_KEY }}
         run: |
           bundle install
-          gem build talon_one.gemspec
-          gem push talon_one-*.gem
+          gem build talon_one_sdk.gemspec
+          gem push talon_one_sdk-*.gem
 
       - name: Create Git tag
         if: ${{ steps.get_version.outputs.version != '' }}

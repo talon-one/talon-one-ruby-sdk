@@ -12,7 +12,7 @@
 ## Example
 
 ```ruby
-require 'talon_one'
+require 'talon_one_sdk'
 
 instance = TalonOne::NewStore.new(
   name: South US store,

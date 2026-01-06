@@ -10,7 +10,7 @@
 ## Example
 
 ```ruby
-require 'talon_one'
+require 'talon_one_sdk'
 
 instance = TalonOne::ChangeProfilePassword.new(
   password: Admin&amp;12943!7,

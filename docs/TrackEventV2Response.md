@@ -17,7 +17,7 @@
 ## Example
 
 ```ruby
-require 'talon_one'
+require 'talon_one_sdk'
 
 instance = TalonOne::TrackEventV2Response.new(
   customer_profile: null,

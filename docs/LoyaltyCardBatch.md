@@ -12,7 +12,7 @@
 ## Example
 
 ```ruby
-require 'talon_one'
+require 'talon_one_sdk'
 
 instance = TalonOne::LoyaltyCardBatch.new(
   number_of_cards: 5000,

@@ -33,7 +33,7 @@
 ## Example
 
 ```ruby
-require 'talon_one'
+require 'talon_one_sdk'
 
 instance = TalonOne::CampaignAnalytics.new(
   date: 2021-10-12T10:12:42Z,

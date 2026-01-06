@@ -23,7 +23,7 @@
 ## Example
 
 ```ruby
-require 'talon_one'
+require 'talon_one_sdk'
 
 instance = TalonOne::MessageLogEntry.new(
   id: 123e4567-e89b-12d3-a456-426614174000,

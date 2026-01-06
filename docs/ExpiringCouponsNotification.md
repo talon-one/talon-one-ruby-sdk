@@ -11,7 +11,7 @@
 ## Example
 
 ```ruby
-require 'talon_one'
+require 'talon_one_sdk'
 
 instance = TalonOne::ExpiringCouponsNotification.new(
   total_result_size: 1,

@@ -15,7 +15,7 @@
 ## Example
 
 ```ruby
-require 'talon_one'
+require 'talon_one_sdk'
 
 instance = TalonOne::Rule.new(
   id: 7fa800a8-ac8d-4792-85dc-c4650dcc8f23,

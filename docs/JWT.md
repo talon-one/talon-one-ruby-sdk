@@ -10,7 +10,7 @@
 ## Example
 
 ```ruby
-require 'talon_one'
+require 'talon_one_sdk'
 
 instance = TalonOne::JWT.new(
   access_token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9,

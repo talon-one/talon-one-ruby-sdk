@@ -16,13 +16,14 @@
 | **total** | **Float** | The total sum of the cart in one session. | [optional] |
 | **attributes** | **Object** | A key-value map of the sessions attributes. The potentially valid attributes are configured in your accounts developer settings.  | [optional] |
 | **first_session** | **Boolean** | Indicates whether this is the first session for the customer&#39;s profile. Will always be true for anonymous sessions. |  |
+| **update_count** | **Integer** | The number of times the session was updated. When the session is created, this value is initialized to &#x60;1&#x60;. |  |
 | **discounts** | **Hash&lt;String, Float&gt;** | A map of labelled discount values, values will be in the same currency as the application associated with the session. |  |
 | **updated** | **Time** | Timestamp of the most recent event received on this session. |  |
 
 ## Example
 
 ```ruby
-require 'talon_one'
+require 'talon_one_sdk'
 
 instance = TalonOne::CustomerSession.new(
   integration_id: null,
@@ -37,6 +38,7 @@ instance = TalonOne::CustomerSession.new(
   total: null,
   attributes: null,
   first_session: true,
+  update_count: 3,
   discounts: null,
   updated: 2021-09-12T10:12:42Z
 )

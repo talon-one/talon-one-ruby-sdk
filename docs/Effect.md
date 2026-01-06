@@ -24,7 +24,7 @@
 ## Example
 
 ```ruby
-require 'talon_one'
+require 'talon_one_sdk'
 
 instance = TalonOne::Effect.new(
   campaign_id: 244,

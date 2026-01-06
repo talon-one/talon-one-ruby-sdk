@@ -27,7 +27,7 @@
 ## Example
 
 ```ruby
-require 'talon_one'
+require 'talon_one_sdk'
 
 instance = TalonOne::RevisionVersion.new(
   id: 6,

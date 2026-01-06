@@ -15,7 +15,7 @@
 ## Example
 
 ```ruby
-require 'talon_one'
+require 'talon_one_sdk'
 
 instance = TalonOne::AccessLogEntry.new(
   uuid: 606e7d34-2d36-4d53-ac71-d4442c325985,

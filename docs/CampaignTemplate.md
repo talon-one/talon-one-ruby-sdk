@@ -35,7 +35,7 @@
 ## Example
 
 ```ruby
-require 'talon_one'
+require 'talon_one_sdk'
 
 instance = TalonOne::CampaignTemplate.new(
   id: 6,

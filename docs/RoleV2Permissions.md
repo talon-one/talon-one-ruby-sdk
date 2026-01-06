@@ -10,7 +10,7 @@
 ## Example
 
 ```ruby
-require 'talon_one'
+require 'talon_one_sdk'
 
 instance = TalonOne::RoleV2Permissions.new(
   permission_sets: [{name&#x3D;Application permission set, logicalOperations&#x3D;[getApplicationOperations, editApplicationOperations]}, {name&#x3D;Campaign manager permission set, logicalOperations&#x3D;[getCampaignOperations, createCampaignOperations, updateCampaignOperations]}, {name&#x3D;Campaign read-only permission set, logicalOperations&#x3D;[getCampaignOperations]}, {name&#x3D;Loyalty program read-only permission set, logicalOperations&#x3D;[getLoyaltyProgramOperations]}, {name&#x3D;Campaign access group manager permission set, logicalOperations&#x3D;[getCampaignAccessGroupOperations, updateCampaignAccessGroupOperations, deleteCampaignAccessGroupOperations]}],

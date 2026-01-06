@@ -10,7 +10,7 @@
 ## Example
 
 ```ruby
-require 'talon_one'
+require 'talon_one_sdk'
 
 instance = TalonOne::GenerateRuleTitleRule.new(
   effects: [catch, [noop], [setDiscount, 10% off, [*, [., Session, Total], [/, 10, 100]]]],

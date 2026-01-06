@@ -16,7 +16,7 @@
 ## Example
 
 ```ruby
-require 'talon_one'
+require 'talon_one_sdk'
 
 instance = TalonOne::NewCustomerSession.new(
   profile_id: URNGV8294NV,

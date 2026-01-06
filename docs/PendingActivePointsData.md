@@ -15,7 +15,7 @@
 ## Example
 
 ```ruby
-require 'talon_one'
+require 'talon_one_sdk'
 
 instance = TalonOne::PendingActivePointsData.new(
   loyalty_program_id: 5,

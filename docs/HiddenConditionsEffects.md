@@ -12,7 +12,7 @@
 ## Example
 
 ```ruby
-require 'talon_one'
+require 'talon_one_sdk'
 
 instance = TalonOne::HiddenConditionsEffects.new(
   built_in_effects: [&quot;addFreeItem&quot;,&quot;createNotification&quot;],

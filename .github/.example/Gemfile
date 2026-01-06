@@ -3,4 +3,4 @@ source 'https://rubygems.org'
 gem "typhoeus"
 gem "bundler"
 
-gem "talon_one", path: "../.."
+gem "talon_one_sdk", path: "../.."

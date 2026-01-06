@@ -11,7 +11,7 @@
 ## Example
 
 ```ruby
-require 'talon_one'
+require 'talon_one_sdk'
 
 instance = TalonOne::UpdateCustomerSessionV2409Response.new(
   message: Too many requests are updating this session at the same time,

@@ -19,7 +19,7 @@
 ## Example
 
 ```ruby
-require 'talon_one'
+require 'talon_one_sdk'
 
 instance = TalonOne::TemplateDef.new(
   id: 6,

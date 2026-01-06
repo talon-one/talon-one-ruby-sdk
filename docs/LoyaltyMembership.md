@@ -10,7 +10,7 @@
 ## Example
 
 ```ruby
-require 'talon_one'
+require 'talon_one_sdk'
 
 instance = TalonOne::LoyaltyMembership.new(
   joined: 2012-03-20T14:15:22Z,

@@ -18,7 +18,7 @@
 ## Example
 
 ```ruby
-require 'talon_one'
+require 'talon_one_sdk'
 
 instance = TalonOne::TierUpgradeData.new(
   customer_profile_id: URNGV8294NV,

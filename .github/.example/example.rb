@@ -1,5 +1,5 @@
 # Load the gem
-require 'talon_one'
+require 'talon_one_sdk'
 
 # Setup authorization
 TalonOne.configure do |config|

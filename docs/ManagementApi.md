@@ -191,7 +191,7 @@ Enable a [disabled user](https://docs.talon.one/docs/product/account/account-set
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -271,7 +271,7 @@ Add points to the given loyalty card in the specified card-based loyalty program
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -355,7 +355,7 @@ Add points in the specified loyalty program for the given customer.  To get the 
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -439,7 +439,7 @@ Copy the campaign into all specified Applications.
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -524,7 +524,7 @@ Create an account-level collection.
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -605,7 +605,7 @@ Create a new achievement in a specific campaign.
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -690,7 +690,7 @@ Create an [additional cost](https://docs.talon.one/docs/product/account/dev-tool
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -771,7 +771,7 @@ Create a _custom attribute_ in this account. [Custom attributes](https://docs.ta
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -852,7 +852,7 @@ Create a batch of loyalty cards in a specified [card-based loyalty program](http
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -935,7 +935,7 @@ Use the campaign template referenced in the request body to create a new campaig
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -1018,7 +1018,7 @@ Create a new store budget for a given campaign.
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -1102,7 +1102,7 @@ Create a campaign-level collection in a given campaign.
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -1187,7 +1187,7 @@ Create coupons according to some pattern. Up to 20.000 coupons can be created wi
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -1276,7 +1276,7 @@ Create up to 5,000,000 coupons asynchronously. You should typically use this enp
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -1361,7 +1361,7 @@ This endpoint handles creating a job to delete coupons asynchronously.
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -1446,7 +1446,7 @@ Create coupons according to some pattern for up to 1000 recipients.
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -1535,7 +1535,7 @@ Resend an email invitation to an existing user.  **Note:** The invitation token 
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -1616,7 +1616,7 @@ Create a new user in the account and send an invitation to their email address. 
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -1697,7 +1697,7 @@ Send an email with a password recovery link to the email address of an existing 
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -1778,7 +1778,7 @@ Create a session to use the Management API endpoints. Use the value of the `toke
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -1859,7 +1859,7 @@ Create a new store in a specific Application.
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -1942,7 +1942,7 @@ Disable user by email address
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -2022,7 +2022,7 @@ Deduct points from the given loyalty card in the specified card-based loyalty pr
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -2106,7 +2106,7 @@ Delete a given account-level collection.
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -2186,7 +2186,7 @@ Delete the specified achievement.
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -2270,7 +2270,7 @@ Delete the given campaign.
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -2352,7 +2352,7 @@ Delete the store budgets for a given campaign.
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -2440,7 +2440,7 @@ Delete a given campaign-level collection.
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -2524,7 +2524,7 @@ Delete the specified coupon.
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -2608,7 +2608,7 @@ Deletes all the coupons matching the specified criteria.
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -2718,7 +2718,7 @@ Delete the given loyalty card.
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -2800,7 +2800,7 @@ Delete the specified referral.
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -2884,7 +2884,7 @@ Delete the specified store.
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -2966,7 +2966,7 @@ Delete a specific user.
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -3046,7 +3046,7 @@ Delete user by email address
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -3126,7 +3126,7 @@ Destroys the session.
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -3203,7 +3203,7 @@ Disconnect the stores linked to a specific campaign.
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -3285,7 +3285,7 @@ Download a CSV file containing items from a given account-level collection.  **T
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -3366,7 +3366,7 @@ Download a CSV file containing a list of all the customers who have participated
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -3451,7 +3451,7 @@ Download a CSV file containing the integration IDs of the members of an audience
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -3532,7 +3532,7 @@ Download a CSV file containing the store budgets for a given campaign.  **Tip:**
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -3621,7 +3621,7 @@ Download a CSV file containing the stores linked to a specific campaign.  **Tip:
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -3704,7 +3704,7 @@ Download a CSV file containing items from a given campaign-level collection.  **
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -3789,7 +3789,7 @@ Download a CSV file containing the coupons that match the given properties.  **T
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -3900,7 +3900,7 @@ Download a CSV file containing the customer sessions that match the request.  **
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -3993,7 +3993,7 @@ Download a CSV file containing the tier information for customers of the specifi
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -4080,7 +4080,7 @@ Download a CSV file containing the triggered effects that match the given attrib
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -4171,7 +4171,7 @@ Export customer loyalty balance to CSV
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -4256,7 +4256,7 @@ Download a CSV file containing the balance of each customer in the loyalty progr
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -4341,7 +4341,7 @@ Download a CSV file containing the balances of all cards in the loyalty program.
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -4426,7 +4426,7 @@ Download a CSV file containing a loyalty card ledger log of the loyalty program.
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -4517,7 +4517,7 @@ Download a CSV file containing the loyalty cards from a specified loyalty progra
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -4608,7 +4608,7 @@ Download a CSV file containing a customer's transaction logs in the loyalty prog
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -4699,7 +4699,7 @@ Download a CSV file containing the giveaway codes of a specific giveaway pool.  
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -4786,7 +4786,7 @@ Download a CSV file containing the referrals that match the given parameters.  *
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -4883,7 +4883,7 @@ Retrieve the list of API calls sent to the specified Application.
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -4982,7 +4982,7 @@ Return the details of your companies Talon.One account.
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -5063,7 +5063,7 @@ Return the analytics of your Talon.One account.
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -5144,7 +5144,7 @@ Retrieve a given account-level collection.
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -5225,7 +5225,7 @@ Get the details of a specific achievement.
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -5310,7 +5310,7 @@ Returns the additional cost.
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -5391,7 +5391,7 @@ Returns all the defined additional costs for the account.
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -5478,7 +5478,7 @@ Get the application specified by the ID.
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -5559,7 +5559,7 @@ Display the health of the Application and show the last time the Application was
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -5640,7 +5640,7 @@ Retrieve the customers of the specified application.
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -5723,7 +5723,7 @@ List the friends referred by the specified customer profile in this Application.
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -5816,7 +5816,7 @@ List all the customers of the specified application.
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -5907,7 +5907,7 @@ Get a list of the application customers matching the provided criteria.  The mat
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -5998,7 +5998,7 @@ Get all of the distinct values of the Event `type` property for events recorded 
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -6087,7 +6087,7 @@ Lists all events recorded for an application. Instead of having the total number
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -6200,7 +6200,7 @@ Get the details of the given session. You can list the sessions with the [List A
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -6283,7 +6283,7 @@ List all the sessions of the specified Application.
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -6388,7 +6388,7 @@ List all applications in the current account.
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -6475,7 +6475,7 @@ Retrieve the specified custom attribute.
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -6556,7 +6556,7 @@ Return all the custom attributes for the account.
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -6653,7 +6653,7 @@ Get a paginated list of the customer profiles in a given audience.  A maximum of
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -6744,7 +6744,7 @@ Get all audiences created in the account. To create an audience, use [Create aud
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -6833,7 +6833,7 @@ Get a list of audience IDs and their member count.
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -6918,7 +6918,7 @@ Retrieve the given campaign.
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -7001,7 +7001,7 @@ Retrieve statistical data about the performance of the given campaign.
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -7092,7 +7092,7 @@ Get a list of all the campaigns that match a set of attributes.
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -7185,7 +7185,7 @@ Get a campaign access group specified by its ID.
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -7266,7 +7266,7 @@ List the campaign access groups in the current account.
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -7353,7 +7353,7 @@ Retrieve a list of campaign templates.
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -7448,7 +7448,7 @@ List the campaigns of the specified application that match your filter criteria.
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -7553,7 +7553,7 @@ Retrieve the audit logs displayed in **Accounts > Audit logs**.
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -7656,7 +7656,7 @@ Retrieve a given campaign-level collection.
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -7741,7 +7741,7 @@ Retrieve items from a given collection.  You can retrieve items from both accoun
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -7828,7 +7828,7 @@ List all the coupons matching the specified criteria.
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -7949,7 +7949,7 @@ Fetch the summary report of a given customer in the given application, in a time
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -8042,7 +8042,7 @@ Fetch summary reports for all application customers based on a time range. Inste
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -8143,7 +8143,7 @@ Fetch analytics for a given customer in the given application.
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -8234,7 +8234,7 @@ Return the details of the specified customer profile.  <div class=\"redoc-sectio
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -8315,7 +8315,7 @@ For the given customer profile, list all the achievements that match your filter
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -8408,7 +8408,7 @@ List all customer profiles.
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -8495,7 +8495,7 @@ Get a list of the customer profiles matching the provided criteria.  The match i
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -8584,7 +8584,7 @@ Retrieve the statistics displayed on the specified loyalty program's dashboard, 
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -8673,7 +8673,7 @@ Fetch all event type definitions for your account.
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -8764,7 +8764,7 @@ List all past exports
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -8855,7 +8855,7 @@ Get the given loyalty card.
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -8938,7 +8938,7 @@ Retrieve the transaction logs for the given [loyalty card](https://docs.talon.on
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -9037,7 +9037,7 @@ For the given card-based loyalty program, list the loyalty cards that match your
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -9132,7 +9132,7 @@ Get the loyalty ledger for this profile integration ID.  To get the `integration
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -9215,7 +9215,7 @@ Get the specified [loyalty program](https://docs.talon.one/docs/product/loyalty-
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -9296,7 +9296,7 @@ Retrieve loyalty program transaction logs in a given loyalty program with filter
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -9397,7 +9397,7 @@ List the loyalty programs of the account.
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -9475,7 +9475,7 @@ Get loyalty program statistics
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -9556,7 +9556,7 @@ Retrieve all message log entries.
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -9665,7 +9665,7 @@ List all referrals of the specified campaign.
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -9768,7 +9768,7 @@ Get the details of a specific role. To see all the roles, use the [List roles](/
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -9849,7 +9849,7 @@ Retrieve the specified ruleset.
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -9934,7 +9934,7 @@ List all rulesets of this campaign. A ruleset is a revision of the rules of a ca
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -10025,7 +10025,7 @@ Get store details for a specific store ID.
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -10108,7 +10108,7 @@ Retrieve the data (including an invitation code) for a user. Non-admin users can
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -10189,7 +10189,7 @@ Retrieve all users in your account.
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -10276,7 +10276,7 @@ Returns a webhook by its id.
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -10357,7 +10357,7 @@ List all webhooks.
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -10454,7 +10454,7 @@ Upload a CSV file containing the collection of string values that should be atta
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -10539,7 +10539,7 @@ Upload a CSV file containing a list of [picklist values](https://docs.talon.one/
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -10624,7 +10624,7 @@ Upload a CSV file containing the integration IDs of the members you want to add 
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -10709,7 +10709,7 @@ Upload a CSV file containing store budgets for a given campaign.  Send the file 
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -10800,7 +10800,7 @@ Upload a CSV file containing the stores you want to link to a specific campaign.
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -10887,7 +10887,7 @@ Upload a CSV file containing the collection of string values that should be atta
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -10976,7 +10976,7 @@ Upload a CSV file containing the coupons that should be created. The file should
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -11065,7 +11065,7 @@ Upload a CSV file containing the loyalty cards that you want to use in your card
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -11150,7 +11150,7 @@ Upload a CSV file containing existing customers to be assigned to existing tiers
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -11235,7 +11235,7 @@ Upload a CSV file containing the loyalty points you want to import into a given 
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -11322,7 +11322,7 @@ Upload a CSV file containing the giveaway codes that should be created. Send the
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -11407,7 +11407,7 @@ Upload a CSV file containing the referrals that should be created. The file shou
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -11494,7 +11494,7 @@ Invite user from identity provider
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -11574,7 +11574,7 @@ List account-level collections in the account.
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -11665,7 +11665,7 @@ List all the achievements for a specific campaign.
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -11756,7 +11756,7 @@ List all roles.
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -11834,7 +11834,7 @@ Return the store budget limits for a given campaign.
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -11923,7 +11923,7 @@ Return a paginated list of cart items in the given catalog.
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -12016,7 +12016,7 @@ List collections in a given campaign.
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -12111,7 +12111,7 @@ List campaign-level collections from all campaigns in a given Application.
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -12204,7 +12204,7 @@ List all stores for a specific Application.
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -12303,7 +12303,7 @@ Validate the ownership of the API through a challenge-response mechanism.  This 
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -12380,7 +12380,7 @@ Deduct points from the specified loyalty program and specified customer profile.
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -12464,7 +12464,7 @@ Consumes the supplied password reset token and updates the password for the asso
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -12545,7 +12545,7 @@ Create a new Talon.One group using the SCIM Group provisioning protocol with an 
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -12626,7 +12626,7 @@ Create a new Talon.One user using the SCIM provisioning protocol with an identit
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -12707,7 +12707,7 @@ Delete a specific group created using the SCIM provisioning protocol with an ide
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -12787,7 +12787,7 @@ Delete a specific Talon.One user created using the SCIM provisioning protocol wi
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -12867,7 +12867,7 @@ Retrieve data for a specific group created using the SCIM provisioning protocol 
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -12948,7 +12948,7 @@ Retrieve a paginated list of groups created using the SCIM protocol with an iden
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -13026,7 +13026,7 @@ Retrieve a list of resource types supported by the SCIM provisioning protocol.  
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -13104,7 +13104,7 @@ Retrieve a list of schemas supported by the SCIM provisioning protocol.  Schemas
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -13182,7 +13182,7 @@ Retrieve the configuration settings of the SCIM service provider. It provides de
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -13260,7 +13260,7 @@ Retrieve data for a specific Talon.One user created using the SCIM provisioning 
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -13341,7 +13341,7 @@ Retrieve a paginated list of users that have been provisioned using the SCIM pro
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -13419,7 +13419,7 @@ Update certain attributes of a group created using the SCIM provisioning protoco
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -13502,7 +13502,7 @@ Update certain attributes of a specific Talon.One user created using the SCIM pr
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -13585,7 +13585,7 @@ Update the details of a specific group created using the SCIM provisioning proto
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -13668,7 +13668,7 @@ Update the details of a specific Talon.One user created using the SCIM provision
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -13751,7 +13751,7 @@ List the coupons whose attributes match the query criteria in all the campaigns 
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -13862,7 +13862,7 @@ List the coupons whose attributes match the query criteria in the given campaign
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -13973,7 +13973,7 @@ Fetch a summary of all store budget information for a given campaign.
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -14056,7 +14056,7 @@ Transfer loyalty card data, such as linked customers, loyalty balances and trans
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -14140,7 +14140,7 @@ Edit the description of a given account-level collection and enable or disable t
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -14223,7 +14223,7 @@ Update the details of a specific achievement.
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -14310,7 +14310,7 @@ Updates an existing additional cost. Once created, the only property of an addit
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -14393,7 +14393,7 @@ Update an existing custom attribute. Once created, the only property of a custom
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -14476,7 +14476,7 @@ Update the given campaign.  **Important:** You cannot use this endpoint to updat
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -14561,7 +14561,7 @@ Edit the description of a given campaign-level collection.
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -14648,7 +14648,7 @@ Update the specified coupon.  <div class=\"redoc-section\">   <p class=\"title\"
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -14735,7 +14735,7 @@ Update all coupons or a specific batch of coupons in the given campaign. You can
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -14819,7 +14819,7 @@ Update the status of the given loyalty card. A card can be _active_ or _inactive
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -14904,7 +14904,7 @@ Update the specified referral.
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -14991,7 +14991,7 @@ Update a specific role.
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -15074,7 +15074,7 @@ Update store details for a specific store ID.
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key
@@ -15159,7 +15159,7 @@ Update the details of a specific user.
 
 ```ruby
 require 'time'
-require 'talon_one'
+require 'talon_one_sdk'
 # setup authorization
 TalonOne.configure do |config|
   # Configure API key authorization: management_key

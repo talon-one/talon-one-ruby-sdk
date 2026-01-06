@@ -11,7 +11,7 @@
 ## Example
 
 ```ruby
-require 'talon_one'
+require 'talon_one_sdk'
 
 instance = TalonOne::OutgoingIntegrationCleverTapPolicy.new(
   base_url: your-clevertap-url.com,

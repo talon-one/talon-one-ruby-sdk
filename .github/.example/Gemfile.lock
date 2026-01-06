@@ -1,7 +1,7 @@
 PATH
   remote: ../..
   specs:
-    talon_one (6.0.0)
+    talon_one_sdk (6.0.0)
       json (~> 2.1, >= 2.1.0)
       typhoeus (~> 1.0, >= 1.0.1)
 

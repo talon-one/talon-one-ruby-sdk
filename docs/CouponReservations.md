@@ -9,7 +9,7 @@
 ## Example
 
 ```ruby
-require 'talon_one'
+require 'talon_one_sdk'
 
 instance = TalonOne::CouponReservations.new(
   integration_ids: [URNGV8294NV, BZGGC2454PA]

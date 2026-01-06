@@ -23,7 +23,7 @@
 ## Example
 
 ```ruby
-require 'talon_one'
+require 'talon_one_sdk'
 
 instance = TalonOne::LoyaltyLedgerEntry.new(
   created: 2021-07-20T22:00:00Z,

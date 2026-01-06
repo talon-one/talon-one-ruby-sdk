@@ -15,7 +15,7 @@
 ## Example
 
 ```ruby
-require 'talon_one'
+require 'talon_one_sdk'
 
 instance = TalonOne::NewMessageTest.new(
   headers: {&quot;content-type&quot;:&quot;application/json&quot;},
