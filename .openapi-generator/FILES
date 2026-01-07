@@ -630,6 +630,7 @@ lib/talon_one_sdk/api/integration_api.rb
 lib/talon_one_sdk/api/management_api.rb
 lib/talon_one_sdk/api_client.rb
 lib/talon_one_sdk/api_error.rb
+lib/talon_one_sdk/api_model_base.rb
 lib/talon_one_sdk/configuration.rb
 lib/talon_one_sdk/models/accept_coupon_effect_props.rb
 lib/talon_one_sdk/models/accept_referral_effect_props.rb
