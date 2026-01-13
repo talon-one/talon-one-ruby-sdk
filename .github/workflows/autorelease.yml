@@ -17,17 +17,17 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 0 # get full history so we can diff
+          fetch-depth: 0   # get full history so we can diff
 
-      - name: Extract version from commit message
+      - name: Extract version from PR title
         id: get_version
         run: |
-          msg='${{ github.event.head_commit.message }}'
-          if [[ "$msg" =~ update[[:space:]]+to[[:space:]]+([0-9]+\.[0-9]+\.[0-9]+) ]]; then
+          msg='${{ github.event.pull_request.title }}'
+          if [[ "$msg" =~ [Uu]pdate.*[Tt]o[[:space:]]+([0-9]+\.[0-9]+(\.[0-9]+)?) ]]; then
             ver="${BASH_REMATCH[1]}"
             echo "version=$ver" >> $GITHUB_OUTPUT
           else
-            echo "Commit message does not match pattern - skipping release."
+            echo "PR title does not match pattern - skipping release."
             echo "version=" >> $GITHUB_OUTPUT
           fi
 
@@ -88,23 +88,11 @@ jobs:
           } > release-notes.md
 
           echo "notes_file=release-notes.md" >> "$GITHUB_OUTPUT"
-      - uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: "3"
-
-      - name: publish gem
-        if: ${{ steps.get_version.outputs.version != '' }}
-        env:
-          GEM_HOST_API_KEY: ${{ secrets.RUBYGEM_PUBLISHING_KEY }}
-        run: |
-          bundle install
-          gem build talon_one_sdk.gemspec
-          gem push talon_one_sdk-*.gem
 
       - name: Create Git tag
         if: ${{ steps.get_version.outputs.version != '' }}
         run: |
-          ver="${{ steps.get_version.outputs.version }}"
+          ver="v${{ steps.get_version.outputs.version }}"
           git tag -f "$ver" "$GITHUB_SHA"
           git push -f origin "refs/tags/$ver"
 
@@ -113,7 +101,7 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          ver="${{ steps.get_version.outputs.version }}"
+          ver="v${{ steps.get_version.outputs.version }}"
           notes_file="${{ steps.relnotes.outputs.notes_file }}"
 
           if gh release view "$ver" &>/dev/null; then
