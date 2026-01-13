@@ -34,6 +34,8 @@ docs/AchievementBase.md
 docs/AchievementProgress.md
 docs/AchievementProgressWithDefinition.md
 docs/AchievementStatusEntry.md
+docs/ActivateLoyaltyPoints.md
+docs/ActivateLoyaltyPointsResponse.md
 docs/ActivateUserRequest.md
 docs/AddFreeItemEffectProps.md
 docs/AddItemCatalogAction.md
@@ -41,6 +43,8 @@ docs/AddLoyaltyPoints.md
 docs/AddLoyaltyPointsEffectProps.md
 docs/AddPriceAdjustmentCatalogAction.md
 docs/AddToAudienceEffectProps.md
+docs/AddedDeductedPointsBalancesAction.md
+docs/AddedDeductedPointsBalancesNotification.md
 docs/AddedDeductedPointsBalancesNotificationPolicy.md
 docs/AddedDeductedPointsNotification.md
 docs/AddedDeductedPointsNotificationPolicy.md
@@ -142,6 +146,7 @@ docs/CampaignTemplateCollection.md
 docs/CampaignTemplateCouponReservationSettings.md
 docs/CampaignTemplateParams.md
 docs/CampaignVersions.md
+docs/CardAddedDeductedPointsBalancesNotification.md
 docs/CardAddedDeductedPointsBalancesNotificationPolicy.md
 docs/CardAddedDeductedPointsNotification.md
 docs/CardAddedDeductedPointsNotificationPolicy.md
@@ -170,8 +175,10 @@ docs/CouponCreationJob.md
 docs/CouponDeletionFilters.md
 docs/CouponDeletionJob.md
 docs/CouponEntity.md
+docs/CouponFailureSummary.md
 docs/CouponLimitConfigs.md
 docs/CouponRejectionReason.md
+docs/CouponRejections.md
 docs/CouponReservations.md
 docs/CouponSearch.md
 docs/CouponValue.md
@@ -240,6 +247,7 @@ docs/FuncArgDef.md
 docs/FunctionDef.md
 docs/GenerateAuditLogSummary.md
 docs/GenerateCampaignDescription.md
+docs/GenerateCampaignSummary.md
 docs/GenerateCampaignTags.md
 docs/GenerateCouponFailureDetailedSummary.md
 docs/GenerateCouponFailureSummary.md
@@ -317,7 +325,6 @@ docs/IntegrationStoreEntity.md
 docs/InventoryCoupon.md
 docs/InventoryReferral.md
 docs/ItemAttribute.md
-docs/JWT.md
 docs/LabelTargetAudience.md
 docs/LabelTargetNone.md
 docs/LedgerEntry.md
@@ -471,6 +478,15 @@ docs/PriceDetail.md
 docs/PriceType.md
 docs/PriceTypeReferenceDetail.md
 docs/PriceTypeReferences.md
+docs/PrismaticConfig.md
+docs/PrismaticEventPayloadCouponBasedNotifications.md
+docs/PrismaticEventPayloadCouponBasedNotificationsLimits.md
+docs/PrismaticEventPayloadLoyaltyProfileBasedNotifications.md
+docs/PrismaticEventPayloadLoyaltyProfileBasedNotificationsAction.md
+docs/PrismaticFlow.md
+docs/PrismaticFlowConfig.md
+docs/PrismaticFlowWithConfig.md
+docs/PrismaticPaginatedEventPayload.md
 docs/Product.md
 docs/ProductSearchMatch.md
 docs/ProductUnitAnalytics.md
@@ -504,6 +520,7 @@ docs/RoleV2ApplicationDetails.md
 docs/RoleV2Base.md
 docs/RoleV2PermissionSet.md
 docs/RoleV2Permissions.md
+docs/RoleV2Readonly.md
 docs/RoleV2RolesGroup.md
 docs/RollbackAddedLoyaltyPointsEffectProps.md
 docs/RollbackCouponEffectProps.md
@@ -542,6 +559,7 @@ docs/ScimUser.md
 docs/ScimUsersListResponse.md
 docs/SecondaryDeployment.md
 docs/Session.md
+docs/SessionCoupons.md
 docs/SetDiscountEffectProps.md
 docs/SetDiscountPerAdditionalCostEffectProps.md
 docs/SetDiscountPerAdditionalCostPerItemEffectProps.md
@@ -559,6 +577,7 @@ docs/StrikethroughDebugResponse.md
 docs/StrikethroughEffect.md
 docs/StrikethroughLabelingNotification.md
 docs/StrikethroughSetDiscountPerItemEffectProps.md
+docs/StrikethroughSetDiscountPerItemMemberEffectProps.md
 docs/StrikethroughTrigger.md
 docs/SummarizeCampaignStoreBudget200Response.md
 docs/SummaryCampaignStoreBudget.md
@@ -652,6 +671,8 @@ lib/talon_one_sdk/models/achievement_base.rb
 lib/talon_one_sdk/models/achievement_progress.rb
 lib/talon_one_sdk/models/achievement_progress_with_definition.rb
 lib/talon_one_sdk/models/achievement_status_entry.rb
+lib/talon_one_sdk/models/activate_loyalty_points.rb
+lib/talon_one_sdk/models/activate_loyalty_points_response.rb
 lib/talon_one_sdk/models/activate_user_request.rb
 lib/talon_one_sdk/models/add_free_item_effect_props.rb
 lib/talon_one_sdk/models/add_item_catalog_action.rb
@@ -659,6 +680,8 @@ lib/talon_one_sdk/models/add_loyalty_points.rb
 lib/talon_one_sdk/models/add_loyalty_points_effect_props.rb
 lib/talon_one_sdk/models/add_price_adjustment_catalog_action.rb
 lib/talon_one_sdk/models/add_to_audience_effect_props.rb
+lib/talon_one_sdk/models/added_deducted_points_balances_action.rb
+lib/talon_one_sdk/models/added_deducted_points_balances_notification.rb
 lib/talon_one_sdk/models/added_deducted_points_balances_notification_policy.rb
 lib/talon_one_sdk/models/added_deducted_points_notification.rb
 lib/talon_one_sdk/models/added_deducted_points_notification_policy.rb
@@ -761,6 +784,7 @@ lib/talon_one_sdk/models/campaign_template_collection.rb
 lib/talon_one_sdk/models/campaign_template_coupon_reservation_settings.rb
 lib/talon_one_sdk/models/campaign_template_params.rb
 lib/talon_one_sdk/models/campaign_versions.rb
+lib/talon_one_sdk/models/card_added_deducted_points_balances_notification.rb
 lib/talon_one_sdk/models/card_added_deducted_points_balances_notification_policy.rb
 lib/talon_one_sdk/models/card_added_deducted_points_notification.rb
 lib/talon_one_sdk/models/card_added_deducted_points_notification_policy.rb
@@ -789,8 +813,10 @@ lib/talon_one_sdk/models/coupon_creation_job.rb
 lib/talon_one_sdk/models/coupon_deletion_filters.rb
 lib/talon_one_sdk/models/coupon_deletion_job.rb
 lib/talon_one_sdk/models/coupon_entity.rb
+lib/talon_one_sdk/models/coupon_failure_summary.rb
 lib/talon_one_sdk/models/coupon_limit_configs.rb
 lib/talon_one_sdk/models/coupon_rejection_reason.rb
+lib/talon_one_sdk/models/coupon_rejections.rb
 lib/talon_one_sdk/models/coupon_reservations.rb
 lib/talon_one_sdk/models/coupon_search.rb
 lib/talon_one_sdk/models/coupon_value.rb
@@ -859,6 +885,7 @@ lib/talon_one_sdk/models/func_arg_def.rb
 lib/talon_one_sdk/models/function_def.rb
 lib/talon_one_sdk/models/generate_audit_log_summary.rb
 lib/talon_one_sdk/models/generate_campaign_description.rb
+lib/talon_one_sdk/models/generate_campaign_summary.rb
 lib/talon_one_sdk/models/generate_campaign_tags.rb
 lib/talon_one_sdk/models/generate_coupon_failure_detailed_summary.rb
 lib/talon_one_sdk/models/generate_coupon_failure_summary.rb
@@ -935,7 +962,6 @@ lib/talon_one_sdk/models/integration_store_entity.rb
 lib/talon_one_sdk/models/inventory_coupon.rb
 lib/talon_one_sdk/models/inventory_referral.rb
 lib/talon_one_sdk/models/item_attribute.rb
-lib/talon_one_sdk/models/jwt.rb
 lib/talon_one_sdk/models/label_target_audience.rb
 lib/talon_one_sdk/models/label_target_none.rb
 lib/talon_one_sdk/models/ledger_entry.rb
@@ -1088,6 +1114,15 @@ lib/talon_one_sdk/models/price_detail.rb
 lib/talon_one_sdk/models/price_type.rb
 lib/talon_one_sdk/models/price_type_reference_detail.rb
 lib/talon_one_sdk/models/price_type_references.rb
+lib/talon_one_sdk/models/prismatic_config.rb
+lib/talon_one_sdk/models/prismatic_event_payload_coupon_based_notifications.rb
+lib/talon_one_sdk/models/prismatic_event_payload_coupon_based_notifications_limits.rb
+lib/talon_one_sdk/models/prismatic_event_payload_loyalty_profile_based_notifications.rb
+lib/talon_one_sdk/models/prismatic_event_payload_loyalty_profile_based_notifications_action.rb
+lib/talon_one_sdk/models/prismatic_flow.rb
+lib/talon_one_sdk/models/prismatic_flow_config.rb
+lib/talon_one_sdk/models/prismatic_flow_with_config.rb
+lib/talon_one_sdk/models/prismatic_paginated_event_payload.rb
 lib/talon_one_sdk/models/product.rb
 lib/talon_one_sdk/models/product_search_match.rb
 lib/talon_one_sdk/models/product_unit_analytics.rb
@@ -1121,6 +1156,7 @@ lib/talon_one_sdk/models/role_v2_application_details.rb
 lib/talon_one_sdk/models/role_v2_base.rb
 lib/talon_one_sdk/models/role_v2_permission_set.rb
 lib/talon_one_sdk/models/role_v2_permissions.rb
+lib/talon_one_sdk/models/role_v2_readonly.rb
 lib/talon_one_sdk/models/role_v2_roles_group.rb
 lib/talon_one_sdk/models/rollback_added_loyalty_points_effect_props.rb
 lib/talon_one_sdk/models/rollback_coupon_effect_props.rb
@@ -1158,6 +1194,7 @@ lib/talon_one_sdk/models/scim_user.rb
 lib/talon_one_sdk/models/scim_users_list_response.rb
 lib/talon_one_sdk/models/secondary_deployment.rb
 lib/talon_one_sdk/models/session.rb
+lib/talon_one_sdk/models/session_coupons.rb
 lib/talon_one_sdk/models/set_discount_effect_props.rb
 lib/talon_one_sdk/models/set_discount_per_additional_cost_effect_props.rb
 lib/talon_one_sdk/models/set_discount_per_additional_cost_per_item_effect_props.rb
@@ -1176,6 +1213,7 @@ lib/talon_one_sdk/models/strikethrough_debug_response.rb
 lib/talon_one_sdk/models/strikethrough_effect.rb
 lib/talon_one_sdk/models/strikethrough_labeling_notification.rb
 lib/talon_one_sdk/models/strikethrough_set_discount_per_item_effect_props.rb
+lib/talon_one_sdk/models/strikethrough_set_discount_per_item_member_effect_props.rb
 lib/talon_one_sdk/models/strikethrough_trigger.rb
 lib/talon_one_sdk/models/summarize_campaign_store_budget200_response.rb
 lib/talon_one_sdk/models/summary_campaign_store_budget.rb
@@ -1264,6 +1302,8 @@ spec/models/achievement_progress_spec.rb
 spec/models/achievement_progress_with_definition_spec.rb
 spec/models/achievement_spec.rb
 spec/models/achievement_status_entry_spec.rb
+spec/models/activate_loyalty_points_response_spec.rb
+spec/models/activate_loyalty_points_spec.rb
 spec/models/activate_user_request_spec.rb
 spec/models/add_free_item_effect_props_spec.rb
 spec/models/add_item_catalog_action_spec.rb
@@ -1271,7 +1311,9 @@ spec/models/add_loyalty_points_effect_props_spec.rb
 spec/models/add_loyalty_points_spec.rb
 spec/models/add_price_adjustment_catalog_action_spec.rb
 spec/models/add_to_audience_effect_props_spec.rb
+spec/models/added_deducted_points_balances_action_spec.rb
 spec/models/added_deducted_points_balances_notification_policy_spec.rb
+spec/models/added_deducted_points_balances_notification_spec.rb
 spec/models/added_deducted_points_notification_policy_spec.rb
 spec/models/added_deducted_points_notification_spec.rb
 spec/models/additional_campaign_properties_spec.rb
@@ -1374,6 +1416,7 @@ spec/models/campaign_template_params_spec.rb
 spec/models/campaign_template_spec.rb
 spec/models/campaign_versions_spec.rb
 spec/models/card_added_deducted_points_balances_notification_policy_spec.rb
+spec/models/card_added_deducted_points_balances_notification_spec.rb
 spec/models/card_added_deducted_points_notification_policy_spec.rb
 spec/models/card_added_deducted_points_notification_spec.rb
 spec/models/card_expiring_points_notification_policy_spec.rb
@@ -1400,8 +1443,10 @@ spec/models/coupon_creation_job_spec.rb
 spec/models/coupon_deletion_filters_spec.rb
 spec/models/coupon_deletion_job_spec.rb
 spec/models/coupon_entity_spec.rb
+spec/models/coupon_failure_summary_spec.rb
 spec/models/coupon_limit_configs_spec.rb
 spec/models/coupon_rejection_reason_spec.rb
+spec/models/coupon_rejections_spec.rb
 spec/models/coupon_reservations_spec.rb
 spec/models/coupon_search_spec.rb
 spec/models/coupon_spec.rb
@@ -1471,6 +1516,7 @@ spec/models/func_arg_def_spec.rb
 spec/models/function_def_spec.rb
 spec/models/generate_audit_log_summary_spec.rb
 spec/models/generate_campaign_description_spec.rb
+spec/models/generate_campaign_summary_spec.rb
 spec/models/generate_campaign_tags_spec.rb
 spec/models/generate_coupon_failure_detailed_summary_spec.rb
 spec/models/generate_coupon_failure_summary_spec.rb
@@ -1547,7 +1593,6 @@ spec/models/integration_store_entity_spec.rb
 spec/models/inventory_coupon_spec.rb
 spec/models/inventory_referral_spec.rb
 spec/models/item_attribute_spec.rb
-spec/models/jwt_spec.rb
 spec/models/label_target_audience_spec.rb
 spec/models/label_target_none_spec.rb
 spec/models/ledger_entry_spec.rb
@@ -1700,6 +1745,15 @@ spec/models/price_detail_spec.rb
 spec/models/price_type_reference_detail_spec.rb
 spec/models/price_type_references_spec.rb
 spec/models/price_type_spec.rb
+spec/models/prismatic_config_spec.rb
+spec/models/prismatic_event_payload_coupon_based_notifications_limits_spec.rb
+spec/models/prismatic_event_payload_coupon_based_notifications_spec.rb
+spec/models/prismatic_event_payload_loyalty_profile_based_notifications_action_spec.rb
+spec/models/prismatic_event_payload_loyalty_profile_based_notifications_spec.rb
+spec/models/prismatic_flow_config_spec.rb
+spec/models/prismatic_flow_spec.rb
+spec/models/prismatic_flow_with_config_spec.rb
+spec/models/prismatic_paginated_event_payload_spec.rb
 spec/models/product_search_match_spec.rb
 spec/models/product_spec.rb
 spec/models/product_unit_analytics_data_point_spec.rb
@@ -1732,6 +1786,7 @@ spec/models/role_v2_application_details_spec.rb
 spec/models/role_v2_base_spec.rb
 spec/models/role_v2_permission_set_spec.rb
 spec/models/role_v2_permissions_spec.rb
+spec/models/role_v2_readonly_spec.rb
 spec/models/role_v2_roles_group_spec.rb
 spec/models/role_v2_spec.rb
 spec/models/rollback_added_loyalty_points_effect_props_spec.rb
@@ -1769,6 +1824,7 @@ spec/models/scim_service_provider_config_response_spec.rb
 spec/models/scim_user_spec.rb
 spec/models/scim_users_list_response_spec.rb
 spec/models/secondary_deployment_spec.rb
+spec/models/session_coupons_spec.rb
 spec/models/session_spec.rb
 spec/models/set_discount_effect_props_spec.rb
 spec/models/set_discount_per_additional_cost_effect_props_spec.rb
@@ -1788,6 +1844,7 @@ spec/models/strikethrough_debug_response_spec.rb
 spec/models/strikethrough_effect_spec.rb
 spec/models/strikethrough_labeling_notification_spec.rb
 spec/models/strikethrough_set_discount_per_item_effect_props_spec.rb
+spec/models/strikethrough_set_discount_per_item_member_effect_props_spec.rb
 spec/models/strikethrough_trigger_spec.rb
 spec/models/summarize_campaign_store_budget200_response_spec.rb
 spec/models/summary_campaign_store_budget_spec.rb
