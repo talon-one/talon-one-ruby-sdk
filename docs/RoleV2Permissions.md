@@ -5,7 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **permission_sets** | [**Array&lt;RoleV2PermissionSet&gt;**](RoleV2PermissionSet.md) | List of grouped logical operations referenced by roles. | [optional] |
-| **roles** | [**RoleV2RolesGroup**](RoleV2RolesGroup.md) |  | [optional] |
+| **roles** | [**RoleV2RolesGroup**](.md) |  | [optional] |
 
 ## Example
 

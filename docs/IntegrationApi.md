@@ -1373,8 +1373,7 @@ opts = {
   customer_session_ids: ['inner_example'], # Array<String> | Filter the results by a list of customer session IDs.   To include multiple IDs, repeat the parameter for each one, for example,  `?customerSessionIDs=id1&customerSessionIDs=id2`.  The response contains only data associated with the specified sessions. 
   transaction_uuids: ['inner_example'], # Array<String> | Filter the results by a list of transaction UUIDs.  To include multiple IDs, repeat the parameter for each one, for example,  `?transactionUUIDs=uuid1&transactionUUIDs=uuid2`.  The response contains only data associated with the specified transactions. 
   page_size: 789, # Integer | The number of items in the response.
-  skip: 789, # Integer | The number of items to skip when paging through large result sets.
-  awaits_activation: true # Boolean | If `true`: Filters results to include only point transactions that have action-based activation and have not expired. If `false`: Returns an error. 
+  skip: 789 # Integer | The number of items to skip when paging through large result sets.
 }
 
 begin
@@ -1418,7 +1417,6 @@ end
 | **transaction_uuids** | [**Array&lt;String&gt;**](String.md) | Filter the results by a list of transaction UUIDs.  To include multiple IDs, repeat the parameter for each one, for example,  &#x60;?transactionUUIDs&#x3D;uuid1&amp;transactionUUIDs&#x3D;uuid2&#x60;.  The response contains only data associated with the specified transactions.  | [optional] |
 | **page_size** | **Integer** | The number of items in the response. | [optional][default to 50] |
 | **skip** | **Integer** | The number of items to skip when paging through large result sets. | [optional] |
-| **awaits_activation** | **Boolean** | If &#x60;true&#x60;: Filters results to include only point transactions that have action-based activation and have not expired. If &#x60;false&#x60;: Returns an error.  | [optional] |
 
 ### Return type
 
@@ -1555,8 +1553,7 @@ opts = {
   start_date: Time.parse('2013-10-20T19:20:30+01:00'), # Time | Date and time from which results are returned. Results are filtered by transaction creation date.  **Note:**  - It must be an RFC3339 timestamp string. - You can include a time component in your string, for example, `T23:59:59` to specify the end of the day. The time zone setting considered is `UTC`. If you do not include a time component, a default time value of `T00:00:00` (midnight) in `UTC` is considered. 
   end_date: Time.parse('2013-10-20T19:20:30+01:00'), # Time | Date and time by which results are returned. Results are filtered by transaction creation date.  **Note:**  - It must be an RFC3339 timestamp string. - You can include a time component in your string, for example, `T23:59:59` to specify the end of the day. The time zone setting considered is `UTC`. If you do not include a time component, a default time value of `T00:00:00` (midnight) in `UTC` is considered. 
   page_size: 789, # Integer | The number of items in the response.
-  skip: 789, # Integer | The number of items to skip when paging through large result sets.
-  awaits_activation: true # Boolean | If `true`: Filters results to include only point transactions that have action-based activation and have not expired. If `false`: Returns an error. 
+  skip: 789 # Integer | The number of items to skip when paging through large result sets.
 }
 
 begin
@@ -1600,7 +1597,6 @@ end
 | **end_date** | **Time** | Date and time by which results are returned. Results are filtered by transaction creation date.  **Note:**  - It must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered.  | [optional] |
 | **page_size** | **Integer** | The number of items in the response. | [optional][default to 50] |
 | **skip** | **Integer** | The number of items to skip when paging through large result sets. | [optional] |
-| **awaits_activation** | **Boolean** | If &#x60;true&#x60;: Filters results to include only point transactions that have action-based activation and have not expired. If &#x60;false&#x60;: Returns an error.  | [optional] |
 
 ### Return type
 
@@ -1856,7 +1852,7 @@ end
 
 api_instance = TalonOne::IntegrationApi.new
 customer_session_id = 'customer_session_id_example' # String | The `integration ID` of the customer session. You set this ID when you create a customer session.  You can see existing customer session integration IDs in the Campaign Manager's **Sessions** menu, or via the [List Application session](https://docs.talon.one/management-api#operation/getApplicationSessions) endpoint. 
-return_integration_request = TalonOne::ReturnIntegrationRequest.new({_return: TalonOne::NewReturn.new({returned_cart_items: [TalonOne::ReturnedCartItem.new({position: 2})]})}) # ReturnIntegrationRequest | body
+return_integration_request = TalonOne::ReturnIntegrationRequest.new({_return: TalonOne::NewReturn.new({returned_cart_items: [TalonOne::ReturnedCartItem.new]})}) # ReturnIntegrationRequest | body
 opts = {
   dry: true # Boolean | Indicates whether to persist the changes. Changes are ignored when `dry=true`. 
 }

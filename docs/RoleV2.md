@@ -12,6 +12,7 @@
 | **description** | **String** | Description of the role. | [optional] |
 | **permissions** | [**RoleV2Permissions**](RoleV2Permissions.md) | The permissions that this role gives. | [optional] |
 | **members** | **Array&lt;Integer&gt;** | A list of user IDs the role is assigned to. | [optional] |
+| **is_readonly** | **Boolean** | Identifies if the role is read-only. For read-only roles, you can only assign or unassign users. You cannot edit any other properties, such as the name, description, or permissions. The &#39;isReadonly&#39; property cannot be set for new or existing roles. It is reserved for predefined roles, such as the Talon.One support role. | [optional][default to false] |
 
 ## Example
 
@@ -26,7 +27,8 @@ instance = TalonOne::RoleV2.new(
   name: Campaign and campaign access group manager,
   description: Allows you to create and edit campaigns for specific Applications, delete specific campaign access groups, and view loyalty programs.,
   permissions: null,
-  members: [10, 12]
+  members: [10, 12],
+  is_readonly: false
 )
 ```
 

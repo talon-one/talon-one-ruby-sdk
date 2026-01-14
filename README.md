@@ -13,7 +13,7 @@ This SDK supports all of the operations of Talon.One's Integration API and Manag
 Add this to the Gemfile:
 
 ```shell
-gem 'talon_one_sdk', '~> 25.26'
+gem 'talon_one_sdk', '~> 26.01'
 ```
 
 ### Build a gem
@@ -29,10 +29,10 @@ gem build talon_one_sdk.gemspec
 To install the gem locally:
 
 ```shell
-gem install ./talon_one_sdk-25.26.gem
+gem install ./talon_one_sdk-26.01.gem
 ```
 
-For development, run `gem install --dev ./talon_one_sdk-25.26.gem` to install the development dependencies.
+For development, run `gem install --dev ./talon_one_sdk-26.01.gem` to install the development dependencies.
 
 ### RubyGems
 
@@ -406,6 +406,8 @@ Class | Method | HTTP request | Description
 - [TalonOne::AchievementProgress](docs/AchievementProgress.md)
 - [TalonOne::AchievementProgressWithDefinition](docs/AchievementProgressWithDefinition.md)
 - [TalonOne::AchievementStatusEntry](docs/AchievementStatusEntry.md)
+- [TalonOne::ActivateLoyaltyPoints](docs/ActivateLoyaltyPoints.md)
+- [TalonOne::ActivateLoyaltyPointsResponse](docs/ActivateLoyaltyPointsResponse.md)
 - [TalonOne::ActivateUserRequest](docs/ActivateUserRequest.md)
 - [TalonOne::AddFreeItemEffectProps](docs/AddFreeItemEffectProps.md)
 - [TalonOne::AddItemCatalogAction](docs/AddItemCatalogAction.md)
@@ -413,6 +415,8 @@ Class | Method | HTTP request | Description
 - [TalonOne::AddLoyaltyPointsEffectProps](docs/AddLoyaltyPointsEffectProps.md)
 - [TalonOne::AddPriceAdjustmentCatalogAction](docs/AddPriceAdjustmentCatalogAction.md)
 - [TalonOne::AddToAudienceEffectProps](docs/AddToAudienceEffectProps.md)
+- [TalonOne::AddedDeductedPointsBalancesAction](docs/AddedDeductedPointsBalancesAction.md)
+- [TalonOne::AddedDeductedPointsBalancesNotification](docs/AddedDeductedPointsBalancesNotification.md)
 - [TalonOne::AddedDeductedPointsBalancesNotificationPolicy](docs/AddedDeductedPointsBalancesNotificationPolicy.md)
 - [TalonOne::AddedDeductedPointsNotification](docs/AddedDeductedPointsNotification.md)
 - [TalonOne::AddedDeductedPointsNotificationPolicy](docs/AddedDeductedPointsNotificationPolicy.md)
@@ -514,6 +518,7 @@ Class | Method | HTTP request | Description
 - [TalonOne::CampaignTemplateCouponReservationSettings](docs/CampaignTemplateCouponReservationSettings.md)
 - [TalonOne::CampaignTemplateParams](docs/CampaignTemplateParams.md)
 - [TalonOne::CampaignVersions](docs/CampaignVersions.md)
+- [TalonOne::CardAddedDeductedPointsBalancesNotification](docs/CardAddedDeductedPointsBalancesNotification.md)
 - [TalonOne::CardAddedDeductedPointsBalancesNotificationPolicy](docs/CardAddedDeductedPointsBalancesNotificationPolicy.md)
 - [TalonOne::CardAddedDeductedPointsNotification](docs/CardAddedDeductedPointsNotification.md)
 - [TalonOne::CardAddedDeductedPointsNotificationPolicy](docs/CardAddedDeductedPointsNotificationPolicy.md)
@@ -542,8 +547,10 @@ Class | Method | HTTP request | Description
 - [TalonOne::CouponDeletionFilters](docs/CouponDeletionFilters.md)
 - [TalonOne::CouponDeletionJob](docs/CouponDeletionJob.md)
 - [TalonOne::CouponEntity](docs/CouponEntity.md)
+- [TalonOne::CouponFailureSummary](docs/CouponFailureSummary.md)
 - [TalonOne::CouponLimitConfigs](docs/CouponLimitConfigs.md)
 - [TalonOne::CouponRejectionReason](docs/CouponRejectionReason.md)
+- [TalonOne::CouponRejections](docs/CouponRejections.md)
 - [TalonOne::CouponReservations](docs/CouponReservations.md)
 - [TalonOne::CouponSearch](docs/CouponSearch.md)
 - [TalonOne::CouponValue](docs/CouponValue.md)
@@ -612,6 +619,7 @@ Class | Method | HTTP request | Description
 - [TalonOne::FunctionDef](docs/FunctionDef.md)
 - [TalonOne::GenerateAuditLogSummary](docs/GenerateAuditLogSummary.md)
 - [TalonOne::GenerateCampaignDescription](docs/GenerateCampaignDescription.md)
+- [TalonOne::GenerateCampaignSummary](docs/GenerateCampaignSummary.md)
 - [TalonOne::GenerateCampaignTags](docs/GenerateCampaignTags.md)
 - [TalonOne::GenerateCouponFailureDetailedSummary](docs/GenerateCouponFailureDetailedSummary.md)
 - [TalonOne::GenerateCouponFailureSummary](docs/GenerateCouponFailureSummary.md)
@@ -688,7 +696,6 @@ Class | Method | HTTP request | Description
 - [TalonOne::InventoryCoupon](docs/InventoryCoupon.md)
 - [TalonOne::InventoryReferral](docs/InventoryReferral.md)
 - [TalonOne::ItemAttribute](docs/ItemAttribute.md)
-- [TalonOne::JWT](docs/JWT.md)
 - [TalonOne::LabelTargetAudience](docs/LabelTargetAudience.md)
 - [TalonOne::LabelTargetNone](docs/LabelTargetNone.md)
 - [TalonOne::LedgerEntry](docs/LedgerEntry.md)
@@ -841,6 +848,15 @@ Class | Method | HTTP request | Description
 - [TalonOne::PriceType](docs/PriceType.md)
 - [TalonOne::PriceTypeReferenceDetail](docs/PriceTypeReferenceDetail.md)
 - [TalonOne::PriceTypeReferences](docs/PriceTypeReferences.md)
+- [TalonOne::PrismaticConfig](docs/PrismaticConfig.md)
+- [TalonOne::PrismaticEventPayloadCouponBasedNotifications](docs/PrismaticEventPayloadCouponBasedNotifications.md)
+- [TalonOne::PrismaticEventPayloadCouponBasedNotificationsLimits](docs/PrismaticEventPayloadCouponBasedNotificationsLimits.md)
+- [TalonOne::PrismaticEventPayloadLoyaltyProfileBasedNotifications](docs/PrismaticEventPayloadLoyaltyProfileBasedNotifications.md)
+- [TalonOne::PrismaticEventPayloadLoyaltyProfileBasedNotificationsAction](docs/PrismaticEventPayloadLoyaltyProfileBasedNotificationsAction.md)
+- [TalonOne::PrismaticFlow](docs/PrismaticFlow.md)
+- [TalonOne::PrismaticFlowConfig](docs/PrismaticFlowConfig.md)
+- [TalonOne::PrismaticFlowWithConfig](docs/PrismaticFlowWithConfig.md)
+- [TalonOne::PrismaticPaginatedEventPayload](docs/PrismaticPaginatedEventPayload.md)
 - [TalonOne::Product](docs/Product.md)
 - [TalonOne::ProductSearchMatch](docs/ProductSearchMatch.md)
 - [TalonOne::ProductUnitAnalytics](docs/ProductUnitAnalytics.md)
@@ -874,6 +890,7 @@ Class | Method | HTTP request | Description
 - [TalonOne::RoleV2Base](docs/RoleV2Base.md)
 - [TalonOne::RoleV2PermissionSet](docs/RoleV2PermissionSet.md)
 - [TalonOne::RoleV2Permissions](docs/RoleV2Permissions.md)
+- [TalonOne::RoleV2Readonly](docs/RoleV2Readonly.md)
 - [TalonOne::RoleV2RolesGroup](docs/RoleV2RolesGroup.md)
 - [TalonOne::RollbackAddedLoyaltyPointsEffectProps](docs/RollbackAddedLoyaltyPointsEffectProps.md)
 - [TalonOne::RollbackCouponEffectProps](docs/RollbackCouponEffectProps.md)
@@ -912,6 +929,7 @@ Class | Method | HTTP request | Description
 - [TalonOne::ScimUsersListResponse](docs/ScimUsersListResponse.md)
 - [TalonOne::SecondaryDeployment](docs/SecondaryDeployment.md)
 - [TalonOne::Session](docs/Session.md)
+- [TalonOne::SessionCoupons](docs/SessionCoupons.md)
 - [TalonOne::SetDiscountEffectProps](docs/SetDiscountEffectProps.md)
 - [TalonOne::SetDiscountPerAdditionalCostEffectProps](docs/SetDiscountPerAdditionalCostEffectProps.md)
 - [TalonOne::SetDiscountPerAdditionalCostPerItemEffectProps](docs/SetDiscountPerAdditionalCostPerItemEffectProps.md)
@@ -929,6 +947,7 @@ Class | Method | HTTP request | Description
 - [TalonOne::StrikethroughEffect](docs/StrikethroughEffect.md)
 - [TalonOne::StrikethroughLabelingNotification](docs/StrikethroughLabelingNotification.md)
 - [TalonOne::StrikethroughSetDiscountPerItemEffectProps](docs/StrikethroughSetDiscountPerItemEffectProps.md)
+- [TalonOne::StrikethroughSetDiscountPerItemMemberEffectProps](docs/StrikethroughSetDiscountPerItemMemberEffectProps.md)
 - [TalonOne::StrikethroughTrigger](docs/StrikethroughTrigger.md)
 - [TalonOne::SummarizeCampaignStoreBudget200Response](docs/SummarizeCampaignStoreBudget200Response.md)
 - [TalonOne::SummaryCampaignStoreBudget](docs/SummaryCampaignStoreBudget.md)
