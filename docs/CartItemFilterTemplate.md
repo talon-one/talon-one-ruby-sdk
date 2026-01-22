@@ -1,0 +1,20 @@
+# TalonOne::CartItemFilterTemplate
+
+## Properties
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **name** | **String** | The name of the Application cart item filter. |  |
+| **expression** | **Array&lt;Object&gt;** | The Talang expression for the cart item filter. |  |
+
+## Example
+
+```ruby
+require 'talon_one_sdk'
+
+instance = TalonOne::CartItemFilterTemplate.new(
+  name: Filter items by product,
+  expression: [filter, [., Session, CartItems], [[Item], [catch, false, [&#x3D;, [., Item, Category], Kitchen]]]]
+)
+```
+

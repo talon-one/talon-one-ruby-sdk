@@ -20,7 +20,7 @@ instance = TalonOne::UpdateUser.new(
   name: John Doe,
   state: deactivated,
   is_admin: false,
-  policy: {Role&#x3D;127, Applications&#x3D;null},
+  policy: {Role&#x3D;127},
   roles: [1, 3],
   application_notification_subscriptions: null
 )

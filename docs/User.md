@@ -37,7 +37,7 @@ instance = TalonOne::User.new(
   state: invited,
   invite_token: Gy9b8w1irmQtEPo5RmbMmSPheL5h4,
   is_admin: false,
-  policy: {Role&#x3D;127, Applications&#x3D;null},
+  policy: {Role&#x3D;127},
   roles: [71],
   auth_method: basic_auth,
   application_notification_subscriptions: {},

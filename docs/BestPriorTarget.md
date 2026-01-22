@@ -1,4 +1,4 @@
-# TalonOne::BestPriorPriceRequestTarget
+# TalonOne::BestPriorTarget
 
 ## Properties
 
@@ -12,7 +12,7 @@
 ```ruby
 require 'talon_one_sdk'
 
-instance = TalonOne::BestPriorPriceRequestTarget.new(
+instance = TalonOne::BestPriorTarget.new(
   target_type: AUDIENCE,
   audience_id: 4
 )

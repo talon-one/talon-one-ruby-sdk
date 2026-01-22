@@ -18,6 +18,7 @@
 | **ruleset_id** | **Integer** | The ID of the ruleset containing the rule that triggered this effect. | [optional] |
 | **rule_name** | **String** | The name of the rule that triggered this effect. | [optional] |
 | **flags** | [**LoyaltyLedgerEntryFlags**](LoyaltyLedgerEntryFlags.md) | The flags of the transaction, when applicable. The &#x60;createsNegativeBalance&#x60;  flag indicates whether the transaction results in a negative balance. | [optional] |
+| **validity_duration** | **String** | The duration for which the points remain active, relative to the  activation date.  **Note**: This only applies to points for which &#x60;awaitsActivation&#x60; is &#x60;true&#x60; and &#x60;expiryDate&#x60; is not set.  | [optional] |
 
 ## Example
 
@@ -38,7 +39,8 @@ instance = TalonOne::LedgerTransactionLogEntryIntegrationAPI.new(
   id: 123,
   ruleset_id: 11,
   rule_name: Add 2 points,
-  flags: null
+  flags: null,
+  validity_duration: 30D
 )
 ```
 

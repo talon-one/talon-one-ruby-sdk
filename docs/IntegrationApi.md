@@ -4,6 +4,7 @@ All URIs are relative to *https://yourbaseurl.talon.one*
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
+| [**activate_loyalty_points**](IntegrationApi.md#activate_loyalty_points) | **POST** /v1/loyalty_programs/{loyaltyProgramId}/activate_points | Activate loyalty points |
 | [**best_prior_price**](IntegrationApi.md#best_prior_price) | **POST** /v1/best_prior_price | Fetch best prior price |
 | [**create_audience_v2**](IntegrationApi.md#create_audience_v2) | **POST** /v2/audiences | Create audience |
 | [**create_coupon_reservation**](IntegrationApi.md#create_coupon_reservation) | **POST** /v1/coupon_reservations/{couponValue} | Create coupon reservation |
@@ -13,6 +14,7 @@ All URIs are relative to *https://yourbaseurl.talon.one*
 | [**delete_audience_v2**](IntegrationApi.md#delete_audience_v2) | **DELETE** /v2/audiences/{audienceId} | Delete audience |
 | [**delete_coupon_reservation**](IntegrationApi.md#delete_coupon_reservation) | **DELETE** /v1/coupon_reservations/{couponValue} | Delete coupon reservations |
 | [**delete_customer_data**](IntegrationApi.md#delete_customer_data) | **DELETE** /v1/customer_data/{integrationId} | Delete customer&#39;s personal data |
+| [**delete_loyalty_transactions_from_ledgers**](IntegrationApi.md#delete_loyalty_transactions_from_ledgers) | **POST** /v1/loyalty_programs/{loyaltyProgramId}/profile/{integrationId}/delete_transactions | Delete customer&#39;s transactions from loyalty ledgers |
 | [**generate_loyalty_card**](IntegrationApi.md#generate_loyalty_card) | **POST** /v1/loyalty_programs/{loyaltyProgramId}/cards | Generate loyalty card |
 | [**get_customer_achievement_history**](IntegrationApi.md#get_customer_achievement_history) | **GET** /v1/customer_profiles/{integrationId}/achievements/{achievementId} | List customer&#39;s achievement history |
 | [**get_customer_achievements**](IntegrationApi.md#get_customer_achievements) | **GET** /v1/customer_profiles/{integrationId}/achievements | List customer&#39;s available achievements |
@@ -30,12 +32,86 @@ All URIs are relative to *https://yourbaseurl.talon.one*
 | [**return_cart_items**](IntegrationApi.md#return_cart_items) | **POST** /v2/customer_sessions/{customerSessionId}/returns | Return cart items |
 | [**sync_catalog**](IntegrationApi.md#sync_catalog) | **PUT** /v1/catalogs/{catalogId}/sync | Sync cart item catalog |
 | [**track_event_v2**](IntegrationApi.md#track_event_v2) | **POST** /v2/events | Track event |
+| [**unlink_loyalty_card_from_profile**](IntegrationApi.md#unlink_loyalty_card_from_profile) | **POST** /v2/loyalty_programs/{loyaltyProgramId}/cards/{loyaltyCardId}/unlink_profile | Unlink customer profile from a loyalty card |
 | [**update_audience_customers_attributes**](IntegrationApi.md#update_audience_customers_attributes) | **PUT** /v2/audience_customers/{audienceId}/attributes | Update profile attributes for all customers in audience |
 | [**update_audience_v2**](IntegrationApi.md#update_audience_v2) | **PUT** /v2/audiences/{audienceId} | Update audience name |
 | [**update_customer_profile_audiences**](IntegrationApi.md#update_customer_profile_audiences) | **POST** /v2/customer_audiences | Update multiple customer profiles&#39; audiences |
 | [**update_customer_profile_v2**](IntegrationApi.md#update_customer_profile_v2) | **PUT** /v2/customer_profiles/{integrationId} | Update customer profile |
 | [**update_customer_profiles_v2**](IntegrationApi.md#update_customer_profiles_v2) | **PUT** /v2/customer_profiles | Update multiple customer profiles |
 | [**update_customer_session_v2**](IntegrationApi.md#update_customer_session_v2) | **PUT** /v2/customer_sessions/{customerSessionId} | Update customer session |
+
+
+## activate_loyalty_points
+
+> <ActivateLoyaltyPointsResponse> activate_loyalty_points(loyalty_program_id, activate_loyalty_points)
+
+Activate loyalty points
+
+Activate points when a defined action occurs.  You can activate pending points using one of the following parameters: - `sessionId`: Activates all points earned in the specified session.  - `transactionUUIDs`: Activates points earned in the transactions specified by the  given UUIDs.  
+
+### Examples
+
+```ruby
+require 'time'
+require 'talon_one_sdk'
+# setup authorization
+TalonOne.configure do |config|
+  # Configure API key authorization: api_key_v1
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+end
+
+api_instance = TalonOne::IntegrationApi.new
+loyalty_program_id = 789 # Integer | The identifier for the loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. 
+activate_loyalty_points = TalonOne::ActivateLoyaltyPoints.new # ActivateLoyaltyPoints | body
+
+begin
+  # Activate loyalty points
+  result = api_instance.activate_loyalty_points(loyalty_program_id, activate_loyalty_points)
+  p result
+rescue TalonOne::ApiError => e
+  puts "Error when calling IntegrationApi->activate_loyalty_points: #{e}"
+end
+```
+
+#### Using the activate_loyalty_points_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ActivateLoyaltyPointsResponse>, Integer, Hash)> activate_loyalty_points_with_http_info(loyalty_program_id, activate_loyalty_points)
+
+```ruby
+begin
+  # Activate loyalty points
+  data, status_code, headers = api_instance.activate_loyalty_points_with_http_info(loyalty_program_id, activate_loyalty_points)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ActivateLoyaltyPointsResponse>
+rescue TalonOne::ApiError => e
+  puts "Error when calling IntegrationApi->activate_loyalty_points_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **loyalty_program_id** | **Integer** | The identifier for the loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  |  |
+| **activate_loyalty_points** | [**ActivateLoyaltyPoints**](ActivateLoyaltyPoints.md) | body |  |
+
+### Return type
+
+[**ActivateLoyaltyPointsResponse**](ActivateLoyaltyPointsResponse.md)
+
+### Authorization
+
+[api_key_v1](../README.md#api_key_v1)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
 ## best_prior_price
@@ -688,6 +764,80 @@ nil (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## delete_loyalty_transactions_from_ledgers
+
+> delete_loyalty_transactions_from_ledgers(loyalty_program_id, integration_id, delete_loyalty_transactions_request)
+
+Delete customer's transactions from loyalty ledgers
+
+Delete a customer's transactions in all loyalty ledgers or a specified ledger.  **Note:** To retrieve loyalty transaction logs for a specific customer in a given loyalty program, use the [List customer's loyalty transactions](https://docs.talon.one/integration-api#tag/Loyalty/operation/getLoyaltyProgramProfileTransactions) endpoint. 
+
+### Examples
+
+```ruby
+require 'time'
+require 'talon_one_sdk'
+# setup authorization
+TalonOne.configure do |config|
+  # Configure API key authorization: api_key_v1
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+end
+
+api_instance = TalonOne::IntegrationApi.new
+loyalty_program_id = 789 # Integer | Identifier of the profile-based loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. 
+integration_id = 'integration_id_example' # String | The integration ID of the customer profile. You can get the `integrationId` of a profile using: - A customer session integration ID with the [Update customer session](https://docs.talon.one/integration-api#operation/updateCustomerSessionV2) endpoint. - The Management API with the [List application's customers](https://docs.talon.one/management-api#operation/getApplicationCustomers) endpoint. 
+delete_loyalty_transactions_request = TalonOne::DeleteLoyaltyTransactionsRequest.new({scope: 'AllSubledgers'}) # DeleteLoyaltyTransactionsRequest | 
+
+begin
+  # Delete customer's transactions from loyalty ledgers
+  api_instance.delete_loyalty_transactions_from_ledgers(loyalty_program_id, integration_id, delete_loyalty_transactions_request)
+rescue TalonOne::ApiError => e
+  puts "Error when calling IntegrationApi->delete_loyalty_transactions_from_ledgers: #{e}"
+end
+```
+
+#### Using the delete_loyalty_transactions_from_ledgers_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> delete_loyalty_transactions_from_ledgers_with_http_info(loyalty_program_id, integration_id, delete_loyalty_transactions_request)
+
+```ruby
+begin
+  # Delete customer's transactions from loyalty ledgers
+  data, status_code, headers = api_instance.delete_loyalty_transactions_from_ledgers_with_http_info(loyalty_program_id, integration_id, delete_loyalty_transactions_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue TalonOne::ApiError => e
+  puts "Error when calling IntegrationApi->delete_loyalty_transactions_from_ledgers_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **loyalty_program_id** | **Integer** | Identifier of the profile-based loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  |  |
+| **integration_id** | **String** | The integration ID of the customer profile. You can get the &#x60;integrationId&#x60; of a profile using: - A customer session integration ID with the [Update customer session](https://docs.talon.one/integration-api#operation/updateCustomerSessionV2) endpoint. - The Management API with the [List application&#39;s customers](https://docs.talon.one/management-api#operation/getApplicationCustomers) endpoint.  |  |
+| **delete_loyalty_transactions_request** | [**DeleteLoyaltyTransactionsRequest**](DeleteLoyaltyTransactionsRequest.md) |  |  |
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[api_key_v1](../README.md#api_key_v1)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 
@@ -1373,7 +1523,8 @@ opts = {
   customer_session_ids: ['inner_example'], # Array<String> | Filter the results by a list of customer session IDs.   To include multiple IDs, repeat the parameter for each one, for example,  `?customerSessionIDs=id1&customerSessionIDs=id2`.  The response contains only data associated with the specified sessions. 
   transaction_uuids: ['inner_example'], # Array<String> | Filter the results by a list of transaction UUIDs.  To include multiple IDs, repeat the parameter for each one, for example,  `?transactionUUIDs=uuid1&transactionUUIDs=uuid2`.  The response contains only data associated with the specified transactions. 
   page_size: 789, # Integer | The number of items in the response.
-  skip: 789 # Integer | The number of items to skip when paging through large result sets.
+  skip: 789, # Integer | The number of items to skip when paging through large result sets.
+  awaits_activation: true # Boolean | If `true`: Filters results to include only point transactions that have action-based activation and have not expired.  If `false`: Returns a `400` response. 
 }
 
 begin
@@ -1417,6 +1568,7 @@ end
 | **transaction_uuids** | [**Array&lt;String&gt;**](String.md) | Filter the results by a list of transaction UUIDs.  To include multiple IDs, repeat the parameter for each one, for example,  &#x60;?transactionUUIDs&#x3D;uuid1&amp;transactionUUIDs&#x3D;uuid2&#x60;.  The response contains only data associated with the specified transactions.  | [optional] |
 | **page_size** | **Integer** | The number of items in the response. | [optional][default to 50] |
 | **skip** | **Integer** | The number of items to skip when paging through large result sets. | [optional] |
+| **awaits_activation** | **Boolean** | If &#x60;true&#x60;: Filters results to include only point transactions that have action-based activation and have not expired.  If &#x60;false&#x60;: Returns a &#x60;400&#x60; response.  | [optional] |
 
 ### Return type
 
@@ -1553,7 +1705,8 @@ opts = {
   start_date: Time.parse('2013-10-20T19:20:30+01:00'), # Time | Date and time from which results are returned. Results are filtered by transaction creation date.  **Note:**  - It must be an RFC3339 timestamp string. - You can include a time component in your string, for example, `T23:59:59` to specify the end of the day. The time zone setting considered is `UTC`. If you do not include a time component, a default time value of `T00:00:00` (midnight) in `UTC` is considered. 
   end_date: Time.parse('2013-10-20T19:20:30+01:00'), # Time | Date and time by which results are returned. Results are filtered by transaction creation date.  **Note:**  - It must be an RFC3339 timestamp string. - You can include a time component in your string, for example, `T23:59:59` to specify the end of the day. The time zone setting considered is `UTC`. If you do not include a time component, a default time value of `T00:00:00` (midnight) in `UTC` is considered. 
   page_size: 789, # Integer | The number of items in the response.
-  skip: 789 # Integer | The number of items to skip when paging through large result sets.
+  skip: 789, # Integer | The number of items to skip when paging through large result sets.
+  awaits_activation: true # Boolean | If `true`: Filters results to include only point transactions that have action-based activation and have not expired.  If `false`: Returns a `400` response. 
 }
 
 begin
@@ -1597,6 +1750,7 @@ end
 | **end_date** | **Time** | Date and time by which results are returned. Results are filtered by transaction creation date.  **Note:**  - It must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered.  | [optional] |
 | **page_size** | **Integer** | The number of items in the response. | [optional][default to 50] |
 | **skip** | **Integer** | The number of items to skip when paging through large result sets. | [optional] |
+| **awaits_activation** | **Boolean** | If &#x60;true&#x60;: Filters results to include only point transactions that have action-based activation and have not expired.  If &#x60;false&#x60;: Returns a &#x60;400&#x60; response.  | [optional] |
 
 ### Return type
 
@@ -1764,7 +1918,7 @@ end
 
 Reopen customer session
 
-Reopen a closed [customer session](https://docs.talon.one/docs/dev/concepts/entities/customer-sessions). For example, if a session has been completed but still needs to be edited, you can reopen it with this endpoint. A reopen session is treated like a standard open session.  When reopening a session: - The `talon_session_reopened` event is triggered. You can see it in the **Events** view in the Campaign Manager. - The session state is updated to `open`. - Any modified budgets and triggered effects are rolled back when the session closes. - Depending on the [return policy](https://docs.talon.one/docs/product/loyalty-programs/managing-loyalty-programs#return-policy)  in your loyalty programs, points are rolled back in the following ways:   - Pending points are rolled back automatically.   - If **Active points deduction** setting is enabled, any points that were earned and activated when the session closed    are rolled back.   - If **Negative balance** is enabled, the rollback can create a negative points balance.   <details>   <summary><strong>Effects and budgets unimpacted by a session reopening</strong></summary>   <div>     <p>The following effects and budgets remain in the state they were in when the session closed:</p>     <ul>       <li>Add free item effect</li>       <li>Award giveaway</li>       <li>Coupon and referral creation</li>       <li>Coupon reservation</li>       <li>Custom effect</li>       <li>Update attribute value</li>       <li>Update cart item attribute value</li>     </ul>   </div>   </details> <p>To see an example of a rollback, see the <a href=\"https://docs.talon.one/docs/dev/tutorials/rolling-back-effects\">Cancelling a session with campaign budgets</a>tutorial.</p>  **Note:** If your order workflow requires you to create a new session instead of reopening a session, use the [Update customer session](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/updateCustomerSessionV2) endpoint to cancel a closed session and create a new one. 
+Reopen a closed [customer session](https://docs.talon.one/docs/dev/concepts/entities/customer-sessions). For example, if a session has been completed but still needs to be edited, you can reopen it with this endpoint. A reopen session is treated like a standard open session.  When reopening a session: - The `talon_session_reopened` event is triggered. You can see it in the **Events** view in the Campaign Manager. - The session state is updated to `open`. - Any modified budgets and triggered effects are rolled back when the session closes. - Depending on the [return policy](https://docs.talon.one/docs/product/loyalty-programs/managing-loyalty-programs#return-policy)  in your loyalty programs, points are rolled back in the following ways:   - Pending points are rolled back automatically.   - If **Active points deduction** setting is enabled, any points that were earned and activated when the session closed    are rolled back.   - If **Negative balance** is enabled, the rollback can create a negative points balance.   <details>   <summary><strong>Effects and budgets unimpacted by a session reopening</strong></summary>   <div>     <p>The following effects and budgets remain in the state they were in when the session closed:</p>     <ul>       <li>Add free item effect</li>       <li>Award giveaway</li>       <li>Coupon and referral creation</li>       <li>Coupon reservation</li>       <li>Custom effect</li>       <li>Update attribute value</li>       <li>Update cart item attribute value</li>     </ul>   </div>   </details> <p>To see an example of a rollback, see the <a href=\"https://docs.talon.one/docs/dev/tutorials/rolling-back-effects\">Cancelling a session with campaign budgets</a> tutorial.</p>  **Note:** If your order workflow requires you to create a new session instead of reopening a session, use the [Update customer session](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/updateCustomerSessionV2) endpoint to cancel a closed session and create a new one. 
 
 ### Examples
 
@@ -2047,6 +2201,81 @@ end
 ### Return type
 
 [**TrackEventV2Response**](TrackEventV2Response.md)
+
+### Authorization
+
+[api_key_v1](../README.md#api_key_v1)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## unlink_loyalty_card_from_profile
+
+> <LoyaltyCard> unlink_loyalty_card_from_profile(loyalty_program_id, loyalty_card_id, loyalty_card_registration)
+
+Unlink customer profile from a loyalty card
+
+Unlink a customer profile from a [registered](https://docs.talon.one/docs/product/loyalty-programs/card-based/managing-loyalty-cards#linking-customer-profiles-to-a-loyalty-card) loyalty card.  To get the `integrationId` of a customer profile, you can use the [Update customer session](https://docs.talon.one/integration-api#operation/updateCustomerSessionV2) endpoint. 
+
+### Examples
+
+```ruby
+require 'time'
+require 'talon_one_sdk'
+# setup authorization
+TalonOne.configure do |config|
+  # Configure API key authorization: api_key_v1
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+end
+
+api_instance = TalonOne::IntegrationApi.new
+loyalty_program_id = 789 # Integer | The identifier of the card-based loyalty program containing the loyalty card. You can get this ID using the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. 
+loyalty_card_id = 'loyalty_card_id_example' # String | The identifier of the loyalty card. You can get this ID using the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint. 
+loyalty_card_registration = TalonOne::LoyaltyCardRegistration.new({integration_id: 'R195412'}) # LoyaltyCardRegistration | body
+
+begin
+  # Unlink customer profile from a loyalty card
+  result = api_instance.unlink_loyalty_card_from_profile(loyalty_program_id, loyalty_card_id, loyalty_card_registration)
+  p result
+rescue TalonOne::ApiError => e
+  puts "Error when calling IntegrationApi->unlink_loyalty_card_from_profile: #{e}"
+end
+```
+
+#### Using the unlink_loyalty_card_from_profile_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<LoyaltyCard>, Integer, Hash)> unlink_loyalty_card_from_profile_with_http_info(loyalty_program_id, loyalty_card_id, loyalty_card_registration)
+
+```ruby
+begin
+  # Unlink customer profile from a loyalty card
+  data, status_code, headers = api_instance.unlink_loyalty_card_from_profile_with_http_info(loyalty_program_id, loyalty_card_id, loyalty_card_registration)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <LoyaltyCard>
+rescue TalonOne::ApiError => e
+  puts "Error when calling IntegrationApi->unlink_loyalty_card_from_profile_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **loyalty_program_id** | **Integer** | The identifier of the card-based loyalty program containing the loyalty card. You can get this ID using the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  |  |
+| **loyalty_card_id** | **String** | The identifier of the loyalty card. You can get this ID using the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint.  |  |
+| **loyalty_card_registration** | [**LoyaltyCardRegistration**](LoyaltyCardRegistration.md) | body |  |
+
+### Return type
+
+[**LoyaltyCard**](LoyaltyCard.md)
 
 ### Authorization
 
