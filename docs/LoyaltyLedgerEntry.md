@@ -19,6 +19,7 @@
 | **user_id** | **Integer** | This is the ID of the user who created this entry, if the addition or subtraction was done manually. | [optional] |
 | **archived** | **Boolean** | Indicates if the entry belongs to the archived session. | [optional] |
 | **flags** | [**LoyaltyLedgerEntryFlags**](LoyaltyLedgerEntryFlags.md) | A map of flags providing additional details about the entry. | [optional] |
+| **validity_duration** | **String** | The duration for which the points remain active, relative to the  activation date.  **Note**: This only applies to points for which &#x60;awaitsActivation&#x60; is &#x60;true&#x60; and &#x60;expiryDate&#x60; is not set.  | [optional] |
 
 ## Example
 
@@ -40,7 +41,8 @@ instance = TalonOne::LoyaltyLedgerEntry.new(
   sub_ledger_id: mysubledger,
   user_id: 499,
   archived: false,
-  flags: null
+  flags: null,
+  validity_duration: 30D
 )
 ```
 

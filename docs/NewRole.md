@@ -17,7 +17,7 @@ require 'talon_one_sdk'
 instance = TalonOne::NewRole.new(
   name: Campaign Manager,
   description: Manages the campaigns,
-  acl: {Role&#x3D;128, Applications&#x3D;null},
+  acl: {Role&#x3D;128},
   members: [48, 562, 475, 18]
 )
 ```
