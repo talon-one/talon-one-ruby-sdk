@@ -11,6 +11,7 @@
 | **coupon_attributes** | **Object** | The campaign attributes that coupons created from this template will have by default. | [optional] |
 | **state** | **String** | Only Campaign Templates in &#39;available&#39; state may be used to create Campaigns. |  |
 | **tags** | **Array&lt;String&gt;** | A list of tags for the campaign template. | [optional] |
+| **reevaluate_on_return** | **Boolean** | Indicates whether campaigns created from this template should be reevaluated when a customer returns an item. | [optional] |
 | **features** | **Array&lt;String&gt;** | A list of features for the campaign template. | [optional] |
 | **coupon_settings** | [**CodeGeneratorSettings**](CodeGeneratorSettings.md) |  | [optional] |
 | **coupon_reservation_settings** | [**CampaignTemplateCouponReservationSettings**](CampaignTemplateCouponReservationSettings.md) |  | [optional] |
@@ -34,6 +35,7 @@ instance = TalonOne::NewCampaignTemplate.new(
   coupon_attributes: null,
   state: null,
   tags: null,
+  reevaluate_on_return: true,
   features: null,
   coupon_settings: null,
   coupon_reservation_settings: null,

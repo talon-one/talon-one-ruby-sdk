@@ -16,16 +16,17 @@ require 'time'
 module TalonOne
   # Auxiliary data for found price observation.
   class BestPriorPriceMetadata < ApiModelBase
-    attr_accessor :influencing_campaign_ids
+    # Details about campaigns that influenced the final price.
+    attr_accessor :influencing_campaign_details
 
-    # Identifier related to the `referenceId` used during a `ADD_PRICE_ADJUSTMENT` action  using the [Sync cart item catalog endpoint](https://docs.talon.one/integration-api#tag/Catalogs/operation/syncCatalog).
-    attr_accessor :adjustment_reference_id
+    # Details about the applied price adjustment.
+    attr_accessor :adjustment_details
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'influencing_campaign_ids' => :'influencingCampaignIDs',
-        :'adjustment_reference_id' => :'adjustmentReferenceID'
+        :'influencing_campaign_details' => :'influencingCampaignDetails',
+        :'adjustment_details' => :'adjustmentDetails'
       }
     end
 
@@ -42,8 +43,8 @@ module TalonOne
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'influencing_campaign_ids' => :'Array<Integer>',
-        :'adjustment_reference_id' => :'String'
+        :'influencing_campaign_details' => :'Array<InfluencingCampaignDetails>',
+        :'adjustment_details' => :'AdjustmentDetails'
       }
     end
 
@@ -69,14 +70,16 @@ module TalonOne
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'influencing_campaign_ids')
-        if (value = attributes[:'influencing_campaign_ids']).is_a?(Array)
-          self.influencing_campaign_ids = value
+      if attributes.key?(:'influencing_campaign_details')
+        if (value = attributes[:'influencing_campaign_details']).is_a?(Array)
+          self.influencing_campaign_details = value
         end
+      else
+        self.influencing_campaign_details = nil
       end
 
-      if attributes.key?(:'adjustment_reference_id')
-        self.adjustment_reference_id = attributes[:'adjustment_reference_id']
+      if attributes.key?(:'adjustment_details')
+        self.adjustment_details = attributes[:'adjustment_details']
       end
     end
 
@@ -85,6 +88,10 @@ module TalonOne
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
+      if @influencing_campaign_details.nil?
+        invalid_properties.push('invalid value for "influencing_campaign_details", influencing_campaign_details cannot be nil.')
+      end
+
       invalid_properties
     end
 
@@ -92,7 +99,18 @@ module TalonOne
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
+      return false if @influencing_campaign_details.nil?
       true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] influencing_campaign_details Value to be assigned
+    def influencing_campaign_details=(influencing_campaign_details)
+      if influencing_campaign_details.nil?
+        fail ArgumentError, 'influencing_campaign_details cannot be nil'
+      end
+
+      @influencing_campaign_details = influencing_campaign_details
     end
 
     # Checks equality by comparing each attribute.
@@ -100,8 +118,8 @@ module TalonOne
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          influencing_campaign_ids == o.influencing_campaign_ids &&
-          adjustment_reference_id == o.adjustment_reference_id
+          influencing_campaign_details == o.influencing_campaign_details &&
+          adjustment_details == o.adjustment_details
     end
 
     # @see the `==` method
@@ -113,7 +131,7 @@ module TalonOne
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [influencing_campaign_ids, adjustment_reference_id].hash
+      [influencing_campaign_details, adjustment_details].hash
     end
 
     # Builds the object from hash

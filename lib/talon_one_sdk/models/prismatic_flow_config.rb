@@ -17,10 +17,22 @@ module TalonOne
   class PrismaticFlowConfig < ApiModelBase
     attr_accessor :api_key
 
+    # Number of Prismatic workers to run in parallel for this flow (maximum 500).
+    attr_accessor :worker_count
+
+    # Maximum number of events to send in a single message to Prismatic.
+    attr_accessor :max_events_per_message
+
+    # Maximum number of retries for a Prismatic event before it is ignored.
+    attr_accessor :max_retries
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'api_key' => :'ApiKey'
+        :'api_key' => :'ApiKey',
+        :'worker_count' => :'WorkerCount',
+        :'max_events_per_message' => :'MaxEventsPerMessage',
+        :'max_retries' => :'MaxRetries'
       }
     end
 
@@ -37,7 +49,10 @@ module TalonOne
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'api_key' => :'String'
+        :'api_key' => :'String',
+        :'worker_count' => :'Integer',
+        :'max_events_per_message' => :'Integer',
+        :'max_retries' => :'Integer'
       }
     end
 
@@ -68,6 +83,24 @@ module TalonOne
       else
         self.api_key = nil
       end
+
+      if attributes.key?(:'worker_count')
+        self.worker_count = attributes[:'worker_count']
+      else
+        self.worker_count = 10
+      end
+
+      if attributes.key?(:'max_events_per_message')
+        self.max_events_per_message = attributes[:'max_events_per_message']
+      else
+        self.max_events_per_message = 1000
+      end
+
+      if attributes.key?(:'max_retries')
+        self.max_retries = attributes[:'max_retries']
+      else
+        self.max_retries = 10
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -79,6 +112,22 @@ module TalonOne
         invalid_properties.push('invalid value for "api_key", api_key cannot be nil.')
       end
 
+      if !@worker_count.nil? && @worker_count > 500
+        invalid_properties.push('invalid value for "worker_count", must be smaller than or equal to 500.')
+      end
+
+      if !@worker_count.nil? && @worker_count < 1
+        invalid_properties.push('invalid value for "worker_count", must be greater than or equal to 1.')
+      end
+
+      if !@max_events_per_message.nil? && @max_events_per_message < 1
+        invalid_properties.push('invalid value for "max_events_per_message", must be greater than or equal to 1.')
+      end
+
+      if !@max_retries.nil? && @max_retries < 0
+        invalid_properties.push('invalid value for "max_retries", must be greater than or equal to 0.')
+      end
+
       invalid_properties
     end
 
@@ -87,6 +136,10 @@ module TalonOne
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
       return false if @api_key.nil?
+      return false if !@worker_count.nil? && @worker_count > 500
+      return false if !@worker_count.nil? && @worker_count < 1
+      return false if !@max_events_per_message.nil? && @max_events_per_message < 1
+      return false if !@max_retries.nil? && @max_retries < 0
       true
     end
 
@@ -100,12 +153,61 @@ module TalonOne
       @api_key = api_key
     end
 
+    # Custom attribute writer method with validation
+    # @param [Object] worker_count Value to be assigned
+    def worker_count=(worker_count)
+      if worker_count.nil?
+        fail ArgumentError, 'worker_count cannot be nil'
+      end
+
+      if worker_count > 500
+        fail ArgumentError, 'invalid value for "worker_count", must be smaller than or equal to 500.'
+      end
+
+      if worker_count < 1
+        fail ArgumentError, 'invalid value for "worker_count", must be greater than or equal to 1.'
+      end
+
+      @worker_count = worker_count
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] max_events_per_message Value to be assigned
+    def max_events_per_message=(max_events_per_message)
+      if max_events_per_message.nil?
+        fail ArgumentError, 'max_events_per_message cannot be nil'
+      end
+
+      if max_events_per_message < 1
+        fail ArgumentError, 'invalid value for "max_events_per_message", must be greater than or equal to 1.'
+      end
+
+      @max_events_per_message = max_events_per_message
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] max_retries Value to be assigned
+    def max_retries=(max_retries)
+      if max_retries.nil?
+        fail ArgumentError, 'max_retries cannot be nil'
+      end
+
+      if max_retries < 0
+        fail ArgumentError, 'invalid value for "max_retries", must be greater than or equal to 0.'
+      end
+
+      @max_retries = max_retries
+    end
+
     # Checks equality by comparing each attribute.
     # @param [Object] Object to be compared
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          api_key == o.api_key
+          api_key == o.api_key &&
+          worker_count == o.worker_count &&
+          max_events_per_message == o.max_events_per_message &&
+          max_retries == o.max_retries
     end
 
     # @see the `==` method
@@ -117,7 +219,7 @@ module TalonOne
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [api_key].hash
+      [api_key, worker_count, max_events_per_message, max_retries].hash
     end
 
     # Builds the object from hash

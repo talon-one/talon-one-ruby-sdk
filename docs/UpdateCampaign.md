@@ -12,6 +12,7 @@
 | **state** | **String** | A disabled or archived campaign is not evaluated for rules or coupons.  | [optional][default to &#39;enabled&#39;] |
 | **active_ruleset_id** | **Integer** | [ID of Ruleset](https://docs.talon.one/management-api#operation/getRulesets) this campaign applies on customer session evaluation.  | [optional] |
 | **tags** | **Array&lt;String&gt;** | A list of tags for the campaign. |  |
+| **reevaluate_on_return** | **Boolean** | Indicates whether this campaign should be reevaluated when a customer returns an item. | [optional] |
 | **features** | **Array&lt;String&gt;** | A list of features for the campaign. |  |
 | **coupon_settings** | [**CodeGeneratorSettings**](CodeGeneratorSettings.md) |  | [optional] |
 | **referral_settings** | [**CodeGeneratorSettings**](CodeGeneratorSettings.md) |  | [optional] |
@@ -35,6 +36,7 @@ instance = TalonOne::UpdateCampaign.new(
   state: disabled,
   active_ruleset_id: 2,
   tags: [Summer, Shoes],
+  reevaluate_on_return: true,
   features: [coupons, loyalty],
   coupon_settings: null,
   referral_settings: null,

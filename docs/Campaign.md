@@ -16,6 +16,7 @@
 | **state** | **String** | A disabled or archived campaign is not evaluated for rules or coupons.  | [default to &#39;enabled&#39;] |
 | **active_ruleset_id** | **Integer** | [ID of Ruleset](https://docs.talon.one/management-api#operation/getRulesets) this campaign applies on customer session evaluation.  | [optional] |
 | **tags** | **Array&lt;String&gt;** | A list of tags for the campaign. |  |
+| **reevaluate_on_return** | **Boolean** | Indicates whether this campaign should be reevaluated when a customer returns an item. |  |
 | **features** | **Array&lt;String&gt;** | The features enabled in this campaign. |  |
 | **coupon_settings** | [**CodeGeneratorSettings**](CodeGeneratorSettings.md) |  | [optional] |
 | **referral_settings** | [**CodeGeneratorSettings**](CodeGeneratorSettings.md) |  | [optional] |
@@ -47,6 +48,7 @@
 | **frontend_state** | **String** | The campaign state displayed in the Campaign Manager. |  |
 | **stores_imported** | **Boolean** | Indicates whether the linked stores were imported via a CSV file. |  |
 | **value_maps_ids** | **Array&lt;Integer&gt;** | A list of value map IDs for the campaign. | [optional] |
+| **experiment_id** | **Integer** | The ID of the Experiment this Campaign is part of. | [optional] |
 | **revision_frontend_state** | **String** | The campaign revision state displayed in the Campaign Manager. | [optional] |
 | **active_revision_id** | **Integer** | ID of the revision that was last activated on this campaign.  | [optional] |
 | **active_revision_version_id** | **Integer** | ID of the revision version that is active on the campaign.  | [optional] |
@@ -73,6 +75,7 @@ instance = TalonOne::Campaign.new(
   state: enabled,
   active_ruleset_id: 6,
   tags: [summer],
+  reevaluate_on_return: true,
   features: [coupons, referrals],
   coupon_settings: null,
   referral_settings: null,
@@ -104,6 +107,7 @@ instance = TalonOne::Campaign.new(
   frontend_state: running,
   stores_imported: true,
   value_maps_ids: [100, 215],
+  experiment_id: 1,
   revision_frontend_state: revised,
   active_revision_id: 6,
   active_revision_version_id: 6,

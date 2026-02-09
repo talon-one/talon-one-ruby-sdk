@@ -11,5 +11,5 @@ Generator version: 7.19.0
 =end
 
 module TalonOne
-  VERSION = '26.02'
+  VERSION = '26.03'
 end

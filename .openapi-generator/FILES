@@ -10,6 +10,7 @@
 .rubocop.yml
 .travis.yml
 Gemfile
+MIGRATION.md
 README.md
 Rakefile
 docker-compose.yml
@@ -50,6 +51,7 @@ docs/AddedDeductedPointsNotification.md
 docs/AddedDeductedPointsNotificationPolicy.md
 docs/AdditionalCampaignProperties.md
 docs/AdditionalCost.md
+docs/AdjustmentDetails.md
 docs/AnalyticsDataPoint.md
 docs/AnalyticsDataPointWithTrend.md
 docs/AnalyticsDataPointWithTrendAndInfluencedRate.md
@@ -231,6 +233,12 @@ docs/Event.md
 docs/EventType.md
 docs/EventV2.md
 docs/EventV3.md
+docs/Experiment.md
+docs/ExperimentResults.md
+docs/ExperimentVariant.md
+docs/ExperimentVariantAllocation.md
+docs/ExperimentVariantResult.md
+docs/ExperimentVariantResultConfidence.md
 docs/ExpiringCardPointsData.md
 docs/ExpiringCardPointsNotification.md
 docs/ExpiringCouponsData.md
@@ -310,6 +318,7 @@ docs/IdentifiableEntity.md
 docs/Import.md
 docs/ImportEntity.md
 docs/IncreaseAchievementProgressEffectProps.md
+docs/InfluencingCampaignDetails.md
 docs/IntegrationApi.md
 docs/IntegrationCoupon.md
 docs/IntegrationCustomerProfileAudienceRequest.md
@@ -425,6 +434,9 @@ docs/NewCustomerSession.md
 docs/NewCustomerSessionV2.md
 docs/NewEvent.md
 docs/NewEventType.md
+docs/NewExperiment.md
+docs/NewExperimentVariant.md
+docs/NewExperimentVariantArray.md
 docs/NewExternalInvitation.md
 docs/NewGiveawaysPool.md
 docs/NewInternalAudience.md
@@ -627,6 +639,9 @@ docs/UpdateCouponsData.md
 docs/UpdateCustomEffect.md
 docs/UpdateCustomerProfileV2409Response.md
 docs/UpdateCustomerSessionV2409Response.md
+docs/UpdateExperiment.md
+docs/UpdateExperimentVariant.md
+docs/UpdateExperimentVariantArray.md
 docs/UpdateLoyaltyCard.md
 docs/UpdateLoyaltyProgram.md
 docs/UpdateLoyaltyProgramTier.md
@@ -691,6 +706,7 @@ lib/talon_one_sdk/models/added_deducted_points_notification.rb
 lib/talon_one_sdk/models/added_deducted_points_notification_policy.rb
 lib/talon_one_sdk/models/additional_campaign_properties.rb
 lib/talon_one_sdk/models/additional_cost.rb
+lib/talon_one_sdk/models/adjustment_details.rb
 lib/talon_one_sdk/models/analytics_data_point.rb
 lib/talon_one_sdk/models/analytics_data_point_with_trend.rb
 lib/talon_one_sdk/models/analytics_data_point_with_trend_and_influenced_rate.rb
@@ -873,6 +889,12 @@ lib/talon_one_sdk/models/event.rb
 lib/talon_one_sdk/models/event_type.rb
 lib/talon_one_sdk/models/event_v2.rb
 lib/talon_one_sdk/models/event_v3.rb
+lib/talon_one_sdk/models/experiment.rb
+lib/talon_one_sdk/models/experiment_results.rb
+lib/talon_one_sdk/models/experiment_variant.rb
+lib/talon_one_sdk/models/experiment_variant_allocation.rb
+lib/talon_one_sdk/models/experiment_variant_result.rb
+lib/talon_one_sdk/models/experiment_variant_result_confidence.rb
 lib/talon_one_sdk/models/expiring_card_points_data.rb
 lib/talon_one_sdk/models/expiring_card_points_notification.rb
 lib/talon_one_sdk/models/expiring_coupons_data.rb
@@ -952,6 +974,7 @@ lib/talon_one_sdk/models/identifiable_entity.rb
 lib/talon_one_sdk/models/import.rb
 lib/talon_one_sdk/models/import_entity.rb
 lib/talon_one_sdk/models/increase_achievement_progress_effect_props.rb
+lib/talon_one_sdk/models/influencing_campaign_details.rb
 lib/talon_one_sdk/models/integration_coupon.rb
 lib/talon_one_sdk/models/integration_customer_profile_audience_request.rb
 lib/talon_one_sdk/models/integration_customer_profile_audience_request_item.rb
@@ -1065,6 +1088,9 @@ lib/talon_one_sdk/models/new_customer_session.rb
 lib/talon_one_sdk/models/new_customer_session_v2.rb
 lib/talon_one_sdk/models/new_event.rb
 lib/talon_one_sdk/models/new_event_type.rb
+lib/talon_one_sdk/models/new_experiment.rb
+lib/talon_one_sdk/models/new_experiment_variant.rb
+lib/talon_one_sdk/models/new_experiment_variant_array.rb
 lib/talon_one_sdk/models/new_external_invitation.rb
 lib/talon_one_sdk/models/new_giveaways_pool.rb
 lib/talon_one_sdk/models/new_internal_audience.rb
@@ -1267,6 +1293,9 @@ lib/talon_one_sdk/models/update_coupons_data.rb
 lib/talon_one_sdk/models/update_custom_effect.rb
 lib/talon_one_sdk/models/update_customer_profile_v2409_response.rb
 lib/talon_one_sdk/models/update_customer_session_v2409_response.rb
+lib/talon_one_sdk/models/update_experiment.rb
+lib/talon_one_sdk/models/update_experiment_variant.rb
+lib/talon_one_sdk/models/update_experiment_variant_array.rb
 lib/talon_one_sdk/models/update_loyalty_card.rb
 lib/talon_one_sdk/models/update_loyalty_program.rb
 lib/talon_one_sdk/models/update_loyalty_program_tier.rb
@@ -1326,6 +1355,7 @@ spec/models/added_deducted_points_notification_policy_spec.rb
 spec/models/added_deducted_points_notification_spec.rb
 spec/models/additional_campaign_properties_spec.rb
 spec/models/additional_cost_spec.rb
+spec/models/adjustment_details_spec.rb
 spec/models/analytics_data_point_spec.rb
 spec/models/analytics_data_point_with_trend_and_influenced_rate_spec.rb
 spec/models/analytics_data_point_with_trend_and_uplift_spec.rb
@@ -1508,6 +1538,12 @@ spec/models/event_spec.rb
 spec/models/event_type_spec.rb
 spec/models/event_v2_spec.rb
 spec/models/event_v3_spec.rb
+spec/models/experiment_results_spec.rb
+spec/models/experiment_spec.rb
+spec/models/experiment_variant_allocation_spec.rb
+spec/models/experiment_variant_result_confidence_spec.rb
+spec/models/experiment_variant_result_spec.rb
+spec/models/experiment_variant_spec.rb
 spec/models/expiring_card_points_data_spec.rb
 spec/models/expiring_card_points_notification_spec.rb
 spec/models/expiring_coupons_data_spec.rb
@@ -1587,6 +1623,7 @@ spec/models/identifiable_entity_spec.rb
 spec/models/import_entity_spec.rb
 spec/models/import_spec.rb
 spec/models/increase_achievement_progress_effect_props_spec.rb
+spec/models/influencing_campaign_details_spec.rb
 spec/models/integration_coupon_spec.rb
 spec/models/integration_customer_profile_audience_request_item_spec.rb
 spec/models/integration_customer_profile_audience_request_spec.rb
@@ -1700,6 +1737,9 @@ spec/models/new_customer_session_spec.rb
 spec/models/new_customer_session_v2_spec.rb
 spec/models/new_event_spec.rb
 spec/models/new_event_type_spec.rb
+spec/models/new_experiment_spec.rb
+spec/models/new_experiment_variant_array_spec.rb
+spec/models/new_experiment_variant_spec.rb
 spec/models/new_external_invitation_spec.rb
 spec/models/new_giveaways_pool_spec.rb
 spec/models/new_internal_audience_spec.rb
@@ -1902,6 +1942,9 @@ spec/models/update_coupons_data_spec.rb
 spec/models/update_custom_effect_spec.rb
 spec/models/update_customer_profile_v2409_response_spec.rb
 spec/models/update_customer_session_v2409_response_spec.rb
+spec/models/update_experiment_spec.rb
+spec/models/update_experiment_variant_array_spec.rb
+spec/models/update_experiment_variant_spec.rb
 spec/models/update_loyalty_card_spec.rb
 spec/models/update_loyalty_program_spec.rb
 spec/models/update_loyalty_program_tier_spec.rb

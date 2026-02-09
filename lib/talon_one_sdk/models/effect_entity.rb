@@ -16,6 +16,9 @@ require 'time'
 module TalonOne
   # Definition of all properties that are present on all effects, independent of their type.
   class EffectEntity < ApiModelBase
+    # The ID of the experiment that campaign belongs to.
+    attr_accessor :experiment_id
+
     # The ID of the campaign that triggered this effect.
     attr_accessor :campaign_id
 
@@ -64,6 +67,7 @@ module TalonOne
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'experiment_id' => :'experimentId',
         :'campaign_id' => :'campaignId',
         :'ruleset_id' => :'rulesetId',
         :'rule_index' => :'ruleIndex',
@@ -95,6 +99,7 @@ module TalonOne
     # Attribute type mapping.
     def self.openapi_types
       {
+        :'experiment_id' => :'Integer',
         :'campaign_id' => :'Integer',
         :'ruleset_id' => :'Integer',
         :'rule_index' => :'Integer',
@@ -134,6 +139,10 @@ module TalonOne
         end
         h[k.to_sym] = v
       }
+
+      if attributes.key?(:'experiment_id')
+        self.experiment_id = attributes[:'experiment_id']
+      end
 
       if attributes.key?(:'campaign_id')
         self.campaign_id = attributes[:'campaign_id']
@@ -301,6 +310,7 @@ module TalonOne
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          experiment_id == o.experiment_id &&
           campaign_id == o.campaign_id &&
           ruleset_id == o.ruleset_id &&
           rule_index == o.rule_index &&
@@ -327,7 +337,7 @@ module TalonOne
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [campaign_id, ruleset_id, rule_index, rule_name, effect_type, triggered_by_coupon, triggered_for_catalog_item, condition_index, evaluation_group_id, evaluation_group_mode, campaign_revision_id, campaign_revision_version_id, selected_price_type, selected_price, adjustment_reference_id].hash
+      [experiment_id, campaign_id, ruleset_id, rule_index, rule_name, effect_type, triggered_by_coupon, triggered_for_catalog_item, condition_index, evaluation_group_id, evaluation_group_mode, campaign_revision_id, campaign_revision_version_id, selected_price_type, selected_price, adjustment_reference_id].hash
     end
 
     # Builds the object from hash

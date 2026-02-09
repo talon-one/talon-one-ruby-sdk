@@ -39,6 +39,9 @@ module TalonOne
     # A list of tags for the campaign.
     attr_accessor :tags
 
+    # Indicates whether this campaign should be reevaluated when a customer returns an item.
+    attr_accessor :reevaluate_on_return
+
     # The features enabled in this campaign.
     attr_accessor :features
 
@@ -91,6 +94,7 @@ module TalonOne
         :'state' => :'state',
         :'active_ruleset_id' => :'activeRulesetId',
         :'tags' => :'tags',
+        :'reevaluate_on_return' => :'reevaluateOnReturn',
         :'features' => :'features',
         :'coupon_settings' => :'couponSettings',
         :'referral_settings' => :'referralSettings',
@@ -122,6 +126,7 @@ module TalonOne
         :'state' => :'String',
         :'active_ruleset_id' => :'Integer',
         :'tags' => :'Array<String>',
+        :'reevaluate_on_return' => :'Boolean',
         :'features' => :'Array<String>',
         :'coupon_settings' => :'CodeGeneratorSettings',
         :'referral_settings' => :'CodeGeneratorSettings',
@@ -192,6 +197,10 @@ module TalonOne
         end
       else
         self.tags = nil
+      end
+
+      if attributes.key?(:'reevaluate_on_return')
+        self.reevaluate_on_return = attributes[:'reevaluate_on_return']
       end
 
       if attributes.key?(:'features')
@@ -362,6 +371,7 @@ module TalonOne
           state == o.state &&
           active_ruleset_id == o.active_ruleset_id &&
           tags == o.tags &&
+          reevaluate_on_return == o.reevaluate_on_return &&
           features == o.features &&
           coupon_settings == o.coupon_settings &&
           referral_settings == o.referral_settings &&
@@ -380,7 +390,7 @@ module TalonOne
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, description, start_time, end_time, attributes, state, active_ruleset_id, tags, features, coupon_settings, referral_settings, limits, campaign_groups, type, linked_store_ids].hash
+      [name, description, start_time, end_time, attributes, state, active_ruleset_id, tags, reevaluate_on_return, features, coupon_settings, referral_settings, limits, campaign_groups, type, linked_store_ids].hash
     end
 
     # Builds the object from hash

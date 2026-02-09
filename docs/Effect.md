@@ -4,6 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
+| **experiment_id** | **Integer** | The ID of the experiment that campaign belongs to. | [optional] |
 | **campaign_id** | **Integer** | The ID of the campaign that triggered this effect. |  |
 | **ruleset_id** | **Integer** | The ID of the ruleset that was active in the campaign when this effect was triggered. |  |
 | **rule_index** | **Integer** | The position of the rule that triggered this effect within the ruleset. |  |
@@ -27,6 +28,7 @@
 require 'talon_one_sdk'
 
 instance = TalonOne::Effect.new(
+  experiment_id: 12,
   campaign_id: 244,
   ruleset_id: 73,
   rule_index: 2,
