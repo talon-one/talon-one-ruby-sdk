@@ -53,6 +53,9 @@ module TalonOne
     # Arbitrary properties associated with coupons.
     attr_accessor :attributes
 
+    # An indication of whether the code can be redeemed only if it has been reserved first.
+    attr_accessor :is_reservation_mandatory
+
     # The batch ID coupons created by this job will bear.
     attr_accessor :batch_id
 
@@ -96,6 +99,7 @@ module TalonOne
         :'number_of_coupons' => :'numberOfCoupons',
         :'coupon_settings' => :'couponSettings',
         :'attributes' => :'attributes',
+        :'is_reservation_mandatory' => :'isReservationMandatory',
         :'batch_id' => :'batchId',
         :'status' => :'status',
         :'created_amount' => :'createdAmount',
@@ -134,6 +138,7 @@ module TalonOne
         :'number_of_coupons' => :'Integer',
         :'coupon_settings' => :'CodeGeneratorSettings',
         :'attributes' => :'Object',
+        :'is_reservation_mandatory' => :'Boolean',
         :'batch_id' => :'String',
         :'status' => :'String',
         :'created_amount' => :'Integer',
@@ -245,6 +250,12 @@ module TalonOne
         self.attributes = attributes[:'attributes']
       else
         self.attributes = nil
+      end
+
+      if attributes.key?(:'is_reservation_mandatory')
+        self.is_reservation_mandatory = attributes[:'is_reservation_mandatory']
+      else
+        self.is_reservation_mandatory = false
       end
 
       if attributes.key?(:'batch_id')
@@ -667,6 +678,7 @@ module TalonOne
           number_of_coupons == o.number_of_coupons &&
           coupon_settings == o.coupon_settings &&
           attributes == o.attributes &&
+          is_reservation_mandatory == o.is_reservation_mandatory &&
           batch_id == o.batch_id &&
           status == o.status &&
           created_amount == o.created_amount &&
@@ -687,7 +699,7 @@ module TalonOne
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, created, campaign_id, application_id, account_id, usage_limit, discount_limit, reservation_limit, start_date, expiry_date, number_of_coupons, coupon_settings, attributes, batch_id, status, created_amount, fail_count, errors, created_by, communicated, chunk_execution_count, chunk_size].hash
+      [id, created, campaign_id, application_id, account_id, usage_limit, discount_limit, reservation_limit, start_date, expiry_date, number_of_coupons, coupon_settings, attributes, is_reservation_mandatory, batch_id, status, created_amount, fail_count, errors, created_by, communicated, chunk_execution_count, chunk_size].hash
     end
 
     # Builds the object from hash

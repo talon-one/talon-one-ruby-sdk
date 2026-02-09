@@ -30,10 +30,10 @@ module TalonOne
     # A detailed description of the campaign.
     attr_accessor :description
 
-    # The ID of the ruleset this campaign template will use.
+    # The ID of the ruleset this campaign will use.
     attr_accessor :active_ruleset_id
 
-    # A list of tags for the campaign template.
+    # A list of tags for the campaign.
     attr_accessor :tags
 
     attr_accessor :coupon_settings
@@ -43,7 +43,10 @@ module TalonOne
     # The set of limits that will operate for this campaign version.
     attr_accessor :limits
 
-    # A list of features for the campaign template.
+    # Indicates whether this campaign should be reevaluated when a customer returns an item.
+    attr_accessor :reevaluate_on_return
+
+    # A list of features for the campaign.
     attr_accessor :features
 
     class EnumAttributeValidator
@@ -81,6 +84,7 @@ module TalonOne
         :'coupon_settings' => :'couponSettings',
         :'referral_settings' => :'referralSettings',
         :'limits' => :'limits',
+        :'reevaluate_on_return' => :'reevaluateOnReturn',
         :'features' => :'features'
       }
     end
@@ -108,6 +112,7 @@ module TalonOne
         :'coupon_settings' => :'CodeGeneratorSettings',
         :'referral_settings' => :'CodeGeneratorSettings',
         :'limits' => :'Array<LimitConfig>',
+        :'reevaluate_on_return' => :'Boolean',
         :'features' => :'Array<String>'
       }
     end
@@ -180,6 +185,10 @@ module TalonOne
         if (value = attributes[:'limits']).is_a?(Array)
           self.limits = value
         end
+      end
+
+      if attributes.key?(:'reevaluate_on_return')
+        self.reevaluate_on_return = attributes[:'reevaluate_on_return']
       end
 
       if attributes.key?(:'features')
@@ -257,6 +266,7 @@ module TalonOne
           coupon_settings == o.coupon_settings &&
           referral_settings == o.referral_settings &&
           limits == o.limits &&
+          reevaluate_on_return == o.reevaluate_on_return &&
           features == o.features
     end
 
@@ -269,7 +279,7 @@ module TalonOne
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, start_time, end_time, attributes, description, active_ruleset_id, tags, coupon_settings, referral_settings, limits, features].hash
+      [name, start_time, end_time, attributes, description, active_ruleset_id, tags, coupon_settings, referral_settings, limits, reevaluate_on_return, features].hash
     end
 
     # Builds the object from hash

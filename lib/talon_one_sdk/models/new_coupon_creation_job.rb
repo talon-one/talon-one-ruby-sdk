@@ -38,6 +38,9 @@ module TalonOne
     # Arbitrary properties associated with coupons.
     attr_accessor :attributes
 
+    # An indication of whether the code can be redeemed only if it has been reserved first.
+    attr_accessor :is_reservation_mandatory
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -48,7 +51,8 @@ module TalonOne
         :'expiry_date' => :'expiryDate',
         :'number_of_coupons' => :'numberOfCoupons',
         :'coupon_settings' => :'couponSettings',
-        :'attributes' => :'attributes'
+        :'attributes' => :'attributes',
+        :'is_reservation_mandatory' => :'isReservationMandatory'
       }
     end
 
@@ -72,7 +76,8 @@ module TalonOne
         :'expiry_date' => :'Time',
         :'number_of_coupons' => :'Integer',
         :'coupon_settings' => :'CodeGeneratorSettings',
-        :'attributes' => :'Object'
+        :'attributes' => :'Object',
+        :'is_reservation_mandatory' => :'Boolean'
       }
     end
 
@@ -139,6 +144,12 @@ module TalonOne
         self.attributes = attributes[:'attributes']
       else
         self.attributes = nil
+      end
+
+      if attributes.key?(:'is_reservation_mandatory')
+        self.is_reservation_mandatory = attributes[:'is_reservation_mandatory']
+      else
+        self.is_reservation_mandatory = false
       end
     end
 
@@ -301,7 +312,8 @@ module TalonOne
           expiry_date == o.expiry_date &&
           number_of_coupons == o.number_of_coupons &&
           coupon_settings == o.coupon_settings &&
-          attributes == o.attributes
+          attributes == o.attributes &&
+          is_reservation_mandatory == o.is_reservation_mandatory
     end
 
     # @see the `==` method
@@ -313,7 +325,7 @@ module TalonOne
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [usage_limit, discount_limit, reservation_limit, start_date, expiry_date, number_of_coupons, coupon_settings, attributes].hash
+      [usage_limit, discount_limit, reservation_limit, start_date, expiry_date, number_of_coupons, coupon_settings, attributes, is_reservation_mandatory].hash
     end
 
     # Builds the object from hash

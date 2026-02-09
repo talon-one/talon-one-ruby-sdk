@@ -1,10 +1,13 @@
 # Talon.One Ruby SDK
 
-> [!WARNING]
-This project is in beta. Use is "AS IS" and at your own risk.
-The stable version of this SDK is available [here](https://github.com/talon-one/talon_one.rb).
+> [!NOTE]
+The legacy version of this SDK is available [here](https://github.com/talon-one/talon_one.rb).
 
 This SDK supports all of the operations of Talon.One's Integration API and Management API.
+
+## Migrating from legacy SDKs
+
+See our [migration guide](MIGRATION.md).
 
 ## Installation
 
@@ -13,7 +16,7 @@ This SDK supports all of the operations of Talon.One's Integration API and Manag
 Add this to the Gemfile:
 
 ```shell
-gem 'talon_one_sdk', '~> 26.02'
+gem 'talon_one_sdk', '~> 26.03'
 ```
 
 ### Build a gem
@@ -29,10 +32,10 @@ gem build talon_one_sdk.gemspec
 To install the gem locally:
 
 ```shell
-gem install ./talon_one_sdk-26.02.gem
+gem install ./talon_one_sdk-26.03.gem
 ```
 
-For development, run `gem install --dev ./talon_one_sdk-26.02.gem` to install the development dependencies.
+For development, run `gem install --dev ./talon_one_sdk-26.03.gem` to install the development dependencies.
 
 ### RubyGems
 
@@ -428,6 +431,7 @@ Class | Method | HTTP request | Description
 - [TalonOne::AddedDeductedPointsNotificationPolicy](docs/AddedDeductedPointsNotificationPolicy.md)
 - [TalonOne::AdditionalCampaignProperties](docs/AdditionalCampaignProperties.md)
 - [TalonOne::AdditionalCost](docs/AdditionalCost.md)
+- [TalonOne::AdjustmentDetails](docs/AdjustmentDetails.md)
 - [TalonOne::AnalyticsDataPoint](docs/AnalyticsDataPoint.md)
 - [TalonOne::AnalyticsDataPointWithTrend](docs/AnalyticsDataPointWithTrend.md)
 - [TalonOne::AnalyticsDataPointWithTrendAndInfluencedRate](docs/AnalyticsDataPointWithTrendAndInfluencedRate.md)
@@ -609,6 +613,12 @@ Class | Method | HTTP request | Description
 - [TalonOne::EventType](docs/EventType.md)
 - [TalonOne::EventV2](docs/EventV2.md)
 - [TalonOne::EventV3](docs/EventV3.md)
+- [TalonOne::Experiment](docs/Experiment.md)
+- [TalonOne::ExperimentResults](docs/ExperimentResults.md)
+- [TalonOne::ExperimentVariant](docs/ExperimentVariant.md)
+- [TalonOne::ExperimentVariantAllocation](docs/ExperimentVariantAllocation.md)
+- [TalonOne::ExperimentVariantResult](docs/ExperimentVariantResult.md)
+- [TalonOne::ExperimentVariantResultConfidence](docs/ExperimentVariantResultConfidence.md)
 - [TalonOne::ExpiringCardPointsData](docs/ExpiringCardPointsData.md)
 - [TalonOne::ExpiringCardPointsNotification](docs/ExpiringCardPointsNotification.md)
 - [TalonOne::ExpiringCouponsData](docs/ExpiringCouponsData.md)
@@ -688,6 +698,7 @@ Class | Method | HTTP request | Description
 - [TalonOne::Import](docs/Import.md)
 - [TalonOne::ImportEntity](docs/ImportEntity.md)
 - [TalonOne::IncreaseAchievementProgressEffectProps](docs/IncreaseAchievementProgressEffectProps.md)
+- [TalonOne::InfluencingCampaignDetails](docs/InfluencingCampaignDetails.md)
 - [TalonOne::IntegrationCoupon](docs/IntegrationCoupon.md)
 - [TalonOne::IntegrationCustomerProfileAudienceRequest](docs/IntegrationCustomerProfileAudienceRequest.md)
 - [TalonOne::IntegrationCustomerProfileAudienceRequestItem](docs/IntegrationCustomerProfileAudienceRequestItem.md)
@@ -801,6 +812,9 @@ Class | Method | HTTP request | Description
 - [TalonOne::NewCustomerSessionV2](docs/NewCustomerSessionV2.md)
 - [TalonOne::NewEvent](docs/NewEvent.md)
 - [TalonOne::NewEventType](docs/NewEventType.md)
+- [TalonOne::NewExperiment](docs/NewExperiment.md)
+- [TalonOne::NewExperimentVariant](docs/NewExperimentVariant.md)
+- [TalonOne::NewExperimentVariantArray](docs/NewExperimentVariantArray.md)
 - [TalonOne::NewExternalInvitation](docs/NewExternalInvitation.md)
 - [TalonOne::NewGiveawaysPool](docs/NewGiveawaysPool.md)
 - [TalonOne::NewInternalAudience](docs/NewInternalAudience.md)
@@ -1003,6 +1017,9 @@ Class | Method | HTTP request | Description
 - [TalonOne::UpdateCustomEffect](docs/UpdateCustomEffect.md)
 - [TalonOne::UpdateCustomerProfileV2409Response](docs/UpdateCustomerProfileV2409Response.md)
 - [TalonOne::UpdateCustomerSessionV2409Response](docs/UpdateCustomerSessionV2409Response.md)
+- [TalonOne::UpdateExperiment](docs/UpdateExperiment.md)
+- [TalonOne::UpdateExperimentVariant](docs/UpdateExperimentVariant.md)
+- [TalonOne::UpdateExperimentVariantArray](docs/UpdateExperimentVariantArray.md)
 - [TalonOne::UpdateLoyaltyCard](docs/UpdateLoyaltyCard.md)
 - [TalonOne::UpdateLoyaltyProgram](docs/UpdateLoyaltyProgram.md)
 - [TalonOne::UpdateLoyaltyProgramTier](docs/UpdateLoyaltyProgramTier.md)

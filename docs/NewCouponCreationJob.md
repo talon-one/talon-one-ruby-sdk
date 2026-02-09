@@ -12,6 +12,7 @@
 | **number_of_coupons** | **Integer** | The number of new coupon codes to generate for the campaign. |  |
 | **coupon_settings** | [**CodeGeneratorSettings**](CodeGeneratorSettings.md) |  | [optional] |
 | **attributes** | **Object** | Arbitrary properties associated with coupons. |  |
+| **is_reservation_mandatory** | **Boolean** | An indication of whether the code can be redeemed only if it has been reserved first. | [optional][default to false] |
 
 ## Example
 
@@ -26,7 +27,8 @@ instance = TalonOne::NewCouponCreationJob.new(
   expiry_date: 2023-08-24T14:15:22Z,
   number_of_coupons: 200000,
   coupon_settings: null,
-  attributes: null
+  attributes: null,
+  is_reservation_mandatory: false
 )
 ```
 

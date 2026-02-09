@@ -51,6 +51,9 @@ module TalonOne
     # A list of tags for the campaign.
     attr_accessor :tags
 
+    # Indicates whether this campaign should be reevaluated when a customer returns an item.
+    attr_accessor :reevaluate_on_return
+
     # The features enabled in this campaign.
     attr_accessor :features
 
@@ -142,6 +145,9 @@ module TalonOne
     # A list of value map IDs for the campaign.
     attr_accessor :value_maps_ids
 
+    # The ID of the Experiment this Campaign is part of.
+    attr_accessor :experiment_id
+
     # The campaign revision state displayed in the Campaign Manager.
     attr_accessor :revision_frontend_state
 
@@ -200,6 +206,7 @@ module TalonOne
         :'state' => :'state',
         :'active_ruleset_id' => :'activeRulesetId',
         :'tags' => :'tags',
+        :'reevaluate_on_return' => :'reevaluateOnReturn',
         :'features' => :'features',
         :'coupon_settings' => :'couponSettings',
         :'referral_settings' => :'referralSettings',
@@ -231,6 +238,7 @@ module TalonOne
         :'frontend_state' => :'frontendState',
         :'stores_imported' => :'storesImported',
         :'value_maps_ids' => :'valueMapsIds',
+        :'experiment_id' => :'experimentId',
         :'revision_frontend_state' => :'revisionFrontendState',
         :'active_revision_id' => :'activeRevisionId',
         :'active_revision_version_id' => :'activeRevisionVersionId',
@@ -266,6 +274,7 @@ module TalonOne
         :'state' => :'String',
         :'active_ruleset_id' => :'Integer',
         :'tags' => :'Array<String>',
+        :'reevaluate_on_return' => :'Boolean',
         :'features' => :'Array<String>',
         :'coupon_settings' => :'CodeGeneratorSettings',
         :'referral_settings' => :'CodeGeneratorSettings',
@@ -297,6 +306,7 @@ module TalonOne
         :'frontend_state' => :'String',
         :'stores_imported' => :'Boolean',
         :'value_maps_ids' => :'Array<Integer>',
+        :'experiment_id' => :'Integer',
         :'revision_frontend_state' => :'String',
         :'active_revision_id' => :'Integer',
         :'active_revision_version_id' => :'Integer',
@@ -403,6 +413,12 @@ module TalonOne
         end
       else
         self.tags = nil
+      end
+
+      if attributes.key?(:'reevaluate_on_return')
+        self.reevaluate_on_return = attributes[:'reevaluate_on_return']
+      else
+        self.reevaluate_on_return = nil
       end
 
       if attributes.key?(:'features')
@@ -551,6 +567,10 @@ module TalonOne
         end
       end
 
+      if attributes.key?(:'experiment_id')
+        self.experiment_id = attributes[:'experiment_id']
+      end
+
       if attributes.key?(:'revision_frontend_state')
         self.revision_frontend_state = attributes[:'revision_frontend_state']
       end
@@ -623,6 +643,10 @@ module TalonOne
         invalid_properties.push('invalid value for "tags", number of items must be less than or equal to 50.')
       end
 
+      if @reevaluate_on_return.nil?
+        invalid_properties.push('invalid value for "reevaluate_on_return", reevaluate_on_return cannot be nil.')
+      end
+
       if @features.nil?
         invalid_properties.push('invalid value for "features", features cannot be nil.')
       end
@@ -657,6 +681,7 @@ module TalonOne
       return false unless state_validator.valid?(@state)
       return false if @tags.nil?
       return false if @tags.length > 50
+      return false if @reevaluate_on_return.nil?
       return false if @features.nil?
       return false if @limits.nil?
       type_validator = EnumAttributeValidator.new('String', ["cartItem", "advanced"])
@@ -749,6 +774,16 @@ module TalonOne
     end
 
     # Custom attribute writer method with validation
+    # @param [Object] reevaluate_on_return Value to be assigned
+    def reevaluate_on_return=(reevaluate_on_return)
+      if reevaluate_on_return.nil?
+        fail ArgumentError, 'reevaluate_on_return cannot be nil'
+      end
+
+      @reevaluate_on_return = reevaluate_on_return
+    end
+
+    # Custom attribute writer method with validation
     # @param [Object] limits Value to be assigned
     def limits=(limits)
       if limits.nil?
@@ -815,6 +850,7 @@ module TalonOne
           state == o.state &&
           active_ruleset_id == o.active_ruleset_id &&
           tags == o.tags &&
+          reevaluate_on_return == o.reevaluate_on_return &&
           features == o.features &&
           coupon_settings == o.coupon_settings &&
           referral_settings == o.referral_settings &&
@@ -846,6 +882,7 @@ module TalonOne
           frontend_state == o.frontend_state &&
           stores_imported == o.stores_imported &&
           value_maps_ids == o.value_maps_ids &&
+          experiment_id == o.experiment_id &&
           revision_frontend_state == o.revision_frontend_state &&
           active_revision_id == o.active_revision_id &&
           active_revision_version_id == o.active_revision_version_id &&
@@ -864,7 +901,7 @@ module TalonOne
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, created, application_id, user_id, name, description, start_time, end_time, attributes, state, active_ruleset_id, tags, features, coupon_settings, referral_settings, limits, campaign_groups, type, linked_store_ids, budgets, coupon_redemption_count, referral_redemption_count, discount_count, discount_effect_count, coupon_creation_count, custom_effect_count, referral_creation_count, add_free_item_effect_count, awarded_giveaways_count, created_loyalty_points_count, created_loyalty_points_effect_count, redeemed_loyalty_points_count, redeemed_loyalty_points_effect_count, call_api_effect_count, reservecoupon_effect_count, last_activity, updated, created_by, updated_by, template_id, frontend_state, stores_imported, value_maps_ids, revision_frontend_state, active_revision_id, active_revision_version_id, version, current_revision_id, current_revision_version_id, stage_revision].hash
+      [id, created, application_id, user_id, name, description, start_time, end_time, attributes, state, active_ruleset_id, tags, reevaluate_on_return, features, coupon_settings, referral_settings, limits, campaign_groups, type, linked_store_ids, budgets, coupon_redemption_count, referral_redemption_count, discount_count, discount_effect_count, coupon_creation_count, custom_effect_count, referral_creation_count, add_free_item_effect_count, awarded_giveaways_count, created_loyalty_points_count, created_loyalty_points_effect_count, redeemed_loyalty_points_count, redeemed_loyalty_points_effect_count, call_api_effect_count, reservecoupon_effect_count, last_activity, updated, created_by, updated_by, template_id, frontend_state, stores_imported, value_maps_ids, experiment_id, revision_frontend_state, active_revision_id, active_revision_version_id, version, current_revision_id, current_revision_version_id, stage_revision].hash
     end
 
     # Builds the object from hash

@@ -51,6 +51,9 @@ module TalonOne
     # A list of tags for the campaign template.
     attr_accessor :tags
 
+    # Indicates whether campaigns created from this template should be reevaluated when a customer returns an item.
+    attr_accessor :reevaluate_on_return
+
     # A list of features for the campaign template.
     attr_accessor :features
 
@@ -129,6 +132,7 @@ module TalonOne
         :'state' => :'state',
         :'active_ruleset_id' => :'activeRulesetId',
         :'tags' => :'tags',
+        :'reevaluate_on_return' => :'reevaluateOnReturn',
         :'features' => :'features',
         :'coupon_settings' => :'couponSettings',
         :'coupon_reservation_settings' => :'couponReservationSettings',
@@ -172,6 +176,7 @@ module TalonOne
         :'state' => :'String',
         :'active_ruleset_id' => :'Integer',
         :'tags' => :'Array<String>',
+        :'reevaluate_on_return' => :'Boolean',
         :'features' => :'Array<String>',
         :'coupon_settings' => :'CodeGeneratorSettings',
         :'coupon_reservation_settings' => :'CampaignTemplateCouponReservationSettings',
@@ -286,6 +291,12 @@ module TalonOne
         if (value = attributes[:'tags']).is_a?(Array)
           self.tags = value
         end
+      end
+
+      if attributes.key?(:'reevaluate_on_return')
+        self.reevaluate_on_return = attributes[:'reevaluate_on_return']
+      else
+        self.reevaluate_on_return = nil
       end
 
       if attributes.key?(:'features')
@@ -414,6 +425,10 @@ module TalonOne
         invalid_properties.push('invalid value for "tags", number of items must be less than or equal to 50.')
       end
 
+      if @reevaluate_on_return.nil?
+        invalid_properties.push('invalid value for "reevaluate_on_return", reevaluate_on_return cannot be nil.')
+      end
+
       if @applications_ids.nil?
         invalid_properties.push('invalid value for "applications_ids", applications_ids cannot be nil.')
       end
@@ -441,6 +456,7 @@ module TalonOne
       state_validator = EnumAttributeValidator.new('String', ["draft", "enabled", "disabled"])
       return false unless state_validator.valid?(@state)
       return false if !@tags.nil? && @tags.length > 50
+      return false if @reevaluate_on_return.nil?
       return false if @applications_ids.nil?
       campaign_type_validator = EnumAttributeValidator.new('String', ["cartItem", "advanced"])
       return false unless campaign_type_validator.valid?(@campaign_type)
@@ -547,6 +563,16 @@ module TalonOne
     end
 
     # Custom attribute writer method with validation
+    # @param [Object] reevaluate_on_return Value to be assigned
+    def reevaluate_on_return=(reevaluate_on_return)
+      if reevaluate_on_return.nil?
+        fail ArgumentError, 'reevaluate_on_return cannot be nil'
+      end
+
+      @reevaluate_on_return = reevaluate_on_return
+    end
+
+    # Custom attribute writer method with validation
     # @param [Object] applications_ids Value to be assigned
     def applications_ids=(applications_ids)
       if applications_ids.nil?
@@ -593,6 +619,7 @@ module TalonOne
           state == o.state &&
           active_ruleset_id == o.active_ruleset_id &&
           tags == o.tags &&
+          reevaluate_on_return == o.reevaluate_on_return &&
           features == o.features &&
           coupon_settings == o.coupon_settings &&
           coupon_reservation_settings == o.coupon_reservation_settings &&
@@ -619,7 +646,7 @@ module TalonOne
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, created, account_id, user_id, name, description, instructions, campaign_attributes, coupon_attributes, state, active_ruleset_id, tags, features, coupon_settings, coupon_reservation_settings, referral_settings, limits, template_params, applications_ids, campaign_collections, default_campaign_group_id, campaign_type, campaigns_count, updated, updated_by, valid_application_ids, is_user_favorite].hash
+      [id, created, account_id, user_id, name, description, instructions, campaign_attributes, coupon_attributes, state, active_ruleset_id, tags, reevaluate_on_return, features, coupon_settings, coupon_reservation_settings, referral_settings, limits, template_params, applications_ids, campaign_collections, default_campaign_group_id, campaign_type, campaigns_count, updated, updated_by, valid_application_ids, is_user_favorite].hash
     end
 
     # Builds the object from hash

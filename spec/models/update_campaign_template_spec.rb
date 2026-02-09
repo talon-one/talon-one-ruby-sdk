@@ -79,6 +79,12 @@ describe TalonOne::UpdateCampaignTemplate do
     end
   end
 
+  describe 'test attribute "reevaluate_on_return"' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
   describe 'test attribute "features"' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/

@@ -87,6 +87,9 @@ module TalonOne
     # A list of value map IDs for the campaign.
     attr_accessor :value_maps_ids
 
+    # The ID of the Experiment this Campaign is part of.
+    attr_accessor :experiment_id
+
     class EnumAttributeValidator
       attr_reader :datatype
       attr_reader :allowable_values
@@ -135,7 +138,8 @@ module TalonOne
         :'template_id' => :'templateId',
         :'frontend_state' => :'frontendState',
         :'stores_imported' => :'storesImported',
-        :'value_maps_ids' => :'valueMapsIds'
+        :'value_maps_ids' => :'valueMapsIds',
+        :'experiment_id' => :'experimentId'
       }
     end
 
@@ -175,7 +179,8 @@ module TalonOne
         :'template_id' => :'Integer',
         :'frontend_state' => :'String',
         :'stores_imported' => :'Boolean',
-        :'value_maps_ids' => :'Array<Integer>'
+        :'value_maps_ids' => :'Array<Integer>',
+        :'experiment_id' => :'Integer'
       }
     end
 
@@ -304,6 +309,10 @@ module TalonOne
           self.value_maps_ids = value
         end
       end
+
+      if attributes.key?(:'experiment_id')
+        self.experiment_id = attributes[:'experiment_id']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -381,7 +390,8 @@ module TalonOne
           template_id == o.template_id &&
           frontend_state == o.frontend_state &&
           stores_imported == o.stores_imported &&
-          value_maps_ids == o.value_maps_ids
+          value_maps_ids == o.value_maps_ids &&
+          experiment_id == o.experiment_id
     end
 
     # @see the `==` method
@@ -393,7 +403,7 @@ module TalonOne
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [budgets, coupon_redemption_count, referral_redemption_count, discount_count, discount_effect_count, coupon_creation_count, custom_effect_count, referral_creation_count, add_free_item_effect_count, awarded_giveaways_count, created_loyalty_points_count, created_loyalty_points_effect_count, redeemed_loyalty_points_count, redeemed_loyalty_points_effect_count, call_api_effect_count, reservecoupon_effect_count, last_activity, updated, created_by, updated_by, template_id, frontend_state, stores_imported, value_maps_ids].hash
+      [budgets, coupon_redemption_count, referral_redemption_count, discount_count, discount_effect_count, coupon_creation_count, custom_effect_count, referral_creation_count, add_free_item_effect_count, awarded_giveaways_count, created_loyalty_points_count, created_loyalty_points_effect_count, redeemed_loyalty_points_count, redeemed_loyalty_points_effect_count, call_api_effect_count, reservecoupon_effect_count, last_activity, updated, created_by, updated_by, template_id, frontend_state, stores_imported, value_maps_ids, experiment_id].hash
     end
 
     # Builds the object from hash

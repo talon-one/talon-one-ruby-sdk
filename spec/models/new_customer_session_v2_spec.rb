@@ -79,6 +79,12 @@ describe TalonOne::NewCustomerSessionV2 do
     end
   end
 
+  describe 'test attribute "experiment_variant_allocations"' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
   describe 'test attribute "additional_costs"' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/

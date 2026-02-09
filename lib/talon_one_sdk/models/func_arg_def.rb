@@ -123,7 +123,7 @@ module TalonOne
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
       return false if @type.nil?
-      type_validator = EnumAttributeValidator.new('String', ["string", "boolean", "number", "time", "(list string)"])
+      type_validator = EnumAttributeValidator.new('String', ["string", "boolean", "number", "time", "(list string)", "(list number)"])
       return false unless type_validator.valid?(@type)
       return false if @type.to_s.length < 1
       true
@@ -132,7 +132,7 @@ module TalonOne
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] type Object to be assigned
     def type=(type)
-      validator = EnumAttributeValidator.new('String', ["string", "boolean", "number", "time", "(list string)"])
+      validator = EnumAttributeValidator.new('String', ["string", "boolean", "number", "time", "(list string)", "(list number)"])
       unless validator.valid?(type)
         fail ArgumentError, "invalid value for \"type\", must be one of #{validator.allowable_values}."
       end
