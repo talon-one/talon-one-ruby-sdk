@@ -8,4 +8,4 @@ script:
   - bundle install --path vendor/bundle
   - bundle exec rspec
   - gem build talon_one_sdk.gemspec
-  - gem install ./talon_one_sdk-26.03.gem
+  - gem install ./talon_one_sdk-26.04.gem

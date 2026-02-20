@@ -9,8 +9,8 @@
 | **evaluable_campaign_ids** | **Array&lt;Integer&gt;** | When using the &#x60;dry&#x60; query parameter, use this property to list the campaign to be evaluated by the Rule Engine.  These campaigns will be evaluated, even if they are disabled, allowing you to test specific campaigns before activating them.  | [optional] |
 | **type** | **String** | A string representing the event name. Must not be a reserved event name. You create this value when you [create an attribute](https://docs.talon.one/docs/dev/concepts/entities/events#creating-a-custom-event) of type &#x60;event&#x60; in the Campaign Manager.  |  |
 | **attributes** | **Object** | Arbitrary additional JSON properties associated with the event. They must be created in the Campaign Manager before setting them with this property. See [creating custom attributes](https://docs.talon.one/docs/product/account/dev-tools/managing-attributes#creating-a-custom-attribute). | [optional] |
-| **loyalty_cards** | **Array&lt;String&gt;** | Identifier of the loyalty card used during this event. | [optional] |
-| **response_content** | **Array&lt;String&gt;** | Optional list of requested information to be present on the response related to the tracking custom event.  | [optional] |
+| **response_content** | **Array&lt;String&gt;** | Extends the response with the chosen data entities. Use this property to get as much data back as needed from one request instead of sending extra requests to other endpoints.  | [optional] |
+| **loyalty_cards** | **Array&lt;String&gt;** | Identifiers of the loyalty cards used during this event. | [optional] |
 
 ## Example
 
@@ -23,8 +23,8 @@ instance = TalonOne::IntegrationEventV2Request.new(
   evaluable_campaign_ids: [10, 12],
   type: pageViewed,
   attributes: {myAttribute&#x3D;myValue},
-  loyalty_cards: [loyalty-card-1],
-  response_content: [triggeredCampaigns, customerProfile]
+  response_content: [triggeredCampaigns, customerProfile],
+  loyalty_cards: [loyalty-card-1]
 )
 ```
 

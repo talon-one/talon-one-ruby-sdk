@@ -22,6 +22,7 @@
 | **batch_id** | **String** |  | [optional] |
 | **attributes** | **Object** |  | [optional] |
 | **limits** | [**Array&lt;PrismaticEventPayloadCouponBasedNotificationsLimits&gt;**](PrismaticEventPayloadCouponBasedNotificationsLimits.md) |  | [optional] |
+| **published_at** | **Time** | Timestamp when the event was published. |  |
 | **source_of_event** | **String** |  |  |
 | **employee_name** | **String** |  |  |
 
@@ -49,6 +50,7 @@ instance = TalonOne::PrismaticEventPayloadCouponBasedNotifications.new(
   batch_id: null,
   attributes: null,
   limits: null,
+  published_at: null,
   source_of_event: null,
   employee_name: null
 )

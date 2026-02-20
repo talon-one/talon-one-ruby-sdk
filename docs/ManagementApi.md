@@ -175,7 +175,7 @@ All URIs are relative to *https://yourbaseurl.talon.one*
 | [**update_collection**](ManagementApi.md#update_collection) | **PUT** /v1/applications/{applicationId}/campaigns/{campaignId}/collections/{collectionId} | Update campaign-level collection&#39;s description |
 | [**update_coupon**](ManagementApi.md#update_coupon) | **PUT** /v1/applications/{applicationId}/campaigns/{campaignId}/coupons/{couponId} | Update coupon |
 | [**update_coupon_batch**](ManagementApi.md#update_coupon_batch) | **PUT** /v1/applications/{applicationId}/campaigns/{campaignId}/coupons | Update coupons |
-| [**update_loyalty_card**](ManagementApi.md#update_loyalty_card) | **PUT** /v1/loyalty_programs/{loyaltyProgramId}/cards/{loyaltyCardId} | Update loyalty card status |
+| [**update_loyalty_card**](ManagementApi.md#update_loyalty_card) | **PUT** /v1/loyalty_programs/{loyaltyProgramId}/cards/{loyaltyCardId} | Update loyalty card |
 | [**update_referral**](ManagementApi.md#update_referral) | **PUT** /v1/applications/{applicationId}/campaigns/{campaignId}/referrals/{referralId} | Update referral |
 | [**update_role_v2**](ManagementApi.md#update_role_v2) | **PUT** /v2/roles/{roleId} | Update role |
 | [**update_store**](ManagementApi.md#update_store) | **PUT** /v1/applications/{applicationId}/stores/{storeId} | Update store |
@@ -15105,11 +15105,11 @@ nil (empty response body)
 
 ## update_loyalty_card
 
-> <LoyaltyCard> update_loyalty_card(loyalty_program_id, loyalty_card_id, update_loyalty_card)
+> <LoyaltyCard> update_loyalty_card(loyalty_program_id, loyalty_card_id, update_loyalty_card_request)
 
-Update loyalty card status
+Update loyalty card
 
-Update the status of the given loyalty card. A card can be _active_ or _inactive_.
+Update the details of a specific loyalty card. You can set the card's status to `active` or `inactive` through this endpoint. At least one of `status` or `attributes` must be provided. 
 
 ### Examples
 
@@ -15137,11 +15137,11 @@ end
 api_instance = TalonOne::ManagementApi.new
 loyalty_program_id = 789 # Integer | Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. 
 loyalty_card_id = 'loyalty_card_id_example' # String | Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint. 
-update_loyalty_card = TalonOne::UpdateLoyaltyCard.new({status: 'active'}) # UpdateLoyaltyCard | body
+update_loyalty_card_request = TalonOne::UpdateLoyaltyCardRequest.new # UpdateLoyaltyCardRequest | body
 
 begin
-  # Update loyalty card status
-  result = api_instance.update_loyalty_card(loyalty_program_id, loyalty_card_id, update_loyalty_card)
+  # Update loyalty card
+  result = api_instance.update_loyalty_card(loyalty_program_id, loyalty_card_id, update_loyalty_card_request)
   p result
 rescue TalonOne::ApiError => e
   puts "Error when calling ManagementApi->update_loyalty_card: #{e}"
@@ -15152,12 +15152,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<LoyaltyCard>, Integer, Hash)> update_loyalty_card_with_http_info(loyalty_program_id, loyalty_card_id, update_loyalty_card)
+> <Array(<LoyaltyCard>, Integer, Hash)> update_loyalty_card_with_http_info(loyalty_program_id, loyalty_card_id, update_loyalty_card_request)
 
 ```ruby
 begin
-  # Update loyalty card status
-  data, status_code, headers = api_instance.update_loyalty_card_with_http_info(loyalty_program_id, loyalty_card_id, update_loyalty_card)
+  # Update loyalty card
+  data, status_code, headers = api_instance.update_loyalty_card_with_http_info(loyalty_program_id, loyalty_card_id, update_loyalty_card_request)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <LoyaltyCard>
@@ -15172,7 +15172,7 @@ end
 | ---- | ---- | ----------- | ----- |
 | **loyalty_program_id** | **Integer** | Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  |  |
 | **loyalty_card_id** | **String** | Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint.  |  |
-| **update_loyalty_card** | [**UpdateLoyaltyCard**](UpdateLoyaltyCard.md) | body |  |
+| **update_loyalty_card_request** | [**UpdateLoyaltyCardRequest**](UpdateLoyaltyCardRequest.md) | body |  |
 
 ### Return type
 

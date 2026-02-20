@@ -5,7 +5,7 @@ The legacy version of this SDK is available [here](https://github.com/talon-one/
 
 This SDK supports all of the operations of Talon.One's Integration API and Management API.
 
-## Migrating from legacy SDKs
+## Migrating from the legacy SDK
 
 See our [migration guide](MIGRATION.md).
 
@@ -16,7 +16,7 @@ See our [migration guide](MIGRATION.md).
 Add this to the Gemfile:
 
 ```shell
-gem 'talon_one_sdk', '~> 26.03'
+gem 'talon_one_sdk', '~> 26.04'
 ```
 
 ### Build a gem
@@ -32,10 +32,10 @@ gem build talon_one_sdk.gemspec
 To install the gem locally:
 
 ```shell
-gem install ./talon_one_sdk-26.03.gem
+gem install ./talon_one_sdk-26.04.gem
 ```
 
-For development, run `gem install --dev ./talon_one_sdk-26.03.gem` to install the development dependencies.
+For development, run `gem install --dev ./talon_one_sdk-26.04.gem` to install the development dependencies.
 
 ### RubyGems
 
@@ -386,7 +386,7 @@ Class | Method | HTTP request | Description
 *TalonOne::ManagementApi* | [**update_collection**](docs/ManagementApi.md#update_collection) | **PUT** /v1/applications/{applicationId}/campaigns/{campaignId}/collections/{collectionId} | Update campaign-level collection's description
 *TalonOne::ManagementApi* | [**update_coupon**](docs/ManagementApi.md#update_coupon) | **PUT** /v1/applications/{applicationId}/campaigns/{campaignId}/coupons/{couponId} | Update coupon
 *TalonOne::ManagementApi* | [**update_coupon_batch**](docs/ManagementApi.md#update_coupon_batch) | **PUT** /v1/applications/{applicationId}/campaigns/{campaignId}/coupons | Update coupons
-*TalonOne::ManagementApi* | [**update_loyalty_card**](docs/ManagementApi.md#update_loyalty_card) | **PUT** /v1/loyalty_programs/{loyaltyProgramId}/cards/{loyaltyCardId} | Update loyalty card status
+*TalonOne::ManagementApi* | [**update_loyalty_card**](docs/ManagementApi.md#update_loyalty_card) | **PUT** /v1/loyalty_programs/{loyaltyProgramId}/cards/{loyaltyCardId} | Update loyalty card
 *TalonOne::ManagementApi* | [**update_referral**](docs/ManagementApi.md#update_referral) | **PUT** /v1/applications/{applicationId}/campaigns/{campaignId}/referrals/{referralId} | Update referral
 *TalonOne::ManagementApi* | [**update_role_v2**](docs/ManagementApi.md#update_role_v2) | **PUT** /v2/roles/{roleId} | Update role
 *TalonOne::ManagementApi* | [**update_store**](docs/ManagementApi.md#update_store) | **PUT** /v1/applications/{applicationId}/stores/{storeId} | Update store
@@ -481,6 +481,7 @@ Class | Method | HTTP request | Description
 - [TalonOne::BestPriorPriceRequest](docs/BestPriorPriceRequest.md)
 - [TalonOne::BestPriorTarget](docs/BestPriorTarget.md)
 - [TalonOne::Binding](docs/Binding.md)
+- [TalonOne::Blueprint](docs/Blueprint.md)
 - [TalonOne::BulkApplicationNotification](docs/BulkApplicationNotification.md)
 - [TalonOne::BulkOperationOnCampaigns](docs/BulkOperationOnCampaigns.md)
 - [TalonOne::Campaign](docs/Campaign.md)
@@ -552,7 +553,6 @@ Class | Method | HTTP request | Description
 - [TalonOne::Collection](docs/Collection.md)
 - [TalonOne::CollectionItem](docs/CollectionItem.md)
 - [TalonOne::CollectionWithoutPayload](docs/CollectionWithoutPayload.md)
-- [TalonOne::CollectionsCatalog](docs/CollectionsCatalog.md)
 - [TalonOne::Coupon](docs/Coupon.md)
 - [TalonOne::CouponConstraints](docs/CouponConstraints.md)
 - [TalonOne::CouponCreatedEffectProps](docs/CouponCreatedEffectProps.md)
@@ -566,6 +566,7 @@ Class | Method | HTTP request | Description
 - [TalonOne::CouponReservations](docs/CouponReservations.md)
 - [TalonOne::CouponSearch](docs/CouponSearch.md)
 - [TalonOne::CouponValue](docs/CouponValue.md)
+- [TalonOne::CouponWithApplication](docs/CouponWithApplication.md)
 - [TalonOne::CouponsNotificationData](docs/CouponsNotificationData.md)
 - [TalonOne::CouponsNotificationPolicy](docs/CouponsNotificationPolicy.md)
 - [TalonOne::CreateAchievement](docs/CreateAchievement.md)
@@ -610,6 +611,7 @@ Class | Method | HTTP request | Description
 - [TalonOne::ErrorSource](docs/ErrorSource.md)
 - [TalonOne::EvaluableCampaignIds](docs/EvaluableCampaignIds.md)
 - [TalonOne::Event](docs/Event.md)
+- [TalonOne::EventAttributesEntity](docs/EventAttributesEntity.md)
 - [TalonOne::EventType](docs/EventType.md)
 - [TalonOne::EventV2](docs/EventV2.md)
 - [TalonOne::EventV3](docs/EventV3.md)
@@ -706,11 +708,13 @@ Class | Method | HTTP request | Description
 - [TalonOne::IntegrationEntity](docs/IntegrationEntity.md)
 - [TalonOne::IntegrationEvent](docs/IntegrationEvent.md)
 - [TalonOne::IntegrationEventV2Request](docs/IntegrationEventV2Request.md)
+- [TalonOne::IntegrationEventV2Response](docs/IntegrationEventV2Response.md)
 - [TalonOne::IntegrationEventV3Request](docs/IntegrationEventV3Request.md)
 - [TalonOne::IntegrationEventV3Response](docs/IntegrationEventV3Response.md)
 - [TalonOne::IntegrationProfileEntity](docs/IntegrationProfileEntity.md)
 - [TalonOne::IntegrationProfileEntityV3](docs/IntegrationProfileEntityV3.md)
 - [TalonOne::IntegrationRequest](docs/IntegrationRequest.md)
+- [TalonOne::IntegrationResponse](docs/IntegrationResponse.md)
 - [TalonOne::IntegrationState](docs/IntegrationState.md)
 - [TalonOne::IntegrationStateV2](docs/IntegrationStateV2.md)
 - [TalonOne::IntegrationStoreEntity](docs/IntegrationStoreEntity.md)
@@ -791,6 +795,7 @@ Class | Method | HTTP request | Description
 - [TalonOne::NewAttribute](docs/NewAttribute.md)
 - [TalonOne::NewAudience](docs/NewAudience.md)
 - [TalonOne::NewBaseNotification](docs/NewBaseNotification.md)
+- [TalonOne::NewBlueprint](docs/NewBlueprint.md)
 - [TalonOne::NewCampaign](docs/NewCampaign.md)
 - [TalonOne::NewCampaignCollection](docs/NewCampaignCollection.md)
 - [TalonOne::NewCampaignEvaluationGroup](docs/NewCampaignEvaluationGroup.md)
@@ -801,7 +806,6 @@ Class | Method | HTTP request | Description
 - [TalonOne::NewCampaignTemplate](docs/NewCampaignTemplate.md)
 - [TalonOne::NewCatalog](docs/NewCatalog.md)
 - [TalonOne::NewCollection](docs/NewCollection.md)
-- [TalonOne::NewCollectionsCatalog](docs/NewCollectionsCatalog.md)
 - [TalonOne::NewCouponCreationJob](docs/NewCouponCreationJob.md)
 - [TalonOne::NewCouponDeletionJob](docs/NewCouponDeletionJob.md)
 - [TalonOne::NewCoupons](docs/NewCoupons.md)
@@ -869,6 +873,7 @@ Class | Method | HTTP request | Description
 - [TalonOne::PendingActivePointsNotification](docs/PendingActivePointsNotification.md)
 - [TalonOne::PendingPointsNotificationPolicy](docs/PendingPointsNotificationPolicy.md)
 - [TalonOne::Picklist](docs/Picklist.md)
+- [TalonOne::PlaceholderDetails](docs/PlaceholderDetails.md)
 - [TalonOne::PriceDetail](docs/PriceDetail.md)
 - [TalonOne::PriceType](docs/PriceType.md)
 - [TalonOne::PriceTypeReferenceDetail](docs/PriceTypeReferenceDetail.md)
@@ -876,10 +881,16 @@ Class | Method | HTTP request | Description
 - [TalonOne::PrismaticConfig](docs/PrismaticConfig.md)
 - [TalonOne::PrismaticEventPayloadCouponBasedNotifications](docs/PrismaticEventPayloadCouponBasedNotifications.md)
 - [TalonOne::PrismaticEventPayloadCouponBasedNotificationsLimits](docs/PrismaticEventPayloadCouponBasedNotificationsLimits.md)
-- [TalonOne::PrismaticEventPayloadLoyaltyProfileBasedNotifications](docs/PrismaticEventPayloadLoyaltyProfileBasedNotifications.md)
-- [TalonOne::PrismaticEventPayloadLoyaltyProfileBasedNotificationsAction](docs/PrismaticEventPayloadLoyaltyProfileBasedNotificationsAction.md)
+- [TalonOne::PrismaticEventPayloadLoyaltyProfileBasedNotification](docs/PrismaticEventPayloadLoyaltyProfileBasedNotification.md)
+- [TalonOne::PrismaticEventPayloadLoyaltyProfileBasedPointsChangedNotification](docs/PrismaticEventPayloadLoyaltyProfileBasedPointsChangedNotification.md)
+- [TalonOne::PrismaticEventPayloadLoyaltyProfileBasedPointsChangedNotificationAction](docs/PrismaticEventPayloadLoyaltyProfileBasedPointsChangedNotificationAction.md)
+- [TalonOne::PrismaticEventPayloadLoyaltyProfileBasedTierDowngradeNotification](docs/PrismaticEventPayloadLoyaltyProfileBasedTierDowngradeNotification.md)
+- [TalonOne::PrismaticEventPayloadLoyaltyProfileBasedTierUpgradeNotification](docs/PrismaticEventPayloadLoyaltyProfileBasedTierUpgradeNotification.md)
+- [TalonOne::PrismaticEventRecord](docs/PrismaticEventRecord.md)
 - [TalonOne::PrismaticFlow](docs/PrismaticFlow.md)
 - [TalonOne::PrismaticFlowConfig](docs/PrismaticFlowConfig.md)
+- [TalonOne::PrismaticFlowConfigResponse](docs/PrismaticFlowConfigResponse.md)
+- [TalonOne::PrismaticFlowResponse](docs/PrismaticFlowResponse.md)
 - [TalonOne::PrismaticFlowWithConfig](docs/PrismaticFlowWithConfig.md)
 - [TalonOne::PrismaticPaginatedEventPayload](docs/PrismaticPaginatedEventPayload.md)
 - [TalonOne::Product](docs/Product.md)
@@ -901,6 +912,7 @@ Class | Method | HTTP request | Description
 - [TalonOne::RemoveManyItemsCatalogAction](docs/RemoveManyItemsCatalogAction.md)
 - [TalonOne::ReopenSessionResponse](docs/ReopenSessionResponse.md)
 - [TalonOne::ReserveCouponEffectProps](docs/ReserveCouponEffectProps.md)
+- [TalonOne::ResponseContentObject](docs/ResponseContentObject.md)
 - [TalonOne::ReturnIntegrationRequest](docs/ReturnIntegrationRequest.md)
 - [TalonOne::ReturnedCartItem](docs/ReturnedCartItem.md)
 - [TalonOne::Revision](docs/Revision.md)
@@ -992,7 +1004,6 @@ Class | Method | HTTP request | Description
 - [TalonOne::TierWillDowngradeNotificationPolicy](docs/TierWillDowngradeNotificationPolicy.md)
 - [TalonOne::TierWillDowngradeNotificationTrigger](docs/TierWillDowngradeNotificationTrigger.md)
 - [TalonOne::TimePoint](docs/TimePoint.md)
-- [TalonOne::TrackEventV2Response](docs/TrackEventV2Response.md)
 - [TalonOne::TransferLoyaltyCard](docs/TransferLoyaltyCard.md)
 - [TalonOne::TriggerWebhookEffectProps](docs/TriggerWebhookEffectProps.md)
 - [TalonOne::TwoFAConfig](docs/TwoFAConfig.md)
@@ -1003,6 +1014,7 @@ Class | Method | HTTP request | Description
 - [TalonOne::UpdateApplicationCIF](docs/UpdateApplicationCIF.md)
 - [TalonOne::UpdateAttributeEffectProps](docs/UpdateAttributeEffectProps.md)
 - [TalonOne::UpdateAudience](docs/UpdateAudience.md)
+- [TalonOne::UpdateBlueprint](docs/UpdateBlueprint.md)
 - [TalonOne::UpdateCampaign](docs/UpdateCampaign.md)
 - [TalonOne::UpdateCampaignCollection](docs/UpdateCampaignCollection.md)
 - [TalonOne::UpdateCampaignEvaluationGroup](docs/UpdateCampaignEvaluationGroup.md)
@@ -1010,7 +1022,6 @@ Class | Method | HTTP request | Description
 - [TalonOne::UpdateCampaignTemplate](docs/UpdateCampaignTemplate.md)
 - [TalonOne::UpdateCatalog](docs/UpdateCatalog.md)
 - [TalonOne::UpdateCollection](docs/UpdateCollection.md)
-- [TalonOne::UpdateCollectionsCatalog](docs/UpdateCollectionsCatalog.md)
 - [TalonOne::UpdateCoupon](docs/UpdateCoupon.md)
 - [TalonOne::UpdateCouponBatch](docs/UpdateCouponBatch.md)
 - [TalonOne::UpdateCouponsData](docs/UpdateCouponsData.md)
@@ -1020,7 +1031,9 @@ Class | Method | HTTP request | Description
 - [TalonOne::UpdateExperiment](docs/UpdateExperiment.md)
 - [TalonOne::UpdateExperimentVariant](docs/UpdateExperimentVariant.md)
 - [TalonOne::UpdateExperimentVariantArray](docs/UpdateExperimentVariantArray.md)
+- [TalonOne::UpdateExperimentVariantName](docs/UpdateExperimentVariantName.md)
 - [TalonOne::UpdateLoyaltyCard](docs/UpdateLoyaltyCard.md)
+- [TalonOne::UpdateLoyaltyCardRequest](docs/UpdateLoyaltyCardRequest.md)
 - [TalonOne::UpdateLoyaltyProgram](docs/UpdateLoyaltyProgram.md)
 - [TalonOne::UpdateLoyaltyProgramTier](docs/UpdateLoyaltyProgramTier.md)
 - [TalonOne::UpdatePicklist](docs/UpdatePicklist.md)
