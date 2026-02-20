@@ -5,7 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **name** | **String** | The name of this variant. |  |
-| **weight** | **Integer** |  | [optional] |
+| **weight** | **Integer** | The percentage split of this variant. The sum of all variant percentages must be 100. |  |
 | **ruleset** | [**NewRuleset**](NewRuleset.md) |  |  |
 | **is_primary** | **Boolean** |  |  |
 

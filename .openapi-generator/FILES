@@ -101,6 +101,7 @@ docs/BestPriorPriceMetadata.md
 docs/BestPriorPriceRequest.md
 docs/BestPriorTarget.md
 docs/Binding.md
+docs/Blueprint.md
 docs/BulkApplicationNotification.md
 docs/BulkOperationOnCampaigns.md
 docs/Campaign.md
@@ -172,7 +173,6 @@ docs/CodeGeneratorSettings.md
 docs/Collection.md
 docs/CollectionItem.md
 docs/CollectionWithoutPayload.md
-docs/CollectionsCatalog.md
 docs/Coupon.md
 docs/CouponConstraints.md
 docs/CouponCreatedEffectProps.md
@@ -186,6 +186,7 @@ docs/CouponRejectionReason.md
 docs/CouponReservations.md
 docs/CouponSearch.md
 docs/CouponValue.md
+docs/CouponWithApplication.md
 docs/CouponsNotificationData.md
 docs/CouponsNotificationPolicy.md
 docs/CreateAchievement.md
@@ -230,6 +231,7 @@ docs/ErrorResponseWithStatus.md
 docs/ErrorSource.md
 docs/EvaluableCampaignIds.md
 docs/Event.md
+docs/EventAttributesEntity.md
 docs/EventType.md
 docs/EventV2.md
 docs/EventV3.md
@@ -327,11 +329,13 @@ docs/IntegrationCustomerSessionResponse.md
 docs/IntegrationEntity.md
 docs/IntegrationEvent.md
 docs/IntegrationEventV2Request.md
+docs/IntegrationEventV2Response.md
 docs/IntegrationEventV3Request.md
 docs/IntegrationEventV3Response.md
 docs/IntegrationProfileEntity.md
 docs/IntegrationProfileEntityV3.md
 docs/IntegrationRequest.md
+docs/IntegrationResponse.md
 docs/IntegrationState.md
 docs/IntegrationStateV2.md
 docs/IntegrationStoreEntity.md
@@ -413,6 +417,7 @@ docs/NewApplicationCIFExpression.md
 docs/NewAttribute.md
 docs/NewAudience.md
 docs/NewBaseNotification.md
+docs/NewBlueprint.md
 docs/NewCampaign.md
 docs/NewCampaignCollection.md
 docs/NewCampaignEvaluationGroup.md
@@ -423,7 +428,6 @@ docs/NewCampaignStoreBudgetStoreLimit.md
 docs/NewCampaignTemplate.md
 docs/NewCatalog.md
 docs/NewCollection.md
-docs/NewCollectionsCatalog.md
 docs/NewCouponCreationJob.md
 docs/NewCouponDeletionJob.md
 docs/NewCoupons.md
@@ -491,6 +495,7 @@ docs/PendingActivePointsData.md
 docs/PendingActivePointsNotification.md
 docs/PendingPointsNotificationPolicy.md
 docs/Picklist.md
+docs/PlaceholderDetails.md
 docs/PriceDetail.md
 docs/PriceType.md
 docs/PriceTypeReferenceDetail.md
@@ -498,10 +503,16 @@ docs/PriceTypeReferences.md
 docs/PrismaticConfig.md
 docs/PrismaticEventPayloadCouponBasedNotifications.md
 docs/PrismaticEventPayloadCouponBasedNotificationsLimits.md
-docs/PrismaticEventPayloadLoyaltyProfileBasedNotifications.md
-docs/PrismaticEventPayloadLoyaltyProfileBasedNotificationsAction.md
+docs/PrismaticEventPayloadLoyaltyProfileBasedNotification.md
+docs/PrismaticEventPayloadLoyaltyProfileBasedPointsChangedNotification.md
+docs/PrismaticEventPayloadLoyaltyProfileBasedPointsChangedNotificationAction.md
+docs/PrismaticEventPayloadLoyaltyProfileBasedTierDowngradeNotification.md
+docs/PrismaticEventPayloadLoyaltyProfileBasedTierUpgradeNotification.md
+docs/PrismaticEventRecord.md
 docs/PrismaticFlow.md
 docs/PrismaticFlowConfig.md
+docs/PrismaticFlowConfigResponse.md
+docs/PrismaticFlowResponse.md
 docs/PrismaticFlowWithConfig.md
 docs/PrismaticPaginatedEventPayload.md
 docs/Product.md
@@ -523,6 +534,7 @@ docs/RemoveItemCatalogAction.md
 docs/RemoveManyItemsCatalogAction.md
 docs/ReopenSessionResponse.md
 docs/ReserveCouponEffectProps.md
+docs/ResponseContentObject.md
 docs/ReturnIntegrationRequest.md
 docs/ReturnedCartItem.md
 docs/Revision.md
@@ -614,7 +626,6 @@ docs/TierWillDowngradeNotification.md
 docs/TierWillDowngradeNotificationPolicy.md
 docs/TierWillDowngradeNotificationTrigger.md
 docs/TimePoint.md
-docs/TrackEventV2Response.md
 docs/TransferLoyaltyCard.md
 docs/TriggerWebhookEffectProps.md
 docs/TwoFAConfig.md
@@ -625,6 +636,7 @@ docs/UpdateApplicationAPIKey.md
 docs/UpdateApplicationCIF.md
 docs/UpdateAttributeEffectProps.md
 docs/UpdateAudience.md
+docs/UpdateBlueprint.md
 docs/UpdateCampaign.md
 docs/UpdateCampaignCollection.md
 docs/UpdateCampaignEvaluationGroup.md
@@ -632,7 +644,6 @@ docs/UpdateCampaignGroup.md
 docs/UpdateCampaignTemplate.md
 docs/UpdateCatalog.md
 docs/UpdateCollection.md
-docs/UpdateCollectionsCatalog.md
 docs/UpdateCoupon.md
 docs/UpdateCouponBatch.md
 docs/UpdateCouponsData.md
@@ -642,7 +653,9 @@ docs/UpdateCustomerSessionV2409Response.md
 docs/UpdateExperiment.md
 docs/UpdateExperimentVariant.md
 docs/UpdateExperimentVariantArray.md
+docs/UpdateExperimentVariantName.md
 docs/UpdateLoyaltyCard.md
+docs/UpdateLoyaltyCardRequest.md
 docs/UpdateLoyaltyProgram.md
 docs/UpdateLoyaltyProgramTier.md
 docs/UpdatePicklist.md
@@ -757,6 +770,7 @@ lib/talon_one_sdk/models/best_prior_price_metadata.rb
 lib/talon_one_sdk/models/best_prior_price_request.rb
 lib/talon_one_sdk/models/best_prior_target.rb
 lib/talon_one_sdk/models/binding.rb
+lib/talon_one_sdk/models/blueprint.rb
 lib/talon_one_sdk/models/bulk_application_notification.rb
 lib/talon_one_sdk/models/bulk_operation_on_campaigns.rb
 lib/talon_one_sdk/models/campaign.rb
@@ -828,7 +842,6 @@ lib/talon_one_sdk/models/code_generator_settings.rb
 lib/talon_one_sdk/models/collection.rb
 lib/talon_one_sdk/models/collection_item.rb
 lib/talon_one_sdk/models/collection_without_payload.rb
-lib/talon_one_sdk/models/collections_catalog.rb
 lib/talon_one_sdk/models/coupon.rb
 lib/talon_one_sdk/models/coupon_constraints.rb
 lib/talon_one_sdk/models/coupon_created_effect_props.rb
@@ -842,6 +855,7 @@ lib/talon_one_sdk/models/coupon_rejection_reason.rb
 lib/talon_one_sdk/models/coupon_reservations.rb
 lib/talon_one_sdk/models/coupon_search.rb
 lib/talon_one_sdk/models/coupon_value.rb
+lib/talon_one_sdk/models/coupon_with_application.rb
 lib/talon_one_sdk/models/coupons_notification_data.rb
 lib/talon_one_sdk/models/coupons_notification_policy.rb
 lib/talon_one_sdk/models/create_achievement.rb
@@ -886,6 +900,7 @@ lib/talon_one_sdk/models/error_response_with_status.rb
 lib/talon_one_sdk/models/error_source.rb
 lib/talon_one_sdk/models/evaluable_campaign_ids.rb
 lib/talon_one_sdk/models/event.rb
+lib/talon_one_sdk/models/event_attributes_entity.rb
 lib/talon_one_sdk/models/event_type.rb
 lib/talon_one_sdk/models/event_v2.rb
 lib/talon_one_sdk/models/event_v3.rb
@@ -982,11 +997,13 @@ lib/talon_one_sdk/models/integration_customer_session_response.rb
 lib/talon_one_sdk/models/integration_entity.rb
 lib/talon_one_sdk/models/integration_event.rb
 lib/talon_one_sdk/models/integration_event_v2_request.rb
+lib/talon_one_sdk/models/integration_event_v2_response.rb
 lib/talon_one_sdk/models/integration_event_v3_request.rb
 lib/talon_one_sdk/models/integration_event_v3_response.rb
 lib/talon_one_sdk/models/integration_profile_entity.rb
 lib/talon_one_sdk/models/integration_profile_entity_v3.rb
 lib/talon_one_sdk/models/integration_request.rb
+lib/talon_one_sdk/models/integration_response.rb
 lib/talon_one_sdk/models/integration_state.rb
 lib/talon_one_sdk/models/integration_state_v2.rb
 lib/talon_one_sdk/models/integration_store_entity.rb
@@ -1067,6 +1084,7 @@ lib/talon_one_sdk/models/new_application_cif_expression.rb
 lib/talon_one_sdk/models/new_attribute.rb
 lib/talon_one_sdk/models/new_audience.rb
 lib/talon_one_sdk/models/new_base_notification.rb
+lib/talon_one_sdk/models/new_blueprint.rb
 lib/talon_one_sdk/models/new_campaign.rb
 lib/talon_one_sdk/models/new_campaign_collection.rb
 lib/talon_one_sdk/models/new_campaign_evaluation_group.rb
@@ -1077,7 +1095,6 @@ lib/talon_one_sdk/models/new_campaign_store_budget_store_limit.rb
 lib/talon_one_sdk/models/new_campaign_template.rb
 lib/talon_one_sdk/models/new_catalog.rb
 lib/talon_one_sdk/models/new_collection.rb
-lib/talon_one_sdk/models/new_collections_catalog.rb
 lib/talon_one_sdk/models/new_coupon_creation_job.rb
 lib/talon_one_sdk/models/new_coupon_deletion_job.rb
 lib/talon_one_sdk/models/new_coupons.rb
@@ -1145,6 +1162,7 @@ lib/talon_one_sdk/models/pending_active_points_data.rb
 lib/talon_one_sdk/models/pending_active_points_notification.rb
 lib/talon_one_sdk/models/pending_points_notification_policy.rb
 lib/talon_one_sdk/models/picklist.rb
+lib/talon_one_sdk/models/placeholder_details.rb
 lib/talon_one_sdk/models/price_detail.rb
 lib/talon_one_sdk/models/price_type.rb
 lib/talon_one_sdk/models/price_type_reference_detail.rb
@@ -1152,10 +1170,16 @@ lib/talon_one_sdk/models/price_type_references.rb
 lib/talon_one_sdk/models/prismatic_config.rb
 lib/talon_one_sdk/models/prismatic_event_payload_coupon_based_notifications.rb
 lib/talon_one_sdk/models/prismatic_event_payload_coupon_based_notifications_limits.rb
-lib/talon_one_sdk/models/prismatic_event_payload_loyalty_profile_based_notifications.rb
-lib/talon_one_sdk/models/prismatic_event_payload_loyalty_profile_based_notifications_action.rb
+lib/talon_one_sdk/models/prismatic_event_payload_loyalty_profile_based_notification.rb
+lib/talon_one_sdk/models/prismatic_event_payload_loyalty_profile_based_points_changed_notification.rb
+lib/talon_one_sdk/models/prismatic_event_payload_loyalty_profile_based_points_changed_notification_action.rb
+lib/talon_one_sdk/models/prismatic_event_payload_loyalty_profile_based_tier_downgrade_notification.rb
+lib/talon_one_sdk/models/prismatic_event_payload_loyalty_profile_based_tier_upgrade_notification.rb
+lib/talon_one_sdk/models/prismatic_event_record.rb
 lib/talon_one_sdk/models/prismatic_flow.rb
 lib/talon_one_sdk/models/prismatic_flow_config.rb
+lib/talon_one_sdk/models/prismatic_flow_config_response.rb
+lib/talon_one_sdk/models/prismatic_flow_response.rb
 lib/talon_one_sdk/models/prismatic_flow_with_config.rb
 lib/talon_one_sdk/models/prismatic_paginated_event_payload.rb
 lib/talon_one_sdk/models/product.rb
@@ -1177,6 +1201,7 @@ lib/talon_one_sdk/models/remove_item_catalog_action.rb
 lib/talon_one_sdk/models/remove_many_items_catalog_action.rb
 lib/talon_one_sdk/models/reopen_session_response.rb
 lib/talon_one_sdk/models/reserve_coupon_effect_props.rb
+lib/talon_one_sdk/models/response_content_object.rb
 lib/talon_one_sdk/models/return_integration_request.rb
 lib/talon_one_sdk/models/returned_cart_item.rb
 lib/talon_one_sdk/models/revision.rb
@@ -1268,7 +1293,6 @@ lib/talon_one_sdk/models/tier_will_downgrade_notification.rb
 lib/talon_one_sdk/models/tier_will_downgrade_notification_policy.rb
 lib/talon_one_sdk/models/tier_will_downgrade_notification_trigger.rb
 lib/talon_one_sdk/models/time_point.rb
-lib/talon_one_sdk/models/track_event_v2_response.rb
 lib/talon_one_sdk/models/transfer_loyalty_card.rb
 lib/talon_one_sdk/models/trigger_webhook_effect_props.rb
 lib/talon_one_sdk/models/two_fa_config.rb
@@ -1279,6 +1303,7 @@ lib/talon_one_sdk/models/update_application_api_key.rb
 lib/talon_one_sdk/models/update_application_cif.rb
 lib/talon_one_sdk/models/update_attribute_effect_props.rb
 lib/talon_one_sdk/models/update_audience.rb
+lib/talon_one_sdk/models/update_blueprint.rb
 lib/talon_one_sdk/models/update_campaign.rb
 lib/talon_one_sdk/models/update_campaign_collection.rb
 lib/talon_one_sdk/models/update_campaign_evaluation_group.rb
@@ -1286,7 +1311,6 @@ lib/talon_one_sdk/models/update_campaign_group.rb
 lib/talon_one_sdk/models/update_campaign_template.rb
 lib/talon_one_sdk/models/update_catalog.rb
 lib/talon_one_sdk/models/update_collection.rb
-lib/talon_one_sdk/models/update_collections_catalog.rb
 lib/talon_one_sdk/models/update_coupon.rb
 lib/talon_one_sdk/models/update_coupon_batch.rb
 lib/talon_one_sdk/models/update_coupons_data.rb
@@ -1296,7 +1320,9 @@ lib/talon_one_sdk/models/update_customer_session_v2409_response.rb
 lib/talon_one_sdk/models/update_experiment.rb
 lib/talon_one_sdk/models/update_experiment_variant.rb
 lib/talon_one_sdk/models/update_experiment_variant_array.rb
+lib/talon_one_sdk/models/update_experiment_variant_name.rb
 lib/talon_one_sdk/models/update_loyalty_card.rb
+lib/talon_one_sdk/models/update_loyalty_card_request.rb
 lib/talon_one_sdk/models/update_loyalty_program.rb
 lib/talon_one_sdk/models/update_loyalty_program_tier.rb
 lib/talon_one_sdk/models/update_picklist.rb
@@ -1406,6 +1432,7 @@ spec/models/best_prior_price_request_spec.rb
 spec/models/best_prior_price_spec.rb
 spec/models/best_prior_target_spec.rb
 spec/models/binding_spec.rb
+spec/models/blueprint_spec.rb
 spec/models/bulk_application_notification_spec.rb
 spec/models/bulk_operation_on_campaigns_spec.rb
 spec/models/campaign_activation_request_spec.rb
@@ -1477,7 +1504,6 @@ spec/models/code_generator_settings_spec.rb
 spec/models/collection_item_spec.rb
 spec/models/collection_spec.rb
 spec/models/collection_without_payload_spec.rb
-spec/models/collections_catalog_spec.rb
 spec/models/coupon_constraints_spec.rb
 spec/models/coupon_created_effect_props_spec.rb
 spec/models/coupon_creation_job_spec.rb
@@ -1491,6 +1517,7 @@ spec/models/coupon_reservations_spec.rb
 spec/models/coupon_search_spec.rb
 spec/models/coupon_spec.rb
 spec/models/coupon_value_spec.rb
+spec/models/coupon_with_application_spec.rb
 spec/models/coupons_notification_data_spec.rb
 spec/models/coupons_notification_policy_spec.rb
 spec/models/create_achievement_spec.rb
@@ -1534,6 +1561,7 @@ spec/models/error_response_spec.rb
 spec/models/error_response_with_status_spec.rb
 spec/models/error_source_spec.rb
 spec/models/evaluable_campaign_ids_spec.rb
+spec/models/event_attributes_entity_spec.rb
 spec/models/event_spec.rb
 spec/models/event_type_spec.rb
 spec/models/event_v2_spec.rb
@@ -1631,11 +1659,13 @@ spec/models/integration_customer_session_response_spec.rb
 spec/models/integration_entity_spec.rb
 spec/models/integration_event_spec.rb
 spec/models/integration_event_v2_request_spec.rb
+spec/models/integration_event_v2_response_spec.rb
 spec/models/integration_event_v3_request_spec.rb
 spec/models/integration_event_v3_response_spec.rb
 spec/models/integration_profile_entity_spec.rb
 spec/models/integration_profile_entity_v3_spec.rb
 spec/models/integration_request_spec.rb
+spec/models/integration_response_spec.rb
 spec/models/integration_state_spec.rb
 spec/models/integration_state_v2_spec.rb
 spec/models/integration_store_entity_spec.rb
@@ -1716,6 +1746,7 @@ spec/models/new_application_spec.rb
 spec/models/new_attribute_spec.rb
 spec/models/new_audience_spec.rb
 spec/models/new_base_notification_spec.rb
+spec/models/new_blueprint_spec.rb
 spec/models/new_campaign_collection_spec.rb
 spec/models/new_campaign_evaluation_group_spec.rb
 spec/models/new_campaign_group_spec.rb
@@ -1726,7 +1757,6 @@ spec/models/new_campaign_store_budget_store_limit_spec.rb
 spec/models/new_campaign_template_spec.rb
 spec/models/new_catalog_spec.rb
 spec/models/new_collection_spec.rb
-spec/models/new_collections_catalog_spec.rb
 spec/models/new_coupon_creation_job_spec.rb
 spec/models/new_coupon_deletion_job_spec.rb
 spec/models/new_coupons_for_multiple_recipients_spec.rb
@@ -1794,6 +1824,7 @@ spec/models/pending_active_points_data_spec.rb
 spec/models/pending_active_points_notification_spec.rb
 spec/models/pending_points_notification_policy_spec.rb
 spec/models/picklist_spec.rb
+spec/models/placeholder_details_spec.rb
 spec/models/price_detail_spec.rb
 spec/models/price_type_reference_detail_spec.rb
 spec/models/price_type_references_spec.rb
@@ -1801,9 +1832,15 @@ spec/models/price_type_spec.rb
 spec/models/prismatic_config_spec.rb
 spec/models/prismatic_event_payload_coupon_based_notifications_limits_spec.rb
 spec/models/prismatic_event_payload_coupon_based_notifications_spec.rb
-spec/models/prismatic_event_payload_loyalty_profile_based_notifications_action_spec.rb
-spec/models/prismatic_event_payload_loyalty_profile_based_notifications_spec.rb
+spec/models/prismatic_event_payload_loyalty_profile_based_notification_spec.rb
+spec/models/prismatic_event_payload_loyalty_profile_based_points_changed_notification_action_spec.rb
+spec/models/prismatic_event_payload_loyalty_profile_based_points_changed_notification_spec.rb
+spec/models/prismatic_event_payload_loyalty_profile_based_tier_downgrade_notification_spec.rb
+spec/models/prismatic_event_payload_loyalty_profile_based_tier_upgrade_notification_spec.rb
+spec/models/prismatic_event_record_spec.rb
+spec/models/prismatic_flow_config_response_spec.rb
 spec/models/prismatic_flow_config_spec.rb
+spec/models/prismatic_flow_response_spec.rb
 spec/models/prismatic_flow_spec.rb
 spec/models/prismatic_flow_with_config_spec.rb
 spec/models/prismatic_paginated_event_payload_spec.rb
@@ -1826,6 +1863,7 @@ spec/models/remove_item_catalog_action_spec.rb
 spec/models/remove_many_items_catalog_action_spec.rb
 spec/models/reopen_session_response_spec.rb
 spec/models/reserve_coupon_effect_props_spec.rb
+spec/models/response_content_object_spec.rb
 spec/models/return_integration_request_spec.rb
 spec/models/returned_cart_item_spec.rb
 spec/models/revision_activation_request_spec.rb
@@ -1917,7 +1955,6 @@ spec/models/tier_will_downgrade_notification_policy_spec.rb
 spec/models/tier_will_downgrade_notification_spec.rb
 spec/models/tier_will_downgrade_notification_trigger_spec.rb
 spec/models/time_point_spec.rb
-spec/models/track_event_v2_response_spec.rb
 spec/models/transfer_loyalty_card_spec.rb
 spec/models/trigger_webhook_effect_props_spec.rb
 spec/models/two_fa_config_spec.rb
@@ -1928,6 +1965,7 @@ spec/models/update_application_cif_spec.rb
 spec/models/update_application_spec.rb
 spec/models/update_attribute_effect_props_spec.rb
 spec/models/update_audience_spec.rb
+spec/models/update_blueprint_spec.rb
 spec/models/update_campaign_collection_spec.rb
 spec/models/update_campaign_evaluation_group_spec.rb
 spec/models/update_campaign_group_spec.rb
@@ -1935,7 +1973,6 @@ spec/models/update_campaign_spec.rb
 spec/models/update_campaign_template_spec.rb
 spec/models/update_catalog_spec.rb
 spec/models/update_collection_spec.rb
-spec/models/update_collections_catalog_spec.rb
 spec/models/update_coupon_batch_spec.rb
 spec/models/update_coupon_spec.rb
 spec/models/update_coupons_data_spec.rb
@@ -1944,7 +1981,9 @@ spec/models/update_customer_profile_v2409_response_spec.rb
 spec/models/update_customer_session_v2409_response_spec.rb
 spec/models/update_experiment_spec.rb
 spec/models/update_experiment_variant_array_spec.rb
+spec/models/update_experiment_variant_name_spec.rb
 spec/models/update_experiment_variant_spec.rb
+spec/models/update_loyalty_card_request_spec.rb
 spec/models/update_loyalty_card_spec.rb
 spec/models/update_loyalty_program_spec.rb
 spec/models/update_loyalty_program_tier_spec.rb

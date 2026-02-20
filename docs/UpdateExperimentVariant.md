@@ -7,7 +7,7 @@
 | **id** | **Integer** |  |  |
 | **name** | **String** |  |  |
 | **ruleset** | [**NewRuleset**](NewRuleset.md) |  |  |
-| **weight** | **Integer** |  |  |
+| **weight** | **Integer** | The percentage split of this variant. The sum of all variant percentages must be 100. |  |
 
 ## Example
 
@@ -18,7 +18,7 @@ instance = TalonOne::UpdateExperimentVariant.new(
   id: 10,
   name: Variant A,
   ruleset: null,
-  weight: 12
+  weight: 13
 )
 ```
 
