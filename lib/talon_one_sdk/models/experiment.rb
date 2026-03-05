@@ -24,7 +24,7 @@ module TalonOne
     # The ID of the Application that owns this entity.
     attr_accessor :application_id
 
-    # The source of the assignment. - false - The assignment to the variant is handled internally by the Talon.Oneandled internally by the Talon.One. - true - The assignment to the variant handled externally. 
+    # The source of the assignment. - false - The variant assignment is handled internally by Talon.One. - true - The variant assignment is handled externally. 
     attr_accessor :is_variant_assignment_external
 
     attr_accessor :campaign
@@ -196,6 +196,10 @@ module TalonOne
         invalid_properties.push('invalid value for "application_id", application_id cannot be nil.')
       end
 
+      if @state.nil?
+        invalid_properties.push('invalid value for "state", state cannot be nil.')
+      end
+
       invalid_properties
     end
 
@@ -206,7 +210,8 @@ module TalonOne
       return false if @id.nil?
       return false if @created.nil?
       return false if @application_id.nil?
-      state_validator = EnumAttributeValidator.new('String', ["enabled", "disabled"])
+      return false if @state.nil?
+      state_validator = EnumAttributeValidator.new('String', ["enabled", "disabled", "archived"])
       return false unless state_validator.valid?(@state)
       true
     end
@@ -244,7 +249,7 @@ module TalonOne
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] state Object to be assigned
     def state=(state)
-      validator = EnumAttributeValidator.new('String', ["enabled", "disabled"])
+      validator = EnumAttributeValidator.new('String', ["enabled", "disabled", "archived"])
       unless validator.valid?(state)
         fail ArgumentError, "invalid value for \"state\", must be one of #{validator.allowable_values}."
       end

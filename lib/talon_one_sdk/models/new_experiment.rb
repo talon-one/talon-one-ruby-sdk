@@ -15,45 +15,15 @@ require 'time'
 
 module TalonOne
   class NewExperiment < ApiModelBase
-    # The source of the assignment. - false - The assignment to the variant is handled internally by the Talon.Oneandled internally by the Talon.One. - true - The assignment to the variant handled externally. 
+    # The source of the assignment. - false - The variant assignment is handled internally by Talon.One. - true - The variant assignment is handled externally. 
     attr_accessor :is_variant_assignment_external
 
-    # The date and time the experiment was activated. 
-    attr_accessor :activated
-
-    # A disabled experiment is not evaluated for rules or coupons. 
-    attr_accessor :state
-
     attr_accessor :campaign
-
-    class EnumAttributeValidator
-      attr_reader :datatype
-      attr_reader :allowable_values
-
-      def initialize(datatype, allowable_values)
-        @allowable_values = allowable_values.map do |value|
-          case datatype.to_s
-          when /Integer/i
-            value.to_i
-          when /Float/i
-            value.to_f
-          else
-            value
-          end
-        end
-      end
-
-      def valid?(value)
-        !value || allowable_values.include?(value)
-      end
-    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'is_variant_assignment_external' => :'isVariantAssignmentExternal',
-        :'activated' => :'activated',
-        :'state' => :'state',
         :'campaign' => :'campaign'
       }
     end
@@ -72,8 +42,6 @@ module TalonOne
     def self.openapi_types
       {
         :'is_variant_assignment_external' => :'Boolean',
-        :'activated' => :'Time',
-        :'state' => :'String',
         :'campaign' => :'NewCampaign'
       }
     end
@@ -106,16 +74,6 @@ module TalonOne
         self.is_variant_assignment_external = nil
       end
 
-      if attributes.key?(:'activated')
-        self.activated = attributes[:'activated']
-      end
-
-      if attributes.key?(:'state')
-        self.state = attributes[:'state']
-      else
-        self.state = 'disabled'
-      end
-
       if attributes.key?(:'campaign')
         self.campaign = attributes[:'campaign']
       else
@@ -144,8 +102,6 @@ module TalonOne
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
       return false if @is_variant_assignment_external.nil?
-      state_validator = EnumAttributeValidator.new('String', ["enabled", "disabled"])
-      return false unless state_validator.valid?(@state)
       return false if @campaign.nil?
       true
     end
@@ -158,16 +114,6 @@ module TalonOne
       end
 
       @is_variant_assignment_external = is_variant_assignment_external
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] state Object to be assigned
-    def state=(state)
-      validator = EnumAttributeValidator.new('String', ["enabled", "disabled"])
-      unless validator.valid?(state)
-        fail ArgumentError, "invalid value for \"state\", must be one of #{validator.allowable_values}."
-      end
-      @state = state
     end
 
     # Custom attribute writer method with validation
@@ -186,8 +132,6 @@ module TalonOne
       return true if self.equal?(o)
       self.class == o.class &&
           is_variant_assignment_external == o.is_variant_assignment_external &&
-          activated == o.activated &&
-          state == o.state &&
           campaign == o.campaign
     end
 
@@ -200,7 +144,7 @@ module TalonOne
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [is_variant_assignment_external, activated, state, campaign].hash
+      [is_variant_assignment_external, campaign].hash
     end
 
     # Builds the object from hash
