@@ -17,6 +17,7 @@ module TalonOne
   class UpdateExperimentVariant < ApiModelBase
     attr_accessor :id
 
+    # The name of this variant.
     attr_accessor :name
 
     attr_accessor :ruleset
@@ -114,6 +115,14 @@ module TalonOne
         invalid_properties.push('invalid value for "name", name cannot be nil.')
       end
 
+      if @name.to_s.length > 255
+        invalid_properties.push('invalid value for "name", the character length must be smaller than or equal to 255.')
+      end
+
+      if @name.to_s.length < 1
+        invalid_properties.push('invalid value for "name", the character length must be greater than or equal to 1.')
+      end
+
       if @ruleset.nil?
         invalid_properties.push('invalid value for "ruleset", ruleset cannot be nil.')
       end
@@ -139,6 +148,8 @@ module TalonOne
       warn '[DEPRECATED] the `valid?` method is obsolete'
       return false if @id.nil?
       return false if @name.nil?
+      return false if @name.to_s.length > 255
+      return false if @name.to_s.length < 1
       return false if @ruleset.nil?
       return false if @weight.nil?
       return false if @weight > 99
@@ -161,6 +172,14 @@ module TalonOne
     def name=(name)
       if name.nil?
         fail ArgumentError, 'name cannot be nil'
+      end
+
+      if name.to_s.length > 255
+        fail ArgumentError, 'invalid value for "name", the character length must be smaller than or equal to 255.'
+      end
+
+      if name.to_s.length < 1
+        fail ArgumentError, 'invalid value for "name", the character length must be greater than or equal to 1.'
       end
 
       @name = name

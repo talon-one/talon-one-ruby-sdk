@@ -1955,6 +1955,74 @@ module TalonOne
       return data, status_code, headers
     end
 
+    # Get summary of price history
+    # Fetch the historical price data for a given SKU within a defined timeframe. 
+    # @param price_history_request [PriceHistoryRequest] body
+    # @param [Hash] opts the optional parameters
+    # @return [PriceHistoryResponse]
+    def price_history(price_history_request, opts = {})
+      data, _status_code, _headers = price_history_with_http_info(price_history_request, opts)
+      data
+    end
+
+    # Get summary of price history
+    # Fetch the historical price data for a given SKU within a defined timeframe. 
+    # @param price_history_request [PriceHistoryRequest] body
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(PriceHistoryResponse, Integer, Hash)>] PriceHistoryResponse data, response status code and response headers
+    def price_history_with_http_info(price_history_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: IntegrationApi.price_history ...'
+      end
+      # verify the required parameter 'price_history_request' is set
+      if @api_client.config.client_side_validation && price_history_request.nil?
+        fail ArgumentError, "Missing the required parameter 'price_history_request' when calling IntegrationApi.price_history"
+      end
+      # resource path
+      local_var_path = '/v1/best_prior_price_history'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(price_history_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'PriceHistoryResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['management_key', 'manager_auth', 'api_key_v1']
+
+      new_options = opts.merge(
+        :operation => :"IntegrationApi.price_history",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: IntegrationApi#price_history\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Reopen customer session
     # Reopen a closed [customer session](https://docs.talon.one/docs/dev/concepts/entities/customer-sessions). For example, if a session has been completed but still needs to be edited, you can reopen it with this endpoint. A reopen session is treated like a standard open session.  When reopening a session: - The `talon_session_reopened` event is triggered. You can see it in the **Events** view in the Campaign Manager. - The session state is updated to `open`. - Any modified budgets and triggered effects are rolled back when the session closes. - Depending on the [return policy](https://docs.talon.one/docs/product/loyalty-programs/managing-loyalty-programs#return-policy)  in your loyalty programs, points are rolled back in the following ways:   - Pending points are rolled back automatically.   - If **Active points deduction** setting is enabled, any points that were earned and activated when the session closed    are rolled back.   - If **Negative balance** is enabled, the rollback can create a negative points balance.   <details>   <summary><strong>Effects and budgets unimpacted by a session reopening</strong></summary>   <div>     <p>The following effects and budgets remain in the state they were in when the session closed:</p>     <ul>       <li>Add free item effect</li>       <li>Award giveaway</li>       <li>Coupon and referral creation</li>       <li>Coupon reservation</li>       <li>Custom effect</li>       <li>Update attribute value</li>       <li>Update cart item attribute value</li>     </ul>   </div>   </details> <p>To see an example of a rollback, see the <a href=\"https://docs.talon.one/docs/dev/tutorials/rolling-back-effects\">Cancelling a session with campaign budgets</a> tutorial.</p>  **Note:** If your order workflow requires you to create a new session instead of reopening a session, use the [Update customer session](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/updateCustomerSessionV2) endpoint to cancel a closed session and create a new one. 
     # @param customer_session_id [String] The &#x60;integration ID&#x60; of the customer session. You set this ID when you create a customer session.  You can see existing customer session integration IDs in the Campaign Manager&#39;s **Sessions** menu, or via the [List Application session](https://docs.talon.one/management-api#operation/getApplicationSessions) endpoint. 

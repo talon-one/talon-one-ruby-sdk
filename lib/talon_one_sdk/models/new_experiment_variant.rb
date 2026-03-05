@@ -111,13 +111,12 @@ module TalonOne
         invalid_properties.push('invalid value for "name", name cannot be nil.')
       end
 
-      if @name.to_s.length < 1
-        invalid_properties.push('invalid value for "name", the character length must be greater than or equal to 1.')
+      if @name.to_s.length > 255
+        invalid_properties.push('invalid value for "name", the character length must be smaller than or equal to 255.')
       end
 
-      pattern = Regexp.new(/^[A-Za-z](\w|\s)*$/)
-      if @name !~ pattern
-        invalid_properties.push("invalid value for \"name\", must conform to the pattern #{pattern}.")
+      if @name.to_s.length < 1
+        invalid_properties.push('invalid value for "name", the character length must be greater than or equal to 1.')
       end
 
       if @weight.nil?
@@ -148,8 +147,8 @@ module TalonOne
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
       return false if @name.nil?
+      return false if @name.to_s.length > 255
       return false if @name.to_s.length < 1
-      return false if @name !~ Regexp.new(/^[A-Za-z](\w|\s)*$/)
       return false if @weight.nil?
       return false if @weight > 99
       return false if @weight < 1
@@ -165,13 +164,12 @@ module TalonOne
         fail ArgumentError, 'name cannot be nil'
       end
 
-      if name.to_s.length < 1
-        fail ArgumentError, 'invalid value for "name", the character length must be greater than or equal to 1.'
+      if name.to_s.length > 255
+        fail ArgumentError, 'invalid value for "name", the character length must be smaller than or equal to 255.'
       end
 
-      pattern = Regexp.new(/^[A-Za-z](\w|\s)*$/)
-      if name !~ pattern
-        fail ArgumentError, "invalid value for \"name\", must conform to the pattern #{pattern}."
+      if name.to_s.length < 1
+        fail ArgumentError, 'invalid value for "name", the character length must be greater than or equal to 1.'
       end
 
       @name = name

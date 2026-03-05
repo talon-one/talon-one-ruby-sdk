@@ -28,6 +28,7 @@ All URIs are relative to *https://yourbaseurl.talon.one*
 | [**get_loyalty_program_profile_transactions**](IntegrationApi.md#get_loyalty_program_profile_transactions) | **GET** /v1/loyalty_programs/{loyaltyProgramId}/profile/{integrationId}/transactions | List customer&#39;s loyalty transactions |
 | [**get_reserved_customers**](IntegrationApi.md#get_reserved_customers) | **GET** /v1/coupon_reservations/customerprofiles/{couponValue} | List customers that have this coupon reserved |
 | [**link_loyalty_card_to_profile**](IntegrationApi.md#link_loyalty_card_to_profile) | **POST** /v2/loyalty_programs/{loyaltyProgramId}/cards/{loyaltyCardId}/link_profile | Link customer profile to card |
+| [**price_history**](IntegrationApi.md#price_history) | **POST** /v1/best_prior_price_history | Get summary of price history |
 | [**reopen_customer_session**](IntegrationApi.md#reopen_customer_session) | **PUT** /v2/customer_sessions/{customerSessionId}/reopen | Reopen customer session |
 | [**return_cart_items**](IntegrationApi.md#return_cart_items) | **POST** /v2/customer_sessions/{customerSessionId}/returns | Return cart items |
 | [**sync_catalog**](IntegrationApi.md#sync_catalog) | **PUT** /v1/catalogs/{catalogId}/sync | Sync cart item catalog |
@@ -1905,6 +1906,87 @@ end
 ### Authorization
 
 [api_key_v1](../README.md#api_key_v1)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## price_history
+
+> <PriceHistoryResponse> price_history(price_history_request)
+
+Get summary of price history
+
+Fetch the historical price data for a given SKU within a defined timeframe. 
+
+### Examples
+
+```ruby
+require 'time'
+require 'talon_one_sdk'
+# setup authorization
+TalonOne.configure do |config|
+  # Configure API key authorization: management_key
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure API key authorization: manager_auth
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure API key authorization: api_key_v1
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+end
+
+api_instance = TalonOne::IntegrationApi.new
+price_history_request = TalonOne::PriceHistoryRequest.new({sku: '[sku-124]', start_date: Time.parse('2020-11-10T23:00:00Z'), end_date: Time.parse('2020-12-10T23:00:00Z')}) # PriceHistoryRequest | body
+
+begin
+  # Get summary of price history
+  result = api_instance.price_history(price_history_request)
+  p result
+rescue TalonOne::ApiError => e
+  puts "Error when calling IntegrationApi->price_history: #{e}"
+end
+```
+
+#### Using the price_history_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<PriceHistoryResponse>, Integer, Hash)> price_history_with_http_info(price_history_request)
+
+```ruby
+begin
+  # Get summary of price history
+  data, status_code, headers = api_instance.price_history_with_http_info(price_history_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <PriceHistoryResponse>
+rescue TalonOne::ApiError => e
+  puts "Error when calling IntegrationApi->price_history_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **price_history_request** | [**PriceHistoryRequest**](PriceHistoryRequest.md) | body |  |
+
+### Return type
+
+[**PriceHistoryResponse**](PriceHistoryResponse.md)
+
+### Authorization
+
+[management_key](../README.md#management_key), [manager_auth](../README.md#manager_auth), [api_key_v1](../README.md#api_key_v1)
 
 ### HTTP request headers
 

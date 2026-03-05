@@ -15,10 +15,13 @@ require 'time'
 
 module TalonOne
   class BestPriorPrice < ApiModelBase
+    # The ID of the historical price.
+    attr_accessor :id
+
     # sku
     attr_accessor :sku
 
-    # The date and time when the best price was observed.
+    # The date and time when the price was observed.
     attr_accessor :observed_at
 
     # The context ID of the context active at the time of observation. 
@@ -34,6 +37,7 @@ module TalonOne
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'id' => :'id',
         :'sku' => :'sku',
         :'observed_at' => :'observedAt',
         :'context_id' => :'contextId',
@@ -56,6 +60,7 @@ module TalonOne
     # Attribute type mapping.
     def self.openapi_types
       {
+        :'id' => :'Integer',
         :'sku' => :'String',
         :'observed_at' => :'Time',
         :'context_id' => :'String',
@@ -86,6 +91,12 @@ module TalonOne
         end
         h[k.to_sym] = v
       }
+
+      if attributes.key?(:'id')
+        self.id = attributes[:'id']
+      else
+        self.id = nil
+      end
 
       if attributes.key?(:'sku')
         self.sku = attributes[:'sku']
@@ -129,6 +140,10 @@ module TalonOne
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
+      if @id.nil?
+        invalid_properties.push('invalid value for "id", id cannot be nil.')
+      end
+
       if @sku.nil?
         invalid_properties.push('invalid value for "sku", sku cannot be nil.')
       end
@@ -160,6 +175,7 @@ module TalonOne
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
+      return false if @id.nil?
       return false if @sku.nil?
       return false if @observed_at.nil?
       return false if @context_id.nil?
@@ -167,6 +183,16 @@ module TalonOne
       return false if @metadata.nil?
       return false if @target.nil?
       true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] id Value to be assigned
+    def id=(id)
+      if id.nil?
+        fail ArgumentError, 'id cannot be nil'
+      end
+
+      @id = id
     end
 
     # Custom attribute writer method with validation
@@ -234,6 +260,7 @@ module TalonOne
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          id == o.id &&
           sku == o.sku &&
           observed_at == o.observed_at &&
           context_id == o.context_id &&
@@ -251,7 +278,7 @@ module TalonOne
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [sku, observed_at, context_id, price, metadata, target].hash
+      [id, sku, observed_at, context_id, price, metadata, target].hash
     end
 
     # Builds the object from hash

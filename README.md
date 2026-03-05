@@ -16,7 +16,7 @@ See our [migration guide](MIGRATION.md).
 Add this to the Gemfile:
 
 ```shell
-gem 'talon_one_sdk', '~> 26.04'
+gem 'talon_one_sdk', '~> 26.05'
 ```
 
 ### Build a gem
@@ -32,10 +32,10 @@ gem build talon_one_sdk.gemspec
 To install the gem locally:
 
 ```shell
-gem install ./talon_one_sdk-26.04.gem
+gem install ./talon_one_sdk-26.05.gem
 ```
 
-For development, run `gem install --dev ./talon_one_sdk-26.04.gem` to install the development dependencies.
+For development, run `gem install --dev ./talon_one_sdk-26.05.gem` to install the development dependencies.
 
 ### RubyGems
 
@@ -204,6 +204,7 @@ Class | Method | HTTP request | Description
 *TalonOne::IntegrationApi* | [**get_loyalty_program_profile_transactions**](docs/IntegrationApi.md#get_loyalty_program_profile_transactions) | **GET** /v1/loyalty_programs/{loyaltyProgramId}/profile/{integrationId}/transactions | List customer's loyalty transactions
 *TalonOne::IntegrationApi* | [**get_reserved_customers**](docs/IntegrationApi.md#get_reserved_customers) | **GET** /v1/coupon_reservations/customerprofiles/{couponValue} | List customers that have this coupon reserved
 *TalonOne::IntegrationApi* | [**link_loyalty_card_to_profile**](docs/IntegrationApi.md#link_loyalty_card_to_profile) | **POST** /v2/loyalty_programs/{loyaltyProgramId}/cards/{loyaltyCardId}/link_profile | Link customer profile to card
+*TalonOne::IntegrationApi* | [**price_history**](docs/IntegrationApi.md#price_history) | **POST** /v1/best_prior_price_history | Get summary of price history
 *TalonOne::IntegrationApi* | [**reopen_customer_session**](docs/IntegrationApi.md#reopen_customer_session) | **PUT** /v2/customer_sessions/{customerSessionId}/reopen | Reopen customer session
 *TalonOne::IntegrationApi* | [**return_cart_items**](docs/IntegrationApi.md#return_cart_items) | **POST** /v2/customer_sessions/{customerSessionId}/returns | Return cart items
 *TalonOne::IntegrationApi* | [**sync_catalog**](docs/IntegrationApi.md#sync_catalog) | **PUT** /v1/catalogs/{catalogId}/sync | Sync cart item catalog
@@ -254,6 +255,7 @@ Class | Method | HTTP request | Description
 *TalonOne::ManagementApi* | [**disconnect_campaign_stores**](docs/ManagementApi.md#disconnect_campaign_stores) | **DELETE** /v1/applications/{applicationId}/campaigns/{campaignId}/stores | Disconnect stores
 *TalonOne::ManagementApi* | [**export_account_collection_items**](docs/ManagementApi.md#export_account_collection_items) | **GET** /v1/collections/{collectionId}/export | Export account-level collection's items
 *TalonOne::ManagementApi* | [**export_achievements**](docs/ManagementApi.md#export_achievements) | **GET** /v1/applications/{applicationId}/campaigns/{campaignId}/achievements/{achievementId}/export | Export achievement customer data
+*TalonOne::ManagementApi* | [**export_application_campaign_analytics**](docs/ManagementApi.md#export_application_campaign_analytics) | **GET** /v1/applications/{applicationId}/campaign_analytics/export | Export Application analytics aggregated by campaign
 *TalonOne::ManagementApi* | [**export_audiences_memberships**](docs/ManagementApi.md#export_audiences_memberships) | **GET** /v1/audiences/{audienceId}/memberships/export | Export audience members
 *TalonOne::ManagementApi* | [**export_campaign_store_budgets**](docs/ManagementApi.md#export_campaign_store_budgets) | **GET** /v1/applications/{applicationId}/campaigns/{campaignId}/stores/budgets/export | Export campaign store budgets
 *TalonOne::ManagementApi* | [**export_campaign_stores**](docs/ManagementApi.md#export_campaign_stores) | **GET** /v1/applications/{applicationId}/campaigns/{campaignId}/stores/export | Export stores
@@ -267,6 +269,7 @@ Class | Method | HTTP request | Description
 *TalonOne::ManagementApi* | [**export_loyalty_card_balances**](docs/ManagementApi.md#export_loyalty_card_balances) | **GET** /v1/loyalty_programs/{loyaltyProgramId}/export_card_balances | Export all card transaction logs
 *TalonOne::ManagementApi* | [**export_loyalty_card_ledger**](docs/ManagementApi.md#export_loyalty_card_ledger) | **GET** /v1/loyalty_programs/{loyaltyProgramId}/cards/{loyaltyCardId}/export_log | Export card's ledger log
 *TalonOne::ManagementApi* | [**export_loyalty_cards**](docs/ManagementApi.md#export_loyalty_cards) | **GET** /v1/loyalty_programs/{loyaltyProgramId}/cards/export | Export loyalty cards
+*TalonOne::ManagementApi* | [**export_loyalty_join_dates**](docs/ManagementApi.md#export_loyalty_join_dates) | **GET** /v1/loyalty_programs/{loyaltyProgramId}/export_join_dates | Export customers' loyalty program join dates
 *TalonOne::ManagementApi* | [**export_loyalty_ledger**](docs/ManagementApi.md#export_loyalty_ledger) | **GET** /v1/loyalty_programs/{loyaltyProgramId}/profile/{integrationId}/export_log | Export customer's transaction logs
 *TalonOne::ManagementApi* | [**export_pool_giveaways**](docs/ManagementApi.md#export_pool_giveaways) | **GET** /v1/giveaways/pools/{poolId}/export | Export giveaway codes of a giveaway pool
 *TalonOne::ManagementApi* | [**export_referrals**](docs/ManagementApi.md#export_referrals) | **GET** /v1/applications/{applicationId}/export_referrals | Export referrals
@@ -314,6 +317,7 @@ Class | Method | HTTP request | Description
 *TalonOne::ManagementApi* | [**get_customers_by_attributes**](docs/ManagementApi.md#get_customers_by_attributes) | **POST** /v1/customer_search/no_total | List customer profiles matching the given attributes
 *TalonOne::ManagementApi* | [**get_dashboard_statistics**](docs/ManagementApi.md#get_dashboard_statistics) | **GET** /v1/loyalty_programs/{loyaltyProgramId}/dashboard | Get statistics for loyalty dashboard
 *TalonOne::ManagementApi* | [**get_event_types**](docs/ManagementApi.md#get_event_types) | **GET** /v1/event_types | List event types
+*TalonOne::ManagementApi* | [**get_experiment**](docs/ManagementApi.md#get_experiment) | **GET** /v1/applications/{applicationId}/experiments/{experimentId} | Get experiment in Application
 *TalonOne::ManagementApi* | [**get_exports**](docs/ManagementApi.md#get_exports) | **GET** /v1/exports | Get exports
 *TalonOne::ManagementApi* | [**get_loyalty_card**](docs/ManagementApi.md#get_loyalty_card) | **GET** /v1/loyalty_programs/{loyaltyProgramId}/cards/{loyaltyCardId} | Get loyalty card
 *TalonOne::ManagementApi* | [**get_loyalty_card_transaction_logs**](docs/ManagementApi.md#get_loyalty_card_transaction_logs) | **GET** /v1/loyalty_programs/{loyaltyProgramId}/cards/{loyaltyCardId}/logs | List card's transactions
@@ -355,6 +359,7 @@ Class | Method | HTTP request | Description
 *TalonOne::ManagementApi* | [**list_catalog_items**](docs/ManagementApi.md#list_catalog_items) | **GET** /v1/catalogs/{catalogId}/items | List items in a catalog
 *TalonOne::ManagementApi* | [**list_collections**](docs/ManagementApi.md#list_collections) | **GET** /v1/applications/{applicationId}/campaigns/{campaignId}/collections | List collections in campaign
 *TalonOne::ManagementApi* | [**list_collections_in_application**](docs/ManagementApi.md#list_collections_in_application) | **GET** /v1/applications/{applicationId}/collections | List collections in Application
+*TalonOne::ManagementApi* | [**list_experiments**](docs/ManagementApi.md#list_experiments) | **GET** /v1/applications/{applicationId}/experiments | List experiments
 *TalonOne::ManagementApi* | [**list_stores**](docs/ManagementApi.md#list_stores) | **GET** /v1/applications/{applicationId}/stores | List stores
 *TalonOne::ManagementApi* | [**okta_event_handler_challenge**](docs/ManagementApi.md#okta_event_handler_challenge) | **GET** /v1/provisioning/okta | Validate Okta API ownership
 *TalonOne::ManagementApi* | [**remove_loyalty_points**](docs/ManagementApi.md#remove_loyalty_points) | **PUT** /v1/loyalty_programs/{loyaltyProgramId}/profile/{integrationId}/deduct_points | Deduct points from customer profile
@@ -616,6 +621,9 @@ Class | Method | HTTP request | Description
 - [TalonOne::EventV2](docs/EventV2.md)
 - [TalonOne::EventV3](docs/EventV3.md)
 - [TalonOne::Experiment](docs/Experiment.md)
+- [TalonOne::ExperimentCampaignCopy](docs/ExperimentCampaignCopy.md)
+- [TalonOne::ExperimentCopy](docs/ExperimentCopy.md)
+- [TalonOne::ExperimentCopyExperiment](docs/ExperimentCopyExperiment.md)
 - [TalonOne::ExperimentResults](docs/ExperimentResults.md)
 - [TalonOne::ExperimentVariant](docs/ExperimentVariant.md)
 - [TalonOne::ExperimentVariantAllocation](docs/ExperimentVariantAllocation.md)
@@ -696,6 +704,7 @@ Class | Method | HTTP request | Description
 - [TalonOne::Giveaway](docs/Giveaway.md)
 - [TalonOne::GiveawaysPool](docs/GiveawaysPool.md)
 - [TalonOne::HiddenConditionsEffects](docs/HiddenConditionsEffects.md)
+- [TalonOne::History](docs/History.md)
 - [TalonOne::IdentifiableEntity](docs/IdentifiableEntity.md)
 - [TalonOne::Import](docs/Import.md)
 - [TalonOne::ImportEntity](docs/ImportEntity.md)
@@ -711,6 +720,21 @@ Class | Method | HTTP request | Description
 - [TalonOne::IntegrationEventV2Response](docs/IntegrationEventV2Response.md)
 - [TalonOne::IntegrationEventV3Request](docs/IntegrationEventV3Request.md)
 - [TalonOne::IntegrationEventV3Response](docs/IntegrationEventV3Response.md)
+- [TalonOne::IntegrationHubConfig](docs/IntegrationHubConfig.md)
+- [TalonOne::IntegrationHubEventPayloadCouponBasedNotifications](docs/IntegrationHubEventPayloadCouponBasedNotifications.md)
+- [TalonOne::IntegrationHubEventPayloadCouponBasedNotificationsLimits](docs/IntegrationHubEventPayloadCouponBasedNotificationsLimits.md)
+- [TalonOne::IntegrationHubEventPayloadLoyaltyProfileBasedNotification](docs/IntegrationHubEventPayloadLoyaltyProfileBasedNotification.md)
+- [TalonOne::IntegrationHubEventPayloadLoyaltyProfileBasedPointsChangedNotification](docs/IntegrationHubEventPayloadLoyaltyProfileBasedPointsChangedNotification.md)
+- [TalonOne::IntegrationHubEventPayloadLoyaltyProfileBasedPointsChangedNotificationAction](docs/IntegrationHubEventPayloadLoyaltyProfileBasedPointsChangedNotificationAction.md)
+- [TalonOne::IntegrationHubEventPayloadLoyaltyProfileBasedTierDowngradeNotification](docs/IntegrationHubEventPayloadLoyaltyProfileBasedTierDowngradeNotification.md)
+- [TalonOne::IntegrationHubEventPayloadLoyaltyProfileBasedTierUpgradeNotification](docs/IntegrationHubEventPayloadLoyaltyProfileBasedTierUpgradeNotification.md)
+- [TalonOne::IntegrationHubEventRecord](docs/IntegrationHubEventRecord.md)
+- [TalonOne::IntegrationHubFlow](docs/IntegrationHubFlow.md)
+- [TalonOne::IntegrationHubFlowConfig](docs/IntegrationHubFlowConfig.md)
+- [TalonOne::IntegrationHubFlowConfigResponse](docs/IntegrationHubFlowConfigResponse.md)
+- [TalonOne::IntegrationHubFlowResponse](docs/IntegrationHubFlowResponse.md)
+- [TalonOne::IntegrationHubFlowWithConfig](docs/IntegrationHubFlowWithConfig.md)
+- [TalonOne::IntegrationHubPaginatedEventPayload](docs/IntegrationHubPaginatedEventPayload.md)
 - [TalonOne::IntegrationProfileEntity](docs/IntegrationProfileEntity.md)
 - [TalonOne::IntegrationProfileEntityV3](docs/IntegrationProfileEntityV3.md)
 - [TalonOne::IntegrationRequest](docs/IntegrationRequest.md)
@@ -737,6 +761,7 @@ Class | Method | HTTP request | Description
 - [TalonOne::ListCampaignStoreBudgets](docs/ListCampaignStoreBudgets.md)
 - [TalonOne::ListCampaignStoreBudgetsStore](docs/ListCampaignStoreBudgetsStore.md)
 - [TalonOne::ListCatalogItems200Response](docs/ListCatalogItems200Response.md)
+- [TalonOne::ListExperiments200Response](docs/ListExperiments200Response.md)
 - [TalonOne::ListStores200Response](docs/ListStores200Response.md)
 - [TalonOne::LoginParams](docs/LoginParams.md)
 - [TalonOne::Loyalty](docs/Loyalty.md)
@@ -875,24 +900,11 @@ Class | Method | HTTP request | Description
 - [TalonOne::Picklist](docs/Picklist.md)
 - [TalonOne::PlaceholderDetails](docs/PlaceholderDetails.md)
 - [TalonOne::PriceDetail](docs/PriceDetail.md)
+- [TalonOne::PriceHistoryRequest](docs/PriceHistoryRequest.md)
+- [TalonOne::PriceHistoryResponse](docs/PriceHistoryResponse.md)
 - [TalonOne::PriceType](docs/PriceType.md)
 - [TalonOne::PriceTypeReferenceDetail](docs/PriceTypeReferenceDetail.md)
 - [TalonOne::PriceTypeReferences](docs/PriceTypeReferences.md)
-- [TalonOne::PrismaticConfig](docs/PrismaticConfig.md)
-- [TalonOne::PrismaticEventPayloadCouponBasedNotifications](docs/PrismaticEventPayloadCouponBasedNotifications.md)
-- [TalonOne::PrismaticEventPayloadCouponBasedNotificationsLimits](docs/PrismaticEventPayloadCouponBasedNotificationsLimits.md)
-- [TalonOne::PrismaticEventPayloadLoyaltyProfileBasedNotification](docs/PrismaticEventPayloadLoyaltyProfileBasedNotification.md)
-- [TalonOne::PrismaticEventPayloadLoyaltyProfileBasedPointsChangedNotification](docs/PrismaticEventPayloadLoyaltyProfileBasedPointsChangedNotification.md)
-- [TalonOne::PrismaticEventPayloadLoyaltyProfileBasedPointsChangedNotificationAction](docs/PrismaticEventPayloadLoyaltyProfileBasedPointsChangedNotificationAction.md)
-- [TalonOne::PrismaticEventPayloadLoyaltyProfileBasedTierDowngradeNotification](docs/PrismaticEventPayloadLoyaltyProfileBasedTierDowngradeNotification.md)
-- [TalonOne::PrismaticEventPayloadLoyaltyProfileBasedTierUpgradeNotification](docs/PrismaticEventPayloadLoyaltyProfileBasedTierUpgradeNotification.md)
-- [TalonOne::PrismaticEventRecord](docs/PrismaticEventRecord.md)
-- [TalonOne::PrismaticFlow](docs/PrismaticFlow.md)
-- [TalonOne::PrismaticFlowConfig](docs/PrismaticFlowConfig.md)
-- [TalonOne::PrismaticFlowConfigResponse](docs/PrismaticFlowConfigResponse.md)
-- [TalonOne::PrismaticFlowResponse](docs/PrismaticFlowResponse.md)
-- [TalonOne::PrismaticFlowWithConfig](docs/PrismaticFlowWithConfig.md)
-- [TalonOne::PrismaticPaginatedEventPayload](docs/PrismaticPaginatedEventPayload.md)
 - [TalonOne::Product](docs/Product.md)
 - [TalonOne::ProductSearchMatch](docs/ProductSearchMatch.md)
 - [TalonOne::ProductUnitAnalytics](docs/ProductUnitAnalytics.md)
@@ -900,6 +912,7 @@ Class | Method | HTTP request | Description
 - [TalonOne::ProductUnitAnalyticsTotals](docs/ProductUnitAnalyticsTotals.md)
 - [TalonOne::ProfileAudiencesChanges](docs/ProfileAudiencesChanges.md)
 - [TalonOne::ProjectedTier](docs/ProjectedTier.md)
+- [TalonOne::PromoteExperiment](docs/PromoteExperiment.md)
 - [TalonOne::RedeemReferralEffectProps](docs/RedeemReferralEffectProps.md)
 - [TalonOne::Referral](docs/Referral.md)
 - [TalonOne::ReferralConstraints](docs/ReferralConstraints.md)

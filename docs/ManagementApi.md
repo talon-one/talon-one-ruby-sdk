@@ -43,6 +43,7 @@ All URIs are relative to *https://yourbaseurl.talon.one*
 | [**disconnect_campaign_stores**](ManagementApi.md#disconnect_campaign_stores) | **DELETE** /v1/applications/{applicationId}/campaigns/{campaignId}/stores | Disconnect stores |
 | [**export_account_collection_items**](ManagementApi.md#export_account_collection_items) | **GET** /v1/collections/{collectionId}/export | Export account-level collection&#39;s items |
 | [**export_achievements**](ManagementApi.md#export_achievements) | **GET** /v1/applications/{applicationId}/campaigns/{campaignId}/achievements/{achievementId}/export | Export achievement customer data |
+| [**export_application_campaign_analytics**](ManagementApi.md#export_application_campaign_analytics) | **GET** /v1/applications/{applicationId}/campaign_analytics/export | Export Application analytics aggregated by campaign |
 | [**export_audiences_memberships**](ManagementApi.md#export_audiences_memberships) | **GET** /v1/audiences/{audienceId}/memberships/export | Export audience members |
 | [**export_campaign_store_budgets**](ManagementApi.md#export_campaign_store_budgets) | **GET** /v1/applications/{applicationId}/campaigns/{campaignId}/stores/budgets/export | Export campaign store budgets |
 | [**export_campaign_stores**](ManagementApi.md#export_campaign_stores) | **GET** /v1/applications/{applicationId}/campaigns/{campaignId}/stores/export | Export stores |
@@ -56,6 +57,7 @@ All URIs are relative to *https://yourbaseurl.talon.one*
 | [**export_loyalty_card_balances**](ManagementApi.md#export_loyalty_card_balances) | **GET** /v1/loyalty_programs/{loyaltyProgramId}/export_card_balances | Export all card transaction logs |
 | [**export_loyalty_card_ledger**](ManagementApi.md#export_loyalty_card_ledger) | **GET** /v1/loyalty_programs/{loyaltyProgramId}/cards/{loyaltyCardId}/export_log | Export card&#39;s ledger log |
 | [**export_loyalty_cards**](ManagementApi.md#export_loyalty_cards) | **GET** /v1/loyalty_programs/{loyaltyProgramId}/cards/export | Export loyalty cards |
+| [**export_loyalty_join_dates**](ManagementApi.md#export_loyalty_join_dates) | **GET** /v1/loyalty_programs/{loyaltyProgramId}/export_join_dates | Export customers&#39; loyalty program join dates |
 | [**export_loyalty_ledger**](ManagementApi.md#export_loyalty_ledger) | **GET** /v1/loyalty_programs/{loyaltyProgramId}/profile/{integrationId}/export_log | Export customer&#39;s transaction logs |
 | [**export_pool_giveaways**](ManagementApi.md#export_pool_giveaways) | **GET** /v1/giveaways/pools/{poolId}/export | Export giveaway codes of a giveaway pool |
 | [**export_referrals**](ManagementApi.md#export_referrals) | **GET** /v1/applications/{applicationId}/export_referrals | Export referrals |
@@ -103,6 +105,7 @@ All URIs are relative to *https://yourbaseurl.talon.one*
 | [**get_customers_by_attributes**](ManagementApi.md#get_customers_by_attributes) | **POST** /v1/customer_search/no_total | List customer profiles matching the given attributes |
 | [**get_dashboard_statistics**](ManagementApi.md#get_dashboard_statistics) | **GET** /v1/loyalty_programs/{loyaltyProgramId}/dashboard | Get statistics for loyalty dashboard |
 | [**get_event_types**](ManagementApi.md#get_event_types) | **GET** /v1/event_types | List event types |
+| [**get_experiment**](ManagementApi.md#get_experiment) | **GET** /v1/applications/{applicationId}/experiments/{experimentId} | Get experiment in Application |
 | [**get_exports**](ManagementApi.md#get_exports) | **GET** /v1/exports | Get exports |
 | [**get_loyalty_card**](ManagementApi.md#get_loyalty_card) | **GET** /v1/loyalty_programs/{loyaltyProgramId}/cards/{loyaltyCardId} | Get loyalty card |
 | [**get_loyalty_card_transaction_logs**](ManagementApi.md#get_loyalty_card_transaction_logs) | **GET** /v1/loyalty_programs/{loyaltyProgramId}/cards/{loyaltyCardId}/logs | List card&#39;s transactions |
@@ -144,6 +147,7 @@ All URIs are relative to *https://yourbaseurl.talon.one*
 | [**list_catalog_items**](ManagementApi.md#list_catalog_items) | **GET** /v1/catalogs/{catalogId}/items | List items in a catalog |
 | [**list_collections**](ManagementApi.md#list_collections) | **GET** /v1/applications/{applicationId}/campaigns/{campaignId}/collections | List collections in campaign |
 | [**list_collections_in_application**](ManagementApi.md#list_collections_in_application) | **GET** /v1/applications/{applicationId}/collections | List collections in Application |
+| [**list_experiments**](ManagementApi.md#list_experiments) | **GET** /v1/applications/{applicationId}/experiments | List experiments |
 | [**list_stores**](ManagementApi.md#list_stores) | **GET** /v1/applications/{applicationId}/stores | List stores |
 | [**okta_event_handler_challenge**](ManagementApi.md#okta_event_handler_challenge) | **GET** /v1/provisioning/okta | Validate Okta API ownership |
 | [**remove_loyalty_points**](ManagementApi.md#remove_loyalty_points) | **PUT** /v1/loyalty_programs/{loyaltyProgramId}/profile/{integrationId}/deduct_points | Deduct points from customer profile |
@@ -3442,6 +3446,95 @@ end
 - **Accept**: application/csv
 
 
+## export_application_campaign_analytics
+
+> String export_application_campaign_analytics(application_id, range_start, range_end, opts)
+
+Export Application analytics aggregated by campaign
+
+Download a CSV file containing analytics data aggregated by campaign for the campaigns of an Application.  **Tip:** If the exported CSV file is too large to view, you can [split it into multiple files](https://www.makeuseof.com/tag/how-to-split-a-huge-csv-excel-workbook-into-seperate-files/).  The CSV file contains the following columns: - `campaign_id`: The ID of the campaign. This column also contains labels for the [total and influenced values](https://docs.talon.one/docs/product/campaigns/analytics/application-dashboard#understanding-the-analytics-data). - `start_date`: The start of the aggregation time frame in UTC. - `end_date`: The end of the aggregation time frame in UTC. - `revenue`: The total, pre-discount value of all items purchased in a customer session. - `sessions`: The number of all closed sessions. - `average_session_value`: The average customer session value, calculated by dividing the revenue value by the number of sessions. - `average_items_per_session`: The number of items from sessions divided by the number of sessions. - `coupons`: The number of times a coupon was successfully redeemed in sessions. - `discounts`: The total value of discounts given for cart items in sessions. 
+
+### Examples
+
+```ruby
+require 'time'
+require 'talon_one_sdk'
+# setup authorization
+TalonOne.configure do |config|
+  # Configure API key authorization: management_key
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure API key authorization: manager_auth
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure API key authorization: api_key_v1
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+end
+
+api_instance = TalonOne::ManagementApi.new
+application_id = 789 # Integer | The ID of the Application. It is displayed in your Talon.One deployment URL.
+range_start = Time.parse('2013-10-20T19:20:30+01:00') # Time | Only return results from after this timestamp.  **Note:** - This must be an RFC3339 timestamp string. - You can include a time component in your string, for example, `T23:59:59` to specify the end of the day. The time zone setting considered is `UTC`. If you do not include a time component, a default time value of `T00:00:00` (midnight) in `UTC` is considered. 
+range_end = Time.parse('2013-10-20T19:20:30+01:00') # Time | Only return results from before this timestamp.  **Note:** - This must be an RFC3339 timestamp string. - You can include a time component in your string, for example, `T23:59:59` to specify the end of the day. The time zone setting considered is `UTC`. If you do not include a time component, a default time value of `T00:00:00` (midnight) in `UTC` is considered. 
+opts = {
+  campaign_ids: ['inner_example'] # Array<String> | Filter by one or more Campaign IDs, separated by a comma.  **Note:** If no campaigns are specified, data for all the campaigns in the Application is returned. 
+}
+
+begin
+  # Export Application analytics aggregated by campaign
+  result = api_instance.export_application_campaign_analytics(application_id, range_start, range_end, opts)
+  p result
+rescue TalonOne::ApiError => e
+  puts "Error when calling ManagementApi->export_application_campaign_analytics: #{e}"
+end
+```
+
+#### Using the export_application_campaign_analytics_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(String, Integer, Hash)> export_application_campaign_analytics_with_http_info(application_id, range_start, range_end, opts)
+
+```ruby
+begin
+  # Export Application analytics aggregated by campaign
+  data, status_code, headers = api_instance.export_application_campaign_analytics_with_http_info(application_id, range_start, range_end, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => String
+rescue TalonOne::ApiError => e
+  puts "Error when calling ManagementApi->export_application_campaign_analytics_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **application_id** | **Integer** | The ID of the Application. It is displayed in your Talon.One deployment URL. |  |
+| **range_start** | **Time** | Only return results from after this timestamp.  **Note:** - This must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered.  |  |
+| **range_end** | **Time** | Only return results from before this timestamp.  **Note:** - This must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered.  |  |
+| **campaign_ids** | [**Array&lt;String&gt;**](String.md) | Filter by one or more Campaign IDs, separated by a comma.  **Note:** If no campaigns are specified, data for all the campaigns in the Application is returned.  | [optional] |
+
+### Return type
+
+**String**
+
+### Authorization
+
+[management_key](../README.md#management_key), [manager_auth](../README.md#manager_auth), [api_key_v1](../README.md#api_key_v1)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/csv
+
+
 ## export_audiences_memberships
 
 > String export_audiences_memberships(audience_id)
@@ -4584,6 +4677,87 @@ end
 | **created_before** | **Time** | Only return loyalty cards created before this timestamp.  **Note:** - This must be an RFC3339 timestamp string.  | [optional] |
 | **created_after** | **Time** | Only return loyalty cards created after this timestamp.  **Note:** - This must be an RFC3339 timestamp string.  | [optional] |
 | **date_format** | **String** | Determines the format of dates in the export document. | [optional] |
+
+### Return type
+
+**String**
+
+### Authorization
+
+[management_key](../README.md#management_key), [manager_auth](../README.md#manager_auth), [api_key_v1](../README.md#api_key_v1)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/csv
+
+
+## export_loyalty_join_dates
+
+> String export_loyalty_join_dates(loyalty_program_id)
+
+Export customers' loyalty program join dates
+
+Download a CSV file containing the join dates of all customers in the loyalty program.  **Tip:** If the exported CSV file is too large to view, you can [split it into multiple files](https://www.makeuseof.com/tag/how-to-split-a-huge-csv-excel-workbook-into-seperate-files/).  The generated file can contain the following columns:  - `loyaltyProgramID`: The ID of the loyalty program. - `profileIntegrationID`: The integration ID of the customer profile. - `joinDate`: The customer's loyalty program join date in RFC3339 format. 
+
+### Examples
+
+```ruby
+require 'time'
+require 'talon_one_sdk'
+# setup authorization
+TalonOne.configure do |config|
+  # Configure API key authorization: management_key
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure API key authorization: manager_auth
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure API key authorization: api_key_v1
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+end
+
+api_instance = TalonOne::ManagementApi.new
+loyalty_program_id = 'loyalty_program_id_example' # String | The identifier of the loyalty program.
+
+begin
+  # Export customers' loyalty program join dates
+  result = api_instance.export_loyalty_join_dates(loyalty_program_id)
+  p result
+rescue TalonOne::ApiError => e
+  puts "Error when calling ManagementApi->export_loyalty_join_dates: #{e}"
+end
+```
+
+#### Using the export_loyalty_join_dates_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(String, Integer, Hash)> export_loyalty_join_dates_with_http_info(loyalty_program_id)
+
+```ruby
+begin
+  # Export customers' loyalty program join dates
+  data, status_code, headers = api_instance.export_loyalty_join_dates_with_http_info(loyalty_program_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => String
+rescue TalonOne::ApiError => e
+  puts "Error when calling ManagementApi->export_loyalty_join_dates_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **loyalty_program_id** | **String** | The identifier of the loyalty program. |  |
 
 ### Return type
 
@@ -8852,6 +9026,89 @@ end
 - **Accept**: application/json
 
 
+## get_experiment
+
+> <Experiment> get_experiment(application_id, experiment_id)
+
+Get experiment in Application
+
+Retrieve the given experiment associated with the Application.
+
+### Examples
+
+```ruby
+require 'time'
+require 'talon_one_sdk'
+# setup authorization
+TalonOne.configure do |config|
+  # Configure API key authorization: management_key
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure API key authorization: manager_auth
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure API key authorization: api_key_v1
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+end
+
+api_instance = TalonOne::ManagementApi.new
+application_id = 789 # Integer | The ID of the Application. It is displayed in your Talon.One deployment URL.
+experiment_id = 789 # Integer | The ID of the experiment.
+
+begin
+  # Get experiment in Application
+  result = api_instance.get_experiment(application_id, experiment_id)
+  p result
+rescue TalonOne::ApiError => e
+  puts "Error when calling ManagementApi->get_experiment: #{e}"
+end
+```
+
+#### Using the get_experiment_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Experiment>, Integer, Hash)> get_experiment_with_http_info(application_id, experiment_id)
+
+```ruby
+begin
+  # Get experiment in Application
+  data, status_code, headers = api_instance.get_experiment_with_http_info(application_id, experiment_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Experiment>
+rescue TalonOne::ApiError => e
+  puts "Error when calling ManagementApi->get_experiment_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **application_id** | **Integer** | The ID of the Application. It is displayed in your Talon.One deployment URL. |  |
+| **experiment_id** | **Integer** | The ID of the experiment. |  |
+
+### Return type
+
+[**Experiment**](Experiment.md)
+
+### Authorization
+
+[management_key](../README.md#management_key), [manager_auth](../README.md#manager_auth), [api_key_v1](../README.md#api_key_v1)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## get_exports
 
 > <GetExports200Response> get_exports(opts)
@@ -11266,7 +11523,7 @@ end
 
 Import coupons
 
-Upload a CSV file containing the coupons that should be created. The file should be sent as multipart data.  The CSV file contains the following columns:  - `value` (required): The coupon code. - `expirydate`: The end date in RFC3339 of the code redemption period. - `startdate`: The start date in RFC3339 of the code redemption period. - `recipientintegrationid`: The integration ID of the recipient of the coupon.   Only the customer with this integration ID can redeem this code. Available only for personal codes. - `limitval`: The maximum number of redemptions of this code. For unlimited redemptions, use `0`. Defaults to `1` when not provided. - `discountlimit`: The total discount value that the code can give. This is typically used to represent a gift card value. - `attributes`: A JSON object describing _custom_ coupon attribute names and their values, enclosed with double quotation marks.    For example, if you created a [custom attribute](https://docs.talon.one/docs/dev/concepts/attributes#custom-attributes)   called `category` associated with the coupon entity, the object in the CSV file, when opened in a text editor, must be: `\"{\"category\": \"10_off\"}\"`.  You can use the time zone of your choice. It is converted to UTC internally by Talon.One.  **Note:** We recommend limiting your file size to 500MB.  **Example:**  ```text \"value\",\"expirydate\",\"startdate\",\"recipientintegrationid\",\"limitval\",\"attributes\",\"discountlimit\" COUP1,2018-07-01T04:00:00Z,2018-05-01T04:00:00Z,cust123,1,\"{\"\"Category\"\": \"\"10_off\"\"}\",2.4 ```  Once imported, you can find the `batchId` in the Campaign Manager or by using [List coupons](#tag/Coupons/operation/getCouponsWithoutTotalCount). 
+Upload a CSV file containing the coupons that should be created. The file should be sent as multipart data.  The CSV file contains the following columns:  - `value` (required): The coupon code. Must be at least 3 characters long. We recommend using alphanumeric characters.   There is no maximum length but limiting the code to 30 characters   ensures it is fully readable in the Campaign Manager.   The code should be unique unless you set `skipDuplicates` to `true`.  - `expirydate`: The end date in RFC3339 of the code redemption period. - `startdate`: The start date in RFC3339 of the code redemption period. - `recipientintegrationid`: The integration ID of the recipient of the coupon.   Only the customer with this integration ID can redeem this code. Available only for personal codes. - `limitval`: The maximum number of redemptions of this code. For unlimited redemptions, use `0`. Defaults to `1` when not provided. - `discountlimit`: The total discount value that the code can give. This is typically used to represent a gift card value. - `attributes`: A JSON object describing _custom_ coupon attribute names and their values, enclosed with double quotation marks.    For example, if you created a [custom attribute](https://docs.talon.one/docs/dev/concepts/attributes#custom-attributes)   called `category` associated with the coupon entity, the object in the CSV file, when opened in a text editor, must be: `\"{\"category\": \"10_off\"}\"`.  You can use the time zone of your choice. It is converted to UTC internally by Talon.One.  **Note:** We recommend limiting your file size to 500MB.  **Example:**  ```text \"value\",\"expirydate\",\"startdate\",\"recipientintegrationid\",\"limitval\",\"attributes\",\"discountlimit\" COUP1,2018-07-01T04:00:00Z,2018-05-01T04:00:00Z,cust123,1,\"{\"\"Category\"\": \"\"10_off\"\"}\",2.4 ```  Once imported, you can find the `batchId` in the Campaign Manager or by using [List coupons](#tag/Coupons/operation/getCouponsWithoutTotalCount). 
 
 ### Examples
 
@@ -11355,7 +11612,7 @@ end
 
 Import loyalty cards
 
-Upload a CSV file containing the loyalty cards that you want to use in your card-based loyalty program. Send the file as multipart data.  It contains the following columns for each card:  - `identifier` (required): The alphanumeric identifier of the loyalty card. - `state` (required): The state of the loyalty card. It can be `active` or `inactive`. - `customerprofileids` (optional): An array of strings representing the identifiers of the customer profiles linked to the loyalty card. The identifiers should be separated with a semicolon (;).  **Note:** We recommend limiting your file size to 500MB.  **Example:**  ```csv identifier,state,customerprofileids 123-456-789AT,active,Alexa001;UserA ``` 
+Upload a CSV file containing the loyalty cards that you want to use in your card-based loyalty program. Send the file as multipart data.  It contains the following columns for each card:  - `identifier` (required): The alphanumeric identifier of the loyalty card. - `state` (required): The state of the loyalty card. It can be `active` or `inactive`. - `customerprofileids` (optional): An array of strings representing the identifiers of the customer profiles linked to the loyalty card. The identifiers should be separated with a semicolon (;). - `attributes` (optional): A JSON object that contains the loyalty card's custom attributes and their values. These attributes must be created and connected to this loyalty program before  they can be assigned to the cards through this endpoint.  **Note:** We recommend limiting your file size to 500MB.  **Example:**  ```csv identifier,state,customerprofileids,attributes 123-456-789AT,active,Alexa001;UserA,\"{\"\"my_attribute\"\": \"\"10_off\"\"}\" ``` 
 
 ### Examples
 
@@ -12477,6 +12734,95 @@ end
 ### Return type
 
 [**ListAccountCollections200Response**](ListAccountCollections200Response.md)
+
+### Authorization
+
+[management_key](../README.md#management_key), [manager_auth](../README.md#manager_auth), [api_key_v1](../README.md#api_key_v1)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## list_experiments
+
+> <ListExperiments200Response> list_experiments(application_id, opts)
+
+List experiments
+
+List all experiments of the specified Application that match your filter criteria.
+
+### Examples
+
+```ruby
+require 'time'
+require 'talon_one_sdk'
+# setup authorization
+TalonOne.configure do |config|
+  # Configure API key authorization: management_key
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure API key authorization: manager_auth
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure API key authorization: api_key_v1
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+end
+
+api_instance = TalonOne::ManagementApi.new
+application_id = 789 # Integer | The ID of the Application. It is displayed in your Talon.One deployment URL.
+opts = {
+  page_size: 789, # Integer | The number of items in the response.
+  skip: 789, # Integer | The number of items to skip when paging through large result sets.
+  sort: 'sort_example' # String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. 
+}
+
+begin
+  # List experiments
+  result = api_instance.list_experiments(application_id, opts)
+  p result
+rescue TalonOne::ApiError => e
+  puts "Error when calling ManagementApi->list_experiments: #{e}"
+end
+```
+
+#### Using the list_experiments_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ListExperiments200Response>, Integer, Hash)> list_experiments_with_http_info(application_id, opts)
+
+```ruby
+begin
+  # List experiments
+  data, status_code, headers = api_instance.list_experiments_with_http_info(application_id, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ListExperiments200Response>
+rescue TalonOne::ApiError => e
+  puts "Error when calling ManagementApi->list_experiments_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **application_id** | **Integer** | The ID of the Application. It is displayed in your Talon.One deployment URL. |  |
+| **page_size** | **Integer** | The number of items in the response. | [optional][default to 1000] |
+| **skip** | **Integer** | The number of items to skip when paging through large result sets. | [optional] |
+| **sort** | **String** | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations.  | [optional] |
+
+### Return type
+
+[**ListExperiments200Response**](ListExperiments200Response.md)
 
 ### Authorization
 
