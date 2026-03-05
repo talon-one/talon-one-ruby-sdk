@@ -15,7 +15,7 @@
 require 'talon_one_sdk'
 
 instance = TalonOne::NewExperimentVariant.new(
-  name: null,
+  name: Variant A,
   weight: 13,
   ruleset: null,
   is_primary: true

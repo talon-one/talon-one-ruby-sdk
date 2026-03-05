@@ -15,7 +15,7 @@ require 'time'
 
 module TalonOne
   class UpdateExperiment < ApiModelBase
-    # The source of the assignment. - false - The assignment to the variant is handled internally by the Talon.Oneandled internally by the Talon.One. - true - The assignment to the variant handled externally.       
+    # The source of the assignment. - false - The variant assignment is handled internally by Talon.One. - true - The variant assignment is handled externally. 
     attr_accessor :is_variant_assignment_external
 
     attr_accessor :campaign

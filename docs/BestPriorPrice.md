@@ -4,8 +4,9 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
+| **id** | **Integer** | The ID of the historical price. |  |
 | **sku** | **String** | sku |  |
-| **observed_at** | **Time** | The date and time when the best price was observed. |  |
+| **observed_at** | **Time** | The date and time when the price was observed. |  |
 | **context_id** | **String** | The context ID of the context active at the time of observation.  |  |
 | **price** | **Float** | Price of the item. |  |
 | **metadata** | [**BestPriorPriceMetadata**](BestPriorPriceMetadata.md) |  |  |
@@ -17,9 +18,10 @@
 require 'talon_one_sdk'
 
 instance = TalonOne::BestPriorPrice.new(
+  id: 1,
   sku: NVR-GN-GV-UUP,
   observed_at: 2020-11-10T23:00:00Z,
-  context_id: Summer Sale 2007,
+  context_id: Summer Sale 2025,
   price: 99.99,
   metadata: null,
   target: null
