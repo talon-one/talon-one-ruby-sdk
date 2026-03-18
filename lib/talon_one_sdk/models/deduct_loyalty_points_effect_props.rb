@@ -173,7 +173,7 @@ module TalonOne
         invalid_properties.push('invalid value for "card_identifier", the character length must be greater than or equal to 4.')
       end
 
-      pattern = Regexp.new(/^[A-Za-z0-9_-]*$/)
+      pattern = Regexp.new(/^[A-Za-z0-9._%+@-]+$/)
       if !@card_identifier.nil? && @card_identifier !~ pattern
         invalid_properties.push("invalid value for \"card_identifier\", must conform to the pattern #{pattern}.")
       end
@@ -193,7 +193,7 @@ module TalonOne
       return false if @name.nil?
       return false if !@card_identifier.nil? && @card_identifier.to_s.length > 108
       return false if !@card_identifier.nil? && @card_identifier.to_s.length < 4
-      return false if !@card_identifier.nil? && @card_identifier !~ Regexp.new(/^[A-Za-z0-9_-]*$/)
+      return false if !@card_identifier.nil? && @card_identifier !~ Regexp.new(/^[A-Za-z0-9._%+@-]+$/)
       true
     end
 
@@ -272,7 +272,7 @@ module TalonOne
         fail ArgumentError, 'invalid value for "card_identifier", the character length must be greater than or equal to 4.'
       end
 
-      pattern = Regexp.new(/^[A-Za-z0-9_-]*$/)
+      pattern = Regexp.new(/^[A-Za-z0-9._%+@-]+$/)
       if card_identifier !~ pattern
         fail ArgumentError, "invalid value for \"card_identifier\", must conform to the pattern #{pattern}."
       end

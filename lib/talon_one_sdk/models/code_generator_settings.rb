@@ -105,7 +105,7 @@ module TalonOne
         invalid_properties.push('invalid value for "coupon_pattern", the character length must be greater than or equal to 3.')
       end
 
-      pattern = Regexp.new(/^[A-Za-z0-9_#-]*$/)
+      pattern = Regexp.new(/^[A-Za-z0-9._%+@#-]+$/)
       if @coupon_pattern !~ pattern
         invalid_properties.push("invalid value for \"coupon_pattern\", must conform to the pattern #{pattern}.")
       end
@@ -121,7 +121,7 @@ module TalonOne
       return false if @coupon_pattern.nil?
       return false if @coupon_pattern.to_s.length > 100
       return false if @coupon_pattern.to_s.length < 3
-      return false if @coupon_pattern !~ Regexp.new(/^[A-Za-z0-9_#-]*$/)
+      return false if @coupon_pattern !~ Regexp.new(/^[A-Za-z0-9._%+@#-]+$/)
       true
     end
 
@@ -150,7 +150,7 @@ module TalonOne
         fail ArgumentError, 'invalid value for "coupon_pattern", the character length must be greater than or equal to 3.'
       end
 
-      pattern = Regexp.new(/^[A-Za-z0-9_#-]*$/)
+      pattern = Regexp.new(/^[A-Za-z0-9._%+@#-]+$/)
       if coupon_pattern !~ pattern
         fail ArgumentError, "invalid value for \"coupon_pattern\", must conform to the pattern #{pattern}."
       end

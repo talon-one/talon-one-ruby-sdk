@@ -16,7 +16,7 @@ See our [migration guide](MIGRATION.md).
 Add this to the Gemfile:
 
 ```shell
-gem 'talon_one_sdk', '~> 26.05'
+gem 'talon_one_sdk', '~> 26.06.0'
 ```
 
 ### Build a gem
@@ -32,10 +32,10 @@ gem build talon_one_sdk.gemspec
 To install the gem locally:
 
 ```shell
-gem install ./talon_one_sdk-26.05.gem
+gem install ./talon_one_sdk-26.06.0.gem
 ```
 
-For development, run `gem install --dev ./talon_one_sdk-26.05.gem` to install the development dependencies.
+For development, run `gem install --dev ./talon_one_sdk-26.06.0.gem` to install the development dependencies.
 
 ### RubyGems
 
@@ -416,10 +416,14 @@ Class | Method | HTTP request | Description
 - [TalonOne::AccountLimits](docs/AccountLimits.md)
 - [TalonOne::Achievement](docs/Achievement.md)
 - [TalonOne::AchievementAdditionalProperties](docs/AchievementAdditionalProperties.md)
+- [TalonOne::AchievementAdditionalPropertiesV2](docs/AchievementAdditionalPropertiesV2.md)
 - [TalonOne::AchievementBase](docs/AchievementBase.md)
+- [TalonOne::AchievementBaseV2](docs/AchievementBaseV2.md)
 - [TalonOne::AchievementProgress](docs/AchievementProgress.md)
 - [TalonOne::AchievementProgressWithDefinition](docs/AchievementProgressWithDefinition.md)
+- [TalonOne::AchievementReference](docs/AchievementReference.md)
 - [TalonOne::AchievementStatusEntry](docs/AchievementStatusEntry.md)
+- [TalonOne::AchievementV2](docs/AchievementV2.md)
 - [TalonOne::ActivateLoyaltyPoints](docs/ActivateLoyaltyPoints.md)
 - [TalonOne::ActivateLoyaltyPointsResponse](docs/ActivateLoyaltyPointsResponse.md)
 - [TalonOne::ActivateUserRequest](docs/ActivateUserRequest.md)
@@ -575,6 +579,7 @@ Class | Method | HTTP request | Description
 - [TalonOne::CouponsNotificationData](docs/CouponsNotificationData.md)
 - [TalonOne::CouponsNotificationPolicy](docs/CouponsNotificationPolicy.md)
 - [TalonOne::CreateAchievement](docs/CreateAchievement.md)
+- [TalonOne::CreateAchievementV2](docs/CreateAchievementV2.md)
 - [TalonOne::CreateApplicationAPIKey](docs/CreateApplicationAPIKey.md)
 - [TalonOne::CreateCouponData](docs/CreateCouponData.md)
 - [TalonOne::CreateCoupons200Response](docs/CreateCoupons200Response.md)
@@ -710,6 +715,7 @@ Class | Method | HTTP request | Description
 - [TalonOne::ImportEntity](docs/ImportEntity.md)
 - [TalonOne::IncreaseAchievementProgressEffectProps](docs/IncreaseAchievementProgressEffectProps.md)
 - [TalonOne::InfluencingCampaignDetails](docs/InfluencingCampaignDetails.md)
+- [TalonOne::IntegrationCampaign](docs/IntegrationCampaign.md)
 - [TalonOne::IntegrationCoupon](docs/IntegrationCoupon.md)
 - [TalonOne::IntegrationCustomerProfileAudienceRequest](docs/IntegrationCustomerProfileAudienceRequest.md)
 - [TalonOne::IntegrationCustomerProfileAudienceRequestItem](docs/IntegrationCustomerProfileAudienceRequestItem.md)
@@ -1022,6 +1028,7 @@ Class | Method | HTTP request | Description
 - [TalonOne::TwoFAConfig](docs/TwoFAConfig.md)
 - [TalonOne::UpdateAccount](docs/UpdateAccount.md)
 - [TalonOne::UpdateAchievement](docs/UpdateAchievement.md)
+- [TalonOne::UpdateAchievementV2](docs/UpdateAchievementV2.md)
 - [TalonOne::UpdateApplication](docs/UpdateApplication.md)
 - [TalonOne::UpdateApplicationAPIKey](docs/UpdateApplicationAPIKey.md)
 - [TalonOne::UpdateApplicationCIF](docs/UpdateApplicationCIF.md)

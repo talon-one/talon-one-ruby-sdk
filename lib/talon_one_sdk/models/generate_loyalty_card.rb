@@ -22,7 +22,7 @@ module TalonOne
     # Integration IDs of the customer profiles linked to the card.
     attr_accessor :customer_profile_ids
 
-    # The alphanumeric identifier of the loyalty card. 
+    # The identifier of the loyalty card, which must match the regular expression `^[A-Za-z0-9._%+@-]+$`. 
     attr_accessor :card_identifier
 
     class EnumAttributeValidator
@@ -127,7 +127,7 @@ module TalonOne
         invalid_properties.push('invalid value for "card_identifier", the character length must be greater than or equal to 4.')
       end
 
-      pattern = Regexp.new(/^[A-Za-z0-9_-]*$/)
+      pattern = Regexp.new(/^[A-Za-z0-9._%+@-]+$/)
       if !@card_identifier.nil? && @card_identifier !~ pattern
         invalid_properties.push("invalid value for \"card_identifier\", must conform to the pattern #{pattern}.")
       end
@@ -143,7 +143,7 @@ module TalonOne
       return false unless status_validator.valid?(@status)
       return false if !@card_identifier.nil? && @card_identifier.to_s.length > 108
       return false if !@card_identifier.nil? && @card_identifier.to_s.length < 4
-      return false if !@card_identifier.nil? && @card_identifier !~ Regexp.new(/^[A-Za-z0-9_-]*$/)
+      return false if !@card_identifier.nil? && @card_identifier !~ Regexp.new(/^[A-Za-z0-9._%+@-]+$/)
       true
     end
 
@@ -172,7 +172,7 @@ module TalonOne
         fail ArgumentError, 'invalid value for "card_identifier", the character length must be greater than or equal to 4.'
       end
 
-      pattern = Regexp.new(/^[A-Za-z0-9_-]*$/)
+      pattern = Regexp.new(/^[A-Za-z0-9._%+@-]+$/)
       if card_identifier !~ pattern
         fail ArgumentError, "invalid value for \"card_identifier\", must conform to the pattern #{pattern}."
       end

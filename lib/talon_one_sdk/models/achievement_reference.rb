@@ -14,21 +14,26 @@ require 'date'
 require 'time'
 
 module TalonOne
-  # setDiscountPerItem effect in strikethrough pricing payload.
-  class StrikethroughSetDiscountPerItemEffectProps < ApiModelBase
-    # effect name.
-    attr_accessor :name
+  class AchievementReference < ApiModelBase
+    # The ID of the achievement. You can get this ID with the [List achievement](https://docs.talon.one/management-api#tag/Achievements/operation/listAchievementsV2) endpoint.
+    attr_accessor :achievement_id
 
-    attr_accessor :value
+    # The ID of the Application associated with the campaign that references this achievement.
+    attr_accessor :application_id
 
-    attr_accessor :exclude_from_best_prior_price_history
+    # The name of the Application associated with the campaign that references this achievement.
+    attr_accessor :application_name
+
+    # The ID of the campaign that references this achievement.
+    attr_accessor :campaign_id
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'name' => :'name',
-        :'value' => :'value',
-        :'exclude_from_best_prior_price_history' => :'excludeFromBestPriorPriceHistory'
+        :'achievement_id' => :'achievementId',
+        :'application_id' => :'applicationId',
+        :'application_name' => :'applicationName',
+        :'campaign_id' => :'campaignId'
       }
     end
 
@@ -45,16 +50,16 @@ module TalonOne
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'name' => :'String',
-        :'value' => :'Object',
-        :'exclude_from_best_prior_price_history' => :'Boolean'
+        :'achievement_id' => :'Integer',
+        :'application_id' => :'Integer',
+        :'application_name' => :'String',
+        :'campaign_id' => :'Integer'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
-        :'value',
       ])
     end
 
@@ -62,32 +67,40 @@ module TalonOne
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `TalonOne::StrikethroughSetDiscountPerItemEffectProps` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `TalonOne::AchievementReference` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       acceptable_attribute_map = self.class.acceptable_attribute_map
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!acceptable_attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `TalonOne::StrikethroughSetDiscountPerItemEffectProps`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `TalonOne::AchievementReference`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'name')
-        self.name = attributes[:'name']
+      if attributes.key?(:'achievement_id')
+        self.achievement_id = attributes[:'achievement_id']
       else
-        self.name = nil
+        self.achievement_id = nil
       end
 
-      if attributes.key?(:'value')
-        self.value = attributes[:'value']
+      if attributes.key?(:'application_id')
+        self.application_id = attributes[:'application_id']
       else
-        self.value = nil
+        self.application_id = nil
       end
 
-      if attributes.key?(:'exclude_from_best_prior_price_history')
-        self.exclude_from_best_prior_price_history = attributes[:'exclude_from_best_prior_price_history']
+      if attributes.key?(:'application_name')
+        self.application_name = attributes[:'application_name']
+      else
+        self.application_name = nil
+      end
+
+      if attributes.key?(:'campaign_id')
+        self.campaign_id = attributes[:'campaign_id']
+      else
+        self.campaign_id = nil
       end
     end
 
@@ -96,8 +109,20 @@ module TalonOne
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
-      if @name.nil?
-        invalid_properties.push('invalid value for "name", name cannot be nil.')
+      if @achievement_id.nil?
+        invalid_properties.push('invalid value for "achievement_id", achievement_id cannot be nil.')
+      end
+
+      if @application_id.nil?
+        invalid_properties.push('invalid value for "application_id", application_id cannot be nil.')
+      end
+
+      if @application_name.nil?
+        invalid_properties.push('invalid value for "application_name", application_name cannot be nil.')
+      end
+
+      if @campaign_id.nil?
+        invalid_properties.push('invalid value for "campaign_id", campaign_id cannot be nil.')
       end
 
       invalid_properties
@@ -107,18 +132,51 @@ module TalonOne
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
-      return false if @name.nil?
+      return false if @achievement_id.nil?
+      return false if @application_id.nil?
+      return false if @application_name.nil?
+      return false if @campaign_id.nil?
       true
     end
 
     # Custom attribute writer method with validation
-    # @param [Object] name Value to be assigned
-    def name=(name)
-      if name.nil?
-        fail ArgumentError, 'name cannot be nil'
+    # @param [Object] achievement_id Value to be assigned
+    def achievement_id=(achievement_id)
+      if achievement_id.nil?
+        fail ArgumentError, 'achievement_id cannot be nil'
       end
 
-      @name = name
+      @achievement_id = achievement_id
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] application_id Value to be assigned
+    def application_id=(application_id)
+      if application_id.nil?
+        fail ArgumentError, 'application_id cannot be nil'
+      end
+
+      @application_id = application_id
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] application_name Value to be assigned
+    def application_name=(application_name)
+      if application_name.nil?
+        fail ArgumentError, 'application_name cannot be nil'
+      end
+
+      @application_name = application_name
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] campaign_id Value to be assigned
+    def campaign_id=(campaign_id)
+      if campaign_id.nil?
+        fail ArgumentError, 'campaign_id cannot be nil'
+      end
+
+      @campaign_id = campaign_id
     end
 
     # Checks equality by comparing each attribute.
@@ -126,9 +184,10 @@ module TalonOne
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          name == o.name &&
-          value == o.value &&
-          exclude_from_best_prior_price_history == o.exclude_from_best_prior_price_history
+          achievement_id == o.achievement_id &&
+          application_id == o.application_id &&
+          application_name == o.application_name &&
+          campaign_id == o.campaign_id
     end
 
     # @see the `==` method
@@ -140,7 +199,7 @@ module TalonOne
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, value, exclude_from_best_prior_price_history].hash
+      [achievement_id, application_id, application_name, campaign_id].hash
     end
 
     # Builds the object from hash

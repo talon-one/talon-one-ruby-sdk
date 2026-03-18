@@ -42,7 +42,7 @@ describe TalonOne::AddedDeductedPointsBalancesAction do
   describe 'test attribute "operation"' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-      # validator = Petstore::EnumTest::EnumAttributeValidator.new('String', ["addition", "deduction"])
+      # validator = Petstore::EnumTest::EnumAttributeValidator.new('String', ["addition", "subtraction"])
       # validator.allowable_values.each do |value|
       #   expect { instance.operation = value }.not_to raise_error
       # end
@@ -56,6 +56,12 @@ describe TalonOne::AddedDeductedPointsBalancesAction do
   end
 
   describe 'test attribute "expiry_date"' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  describe 'test attribute "transaction_uuid"' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
     end
