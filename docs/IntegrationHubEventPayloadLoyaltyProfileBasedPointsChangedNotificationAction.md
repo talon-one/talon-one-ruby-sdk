@@ -9,6 +9,7 @@
 | **operation** | **String** |  |  |
 | **start_date** | **Time** |  | [optional] |
 | **expiry_date** | **Time** |  | [optional] |
+| **transaction_uuid** | **String** | The identifier of the transaction in the loyalty ledger. |  |
 
 ## Example
 
@@ -20,7 +21,8 @@ instance = TalonOne::IntegrationHubEventPayloadLoyaltyProfileBasedPointsChangedN
   reason: null,
   operation: null,
   start_date: null,
-  expiry_date: null
+  expiry_date: null,
+  transaction_uuid: null
 )
 ```
 

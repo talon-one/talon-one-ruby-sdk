@@ -25,6 +25,9 @@ module TalonOne
 
     attr_accessor :expiry_date
 
+    # The identifier of the transaction in the loyalty ledger.
+    attr_accessor :transaction_uuid
+
     class EnumAttributeValidator
       attr_reader :datatype
       attr_reader :allowable_values
@@ -54,7 +57,8 @@ module TalonOne
         :'reason' => :'Reason',
         :'operation' => :'Operation',
         :'start_date' => :'StartDate',
-        :'expiry_date' => :'ExpiryDate'
+        :'expiry_date' => :'ExpiryDate',
+        :'transaction_uuid' => :'TransactionUUID'
       }
     end
 
@@ -75,7 +79,8 @@ module TalonOne
         :'reason' => :'String',
         :'operation' => :'String',
         :'start_date' => :'Time',
-        :'expiry_date' => :'Time'
+        :'expiry_date' => :'Time',
+        :'transaction_uuid' => :'String'
       }
     end
 
@@ -124,6 +129,12 @@ module TalonOne
       if attributes.key?(:'expiry_date')
         self.expiry_date = attributes[:'expiry_date']
       end
+
+      if attributes.key?(:'transaction_uuid')
+        self.transaction_uuid = attributes[:'transaction_uuid']
+      else
+        self.transaction_uuid = nil
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -139,6 +150,10 @@ module TalonOne
         invalid_properties.push('invalid value for "operation", operation cannot be nil.')
       end
 
+      if @transaction_uuid.nil?
+        invalid_properties.push('invalid value for "transaction_uuid", transaction_uuid cannot be nil.')
+      end
+
       invalid_properties
     end
 
@@ -148,8 +163,9 @@ module TalonOne
       warn '[DEPRECATED] the `valid?` method is obsolete'
       return false if @amount.nil?
       return false if @operation.nil?
-      operation_validator = EnumAttributeValidator.new('String', ["addition", "deduction"])
+      operation_validator = EnumAttributeValidator.new('String', ["addition", "subtraction"])
       return false unless operation_validator.valid?(@operation)
+      return false if @transaction_uuid.nil?
       true
     end
 
@@ -166,11 +182,21 @@ module TalonOne
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] operation Object to be assigned
     def operation=(operation)
-      validator = EnumAttributeValidator.new('String', ["addition", "deduction"])
+      validator = EnumAttributeValidator.new('String', ["addition", "subtraction"])
       unless validator.valid?(operation)
         fail ArgumentError, "invalid value for \"operation\", must be one of #{validator.allowable_values}."
       end
       @operation = operation
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] transaction_uuid Value to be assigned
+    def transaction_uuid=(transaction_uuid)
+      if transaction_uuid.nil?
+        fail ArgumentError, 'transaction_uuid cannot be nil'
+      end
+
+      @transaction_uuid = transaction_uuid
     end
 
     # Checks equality by comparing each attribute.
@@ -182,7 +208,8 @@ module TalonOne
           reason == o.reason &&
           operation == o.operation &&
           start_date == o.start_date &&
-          expiry_date == o.expiry_date
+          expiry_date == o.expiry_date &&
+          transaction_uuid == o.transaction_uuid
     end
 
     # @see the `==` method
@@ -194,7 +221,7 @@ module TalonOne
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [amount, reason, operation, start_date, expiry_date].hash
+      [amount, reason, operation, start_date, expiry_date, transaction_uuid].hash
     end
 
     # Builds the object from hash

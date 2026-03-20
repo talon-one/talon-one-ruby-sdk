@@ -16,7 +16,7 @@ require 'time'
 module TalonOne
   # Report of health of the API connection of an application.
   class ApplicationApiHealth < ApiModelBase
-    # One-word summary of the health of the API connection of an application. Possible values are: - `OK`: The Application has received only successful API requests in the last 5 minutes. - `WARNING`: The Application received at least one failed request in the last 50 minutes. - `ERROR`: More than 50% of received requests failed. - `CRITICAL`: All received requests failed. - `NONE`: During the last 5 minutes, the Application hasn't recorded any integration API requests. 
+    # One-word summary of the health of the API connection of an application. Possible values are: - `OK`: The Application has received only successful API requests in the last 5 minutes. - `WARNING`: The Application received at least one failed request in the last 5 minutes. - `ERROR`: More than 50% of received requests failed. - `CRITICAL`: All received requests failed. - `NONE`: During the last 5 minutes, the Application hasn't recorded any integration API requests. 
     attr_accessor :summary
 
     # time of last request relevant to the API health test.

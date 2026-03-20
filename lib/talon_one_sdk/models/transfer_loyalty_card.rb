@@ -15,7 +15,7 @@ require 'time'
 
 module TalonOne
   class TransferLoyaltyCard < ApiModelBase
-    # The alphanumeric identifier of the loyalty card. 
+    # The identifier of the loyalty card, which must match the regular expression `^[A-Za-z0-9._%+@-]+$`. 
     attr_accessor :new_card_identifier
 
     # Reason for transferring and blocking the loyalty card. 
@@ -97,7 +97,7 @@ module TalonOne
         invalid_properties.push('invalid value for "new_card_identifier", the character length must be greater than or equal to 4.')
       end
 
-      pattern = Regexp.new(/^[A-Za-z0-9_-]*$/)
+      pattern = Regexp.new(/^[A-Za-z0-9._%+@-]+$/)
       if @new_card_identifier !~ pattern
         invalid_properties.push("invalid value for \"new_card_identifier\", must conform to the pattern #{pattern}.")
       end
@@ -112,7 +112,7 @@ module TalonOne
       return false if @new_card_identifier.nil?
       return false if @new_card_identifier.to_s.length > 108
       return false if @new_card_identifier.to_s.length < 4
-      return false if @new_card_identifier !~ Regexp.new(/^[A-Za-z0-9_-]*$/)
+      return false if @new_card_identifier !~ Regexp.new(/^[A-Za-z0-9._%+@-]+$/)
       true
     end
 
@@ -131,7 +131,7 @@ module TalonOne
         fail ArgumentError, 'invalid value for "new_card_identifier", the character length must be greater than or equal to 4.'
       end
 
-      pattern = Regexp.new(/^[A-Za-z0-9_-]*$/)
+      pattern = Regexp.new(/^[A-Za-z0-9._%+@-]+$/)
       if new_card_identifier !~ pattern
         fail ArgumentError, "invalid value for \"new_card_identifier\", must conform to the pattern #{pattern}."
       end

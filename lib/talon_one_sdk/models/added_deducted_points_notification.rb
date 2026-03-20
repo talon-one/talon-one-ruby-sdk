@@ -45,7 +45,7 @@ module TalonOne
     # The expiration date for loyalty points.
     attr_accessor :expiry_date
 
-    # The action (addition or deduction) made with loyalty points.
+    # The action (addition or subtraction) made with loyalty points.
     attr_accessor :operation
 
     # The reason for the points addition or deduction.
@@ -53,6 +53,9 @@ module TalonOne
 
     # The start date for loyalty points.
     attr_accessor :start_date
+
+    # The identifier of the transaction in the loyalty ledger.
+    attr_accessor :transaction_uuid
 
     class EnumAttributeValidator
       attr_reader :datatype
@@ -91,7 +94,8 @@ module TalonOne
         :'expiry_date' => :'ExpiryDate',
         :'operation' => :'Operation',
         :'reason' => :'Reason',
-        :'start_date' => :'StartDate'
+        :'start_date' => :'StartDate',
+        :'transaction_uuid' => :'TransactionUUID'
       }
     end
 
@@ -120,7 +124,8 @@ module TalonOne
         :'expiry_date' => :'Time',
         :'operation' => :'String',
         :'reason' => :'String',
-        :'start_date' => :'Time'
+        :'start_date' => :'Time',
+        :'transaction_uuid' => :'String'
       }
     end
 
@@ -219,6 +224,12 @@ module TalonOne
       if attributes.key?(:'start_date')
         self.start_date = attributes[:'start_date']
       end
+
+      if attributes.key?(:'transaction_uuid')
+        self.transaction_uuid = attributes[:'transaction_uuid']
+      else
+        self.transaction_uuid = nil
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -274,6 +285,10 @@ module TalonOne
         invalid_properties.push('invalid value for "reason", reason cannot be nil.')
       end
 
+      if @transaction_uuid.nil?
+        invalid_properties.push('invalid value for "transaction_uuid", transaction_uuid cannot be nil.')
+      end
+
       invalid_properties
     end
 
@@ -296,9 +311,10 @@ module TalonOne
       return false if @user_id.nil?
       return false if @amount.nil?
       return false if @operation.nil?
-      operation_validator = EnumAttributeValidator.new('String', ["addition", "deduction"])
+      operation_validator = EnumAttributeValidator.new('String', ["addition", "subtraction"])
       return false unless operation_validator.valid?(@operation)
       return false if @reason.nil?
+      return false if @transaction_uuid.nil?
       true
     end
 
@@ -399,7 +415,7 @@ module TalonOne
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] operation Object to be assigned
     def operation=(operation)
-      validator = EnumAttributeValidator.new('String', ["addition", "deduction"])
+      validator = EnumAttributeValidator.new('String', ["addition", "subtraction"])
       unless validator.valid?(operation)
         fail ArgumentError, "invalid value for \"operation\", must be one of #{validator.allowable_values}."
       end
@@ -414,6 +430,16 @@ module TalonOne
       end
 
       @reason = reason
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] transaction_uuid Value to be assigned
+    def transaction_uuid=(transaction_uuid)
+      if transaction_uuid.nil?
+        fail ArgumentError, 'transaction_uuid cannot be nil'
+      end
+
+      @transaction_uuid = transaction_uuid
     end
 
     # Checks equality by comparing each attribute.
@@ -433,7 +459,8 @@ module TalonOne
           expiry_date == o.expiry_date &&
           operation == o.operation &&
           reason == o.reason &&
-          start_date == o.start_date
+          start_date == o.start_date &&
+          transaction_uuid == o.transaction_uuid
     end
 
     # @see the `==` method
@@ -445,7 +472,7 @@ module TalonOne
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [employee_name, loyalty_program_id, notification_type, profile_integration_id, session_integration_id, subledger_id, type_of_change, user_id, amount, expiry_date, operation, reason, start_date].hash
+      [employee_name, loyalty_program_id, notification_type, profile_integration_id, session_integration_id, subledger_id, type_of_change, user_id, amount, expiry_date, operation, reason, start_date, transaction_uuid].hash
     end
 
     # Builds the object from hash

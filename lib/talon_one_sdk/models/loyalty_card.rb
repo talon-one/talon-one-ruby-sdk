@@ -36,7 +36,7 @@ module TalonOne
     # Reason for transferring and blocking the loyalty card. 
     attr_accessor :block_reason
 
-    # The alphanumeric identifier of the loyalty card. 
+    # The identifier of the loyalty card, which must match the regular expression `^[A-Za-z0-9._%+@-]+$`. 
     attr_accessor :identifier
 
     # The max amount of customer profiles that can be linked to the card. 0 means unlimited. 
@@ -262,7 +262,7 @@ module TalonOne
         invalid_properties.push('invalid value for "identifier", the character length must be greater than or equal to 4.')
       end
 
-      pattern = Regexp.new(/^[A-Za-z0-9_-]*$/)
+      pattern = Regexp.new(/^[A-Za-z0-9._%+@-]+$/)
       if @identifier !~ pattern
         invalid_properties.push("invalid value for \"identifier\", must conform to the pattern #{pattern}.")
       end
@@ -283,7 +283,7 @@ module TalonOne
         invalid_properties.push('invalid value for "old_card_identifier", the character length must be greater than or equal to 4.')
       end
 
-      pattern = Regexp.new(/^[A-Za-z0-9_-]*$/)
+      pattern = Regexp.new(/^[A-Za-z0-9._%+@-]+$/)
       if !@old_card_identifier.nil? && @old_card_identifier !~ pattern
         invalid_properties.push("invalid value for \"old_card_identifier\", must conform to the pattern #{pattern}.")
       end
@@ -296,7 +296,7 @@ module TalonOne
         invalid_properties.push('invalid value for "new_card_identifier", the character length must be greater than or equal to 4.')
       end
 
-      pattern = Regexp.new(/^[A-Za-z0-9_-]*$/)
+      pattern = Regexp.new(/^[A-Za-z0-9._%+@-]+$/)
       if !@new_card_identifier.nil? && @new_card_identifier !~ pattern
         invalid_properties.push("invalid value for \"new_card_identifier\", must conform to the pattern #{pattern}.")
       end
@@ -315,15 +315,15 @@ module TalonOne
       return false if @identifier.nil?
       return false if @identifier.to_s.length > 108
       return false if @identifier.to_s.length < 4
-      return false if @identifier !~ Regexp.new(/^[A-Za-z0-9_-]*$/)
+      return false if @identifier !~ Regexp.new(/^[A-Za-z0-9._%+@-]+$/)
       return false if @users_per_card_limit.nil?
       return false if @users_per_card_limit < 0
       return false if !@old_card_identifier.nil? && @old_card_identifier.to_s.length > 108
       return false if !@old_card_identifier.nil? && @old_card_identifier.to_s.length < 4
-      return false if !@old_card_identifier.nil? && @old_card_identifier !~ Regexp.new(/^[A-Za-z0-9_-]*$/)
+      return false if !@old_card_identifier.nil? && @old_card_identifier !~ Regexp.new(/^[A-Za-z0-9._%+@-]+$/)
       return false if !@new_card_identifier.nil? && @new_card_identifier.to_s.length > 108
       return false if !@new_card_identifier.nil? && @new_card_identifier.to_s.length < 4
-      return false if !@new_card_identifier.nil? && @new_card_identifier !~ Regexp.new(/^[A-Za-z0-9_-]*$/)
+      return false if !@new_card_identifier.nil? && @new_card_identifier !~ Regexp.new(/^[A-Za-z0-9._%+@-]+$/)
       true
     end
 
@@ -382,7 +382,7 @@ module TalonOne
         fail ArgumentError, 'invalid value for "identifier", the character length must be greater than or equal to 4.'
       end
 
-      pattern = Regexp.new(/^[A-Za-z0-9_-]*$/)
+      pattern = Regexp.new(/^[A-Za-z0-9._%+@-]+$/)
       if identifier !~ pattern
         fail ArgumentError, "invalid value for \"identifier\", must conform to the pattern #{pattern}."
       end
@@ -419,7 +419,7 @@ module TalonOne
         fail ArgumentError, 'invalid value for "old_card_identifier", the character length must be greater than or equal to 4.'
       end
 
-      pattern = Regexp.new(/^[A-Za-z0-9_-]*$/)
+      pattern = Regexp.new(/^[A-Za-z0-9._%+@-]+$/)
       if old_card_identifier !~ pattern
         fail ArgumentError, "invalid value for \"old_card_identifier\", must conform to the pattern #{pattern}."
       end
@@ -442,7 +442,7 @@ module TalonOne
         fail ArgumentError, 'invalid value for "new_card_identifier", the character length must be greater than or equal to 4.'
       end
 
-      pattern = Regexp.new(/^[A-Za-z0-9_-]*$/)
+      pattern = Regexp.new(/^[A-Za-z0-9._%+@-]+$/)
       if new_card_identifier !~ pattern
         fail ArgumentError, "invalid value for \"new_card_identifier\", must conform to the pattern #{pattern}."
       end

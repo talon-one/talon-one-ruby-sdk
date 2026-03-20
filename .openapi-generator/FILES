@@ -31,10 +31,14 @@ docs/AccountEntity.md
 docs/AccountLimits.md
 docs/Achievement.md
 docs/AchievementAdditionalProperties.md
+docs/AchievementAdditionalPropertiesV2.md
 docs/AchievementBase.md
+docs/AchievementBaseV2.md
 docs/AchievementProgress.md
 docs/AchievementProgressWithDefinition.md
+docs/AchievementReference.md
 docs/AchievementStatusEntry.md
+docs/AchievementV2.md
 docs/ActivateLoyaltyPoints.md
 docs/ActivateLoyaltyPointsResponse.md
 docs/ActivateUserRequest.md
@@ -190,6 +194,7 @@ docs/CouponWithApplication.md
 docs/CouponsNotificationData.md
 docs/CouponsNotificationPolicy.md
 docs/CreateAchievement.md
+docs/CreateAchievementV2.md
 docs/CreateApplicationAPIKey.md
 docs/CreateCouponData.md
 docs/CreateCoupons200Response.md
@@ -326,6 +331,7 @@ docs/ImportEntity.md
 docs/IncreaseAchievementProgressEffectProps.md
 docs/InfluencingCampaignDetails.md
 docs/IntegrationApi.md
+docs/IntegrationCampaign.md
 docs/IntegrationCoupon.md
 docs/IntegrationCustomerProfileAudienceRequest.md
 docs/IntegrationCustomerProfileAudienceRequestItem.md
@@ -639,6 +645,7 @@ docs/TriggerWebhookEffectProps.md
 docs/TwoFAConfig.md
 docs/UpdateAccount.md
 docs/UpdateAchievement.md
+docs/UpdateAchievementV2.md
 docs/UpdateApplication.md
 docs/UpdateApplicationAPIKey.md
 docs/UpdateApplicationCIF.md
@@ -707,10 +714,14 @@ lib/talon_one_sdk/models/account_entity.rb
 lib/talon_one_sdk/models/account_limits.rb
 lib/talon_one_sdk/models/achievement.rb
 lib/talon_one_sdk/models/achievement_additional_properties.rb
+lib/talon_one_sdk/models/achievement_additional_properties_v2.rb
 lib/talon_one_sdk/models/achievement_base.rb
+lib/talon_one_sdk/models/achievement_base_v2.rb
 lib/talon_one_sdk/models/achievement_progress.rb
 lib/talon_one_sdk/models/achievement_progress_with_definition.rb
+lib/talon_one_sdk/models/achievement_reference.rb
 lib/talon_one_sdk/models/achievement_status_entry.rb
+lib/talon_one_sdk/models/achievement_v2.rb
 lib/talon_one_sdk/models/activate_loyalty_points.rb
 lib/talon_one_sdk/models/activate_loyalty_points_response.rb
 lib/talon_one_sdk/models/activate_user_request.rb
@@ -867,6 +878,7 @@ lib/talon_one_sdk/models/coupon_with_application.rb
 lib/talon_one_sdk/models/coupons_notification_data.rb
 lib/talon_one_sdk/models/coupons_notification_policy.rb
 lib/talon_one_sdk/models/create_achievement.rb
+lib/talon_one_sdk/models/create_achievement_v2.rb
 lib/talon_one_sdk/models/create_application_api_key.rb
 lib/talon_one_sdk/models/create_coupon_data.rb
 lib/talon_one_sdk/models/create_coupons200_response.rb
@@ -1002,6 +1014,7 @@ lib/talon_one_sdk/models/import.rb
 lib/talon_one_sdk/models/import_entity.rb
 lib/talon_one_sdk/models/increase_achievement_progress_effect_props.rb
 lib/talon_one_sdk/models/influencing_campaign_details.rb
+lib/talon_one_sdk/models/integration_campaign.rb
 lib/talon_one_sdk/models/integration_coupon.rb
 lib/talon_one_sdk/models/integration_customer_profile_audience_request.rb
 lib/talon_one_sdk/models/integration_customer_profile_audience_request_item.rb
@@ -1314,6 +1327,7 @@ lib/talon_one_sdk/models/trigger_webhook_effect_props.rb
 lib/talon_one_sdk/models/two_fa_config.rb
 lib/talon_one_sdk/models/update_account.rb
 lib/talon_one_sdk/models/update_achievement.rb
+lib/talon_one_sdk/models/update_achievement_v2.rb
 lib/talon_one_sdk/models/update_application.rb
 lib/talon_one_sdk/models/update_application_api_key.rb
 lib/talon_one_sdk/models/update_application_cif.rb
@@ -1376,11 +1390,15 @@ spec/models/account_entity_spec.rb
 spec/models/account_limits_spec.rb
 spec/models/account_spec.rb
 spec/models/achievement_additional_properties_spec.rb
+spec/models/achievement_additional_properties_v2_spec.rb
 spec/models/achievement_base_spec.rb
+spec/models/achievement_base_v2_spec.rb
 spec/models/achievement_progress_spec.rb
 spec/models/achievement_progress_with_definition_spec.rb
+spec/models/achievement_reference_spec.rb
 spec/models/achievement_spec.rb
 spec/models/achievement_status_entry_spec.rb
+spec/models/achievement_v2_spec.rb
 spec/models/activate_loyalty_points_response_spec.rb
 spec/models/activate_loyalty_points_spec.rb
 spec/models/activate_user_request_spec.rb
@@ -1537,6 +1555,7 @@ spec/models/coupon_with_application_spec.rb
 spec/models/coupons_notification_data_spec.rb
 spec/models/coupons_notification_policy_spec.rb
 spec/models/create_achievement_spec.rb
+spec/models/create_achievement_v2_spec.rb
 spec/models/create_application_api_key_spec.rb
 spec/models/create_coupon_data_spec.rb
 spec/models/create_coupons200_response_spec.rb
@@ -1672,6 +1691,7 @@ spec/models/import_entity_spec.rb
 spec/models/import_spec.rb
 spec/models/increase_achievement_progress_effect_props_spec.rb
 spec/models/influencing_campaign_details_spec.rb
+spec/models/integration_campaign_spec.rb
 spec/models/integration_coupon_spec.rb
 spec/models/integration_customer_profile_audience_request_item_spec.rb
 spec/models/integration_customer_profile_audience_request_spec.rb
@@ -1984,6 +2004,7 @@ spec/models/trigger_webhook_effect_props_spec.rb
 spec/models/two_fa_config_spec.rb
 spec/models/update_account_spec.rb
 spec/models/update_achievement_spec.rb
+spec/models/update_achievement_v2_spec.rb
 spec/models/update_application_api_key_spec.rb
 spec/models/update_application_cif_spec.rb
 spec/models/update_application_spec.rb

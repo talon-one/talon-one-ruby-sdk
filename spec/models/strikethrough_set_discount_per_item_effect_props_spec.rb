@@ -39,4 +39,10 @@ describe TalonOne::StrikethroughSetDiscountPerItemEffectProps do
     end
   end
 
+  describe 'test attribute "exclude_from_best_prior_price_history"' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
 end
