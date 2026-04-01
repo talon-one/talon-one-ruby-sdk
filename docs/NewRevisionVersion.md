@@ -16,6 +16,7 @@
 | **limits** | [**Array&lt;LimitConfig&gt;**](LimitConfig.md) | The set of limits that will operate for this campaign version. | [optional] |
 | **reevaluate_on_return** | **Boolean** | Indicates whether this campaign should be reevaluated when a customer returns an item. | [optional] |
 | **features** | **Array&lt;String&gt;** | A list of features for the campaign. | [optional] |
+| **coupon_attributes** | **Object** | Arbitrary properties associated with coupons in this campaign. | [optional] |
 
 ## Example
 
@@ -34,7 +35,8 @@ instance = TalonOne::NewRevisionVersion.new(
   referral_settings: null,
   limits: null,
   reevaluate_on_return: true,
-  features: null
+  features: null,
+  coupon_attributes: null
 )
 ```
 

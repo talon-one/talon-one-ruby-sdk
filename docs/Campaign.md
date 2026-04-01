@@ -14,7 +14,7 @@
 | **end_time** | **Time** | Timestamp when the campaign will become inactive. | [optional] |
 | **attributes** | **Object** | Arbitrary properties associated with this campaign. | [optional] |
 | **state** | **String** | A disabled or archived campaign is not evaluated for rules or coupons.  | [default to &#39;enabled&#39;] |
-| **active_ruleset_id** | **Integer** | [ID of Ruleset](https://docs.talon.one/management-api#operation/getRulesets) this campaign applies on customer session evaluation.  | [optional] |
+| **active_ruleset_id** | **Integer** | [ID of Ruleset](https://docs.talon.one/management-api#tag/Campaigns/operation/getRulesets) this campaign applies on customer session evaluation.  | [optional] |
 | **tags** | **Array&lt;String&gt;** | A list of tags for the campaign. |  |
 | **reevaluate_on_return** | **Boolean** | Indicates whether this campaign should be reevaluated when a customer returns an item. |  |
 | **features** | **Array&lt;String&gt;** | The features enabled in this campaign. |  |
@@ -24,6 +24,7 @@
 | **campaign_groups** | **Array&lt;Integer&gt;** | The IDs of the [campaign groups](https://docs.talon.one/docs/product/account/managing-campaign-groups) this campaign belongs to.  | [optional] |
 | **type** | **String** | The campaign type. Possible type values:   - &#x60;cartItem&#x60;: Type of campaign that can apply effects only to cart items.   - &#x60;advanced&#x60;: Type of campaign that can apply effects to customer sessions and cart items.  | [optional][default to &#39;advanced&#39;] |
 | **linked_store_ids** | **Array&lt;Integer&gt;** | A list of store IDs that you want to link to the campaign.  **Note:** Campaigns with linked store IDs will only be evaluated when there is a [customer session update](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/updateCustomerSessionV2) that references a linked store.  | [optional] |
+| **coupon_attributes** | **Object** | Arbitrary properties associated with coupons in this campaign. | [optional] |
 | **budgets** | [**Array&lt;CampaignBudget&gt;**](CampaignBudget.md) | A list of all the budgets that are defined by this campaign and their usage.  **Note:** Budgets that are not defined do not appear in this list and their usage is not counted until they are defined.  | [optional] |
 | **coupon_redemption_count** | **Integer** | This property is **deprecated**. The count should be available under *budgets* property. Number of coupons redeemed in the campaign.  | [optional] |
 | **referral_redemption_count** | **Integer** | This property is **deprecated**. The count should be available under *budgets* property. Number of referral codes redeemed in the campaign.  | [optional] |
@@ -83,6 +84,7 @@ instance = TalonOne::Campaign.new(
   campaign_groups: [1, 3],
   type: advanced,
   linked_store_ids: [1, 2, 3],
+  coupon_attributes: null,
   budgets: null,
   coupon_redemption_count: 163,
   referral_redemption_count: 3,

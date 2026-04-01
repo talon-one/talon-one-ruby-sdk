@@ -226,6 +226,9 @@ docs/DeleteUserRequest.md
 docs/Effect.md
 docs/EffectEntity.md
 docs/EmailEntity.md
+docs/EmbeddedAnalyticsConfiguration.md
+docs/EmbeddedAnalyticsConfigurationDashboards.md
+docs/EmbeddedDashboardConfiguration.md
 docs/Endpoint.md
 docs/Entity.md
 docs/EntityWithTalangVisibleID.md
@@ -244,6 +247,9 @@ docs/Experiment.md
 docs/ExperimentCampaignCopy.md
 docs/ExperimentCopy.md
 docs/ExperimentCopyExperiment.md
+docs/ExperimentListResults.md
+docs/ExperimentListResultsRequest.md
+docs/ExperimentResult.md
 docs/ExperimentResults.md
 docs/ExperimentVariant.md
 docs/ExperimentVariantAllocation.md
@@ -322,6 +328,8 @@ docs/GetRulesets200Response.md
 docs/GetUsers200Response.md
 docs/GetWebhooks200Response.md
 docs/Giveaway.md
+docs/GiveawayPoolNotification.md
+docs/GiveawayPoolNotificationData.md
 docs/GiveawaysPool.md
 docs/HiddenConditionsEffects.md
 docs/History.md
@@ -565,6 +573,7 @@ docs/RoleV2PermissionSet.md
 docs/RoleV2Permissions.md
 docs/RoleV2Readonly.md
 docs/RoleV2RolesGroup.md
+docs/RolesV2Thresholds.md
 docs/RollbackAddedLoyaltyPointsEffectProps.md
 docs/RollbackCouponEffectProps.md
 docs/RollbackDeductedLoyaltyPointsEffectProps.md
@@ -573,6 +582,7 @@ docs/RollbackIncreasedAchievementProgressEffectProps.md
 docs/RollbackReferralEffectProps.md
 docs/Rule.md
 docs/RuleFailureReason.md
+docs/RuleMetadata.md
 docs/Ruleset.md
 docs/SSOConfig.md
 docs/SamlConnection.md
@@ -910,6 +920,9 @@ lib/talon_one_sdk/models/delete_user_request.rb
 lib/talon_one_sdk/models/effect.rb
 lib/talon_one_sdk/models/effect_entity.rb
 lib/talon_one_sdk/models/email_entity.rb
+lib/talon_one_sdk/models/embedded_analytics_configuration.rb
+lib/talon_one_sdk/models/embedded_analytics_configuration_dashboards.rb
+lib/talon_one_sdk/models/embedded_dashboard_configuration.rb
 lib/talon_one_sdk/models/endpoint.rb
 lib/talon_one_sdk/models/entity.rb
 lib/talon_one_sdk/models/entity_with_talang_visible_id.rb
@@ -928,6 +941,9 @@ lib/talon_one_sdk/models/experiment.rb
 lib/talon_one_sdk/models/experiment_campaign_copy.rb
 lib/talon_one_sdk/models/experiment_copy.rb
 lib/talon_one_sdk/models/experiment_copy_experiment.rb
+lib/talon_one_sdk/models/experiment_list_results.rb
+lib/talon_one_sdk/models/experiment_list_results_request.rb
+lib/talon_one_sdk/models/experiment_result.rb
 lib/talon_one_sdk/models/experiment_results.rb
 lib/talon_one_sdk/models/experiment_variant.rb
 lib/talon_one_sdk/models/experiment_variant_allocation.rb
@@ -1006,6 +1022,8 @@ lib/talon_one_sdk/models/get_rulesets200_response.rb
 lib/talon_one_sdk/models/get_users200_response.rb
 lib/talon_one_sdk/models/get_webhooks200_response.rb
 lib/talon_one_sdk/models/giveaway.rb
+lib/talon_one_sdk/models/giveaway_pool_notification.rb
+lib/talon_one_sdk/models/giveaway_pool_notification_data.rb
 lib/talon_one_sdk/models/giveaways_pool.rb
 lib/talon_one_sdk/models/hidden_conditions_effects.rb
 lib/talon_one_sdk/models/history.rb
@@ -1247,6 +1265,7 @@ lib/talon_one_sdk/models/role_v2_permission_set.rb
 lib/talon_one_sdk/models/role_v2_permissions.rb
 lib/talon_one_sdk/models/role_v2_readonly.rb
 lib/talon_one_sdk/models/role_v2_roles_group.rb
+lib/talon_one_sdk/models/roles_v2_thresholds.rb
 lib/talon_one_sdk/models/rollback_added_loyalty_points_effect_props.rb
 lib/talon_one_sdk/models/rollback_coupon_effect_props.rb
 lib/talon_one_sdk/models/rollback_deducted_loyalty_points_effect_props.rb
@@ -1255,6 +1274,7 @@ lib/talon_one_sdk/models/rollback_increased_achievement_progress_effect_props.rb
 lib/talon_one_sdk/models/rollback_referral_effect_props.rb
 lib/talon_one_sdk/models/rule.rb
 lib/talon_one_sdk/models/rule_failure_reason.rb
+lib/talon_one_sdk/models/rule_metadata.rb
 lib/talon_one_sdk/models/ruleset.rb
 lib/talon_one_sdk/models/saml_connection.rb
 lib/talon_one_sdk/models/saml_connection_internal.rb
@@ -1587,6 +1607,9 @@ spec/models/delete_user_request_spec.rb
 spec/models/effect_entity_spec.rb
 spec/models/effect_spec.rb
 spec/models/email_entity_spec.rb
+spec/models/embedded_analytics_configuration_dashboards_spec.rb
+spec/models/embedded_analytics_configuration_spec.rb
+spec/models/embedded_dashboard_configuration_spec.rb
 spec/models/endpoint_spec.rb
 spec/models/entity_spec.rb
 spec/models/entity_with_talang_visible_id_spec.rb
@@ -1604,6 +1627,9 @@ spec/models/event_v3_spec.rb
 spec/models/experiment_campaign_copy_spec.rb
 spec/models/experiment_copy_experiment_spec.rb
 spec/models/experiment_copy_spec.rb
+spec/models/experiment_list_results_request_spec.rb
+spec/models/experiment_list_results_spec.rb
+spec/models/experiment_result_spec.rb
 spec/models/experiment_results_spec.rb
 spec/models/experiment_spec.rb
 spec/models/experiment_variant_allocation_spec.rb
@@ -1682,6 +1708,8 @@ spec/models/get_reserved_customers200_response_spec.rb
 spec/models/get_rulesets200_response_spec.rb
 spec/models/get_users200_response_spec.rb
 spec/models/get_webhooks200_response_spec.rb
+spec/models/giveaway_pool_notification_data_spec.rb
+spec/models/giveaway_pool_notification_spec.rb
 spec/models/giveaway_spec.rb
 spec/models/giveaways_pool_spec.rb
 spec/models/hidden_conditions_effects_spec.rb
@@ -1924,6 +1952,7 @@ spec/models/role_v2_permissions_spec.rb
 spec/models/role_v2_readonly_spec.rb
 spec/models/role_v2_roles_group_spec.rb
 spec/models/role_v2_spec.rb
+spec/models/roles_v2_thresholds_spec.rb
 spec/models/rollback_added_loyalty_points_effect_props_spec.rb
 spec/models/rollback_coupon_effect_props_spec.rb
 spec/models/rollback_deducted_loyalty_points_effect_props_spec.rb
@@ -1931,6 +1960,7 @@ spec/models/rollback_discount_effect_props_spec.rb
 spec/models/rollback_increased_achievement_progress_effect_props_spec.rb
 spec/models/rollback_referral_effect_props_spec.rb
 spec/models/rule_failure_reason_spec.rb
+spec/models/rule_metadata_spec.rb
 spec/models/rule_spec.rb
 spec/models/ruleset_spec.rb
 spec/models/saml_connection_internal_spec.rb
