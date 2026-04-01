@@ -16,7 +16,7 @@ See our [migration guide](MIGRATION.md).
 Add this to the Gemfile:
 
 ```shell
-gem 'talon_one_sdk', '~> 26.06.0'
+gem 'talon_one_sdk', '~> 26.07.0'
 ```
 
 ### Build a gem
@@ -32,10 +32,10 @@ gem build talon_one_sdk.gemspec
 To install the gem locally:
 
 ```shell
-gem install ./talon_one_sdk-26.06.0.gem
+gem install ./talon_one_sdk-26.07.0.gem
 ```
 
-For development, run `gem install --dev ./talon_one_sdk-26.06.0.gem` to install the development dependencies.
+For development, run `gem install --dev ./talon_one_sdk-26.07.0.gem` to install the development dependencies.
 
 ### RubyGems
 
@@ -204,7 +204,6 @@ Class | Method | HTTP request | Description
 *TalonOne::IntegrationApi* | [**get_loyalty_program_profile_transactions**](docs/IntegrationApi.md#get_loyalty_program_profile_transactions) | **GET** /v1/loyalty_programs/{loyaltyProgramId}/profile/{integrationId}/transactions | List customer's loyalty transactions
 *TalonOne::IntegrationApi* | [**get_reserved_customers**](docs/IntegrationApi.md#get_reserved_customers) | **GET** /v1/coupon_reservations/customerprofiles/{couponValue} | List customers that have this coupon reserved
 *TalonOne::IntegrationApi* | [**link_loyalty_card_to_profile**](docs/IntegrationApi.md#link_loyalty_card_to_profile) | **POST** /v2/loyalty_programs/{loyaltyProgramId}/cards/{loyaltyCardId}/link_profile | Link customer profile to card
-*TalonOne::IntegrationApi* | [**price_history**](docs/IntegrationApi.md#price_history) | **POST** /v1/best_prior_price_history | Get summary of price history
 *TalonOne::IntegrationApi* | [**reopen_customer_session**](docs/IntegrationApi.md#reopen_customer_session) | **PUT** /v2/customer_sessions/{customerSessionId}/reopen | Reopen customer session
 *TalonOne::IntegrationApi* | [**return_cart_items**](docs/IntegrationApi.md#return_cart_items) | **POST** /v2/customer_sessions/{customerSessionId}/returns | Return cart items
 *TalonOne::IntegrationApi* | [**sync_catalog**](docs/IntegrationApi.md#sync_catalog) | **PUT** /v1/catalogs/{catalogId}/sync | Sync cart item catalog
@@ -362,6 +361,7 @@ Class | Method | HTTP request | Description
 *TalonOne::ManagementApi* | [**list_experiments**](docs/ManagementApi.md#list_experiments) | **GET** /v1/applications/{applicationId}/experiments | List experiments
 *TalonOne::ManagementApi* | [**list_stores**](docs/ManagementApi.md#list_stores) | **GET** /v1/applications/{applicationId}/stores | List stores
 *TalonOne::ManagementApi* | [**okta_event_handler_challenge**](docs/ManagementApi.md#okta_event_handler_challenge) | **GET** /v1/provisioning/okta | Validate Okta API ownership
+*TalonOne::ManagementApi* | [**price_history**](docs/ManagementApi.md#price_history) | **POST** /v1/applications/{applicationId}/price_history | Get summary of price history
 *TalonOne::ManagementApi* | [**remove_loyalty_points**](docs/ManagementApi.md#remove_loyalty_points) | **PUT** /v1/loyalty_programs/{loyaltyProgramId}/profile/{integrationId}/deduct_points | Deduct points from customer profile
 *TalonOne::ManagementApi* | [**reset_password**](docs/ManagementApi.md#reset_password) | **POST** /v1/reset_password | Reset password
 *TalonOne::ManagementApi* | [**scim_create_group**](docs/ManagementApi.md#scim_create_group) | **POST** /v1/provisioning/scim/Groups | Create SCIM group
@@ -611,6 +611,9 @@ Class | Method | HTTP request | Description
 - [TalonOne::Effect](docs/Effect.md)
 - [TalonOne::EffectEntity](docs/EffectEntity.md)
 - [TalonOne::EmailEntity](docs/EmailEntity.md)
+- [TalonOne::EmbeddedAnalyticsConfiguration](docs/EmbeddedAnalyticsConfiguration.md)
+- [TalonOne::EmbeddedAnalyticsConfigurationDashboards](docs/EmbeddedAnalyticsConfigurationDashboards.md)
+- [TalonOne::EmbeddedDashboardConfiguration](docs/EmbeddedDashboardConfiguration.md)
 - [TalonOne::Endpoint](docs/Endpoint.md)
 - [TalonOne::Entity](docs/Entity.md)
 - [TalonOne::EntityWithTalangVisibleID](docs/EntityWithTalangVisibleID.md)
@@ -629,6 +632,9 @@ Class | Method | HTTP request | Description
 - [TalonOne::ExperimentCampaignCopy](docs/ExperimentCampaignCopy.md)
 - [TalonOne::ExperimentCopy](docs/ExperimentCopy.md)
 - [TalonOne::ExperimentCopyExperiment](docs/ExperimentCopyExperiment.md)
+- [TalonOne::ExperimentListResults](docs/ExperimentListResults.md)
+- [TalonOne::ExperimentListResultsRequest](docs/ExperimentListResultsRequest.md)
+- [TalonOne::ExperimentResult](docs/ExperimentResult.md)
 - [TalonOne::ExperimentResults](docs/ExperimentResults.md)
 - [TalonOne::ExperimentVariant](docs/ExperimentVariant.md)
 - [TalonOne::ExperimentVariantAllocation](docs/ExperimentVariantAllocation.md)
@@ -707,6 +713,8 @@ Class | Method | HTTP request | Description
 - [TalonOne::GetUsers200Response](docs/GetUsers200Response.md)
 - [TalonOne::GetWebhooks200Response](docs/GetWebhooks200Response.md)
 - [TalonOne::Giveaway](docs/Giveaway.md)
+- [TalonOne::GiveawayPoolNotification](docs/GiveawayPoolNotification.md)
+- [TalonOne::GiveawayPoolNotificationData](docs/GiveawayPoolNotificationData.md)
 - [TalonOne::GiveawaysPool](docs/GiveawaysPool.md)
 - [TalonOne::HiddenConditionsEffects](docs/HiddenConditionsEffects.md)
 - [TalonOne::History](docs/History.md)
@@ -948,6 +956,7 @@ Class | Method | HTTP request | Description
 - [TalonOne::RoleV2Permissions](docs/RoleV2Permissions.md)
 - [TalonOne::RoleV2Readonly](docs/RoleV2Readonly.md)
 - [TalonOne::RoleV2RolesGroup](docs/RoleV2RolesGroup.md)
+- [TalonOne::RolesV2Thresholds](docs/RolesV2Thresholds.md)
 - [TalonOne::RollbackAddedLoyaltyPointsEffectProps](docs/RollbackAddedLoyaltyPointsEffectProps.md)
 - [TalonOne::RollbackCouponEffectProps](docs/RollbackCouponEffectProps.md)
 - [TalonOne::RollbackDeductedLoyaltyPointsEffectProps](docs/RollbackDeductedLoyaltyPointsEffectProps.md)
@@ -956,6 +965,7 @@ Class | Method | HTTP request | Description
 - [TalonOne::RollbackReferralEffectProps](docs/RollbackReferralEffectProps.md)
 - [TalonOne::Rule](docs/Rule.md)
 - [TalonOne::RuleFailureReason](docs/RuleFailureReason.md)
+- [TalonOne::RuleMetadata](docs/RuleMetadata.md)
 - [TalonOne::Ruleset](docs/Ruleset.md)
 - [TalonOne::SSOConfig](docs/SSOConfig.md)
 - [TalonOne::SamlConnection](docs/SamlConnection.md)
@@ -1079,18 +1089,6 @@ Class | Method | HTTP request | Description
 Authentication schemes defined for the API:
 
 ### api_key_v1
-
-- **Type**: API key
-- **API key parameter name**: Authorization
-- **Location**: HTTP header
-
-### manager_auth
-
-- **Type**: API key
-- **API key parameter name**: Authorization
-- **Location**: HTTP header
-
-### management_key
 
 - **Type**: API key
 - **API key parameter name**: Authorization

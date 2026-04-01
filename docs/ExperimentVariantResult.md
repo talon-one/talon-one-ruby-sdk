@@ -7,6 +7,7 @@
 | **variant_id** | **Integer** | The ID of the variant. | [optional] |
 | **variant_name** | **String** | The name of the variant. | [optional] |
 | **variant_weight** | **Integer** | The weight of the variant. | [optional] |
+| **is_winner** | **Boolean** | Calculated flag if the variant is the winner. | [optional] |
 | **total_revenue** | **Float** | The total, pre-discount value of all items purchased in a customer session. | [optional] |
 | **sessions_count** | **Float** | The number of all closed sessions. | [optional] |
 | **avg_items_per_session** | **Float** | The number of items from sessions divided by the number of sessions. | [optional] |
@@ -24,6 +25,7 @@ instance = TalonOne::ExperimentVariantResult.new(
   variant_id: 1,
   variant_name: Variant A,
   variant_weight: 50,
+  is_winner: true,
   total_revenue: 100,
   sessions_count: 100,
   avg_items_per_session: 100,

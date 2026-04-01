@@ -10,7 +10,7 @@
 | **end_time** | **Time** | Timestamp when the campaign will become inactive. | [optional] |
 | **attributes** | **Object** | Arbitrary properties associated with this campaign. | [optional] |
 | **state** | **String** | A disabled or archived campaign is not evaluated for rules or coupons.  | [optional][default to &#39;enabled&#39;] |
-| **active_ruleset_id** | **Integer** | [ID of Ruleset](https://docs.talon.one/management-api#operation/getRulesets) this campaign applies on customer session evaluation.  | [optional] |
+| **active_ruleset_id** | **Integer** | [ID of Ruleset](https://docs.talon.one/management-api#tag/Campaigns/operation/getRulesets) this campaign applies on customer session evaluation.  | [optional] |
 | **tags** | **Array&lt;String&gt;** | A list of tags for the campaign. |  |
 | **reevaluate_on_return** | **Boolean** | Indicates whether this campaign should be reevaluated when a customer returns an item. | [optional] |
 | **features** | **Array&lt;String&gt;** | A list of features for the campaign. |  |
@@ -20,7 +20,8 @@
 | **campaign_groups** | **Array&lt;Integer&gt;** | The IDs of the [campaign groups](https://docs.talon.one/docs/product/account/account-settings/managing-campaign-groups) this campaign belongs to.  | [optional] |
 | **evaluation_group_id** | **Integer** | The ID of the campaign evaluation group the campaign belongs to. | [optional] |
 | **type** | **String** | The campaign type. Possible type values:   - &#x60;cartItem&#x60;: Type of campaign that can apply effects only to cart items.   - &#x60;advanced&#x60;: Type of campaign that can apply effects to customer sessions and cart items.  | [optional][default to &#39;advanced&#39;] |
-| **linked_store_ids** | **Array&lt;Integer&gt;** | A list of store IDs that you want to link to the campaign.  **Note:** - Campaigns with linked store IDs will only be evaluated when there is a [customer session update](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/updateCustomerSessionV2) that references a linked store. - If you linked stores to the campaign by uploading a CSV file, you cannot use this property and it should be empty. - Use of this property is limited to 50 stores. To link more than 50 stores, upload them via a CSV file.  | [optional] |
+| **linked_store_ids** | **Array&lt;Integer&gt;** | A list of store IDs that you want to link to the campaign.  &gt; [!note] **Note** &gt; - Campaigns with linked store IDs will only be evaluated when there is a &gt;   [customer session update](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/updateCustomerSessionV2) &gt;   that references a linked store. &gt; - If you linked stores to the campaign by uploading a CSV file, you cannot use this property and it should be empty. &gt; - Use of this property is limited to 50 stores. To link more than 50 stores, upload them via a CSV file.  | [optional] |
+| **coupon_attributes** | **Object** | Arbitrary properties associated with coupons in this campaign. | [optional] |
 
 ## Example
 
@@ -44,7 +45,8 @@ instance = TalonOne::UpdateCampaign.new(
   campaign_groups: [1, 3],
   evaluation_group_id: 2,
   type: advanced,
-  linked_store_ids: [1, 2, 3]
+  linked_store_ids: [1, 2, 3],
+  coupon_attributes: null
 )
 ```
 
