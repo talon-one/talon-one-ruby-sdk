@@ -6,7 +6,7 @@
 | ---- | ---- | ----------- | ----- |
 | **name** | **String** | effect name. |  |
 | **value** | **Object** |  |  |
-| **exclude_from_best_prior_price_history** | **Boolean** |  | [optional] |
+| **excluded_from_price_history** | **Boolean** |  | [optional] |
 
 ## Example
 
@@ -16,7 +16,7 @@ require 'talon_one_sdk'
 instance = TalonOne::StrikethroughSetDiscountPerItemEffectProps.new(
   name: 1EuroOff,
   value: null,
-  exclude_from_best_prior_price_history: null
+  excluded_from_price_history: null
 )
 ```
 

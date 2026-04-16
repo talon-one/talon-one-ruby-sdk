@@ -24,10 +24,7 @@ module TalonOne
     # The number of days prior to the timeframeEndDate. Only prices within this look back period are considered for the best prior price evaluation.
     attr_accessor :timeframe
 
-    # This property is **deprecated**. Use `timeframeEndDateType` instead.  Indicates whether the timeframe includes the start of the current sale. - When `false`, the timeframe includes the start date of the current sale. - When `true`, the timeframe strictly uses the number of days specified in `timeframe`. 
-    attr_accessor :strict_end_date
-
-    # Sets the timeframe for retrieving historical pricing data. Can be one of the following values: - `strict`: The timeframe ends at the `timeframeEndDate` value. - `price`: The timeframe ends at the start of the current `contextId` with the current price value. Identical price records are merged. If there is no `contextId` for the most recent price, the most recent timestamp for the price is used.  - `sale`:  The timeframe ends at the start of current `contextId` and takes the prices prior to the start of the `contextId` into account. 
+    # Sets the timeframe for retrieving historical pricing data. Can be one of the following values: - `strict`: The timeframe ends at the `timeframeEndDate` value. - `price`: The timeframe ends at the start of current price value and takes the prices prior to the start of the current price value into account. - `sale`:  The timeframe ends at the start of current `contextId` and takes the prices prior to the start of the `contextId` into account. 
     attr_accessor :timeframe_end_date_type
 
     attr_accessor :target
@@ -60,7 +57,6 @@ module TalonOne
         :'skus' => :'skus',
         :'timeframe_end_date' => :'timeframeEndDate',
         :'timeframe' => :'timeframe',
-        :'strict_end_date' => :'strictEndDate',
         :'timeframe_end_date_type' => :'timeframeEndDateType',
         :'target' => :'target'
       }
@@ -82,7 +78,6 @@ module TalonOne
         :'skus' => :'Array<String>',
         :'timeframe_end_date' => :'Time',
         :'timeframe' => :'String',
-        :'strict_end_date' => :'Boolean',
         :'timeframe_end_date_type' => :'String',
         :'target' => :'BestPriorTarget'
       }
@@ -130,14 +125,10 @@ module TalonOne
         self.timeframe = nil
       end
 
-      if attributes.key?(:'strict_end_date')
-        self.strict_end_date = attributes[:'strict_end_date']
-      else
-        self.strict_end_date = nil
-      end
-
       if attributes.key?(:'timeframe_end_date_type')
         self.timeframe_end_date_type = attributes[:'timeframe_end_date_type']
+      else
+        self.timeframe_end_date_type = nil
       end
 
       if attributes.key?(:'target')
@@ -166,8 +157,8 @@ module TalonOne
         invalid_properties.push('invalid value for "timeframe", timeframe cannot be nil.')
       end
 
-      if @strict_end_date.nil?
-        invalid_properties.push('invalid value for "strict_end_date", strict_end_date cannot be nil.')
+      if @timeframe_end_date_type.nil?
+        invalid_properties.push('invalid value for "timeframe_end_date_type", timeframe_end_date_type cannot be nil.')
       end
 
       invalid_properties
@@ -181,7 +172,7 @@ module TalonOne
       return false if @skus.length < 1
       return false if @timeframe_end_date.nil?
       return false if @timeframe.nil?
-      return false if @strict_end_date.nil?
+      return false if @timeframe_end_date_type.nil?
       timeframe_end_date_type_validator = EnumAttributeValidator.new('String', ["strict", "price", "sale"])
       return false unless timeframe_end_date_type_validator.valid?(@timeframe_end_date_type)
       true
@@ -221,16 +212,6 @@ module TalonOne
       @timeframe = timeframe
     end
 
-    # Custom attribute writer method with validation
-    # @param [Object] strict_end_date Value to be assigned
-    def strict_end_date=(strict_end_date)
-      if strict_end_date.nil?
-        fail ArgumentError, 'strict_end_date cannot be nil'
-      end
-
-      @strict_end_date = strict_end_date
-    end
-
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] timeframe_end_date_type Object to be assigned
     def timeframe_end_date_type=(timeframe_end_date_type)
@@ -249,7 +230,6 @@ module TalonOne
           skus == o.skus &&
           timeframe_end_date == o.timeframe_end_date &&
           timeframe == o.timeframe &&
-          strict_end_date == o.strict_end_date &&
           timeframe_end_date_type == o.timeframe_end_date_type &&
           target == o.target
     end
@@ -263,7 +243,7 @@ module TalonOne
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [skus, timeframe_end_date, timeframe, strict_end_date, timeframe_end_date_type, target].hash
+      [skus, timeframe_end_date, timeframe, timeframe_end_date_type, target].hash
     end
 
     # Builds the object from hash

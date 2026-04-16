@@ -211,8 +211,6 @@ module TalonOne
         if (value = attributes[:'subscribed_applications']).is_a?(Array)
           self.subscribed_applications = value
         end
-      else
-        self.subscribed_applications = nil
       end
 
       if attributes.key?(:'timezone')
@@ -260,11 +258,7 @@ module TalonOne
         invalid_properties.push('invalid value for "sandbox", sandbox cannot be nil.')
       end
 
-      if @subscribed_applications.nil?
-        invalid_properties.push('invalid value for "subscribed_applications", subscribed_applications cannot be nil.')
-      end
-
-      if @subscribed_applications.length < 0
+      if !@subscribed_applications.nil? && @subscribed_applications.length < 0
         invalid_properties.push('invalid value for "subscribed_applications", number of items must be greater than or equal to 0.')
       end
 
@@ -295,8 +289,7 @@ module TalonOne
       activation_policy_validator = EnumAttributeValidator.new('String', ["user_action", "fixed_schedule"])
       return false unless activation_policy_validator.valid?(@activation_policy)
       return false if @sandbox.nil?
-      return false if @subscribed_applications.nil?
-      return false if @subscribed_applications.length < 0
+      return false if !@subscribed_applications.nil? && @subscribed_applications.length < 0
       return false if @timezone.nil?
       return false if @timezone.to_s.length < 1
       true

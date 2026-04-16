@@ -199,18 +199,26 @@ module TalonOne
 
       if attributes.key?(:'name')
         self.name = attributes[:'name']
+      else
+        self.name = nil
       end
 
       if attributes.key?(:'title')
         self.title = attributes[:'title']
+      else
+        self.title = nil
       end
 
       if attributes.key?(:'description')
         self.description = attributes[:'description']
+      else
+        self.description = nil
       end
 
       if attributes.key?(:'target')
         self.target = attributes[:'target']
+      else
+        self.target = nil
       end
 
       if attributes.key?(:'period')
@@ -219,10 +227,14 @@ module TalonOne
 
       if attributes.key?(:'recurrence_policy')
         self.recurrence_policy = attributes[:'recurrence_policy']
+      else
+        self.recurrence_policy = nil
       end
 
       if attributes.key?(:'activation_policy')
         self.activation_policy = attributes[:'activation_policy']
+      else
+        self.activation_policy = nil
       end
 
       if attributes.key?(:'fixed_start_date')
@@ -239,16 +251,22 @@ module TalonOne
 
       if attributes.key?(:'sandbox')
         self.sandbox = attributes[:'sandbox']
+      else
+        self.sandbox = nil
       end
 
       if attributes.key?(:'subscribed_applications')
         if (value = attributes[:'subscribed_applications']).is_a?(Array)
           self.subscribed_applications = value
         end
+      else
+        self.subscribed_applications = nil
       end
 
       if attributes.key?(:'timezone')
         self.timezone = attributes[:'timezone']
+      else
+        self.timezone = nil
       end
 
       if attributes.key?(:'user_id')
@@ -283,24 +301,60 @@ module TalonOne
         invalid_properties.push('invalid value for "created", created cannot be nil.')
       end
 
-      if !@name.nil? && @name.to_s.length > 1000
+      if @name.nil?
+        invalid_properties.push('invalid value for "name", name cannot be nil.')
+      end
+
+      if @name.to_s.length > 1000
         invalid_properties.push('invalid value for "name", the character length must be smaller than or equal to 1000.')
       end
 
-      if !@name.nil? && @name.to_s.length < 1
+      if @name.to_s.length < 1
         invalid_properties.push('invalid value for "name", the character length must be greater than or equal to 1.')
       end
 
       pattern = Regexp.new(/^[a-zA-Z]\w+$/)
-      if !@name.nil? && @name !~ pattern
+      if @name !~ pattern
         invalid_properties.push("invalid value for \"name\", must conform to the pattern #{pattern}.")
       end
 
-      if !@subscribed_applications.nil? && @subscribed_applications.length < 0
+      if @title.nil?
+        invalid_properties.push('invalid value for "title", title cannot be nil.')
+      end
+
+      if @description.nil?
+        invalid_properties.push('invalid value for "description", description cannot be nil.')
+      end
+
+      if @target.nil?
+        invalid_properties.push('invalid value for "target", target cannot be nil.')
+      end
+
+      if @recurrence_policy.nil?
+        invalid_properties.push('invalid value for "recurrence_policy", recurrence_policy cannot be nil.')
+      end
+
+      if @activation_policy.nil?
+        invalid_properties.push('invalid value for "activation_policy", activation_policy cannot be nil.')
+      end
+
+      if @sandbox.nil?
+        invalid_properties.push('invalid value for "sandbox", sandbox cannot be nil.')
+      end
+
+      if @subscribed_applications.nil?
+        invalid_properties.push('invalid value for "subscribed_applications", subscribed_applications cannot be nil.')
+      end
+
+      if @subscribed_applications.length < 0
         invalid_properties.push('invalid value for "subscribed_applications", number of items must be greater than or equal to 0.')
       end
 
-      if !@timezone.nil? && @timezone.to_s.length < 1
+      if @timezone.nil?
+        invalid_properties.push('invalid value for "timezone", timezone cannot be nil.')
+      end
+
+      if @timezone.to_s.length < 1
         invalid_properties.push('invalid value for "timezone", the character length must be greater than or equal to 1.')
       end
 
@@ -317,15 +371,24 @@ module TalonOne
       warn '[DEPRECATED] the `valid?` method is obsolete'
       return false if @id.nil?
       return false if @created.nil?
-      return false if !@name.nil? && @name.to_s.length > 1000
-      return false if !@name.nil? && @name.to_s.length < 1
-      return false if !@name.nil? && @name !~ Regexp.new(/^[a-zA-Z]\w+$/)
+      return false if @name.nil?
+      return false if @name.to_s.length > 1000
+      return false if @name.to_s.length < 1
+      return false if @name !~ Regexp.new(/^[a-zA-Z]\w+$/)
+      return false if @title.nil?
+      return false if @description.nil?
+      return false if @target.nil?
+      return false if @recurrence_policy.nil?
       recurrence_policy_validator = EnumAttributeValidator.new('String', ["no_recurrence", "on_expiration", "on_completion"])
       return false unless recurrence_policy_validator.valid?(@recurrence_policy)
+      return false if @activation_policy.nil?
       activation_policy_validator = EnumAttributeValidator.new('String', ["user_action", "fixed_schedule"])
       return false unless activation_policy_validator.valid?(@activation_policy)
-      return false if !@subscribed_applications.nil? && @subscribed_applications.length < 0
-      return false if !@timezone.nil? && @timezone.to_s.length < 1
+      return false if @sandbox.nil?
+      return false if @subscribed_applications.nil?
+      return false if @subscribed_applications.length < 0
+      return false if @timezone.nil?
+      return false if @timezone.to_s.length < 1
       return false if @user_id.nil?
       status_validator = EnumAttributeValidator.new('String', ["inprogress", "expired", "not_started", "completed"])
       return false unless status_validator.valid?(@status)
@@ -375,6 +438,36 @@ module TalonOne
       @name = name
     end
 
+    # Custom attribute writer method with validation
+    # @param [Object] title Value to be assigned
+    def title=(title)
+      if title.nil?
+        fail ArgumentError, 'title cannot be nil'
+      end
+
+      @title = title
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] description Value to be assigned
+    def description=(description)
+      if description.nil?
+        fail ArgumentError, 'description cannot be nil'
+      end
+
+      @description = description
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] target Value to be assigned
+    def target=(target)
+      if target.nil?
+        fail ArgumentError, 'target cannot be nil'
+      end
+
+      @target = target
+    end
+
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] recurrence_policy Object to be assigned
     def recurrence_policy=(recurrence_policy)
@@ -393,6 +486,16 @@ module TalonOne
         fail ArgumentError, "invalid value for \"activation_policy\", must be one of #{validator.allowable_values}."
       end
       @activation_policy = activation_policy
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] sandbox Value to be assigned
+    def sandbox=(sandbox)
+      if sandbox.nil?
+        fail ArgumentError, 'sandbox cannot be nil'
+      end
+
+      @sandbox = sandbox
     end
 
     # Custom attribute writer method with validation

@@ -45,12 +45,6 @@ describe TalonOne::BestPriorPriceRequest do
     end
   end
 
-  describe 'test attribute "strict_end_date"' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
   describe 'test attribute "timeframe_end_date_type"' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/

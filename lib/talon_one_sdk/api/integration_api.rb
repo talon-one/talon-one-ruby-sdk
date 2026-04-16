@@ -1867,6 +1867,92 @@ module TalonOne
       return data, status_code, headers
     end
 
+    # List all running campaigns
+    # Retrieve all running campaigns for the specified Application. You can filter the results by providing specific campaign IDs or a range of  start and end dates. 
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :page_size The number of items in the response. (default to 50)
+    # @option opts [Integer] :skip The number of items to skip when paging through large result sets.
+    # @option opts [Array<String>] :campaign_ids Filter by one or more campaign IDs, separated by a comma.  **Note:** If no campaigns are specified, data for all the campaigns in the Application is returned. 
+    # @option opts [Time] :start_after Filter results to only include campaigns that start on or after  the specified timestamp.  **Note:**  - It must be an RFC3339 timestamp string.  - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered. 
+    # @option opts [Time] :start_before Filter results to only include campaigns that start on or before  the specified timestamp.  **Note:**  - It must be an RFC3339 timestamp string.  - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered. 
+    # @option opts [Time] :end_after Filter results to only include campaigns that end on or after  the specified timestamp.  **Note:**  - It must be an RFC3339 timestamp string.  - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered. 
+    # @option opts [Time] :end_before Filter results to only include campaigns that end on or before  the specified timestamp.  **Note:**  - It must be an RFC3339 timestamp string.  - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered. 
+    # @return [IntegrationGetAllCampaigns200Response]
+    def integration_get_all_campaigns(opts = {})
+      data, _status_code, _headers = integration_get_all_campaigns_with_http_info(opts)
+      data
+    end
+
+    # List all running campaigns
+    # Retrieve all running campaigns for the specified Application. You can filter the results by providing specific campaign IDs or a range of  start and end dates. 
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :page_size The number of items in the response. (default to 50)
+    # @option opts [Integer] :skip The number of items to skip when paging through large result sets.
+    # @option opts [Array<String>] :campaign_ids Filter by one or more campaign IDs, separated by a comma.  **Note:** If no campaigns are specified, data for all the campaigns in the Application is returned. 
+    # @option opts [Time] :start_after Filter results to only include campaigns that start on or after  the specified timestamp.  **Note:**  - It must be an RFC3339 timestamp string.  - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered. 
+    # @option opts [Time] :start_before Filter results to only include campaigns that start on or before  the specified timestamp.  **Note:**  - It must be an RFC3339 timestamp string.  - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered. 
+    # @option opts [Time] :end_after Filter results to only include campaigns that end on or after  the specified timestamp.  **Note:**  - It must be an RFC3339 timestamp string.  - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered. 
+    # @option opts [Time] :end_before Filter results to only include campaigns that end on or before  the specified timestamp.  **Note:**  - It must be an RFC3339 timestamp string.  - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered. 
+    # @return [Array<(IntegrationGetAllCampaigns200Response, Integer, Hash)>] IntegrationGetAllCampaigns200Response data, response status code and response headers
+    def integration_get_all_campaigns_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: IntegrationApi.integration_get_all_campaigns ...'
+      end
+      if @api_client.config.client_side_validation && !opts[:'page_size'].nil? && opts[:'page_size'] > 1000
+        fail ArgumentError, 'invalid value for "opts[:"page_size"]" when calling IntegrationApi.integration_get_all_campaigns, must be smaller than or equal to 1000.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'page_size'].nil? && opts[:'page_size'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"page_size"]" when calling IntegrationApi.integration_get_all_campaigns, must be greater than or equal to 1.'
+      end
+
+      # resource path
+      local_var_path = '/v1/integration/campaigns'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'pageSize'] = opts[:'page_size'] if !opts[:'page_size'].nil?
+      query_params[:'skip'] = opts[:'skip'] if !opts[:'skip'].nil?
+      query_params[:'campaignIds'] = @api_client.build_collection_param(opts[:'campaign_ids'], :csv) if !opts[:'campaign_ids'].nil?
+      query_params[:'startAfter'] = opts[:'start_after'] if !opts[:'start_after'].nil?
+      query_params[:'startBefore'] = opts[:'start_before'] if !opts[:'start_before'].nil?
+      query_params[:'endAfter'] = opts[:'end_after'] if !opts[:'end_after'].nil?
+      query_params[:'endBefore'] = opts[:'end_before'] if !opts[:'end_before'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'IntegrationGetAllCampaigns200Response'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['api_key_v1']
+
+      new_options = opts.merge(
+        :operation => :"IntegrationApi.integration_get_all_campaigns",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: IntegrationApi#integration_get_all_campaigns\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Link customer profile to card
     # [Loyalty cards](https://docs.talon.one/docs/product/loyalty-programs/card-based/card-based-overview) allow customers to collect and spend loyalty points within a [card-based loyalty program](https://docs.talon.one/docs/product/loyalty-programs/overview#loyalty-program-types).  They are useful to gamify loyalty programs and can be used with or without customer profiles linked to them.  Link a customer profile to a given loyalty card for the card to be set as **Registered**.  This affects how it can be used. See the [docs](https://docs.talon.one/docs/product/loyalty-programs/card-based/managing-loyalty-cards#linking-customer-profiles-to-a-loyalty-card).  > [!note] You can link as many customer profiles to a given loyalty card as the > [**card user limit**](https://docs.talon.one/docs/product/loyalty-programs/card-based/creating-cb-programs) > allows. 
     # @param loyalty_program_id [Integer] Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. 
@@ -2024,6 +2110,7 @@ module TalonOne
     # @param return_integration_request [ReturnIntegrationRequest] body
     # @param [Hash] opts the optional parameters
     # @option opts [Boolean] :dry Indicates whether to persist the changes. Changes are ignored when &#x60;dry&#x3D;true&#x60;. 
+    # @option opts [Boolean] :run_rule_engine When set to &#x60;true&#x60;, reevaluates the updated session after items are returned. Only reevaluates campaigns where &#x60;reevaluateOnReturn&#x60; is set to &#x60;true&#x60; and which produced an effect when the session was closed. 
     # @return [IntegrationStateV2]
     def return_cart_items(customer_session_id, return_integration_request, opts = {})
       data, _status_code, _headers = return_cart_items_with_http_info(customer_session_id, return_integration_request, opts)
@@ -2036,6 +2123,7 @@ module TalonOne
     # @param return_integration_request [ReturnIntegrationRequest] body
     # @param [Hash] opts the optional parameters
     # @option opts [Boolean] :dry Indicates whether to persist the changes. Changes are ignored when &#x60;dry&#x3D;true&#x60;. 
+    # @option opts [Boolean] :run_rule_engine When set to &#x60;true&#x60;, reevaluates the updated session after items are returned. Only reevaluates campaigns where &#x60;reevaluateOnReturn&#x60; is set to &#x60;true&#x60; and which produced an effect when the session was closed. 
     # @return [Array<(IntegrationStateV2, Integer, Hash)>] IntegrationStateV2 data, response status code and response headers
     def return_cart_items_with_http_info(customer_session_id, return_integration_request, opts = {})
       if @api_client.config.debugging
@@ -2055,6 +2143,7 @@ module TalonOne
       # query parameters
       query_params = opts[:query_params] || {}
       query_params[:'dry'] = opts[:'dry'] if !opts[:'dry'].nil?
+      query_params[:'runRuleEngine'] = opts[:'run_rule_engine'] if !opts[:'run_rule_engine'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}

@@ -1015,8 +1015,8 @@ module TalonOne
     # @param new_coupon_creation_job [NewCouponCreationJob] body
     # @param [Hash] opts the optional parameters
     # @return [AsyncCouponCreationResponse]
-    def create_coupons_async(application_id, campaign_id, new_coupon_creation_job, opts = {})
-      data, _status_code, _headers = create_coupons_async_with_http_info(application_id, campaign_id, new_coupon_creation_job, opts)
+    def create_coupons_asynchronously(application_id, campaign_id, new_coupon_creation_job, opts = {})
+      data, _status_code, _headers = create_coupons_asynchronously_with_http_info(application_id, campaign_id, new_coupon_creation_job, opts)
       data
     end
 
@@ -1027,21 +1027,21 @@ module TalonOne
     # @param new_coupon_creation_job [NewCouponCreationJob] body
     # @param [Hash] opts the optional parameters
     # @return [Array<(AsyncCouponCreationResponse, Integer, Hash)>] AsyncCouponCreationResponse data, response status code and response headers
-    def create_coupons_async_with_http_info(application_id, campaign_id, new_coupon_creation_job, opts = {})
+    def create_coupons_asynchronously_with_http_info(application_id, campaign_id, new_coupon_creation_job, opts = {})
       if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: ManagementApi.create_coupons_async ...'
+        @api_client.config.logger.debug 'Calling API: ManagementApi.create_coupons_asynchronously ...'
       end
       # verify the required parameter 'application_id' is set
       if @api_client.config.client_side_validation && application_id.nil?
-        fail ArgumentError, "Missing the required parameter 'application_id' when calling ManagementApi.create_coupons_async"
+        fail ArgumentError, "Missing the required parameter 'application_id' when calling ManagementApi.create_coupons_asynchronously"
       end
       # verify the required parameter 'campaign_id' is set
       if @api_client.config.client_side_validation && campaign_id.nil?
-        fail ArgumentError, "Missing the required parameter 'campaign_id' when calling ManagementApi.create_coupons_async"
+        fail ArgumentError, "Missing the required parameter 'campaign_id' when calling ManagementApi.create_coupons_asynchronously"
       end
       # verify the required parameter 'new_coupon_creation_job' is set
       if @api_client.config.client_side_validation && new_coupon_creation_job.nil?
-        fail ArgumentError, "Missing the required parameter 'new_coupon_creation_job' when calling ManagementApi.create_coupons_async"
+        fail ArgumentError, "Missing the required parameter 'new_coupon_creation_job' when calling ManagementApi.create_coupons_asynchronously"
       end
       # resource path
       local_var_path = '/v1/applications/{applicationId}/campaigns/{campaignId}/coupons_async'.sub('{' + 'applicationId' + '}', CGI.escape(application_id.to_s)).sub('{' + 'campaignId' + '}', CGI.escape(campaign_id.to_s))
@@ -1072,7 +1072,7 @@ module TalonOne
       auth_names = opts[:debug_auth_names] || ['api_key_v1']
 
       new_options = opts.merge(
-        :operation => :"ManagementApi.create_coupons_async",
+        :operation => :"ManagementApi.create_coupons_asynchronously",
         :header_params => header_params,
         :query_params => query_params,
         :form_params => form_params,
@@ -1083,7 +1083,7 @@ module TalonOne
 
       data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
       if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: ManagementApi#create_coupons_async\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+        @api_client.config.logger.debug "API called: ManagementApi#create_coupons_asynchronously\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -3204,6 +3204,81 @@ module TalonOne
       return data, status_code, headers
     end
 
+    # Export campaign value map
+    # Download a CSV file containing all the value map items in a campaign. If there are multiple versions of the value map, only the items of the current version are exported.  > [!tip] If the exported CSV file is too large to view, you can > [split it into multiple files](https://www.google.com/search?q=split+CSV+into+multiple+files).  The generated file can contain the following columns:  - `identifier`: The value of the attribute in the targeted item, for example, an item's SKU. - `value`: The value that is associated with the identifier, for example, the item's price. 
+    # @param application_id [Integer] The ID of the Application. It is displayed in your Talon.One deployment URL.
+    # @param campaign_id [Integer] The ID of the campaign. It is displayed in your Talon.One deployment URL.
+    # @param value_map_id [Integer] The ID of the value map. 
+    # @param [Hash] opts the optional parameters
+    # @return [String]
+    def export_campaign_value_map(application_id, campaign_id, value_map_id, opts = {})
+      data, _status_code, _headers = export_campaign_value_map_with_http_info(application_id, campaign_id, value_map_id, opts)
+      data
+    end
+
+    # Export campaign value map
+    # Download a CSV file containing all the value map items in a campaign. If there are multiple versions of the value map, only the items of the current version are exported.  &gt; [!tip] If the exported CSV file is too large to view, you can &gt; [split it into multiple files](https://www.google.com/search?q&#x3D;split+CSV+into+multiple+files).  The generated file can contain the following columns:  - &#x60;identifier&#x60;: The value of the attribute in the targeted item, for example, an item&#39;s SKU. - &#x60;value&#x60;: The value that is associated with the identifier, for example, the item&#39;s price. 
+    # @param application_id [Integer] The ID of the Application. It is displayed in your Talon.One deployment URL.
+    # @param campaign_id [Integer] The ID of the campaign. It is displayed in your Talon.One deployment URL.
+    # @param value_map_id [Integer] The ID of the value map. 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(String, Integer, Hash)>] String data, response status code and response headers
+    def export_campaign_value_map_with_http_info(application_id, campaign_id, value_map_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ManagementApi.export_campaign_value_map ...'
+      end
+      # verify the required parameter 'application_id' is set
+      if @api_client.config.client_side_validation && application_id.nil?
+        fail ArgumentError, "Missing the required parameter 'application_id' when calling ManagementApi.export_campaign_value_map"
+      end
+      # verify the required parameter 'campaign_id' is set
+      if @api_client.config.client_side_validation && campaign_id.nil?
+        fail ArgumentError, "Missing the required parameter 'campaign_id' when calling ManagementApi.export_campaign_value_map"
+      end
+      # verify the required parameter 'value_map_id' is set
+      if @api_client.config.client_side_validation && value_map_id.nil?
+        fail ArgumentError, "Missing the required parameter 'value_map_id' when calling ManagementApi.export_campaign_value_map"
+      end
+      # resource path
+      local_var_path = '/v1/applications/{applicationId}/campaigns/{campaignId}/value_maps/{valueMapId}/export'.sub('{' + 'applicationId' + '}', CGI.escape(application_id.to_s)).sub('{' + 'campaignId' + '}', CGI.escape(campaign_id.to_s)).sub('{' + 'valueMapId' + '}', CGI.escape(value_map_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/csv', 'application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'String'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['api_key_v1']
+
+      new_options = opts.merge(
+        :operation => :"ManagementApi.export_campaign_value_map",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ManagementApi#export_campaign_value_map\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Export campaign-level collection's items
     # Download a CSV file containing items from a given campaign-level collection.  > [!tip] If the exported CSV file is too large to view, you can > [split it into multiple files](https://www.google.com/search?q=split+CSV+into+multiple+files). 
     # @param application_id [Integer] The ID of the Application. It is displayed in your Talon.One deployment URL.
@@ -4913,7 +4988,7 @@ module TalonOne
     end
 
     # Get Application
-    # Get the application specified by the ID.
+    # Get the Application specified by the ID.
     # @param application_id [Integer] The ID of the Application. It is displayed in your Talon.One deployment URL.
     # @param [Hash] opts the optional parameters
     # @return [Application]
@@ -4923,7 +4998,7 @@ module TalonOne
     end
 
     # Get Application
-    # Get the application specified by the ID.
+    # Get the Application specified by the ID.
     # @param application_id [Integer] The ID of the Application. It is displayed in your Talon.One deployment URL.
     # @param [Hash] opts the optional parameters
     # @return [Array<(Application, Integer, Hash)>] Application data, response status code and response headers
@@ -5038,6 +5113,81 @@ module TalonOne
       return data, status_code, headers
     end
 
+    # Get Application cart item filter expression
+    # Get an Application cart item filter expression for a specific Application.
+    # @param application_id [Integer] The ID of the Application. It is displayed in your Talon.One deployment URL.
+    # @param cart_item_filter_id [Integer] The ID of the Application cart item filter. You can get this ID with the [List Application cart item filters](https://docs.talon.one/management-api#tag/Applications/operation/listApplicationCartItemFilters) endpoint.
+    # @param expression_id [Integer] The ID of the Application cart item filter expression.
+    # @param [Hash] opts the optional parameters
+    # @return [ApplicationCIFExpression]
+    def get_application_cart_item_filter_expression(application_id, cart_item_filter_id, expression_id, opts = {})
+      data, _status_code, _headers = get_application_cart_item_filter_expression_with_http_info(application_id, cart_item_filter_id, expression_id, opts)
+      data
+    end
+
+    # Get Application cart item filter expression
+    # Get an Application cart item filter expression for a specific Application.
+    # @param application_id [Integer] The ID of the Application. It is displayed in your Talon.One deployment URL.
+    # @param cart_item_filter_id [Integer] The ID of the Application cart item filter. You can get this ID with the [List Application cart item filters](https://docs.talon.one/management-api#tag/Applications/operation/listApplicationCartItemFilters) endpoint.
+    # @param expression_id [Integer] The ID of the Application cart item filter expression.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(ApplicationCIFExpression, Integer, Hash)>] ApplicationCIFExpression data, response status code and response headers
+    def get_application_cart_item_filter_expression_with_http_info(application_id, cart_item_filter_id, expression_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ManagementApi.get_application_cart_item_filter_expression ...'
+      end
+      # verify the required parameter 'application_id' is set
+      if @api_client.config.client_side_validation && application_id.nil?
+        fail ArgumentError, "Missing the required parameter 'application_id' when calling ManagementApi.get_application_cart_item_filter_expression"
+      end
+      # verify the required parameter 'cart_item_filter_id' is set
+      if @api_client.config.client_side_validation && cart_item_filter_id.nil?
+        fail ArgumentError, "Missing the required parameter 'cart_item_filter_id' when calling ManagementApi.get_application_cart_item_filter_expression"
+      end
+      # verify the required parameter 'expression_id' is set
+      if @api_client.config.client_side_validation && expression_id.nil?
+        fail ArgumentError, "Missing the required parameter 'expression_id' when calling ManagementApi.get_application_cart_item_filter_expression"
+      end
+      # resource path
+      local_var_path = '/v1/applications/{applicationId}/cart_item_filters/{cartItemFilterId}/expressions/{expressionId}'.sub('{' + 'applicationId' + '}', CGI.escape(application_id.to_s)).sub('{' + 'cartItemFilterId' + '}', CGI.escape(cart_item_filter_id.to_s)).sub('{' + 'expressionId' + '}', CGI.escape(expression_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'ApplicationCIFExpression'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['api_key_v1']
+
+      new_options = opts.merge(
+        :operation => :"ManagementApi.get_application_cart_item_filter_expression",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ManagementApi#get_application_cart_item_filter_expression\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Get application's customer
     # Retrieve the customers of the specified application. 
     # @param application_id [Integer] The ID of the Application. It is displayed in your Talon.One deployment URL.
@@ -5115,7 +5265,7 @@ module TalonOne
     # @option opts [Integer] :page_size The number of items in the response. (default to 1000)
     # @option opts [Integer] :skip The number of items to skip when paging through large result sets.
     # @option opts [String] :sort The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. 
-    # @option opts [Boolean] :with_total_result_size When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;hasMore&#x60; is true when there is a next page. &#x60;totalResultSize&#x60; is always zero. - When &#x60;false&#x60;: &#x60;hasMore&#x60; is always false. &#x60;totalResultSize&#x60; contains the total number of results for this query. 
+    # @option opts [Boolean] :with_total_result_size When this flag is set, the result includes the total number of results for this query. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;totalResultSize&#x60; contains the total number of results for this query. - When &#x60;false&#x60;: Only &#x60;hasMore&#x60; is returned, and it is set to &#x60;true&#x60; when there are more results than shown on the page. 
     # @return [GetApplicationCustomerFriends200Response]
     def get_application_customer_friends(application_id, integration_id, opts = {})
       data, _status_code, _headers = get_application_customer_friends_with_http_info(application_id, integration_id, opts)
@@ -5130,7 +5280,7 @@ module TalonOne
     # @option opts [Integer] :page_size The number of items in the response. (default to 1000)
     # @option opts [Integer] :skip The number of items to skip when paging through large result sets.
     # @option opts [String] :sort The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. 
-    # @option opts [Boolean] :with_total_result_size When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;hasMore&#x60; is true when there is a next page. &#x60;totalResultSize&#x60; is always zero. - When &#x60;false&#x60;: &#x60;hasMore&#x60; is always false. &#x60;totalResultSize&#x60; contains the total number of results for this query. 
+    # @option opts [Boolean] :with_total_result_size When this flag is set, the result includes the total number of results for this query. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;totalResultSize&#x60; contains the total number of results for this query. - When &#x60;false&#x60;: Only &#x60;hasMore&#x60; is returned, and it is set to &#x60;true&#x60; when there are more results than shown on the page. 
     # @return [Array<(GetApplicationCustomerFriends200Response, Integer, Hash)>] GetApplicationCustomerFriends200Response data, response status code and response headers
     def get_application_customer_friends_with_http_info(application_id, integration_id, opts = {})
       if @api_client.config.debugging
@@ -5203,7 +5353,7 @@ module TalonOne
     # @option opts [String] :integration_id Filter results performing an exact matching against the profile integration identifier.
     # @option opts [Integer] :page_size The number of items in the response. (default to 1000)
     # @option opts [Integer] :skip The number of items to skip when paging through large result sets.
-    # @option opts [Boolean] :with_total_result_size When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;hasMore&#x60; is true when there is a next page. &#x60;totalResultSize&#x60; is always zero. - When &#x60;false&#x60;: &#x60;hasMore&#x60; is always false. &#x60;totalResultSize&#x60; contains the total number of results for this query. 
+    # @option opts [Boolean] :with_total_result_size When this flag is set, the result includes the total number of results for this query. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;totalResultSize&#x60; contains the total number of results for this query. - When &#x60;false&#x60;: Only &#x60;hasMore&#x60; is returned, and it is set to &#x60;true&#x60; when there are more results than shown on the page. 
     # @return [GetApplicationCustomers200Response]
     def get_application_customers(application_id, opts = {})
       data, _status_code, _headers = get_application_customers_with_http_info(application_id, opts)
@@ -5217,7 +5367,7 @@ module TalonOne
     # @option opts [String] :integration_id Filter results performing an exact matching against the profile integration identifier.
     # @option opts [Integer] :page_size The number of items in the response. (default to 1000)
     # @option opts [Integer] :skip The number of items to skip when paging through large result sets.
-    # @option opts [Boolean] :with_total_result_size When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;hasMore&#x60; is true when there is a next page. &#x60;totalResultSize&#x60; is always zero. - When &#x60;false&#x60;: &#x60;hasMore&#x60; is always false. &#x60;totalResultSize&#x60; contains the total number of results for this query. 
+    # @option opts [Boolean] :with_total_result_size When this flag is set, the result includes the total number of results for this query. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;totalResultSize&#x60; contains the total number of results for this query. - When &#x60;false&#x60;: Only &#x60;hasMore&#x60; is returned, and it is set to &#x60;true&#x60; when there are more results than shown on the page. 
     # @return [Array<(GetApplicationCustomers200Response, Integer, Hash)>] GetApplicationCustomers200Response data, response status code and response headers
     def get_application_customers_with_http_info(application_id, opts = {})
       if @api_client.config.debugging
@@ -5286,7 +5436,7 @@ module TalonOne
     # @param [Hash] opts the optional parameters
     # @option opts [Integer] :page_size The number of items in the response. (default to 1000)
     # @option opts [Integer] :skip The number of items to skip when paging through large result sets.
-    # @option opts [Boolean] :with_total_result_size When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;hasMore&#x60; is true when there is a next page. &#x60;totalResultSize&#x60; is always zero. - When &#x60;false&#x60;: &#x60;hasMore&#x60; is always false. &#x60;totalResultSize&#x60; contains the total number of results for this query. 
+    # @option opts [Boolean] :with_total_result_size When this flag is set, the result includes the total number of results for this query. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;totalResultSize&#x60; contains the total number of results for this query. - When &#x60;false&#x60;: Only &#x60;hasMore&#x60; is returned, and it is set to &#x60;true&#x60; when there are more results than shown on the page. 
     # @return [GetApplicationCustomersByAttributes200Response]
     def get_application_customers_by_attributes(application_id, customer_profile_search_query, opts = {})
       data, _status_code, _headers = get_application_customers_by_attributes_with_http_info(application_id, customer_profile_search_query, opts)
@@ -5300,7 +5450,7 @@ module TalonOne
     # @param [Hash] opts the optional parameters
     # @option opts [Integer] :page_size The number of items in the response. (default to 1000)
     # @option opts [Integer] :skip The number of items to skip when paging through large result sets.
-    # @option opts [Boolean] :with_total_result_size When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;hasMore&#x60; is true when there is a next page. &#x60;totalResultSize&#x60; is always zero. - When &#x60;false&#x60;: &#x60;hasMore&#x60; is always false. &#x60;totalResultSize&#x60; contains the total number of results for this query. 
+    # @option opts [Boolean] :with_total_result_size When this flag is set, the result includes the total number of results for this query. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;totalResultSize&#x60; contains the total number of results for this query. - When &#x60;false&#x60;: Only &#x60;hasMore&#x60; is returned, and it is set to &#x60;true&#x60; when there are more results than shown on the page. 
     # @return [Array<(GetApplicationCustomersByAttributes200Response, Integer, Hash)>] GetApplicationCustomersByAttributes200Response data, response status code and response headers
     def get_application_customers_by_attributes_with_http_info(application_id, customer_profile_search_query, opts = {})
       if @api_client.config.debugging
@@ -5755,7 +5905,7 @@ module TalonOne
     end
 
     # List Applications
-    # List all applications in the current account.
+    # List all the Applications in the current account.
     # @param [Hash] opts the optional parameters
     # @option opts [Integer] :page_size The number of items in the response. (default to 1000)
     # @option opts [Integer] :skip The number of items to skip when paging through large result sets.
@@ -5767,7 +5917,7 @@ module TalonOne
     end
 
     # List Applications
-    # List all applications in the current account.
+    # List all the Applications in the current account.
     # @param [Hash] opts the optional parameters
     # @option opts [Integer] :page_size The number of items in the response. (default to 1000)
     # @option opts [Integer] :skip The number of items to skip when paging through large result sets.
@@ -6073,7 +6223,7 @@ module TalonOne
     # @option opts [Integer] :page_size The number of items in the response. (default to 1000)
     # @option opts [Integer] :skip The number of items to skip when paging through large result sets.
     # @option opts [String] :sort The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. 
-    # @option opts [Boolean] :with_total_result_size When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;hasMore&#x60; is true when there is a next page. &#x60;totalResultSize&#x60; is always zero. - When &#x60;false&#x60;: &#x60;hasMore&#x60; is always false. &#x60;totalResultSize&#x60; contains the total number of results for this query. 
+    # @option opts [Boolean] :with_total_result_size When this flag is set, the result includes the total number of results for this query. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;totalResultSize&#x60; contains the total number of results for this query. - When &#x60;false&#x60;: Only &#x60;hasMore&#x60; is returned, and it is set to &#x60;true&#x60; when there are more results than shown on the page. 
     # @return [GetAudiences200Response]
     def get_audiences(opts = {})
       data, _status_code, _headers = get_audiences_with_http_info(opts)
@@ -6086,7 +6236,7 @@ module TalonOne
     # @option opts [Integer] :page_size The number of items in the response. (default to 1000)
     # @option opts [Integer] :skip The number of items to skip when paging through large result sets.
     # @option opts [String] :sort The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. 
-    # @option opts [Boolean] :with_total_result_size When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;hasMore&#x60; is true when there is a next page. &#x60;totalResultSize&#x60; is always zero. - When &#x60;false&#x60;: &#x60;hasMore&#x60; is always false. &#x60;totalResultSize&#x60; contains the total number of results for this query. 
+    # @option opts [Boolean] :with_total_result_size When this flag is set, the result includes the total number of results for this query. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;totalResultSize&#x60; contains the total number of results for this query. - When &#x60;false&#x60;: Only &#x60;hasMore&#x60; is returned, and it is set to &#x60;true&#x60; when there are more results than shown on the page. 
     # @return [Array<(GetAudiences200Response, Integer, Hash)>] GetAudiences200Response data, response status code and response headers
     def get_audiences_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -6826,7 +6976,7 @@ module TalonOne
     # @option opts [Integer] :user_id Filter results by user ID.
     # @option opts [Time] :created_before Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the change creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally.
     # @option opts [Time] :created_after Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the change creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally.
-    # @option opts [Boolean] :with_total_result_size When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;hasMore&#x60; is true when there is a next page. &#x60;totalResultSize&#x60; is always zero. - When &#x60;false&#x60;: &#x60;hasMore&#x60; is always false. &#x60;totalResultSize&#x60; contains the total number of results for this query. 
+    # @option opts [Boolean] :with_total_result_size When this flag is set, the result includes the total number of results for this query. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;totalResultSize&#x60; contains the total number of results for this query. - When &#x60;false&#x60;: Only &#x60;hasMore&#x60; is returned, and it is set to &#x60;true&#x60; when there are more results than shown on the page. 
     # @option opts [Integer] :management_key_id Filter results that match the given management key ID.
     # @option opts [Boolean] :include_old When this flag is set to false, the state without the change will not be returned. The default value is true.
     # @return [GetChanges200Response]
@@ -6846,7 +6996,7 @@ module TalonOne
     # @option opts [Integer] :user_id Filter results by user ID.
     # @option opts [Time] :created_before Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the change creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally.
     # @option opts [Time] :created_after Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the change creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally.
-    # @option opts [Boolean] :with_total_result_size When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;hasMore&#x60; is true when there is a next page. &#x60;totalResultSize&#x60; is always zero. - When &#x60;false&#x60;: &#x60;hasMore&#x60; is always false. &#x60;totalResultSize&#x60; contains the total number of results for this query. 
+    # @option opts [Boolean] :with_total_result_size When this flag is set, the result includes the total number of results for this query. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;totalResultSize&#x60; contains the total number of results for this query. - When &#x60;false&#x60;: Only &#x60;hasMore&#x60; is returned, and it is set to &#x60;true&#x60; when there are more results than shown on the page. 
     # @option opts [Integer] :management_key_id Filter results that match the given management key ID.
     # @option opts [Boolean] :include_old When this flag is set to false, the state without the change will not be returned. The default value is true.
     # @return [Array<(GetChanges200Response, Integer, Hash)>] GetChanges200Response data, response status code and response headers
@@ -10742,7 +10892,7 @@ module TalonOne
     # @option opts [Integer] :page_size The number of items in the response. (default to 1000)
     # @option opts [Integer] :skip The number of items to skip when paging through large result sets.
     # @option opts [String] :sort The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. 
-    # @option opts [Boolean] :with_total_result_size When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;hasMore&#x60; is true when there is a next page. &#x60;totalResultSize&#x60; is always zero. - When &#x60;false&#x60;: &#x60;hasMore&#x60; is always false. &#x60;totalResultSize&#x60; contains the total number of results for this query. 
+    # @option opts [Boolean] :with_total_result_size When this flag is set, the result includes the total number of results for this query. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;totalResultSize&#x60; contains the total number of results for this query. - When &#x60;false&#x60;: Only &#x60;hasMore&#x60; is returned, and it is set to &#x60;true&#x60; when there are more results than shown on the page. 
     # @option opts [String] :name Filter by collection name.
     # @return [ListAccountCollections200Response]
     def list_account_collections(opts = {})
@@ -10756,7 +10906,7 @@ module TalonOne
     # @option opts [Integer] :page_size The number of items in the response. (default to 1000)
     # @option opts [Integer] :skip The number of items to skip when paging through large result sets.
     # @option opts [String] :sort The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. 
-    # @option opts [Boolean] :with_total_result_size When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;hasMore&#x60; is true when there is a next page. &#x60;totalResultSize&#x60; is always zero. - When &#x60;false&#x60;: &#x60;hasMore&#x60; is always false. &#x60;totalResultSize&#x60; contains the total number of results for this query. 
+    # @option opts [Boolean] :with_total_result_size When this flag is set, the result includes the total number of results for this query. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;totalResultSize&#x60; contains the total number of results for this query. - When &#x60;false&#x60;: Only &#x60;hasMore&#x60; is returned, and it is set to &#x60;true&#x60; when there are more results than shown on the page. 
     # @option opts [String] :name Filter by collection name.
     # @return [Array<(ListAccountCollections200Response, Integer, Hash)>] ListAccountCollections200Response data, response status code and response headers
     def list_account_collections_with_http_info(opts = {})
@@ -10959,6 +11109,86 @@ module TalonOne
       return data, status_code, headers
     end
 
+    # List Application cart item filters
+    # Return all the Application cart item filters for a specific Application.
+    # @param application_id [Integer] The ID of the Application. It is displayed in your Talon.One deployment URL.
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :page_size The number of items in the response. (default to 50)
+    # @option opts [Integer] :skip The number of items to skip when paging through large result sets.
+    # @option opts [String] :title Filter by the display name of the Application cart item filter in the Application.  **Note**: If no &#x60;title&#x60; is provided, all the Application cart item filters in the Application are returned. 
+    # @return [ListApplicationCartItemFilters200Response]
+    def list_application_cart_item_filters(application_id, opts = {})
+      data, _status_code, _headers = list_application_cart_item_filters_with_http_info(application_id, opts)
+      data
+    end
+
+    # List Application cart item filters
+    # Return all the Application cart item filters for a specific Application.
+    # @param application_id [Integer] The ID of the Application. It is displayed in your Talon.One deployment URL.
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :page_size The number of items in the response. (default to 50)
+    # @option opts [Integer] :skip The number of items to skip when paging through large result sets.
+    # @option opts [String] :title Filter by the display name of the Application cart item filter in the Application.  **Note**: If no &#x60;title&#x60; is provided, all the Application cart item filters in the Application are returned. 
+    # @return [Array<(ListApplicationCartItemFilters200Response, Integer, Hash)>] ListApplicationCartItemFilters200Response data, response status code and response headers
+    def list_application_cart_item_filters_with_http_info(application_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ManagementApi.list_application_cart_item_filters ...'
+      end
+      # verify the required parameter 'application_id' is set
+      if @api_client.config.client_side_validation && application_id.nil?
+        fail ArgumentError, "Missing the required parameter 'application_id' when calling ManagementApi.list_application_cart_item_filters"
+      end
+      if @api_client.config.client_side_validation && !opts[:'page_size'].nil? && opts[:'page_size'] > 50
+        fail ArgumentError, 'invalid value for "opts[:"page_size"]" when calling ManagementApi.list_application_cart_item_filters, must be smaller than or equal to 50.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'page_size'].nil? && opts[:'page_size'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"page_size"]" when calling ManagementApi.list_application_cart_item_filters, must be greater than or equal to 1.'
+      end
+
+      # resource path
+      local_var_path = '/v1/applications/{applicationId}/cart_item_filters'.sub('{' + 'applicationId' + '}', CGI.escape(application_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'pageSize'] = opts[:'page_size'] if !opts[:'page_size'].nil?
+      query_params[:'skip'] = opts[:'skip'] if !opts[:'skip'].nil?
+      query_params[:'title'] = opts[:'title'] if !opts[:'title'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'ListApplicationCartItemFilters200Response'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['api_key_v1']
+
+      new_options = opts.merge(
+        :operation => :"ManagementApi.list_application_cart_item_filters",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ManagementApi#list_application_cart_item_filters\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # List campaign store budget limits
     # Return the store budget limits for a given campaign.
     # @param application_id [Integer] The ID of the Application. It is displayed in your Talon.One deployment URL.
@@ -11048,7 +11278,7 @@ module TalonOne
     # @param [Hash] opts the optional parameters
     # @option opts [Integer] :page_size The number of items in the response. (default to 1000)
     # @option opts [Integer] :skip The number of items to skip when paging through large result sets.
-    # @option opts [Boolean] :with_total_result_size When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;hasMore&#x60; is true when there is a next page. &#x60;totalResultSize&#x60; is always zero. - When &#x60;false&#x60;: &#x60;hasMore&#x60; is always false. &#x60;totalResultSize&#x60; contains the total number of results for this query. 
+    # @option opts [Boolean] :with_total_result_size When this flag is set, the result includes the total number of results for this query. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;totalResultSize&#x60; contains the total number of results for this query. - When &#x60;false&#x60;: Only &#x60;hasMore&#x60; is returned, and it is set to &#x60;true&#x60; when there are more results than shown on the page. 
     # @option opts [Array<String>] :sku Filter results by one or more SKUs. Must be exact match.
     # @option opts [Array<String>] :product_names Filter results by one or more product names. Must be exact match.
     # @return [ListCatalogItems200Response]
@@ -11063,7 +11293,7 @@ module TalonOne
     # @param [Hash] opts the optional parameters
     # @option opts [Integer] :page_size The number of items in the response. (default to 1000)
     # @option opts [Integer] :skip The number of items to skip when paging through large result sets.
-    # @option opts [Boolean] :with_total_result_size When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;hasMore&#x60; is true when there is a next page. &#x60;totalResultSize&#x60; is always zero. - When &#x60;false&#x60;: &#x60;hasMore&#x60; is always false. &#x60;totalResultSize&#x60; contains the total number of results for this query. 
+    # @option opts [Boolean] :with_total_result_size When this flag is set, the result includes the total number of results for this query. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;totalResultSize&#x60; contains the total number of results for this query. - When &#x60;false&#x60;: Only &#x60;hasMore&#x60; is returned, and it is set to &#x60;true&#x60; when there are more results than shown on the page. 
     # @option opts [Array<String>] :sku Filter results by one or more SKUs. Must be exact match.
     # @option opts [Array<String>] :product_names Filter results by one or more product names. Must be exact match.
     # @return [Array<(ListCatalogItems200Response, Integer, Hash)>] ListCatalogItems200Response data, response status code and response headers
@@ -11136,7 +11366,7 @@ module TalonOne
     # @option opts [Integer] :page_size The number of items in the response. (default to 1000)
     # @option opts [Integer] :skip The number of items to skip when paging through large result sets.
     # @option opts [String] :sort The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. 
-    # @option opts [Boolean] :with_total_result_size When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;hasMore&#x60; is true when there is a next page. &#x60;totalResultSize&#x60; is always zero. - When &#x60;false&#x60;: &#x60;hasMore&#x60; is always false. &#x60;totalResultSize&#x60; contains the total number of results for this query. 
+    # @option opts [Boolean] :with_total_result_size When this flag is set, the result includes the total number of results for this query. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;totalResultSize&#x60; contains the total number of results for this query. - When &#x60;false&#x60;: Only &#x60;hasMore&#x60; is returned, and it is set to &#x60;true&#x60; when there are more results than shown on the page. 
     # @option opts [String] :name Filter by collection name.
     # @return [ListAccountCollections200Response]
     def list_collections(application_id, campaign_id, opts = {})
@@ -11152,7 +11382,7 @@ module TalonOne
     # @option opts [Integer] :page_size The number of items in the response. (default to 1000)
     # @option opts [Integer] :skip The number of items to skip when paging through large result sets.
     # @option opts [String] :sort The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. 
-    # @option opts [Boolean] :with_total_result_size When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;hasMore&#x60; is true when there is a next page. &#x60;totalResultSize&#x60; is always zero. - When &#x60;false&#x60;: &#x60;hasMore&#x60; is always false. &#x60;totalResultSize&#x60; contains the total number of results for this query. 
+    # @option opts [Boolean] :with_total_result_size When this flag is set, the result includes the total number of results for this query. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;totalResultSize&#x60; contains the total number of results for this query. - When &#x60;false&#x60;: Only &#x60;hasMore&#x60; is returned, and it is set to &#x60;true&#x60; when there are more results than shown on the page. 
     # @option opts [String] :name Filter by collection name.
     # @return [Array<(ListAccountCollections200Response, Integer, Hash)>] ListAccountCollections200Response data, response status code and response headers
     def list_collections_with_http_info(application_id, campaign_id, opts = {})
@@ -11227,7 +11457,7 @@ module TalonOne
     # @option opts [Integer] :page_size The number of items in the response. (default to 1000)
     # @option opts [Integer] :skip The number of items to skip when paging through large result sets.
     # @option opts [String] :sort The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. 
-    # @option opts [Boolean] :with_total_result_size When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;hasMore&#x60; is true when there is a next page. &#x60;totalResultSize&#x60; is always zero. - When &#x60;false&#x60;: &#x60;hasMore&#x60; is always false. &#x60;totalResultSize&#x60; contains the total number of results for this query. 
+    # @option opts [Boolean] :with_total_result_size When this flag is set, the result includes the total number of results for this query. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;totalResultSize&#x60; contains the total number of results for this query. - When &#x60;false&#x60;: Only &#x60;hasMore&#x60; is returned, and it is set to &#x60;true&#x60; when there are more results than shown on the page. 
     # @option opts [String] :name Filter by collection name.
     # @return [ListAccountCollections200Response]
     def list_collections_in_application(application_id, opts = {})
@@ -11242,7 +11472,7 @@ module TalonOne
     # @option opts [Integer] :page_size The number of items in the response. (default to 1000)
     # @option opts [Integer] :skip The number of items to skip when paging through large result sets.
     # @option opts [String] :sort The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. 
-    # @option opts [Boolean] :with_total_result_size When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;hasMore&#x60; is true when there is a next page. &#x60;totalResultSize&#x60; is always zero. - When &#x60;false&#x60;: &#x60;hasMore&#x60; is always false. &#x60;totalResultSize&#x60; contains the total number of results for this query. 
+    # @option opts [Boolean] :with_total_result_size When this flag is set, the result includes the total number of results for this query. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;totalResultSize&#x60; contains the total number of results for this query. - When &#x60;false&#x60;: Only &#x60;hasMore&#x60; is returned, and it is set to &#x60;true&#x60; when there are more results than shown on the page. 
     # @option opts [String] :name Filter by collection name.
     # @return [Array<(ListAccountCollections200Response, Integer, Hash)>] ListAccountCollections200Response data, response status code and response headers
     def list_collections_in_application_with_http_info(application_id, opts = {})
@@ -11393,7 +11623,7 @@ module TalonOne
     # @option opts [Integer] :page_size The number of items in the response. (default to 1000)
     # @option opts [Integer] :skip The number of items to skip when paging through large result sets.
     # @option opts [String] :sort The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. 
-    # @option opts [Boolean] :with_total_result_size When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;hasMore&#x60; is true when there is a next page. &#x60;totalResultSize&#x60; is always zero. - When &#x60;false&#x60;: &#x60;hasMore&#x60; is always false. &#x60;totalResultSize&#x60; contains the total number of results for this query. 
+    # @option opts [Boolean] :with_total_result_size When this flag is set, the result includes the total number of results for this query. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;totalResultSize&#x60; contains the total number of results for this query. - When &#x60;false&#x60;: Only &#x60;hasMore&#x60; is returned, and it is set to &#x60;true&#x60; when there are more results than shown on the page. 
     # @option opts [Float] :campaign_id Filter results by campaign ID.
     # @option opts [String] :name The name of the store.
     # @option opts [String] :integration_id The integration ID of the store.
@@ -11411,7 +11641,7 @@ module TalonOne
     # @option opts [Integer] :page_size The number of items in the response. (default to 1000)
     # @option opts [Integer] :skip The number of items to skip when paging through large result sets.
     # @option opts [String] :sort The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. 
-    # @option opts [Boolean] :with_total_result_size When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;hasMore&#x60; is true when there is a next page. &#x60;totalResultSize&#x60; is always zero. - When &#x60;false&#x60;: &#x60;hasMore&#x60; is always false. &#x60;totalResultSize&#x60; contains the total number of results for this query. 
+    # @option opts [Boolean] :with_total_result_size When this flag is set, the result includes the total number of results for this query. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;totalResultSize&#x60; contains the total number of results for this query. - When &#x60;false&#x60;: Only &#x60;hasMore&#x60; is returned, and it is set to &#x60;true&#x60; when there are more results than shown on the page. 
     # @option opts [Float] :campaign_id Filter results by campaign ID.
     # @option opts [String] :name The name of the store.
     # @option opts [String] :integration_id The integration ID of the store.
