@@ -16,7 +16,7 @@ See our [migration guide](MIGRATION.md).
 Add this to the Gemfile:
 
 ```shell
-gem 'talon_one_sdk', '~> 26.07.0'
+gem 'talon_one_sdk', '~> 26.08.0'
 ```
 
 ### Build a gem
@@ -32,10 +32,10 @@ gem build talon_one_sdk.gemspec
 To install the gem locally:
 
 ```shell
-gem install ./talon_one_sdk-26.07.0.gem
+gem install ./talon_one_sdk-26.08.0.gem
 ```
 
-For development, run `gem install --dev ./talon_one_sdk-26.07.0.gem` to install the development dependencies.
+For development, run `gem install --dev ./talon_one_sdk-26.08.0.gem` to install the development dependencies.
 
 ### RubyGems
 
@@ -203,6 +203,7 @@ Class | Method | HTTP request | Description
 *TalonOne::IntegrationApi* | [**get_loyalty_program_profile_points**](docs/IntegrationApi.md#get_loyalty_program_profile_points) | **GET** /v1/loyalty_programs/{loyaltyProgramId}/profile/{integrationId}/points | List customer's unused loyalty points
 *TalonOne::IntegrationApi* | [**get_loyalty_program_profile_transactions**](docs/IntegrationApi.md#get_loyalty_program_profile_transactions) | **GET** /v1/loyalty_programs/{loyaltyProgramId}/profile/{integrationId}/transactions | List customer's loyalty transactions
 *TalonOne::IntegrationApi* | [**get_reserved_customers**](docs/IntegrationApi.md#get_reserved_customers) | **GET** /v1/coupon_reservations/customerprofiles/{couponValue} | List customers that have this coupon reserved
+*TalonOne::IntegrationApi* | [**integration_get_all_campaigns**](docs/IntegrationApi.md#integration_get_all_campaigns) | **GET** /v1/integration/campaigns | List all running campaigns
 *TalonOne::IntegrationApi* | [**link_loyalty_card_to_profile**](docs/IntegrationApi.md#link_loyalty_card_to_profile) | **POST** /v2/loyalty_programs/{loyaltyProgramId}/cards/{loyaltyCardId}/link_profile | Link customer profile to card
 *TalonOne::IntegrationApi* | [**reopen_customer_session**](docs/IntegrationApi.md#reopen_customer_session) | **PUT** /v2/customer_sessions/{customerSessionId}/reopen | Reopen customer session
 *TalonOne::IntegrationApi* | [**return_cart_items**](docs/IntegrationApi.md#return_cart_items) | **POST** /v2/customer_sessions/{customerSessionId}/returns | Return cart items
@@ -228,7 +229,7 @@ Class | Method | HTTP request | Description
 *TalonOne::ManagementApi* | [**create_campaign_store_budget**](docs/ManagementApi.md#create_campaign_store_budget) | **POST** /v1/applications/{applicationId}/campaigns/{campaignId}/stores/budgets | Create campaign store budget
 *TalonOne::ManagementApi* | [**create_collection**](docs/ManagementApi.md#create_collection) | **POST** /v1/applications/{applicationId}/campaigns/{campaignId}/collections | Create campaign-level collection
 *TalonOne::ManagementApi* | [**create_coupons**](docs/ManagementApi.md#create_coupons) | **POST** /v1/applications/{applicationId}/campaigns/{campaignId}/coupons | Create coupons
-*TalonOne::ManagementApi* | [**create_coupons_async**](docs/ManagementApi.md#create_coupons_async) | **POST** /v1/applications/{applicationId}/campaigns/{campaignId}/coupons_async | Create coupons asynchronously
+*TalonOne::ManagementApi* | [**create_coupons_asynchronously**](docs/ManagementApi.md#create_coupons_asynchronously) | **POST** /v1/applications/{applicationId}/campaigns/{campaignId}/coupons_async | Create coupons asynchronously
 *TalonOne::ManagementApi* | [**create_coupons_deletion_job**](docs/ManagementApi.md#create_coupons_deletion_job) | **POST** /v1/applications/{applicationId}/campaigns/{campaignId}/coupons_deletion_jobs | Creates a coupon deletion job
 *TalonOne::ManagementApi* | [**create_coupons_for_multiple_recipients**](docs/ManagementApi.md#create_coupons_for_multiple_recipients) | **POST** /v1/applications/{applicationId}/campaigns/{campaignId}/coupons_with_recipients | Create coupons for multiple recipients
 *TalonOne::ManagementApi* | [**create_invite_email**](docs/ManagementApi.md#create_invite_email) | **POST** /v1/invite_emails | Resend invitation email
@@ -258,6 +259,7 @@ Class | Method | HTTP request | Description
 *TalonOne::ManagementApi* | [**export_audiences_memberships**](docs/ManagementApi.md#export_audiences_memberships) | **GET** /v1/audiences/{audienceId}/memberships/export | Export audience members
 *TalonOne::ManagementApi* | [**export_campaign_store_budgets**](docs/ManagementApi.md#export_campaign_store_budgets) | **GET** /v1/applications/{applicationId}/campaigns/{campaignId}/stores/budgets/export | Export campaign store budgets
 *TalonOne::ManagementApi* | [**export_campaign_stores**](docs/ManagementApi.md#export_campaign_stores) | **GET** /v1/applications/{applicationId}/campaigns/{campaignId}/stores/export | Export stores
+*TalonOne::ManagementApi* | [**export_campaign_value_map**](docs/ManagementApi.md#export_campaign_value_map) | **GET** /v1/applications/{applicationId}/campaigns/{campaignId}/value_maps/{valueMapId}/export | Export campaign value map
 *TalonOne::ManagementApi* | [**export_collection_items**](docs/ManagementApi.md#export_collection_items) | **GET** /v1/applications/{applicationId}/campaigns/{campaignId}/collections/{collectionId}/export | Export campaign-level collection's items
 *TalonOne::ManagementApi* | [**export_coupons**](docs/ManagementApi.md#export_coupons) | **GET** /v1/applications/{applicationId}/export_coupons | Export coupons
 *TalonOne::ManagementApi* | [**export_customer_sessions**](docs/ManagementApi.md#export_customer_sessions) | **GET** /v1/applications/{applicationId}/export_customer_sessions | Export customer sessions
@@ -282,6 +284,7 @@ Class | Method | HTTP request | Description
 *TalonOne::ManagementApi* | [**get_additional_costs**](docs/ManagementApi.md#get_additional_costs) | **GET** /v1/additional_costs | List additional costs
 *TalonOne::ManagementApi* | [**get_application**](docs/ManagementApi.md#get_application) | **GET** /v1/applications/{applicationId} | Get Application
 *TalonOne::ManagementApi* | [**get_application_api_health**](docs/ManagementApi.md#get_application_api_health) | **GET** /v1/applications/{applicationId}/health_report | Get Application health
+*TalonOne::ManagementApi* | [**get_application_cart_item_filter_expression**](docs/ManagementApi.md#get_application_cart_item_filter_expression) | **GET** /v1/applications/{applicationId}/cart_item_filters/{cartItemFilterId}/expressions/{expressionId} | Get Application cart item filter expression
 *TalonOne::ManagementApi* | [**get_application_customer**](docs/ManagementApi.md#get_application_customer) | **GET** /v1/applications/{applicationId}/customers/{customerId} | Get application's customer
 *TalonOne::ManagementApi* | [**get_application_customer_friends**](docs/ManagementApi.md#get_application_customer_friends) | **GET** /v1/applications/{applicationId}/profile/{integrationId}/friends | List friends referred by customer profile
 *TalonOne::ManagementApi* | [**get_application_customers**](docs/ManagementApi.md#get_application_customers) | **GET** /v1/applications/{applicationId}/customers | List application's customers
@@ -354,6 +357,7 @@ Class | Method | HTTP request | Description
 *TalonOne::ManagementApi* | [**list_account_collections**](docs/ManagementApi.md#list_account_collections) | **GET** /v1/collections | List collections in account
 *TalonOne::ManagementApi* | [**list_achievements**](docs/ManagementApi.md#list_achievements) | **GET** /v1/applications/{applicationId}/campaigns/{campaignId}/achievements | List achievements
 *TalonOne::ManagementApi* | [**list_all_roles_v2**](docs/ManagementApi.md#list_all_roles_v2) | **GET** /v2/roles | List roles
+*TalonOne::ManagementApi* | [**list_application_cart_item_filters**](docs/ManagementApi.md#list_application_cart_item_filters) | **GET** /v1/applications/{applicationId}/cart_item_filters | List Application cart item filters
 *TalonOne::ManagementApi* | [**list_campaign_store_budget_limits**](docs/ManagementApi.md#list_campaign_store_budget_limits) | **GET** /v1/applications/{applicationId}/campaigns/{campaignId}/stores/budgets | List campaign store budget limits
 *TalonOne::ManagementApi* | [**list_catalog_items**](docs/ManagementApi.md#list_catalog_items) | **GET** /v1/catalogs/{catalogId}/items | List items in a catalog
 *TalonOne::ManagementApi* | [**list_collections**](docs/ManagementApi.md#list_collections) | **GET** /v1/applications/{applicationId}/campaigns/{campaignId}/collections | List collections in campaign
@@ -583,6 +587,7 @@ Class | Method | HTTP request | Description
 - [TalonOne::CreateApplicationAPIKey](docs/CreateApplicationAPIKey.md)
 - [TalonOne::CreateCouponData](docs/CreateCouponData.md)
 - [TalonOne::CreateCoupons200Response](docs/CreateCoupons200Response.md)
+- [TalonOne::CreateMCPKey](docs/CreateMCPKey.md)
 - [TalonOne::CreateManagementKey](docs/CreateManagementKey.md)
 - [TalonOne::CreateReferralsForMultipleAdvocates201Response](docs/CreateReferralsForMultipleAdvocates201Response.md)
 - [TalonOne::CreateTemplateCampaign](docs/CreateTemplateCampaign.md)
@@ -636,10 +641,16 @@ Class | Method | HTTP request | Description
 - [TalonOne::ExperimentListResultsRequest](docs/ExperimentListResultsRequest.md)
 - [TalonOne::ExperimentResult](docs/ExperimentResult.md)
 - [TalonOne::ExperimentResults](docs/ExperimentResults.md)
+- [TalonOne::ExperimentSegmentInsight](docs/ExperimentSegmentInsight.md)
+- [TalonOne::ExperimentSegmentInsightMetric](docs/ExperimentSegmentInsightMetric.md)
+- [TalonOne::ExperimentSegmentInsightVariant](docs/ExperimentSegmentInsightVariant.md)
+- [TalonOne::ExperimentSegmentInsights](docs/ExperimentSegmentInsights.md)
 - [TalonOne::ExperimentVariant](docs/ExperimentVariant.md)
 - [TalonOne::ExperimentVariantAllocation](docs/ExperimentVariantAllocation.md)
 - [TalonOne::ExperimentVariantResult](docs/ExperimentVariantResult.md)
 - [TalonOne::ExperimentVariantResultConfidence](docs/ExperimentVariantResultConfidence.md)
+- [TalonOne::ExperimentVerdict](docs/ExperimentVerdict.md)
+- [TalonOne::ExperimentVerdictResponse](docs/ExperimentVerdictResponse.md)
 - [TalonOne::ExpiringCardPointsData](docs/ExpiringCardPointsData.md)
 - [TalonOne::ExpiringCardPointsNotification](docs/ExpiringCardPointsNotification.md)
 - [TalonOne::ExpiringCouponsData](docs/ExpiringCouponsData.md)
@@ -734,6 +745,7 @@ Class | Method | HTTP request | Description
 - [TalonOne::IntegrationEventV2Response](docs/IntegrationEventV2Response.md)
 - [TalonOne::IntegrationEventV3Request](docs/IntegrationEventV3Request.md)
 - [TalonOne::IntegrationEventV3Response](docs/IntegrationEventV3Response.md)
+- [TalonOne::IntegrationGetAllCampaigns200Response](docs/IntegrationGetAllCampaigns200Response.md)
 - [TalonOne::IntegrationHubConfig](docs/IntegrationHubConfig.md)
 - [TalonOne::IntegrationHubEventPayloadCouponBasedNotifications](docs/IntegrationHubEventPayloadCouponBasedNotifications.md)
 - [TalonOne::IntegrationHubEventPayloadCouponBasedNotificationsLimits](docs/IntegrationHubEventPayloadCouponBasedNotificationsLimits.md)
@@ -771,6 +783,7 @@ Class | Method | HTTP request | Description
 - [TalonOne::ListAccountCollections200Response](docs/ListAccountCollections200Response.md)
 - [TalonOne::ListAchievements200Response](docs/ListAchievements200Response.md)
 - [TalonOne::ListAllRolesV2200Response](docs/ListAllRolesV2200Response.md)
+- [TalonOne::ListApplicationCartItemFilters200Response](docs/ListApplicationCartItemFilters200Response.md)
 - [TalonOne::ListCampaignStoreBudgetLimits200Response](docs/ListCampaignStoreBudgetLimits200Response.md)
 - [TalonOne::ListCampaignStoreBudgets](docs/ListCampaignStoreBudgets.md)
 - [TalonOne::ListCampaignStoreBudgetsStore](docs/ListCampaignStoreBudgetsStore.md)
@@ -804,6 +817,7 @@ Class | Method | HTTP request | Description
 - [TalonOne::LoyaltyProgramTransaction](docs/LoyaltyProgramTransaction.md)
 - [TalonOne::LoyaltySubLedger](docs/LoyaltySubLedger.md)
 - [TalonOne::LoyaltyTier](docs/LoyaltyTier.md)
+- [TalonOne::MCPKey](docs/MCPKey.md)
 - [TalonOne::ManagementKey](docs/ManagementKey.md)
 - [TalonOne::ManagerConfig](docs/ManagerConfig.md)
 - [TalonOne::MessageLogEntries](docs/MessageLogEntries.md)
@@ -865,6 +879,7 @@ Class | Method | HTTP request | Description
 - [TalonOne::NewInviteEmail](docs/NewInviteEmail.md)
 - [TalonOne::NewLoyaltyProgram](docs/NewLoyaltyProgram.md)
 - [TalonOne::NewLoyaltyTier](docs/NewLoyaltyTier.md)
+- [TalonOne::NewMCPKey](docs/NewMCPKey.md)
 - [TalonOne::NewManagementKey](docs/NewManagementKey.md)
 - [TalonOne::NewMessageTest](docs/NewMessageTest.md)
 - [TalonOne::NewMultipleAudiencesItem](docs/NewMultipleAudiencesItem.md)
@@ -879,6 +894,7 @@ Class | Method | HTTP request | Description
 - [TalonOne::NewReferralsForMultipleAdvocates](docs/NewReferralsForMultipleAdvocates.md)
 - [TalonOne::NewReturn](docs/NewReturn.md)
 - [TalonOne::NewRevisionVersion](docs/NewRevisionVersion.md)
+- [TalonOne::NewReward](docs/NewReward.md)
 - [TalonOne::NewRole](docs/NewRole.md)
 - [TalonOne::NewRoleV2](docs/NewRoleV2.md)
 - [TalonOne::NewRuleset](docs/NewRuleset.md)
@@ -946,6 +962,7 @@ Class | Method | HTTP request | Description
 - [TalonOne::RevisionActivation](docs/RevisionActivation.md)
 - [TalonOne::RevisionActivationRequest](docs/RevisionActivationRequest.md)
 - [TalonOne::RevisionVersion](docs/RevisionVersion.md)
+- [TalonOne::Reward](docs/Reward.md)
 - [TalonOne::Role](docs/Role.md)
 - [TalonOne::RoleAssign](docs/RoleAssign.md)
 - [TalonOne::RoleMembership](docs/RoleMembership.md)

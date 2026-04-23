@@ -198,6 +198,7 @@ docs/CreateAchievementV2.md
 docs/CreateApplicationAPIKey.md
 docs/CreateCouponData.md
 docs/CreateCoupons200Response.md
+docs/CreateMCPKey.md
 docs/CreateManagementKey.md
 docs/CreateReferralsForMultipleAdvocates201Response.md
 docs/CreateTemplateCampaign.md
@@ -251,10 +252,16 @@ docs/ExperimentListResults.md
 docs/ExperimentListResultsRequest.md
 docs/ExperimentResult.md
 docs/ExperimentResults.md
+docs/ExperimentSegmentInsight.md
+docs/ExperimentSegmentInsightMetric.md
+docs/ExperimentSegmentInsightVariant.md
+docs/ExperimentSegmentInsights.md
 docs/ExperimentVariant.md
 docs/ExperimentVariantAllocation.md
 docs/ExperimentVariantResult.md
 docs/ExperimentVariantResultConfidence.md
+docs/ExperimentVerdict.md
+docs/ExperimentVerdictResponse.md
 docs/ExpiringCardPointsData.md
 docs/ExpiringCardPointsNotification.md
 docs/ExpiringCouponsData.md
@@ -350,6 +357,7 @@ docs/IntegrationEventV2Request.md
 docs/IntegrationEventV2Response.md
 docs/IntegrationEventV3Request.md
 docs/IntegrationEventV3Response.md
+docs/IntegrationGetAllCampaigns200Response.md
 docs/IntegrationHubConfig.md
 docs/IntegrationHubEventPayloadCouponBasedNotifications.md
 docs/IntegrationHubEventPayloadCouponBasedNotificationsLimits.md
@@ -387,6 +395,7 @@ docs/LimitCounter.md
 docs/ListAccountCollections200Response.md
 docs/ListAchievements200Response.md
 docs/ListAllRolesV2200Response.md
+docs/ListApplicationCartItemFilters200Response.md
 docs/ListCampaignStoreBudgetLimits200Response.md
 docs/ListCampaignStoreBudgets.md
 docs/ListCampaignStoreBudgetsStore.md
@@ -420,6 +429,7 @@ docs/LoyaltyProgramLedgers.md
 docs/LoyaltyProgramTransaction.md
 docs/LoyaltySubLedger.md
 docs/LoyaltyTier.md
+docs/MCPKey.md
 docs/ManagementApi.md
 docs/ManagementKey.md
 docs/ManagerConfig.md
@@ -482,6 +492,7 @@ docs/NewInvitation.md
 docs/NewInviteEmail.md
 docs/NewLoyaltyProgram.md
 docs/NewLoyaltyTier.md
+docs/NewMCPKey.md
 docs/NewManagementKey.md
 docs/NewMessageTest.md
 docs/NewMultipleAudiencesItem.md
@@ -496,6 +507,7 @@ docs/NewReferral.md
 docs/NewReferralsForMultipleAdvocates.md
 docs/NewReturn.md
 docs/NewRevisionVersion.md
+docs/NewReward.md
 docs/NewRole.md
 docs/NewRoleV2.md
 docs/NewRuleset.md
@@ -563,6 +575,7 @@ docs/Revision.md
 docs/RevisionActivation.md
 docs/RevisionActivationRequest.md
 docs/RevisionVersion.md
+docs/Reward.md
 docs/Role.md
 docs/RoleAssign.md
 docs/RoleMembership.md
@@ -893,6 +906,7 @@ lib/talon_one_sdk/models/create_application_api_key.rb
 lib/talon_one_sdk/models/create_coupon_data.rb
 lib/talon_one_sdk/models/create_coupons200_response.rb
 lib/talon_one_sdk/models/create_management_key.rb
+lib/talon_one_sdk/models/create_mcp_key.rb
 lib/talon_one_sdk/models/create_referrals_for_multiple_advocates201_response.rb
 lib/talon_one_sdk/models/create_template_campaign.rb
 lib/talon_one_sdk/models/create_template_campaign_response.rb
@@ -945,10 +959,16 @@ lib/talon_one_sdk/models/experiment_list_results.rb
 lib/talon_one_sdk/models/experiment_list_results_request.rb
 lib/talon_one_sdk/models/experiment_result.rb
 lib/talon_one_sdk/models/experiment_results.rb
+lib/talon_one_sdk/models/experiment_segment_insight.rb
+lib/talon_one_sdk/models/experiment_segment_insight_metric.rb
+lib/talon_one_sdk/models/experiment_segment_insight_variant.rb
+lib/talon_one_sdk/models/experiment_segment_insights.rb
 lib/talon_one_sdk/models/experiment_variant.rb
 lib/talon_one_sdk/models/experiment_variant_allocation.rb
 lib/talon_one_sdk/models/experiment_variant_result.rb
 lib/talon_one_sdk/models/experiment_variant_result_confidence.rb
+lib/talon_one_sdk/models/experiment_verdict.rb
+lib/talon_one_sdk/models/experiment_verdict_response.rb
 lib/talon_one_sdk/models/expiring_card_points_data.rb
 lib/talon_one_sdk/models/expiring_card_points_notification.rb
 lib/talon_one_sdk/models/expiring_coupons_data.rb
@@ -1043,6 +1063,7 @@ lib/talon_one_sdk/models/integration_event_v2_request.rb
 lib/talon_one_sdk/models/integration_event_v2_response.rb
 lib/talon_one_sdk/models/integration_event_v3_request.rb
 lib/talon_one_sdk/models/integration_event_v3_response.rb
+lib/talon_one_sdk/models/integration_get_all_campaigns200_response.rb
 lib/talon_one_sdk/models/integration_hub_config.rb
 lib/talon_one_sdk/models/integration_hub_event_payload_coupon_based_notifications.rb
 lib/talon_one_sdk/models/integration_hub_event_payload_coupon_based_notifications_limits.rb
@@ -1080,6 +1101,7 @@ lib/talon_one_sdk/models/limit_counter.rb
 lib/talon_one_sdk/models/list_account_collections200_response.rb
 lib/talon_one_sdk/models/list_achievements200_response.rb
 lib/talon_one_sdk/models/list_all_roles_v2200_response.rb
+lib/talon_one_sdk/models/list_application_cart_item_filters200_response.rb
 lib/talon_one_sdk/models/list_campaign_store_budget_limits200_response.rb
 lib/talon_one_sdk/models/list_campaign_store_budgets.rb
 lib/talon_one_sdk/models/list_campaign_store_budgets_store.rb
@@ -1115,6 +1137,7 @@ lib/talon_one_sdk/models/loyalty_sub_ledger.rb
 lib/talon_one_sdk/models/loyalty_tier.rb
 lib/talon_one_sdk/models/management_key.rb
 lib/talon_one_sdk/models/manager_config.rb
+lib/talon_one_sdk/models/mcp_key.rb
 lib/talon_one_sdk/models/message_log_entries.rb
 lib/talon_one_sdk/models/message_log_entry.rb
 lib/talon_one_sdk/models/message_log_request.rb
@@ -1175,6 +1198,7 @@ lib/talon_one_sdk/models/new_invite_email.rb
 lib/talon_one_sdk/models/new_loyalty_program.rb
 lib/talon_one_sdk/models/new_loyalty_tier.rb
 lib/talon_one_sdk/models/new_management_key.rb
+lib/talon_one_sdk/models/new_mcp_key.rb
 lib/talon_one_sdk/models/new_message_test.rb
 lib/talon_one_sdk/models/new_multiple_audiences_item.rb
 lib/talon_one_sdk/models/new_notification_webhook.rb
@@ -1188,6 +1212,7 @@ lib/talon_one_sdk/models/new_referral.rb
 lib/talon_one_sdk/models/new_referrals_for_multiple_advocates.rb
 lib/talon_one_sdk/models/new_return.rb
 lib/talon_one_sdk/models/new_revision_version.rb
+lib/talon_one_sdk/models/new_reward.rb
 lib/talon_one_sdk/models/new_role.rb
 lib/talon_one_sdk/models/new_role_v2.rb
 lib/talon_one_sdk/models/new_ruleset.rb
@@ -1255,6 +1280,7 @@ lib/talon_one_sdk/models/revision.rb
 lib/talon_one_sdk/models/revision_activation.rb
 lib/talon_one_sdk/models/revision_activation_request.rb
 lib/talon_one_sdk/models/revision_version.rb
+lib/talon_one_sdk/models/reward.rb
 lib/talon_one_sdk/models/role.rb
 lib/talon_one_sdk/models/role_assign.rb
 lib/talon_one_sdk/models/role_membership.rb
@@ -1580,6 +1606,7 @@ spec/models/create_application_api_key_spec.rb
 spec/models/create_coupon_data_spec.rb
 spec/models/create_coupons200_response_spec.rb
 spec/models/create_management_key_spec.rb
+spec/models/create_mcp_key_spec.rb
 spec/models/create_referrals_for_multiple_advocates201_response_spec.rb
 spec/models/create_template_campaign_response_spec.rb
 spec/models/create_template_campaign_spec.rb
@@ -1631,11 +1658,17 @@ spec/models/experiment_list_results_request_spec.rb
 spec/models/experiment_list_results_spec.rb
 spec/models/experiment_result_spec.rb
 spec/models/experiment_results_spec.rb
+spec/models/experiment_segment_insight_metric_spec.rb
+spec/models/experiment_segment_insight_spec.rb
+spec/models/experiment_segment_insight_variant_spec.rb
+spec/models/experiment_segment_insights_spec.rb
 spec/models/experiment_spec.rb
 spec/models/experiment_variant_allocation_spec.rb
 spec/models/experiment_variant_result_confidence_spec.rb
 spec/models/experiment_variant_result_spec.rb
 spec/models/experiment_variant_spec.rb
+spec/models/experiment_verdict_response_spec.rb
+spec/models/experiment_verdict_spec.rb
 spec/models/expiring_card_points_data_spec.rb
 spec/models/expiring_card_points_notification_spec.rb
 spec/models/expiring_coupons_data_spec.rb
@@ -1730,6 +1763,7 @@ spec/models/integration_event_v2_request_spec.rb
 spec/models/integration_event_v2_response_spec.rb
 spec/models/integration_event_v3_request_spec.rb
 spec/models/integration_event_v3_response_spec.rb
+spec/models/integration_get_all_campaigns200_response_spec.rb
 spec/models/integration_hub_config_spec.rb
 spec/models/integration_hub_event_payload_coupon_based_notifications_limits_spec.rb
 spec/models/integration_hub_event_payload_coupon_based_notifications_spec.rb
@@ -1767,6 +1801,7 @@ spec/models/limit_counter_spec.rb
 spec/models/list_account_collections200_response_spec.rb
 spec/models/list_achievements200_response_spec.rb
 spec/models/list_all_roles_v2200_response_spec.rb
+spec/models/list_application_cart_item_filters200_response_spec.rb
 spec/models/list_campaign_store_budget_limits200_response_spec.rb
 spec/models/list_campaign_store_budgets_spec.rb
 spec/models/list_campaign_store_budgets_store_spec.rb
@@ -1802,6 +1837,7 @@ spec/models/loyalty_sub_ledger_spec.rb
 spec/models/loyalty_tier_spec.rb
 spec/models/management_key_spec.rb
 spec/models/manager_config_spec.rb
+spec/models/mcp_key_spec.rb
 spec/models/message_log_entries_spec.rb
 spec/models/message_log_entry_spec.rb
 spec/models/message_log_request_spec.rb
@@ -1862,6 +1898,7 @@ spec/models/new_invite_email_spec.rb
 spec/models/new_loyalty_program_spec.rb
 spec/models/new_loyalty_tier_spec.rb
 spec/models/new_management_key_spec.rb
+spec/models/new_mcp_key_spec.rb
 spec/models/new_message_test_spec.rb
 spec/models/new_multiple_audiences_item_spec.rb
 spec/models/new_notification_webhook_spec.rb
@@ -1875,6 +1912,7 @@ spec/models/new_referral_spec.rb
 spec/models/new_referrals_for_multiple_advocates_spec.rb
 spec/models/new_return_spec.rb
 spec/models/new_revision_version_spec.rb
+spec/models/new_reward_spec.rb
 spec/models/new_role_spec.rb
 spec/models/new_role_v2_spec.rb
 spec/models/new_ruleset_spec.rb
@@ -1942,6 +1980,7 @@ spec/models/revision_activation_request_spec.rb
 spec/models/revision_activation_spec.rb
 spec/models/revision_spec.rb
 spec/models/revision_version_spec.rb
+spec/models/reward_spec.rb
 spec/models/role_assign_spec.rb
 spec/models/role_membership_spec.rb
 spec/models/role_spec.rb

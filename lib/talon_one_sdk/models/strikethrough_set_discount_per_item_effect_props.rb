@@ -21,14 +21,14 @@ module TalonOne
 
     attr_accessor :value
 
-    attr_accessor :exclude_from_best_prior_price_history
+    attr_accessor :excluded_from_price_history
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'name' => :'name',
         :'value' => :'value',
-        :'exclude_from_best_prior_price_history' => :'excludeFromBestPriorPriceHistory'
+        :'excluded_from_price_history' => :'excludedFromPriceHistory'
       }
     end
 
@@ -47,7 +47,7 @@ module TalonOne
       {
         :'name' => :'String',
         :'value' => :'Object',
-        :'exclude_from_best_prior_price_history' => :'Boolean'
+        :'excluded_from_price_history' => :'Boolean'
       }
     end
 
@@ -86,8 +86,8 @@ module TalonOne
         self.value = nil
       end
 
-      if attributes.key?(:'exclude_from_best_prior_price_history')
-        self.exclude_from_best_prior_price_history = attributes[:'exclude_from_best_prior_price_history']
+      if attributes.key?(:'excluded_from_price_history')
+        self.excluded_from_price_history = attributes[:'excluded_from_price_history']
       end
     end
 
@@ -128,7 +128,7 @@ module TalonOne
       self.class == o.class &&
           name == o.name &&
           value == o.value &&
-          exclude_from_best_prior_price_history == o.exclude_from_best_prior_price_history
+          excluded_from_price_history == o.excluded_from_price_history
     end
 
     # @see the `==` method
@@ -140,7 +140,7 @@ module TalonOne
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, value, exclude_from_best_prior_price_history].hash
+      [name, value, excluded_from_price_history].hash
     end
 
     # Builds the object from hash
