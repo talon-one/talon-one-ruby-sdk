@@ -88,10 +88,6 @@ TalonOne.configure do |config|
 end
 ```
 
-The `auth_settings` method in `configuration.rb` defines three auth schemes (`api_key_v1`,
-`management_key`, `manager_auth`), but they all resolve to the `'Authorization'` header
-key. No code changes needed.
-
 ### API method parameter renames
 
 **This is the most impactful breaking change.** Across both APIs, generic `body`
