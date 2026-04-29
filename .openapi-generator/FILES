@@ -1,6 +1,8 @@
 .github/.example/Gemfile
 .github/.example/Gemfile.lock
 .github/.example/example.rb
+.github/ISSUE_TEMPLATE/bug_report.yml
+.github/ISSUE_TEMPLATE/config.yml
 .github/workflows/autorelease.yml
 .github/workflows/test.yml
 .gitignore
@@ -125,6 +127,9 @@ docs/CampaignDeletedNotificationItem.md
 docs/CampaignDetail.md
 docs/CampaignEditedNotification.md
 docs/CampaignEditedNotificationItem.md
+docs/CampaignEligibility.md
+docs/CampaignEligibilityDetails.md
+docs/CampaignEligibilityFailureDetails.md
 docs/CampaignEntity.md
 docs/CampaignEvaluationGroup.md
 docs/CampaignEvaluationPosition.md
@@ -594,6 +599,8 @@ docs/RollbackDiscountEffectProps.md
 docs/RollbackIncreasedAchievementProgressEffectProps.md
 docs/RollbackReferralEffectProps.md
 docs/Rule.md
+docs/RuleEligibility.md
+docs/RuleEligibilityFailureDetails.md
 docs/RuleFailureReason.md
 docs/RuleMetadata.md
 docs/Ruleset.md
@@ -700,6 +707,7 @@ docs/UpdatePicklist.md
 docs/UpdatePriceType.md
 docs/UpdateReferral.md
 docs/UpdateReferralBatch.md
+docs/UpdateReward.md
 docs/UpdateRole.md
 docs/UpdateStore.md
 docs/UpdateUser.md
@@ -832,6 +840,9 @@ lib/talon_one_sdk/models/campaign_deleted_notification_item.rb
 lib/talon_one_sdk/models/campaign_detail.rb
 lib/talon_one_sdk/models/campaign_edited_notification.rb
 lib/talon_one_sdk/models/campaign_edited_notification_item.rb
+lib/talon_one_sdk/models/campaign_eligibility.rb
+lib/talon_one_sdk/models/campaign_eligibility_details.rb
+lib/talon_one_sdk/models/campaign_eligibility_failure_details.rb
 lib/talon_one_sdk/models/campaign_entity.rb
 lib/talon_one_sdk/models/campaign_evaluation_group.rb
 lib/talon_one_sdk/models/campaign_evaluation_position.rb
@@ -1299,6 +1310,8 @@ lib/talon_one_sdk/models/rollback_discount_effect_props.rb
 lib/talon_one_sdk/models/rollback_increased_achievement_progress_effect_props.rb
 lib/talon_one_sdk/models/rollback_referral_effect_props.rb
 lib/talon_one_sdk/models/rule.rb
+lib/talon_one_sdk/models/rule_eligibility.rb
+lib/talon_one_sdk/models/rule_eligibility_failure_details.rb
 lib/talon_one_sdk/models/rule_failure_reason.rb
 lib/talon_one_sdk/models/rule_metadata.rb
 lib/talon_one_sdk/models/ruleset.rb
@@ -1405,6 +1418,7 @@ lib/talon_one_sdk/models/update_picklist.rb
 lib/talon_one_sdk/models/update_price_type.rb
 lib/talon_one_sdk/models/update_referral.rb
 lib/talon_one_sdk/models/update_referral_batch.rb
+lib/talon_one_sdk/models/update_reward.rb
 lib/talon_one_sdk/models/update_role.rb
 lib/talon_one_sdk/models/update_store.rb
 lib/talon_one_sdk/models/update_user.rb
@@ -1531,6 +1545,9 @@ spec/models/campaign_deleted_notification_spec.rb
 spec/models/campaign_detail_spec.rb
 spec/models/campaign_edited_notification_item_spec.rb
 spec/models/campaign_edited_notification_spec.rb
+spec/models/campaign_eligibility_details_spec.rb
+spec/models/campaign_eligibility_failure_details_spec.rb
+spec/models/campaign_eligibility_spec.rb
 spec/models/campaign_entity_spec.rb
 spec/models/campaign_evaluation_group_spec.rb
 spec/models/campaign_evaluation_position_spec.rb
@@ -1998,6 +2015,8 @@ spec/models/rollback_deducted_loyalty_points_effect_props_spec.rb
 spec/models/rollback_discount_effect_props_spec.rb
 spec/models/rollback_increased_achievement_progress_effect_props_spec.rb
 spec/models/rollback_referral_effect_props_spec.rb
+spec/models/rule_eligibility_failure_details_spec.rb
+spec/models/rule_eligibility_spec.rb
 spec/models/rule_failure_reason_spec.rb
 spec/models/rule_metadata_spec.rb
 spec/models/rule_spec.rb
@@ -2105,6 +2124,7 @@ spec/models/update_picklist_spec.rb
 spec/models/update_price_type_spec.rb
 spec/models/update_referral_batch_spec.rb
 spec/models/update_referral_spec.rb
+spec/models/update_reward_spec.rb
 spec/models/update_role_spec.rb
 spec/models/update_store_spec.rb
 spec/models/update_user_spec.rb
