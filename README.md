@@ -16,7 +16,7 @@ See our [migration guide](MIGRATION.md).
 Add this to the Gemfile:
 
 ```shell
-gem 'talon_one_sdk', '~> 26.08.0'
+gem 'talon_one_sdk', '~> 26.09.0'
 ```
 
 ### Build a gem
@@ -32,10 +32,10 @@ gem build talon_one_sdk.gemspec
 To install the gem locally:
 
 ```shell
-gem install ./talon_one_sdk-26.08.0.gem
+gem install ./talon_one_sdk-26.09.0.gem
 ```
 
-For development, run `gem install --dev ./talon_one_sdk-26.08.0.gem` to install the development dependencies.
+For development, run `gem install --dev ./talon_one_sdk-26.09.0.gem` to install the development dependencies.
 
 ### RubyGems
 
@@ -155,7 +155,7 @@ TalonOne.configure do |config|
   config.scheme = 'https'
   config.host = 'yourbaseurl.talon.one'
 
-  # Configure API key authorization: management_key
+  # Configure API key authorization: api_key_v1
   config.api_key['Authorization'] = '2f0dce055da01ae595005d7d79154bae7448d319d5fc7c5b2951fadd6ba1ea07'
   config.api_key_prefix['Authorization'] = 'ManagementKey-v1'
 end
@@ -514,6 +514,9 @@ Class | Method | HTTP request | Description
 - [TalonOne::CampaignDetail](docs/CampaignDetail.md)
 - [TalonOne::CampaignEditedNotification](docs/CampaignEditedNotification.md)
 - [TalonOne::CampaignEditedNotificationItem](docs/CampaignEditedNotificationItem.md)
+- [TalonOne::CampaignEligibility](docs/CampaignEligibility.md)
+- [TalonOne::CampaignEligibilityDetails](docs/CampaignEligibilityDetails.md)
+- [TalonOne::CampaignEligibilityFailureDetails](docs/CampaignEligibilityFailureDetails.md)
 - [TalonOne::CampaignEntity](docs/CampaignEntity.md)
 - [TalonOne::CampaignEvaluationGroup](docs/CampaignEvaluationGroup.md)
 - [TalonOne::CampaignEvaluationPosition](docs/CampaignEvaluationPosition.md)
@@ -981,6 +984,8 @@ Class | Method | HTTP request | Description
 - [TalonOne::RollbackIncreasedAchievementProgressEffectProps](docs/RollbackIncreasedAchievementProgressEffectProps.md)
 - [TalonOne::RollbackReferralEffectProps](docs/RollbackReferralEffectProps.md)
 - [TalonOne::Rule](docs/Rule.md)
+- [TalonOne::RuleEligibility](docs/RuleEligibility.md)
+- [TalonOne::RuleEligibilityFailureDetails](docs/RuleEligibilityFailureDetails.md)
 - [TalonOne::RuleFailureReason](docs/RuleFailureReason.md)
 - [TalonOne::RuleMetadata](docs/RuleMetadata.md)
 - [TalonOne::Ruleset](docs/Ruleset.md)
@@ -1087,6 +1092,7 @@ Class | Method | HTTP request | Description
 - [TalonOne::UpdatePriceType](docs/UpdatePriceType.md)
 - [TalonOne::UpdateReferral](docs/UpdateReferral.md)
 - [TalonOne::UpdateReferralBatch](docs/UpdateReferralBatch.md)
+- [TalonOne::UpdateReward](docs/UpdateReward.md)
 - [TalonOne::UpdateRole](docs/UpdateRole.md)
 - [TalonOne::UpdateStore](docs/UpdateStore.md)
 - [TalonOne::UpdateUser](docs/UpdateUser.md)

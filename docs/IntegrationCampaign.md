@@ -6,7 +6,7 @@
 | ---- | ---- | ----------- | ----- |
 | **application_id** | **Integer** | The ID of the Application that owns this entity. |  |
 | **id** | **Integer** | Unique ID of Campaign. |  |
-| **name** | **String** | A user-facing name for this campaign. |  |
+| **name** | **String** | The name of the campaign. |  |
 | **description** | **String** | A detailed description of the campaign. | [optional] |
 | **start_time** | **Time** | Timestamp when the campaign will become active. | [optional] |
 | **end_time** | **Time** | Timestamp when the campaign will become inactive. | [optional] |
@@ -14,6 +14,7 @@
 | **state** | **String** | The state of the campaign.  | [default to &#39;enabled&#39;] |
 | **tags** | **Array&lt;String&gt;** | A list of tags for the campaign. |  |
 | **features** | **Array&lt;String&gt;** | The features enabled in this campaign. |  |
+| **rules** | [**Array&lt;RuleMetadata&gt;**](RuleMetadata.md) | A list of rules containing customer-facing details of the rewards defined in the campaign. | [optional] |
 
 ## Example
 
@@ -30,7 +31,8 @@ instance = TalonOne::IntegrationCampaign.new(
   attributes: null,
   state: enabled,
   tags: [summer],
-  features: [coupons, referrals]
+  features: [coupons, referrals],
+  rules: null
 )
 ```
 
