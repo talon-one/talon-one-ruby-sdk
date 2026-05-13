@@ -16,7 +16,7 @@ require 'time'
 module TalonOne
   # The strikethrough labels notification for an application.
   class StrikethroughLabelingNotification < ApiModelBase
-    # The version of the strikethrough pricing notification.
+    # The version of the strikethrough pricing notification. Set for **scheduled** strikethrough pricing updates only. 
     attr_accessor :version
 
     # Timestamp at which the strikethrough pricing update becomes valid. Set for **scheduled** strikethrough pricing updates (version: v2) only. 

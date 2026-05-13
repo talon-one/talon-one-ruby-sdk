@@ -14,24 +14,36 @@ require 'date'
 require 'time'
 
 module TalonOne
-  class UpdateReward < ApiModelBase
-    # The name of the reward.
+  class IntegrationCampaignBase < ApiModelBase
+    # The ID of the Application that owns this entity.
+    attr_accessor :application_id
+
+    # Unique ID of Campaign.
+    attr_accessor :id
+
+    # The name of the campaign.
     attr_accessor :name
 
-    # A description of the reward.
+    # A detailed description of the campaign.
     attr_accessor :description
 
-    # The status of the reward.
-    attr_accessor :status
+    # Timestamp when the campaign will become active.
+    attr_accessor :start_time
 
-    # An optional rule that manages who can see this reward. If not specified, the reward is visible to all customers.  **Note:** Only the `condition` field is evaluated within this rule. The `effects` field must be an empty array, and `bindings` are not supported. 
-    attr_accessor :visibility_conditions
+    # Timestamp when the campaign will become inactive.
+    attr_accessor :end_time
 
-    # Rule to apply.  **Note**: The `bindings` field inside the rule must not be used in this endpoint. All bindings should be defined at the reward level via the top-level `bindings` field. 
-    attr_accessor :rule
+    # Arbitrary properties associated with this campaign.
+    attr_accessor :attributes
 
-    # A list of named variables created before the reward's rules are evaluated.  Each binding pairs a name with a talang expression. The expression is evaluated once  and its result is available by name in any rule condition or effect. Bindings must be defined outside of individual rules.
-    attr_accessor :bindings
+    # The state of the campaign. 
+    attr_accessor :state
+
+    # A list of tags for the campaign.
+    attr_accessor :tags
+
+    # The features enabled in this campaign.
+    attr_accessor :features
 
     class EnumAttributeValidator
       attr_reader :datatype
@@ -58,12 +70,16 @@ module TalonOne
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'application_id' => :'applicationId',
+        :'id' => :'id',
         :'name' => :'name',
         :'description' => :'description',
-        :'status' => :'status',
-        :'visibility_conditions' => :'visibilityConditions',
-        :'rule' => :'rule',
-        :'bindings' => :'bindings'
+        :'start_time' => :'startTime',
+        :'end_time' => :'endTime',
+        :'attributes' => :'attributes',
+        :'state' => :'state',
+        :'tags' => :'tags',
+        :'features' => :'features'
       }
     end
 
@@ -80,12 +96,16 @@ module TalonOne
     # Attribute type mapping.
     def self.openapi_types
       {
+        :'application_id' => :'Integer',
+        :'id' => :'Integer',
         :'name' => :'String',
         :'description' => :'String',
-        :'status' => :'String',
-        :'visibility_conditions' => :'Rule',
-        :'rule' => :'Rule',
-        :'bindings' => :'Array<Binding>'
+        :'start_time' => :'Time',
+        :'end_time' => :'Time',
+        :'attributes' => :'Object',
+        :'state' => :'String',
+        :'tags' => :'Array<String>',
+        :'features' => :'Array<String>'
       }
     end
 
@@ -95,21 +115,40 @@ module TalonOne
       ])
     end
 
+    # List of class defined in allOf (OpenAPI v3)
+    def self.openapi_all_of
+      [
+      :'ApplicationEntity'
+      ]
+    end
+
     # Initializes the object
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `TalonOne::UpdateReward` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `TalonOne::IntegrationCampaignBase` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       acceptable_attribute_map = self.class.acceptable_attribute_map
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!acceptable_attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `TalonOne::UpdateReward`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `TalonOne::IntegrationCampaignBase`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
+
+      if attributes.key?(:'application_id')
+        self.application_id = attributes[:'application_id']
+      else
+        self.application_id = nil
+      end
+
+      if attributes.key?(:'id')
+        self.id = attributes[:'id']
+      else
+        self.id = nil
+      end
 
       if attributes.key?(:'name')
         self.name = attributes[:'name']
@@ -121,24 +160,38 @@ module TalonOne
         self.description = attributes[:'description']
       end
 
-      if attributes.key?(:'status')
-        self.status = attributes[:'status']
+      if attributes.key?(:'start_time')
+        self.start_time = attributes[:'start_time']
+      end
+
+      if attributes.key?(:'end_time')
+        self.end_time = attributes[:'end_time']
+      end
+
+      if attributes.key?(:'attributes')
+        self.attributes = attributes[:'attributes']
+      end
+
+      if attributes.key?(:'state')
+        self.state = attributes[:'state']
       else
-        self.status = nil
+        self.state = 'enabled'
       end
 
-      if attributes.key?(:'visibility_conditions')
-        self.visibility_conditions = attributes[:'visibility_conditions']
-      end
-
-      if attributes.key?(:'rule')
-        self.rule = attributes[:'rule']
-      end
-
-      if attributes.key?(:'bindings')
-        if (value = attributes[:'bindings']).is_a?(Array)
-          self.bindings = value
+      if attributes.key?(:'tags')
+        if (value = attributes[:'tags']).is_a?(Array)
+          self.tags = value
         end
+      else
+        self.tags = nil
+      end
+
+      if attributes.key?(:'features')
+        if (value = attributes[:'features']).is_a?(Array)
+          self.features = value
+        end
+      else
+        self.features = nil
       end
     end
 
@@ -147,6 +200,14 @@ module TalonOne
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
+      if @application_id.nil?
+        invalid_properties.push('invalid value for "application_id", application_id cannot be nil.')
+      end
+
+      if @id.nil?
+        invalid_properties.push('invalid value for "id", id cannot be nil.')
+      end
+
       if @name.nil?
         invalid_properties.push('invalid value for "name", name cannot be nil.')
       end
@@ -155,8 +216,20 @@ module TalonOne
         invalid_properties.push('invalid value for "name", the character length must be greater than or equal to 1.')
       end
 
-      if @status.nil?
-        invalid_properties.push('invalid value for "status", status cannot be nil.')
+      if @state.nil?
+        invalid_properties.push('invalid value for "state", state cannot be nil.')
+      end
+
+      if @tags.nil?
+        invalid_properties.push('invalid value for "tags", tags cannot be nil.')
+      end
+
+      if @tags.length > 50
+        invalid_properties.push('invalid value for "tags", number of items must be less than or equal to 50.')
+      end
+
+      if @features.nil?
+        invalid_properties.push('invalid value for "features", features cannot be nil.')
       end
 
       invalid_properties
@@ -166,12 +239,37 @@ module TalonOne
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
+      return false if @application_id.nil?
+      return false if @id.nil?
       return false if @name.nil?
       return false if @name.to_s.length < 1
-      return false if @status.nil?
-      status_validator = EnumAttributeValidator.new('String', ["active", "inactive"])
-      return false unless status_validator.valid?(@status)
+      return false if @state.nil?
+      state_validator = EnumAttributeValidator.new('String', ["enabled"])
+      return false unless state_validator.valid?(@state)
+      return false if @tags.nil?
+      return false if @tags.length > 50
+      return false if @features.nil?
       true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] application_id Value to be assigned
+    def application_id=(application_id)
+      if application_id.nil?
+        fail ArgumentError, 'application_id cannot be nil'
+      end
+
+      @application_id = application_id
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] id Value to be assigned
+    def id=(id)
+      if id.nil?
+        fail ArgumentError, 'id cannot be nil'
+      end
+
+      @id = id
     end
 
     # Custom attribute writer method with validation
@@ -189,13 +287,27 @@ module TalonOne
     end
 
     # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] status Object to be assigned
-    def status=(status)
-      validator = EnumAttributeValidator.new('String', ["active", "inactive"])
-      unless validator.valid?(status)
-        fail ArgumentError, "invalid value for \"status\", must be one of #{validator.allowable_values}."
+    # @param [Object] state Object to be assigned
+    def state=(state)
+      validator = EnumAttributeValidator.new('String', ["enabled"])
+      unless validator.valid?(state)
+        fail ArgumentError, "invalid value for \"state\", must be one of #{validator.allowable_values}."
       end
-      @status = status
+      @state = state
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] tags Value to be assigned
+    def tags=(tags)
+      if tags.nil?
+        fail ArgumentError, 'tags cannot be nil'
+      end
+
+      if tags.length > 50
+        fail ArgumentError, 'invalid value for "tags", number of items must be less than or equal to 50.'
+      end
+
+      @tags = tags
     end
 
     # Checks equality by comparing each attribute.
@@ -203,12 +315,16 @@ module TalonOne
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          application_id == o.application_id &&
+          id == o.id &&
           name == o.name &&
           description == o.description &&
-          status == o.status &&
-          visibility_conditions == o.visibility_conditions &&
-          rule == o.rule &&
-          bindings == o.bindings
+          start_time == o.start_time &&
+          end_time == o.end_time &&
+          attributes == o.attributes &&
+          state == o.state &&
+          tags == o.tags &&
+          features == o.features
     end
 
     # @see the `==` method
@@ -220,7 +336,7 @@ module TalonOne
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, description, status, visibility_conditions, rule, bindings].hash
+      [application_id, id, name, description, start_time, end_time, attributes, state, tags, features].hash
     end
 
     # Builds the object from hash

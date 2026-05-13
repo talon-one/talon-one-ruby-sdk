@@ -39,4 +39,20 @@ describe TalonOne::UpdateExperiment do
     end
   end
 
+  describe 'test attribute "goal_type"' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+      # validator = Petstore::EnumTest::EnumAttributeValidator.new('String', ["other", "maximize_revenue", "optimize_discount_efficiency", "maximize_items_sold"])
+      # validator.allowable_values.each do |value|
+      #   expect { instance.goal_type = value }.not_to raise_error
+      # end
+    end
+  end
+
+  describe 'test attribute "goal_description"' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
 end

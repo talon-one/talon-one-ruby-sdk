@@ -123,7 +123,7 @@ module TalonOne
     # List of class defined in allOf (OpenAPI v3)
     def self.openapi_all_of
       [
-      :'ApplicationEntity'
+      :'IntegrationCampaignBase'
       ]
     end
 
@@ -203,6 +203,8 @@ module TalonOne
         if (value = attributes[:'rules']).is_a?(Array)
           self.rules = value
         end
+      else
+        self.rules = nil
       end
     end
 
@@ -243,6 +245,10 @@ module TalonOne
         invalid_properties.push('invalid value for "features", features cannot be nil.')
       end
 
+      if @rules.nil?
+        invalid_properties.push('invalid value for "rules", rules cannot be nil.')
+      end
+
       invalid_properties
     end
 
@@ -260,6 +266,7 @@ module TalonOne
       return false if @tags.nil?
       return false if @tags.length > 50
       return false if @features.nil?
+      return false if @rules.nil?
       true
     end
 
@@ -319,6 +326,16 @@ module TalonOne
       end
 
       @tags = tags
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] rules Value to be assigned
+    def rules=(rules)
+      if rules.nil?
+        fail ArgumentError, 'rules cannot be nil'
+      end
+
+      @rules = rules
     end
 
     # Checks equality by comparing each attribute.

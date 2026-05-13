@@ -27,13 +27,13 @@ describe TalonOne::CampaignEligibility do
     end
   end
 
-  describe 'test attribute "id"' do
+  describe 'test attribute "application_id"' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
     end
   end
 
-  describe 'test attribute "application_id"' do
+  describe 'test attribute "id"' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
     end
@@ -95,13 +95,13 @@ describe TalonOne::CampaignEligibility do
     end
   end
 
-  describe 'test attribute "rules"' do
+  describe 'test attribute "eligibility"' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
     end
   end
 
-  describe 'test attribute "eligibility"' do
+  describe 'test attribute "rules"' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
     end

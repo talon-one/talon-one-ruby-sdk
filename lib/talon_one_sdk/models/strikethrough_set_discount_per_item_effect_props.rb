@@ -16,11 +16,12 @@ require 'time'
 module TalonOne
   # setDiscountPerItem effect in strikethrough pricing payload.
   class StrikethroughSetDiscountPerItemEffectProps < ApiModelBase
-    # effect name.
+    # The effect name.
     attr_accessor :name
 
     attr_accessor :value
 
+    # When set to `true`, the applied discount is excluded from the item's price history.
     attr_accessor :excluded_from_price_history
 
     # Attribute mapping from ruby-style variable name to JSON key.

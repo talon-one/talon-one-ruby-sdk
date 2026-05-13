@@ -14,18 +14,45 @@ require 'date'
 require 'time'
 
 module TalonOne
-  # setDiscountPerItem member effect in strikethrough pricing payload.
-  class StrikethroughSetDiscountPerItemMemberEffectProps < ApiModelBase
-    # The effect name.
-    attr_accessor :name
+  # Data for creating a new risk notification.
+  class NewRiskNotification < ApiModelBase
+    # The entity type to analyze within the given time frame.
+    attr_accessor :entity
 
-    attr_accessor :value
+    # The activity metric to analyze within the given entity.
+    attr_accessor :activity
+
+    # The rolling time window for risk evaluation.
+    attr_accessor :time_frame
+
+    class EnumAttributeValidator
+      attr_reader :datatype
+      attr_reader :allowable_values
+
+      def initialize(datatype, allowable_values)
+        @allowable_values = allowable_values.map do |value|
+          case datatype.to_s
+          when /Integer/i
+            value.to_i
+          when /Float/i
+            value.to_f
+          else
+            value
+          end
+        end
+      end
+
+      def valid?(value)
+        !value || allowable_values.include?(value)
+      end
+    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'name' => :'name',
-        :'value' => :'value'
+        :'entity' => :'entity',
+        :'activity' => :'activity',
+        :'time_frame' => :'timeFrame'
       }
     end
 
@@ -42,15 +69,15 @@ module TalonOne
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'name' => :'String',
-        :'value' => :'Object'
+        :'entity' => :'String',
+        :'activity' => :'String',
+        :'time_frame' => :'String'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
-        :'value'
       ])
     end
 
@@ -58,28 +85,34 @@ module TalonOne
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `TalonOne::StrikethroughSetDiscountPerItemMemberEffectProps` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `TalonOne::NewRiskNotification` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       acceptable_attribute_map = self.class.acceptable_attribute_map
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!acceptable_attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `TalonOne::StrikethroughSetDiscountPerItemMemberEffectProps`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `TalonOne::NewRiskNotification`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'name')
-        self.name = attributes[:'name']
+      if attributes.key?(:'entity')
+        self.entity = attributes[:'entity']
       else
-        self.name = nil
+        self.entity = nil
       end
 
-      if attributes.key?(:'value')
-        self.value = attributes[:'value']
+      if attributes.key?(:'activity')
+        self.activity = attributes[:'activity']
       else
-        self.value = nil
+        self.activity = nil
+      end
+
+      if attributes.key?(:'time_frame')
+        self.time_frame = attributes[:'time_frame']
+      else
+        self.time_frame = nil
       end
     end
 
@@ -88,8 +121,16 @@ module TalonOne
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
-      if @name.nil?
-        invalid_properties.push('invalid value for "name", name cannot be nil.')
+      if @entity.nil?
+        invalid_properties.push('invalid value for "entity", entity cannot be nil.')
+      end
+
+      if @activity.nil?
+        invalid_properties.push('invalid value for "activity", activity cannot be nil.')
+      end
+
+      if @time_frame.nil?
+        invalid_properties.push('invalid value for "time_frame", time_frame cannot be nil.')
       end
 
       invalid_properties
@@ -99,18 +140,46 @@ module TalonOne
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
-      return false if @name.nil?
+      return false if @entity.nil?
+      entity_validator = EnumAttributeValidator.new('String', ["customer_profile", "customer_session"])
+      return false unless entity_validator.valid?(@entity)
+      return false if @activity.nil?
+      activity_validator = EnumAttributeValidator.new('String', ["loyalty_points_earned", "discounted_amount", "completed_orders", "coupon_attempts"])
+      return false unless activity_validator.valid?(@activity)
+      return false if @time_frame.nil?
+      time_frame_validator = EnumAttributeValidator.new('String', ["1_day", "1_week", "1_month"])
+      return false unless time_frame_validator.valid?(@time_frame)
       true
     end
 
-    # Custom attribute writer method with validation
-    # @param [Object] name Value to be assigned
-    def name=(name)
-      if name.nil?
-        fail ArgumentError, 'name cannot be nil'
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] entity Object to be assigned
+    def entity=(entity)
+      validator = EnumAttributeValidator.new('String', ["customer_profile", "customer_session"])
+      unless validator.valid?(entity)
+        fail ArgumentError, "invalid value for \"entity\", must be one of #{validator.allowable_values}."
       end
+      @entity = entity
+    end
 
-      @name = name
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] activity Object to be assigned
+    def activity=(activity)
+      validator = EnumAttributeValidator.new('String', ["loyalty_points_earned", "discounted_amount", "completed_orders", "coupon_attempts"])
+      unless validator.valid?(activity)
+        fail ArgumentError, "invalid value for \"activity\", must be one of #{validator.allowable_values}."
+      end
+      @activity = activity
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] time_frame Object to be assigned
+    def time_frame=(time_frame)
+      validator = EnumAttributeValidator.new('String', ["1_day", "1_week", "1_month"])
+      unless validator.valid?(time_frame)
+        fail ArgumentError, "invalid value for \"time_frame\", must be one of #{validator.allowable_values}."
+      end
+      @time_frame = time_frame
     end
 
     # Checks equality by comparing each attribute.
@@ -118,8 +187,9 @@ module TalonOne
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          name == o.name &&
-          value == o.value
+          entity == o.entity &&
+          activity == o.activity &&
+          time_frame == o.time_frame
     end
 
     # @see the `==` method
@@ -131,7 +201,7 @@ module TalonOne
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, value].hash
+      [entity, activity, time_frame].hash
     end
 
     # Builds the object from hash

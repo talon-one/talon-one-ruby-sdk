@@ -8357,8 +8357,8 @@ module TalonOne
       return data, status_code, headers
     end
 
-    # List card's transactions
-    # Retrieve the transaction logs for the given [loyalty card](https://docs.talon.one/docs/product/loyalty-programs/card-based/card-based-overview) within the specified [card-based loyalty program](https://docs.talon.one/docs/product/loyalty-programs/overview#loyalty-program-types) with filtering options applied. If no filtering options are applied, the last 50 loyalty transactions for the given loyalty card are returned. 
+    # List card's transactions (Management API)
+    # Retrieve the transaction logs for the given [loyalty card](https://docs.talon.one/docs/product/loyalty-programs/card-based/card-based-overview) within the specified [card-based loyalty program](https://docs.talon.one/docs/product/loyalty-programs/overview#loyalty-program-types) with filtering options applied.  > [!note] For most use cases, especially real-time integrations, use the Integration API endpoint: > [List card's transactions](https://docs.talon.one/integration-api#tag/Loyalty-cards/operation/getLoyaltyCardTransactions).  If no filtering options are applied, the last 50 loyalty transactions for the given loyalty card are returned. 
     # @param loyalty_program_id [Integer] Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. 
     # @param loyalty_card_id [String] Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint.  **Important**: The loyalty card ID requires [URL encoding](https://www.w3schools.com/tags//ref_urlencode.asp) if it contains special characters. For example, you must encode &#x60;NewCard2026%&#x60; as &#x60;NewCard2026%25&#x60;. 
     # @param [Hash] opts the optional parameters
@@ -8375,8 +8375,8 @@ module TalonOne
       data
     end
 
-    # List card&#39;s transactions
-    # Retrieve the transaction logs for the given [loyalty card](https://docs.talon.one/docs/product/loyalty-programs/card-based/card-based-overview) within the specified [card-based loyalty program](https://docs.talon.one/docs/product/loyalty-programs/overview#loyalty-program-types) with filtering options applied. If no filtering options are applied, the last 50 loyalty transactions for the given loyalty card are returned. 
+    # List card&#39;s transactions (Management API)
+    # Retrieve the transaction logs for the given [loyalty card](https://docs.talon.one/docs/product/loyalty-programs/card-based/card-based-overview) within the specified [card-based loyalty program](https://docs.talon.one/docs/product/loyalty-programs/overview#loyalty-program-types) with filtering options applied.  &gt; [!note] For most use cases, especially real-time integrations, use the Integration API endpoint: &gt; [List card&#39;s transactions](https://docs.talon.one/integration-api#tag/Loyalty-cards/operation/getLoyaltyCardTransactions).  If no filtering options are applied, the last 50 loyalty transactions for the given loyalty card are returned. 
     # @param loyalty_program_id [Integer] Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. 
     # @param loyalty_card_id [String] Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint.  **Important**: The loyalty card ID requires [URL encoding](https://www.w3schools.com/tags//ref_urlencode.asp) if it contains special characters. For example, you must encode &#x60;NewCard2026%&#x60; as &#x60;NewCard2026%25&#x60;. 
     # @param [Hash] opts the optional parameters
@@ -8560,8 +8560,8 @@ module TalonOne
       return data, status_code, headers
     end
 
-    # Get customer's loyalty balances
-    # Retrieve loyalty ledger balances for the given Integration ID in the specified loyalty program.  You can filter balances by date and subledger ID, and include tier-related information in the response.  > [!note] If no filtering options are applied, you retrieve all loyalty > balances on the current date for the given integration ID.  Loyalty balances are calculated when Talon.One receives your request using the points stored in our database, so retrieving a large number of balances at once can impact performance.  For more information, see:  - [Managing card-based loyalty program data](https://docs.talon.one/docs/product/loyalty-programs/card-based/managing-loyalty-cards)  - [Managing profile-based loyalty program data](https://docs.talon.one/docs/product/loyalty-programs/profile-based/managing-pb-lp-data) 
+    # Get customer's loyalty balances (Management API)
+    # Retrieve loyalty ledger balances for the given Integration ID in the specified loyalty program.  You can filter balances by date and subledger ID, and include tier-related information in the response.  > [!note] **Note** > - For most use cases, especially real-time integrations, use the Integration API endpoint:     [Get customer's loyalty balances](https://docs.talon.one/integration-api#tag/Loyalty/operation/getLoyaltyBalances). > - If no filtering options are applied, you retrieve all loyalty balances on the current date for the given integration ID.  Loyalty balances are calculated when Talon.One receives your request using the points stored in our database, so retrieving a large number of balances at once can impact performance.  For more information, see:  - [Managing card-based loyalty program data](https://docs.talon.one/docs/product/loyalty-programs/card-based/managing-loyalty-cards)  - [Managing profile-based loyalty program data](https://docs.talon.one/docs/product/loyalty-programs/profile-based/managing-pb-lp-data) 
     # @param loyalty_program_id [Integer] Identifier of the profile-based loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. 
     # @param integration_id [String] The integration identifier for this customer profile. Must be: - Unique within the deployment. - Stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID.  Once set, you cannot update this identifier. 
     # @param [Hash] opts the optional parameters
@@ -8575,8 +8575,8 @@ module TalonOne
       data
     end
 
-    # Get customer&#39;s loyalty balances
-    # Retrieve loyalty ledger balances for the given Integration ID in the specified loyalty program.  You can filter balances by date and subledger ID, and include tier-related information in the response.  &gt; [!note] If no filtering options are applied, you retrieve all loyalty &gt; balances on the current date for the given integration ID.  Loyalty balances are calculated when Talon.One receives your request using the points stored in our database, so retrieving a large number of balances at once can impact performance.  For more information, see:  - [Managing card-based loyalty program data](https://docs.talon.one/docs/product/loyalty-programs/card-based/managing-loyalty-cards)  - [Managing profile-based loyalty program data](https://docs.talon.one/docs/product/loyalty-programs/profile-based/managing-pb-lp-data) 
+    # Get customer&#39;s loyalty balances (Management API)
+    # Retrieve loyalty ledger balances for the given Integration ID in the specified loyalty program.  You can filter balances by date and subledger ID, and include tier-related information in the response.  &gt; [!note] **Note** &gt; - For most use cases, especially real-time integrations, use the Integration API endpoint:     [Get customer&#39;s loyalty balances](https://docs.talon.one/integration-api#tag/Loyalty/operation/getLoyaltyBalances). &gt; - If no filtering options are applied, you retrieve all loyalty balances on the current date for the given integration ID.  Loyalty balances are calculated when Talon.One receives your request using the points stored in our database, so retrieving a large number of balances at once can impact performance.  For more information, see:  - [Managing card-based loyalty program data](https://docs.talon.one/docs/product/loyalty-programs/card-based/managing-loyalty-cards)  - [Managing profile-based loyalty program data](https://docs.talon.one/docs/product/loyalty-programs/profile-based/managing-pb-lp-data) 
     # @param loyalty_program_id [Integer] Identifier of the profile-based loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. 
     # @param integration_id [String] The integration identifier for this customer profile. Must be: - Unique within the deployment. - Stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID.  Once set, you cannot update this identifier. 
     # @param [Hash] opts the optional parameters
@@ -8773,8 +8773,8 @@ module TalonOne
       return data, status_code, headers
     end
 
-    # List customer's loyalty transactions
-    # Retrieve paginated results of loyalty transaction logs for the given Integration ID in the specified loyalty program.  You can filter transactions by date or by ledger (subledger or main ledger). If no filters are applied, the last 50 loyalty transactions for the given integration ID are returned.  > [!note] To retrieve all loyalty program transaction logs in a given > loyalty program, use the [List loyalty program transactions](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyProgramTransactions) > endpoint. 
+    # List customer's loyalty transactions (Management API)
+    # Retrieve paginated results of loyalty transaction logs for the given Integration ID in the specified loyalty program.  You can filter transactions by date or by ledger (subledger or main ledger). If no filters are applied, the last 50 loyalty transactions for the given integration ID are returned.  > [!note] **Note** > - For most use cases, especially real-time integrations, use the Integration API endpoint: >   [List customer's loyalty transactions](https://docs.talon.one/integration-api#tag/Loyalty/operation/getLoyaltyProgramProfileTransactions). > - To retrieve all loyalty program transaction logs in a given loyalty program, use the >   [List loyalty program transactions](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyProgramTransactions) endpoint. 
     # @param loyalty_program_id [Integer] Identifier of the profile-based loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. 
     # @param integration_id [String] The integration identifier for this customer profile. Must be: - Unique within the deployment. - Stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID.  Once set, you cannot update this identifier. 
     # @param [Hash] opts the optional parameters
@@ -8793,8 +8793,8 @@ module TalonOne
       data
     end
 
-    # List customer&#39;s loyalty transactions
-    # Retrieve paginated results of loyalty transaction logs for the given Integration ID in the specified loyalty program.  You can filter transactions by date or by ledger (subledger or main ledger). If no filters are applied, the last 50 loyalty transactions for the given integration ID are returned.  &gt; [!note] To retrieve all loyalty program transaction logs in a given &gt; loyalty program, use the [List loyalty program transactions](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyProgramTransactions) &gt; endpoint. 
+    # List customer&#39;s loyalty transactions (Management API)
+    # Retrieve paginated results of loyalty transaction logs for the given Integration ID in the specified loyalty program.  You can filter transactions by date or by ledger (subledger or main ledger). If no filters are applied, the last 50 loyalty transactions for the given integration ID are returned.  &gt; [!note] **Note** &gt; - For most use cases, especially real-time integrations, use the Integration API endpoint: &gt;   [List customer&#39;s loyalty transactions](https://docs.talon.one/integration-api#tag/Loyalty/operation/getLoyaltyProgramProfileTransactions). &gt; - To retrieve all loyalty program transaction logs in a given loyalty program, use the &gt;   [List loyalty program transactions](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyProgramTransactions) endpoint. 
     # @param loyalty_program_id [Integer] Identifier of the profile-based loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. 
     # @param integration_id [String] The integration identifier for this customer profile. Must be: - Unique within the deployment. - Stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID.  Once set, you cannot update this identifier. 
     # @param [Hash] opts the optional parameters
@@ -9925,7 +9925,7 @@ module TalonOne
     # Upload a CSV file containing the collection of string values that should be attached as payload for collection.  The file should be sent as multipart data.  The import **replaces** the initial content of the collection.  The CSV file **must** only contain the following column:  - `item`: the values in your collection.  A collection is limited to 500,000 items.  ## Example  ``` item Adidas Nike Asics ```  > [!note] Before sending a request to this endpoint, ensure the data in the > CSV to import is different from the data currently stored in the collection. 
     # @param collection_id [Integer] The ID of the collection. You can get it with the [List collections in account](#tag/Collections/operation/listAccountCollections) endpoint.
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :up_file The file containing the data that is being imported.
+    # @option opts [File] :up_file The CSV file containing the data that is being imported.
     # @return [Import]
     def import_account_collection(collection_id, opts = {})
       data, _status_code, _headers = import_account_collection_with_http_info(collection_id, opts)
@@ -9936,7 +9936,7 @@ module TalonOne
     # Upload a CSV file containing the collection of string values that should be attached as payload for collection.  The file should be sent as multipart data.  The import **replaces** the initial content of the collection.  The CSV file **must** only contain the following column:  - &#x60;item&#x60;: the values in your collection.  A collection is limited to 500,000 items.  ## Example  &#x60;&#x60;&#x60; item Adidas Nike Asics &#x60;&#x60;&#x60;  &gt; [!note] Before sending a request to this endpoint, ensure the data in the &gt; CSV to import is different from the data currently stored in the collection. 
     # @param collection_id [Integer] The ID of the collection. You can get it with the [List collections in account](#tag/Collections/operation/listAccountCollections) endpoint.
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :up_file The file containing the data that is being imported.
+    # @option opts [File] :up_file The CSV file containing the data that is being imported.
     # @return [Array<(Import, Integer, Hash)>] Import data, response status code and response headers
     def import_account_collection_with_http_info(collection_id, opts = {})
       if @api_client.config.debugging
@@ -9996,7 +9996,7 @@ module TalonOne
     # Upload a CSV file containing a list of [picklist values](https://docs.talon.one/docs/product/account/dev-tools/managing-attributes#picklist-values) for the specified attribute.  The file should be sent as multipart data.  The import **replaces** the previous list of allowed values for this attribute, if any.  The CSV file **must** only contain the following column:  - `item`: The values in your allowed list, for example a list of SKUs.  An allowed list is limited to 500,000 items.  ## Example  ```text item CS-VG-04032021-UP-50D-10 CS-DV-04042021-UP-49D-12 CS-DG-02082021-UP-50G-07 ``` 
     # @param attribute_id [Integer] The ID of the attribute. You can find the ID in the Campaign Manager&#39;s URL when you display the details of an attribute in **Account** &gt; **Tools** &gt; **Attributes**.
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :up_file The file containing the data that is being imported.
+    # @option opts [File] :up_file The CSV file containing the data that is being imported.
     # @return [Import]
     def import_allowed_list(attribute_id, opts = {})
       data, _status_code, _headers = import_allowed_list_with_http_info(attribute_id, opts)
@@ -10007,7 +10007,7 @@ module TalonOne
     # Upload a CSV file containing a list of [picklist values](https://docs.talon.one/docs/product/account/dev-tools/managing-attributes#picklist-values) for the specified attribute.  The file should be sent as multipart data.  The import **replaces** the previous list of allowed values for this attribute, if any.  The CSV file **must** only contain the following column:  - &#x60;item&#x60;: The values in your allowed list, for example a list of SKUs.  An allowed list is limited to 500,000 items.  ## Example  &#x60;&#x60;&#x60;text item CS-VG-04032021-UP-50D-10 CS-DV-04042021-UP-49D-12 CS-DG-02082021-UP-50G-07 &#x60;&#x60;&#x60; 
     # @param attribute_id [Integer] The ID of the attribute. You can find the ID in the Campaign Manager&#39;s URL when you display the details of an attribute in **Account** &gt; **Tools** &gt; **Attributes**.
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :up_file The file containing the data that is being imported.
+    # @option opts [File] :up_file The CSV file containing the data that is being imported.
     # @return [Array<(Import, Integer, Hash)>] Import data, response status code and response headers
     def import_allowed_list_with_http_info(attribute_id, opts = {})
       if @api_client.config.debugging
@@ -10067,7 +10067,7 @@ module TalonOne
     # Upload a CSV file containing the integration IDs of the members you want to add to an audience.  The file should be sent as multipart data and should contain only the following column (required):  - `profileintegrationid`: The integration ID of the customer profile.  The import **replaces** the previous list of audience members.  > [!note] We recommend limiting your file size to 500 MB.  ## Example  ```text profileintegrationid charles alexa ``` 
     # @param audience_id [Integer] The ID of the audience.
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :up_file The file containing the data that is being imported.
+    # @option opts [File] :up_file The CSV file containing the data that is being imported.
     # @return [Import]
     def import_audiences_memberships(audience_id, opts = {})
       data, _status_code, _headers = import_audiences_memberships_with_http_info(audience_id, opts)
@@ -10078,7 +10078,7 @@ module TalonOne
     # Upload a CSV file containing the integration IDs of the members you want to add to an audience.  The file should be sent as multipart data and should contain only the following column (required):  - &#x60;profileintegrationid&#x60;: The integration ID of the customer profile.  The import **replaces** the previous list of audience members.  &gt; [!note] We recommend limiting your file size to 500 MB.  ## Example  &#x60;&#x60;&#x60;text profileintegrationid charles alexa &#x60;&#x60;&#x60; 
     # @param audience_id [Integer] The ID of the audience.
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :up_file The file containing the data that is being imported.
+    # @option opts [File] :up_file The CSV file containing the data that is being imported.
     # @return [Array<(Import, Integer, Hash)>] Import data, response status code and response headers
     def import_audiences_memberships_with_http_info(audience_id, opts = {})
       if @api_client.config.debugging
@@ -10141,7 +10141,7 @@ module TalonOne
     # @param [Hash] opts the optional parameters
     # @option opts [String] :action The action that this budget is limiting.
     # @option opts [String] :period The period to which the limit applies.  **Note**: For budgets with no period, set this to &#x60;overall&#x60;. 
-    # @option opts [String] :up_file The file containing the data that is being imported.
+    # @option opts [File] :up_file The CSV file containing the data that is being imported.
     # @return [Import]
     def import_campaign_store_budget(application_id, campaign_id, opts = {})
       data, _status_code, _headers = import_campaign_store_budget_with_http_info(application_id, campaign_id, opts)
@@ -10155,7 +10155,7 @@ module TalonOne
     # @param [Hash] opts the optional parameters
     # @option opts [String] :action The action that this budget is limiting.
     # @option opts [String] :period The period to which the limit applies.  **Note**: For budgets with no period, set this to &#x60;overall&#x60;. 
-    # @option opts [String] :up_file The file containing the data that is being imported.
+    # @option opts [File] :up_file The CSV file containing the data that is being imported.
     # @return [Array<(Import, Integer, Hash)>] Import data, response status code and response headers
     def import_campaign_store_budget_with_http_info(application_id, campaign_id, opts = {})
       if @api_client.config.debugging
@@ -10230,7 +10230,7 @@ module TalonOne
     # @param application_id [Integer] The ID of the Application. It is displayed in your Talon.One deployment URL.
     # @param campaign_id [Integer] The ID of the campaign. It is displayed in your Talon.One deployment URL.
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :up_file The file containing the data that is being imported.
+    # @option opts [File] :up_file The CSV file containing the data that is being imported.
     # @return [Import]
     def import_campaign_stores(application_id, campaign_id, opts = {})
       data, _status_code, _headers = import_campaign_stores_with_http_info(application_id, campaign_id, opts)
@@ -10242,7 +10242,7 @@ module TalonOne
     # @param application_id [Integer] The ID of the Application. It is displayed in your Talon.One deployment URL.
     # @param campaign_id [Integer] The ID of the campaign. It is displayed in your Talon.One deployment URL.
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :up_file The file containing the data that is being imported.
+    # @option opts [File] :up_file The CSV file containing the data that is being imported.
     # @return [Array<(Import, Integer, Hash)>] Import data, response status code and response headers
     def import_campaign_stores_with_http_info(application_id, campaign_id, opts = {})
       if @api_client.config.debugging
@@ -10308,7 +10308,7 @@ module TalonOne
     # @param campaign_id [Integer] The ID of the campaign. It is displayed in your Talon.One deployment URL.
     # @param collection_id [Integer] The ID of the collection. You can get it with the [List collections in Application](#tag/Collections/operation/listCollectionsInApplication) endpoint.
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :up_file The file containing the data that is being imported.
+    # @option opts [File] :up_file The CSV file containing the data that is being imported.
     # @return [Import]
     def import_collection(application_id, campaign_id, collection_id, opts = {})
       data, _status_code, _headers = import_collection_with_http_info(application_id, campaign_id, collection_id, opts)
@@ -10321,7 +10321,7 @@ module TalonOne
     # @param campaign_id [Integer] The ID of the campaign. It is displayed in your Talon.One deployment URL.
     # @param collection_id [Integer] The ID of the collection. You can get it with the [List collections in Application](#tag/Collections/operation/listCollectionsInApplication) endpoint.
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :up_file The file containing the data that is being imported.
+    # @option opts [File] :up_file The CSV file containing the data that is being imported.
     # @return [Array<(Import, Integer, Hash)>] Import data, response status code and response headers
     def import_collection_with_http_info(application_id, campaign_id, collection_id, opts = {})
       if @api_client.config.debugging
@@ -10391,7 +10391,7 @@ module TalonOne
     # @param campaign_id [Integer] The ID of the campaign. It is displayed in your Talon.One deployment URL.
     # @param [Hash] opts the optional parameters
     # @option opts [Boolean] :skip_duplicates An indicator of whether to skip duplicate coupon values instead of causing an error. Duplicate values are ignored when &#x60;skipDuplicates&#x3D;true&#x60;. 
-    # @option opts [String] :up_file The file containing the data that is being imported.
+    # @option opts [File] :up_file The CSV file containing the data that is being imported.
     # @return [Import]
     def import_coupons(application_id, campaign_id, opts = {})
       data, _status_code, _headers = import_coupons_with_http_info(application_id, campaign_id, opts)
@@ -10404,7 +10404,7 @@ module TalonOne
     # @param campaign_id [Integer] The ID of the campaign. It is displayed in your Talon.One deployment URL.
     # @param [Hash] opts the optional parameters
     # @option opts [Boolean] :skip_duplicates An indicator of whether to skip duplicate coupon values instead of causing an error. Duplicate values are ignored when &#x60;skipDuplicates&#x3D;true&#x60;. 
-    # @option opts [String] :up_file The file containing the data that is being imported.
+    # @option opts [File] :up_file The CSV file containing the data that is being imported.
     # @return [Array<(Import, Integer, Hash)>] Import data, response status code and response headers
     def import_coupons_with_http_info(application_id, campaign_id, opts = {})
       if @api_client.config.debugging
@@ -10469,7 +10469,7 @@ module TalonOne
     # Upload a CSV file containing the loyalty cards that you want to use in your card-based loyalty program.  Send the file as multipart data.  It contains the following columns for each card:  - `identifier` (required): The identifier of the loyalty card, which must match the regular expression `^[A-Za-z0-9._%+@-]+$`. - `state` (required): The state of the loyalty card. It can be `active` or `inactive`. - `customerprofileids` (optional): An array of strings representing the identifiers of the customer profiles linked to the loyalty card. The identifiers should be separated with a semicolon (;).  > [!note] We recommend limiting your file size to 500MB.  ## Example  ```csv identifier,state,customerprofileids 123-456-789AT,active,Alexa001;UserA ``` 
     # @param loyalty_program_id [Integer] Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. 
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :up_file The file containing the data that is being imported.
+    # @option opts [File] :up_file The CSV file containing the data that is being imported.
     # @return [Import]
     def import_loyalty_cards(loyalty_program_id, opts = {})
       data, _status_code, _headers = import_loyalty_cards_with_http_info(loyalty_program_id, opts)
@@ -10480,7 +10480,7 @@ module TalonOne
     # Upload a CSV file containing the loyalty cards that you want to use in your card-based loyalty program.  Send the file as multipart data.  It contains the following columns for each card:  - &#x60;identifier&#x60; (required): The identifier of the loyalty card, which must match the regular expression &#x60;^[A-Za-z0-9._%+@-]+$&#x60;. - &#x60;state&#x60; (required): The state of the loyalty card. It can be &#x60;active&#x60; or &#x60;inactive&#x60;. - &#x60;customerprofileids&#x60; (optional): An array of strings representing the identifiers of the customer profiles linked to the loyalty card. The identifiers should be separated with a semicolon (;).  &gt; [!note] We recommend limiting your file size to 500MB.  ## Example  &#x60;&#x60;&#x60;csv identifier,state,customerprofileids 123-456-789AT,active,Alexa001;UserA &#x60;&#x60;&#x60; 
     # @param loyalty_program_id [Integer] Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. 
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :up_file The file containing the data that is being imported.
+    # @option opts [File] :up_file The CSV file containing the data that is being imported.
     # @return [Array<(Import, Integer, Hash)>] Import data, response status code and response headers
     def import_loyalty_cards_with_http_info(loyalty_program_id, opts = {})
       if @api_client.config.debugging
@@ -10540,7 +10540,7 @@ module TalonOne
     # Upload a CSV file containing existing customers to be assigned to existing tiers.  Send the file as multipart data.  > [!important] This endpoint only works with loyalty programs with advanced > tiers (with expiration and downgrade policy) feature enabled.  The CSV file should contain the following columns:  - `subledgerid` (optional): The ID of the subledger. If this field is empty, the main ledger will be used. - `customerprofileid`: The integration ID of the customer profile to whom the tier should be assigned. - `tiername`: The name of an existing tier to assign to the customer. - `expirydate`: The expiration date of the tier when the tier is reevaluated. It should be a future date.  About customer assignment to a tier:  - If the customer isn't already in a tier, the customer is assigned to the specified tier during the tier import. - If the customer is already in the tier that's specified in the CSV file, only the expiration date is updated.  > [!note] We recommend not using this endpoint to update the tier of a customer.  To update a customer's tier, you can [add](/management-api#tag/Loyalty/operation/addLoyaltyPoints) or [deduct](/management-api#tag/Loyalty/operation/removeLoyaltyPoints) their loyalty points.  You can use the time zone of your choice. It is converted to UTC internally by Talon.One.  > [!note] We recommend limiting your file size to 500 MB.  ## Example  ```csv subledgerid,customerprofileid,tiername,expirydate SUB1,alexa,Gold,2024-03-21T07:32:14Z ,george,Silver,2025-04-16T21:12:37Z SUB2,avocado,Bronze,2026-05-03T11:47:01Z ``` 
     # @param loyalty_program_id [Integer] Identifier of the loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. 
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :up_file The file containing the data that is being imported.
+    # @option opts [File] :up_file The CSV file containing the data that is being imported.
     # @return [Import]
     def import_loyalty_customers_tiers(loyalty_program_id, opts = {})
       data, _status_code, _headers = import_loyalty_customers_tiers_with_http_info(loyalty_program_id, opts)
@@ -10551,7 +10551,7 @@ module TalonOne
     # Upload a CSV file containing existing customers to be assigned to existing tiers.  Send the file as multipart data.  &gt; [!important] This endpoint only works with loyalty programs with advanced &gt; tiers (with expiration and downgrade policy) feature enabled.  The CSV file should contain the following columns:  - &#x60;subledgerid&#x60; (optional): The ID of the subledger. If this field is empty, the main ledger will be used. - &#x60;customerprofileid&#x60;: The integration ID of the customer profile to whom the tier should be assigned. - &#x60;tiername&#x60;: The name of an existing tier to assign to the customer. - &#x60;expirydate&#x60;: The expiration date of the tier when the tier is reevaluated. It should be a future date.  About customer assignment to a tier:  - If the customer isn&#39;t already in a tier, the customer is assigned to the specified tier during the tier import. - If the customer is already in the tier that&#39;s specified in the CSV file, only the expiration date is updated.  &gt; [!note] We recommend not using this endpoint to update the tier of a customer.  To update a customer&#39;s tier, you can [add](/management-api#tag/Loyalty/operation/addLoyaltyPoints) or [deduct](/management-api#tag/Loyalty/operation/removeLoyaltyPoints) their loyalty points.  You can use the time zone of your choice. It is converted to UTC internally by Talon.One.  &gt; [!note] We recommend limiting your file size to 500 MB.  ## Example  &#x60;&#x60;&#x60;csv subledgerid,customerprofileid,tiername,expirydate SUB1,alexa,Gold,2024-03-21T07:32:14Z ,george,Silver,2025-04-16T21:12:37Z SUB2,avocado,Bronze,2026-05-03T11:47:01Z &#x60;&#x60;&#x60; 
     # @param loyalty_program_id [Integer] Identifier of the loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. 
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :up_file The file containing the data that is being imported.
+    # @option opts [File] :up_file The CSV file containing the data that is being imported.
     # @return [Array<(Import, Integer, Hash)>] Import data, response status code and response headers
     def import_loyalty_customers_tiers_with_http_info(loyalty_program_id, opts = {})
       if @api_client.config.debugging
@@ -10612,7 +10612,7 @@ module TalonOne
     # @param loyalty_program_id [Integer] Identifier of the loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. 
     # @param [Hash] opts the optional parameters
     # @option opts [Boolean] :notifications_enabled Indicates whether the points import triggers notifications about its effects. For example, a notification is sent if the import upgrades a customer&#39;s tier or offsets their negative points balance.  This parameter is optional and defaults to &#x60;true&#x60;. 
-    # @option opts [String] :up_file The file containing the data that is being imported.
+    # @option opts [File] :up_file The CSV file containing the data that is being imported.
     # @return [Import]
     def import_loyalty_points(loyalty_program_id, opts = {})
       data, _status_code, _headers = import_loyalty_points_with_http_info(loyalty_program_id, opts)
@@ -10624,7 +10624,7 @@ module TalonOne
     # @param loyalty_program_id [Integer] Identifier of the loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. 
     # @param [Hash] opts the optional parameters
     # @option opts [Boolean] :notifications_enabled Indicates whether the points import triggers notifications about its effects. For example, a notification is sent if the import upgrades a customer&#39;s tier or offsets their negative points balance.  This parameter is optional and defaults to &#x60;true&#x60;. 
-    # @option opts [String] :up_file The file containing the data that is being imported.
+    # @option opts [File] :up_file The CSV file containing the data that is being imported.
     # @return [Array<(Import, Integer, Hash)>] Import data, response status code and response headers
     def import_loyalty_points_with_http_info(loyalty_program_id, opts = {})
       if @api_client.config.debugging
@@ -10685,7 +10685,7 @@ module TalonOne
     # Upload a CSV file containing the giveaway codes that should be created. Send the file as multipart data.  The CSV file contains the following columns:  - `code` (required): The code of your giveaway, for instance, a gift card redemption code. - `startdate`:  The start date in RFC3339 of the code redemption period. - `enddate`: The last date in RFC3339 of the code redemption period. - `attributes`: A JSON object describing _custom_ giveaway attribute names and their values, enclosed with double quotation marks.<br />   For example, if you created a [custom attribute](https://docs.talon.one/docs/dev/concepts/attributes#custom-attributes)   called `provider` associated with the giveaway entity, the object in the CSV file, when opened in a text editor, must be: `\"{\"provider\": \"myPartnerCompany\"}\"`.  The `startdate` and `enddate` have nothing to do with the _validity_ of the codes. They are only used by the Rule Engine to award the codes or not.  You can use the time zone setting of your choice. The values are converted to UTC internally by Talon.One.  > [!note] **Note** > - We recommend limiting your file size to 500MB. > - You can import the same code multiple times. Duplicate codes are treated and distributed to customers as unique codes.  ## Example  ```text code,startdate,enddate,attributes GIVEAWAY1,2020-11-10T23:00:00Z,2022-11-11T23:00:00Z,\"{\"\"provider\"\": \"\"Amazon\"\"}\" GIVEAWAY2,2020-11-10T23:00:00Z,2022-11-11T23:00:00Z,\"{\"\"provider\"\": \"\"Amazon\"\"}\" GIVEAWAY3,2021-01-10T23:00:00Z,2022-11-11T23:00:00Z,\"{\"\"provider\"\": \"\"Aliexpress\"\"}\" ``` 
     # @param pool_id [Integer] The ID of the pool. You can find it in the Campaign Manager, in the **Giveaways** section.
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :up_file The file containing the data that is being imported.
+    # @option opts [File] :up_file The CSV file containing the data that is being imported.
     # @return [Import]
     def import_pool_giveaways(pool_id, opts = {})
       data, _status_code, _headers = import_pool_giveaways_with_http_info(pool_id, opts)
@@ -10696,7 +10696,7 @@ module TalonOne
     # Upload a CSV file containing the giveaway codes that should be created. Send the file as multipart data.  The CSV file contains the following columns:  - &#x60;code&#x60; (required): The code of your giveaway, for instance, a gift card redemption code. - &#x60;startdate&#x60;:  The start date in RFC3339 of the code redemption period. - &#x60;enddate&#x60;: The last date in RFC3339 of the code redemption period. - &#x60;attributes&#x60;: A JSON object describing _custom_ giveaway attribute names and their values, enclosed with double quotation marks.&lt;br /&gt;   For example, if you created a [custom attribute](https://docs.talon.one/docs/dev/concepts/attributes#custom-attributes)   called &#x60;provider&#x60; associated with the giveaway entity, the object in the CSV file, when opened in a text editor, must be: &#x60;\&quot;{\&quot;provider\&quot;: \&quot;myPartnerCompany\&quot;}\&quot;&#x60;.  The &#x60;startdate&#x60; and &#x60;enddate&#x60; have nothing to do with the _validity_ of the codes. They are only used by the Rule Engine to award the codes or not.  You can use the time zone setting of your choice. The values are converted to UTC internally by Talon.One.  &gt; [!note] **Note** &gt; - We recommend limiting your file size to 500MB. &gt; - You can import the same code multiple times. Duplicate codes are treated and distributed to customers as unique codes.  ## Example  &#x60;&#x60;&#x60;text code,startdate,enddate,attributes GIVEAWAY1,2020-11-10T23:00:00Z,2022-11-11T23:00:00Z,\&quot;{\&quot;\&quot;provider\&quot;\&quot;: \&quot;\&quot;Amazon\&quot;\&quot;}\&quot; GIVEAWAY2,2020-11-10T23:00:00Z,2022-11-11T23:00:00Z,\&quot;{\&quot;\&quot;provider\&quot;\&quot;: \&quot;\&quot;Amazon\&quot;\&quot;}\&quot; GIVEAWAY3,2021-01-10T23:00:00Z,2022-11-11T23:00:00Z,\&quot;{\&quot;\&quot;provider\&quot;\&quot;: \&quot;\&quot;Aliexpress\&quot;\&quot;}\&quot; &#x60;&#x60;&#x60; 
     # @param pool_id [Integer] The ID of the pool. You can find it in the Campaign Manager, in the **Giveaways** section.
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :up_file The file containing the data that is being imported.
+    # @option opts [File] :up_file The CSV file containing the data that is being imported.
     # @return [Array<(Import, Integer, Hash)>] Import data, response status code and response headers
     def import_pool_giveaways_with_http_info(pool_id, opts = {})
       if @api_client.config.debugging
@@ -10757,7 +10757,7 @@ module TalonOne
     # @param application_id [Integer] The ID of the Application. It is displayed in your Talon.One deployment URL.
     # @param campaign_id [Integer] The ID of the campaign. It is displayed in your Talon.One deployment URL.
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :up_file The file containing the data that is being imported.
+    # @option opts [File] :up_file The CSV file containing the data that is being imported.
     # @return [Import]
     def import_referrals(application_id, campaign_id, opts = {})
       data, _status_code, _headers = import_referrals_with_http_info(application_id, campaign_id, opts)
@@ -10769,7 +10769,7 @@ module TalonOne
     # @param application_id [Integer] The ID of the Application. It is displayed in your Talon.One deployment URL.
     # @param campaign_id [Integer] The ID of the campaign. It is displayed in your Talon.One deployment URL.
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :up_file The file containing the data that is being imported.
+    # @option opts [File] :up_file The CSV file containing the data that is being imported.
     # @return [Array<(Import, Integer, Hash)>] Import data, response status code and response headers
     def import_referrals_with_http_info(application_id, campaign_id, opts = {})
       if @api_client.config.debugging
