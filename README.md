@@ -16,7 +16,7 @@ See our [migration guide](MIGRATION.md).
 Add this to the Gemfile:
 
 ```shell
-gem 'talon_one_sdk', '~> 26.09.0'
+gem 'talon_one_sdk', '~> 26.10.0'
 ```
 
 ### Build a gem
@@ -32,10 +32,10 @@ gem build talon_one_sdk.gemspec
 To install the gem locally:
 
 ```shell
-gem install ./talon_one_sdk-26.09.0.gem
+gem install ./talon_one_sdk-26.10.0.gem
 ```
 
-For development, run `gem install --dev ./talon_one_sdk-26.09.0.gem` to install the development dependencies.
+For development, run `gem install --dev ./talon_one_sdk-26.10.0.gem` to install the development dependencies.
 
 ### RubyGems
 
@@ -322,12 +322,12 @@ Class | Method | HTTP request | Description
 *TalonOne::ManagementApi* | [**get_experiment**](docs/ManagementApi.md#get_experiment) | **GET** /v1/applications/{applicationId}/experiments/{experimentId} | Get experiment in Application
 *TalonOne::ManagementApi* | [**get_exports**](docs/ManagementApi.md#get_exports) | **GET** /v1/exports | Get exports
 *TalonOne::ManagementApi* | [**get_loyalty_card**](docs/ManagementApi.md#get_loyalty_card) | **GET** /v1/loyalty_programs/{loyaltyProgramId}/cards/{loyaltyCardId} | Get loyalty card
-*TalonOne::ManagementApi* | [**get_loyalty_card_transaction_logs**](docs/ManagementApi.md#get_loyalty_card_transaction_logs) | **GET** /v1/loyalty_programs/{loyaltyProgramId}/cards/{loyaltyCardId}/logs | List card's transactions
+*TalonOne::ManagementApi* | [**get_loyalty_card_transaction_logs**](docs/ManagementApi.md#get_loyalty_card_transaction_logs) | **GET** /v1/loyalty_programs/{loyaltyProgramId}/cards/{loyaltyCardId}/logs | List card's transactions (Management API)
 *TalonOne::ManagementApi* | [**get_loyalty_cards**](docs/ManagementApi.md#get_loyalty_cards) | **GET** /v1/loyalty_programs/{loyaltyProgramId}/cards | List loyalty cards
-*TalonOne::ManagementApi* | [**get_loyalty_ledger_balances**](docs/ManagementApi.md#get_loyalty_ledger_balances) | **GET** /v1/loyalty_programs/{loyaltyProgramId}/profile/{integrationId}/ledger_balances | Get customer's loyalty balances
+*TalonOne::ManagementApi* | [**get_loyalty_ledger_balances**](docs/ManagementApi.md#get_loyalty_ledger_balances) | **GET** /v1/loyalty_programs/{loyaltyProgramId}/profile/{integrationId}/ledger_balances | Get customer's loyalty balances (Management API)
 *TalonOne::ManagementApi* | [**get_loyalty_points**](docs/ManagementApi.md#get_loyalty_points) | **GET** /v1/loyalty_programs/{loyaltyProgramId}/profile/{integrationId} | Get customer's full loyalty ledger
 *TalonOne::ManagementApi* | [**get_loyalty_program**](docs/ManagementApi.md#get_loyalty_program) | **GET** /v1/loyalty_programs/{loyaltyProgramId} | Get loyalty program
-*TalonOne::ManagementApi* | [**get_loyalty_program_profile_ledger_transactions**](docs/ManagementApi.md#get_loyalty_program_profile_ledger_transactions) | **GET** /v1/loyalty_programs/{loyaltyProgramId}/profile/{integrationId}/ledger_transactions | List customer's loyalty transactions
+*TalonOne::ManagementApi* | [**get_loyalty_program_profile_ledger_transactions**](docs/ManagementApi.md#get_loyalty_program_profile_ledger_transactions) | **GET** /v1/loyalty_programs/{loyaltyProgramId}/profile/{integrationId}/ledger_transactions | List customer's loyalty transactions (Management API)
 *TalonOne::ManagementApi* | [**get_loyalty_program_transactions**](docs/ManagementApi.md#get_loyalty_program_transactions) | **GET** /v1/loyalty_programs/{loyaltyProgramId}/transactions | List loyalty program transactions
 *TalonOne::ManagementApi* | [**get_loyalty_programs**](docs/ManagementApi.md#get_loyalty_programs) | **GET** /v1/loyalty_programs | List loyalty programs
 *TalonOne::ManagementApi* | [**get_loyalty_statistics**](docs/ManagementApi.md#get_loyalty_statistics) | **GET** /v1/loyalty_programs/{loyaltyProgramId}/statistics | Get loyalty program statistics
@@ -668,6 +668,7 @@ Class | Method | HTTP request | Description
 - [TalonOne::ExtendLoyaltyPointsExpiryDateEffectProps](docs/ExtendLoyaltyPointsExpiryDateEffectProps.md)
 - [TalonOne::ExtendedCoupon](docs/ExtendedCoupon.md)
 - [TalonOne::FeatureFlag](docs/FeatureFlag.md)
+- [TalonOne::FeatureFlagUpdate](docs/FeatureFlagUpdate.md)
 - [TalonOne::FeaturesFeed](docs/FeaturesFeed.md)
 - [TalonOne::FuncArgDef](docs/FuncArgDef.md)
 - [TalonOne::FunctionDef](docs/FunctionDef.md)
@@ -738,6 +739,7 @@ Class | Method | HTTP request | Description
 - [TalonOne::IncreaseAchievementProgressEffectProps](docs/IncreaseAchievementProgressEffectProps.md)
 - [TalonOne::InfluencingCampaignDetails](docs/InfluencingCampaignDetails.md)
 - [TalonOne::IntegrationCampaign](docs/IntegrationCampaign.md)
+- [TalonOne::IntegrationCampaignBase](docs/IntegrationCampaignBase.md)
 - [TalonOne::IntegrationCoupon](docs/IntegrationCoupon.md)
 - [TalonOne::IntegrationCustomerProfileAudienceRequest](docs/IntegrationCustomerProfileAudienceRequest.md)
 - [TalonOne::IntegrationCustomerProfileAudienceRequestItem](docs/IntegrationCustomerProfileAudienceRequestItem.md)
@@ -898,6 +900,7 @@ Class | Method | HTTP request | Description
 - [TalonOne::NewReturn](docs/NewReturn.md)
 - [TalonOne::NewRevisionVersion](docs/NewRevisionVersion.md)
 - [TalonOne::NewReward](docs/NewReward.md)
+- [TalonOne::NewRiskNotification](docs/NewRiskNotification.md)
 - [TalonOne::NewRole](docs/NewRole.md)
 - [TalonOne::NewRoleV2](docs/NewRoleV2.md)
 - [TalonOne::NewRuleset](docs/NewRuleset.md)
@@ -966,6 +969,7 @@ Class | Method | HTTP request | Description
 - [TalonOne::RevisionActivationRequest](docs/RevisionActivationRequest.md)
 - [TalonOne::RevisionVersion](docs/RevisionVersion.md)
 - [TalonOne::Reward](docs/Reward.md)
+- [TalonOne::RiskNotification](docs/RiskNotification.md)
 - [TalonOne::Role](docs/Role.md)
 - [TalonOne::RoleAssign](docs/RoleAssign.md)
 - [TalonOne::RoleMembership](docs/RoleMembership.md)
@@ -988,6 +992,7 @@ Class | Method | HTTP request | Description
 - [TalonOne::RuleEligibilityFailureDetails](docs/RuleEligibilityFailureDetails.md)
 - [TalonOne::RuleFailureReason](docs/RuleFailureReason.md)
 - [TalonOne::RuleMetadata](docs/RuleMetadata.md)
+- [TalonOne::RuleMetadataEligibility](docs/RuleMetadataEligibility.md)
 - [TalonOne::Ruleset](docs/Ruleset.md)
 - [TalonOne::SSOConfig](docs/SSOConfig.md)
 - [TalonOne::SamlConnection](docs/SamlConnection.md)

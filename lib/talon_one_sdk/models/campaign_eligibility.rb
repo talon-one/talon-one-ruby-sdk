@@ -15,11 +15,11 @@ require 'time'
 
 module TalonOne
   class CampaignEligibility < ApiModelBase
-    # Unique ID of Campaign.
-    attr_accessor :id
-
     # The ID of the Application that owns this entity.
     attr_accessor :application_id
+
+    # Unique ID of Campaign.
+    attr_accessor :id
 
     # The name of the campaign.
     attr_accessor :name
@@ -45,11 +45,11 @@ module TalonOne
     # The features enabled in this campaign.
     attr_accessor :features
 
-    # A list of rules containing customer-facing details of the rewards defined in the campaign.
-    attr_accessor :rules
-
     # The customer's eligibility for each campaign in the current customer session.
     attr_accessor :eligibility
+
+    # A list of rules containing customer-facing details of the rewards defined in the campaign.
+    attr_accessor :rules
 
     class EnumAttributeValidator
       attr_reader :datatype
@@ -76,8 +76,8 @@ module TalonOne
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'id' => :'id',
         :'application_id' => :'applicationId',
+        :'id' => :'id',
         :'name' => :'name',
         :'description' => :'description',
         :'start_time' => :'startTime',
@@ -86,8 +86,8 @@ module TalonOne
         :'state' => :'state',
         :'tags' => :'tags',
         :'features' => :'features',
-        :'rules' => :'rules',
-        :'eligibility' => :'eligibility'
+        :'eligibility' => :'eligibility',
+        :'rules' => :'rules'
       }
     end
 
@@ -104,8 +104,8 @@ module TalonOne
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'id' => :'Integer',
         :'application_id' => :'Integer',
+        :'id' => :'Integer',
         :'name' => :'String',
         :'description' => :'String',
         :'start_time' => :'Time',
@@ -114,8 +114,8 @@ module TalonOne
         :'state' => :'String',
         :'tags' => :'Array<String>',
         :'features' => :'Array<String>',
-        :'rules' => :'Array<RuleMetadata>',
-        :'eligibility' => :'Array<CampaignEligibilityDetails>'
+        :'eligibility' => :'Array<CampaignEligibilityDetails>',
+        :'rules' => :'Array<RuleMetadataEligibility>'
       }
     end
 
@@ -128,7 +128,7 @@ module TalonOne
     # List of class defined in allOf (OpenAPI v3)
     def self.openapi_all_of
       [
-      :'IntegrationCampaign'
+      :'IntegrationCampaignBase'
       ]
     end
 
@@ -148,16 +148,16 @@ module TalonOne
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'id')
-        self.id = attributes[:'id']
-      else
-        self.id = nil
-      end
-
       if attributes.key?(:'application_id')
         self.application_id = attributes[:'application_id']
       else
         self.application_id = nil
+      end
+
+      if attributes.key?(:'id')
+        self.id = attributes[:'id']
+      else
+        self.id = nil
       end
 
       if attributes.key?(:'name')
@@ -204,18 +204,20 @@ module TalonOne
         self.features = nil
       end
 
-      if attributes.key?(:'rules')
-        if (value = attributes[:'rules']).is_a?(Array)
-          self.rules = value
-        end
-      end
-
       if attributes.key?(:'eligibility')
         if (value = attributes[:'eligibility']).is_a?(Array)
           self.eligibility = value
         end
       else
         self.eligibility = nil
+      end
+
+      if attributes.key?(:'rules')
+        if (value = attributes[:'rules']).is_a?(Array)
+          self.rules = value
+        end
+      else
+        self.rules = nil
       end
     end
 
@@ -224,12 +226,12 @@ module TalonOne
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
-      if @id.nil?
-        invalid_properties.push('invalid value for "id", id cannot be nil.')
-      end
-
       if @application_id.nil?
         invalid_properties.push('invalid value for "application_id", application_id cannot be nil.')
+      end
+
+      if @id.nil?
+        invalid_properties.push('invalid value for "id", id cannot be nil.')
       end
 
       if @name.nil?
@@ -260,6 +262,10 @@ module TalonOne
         invalid_properties.push('invalid value for "eligibility", eligibility cannot be nil.')
       end
 
+      if @rules.nil?
+        invalid_properties.push('invalid value for "rules", rules cannot be nil.')
+      end
+
       invalid_properties
     end
 
@@ -267,8 +273,8 @@ module TalonOne
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
-      return false if @id.nil?
       return false if @application_id.nil?
+      return false if @id.nil?
       return false if @name.nil?
       return false if @name.to_s.length < 1
       return false if @state.nil?
@@ -278,17 +284,8 @@ module TalonOne
       return false if @tags.length > 50
       return false if @features.nil?
       return false if @eligibility.nil?
+      return false if @rules.nil?
       true
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] id Value to be assigned
-    def id=(id)
-      if id.nil?
-        fail ArgumentError, 'id cannot be nil'
-      end
-
-      @id = id
     end
 
     # Custom attribute writer method with validation
@@ -299,6 +296,16 @@ module TalonOne
       end
 
       @application_id = application_id
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] id Value to be assigned
+    def id=(id)
+      if id.nil?
+        fail ArgumentError, 'id cannot be nil'
+      end
+
+      @id = id
     end
 
     # Custom attribute writer method with validation
@@ -349,13 +356,23 @@ module TalonOne
       @eligibility = eligibility
     end
 
+    # Custom attribute writer method with validation
+    # @param [Object] rules Value to be assigned
+    def rules=(rules)
+      if rules.nil?
+        fail ArgumentError, 'rules cannot be nil'
+      end
+
+      @rules = rules
+    end
+
     # Checks equality by comparing each attribute.
     # @param [Object] Object to be compared
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          id == o.id &&
           application_id == o.application_id &&
+          id == o.id &&
           name == o.name &&
           description == o.description &&
           start_time == o.start_time &&
@@ -364,8 +381,8 @@ module TalonOne
           state == o.state &&
           tags == o.tags &&
           features == o.features &&
-          rules == o.rules &&
-          eligibility == o.eligibility
+          eligibility == o.eligibility &&
+          rules == o.rules
     end
 
     # @see the `==` method
@@ -377,7 +394,7 @@ module TalonOne
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, application_id, name, description, start_time, end_time, attributes, state, tags, features, rules, eligibility].hash
+      [application_id, id, name, description, start_time, end_time, attributes, state, tags, features, eligibility, rules].hash
     end
 
     # Builds the object from hash

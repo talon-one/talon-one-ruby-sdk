@@ -14,37 +14,28 @@ require 'date'
 require 'time'
 
 module TalonOne
-  class Experiment < ApiModelBase
+  # A risk notification configuration rule.
+  class RiskNotification < ApiModelBase
     # The internal ID of this entity.
     attr_accessor :id
 
     # The time this entity was created.
     attr_accessor :created
 
-    # The ID of the Application that owns this entity.
-    attr_accessor :application_id
+    # The entity type to analyze within the given time frame.
+    attr_accessor :entity
 
-    # The source of the assignment. - false - The variant assignment is handled internally by Talon.One. - true - The variant assignment is handled externally. 
-    attr_accessor :is_variant_assignment_external
+    # The activity metric to analyze within the given entity.
+    attr_accessor :activity
 
-    attr_accessor :campaign
+    # The rolling time window for risk evaluation.
+    attr_accessor :time_frame
 
-    # The date and time the experiment was activated. 
-    attr_accessor :activated
+    # Indicates whether this risk notification is active.
+    attr_accessor :active
 
-    # A disabled experiment is not evaluated for rules or coupons. 
-    attr_accessor :state
-
-    attr_accessor :variants
-
-    # The goal of the experiment. Determines which single metric is used to decide the winning variant. When set to `other`, multiple metrics are used. 
-    attr_accessor :goal_type
-
-    # A description of the experiment goal. Provides context for the AI summary and helps it interpret the outcome of the experiment against the stated goal. 
-    attr_accessor :goal_description
-
-    # The date and time the experiment was deleted. 
-    attr_accessor :deletedat
+    # Timestamp of the most recent update.
+    attr_accessor :modified
 
     class EnumAttributeValidator
       attr_reader :datatype
@@ -73,15 +64,11 @@ module TalonOne
       {
         :'id' => :'id',
         :'created' => :'created',
-        :'application_id' => :'applicationId',
-        :'is_variant_assignment_external' => :'isVariantAssignmentExternal',
-        :'campaign' => :'campaign',
-        :'activated' => :'activated',
-        :'state' => :'state',
-        :'variants' => :'variants',
-        :'goal_type' => :'goalType',
-        :'goal_description' => :'goalDescription',
-        :'deletedat' => :'deletedat'
+        :'entity' => :'entity',
+        :'activity' => :'activity',
+        :'time_frame' => :'timeFrame',
+        :'active' => :'active',
+        :'modified' => :'modified'
       }
     end
 
@@ -100,15 +87,11 @@ module TalonOne
       {
         :'id' => :'Integer',
         :'created' => :'Time',
-        :'application_id' => :'Integer',
-        :'is_variant_assignment_external' => :'Boolean',
-        :'campaign' => :'Campaign',
-        :'activated' => :'Time',
-        :'state' => :'String',
-        :'variants' => :'Array<ExperimentVariant>',
-        :'goal_type' => :'String',
-        :'goal_description' => :'String',
-        :'deletedat' => :'Time'
+        :'entity' => :'String',
+        :'activity' => :'String',
+        :'time_frame' => :'String',
+        :'active' => :'Boolean',
+        :'modified' => :'Time'
       }
     end
 
@@ -121,8 +104,8 @@ module TalonOne
     # List of class defined in allOf (OpenAPI v3)
     def self.openapi_all_of
       [
-      :'ApplicationEntity',
-      :'Entity'
+      :'Entity',
+      :'NewRiskNotification'
       ]
     end
 
@@ -130,14 +113,14 @@ module TalonOne
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `TalonOne::Experiment` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `TalonOne::RiskNotification` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       acceptable_attribute_map = self.class.acceptable_attribute_map
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!acceptable_attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `TalonOne::Experiment`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `TalonOne::RiskNotification`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
@@ -154,48 +137,34 @@ module TalonOne
         self.created = nil
       end
 
-      if attributes.key?(:'application_id')
-        self.application_id = attributes[:'application_id']
+      if attributes.key?(:'entity')
+        self.entity = attributes[:'entity']
       else
-        self.application_id = nil
+        self.entity = nil
       end
 
-      if attributes.key?(:'is_variant_assignment_external')
-        self.is_variant_assignment_external = attributes[:'is_variant_assignment_external']
-      end
-
-      if attributes.key?(:'campaign')
-        self.campaign = attributes[:'campaign']
-      end
-
-      if attributes.key?(:'activated')
-        self.activated = attributes[:'activated']
-      end
-
-      if attributes.key?(:'state')
-        self.state = attributes[:'state']
+      if attributes.key?(:'activity')
+        self.activity = attributes[:'activity']
       else
-        self.state = 'disabled'
+        self.activity = nil
       end
 
-      if attributes.key?(:'variants')
-        if (value = attributes[:'variants']).is_a?(Array)
-          self.variants = value
-        end
-      end
-
-      if attributes.key?(:'goal_type')
-        self.goal_type = attributes[:'goal_type']
+      if attributes.key?(:'time_frame')
+        self.time_frame = attributes[:'time_frame']
       else
-        self.goal_type = nil
+        self.time_frame = nil
       end
 
-      if attributes.key?(:'goal_description')
-        self.goal_description = attributes[:'goal_description']
+      if attributes.key?(:'active')
+        self.active = attributes[:'active']
+      else
+        self.active = nil
       end
 
-      if attributes.key?(:'deletedat')
-        self.deletedat = attributes[:'deletedat']
+      if attributes.key?(:'modified')
+        self.modified = attributes[:'modified']
+      else
+        self.modified = nil
       end
     end
 
@@ -212,16 +181,24 @@ module TalonOne
         invalid_properties.push('invalid value for "created", created cannot be nil.')
       end
 
-      if @application_id.nil?
-        invalid_properties.push('invalid value for "application_id", application_id cannot be nil.')
+      if @entity.nil?
+        invalid_properties.push('invalid value for "entity", entity cannot be nil.')
       end
 
-      if @state.nil?
-        invalid_properties.push('invalid value for "state", state cannot be nil.')
+      if @activity.nil?
+        invalid_properties.push('invalid value for "activity", activity cannot be nil.')
       end
 
-      if @goal_type.nil?
-        invalid_properties.push('invalid value for "goal_type", goal_type cannot be nil.')
+      if @time_frame.nil?
+        invalid_properties.push('invalid value for "time_frame", time_frame cannot be nil.')
+      end
+
+      if @active.nil?
+        invalid_properties.push('invalid value for "active", active cannot be nil.')
+      end
+
+      if @modified.nil?
+        invalid_properties.push('invalid value for "modified", modified cannot be nil.')
       end
 
       invalid_properties
@@ -233,13 +210,17 @@ module TalonOne
       warn '[DEPRECATED] the `valid?` method is obsolete'
       return false if @id.nil?
       return false if @created.nil?
-      return false if @application_id.nil?
-      return false if @state.nil?
-      state_validator = EnumAttributeValidator.new('String', ["enabled", "disabled", "archived"])
-      return false unless state_validator.valid?(@state)
-      return false if @goal_type.nil?
-      goal_type_validator = EnumAttributeValidator.new('String', ["other", "maximize_revenue", "optimize_discount_efficiency", "maximize_items_sold"])
-      return false unless goal_type_validator.valid?(@goal_type)
+      return false if @entity.nil?
+      entity_validator = EnumAttributeValidator.new('String', ["customer_profile", "customer_session"])
+      return false unless entity_validator.valid?(@entity)
+      return false if @activity.nil?
+      activity_validator = EnumAttributeValidator.new('String', ["loyalty_points_earned", "discounted_amount", "completed_orders", "coupon_attempts"])
+      return false unless activity_validator.valid?(@activity)
+      return false if @time_frame.nil?
+      time_frame_validator = EnumAttributeValidator.new('String', ["1_day", "1_week", "1_month"])
+      return false unless time_frame_validator.valid?(@time_frame)
+      return false if @active.nil?
+      return false if @modified.nil?
       true
     end
 
@@ -263,34 +244,54 @@ module TalonOne
       @created = created
     end
 
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] entity Object to be assigned
+    def entity=(entity)
+      validator = EnumAttributeValidator.new('String', ["customer_profile", "customer_session"])
+      unless validator.valid?(entity)
+        fail ArgumentError, "invalid value for \"entity\", must be one of #{validator.allowable_values}."
+      end
+      @entity = entity
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] activity Object to be assigned
+    def activity=(activity)
+      validator = EnumAttributeValidator.new('String', ["loyalty_points_earned", "discounted_amount", "completed_orders", "coupon_attempts"])
+      unless validator.valid?(activity)
+        fail ArgumentError, "invalid value for \"activity\", must be one of #{validator.allowable_values}."
+      end
+      @activity = activity
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] time_frame Object to be assigned
+    def time_frame=(time_frame)
+      validator = EnumAttributeValidator.new('String', ["1_day", "1_week", "1_month"])
+      unless validator.valid?(time_frame)
+        fail ArgumentError, "invalid value for \"time_frame\", must be one of #{validator.allowable_values}."
+      end
+      @time_frame = time_frame
+    end
+
     # Custom attribute writer method with validation
-    # @param [Object] application_id Value to be assigned
-    def application_id=(application_id)
-      if application_id.nil?
-        fail ArgumentError, 'application_id cannot be nil'
+    # @param [Object] active Value to be assigned
+    def active=(active)
+      if active.nil?
+        fail ArgumentError, 'active cannot be nil'
       end
 
-      @application_id = application_id
+      @active = active
     end
 
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] state Object to be assigned
-    def state=(state)
-      validator = EnumAttributeValidator.new('String', ["enabled", "disabled", "archived"])
-      unless validator.valid?(state)
-        fail ArgumentError, "invalid value for \"state\", must be one of #{validator.allowable_values}."
+    # Custom attribute writer method with validation
+    # @param [Object] modified Value to be assigned
+    def modified=(modified)
+      if modified.nil?
+        fail ArgumentError, 'modified cannot be nil'
       end
-      @state = state
-    end
 
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] goal_type Object to be assigned
-    def goal_type=(goal_type)
-      validator = EnumAttributeValidator.new('String', ["other", "maximize_revenue", "optimize_discount_efficiency", "maximize_items_sold"])
-      unless validator.valid?(goal_type)
-        fail ArgumentError, "invalid value for \"goal_type\", must be one of #{validator.allowable_values}."
-      end
-      @goal_type = goal_type
+      @modified = modified
     end
 
     # Checks equality by comparing each attribute.
@@ -300,15 +301,11 @@ module TalonOne
       self.class == o.class &&
           id == o.id &&
           created == o.created &&
-          application_id == o.application_id &&
-          is_variant_assignment_external == o.is_variant_assignment_external &&
-          campaign == o.campaign &&
-          activated == o.activated &&
-          state == o.state &&
-          variants == o.variants &&
-          goal_type == o.goal_type &&
-          goal_description == o.goal_description &&
-          deletedat == o.deletedat
+          entity == o.entity &&
+          activity == o.activity &&
+          time_frame == o.time_frame &&
+          active == o.active &&
+          modified == o.modified
     end
 
     # @see the `==` method
@@ -320,7 +317,7 @@ module TalonOne
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, created, application_id, is_variant_assignment_external, campaign, activated, state, variants, goal_type, goal_description, deletedat].hash
+      [id, created, entity, activity, time_frame, active, modified].hash
     end
 
     # Builds the object from hash

@@ -4,9 +4,9 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **name** | **String** | effect name. |  |
+| **name** | **String** | The effect name. |  |
 | **value** | **Object** |  |  |
-| **excluded_from_price_history** | **Boolean** |  | [optional] |
+| **excluded_from_price_history** | **Boolean** | When set to &#x60;true&#x60;, the applied discount is excluded from the item&#39;s price history. | [optional] |
 
 ## Example
 

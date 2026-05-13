@@ -27,16 +27,13 @@ module TalonOne
     # Any additional data associated with the rule, such as an image URL, vendor name, or a content management system (CMS) ID. 
     attr_accessor :related_data
 
-    attr_accessor :eligibility
-
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'title' => :'title',
         :'display_name' => :'displayName',
         :'display_description' => :'displayDescription',
-        :'related_data' => :'relatedData',
-        :'eligibility' => :'eligibility'
+        :'related_data' => :'relatedData'
       }
     end
 
@@ -56,8 +53,7 @@ module TalonOne
         :'title' => :'String',
         :'display_name' => :'String',
         :'display_description' => :'String',
-        :'related_data' => :'String',
-        :'eligibility' => :'Array<RuleEligibility>'
+        :'related_data' => :'String'
       }
     end
 
@@ -100,12 +96,6 @@ module TalonOne
       if attributes.key?(:'related_data')
         self.related_data = attributes[:'related_data']
       end
-
-      if attributes.key?(:'eligibility')
-        if (value = attributes[:'eligibility']).is_a?(Array)
-          self.eligibility = value
-        end
-      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -146,8 +136,7 @@ module TalonOne
           title == o.title &&
           display_name == o.display_name &&
           display_description == o.display_description &&
-          related_data == o.related_data &&
-          eligibility == o.eligibility
+          related_data == o.related_data
     end
 
     # @see the `==` method
@@ -159,7 +148,7 @@ module TalonOne
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [title, display_name, display_description, related_data, eligibility].hash
+      [title, display_name, display_description, related_data].hash
     end
 
     # Builds the object from hash

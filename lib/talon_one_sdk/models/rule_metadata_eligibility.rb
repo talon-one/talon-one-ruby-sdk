@@ -14,18 +14,29 @@ require 'date'
 require 'time'
 
 module TalonOne
-  # setDiscountPerItem member effect in strikethrough pricing payload.
-  class StrikethroughSetDiscountPerItemMemberEffectProps < ApiModelBase
-    # The effect name.
-    attr_accessor :name
+  class RuleMetadataEligibility < ApiModelBase
+    # A short description of the rule.
+    attr_accessor :title
 
-    attr_accessor :value
+    # A customer-facing name for the rule.
+    attr_accessor :display_name
+
+    # A customer-facing description that explains the details of the rule.   For example, this property can contain details about eligibility requirements, reward timelines, or terms and conditions. 
+    attr_accessor :display_description
+
+    # Any additional data associated with the rule, such as an image URL, vendor name, or a content management system (CMS) ID. 
+    attr_accessor :related_data
+
+    attr_accessor :eligibility
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'name' => :'name',
-        :'value' => :'value'
+        :'title' => :'title',
+        :'display_name' => :'displayName',
+        :'display_description' => :'displayDescription',
+        :'related_data' => :'relatedData',
+        :'eligibility' => :'eligibility'
       }
     end
 
@@ -42,44 +53,67 @@ module TalonOne
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'name' => :'String',
-        :'value' => :'Object'
+        :'title' => :'String',
+        :'display_name' => :'String',
+        :'display_description' => :'String',
+        :'related_data' => :'String',
+        :'eligibility' => :'Array<RuleEligibility>'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
-        :'value'
       ])
+    end
+
+    # List of class defined in allOf (OpenAPI v3)
+    def self.openapi_all_of
+      [
+      :'RuleMetadata'
+      ]
     end
 
     # Initializes the object
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `TalonOne::StrikethroughSetDiscountPerItemMemberEffectProps` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `TalonOne::RuleMetadataEligibility` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       acceptable_attribute_map = self.class.acceptable_attribute_map
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!acceptable_attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `TalonOne::StrikethroughSetDiscountPerItemMemberEffectProps`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `TalonOne::RuleMetadataEligibility`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'name')
-        self.name = attributes[:'name']
+      if attributes.key?(:'title')
+        self.title = attributes[:'title']
       else
-        self.name = nil
+        self.title = nil
       end
 
-      if attributes.key?(:'value')
-        self.value = attributes[:'value']
+      if attributes.key?(:'display_name')
+        self.display_name = attributes[:'display_name']
+      end
+
+      if attributes.key?(:'display_description')
+        self.display_description = attributes[:'display_description']
+      end
+
+      if attributes.key?(:'related_data')
+        self.related_data = attributes[:'related_data']
+      end
+
+      if attributes.key?(:'eligibility')
+        if (value = attributes[:'eligibility']).is_a?(Array)
+          self.eligibility = value
+        end
       else
-        self.value = nil
+        self.eligibility = nil
       end
     end
 
@@ -88,8 +122,12 @@ module TalonOne
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
-      if @name.nil?
-        invalid_properties.push('invalid value for "name", name cannot be nil.')
+      if @title.nil?
+        invalid_properties.push('invalid value for "title", title cannot be nil.')
+      end
+
+      if @eligibility.nil?
+        invalid_properties.push('invalid value for "eligibility", eligibility cannot be nil.')
       end
 
       invalid_properties
@@ -99,18 +137,29 @@ module TalonOne
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
-      return false if @name.nil?
+      return false if @title.nil?
+      return false if @eligibility.nil?
       true
     end
 
     # Custom attribute writer method with validation
-    # @param [Object] name Value to be assigned
-    def name=(name)
-      if name.nil?
-        fail ArgumentError, 'name cannot be nil'
+    # @param [Object] title Value to be assigned
+    def title=(title)
+      if title.nil?
+        fail ArgumentError, 'title cannot be nil'
       end
 
-      @name = name
+      @title = title
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] eligibility Value to be assigned
+    def eligibility=(eligibility)
+      if eligibility.nil?
+        fail ArgumentError, 'eligibility cannot be nil'
+      end
+
+      @eligibility = eligibility
     end
 
     # Checks equality by comparing each attribute.
@@ -118,8 +167,11 @@ module TalonOne
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          name == o.name &&
-          value == o.value
+          title == o.title &&
+          display_name == o.display_name &&
+          display_description == o.display_description &&
+          related_data == o.related_data &&
+          eligibility == o.eligibility
     end
 
     # @see the `==` method
@@ -131,7 +183,7 @@ module TalonOne
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, value].hash
+      [title, display_name, display_description, related_data, eligibility].hash
     end
 
     # Builds the object from hash

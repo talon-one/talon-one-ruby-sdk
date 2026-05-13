@@ -4,7 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **name** | **String** | effect name. |  |
+| **name** | **String** | The effect name. |  |
 | **value** | **Object** |  |  |
 
 ## Example

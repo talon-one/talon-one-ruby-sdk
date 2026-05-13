@@ -39,11 +39,17 @@ module TalonOne
     # Indicates if this is a live or sandbox reward. Rewards of a given type can only be connected to Applications of the same type.
     attr_accessor :sandbox
 
-    # Rule to apply.
+    # An optional rule that manages who can see this reward. If not specified, the reward is visible to all customers.  **Note:** Only the `condition` field is evaluated within this rule. The `effects` field must be an empty array, and `bindings` are not supported. 
+    attr_accessor :visibility_conditions
+
+    # Rule to apply.  **Note**: The `bindings` field inside the rule must not be used in this endpoint. All bindings should be defined at the reward level via the top-level `bindings` field. 
     attr_accessor :rule
 
     # A list of named variables created before the reward's rules are evaluated.  Each binding pairs a name with a talang expression. The expression is evaluated once  and its result is available by name in any rule condition or effect. Bindings must be defined outside of individual rules.
     attr_accessor :bindings
+
+    # The timestamp when the reward was last updated in RFC3339 format.
+    attr_accessor :modified
 
     # The status of the reward.
     attr_accessor :status
@@ -81,8 +87,10 @@ module TalonOne
         :'description' => :'description',
         :'application_ids' => :'applicationIds',
         :'sandbox' => :'sandbox',
+        :'visibility_conditions' => :'visibilityConditions',
         :'rule' => :'rule',
         :'bindings' => :'bindings',
+        :'modified' => :'modified',
         :'status' => :'status'
       }
     end
@@ -108,8 +116,10 @@ module TalonOne
         :'description' => :'String',
         :'application_ids' => :'Array<Integer>',
         :'sandbox' => :'Boolean',
-        :'rule' => :'Array<Rule>',
+        :'visibility_conditions' => :'Rule',
+        :'rule' => :'Rule',
         :'bindings' => :'Array<Binding>',
+        :'modified' => :'Time',
         :'status' => :'String'
       }
     end
@@ -193,16 +203,22 @@ module TalonOne
         self.sandbox = nil
       end
 
+      if attributes.key?(:'visibility_conditions')
+        self.visibility_conditions = attributes[:'visibility_conditions']
+      end
+
       if attributes.key?(:'rule')
-        if (value = attributes[:'rule']).is_a?(Array)
-          self.rule = value
-        end
+        self.rule = attributes[:'rule']
       end
 
       if attributes.key?(:'bindings')
         if (value = attributes[:'bindings']).is_a?(Array)
           self.bindings = value
         end
+      end
+
+      if attributes.key?(:'modified')
+        self.modified = attributes[:'modified']
       end
 
       if attributes.key?(:'status')
@@ -380,8 +396,10 @@ module TalonOne
           description == o.description &&
           application_ids == o.application_ids &&
           sandbox == o.sandbox &&
+          visibility_conditions == o.visibility_conditions &&
           rule == o.rule &&
           bindings == o.bindings &&
+          modified == o.modified &&
           status == o.status
     end
 
@@ -394,7 +412,7 @@ module TalonOne
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, created, account_id, name, api_name, description, application_ids, sandbox, rule, bindings, status].hash
+      [id, created, account_id, name, api_name, description, application_ids, sandbox, visibility_conditions, rule, bindings, modified, status].hash
     end
 
     # Builds the object from hash

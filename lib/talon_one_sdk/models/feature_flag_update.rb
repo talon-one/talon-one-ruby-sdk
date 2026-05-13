@@ -14,11 +14,11 @@ require 'date'
 require 'time'
 
 module TalonOne
-  # setDiscountPerItem member effect in strikethrough pricing payload.
-  class StrikethroughSetDiscountPerItemMemberEffectProps < ApiModelBase
-    # The effect name.
+  class FeatureFlagUpdate < ApiModelBase
+    # The name of the feature flag.
     attr_accessor :name
 
+    # The value of the feature flag.
     attr_accessor :value
 
     # Attribute mapping from ruby-style variable name to JSON key.
@@ -43,14 +43,13 @@ module TalonOne
     def self.openapi_types
       {
         :'name' => :'String',
-        :'value' => :'Object'
+        :'value' => :'String'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
-        :'value'
       ])
     end
 
@@ -58,14 +57,14 @@ module TalonOne
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `TalonOne::StrikethroughSetDiscountPerItemMemberEffectProps` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `TalonOne::FeatureFlagUpdate` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       acceptable_attribute_map = self.class.acceptable_attribute_map
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!acceptable_attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `TalonOne::StrikethroughSetDiscountPerItemMemberEffectProps`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `TalonOne::FeatureFlagUpdate`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
@@ -92,6 +91,10 @@ module TalonOne
         invalid_properties.push('invalid value for "name", name cannot be nil.')
       end
 
+      if @value.nil?
+        invalid_properties.push('invalid value for "value", value cannot be nil.')
+      end
+
       invalid_properties
     end
 
@@ -100,6 +103,7 @@ module TalonOne
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
       return false if @name.nil?
+      return false if @value.nil?
       true
     end
 
@@ -111,6 +115,16 @@ module TalonOne
       end
 
       @name = name
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] value Value to be assigned
+    def value=(value)
+      if value.nil?
+        fail ArgumentError, 'value cannot be nil'
+      end
+
+      @value = value
     end
 
     # Checks equality by comparing each attribute.

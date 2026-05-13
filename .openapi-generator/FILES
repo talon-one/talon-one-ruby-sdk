@@ -281,6 +281,7 @@ docs/Export.md
 docs/ExtendLoyaltyPointsExpiryDateEffectProps.md
 docs/ExtendedCoupon.md
 docs/FeatureFlag.md
+docs/FeatureFlagUpdate.md
 docs/FeaturesFeed.md
 docs/FuncArgDef.md
 docs/FunctionDef.md
@@ -352,6 +353,7 @@ docs/IncreaseAchievementProgressEffectProps.md
 docs/InfluencingCampaignDetails.md
 docs/IntegrationApi.md
 docs/IntegrationCampaign.md
+docs/IntegrationCampaignBase.md
 docs/IntegrationCoupon.md
 docs/IntegrationCustomerProfileAudienceRequest.md
 docs/IntegrationCustomerProfileAudienceRequestItem.md
@@ -513,6 +515,7 @@ docs/NewReferralsForMultipleAdvocates.md
 docs/NewReturn.md
 docs/NewRevisionVersion.md
 docs/NewReward.md
+docs/NewRiskNotification.md
 docs/NewRole.md
 docs/NewRoleV2.md
 docs/NewRuleset.md
@@ -581,6 +584,7 @@ docs/RevisionActivation.md
 docs/RevisionActivationRequest.md
 docs/RevisionVersion.md
 docs/Reward.md
+docs/RiskNotification.md
 docs/Role.md
 docs/RoleAssign.md
 docs/RoleMembership.md
@@ -603,6 +607,7 @@ docs/RuleEligibility.md
 docs/RuleEligibilityFailureDetails.md
 docs/RuleFailureReason.md
 docs/RuleMetadata.md
+docs/RuleMetadataEligibility.md
 docs/Ruleset.md
 docs/SSOConfig.md
 docs/SamlConnection.md
@@ -994,6 +999,7 @@ lib/talon_one_sdk/models/export.rb
 lib/talon_one_sdk/models/extend_loyalty_points_expiry_date_effect_props.rb
 lib/talon_one_sdk/models/extended_coupon.rb
 lib/talon_one_sdk/models/feature_flag.rb
+lib/talon_one_sdk/models/feature_flag_update.rb
 lib/talon_one_sdk/models/features_feed.rb
 lib/talon_one_sdk/models/func_arg_def.rb
 lib/talon_one_sdk/models/function_def.rb
@@ -1064,6 +1070,7 @@ lib/talon_one_sdk/models/import_entity.rb
 lib/talon_one_sdk/models/increase_achievement_progress_effect_props.rb
 lib/talon_one_sdk/models/influencing_campaign_details.rb
 lib/talon_one_sdk/models/integration_campaign.rb
+lib/talon_one_sdk/models/integration_campaign_base.rb
 lib/talon_one_sdk/models/integration_coupon.rb
 lib/talon_one_sdk/models/integration_customer_profile_audience_request.rb
 lib/talon_one_sdk/models/integration_customer_profile_audience_request_item.rb
@@ -1224,6 +1231,7 @@ lib/talon_one_sdk/models/new_referrals_for_multiple_advocates.rb
 lib/talon_one_sdk/models/new_return.rb
 lib/talon_one_sdk/models/new_revision_version.rb
 lib/talon_one_sdk/models/new_reward.rb
+lib/talon_one_sdk/models/new_risk_notification.rb
 lib/talon_one_sdk/models/new_role.rb
 lib/talon_one_sdk/models/new_role_v2.rb
 lib/talon_one_sdk/models/new_ruleset.rb
@@ -1292,6 +1300,7 @@ lib/talon_one_sdk/models/revision_activation.rb
 lib/talon_one_sdk/models/revision_activation_request.rb
 lib/talon_one_sdk/models/revision_version.rb
 lib/talon_one_sdk/models/reward.rb
+lib/talon_one_sdk/models/risk_notification.rb
 lib/talon_one_sdk/models/role.rb
 lib/talon_one_sdk/models/role_assign.rb
 lib/talon_one_sdk/models/role_membership.rb
@@ -1314,6 +1323,7 @@ lib/talon_one_sdk/models/rule_eligibility.rb
 lib/talon_one_sdk/models/rule_eligibility_failure_details.rb
 lib/talon_one_sdk/models/rule_failure_reason.rb
 lib/talon_one_sdk/models/rule_metadata.rb
+lib/talon_one_sdk/models/rule_metadata_eligibility.rb
 lib/talon_one_sdk/models/ruleset.rb
 lib/talon_one_sdk/models/saml_connection.rb
 lib/talon_one_sdk/models/saml_connection_internal.rb
@@ -1700,6 +1710,7 @@ spec/models/export_spec.rb
 spec/models/extend_loyalty_points_expiry_date_effect_props_spec.rb
 spec/models/extended_coupon_spec.rb
 spec/models/feature_flag_spec.rb
+spec/models/feature_flag_update_spec.rb
 spec/models/features_feed_spec.rb
 spec/models/func_arg_def_spec.rb
 spec/models/function_def_spec.rb
@@ -1769,6 +1780,7 @@ spec/models/import_entity_spec.rb
 spec/models/import_spec.rb
 spec/models/increase_achievement_progress_effect_props_spec.rb
 spec/models/influencing_campaign_details_spec.rb
+spec/models/integration_campaign_base_spec.rb
 spec/models/integration_campaign_spec.rb
 spec/models/integration_coupon_spec.rb
 spec/models/integration_customer_profile_audience_request_item_spec.rb
@@ -1930,6 +1942,7 @@ spec/models/new_referrals_for_multiple_advocates_spec.rb
 spec/models/new_return_spec.rb
 spec/models/new_revision_version_spec.rb
 spec/models/new_reward_spec.rb
+spec/models/new_risk_notification_spec.rb
 spec/models/new_role_spec.rb
 spec/models/new_role_v2_spec.rb
 spec/models/new_ruleset_spec.rb
@@ -1998,6 +2011,7 @@ spec/models/revision_activation_spec.rb
 spec/models/revision_spec.rb
 spec/models/revision_version_spec.rb
 spec/models/reward_spec.rb
+spec/models/risk_notification_spec.rb
 spec/models/role_assign_spec.rb
 spec/models/role_membership_spec.rb
 spec/models/role_spec.rb
@@ -2018,6 +2032,7 @@ spec/models/rollback_referral_effect_props_spec.rb
 spec/models/rule_eligibility_failure_details_spec.rb
 spec/models/rule_eligibility_spec.rb
 spec/models/rule_failure_reason_spec.rb
+spec/models/rule_metadata_eligibility_spec.rb
 spec/models/rule_metadata_spec.rb
 spec/models/rule_spec.rb
 spec/models/ruleset_spec.rb
