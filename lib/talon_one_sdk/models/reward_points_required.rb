@@ -14,26 +14,27 @@ require 'date'
 require 'time'
 
 module TalonOne
-  class IntegrationEvent < ApiModelBase
-    # ID of the customer profile set by your integration layer.  **Note:** If the customer does not yet have a known `profileId`, we recommend you use a guest `profileId`. 
-    attr_accessor :profile_id
+  # The loyalty points required to activate a reward.
+  class RewardPointsRequired < ApiModelBase
+    # The ID of the `pointsRequired` entry. When updating a reward, include this property to update an existing entry. Omit it to create a new one. 
+    attr_accessor :id
 
-    # The integration ID of the store. You choose this ID when you create a store.
-    attr_accessor :store_integration_id
+    # The number of loyalty points required to activate the reward.
+    attr_accessor :amount
 
-    # The name of the event. Must be a [custom event](https://docs.talon.one/docs/dev/concepts/entities/events#custom-events), not a built-in event.
-    attr_accessor :type
+    # The ID of the associated loyalty program.
+    attr_accessor :loyalty_program_id
 
-    # Arbitrary additional JSON data associated with the event.
-    attr_accessor :attributes
+    # The ID of the subledger within the loyalty program from which points are deducted when activating the reward.  To specify the main ledger, provide an empty string (\"\"). 
+    attr_accessor :subledger_id
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'profile_id' => :'profileId',
-        :'store_integration_id' => :'storeIntegrationId',
-        :'type' => :'type',
-        :'attributes' => :'attributes'
+        :'id' => :'id',
+        :'amount' => :'amount',
+        :'loyalty_program_id' => :'loyaltyProgramId',
+        :'subledger_id' => :'subledgerId'
       }
     end
 
@@ -50,10 +51,10 @@ module TalonOne
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'profile_id' => :'String',
-        :'store_integration_id' => :'String',
-        :'type' => :'String',
-        :'attributes' => :'Object'
+        :'id' => :'Integer',
+        :'amount' => :'Float',
+        :'loyalty_program_id' => :'Integer',
+        :'subledger_id' => :'String'
       }
     end
 
@@ -63,48 +64,42 @@ module TalonOne
       ])
     end
 
-    # List of class defined in allOf (OpenAPI v3)
-    def self.openapi_all_of
-      [
-      :'IntegrationProfileEntity',
-      :'IntegrationStoreEntity'
-      ]
-    end
-
     # Initializes the object
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `TalonOne::IntegrationEvent` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `TalonOne::RewardPointsRequired` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       acceptable_attribute_map = self.class.acceptable_attribute_map
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!acceptable_attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `TalonOne::IntegrationEvent`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `TalonOne::RewardPointsRequired`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'profile_id')
-        self.profile_id = attributes[:'profile_id']
+      if attributes.key?(:'id')
+        self.id = attributes[:'id']
       end
 
-      if attributes.key?(:'store_integration_id')
-        self.store_integration_id = attributes[:'store_integration_id']
-      end
-
-      if attributes.key?(:'type')
-        self.type = attributes[:'type']
+      if attributes.key?(:'amount')
+        self.amount = attributes[:'amount']
       else
-        self.type = nil
+        self.amount = nil
       end
 
-      if attributes.key?(:'attributes')
-        self.attributes = attributes[:'attributes']
+      if attributes.key?(:'loyalty_program_id')
+        self.loyalty_program_id = attributes[:'loyalty_program_id']
       else
-        self.attributes = nil
+        self.loyalty_program_id = nil
+      end
+
+      if attributes.key?(:'subledger_id')
+        self.subledger_id = attributes[:'subledger_id']
+      else
+        self.subledger_id = nil
       end
     end
 
@@ -113,24 +108,20 @@ module TalonOne
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
-      if !@store_integration_id.nil? && @store_integration_id.to_s.length > 1000
-        invalid_properties.push('invalid value for "store_integration_id", the character length must be smaller than or equal to 1000.')
+      if @amount.nil?
+        invalid_properties.push('invalid value for "amount", amount cannot be nil.')
       end
 
-      if !@store_integration_id.nil? && @store_integration_id.to_s.length < 1
-        invalid_properties.push('invalid value for "store_integration_id", the character length must be greater than or equal to 1.')
+      if @amount < 0
+        invalid_properties.push('invalid value for "amount", must be greater than or equal to 0.')
       end
 
-      if @type.nil?
-        invalid_properties.push('invalid value for "type", type cannot be nil.')
+      if @loyalty_program_id.nil?
+        invalid_properties.push('invalid value for "loyalty_program_id", loyalty_program_id cannot be nil.')
       end
 
-      if @type.to_s.length < 1
-        invalid_properties.push('invalid value for "type", the character length must be greater than or equal to 1.')
-      end
-
-      if @attributes.nil?
-        invalid_properties.push('invalid value for "attributes", attributes cannot be nil.')
+      if @subledger_id.nil?
+        invalid_properties.push('invalid value for "subledger_id", subledger_id cannot be nil.')
       end
 
       invalid_properties
@@ -140,54 +131,45 @@ module TalonOne
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
-      return false if !@store_integration_id.nil? && @store_integration_id.to_s.length > 1000
-      return false if !@store_integration_id.nil? && @store_integration_id.to_s.length < 1
-      return false if @type.nil?
-      return false if @type.to_s.length < 1
-      return false if @attributes.nil?
+      return false if @amount.nil?
+      return false if @amount < 0
+      return false if @loyalty_program_id.nil?
+      return false if @subledger_id.nil?
       true
     end
 
     # Custom attribute writer method with validation
-    # @param [Object] store_integration_id Value to be assigned
-    def store_integration_id=(store_integration_id)
-      if store_integration_id.nil?
-        fail ArgumentError, 'store_integration_id cannot be nil'
+    # @param [Object] amount Value to be assigned
+    def amount=(amount)
+      if amount.nil?
+        fail ArgumentError, 'amount cannot be nil'
       end
 
-      if store_integration_id.to_s.length > 1000
-        fail ArgumentError, 'invalid value for "store_integration_id", the character length must be smaller than or equal to 1000.'
+      if amount < 0
+        fail ArgumentError, 'invalid value for "amount", must be greater than or equal to 0.'
       end
 
-      if store_integration_id.to_s.length < 1
-        fail ArgumentError, 'invalid value for "store_integration_id", the character length must be greater than or equal to 1.'
-      end
-
-      @store_integration_id = store_integration_id
+      @amount = amount
     end
 
     # Custom attribute writer method with validation
-    # @param [Object] type Value to be assigned
-    def type=(type)
-      if type.nil?
-        fail ArgumentError, 'type cannot be nil'
+    # @param [Object] loyalty_program_id Value to be assigned
+    def loyalty_program_id=(loyalty_program_id)
+      if loyalty_program_id.nil?
+        fail ArgumentError, 'loyalty_program_id cannot be nil'
       end
 
-      if type.to_s.length < 1
-        fail ArgumentError, 'invalid value for "type", the character length must be greater than or equal to 1.'
-      end
-
-      @type = type
+      @loyalty_program_id = loyalty_program_id
     end
 
     # Custom attribute writer method with validation
-    # @param [Object] attributes Value to be assigned
-    def attributes=(attributes)
-      if attributes.nil?
-        fail ArgumentError, 'attributes cannot be nil'
+    # @param [Object] subledger_id Value to be assigned
+    def subledger_id=(subledger_id)
+      if subledger_id.nil?
+        fail ArgumentError, 'subledger_id cannot be nil'
       end
 
-      @attributes = attributes
+      @subledger_id = subledger_id
     end
 
     # Checks equality by comparing each attribute.
@@ -195,10 +177,10 @@ module TalonOne
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          profile_id == o.profile_id &&
-          store_integration_id == o.store_integration_id &&
-          type == o.type &&
-          attributes == o.attributes
+          id == o.id &&
+          amount == o.amount &&
+          loyalty_program_id == o.loyalty_program_id &&
+          subledger_id == o.subledger_id
     end
 
     # @see the `==` method
@@ -210,7 +192,7 @@ module TalonOne
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [profile_id, store_integration_id, type, attributes].hash
+      [id, amount, loyalty_program_id, subledger_id].hash
     end
 
     # Builds the object from hash

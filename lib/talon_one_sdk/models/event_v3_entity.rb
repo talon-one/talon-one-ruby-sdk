@@ -14,47 +14,14 @@ require 'date'
 require 'time'
 
 module TalonOne
-  class UpdateExperiment < ApiModelBase
-    # The source of the assignment. - false - The variant assignment is handled internally by Talon.One. - true - The variant assignment is handled externally. 
-    attr_accessor :is_variant_assignment_external
-
-    attr_accessor :campaign
-
-    # The goal of the experiment. Determines which single metric is used to decide the winning variant. When set to `other`, multiple metrics are used. If omitted, the current value is preserved. 
-    attr_accessor :goal_type
-
-    # A description of the experiment goal. Provides context for the AI summary and helps it interpret the outcome of the experiment against the stated goal. If omitted, the current value is preserved. 
-    attr_accessor :goal_description
-
-    class EnumAttributeValidator
-      attr_reader :datatype
-      attr_reader :allowable_values
-
-      def initialize(datatype, allowable_values)
-        @allowable_values = allowable_values.map do |value|
-          case datatype.to_s
-          when /Integer/i
-            value.to_i
-          when /Float/i
-            value.to_f
-          else
-            value
-          end
-        end
-      end
-
-      def valid?(value)
-        !value || allowable_values.include?(value)
-      end
-    end
+  class EventV3Entity < ApiModelBase
+    # The unique ID of the event. Only one event with this ID can be registered. 
+    attr_accessor :integration_id
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'is_variant_assignment_external' => :'isVariantAssignmentExternal',
-        :'campaign' => :'campaign',
-        :'goal_type' => :'goalType',
-        :'goal_description' => :'goalDescription'
+        :'integration_id' => :'integrationId'
       }
     end
 
@@ -71,10 +38,7 @@ module TalonOne
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'is_variant_assignment_external' => :'Boolean',
-        :'campaign' => :'UpdateCampaign',
-        :'goal_type' => :'String',
-        :'goal_description' => :'String'
+        :'integration_id' => :'String'
       }
     end
 
@@ -88,36 +52,20 @@ module TalonOne
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `TalonOne::UpdateExperiment` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `TalonOne::EventV3Entity` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       acceptable_attribute_map = self.class.acceptable_attribute_map
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!acceptable_attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `TalonOne::UpdateExperiment`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `TalonOne::EventV3Entity`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'is_variant_assignment_external')
-        self.is_variant_assignment_external = attributes[:'is_variant_assignment_external']
-      else
-        self.is_variant_assignment_external = nil
-      end
-
-      if attributes.key?(:'campaign')
-        self.campaign = attributes[:'campaign']
-      else
-        self.campaign = nil
-      end
-
-      if attributes.key?(:'goal_type')
-        self.goal_type = attributes[:'goal_type']
-      end
-
-      if attributes.key?(:'goal_description')
-        self.goal_description = attributes[:'goal_description']
+      if attributes.key?(:'integration_id')
+        self.integration_id = attributes[:'integration_id']
       end
     end
 
@@ -126,12 +74,8 @@ module TalonOne
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
-      if @is_variant_assignment_external.nil?
-        invalid_properties.push('invalid value for "is_variant_assignment_external", is_variant_assignment_external cannot be nil.')
-      end
-
-      if @campaign.nil?
-        invalid_properties.push('invalid value for "campaign", campaign cannot be nil.')
+      if !@integration_id.nil? && @integration_id.to_s.length < 1
+        invalid_properties.push('invalid value for "integration_id", the character length must be greater than or equal to 1.')
       end
 
       invalid_properties
@@ -141,41 +85,22 @@ module TalonOne
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
-      return false if @is_variant_assignment_external.nil?
-      return false if @campaign.nil?
-      goal_type_validator = EnumAttributeValidator.new('String', ["other", "maximize_revenue", "maximize_items_sold", "optimize_discount_efficiency"])
-      return false unless goal_type_validator.valid?(@goal_type)
+      return false if !@integration_id.nil? && @integration_id.to_s.length < 1
       true
     end
 
     # Custom attribute writer method with validation
-    # @param [Object] is_variant_assignment_external Value to be assigned
-    def is_variant_assignment_external=(is_variant_assignment_external)
-      if is_variant_assignment_external.nil?
-        fail ArgumentError, 'is_variant_assignment_external cannot be nil'
+    # @param [Object] integration_id Value to be assigned
+    def integration_id=(integration_id)
+      if integration_id.nil?
+        fail ArgumentError, 'integration_id cannot be nil'
       end
 
-      @is_variant_assignment_external = is_variant_assignment_external
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] campaign Value to be assigned
-    def campaign=(campaign)
-      if campaign.nil?
-        fail ArgumentError, 'campaign cannot be nil'
+      if integration_id.to_s.length < 1
+        fail ArgumentError, 'invalid value for "integration_id", the character length must be greater than or equal to 1.'
       end
 
-      @campaign = campaign
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] goal_type Object to be assigned
-    def goal_type=(goal_type)
-      validator = EnumAttributeValidator.new('String', ["other", "maximize_revenue", "maximize_items_sold", "optimize_discount_efficiency"])
-      unless validator.valid?(goal_type)
-        fail ArgumentError, "invalid value for \"goal_type\", must be one of #{validator.allowable_values}."
-      end
-      @goal_type = goal_type
+      @integration_id = integration_id
     end
 
     # Checks equality by comparing each attribute.
@@ -183,10 +108,7 @@ module TalonOne
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          is_variant_assignment_external == o.is_variant_assignment_external &&
-          campaign == o.campaign &&
-          goal_type == o.goal_type &&
-          goal_description == o.goal_description
+          integration_id == o.integration_id
     end
 
     # @see the `==` method
@@ -198,7 +120,7 @@ module TalonOne
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [is_variant_assignment_external, campaign, goal_type, goal_description].hash
+      [integration_id].hash
     end
 
     # Builds the object from hash

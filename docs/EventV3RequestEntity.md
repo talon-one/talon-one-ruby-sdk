@@ -1,4 +1,4 @@
-# TalonOne::IntegrationEventV3Request
+# TalonOne::EventV3RequestEntity
 
 ## Properties
 
@@ -11,24 +11,20 @@
 | **attributes** | **Object** | Arbitrary additional JSON properties associated with the event. They must be created in the Campaign Manager before setting them with this property. See [creating custom attributes](https://docs.talon.one/docs/product/account/dev-tools/managing-attributes#creating-a-custom-attribute). | [optional] |
 | **integration_id** | **String** | The unique ID of the event. Only one event with this ID can be registered.  |  |
 | **connected_session_id** | **String** | The ID of the session to reference. The session must be in &#x60;closed&#x60; state. Otherwise, the API call will fail. | [optional] |
-| **loyalty_cards** | **Array&lt;String&gt;** | Identifiers of the loyalty cards used during this event. | [optional] |
-| **response_content** | **Array&lt;String&gt;** | Optional list of requested information to be present on the response related to the tracking custom event.  | [optional] |
 
 ## Example
 
 ```ruby
 require 'talon_one_sdk'
 
-instance = TalonOne::IntegrationEventV3Request.new(
+instance = TalonOne::EventV3RequestEntity.new(
   profile_id: URNGV8294NV,
   store_integration_id: STORE-001,
   evaluable_campaign_ids: [10, 12],
   type: pageViewed,
   attributes: {myAttribute&#x3D;myValue},
   integration_id: 175KJPS947296,
-  connected_session_id: 175KJPS947296,
-  loyalty_cards: [loyalty-card-1],
-  response_content: [triggeredCampaigns, customerProfile]
+  connected_session_id: 175KJPS947296
 )
 ```
 

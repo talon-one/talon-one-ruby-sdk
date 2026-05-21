@@ -14,58 +14,38 @@ require 'date'
 require 'time'
 
 module TalonOne
-  class ApplicationEvent < ApiModelBase
-    # The internal ID of this entity.
-    attr_accessor :id
-
-    # The time this entity was created.
-    attr_accessor :created
-
-    # The ID of the Application that owns this entity.
-    attr_accessor :application_id
-
-    # The globally unique Talon.One ID of the customer that created this entity.
+  class EventV3RequestEntity < ApiModelBase
+    # ID of the customer profile set by your integration layer.  **Note:** If the customer does not yet have a known `profileId`, we recommend you use a guest `profileId`. 
     attr_accessor :profile_id
-
-    # The ID of the store.
-    attr_accessor :store_id
 
     # The integration ID of the store. You choose this ID when you create a store.
     attr_accessor :store_integration_id
 
-    # The unique ID of the event. Only one event with this ID can be registered. 
-    attr_accessor :integration_id
-
-    # The globally unique Talon.One ID of the session that contains this event.
-    attr_accessor :session_id
+    # When using the `dry` query parameter, use this property to list the campaign to be evaluated by the Rule Engine.  These campaigns will be evaluated, even if they are disabled, allowing you to test specific campaigns before activating them. 
+    attr_accessor :evaluable_campaign_ids
 
     # The name of the event. Must be a [custom event](https://docs.talon.one/docs/dev/concepts/entities/events#custom-events), not a built-in event.
     attr_accessor :type
 
-    # Additional JSON serialized data associated with the event.
+    # Arbitrary additional JSON properties associated with the event. They must be created in the Campaign Manager before setting them with this property. See [creating custom attributes](https://docs.talon.one/docs/product/account/dev-tools/managing-attributes#creating-a-custom-attribute).
     attr_accessor :attributes
 
-    # An array containing the effects that were applied as a result of this event.
-    attr_accessor :effects
+    # The unique ID of the event. Only one event with this ID can be registered. 
+    attr_accessor :integration_id
 
-    # An array containing the rule failure reasons which happened during this event.
-    attr_accessor :rule_failure_reasons
+    # The ID of the session to reference. The session must be in `closed` state. Otherwise, the API call will fail.
+    attr_accessor :connected_session_id
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'id' => :'id',
-        :'created' => :'created',
-        :'application_id' => :'applicationId',
         :'profile_id' => :'profileId',
-        :'store_id' => :'storeId',
         :'store_integration_id' => :'storeIntegrationId',
-        :'integration_id' => :'integrationId',
-        :'session_id' => :'sessionId',
+        :'evaluable_campaign_ids' => :'evaluableCampaignIds',
         :'type' => :'type',
         :'attributes' => :'attributes',
-        :'effects' => :'effects',
-        :'rule_failure_reasons' => :'ruleFailureReasons'
+        :'integration_id' => :'integrationId',
+        :'connected_session_id' => :'connectedSessionId'
       }
     end
 
@@ -82,18 +62,13 @@ module TalonOne
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'id' => :'Integer',
-        :'created' => :'Time',
-        :'application_id' => :'Integer',
-        :'profile_id' => :'Integer',
-        :'store_id' => :'Integer',
+        :'profile_id' => :'String',
         :'store_integration_id' => :'String',
-        :'integration_id' => :'String',
-        :'session_id' => :'Integer',
+        :'evaluable_campaign_ids' => :'Array<Integer>',
         :'type' => :'String',
         :'attributes' => :'Object',
-        :'effects' => :'Array<Effect>',
-        :'rule_failure_reasons' => :'Array<RuleFailureReason>'
+        :'integration_id' => :'String',
+        :'connected_session_id' => :'String'
       }
     end
 
@@ -106,12 +81,12 @@ module TalonOne
     # List of class defined in allOf (OpenAPI v3)
     def self.openapi_all_of
       [
-      :'ApplicationCustomerEntity',
-      :'ApplicationEntity',
-      :'ApplicationStoreEntity',
-      :'Entity',
-      :'EventV3Entity',
-      :'IntegrationStoreEntity'
+      :'EvaluableCampaignIds',
+      :'EventAttributesEntity',
+      :'EventV3Connections',
+      :'IntegrationProfileEntityV3',
+      :'IntegrationStoreEntity',
+      :'NewEventV3Entity'
       ]
     end
 
@@ -119,54 +94,32 @@ module TalonOne
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `TalonOne::ApplicationEvent` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `TalonOne::EventV3RequestEntity` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       acceptable_attribute_map = self.class.acceptable_attribute_map
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!acceptable_attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `TalonOne::ApplicationEvent`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `TalonOne::EventV3RequestEntity`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'id')
-        self.id = attributes[:'id']
-      else
-        self.id = nil
-      end
-
-      if attributes.key?(:'created')
-        self.created = attributes[:'created']
-      else
-        self.created = nil
-      end
-
-      if attributes.key?(:'application_id')
-        self.application_id = attributes[:'application_id']
-      else
-        self.application_id = nil
-      end
-
       if attributes.key?(:'profile_id')
         self.profile_id = attributes[:'profile_id']
-      end
-
-      if attributes.key?(:'store_id')
-        self.store_id = attributes[:'store_id']
+      else
+        self.profile_id = nil
       end
 
       if attributes.key?(:'store_integration_id')
         self.store_integration_id = attributes[:'store_integration_id']
       end
 
-      if attributes.key?(:'integration_id')
-        self.integration_id = attributes[:'integration_id']
-      end
-
-      if attributes.key?(:'session_id')
-        self.session_id = attributes[:'session_id']
+      if attributes.key?(:'evaluable_campaign_ids')
+        if (value = attributes[:'evaluable_campaign_ids']).is_a?(Array)
+          self.evaluable_campaign_ids = value
+        end
       end
 
       if attributes.key?(:'type')
@@ -177,22 +130,16 @@ module TalonOne
 
       if attributes.key?(:'attributes')
         self.attributes = attributes[:'attributes']
-      else
-        self.attributes = nil
       end
 
-      if attributes.key?(:'effects')
-        if (value = attributes[:'effects']).is_a?(Array)
-          self.effects = value
-        end
+      if attributes.key?(:'integration_id')
+        self.integration_id = attributes[:'integration_id']
       else
-        self.effects = nil
+        self.integration_id = nil
       end
 
-      if attributes.key?(:'rule_failure_reasons')
-        if (value = attributes[:'rule_failure_reasons']).is_a?(Array)
-          self.rule_failure_reasons = value
-        end
+      if attributes.key?(:'connected_session_id')
+        self.connected_session_id = attributes[:'connected_session_id']
       end
     end
 
@@ -201,16 +148,8 @@ module TalonOne
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
-      if @id.nil?
-        invalid_properties.push('invalid value for "id", id cannot be nil.')
-      end
-
-      if @created.nil?
-        invalid_properties.push('invalid value for "created", created cannot be nil.')
-      end
-
-      if @application_id.nil?
-        invalid_properties.push('invalid value for "application_id", application_id cannot be nil.')
+      if @profile_id.nil?
+        invalid_properties.push('invalid value for "profile_id", profile_id cannot be nil.')
       end
 
       if !@store_integration_id.nil? && @store_integration_id.to_s.length > 1000
@@ -221,20 +160,24 @@ module TalonOne
         invalid_properties.push('invalid value for "store_integration_id", the character length must be greater than or equal to 1.')
       end
 
-      if !@integration_id.nil? && @integration_id.to_s.length < 1
-        invalid_properties.push('invalid value for "integration_id", the character length must be greater than or equal to 1.')
-      end
-
       if @type.nil?
         invalid_properties.push('invalid value for "type", type cannot be nil.')
       end
 
-      if @attributes.nil?
-        invalid_properties.push('invalid value for "attributes", attributes cannot be nil.')
+      if @type.to_s.length < 1
+        invalid_properties.push('invalid value for "type", the character length must be greater than or equal to 1.')
       end
 
-      if @effects.nil?
-        invalid_properties.push('invalid value for "effects", effects cannot be nil.')
+      if @integration_id.nil?
+        invalid_properties.push('invalid value for "integration_id", integration_id cannot be nil.')
+      end
+
+      if @integration_id.to_s.length < 1
+        invalid_properties.push('invalid value for "integration_id", the character length must be greater than or equal to 1.')
+      end
+
+      if !@connected_session_id.nil? && @connected_session_id.to_s.length < 1
+        invalid_properties.push('invalid value for "connected_session_id", the character length must be greater than or equal to 1.')
       end
 
       invalid_properties
@@ -244,46 +187,25 @@ module TalonOne
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
-      return false if @id.nil?
-      return false if @created.nil?
-      return false if @application_id.nil?
+      return false if @profile_id.nil?
       return false if !@store_integration_id.nil? && @store_integration_id.to_s.length > 1000
       return false if !@store_integration_id.nil? && @store_integration_id.to_s.length < 1
-      return false if !@integration_id.nil? && @integration_id.to_s.length < 1
       return false if @type.nil?
-      return false if @attributes.nil?
-      return false if @effects.nil?
+      return false if @type.to_s.length < 1
+      return false if @integration_id.nil?
+      return false if @integration_id.to_s.length < 1
+      return false if !@connected_session_id.nil? && @connected_session_id.to_s.length < 1
       true
     end
 
     # Custom attribute writer method with validation
-    # @param [Object] id Value to be assigned
-    def id=(id)
-      if id.nil?
-        fail ArgumentError, 'id cannot be nil'
+    # @param [Object] profile_id Value to be assigned
+    def profile_id=(profile_id)
+      if profile_id.nil?
+        fail ArgumentError, 'profile_id cannot be nil'
       end
 
-      @id = id
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] created Value to be assigned
-    def created=(created)
-      if created.nil?
-        fail ArgumentError, 'created cannot be nil'
-      end
-
-      @created = created
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] application_id Value to be assigned
-    def application_id=(application_id)
-      if application_id.nil?
-        fail ArgumentError, 'application_id cannot be nil'
-      end
-
-      @application_id = application_id
+      @profile_id = profile_id
     end
 
     # Custom attribute writer method with validation
@@ -305,6 +227,20 @@ module TalonOne
     end
 
     # Custom attribute writer method with validation
+    # @param [Object] type Value to be assigned
+    def type=(type)
+      if type.nil?
+        fail ArgumentError, 'type cannot be nil'
+      end
+
+      if type.to_s.length < 1
+        fail ArgumentError, 'invalid value for "type", the character length must be greater than or equal to 1.'
+      end
+
+      @type = type
+    end
+
+    # Custom attribute writer method with validation
     # @param [Object] integration_id Value to be assigned
     def integration_id=(integration_id)
       if integration_id.nil?
@@ -319,33 +255,17 @@ module TalonOne
     end
 
     # Custom attribute writer method with validation
-    # @param [Object] type Value to be assigned
-    def type=(type)
-      if type.nil?
-        fail ArgumentError, 'type cannot be nil'
+    # @param [Object] connected_session_id Value to be assigned
+    def connected_session_id=(connected_session_id)
+      if connected_session_id.nil?
+        fail ArgumentError, 'connected_session_id cannot be nil'
       end
 
-      @type = type
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] attributes Value to be assigned
-    def attributes=(attributes)
-      if attributes.nil?
-        fail ArgumentError, 'attributes cannot be nil'
+      if connected_session_id.to_s.length < 1
+        fail ArgumentError, 'invalid value for "connected_session_id", the character length must be greater than or equal to 1.'
       end
 
-      @attributes = attributes
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] effects Value to be assigned
-    def effects=(effects)
-      if effects.nil?
-        fail ArgumentError, 'effects cannot be nil'
-      end
-
-      @effects = effects
+      @connected_session_id = connected_session_id
     end
 
     # Checks equality by comparing each attribute.
@@ -353,18 +273,13 @@ module TalonOne
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          id == o.id &&
-          created == o.created &&
-          application_id == o.application_id &&
           profile_id == o.profile_id &&
-          store_id == o.store_id &&
           store_integration_id == o.store_integration_id &&
-          integration_id == o.integration_id &&
-          session_id == o.session_id &&
+          evaluable_campaign_ids == o.evaluable_campaign_ids &&
           type == o.type &&
           attributes == o.attributes &&
-          effects == o.effects &&
-          rule_failure_reasons == o.rule_failure_reasons
+          integration_id == o.integration_id &&
+          connected_session_id == o.connected_session_id
     end
 
     # @see the `==` method
@@ -376,7 +291,7 @@ module TalonOne
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, created, application_id, profile_id, store_id, store_integration_id, integration_id, session_id, type, attributes, effects, rule_failure_reasons].hash
+      [profile_id, store_integration_id, evaluable_campaign_ids, type, attributes, integration_id, connected_session_id].hash
     end
 
     # Builds the object from hash

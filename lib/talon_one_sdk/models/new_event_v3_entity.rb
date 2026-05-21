@@ -14,26 +14,14 @@ require 'date'
 require 'time'
 
 module TalonOne
-  class IntegrationEvent < ApiModelBase
-    # ID of the customer profile set by your integration layer.  **Note:** If the customer does not yet have a known `profileId`, we recommend you use a guest `profileId`. 
-    attr_accessor :profile_id
-
-    # The integration ID of the store. You choose this ID when you create a store.
-    attr_accessor :store_integration_id
-
-    # The name of the event. Must be a [custom event](https://docs.talon.one/docs/dev/concepts/entities/events#custom-events), not a built-in event.
-    attr_accessor :type
-
-    # Arbitrary additional JSON data associated with the event.
-    attr_accessor :attributes
+  class NewEventV3Entity < ApiModelBase
+    # The unique ID of the event. Only one event with this ID can be registered. 
+    attr_accessor :integration_id
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'profile_id' => :'profileId',
-        :'store_integration_id' => :'storeIntegrationId',
-        :'type' => :'type',
-        :'attributes' => :'attributes'
+        :'integration_id' => :'integrationId'
       }
     end
 
@@ -50,10 +38,7 @@ module TalonOne
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'profile_id' => :'String',
-        :'store_integration_id' => :'String',
-        :'type' => :'String',
-        :'attributes' => :'Object'
+        :'integration_id' => :'String'
       }
     end
 
@@ -63,48 +48,26 @@ module TalonOne
       ])
     end
 
-    # List of class defined in allOf (OpenAPI v3)
-    def self.openapi_all_of
-      [
-      :'IntegrationProfileEntity',
-      :'IntegrationStoreEntity'
-      ]
-    end
-
     # Initializes the object
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `TalonOne::IntegrationEvent` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `TalonOne::NewEventV3Entity` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       acceptable_attribute_map = self.class.acceptable_attribute_map
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!acceptable_attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `TalonOne::IntegrationEvent`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `TalonOne::NewEventV3Entity`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'profile_id')
-        self.profile_id = attributes[:'profile_id']
-      end
-
-      if attributes.key?(:'store_integration_id')
-        self.store_integration_id = attributes[:'store_integration_id']
-      end
-
-      if attributes.key?(:'type')
-        self.type = attributes[:'type']
+      if attributes.key?(:'integration_id')
+        self.integration_id = attributes[:'integration_id']
       else
-        self.type = nil
-      end
-
-      if attributes.key?(:'attributes')
-        self.attributes = attributes[:'attributes']
-      else
-        self.attributes = nil
+        self.integration_id = nil
       end
     end
 
@@ -113,24 +76,12 @@ module TalonOne
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
-      if !@store_integration_id.nil? && @store_integration_id.to_s.length > 1000
-        invalid_properties.push('invalid value for "store_integration_id", the character length must be smaller than or equal to 1000.')
+      if @integration_id.nil?
+        invalid_properties.push('invalid value for "integration_id", integration_id cannot be nil.')
       end
 
-      if !@store_integration_id.nil? && @store_integration_id.to_s.length < 1
-        invalid_properties.push('invalid value for "store_integration_id", the character length must be greater than or equal to 1.')
-      end
-
-      if @type.nil?
-        invalid_properties.push('invalid value for "type", type cannot be nil.')
-      end
-
-      if @type.to_s.length < 1
-        invalid_properties.push('invalid value for "type", the character length must be greater than or equal to 1.')
-      end
-
-      if @attributes.nil?
-        invalid_properties.push('invalid value for "attributes", attributes cannot be nil.')
+      if @integration_id.to_s.length < 1
+        invalid_properties.push('invalid value for "integration_id", the character length must be greater than or equal to 1.')
       end
 
       invalid_properties
@@ -140,54 +91,23 @@ module TalonOne
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
-      return false if !@store_integration_id.nil? && @store_integration_id.to_s.length > 1000
-      return false if !@store_integration_id.nil? && @store_integration_id.to_s.length < 1
-      return false if @type.nil?
-      return false if @type.to_s.length < 1
-      return false if @attributes.nil?
+      return false if @integration_id.nil?
+      return false if @integration_id.to_s.length < 1
       true
     end
 
     # Custom attribute writer method with validation
-    # @param [Object] store_integration_id Value to be assigned
-    def store_integration_id=(store_integration_id)
-      if store_integration_id.nil?
-        fail ArgumentError, 'store_integration_id cannot be nil'
+    # @param [Object] integration_id Value to be assigned
+    def integration_id=(integration_id)
+      if integration_id.nil?
+        fail ArgumentError, 'integration_id cannot be nil'
       end
 
-      if store_integration_id.to_s.length > 1000
-        fail ArgumentError, 'invalid value for "store_integration_id", the character length must be smaller than or equal to 1000.'
+      if integration_id.to_s.length < 1
+        fail ArgumentError, 'invalid value for "integration_id", the character length must be greater than or equal to 1.'
       end
 
-      if store_integration_id.to_s.length < 1
-        fail ArgumentError, 'invalid value for "store_integration_id", the character length must be greater than or equal to 1.'
-      end
-
-      @store_integration_id = store_integration_id
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] type Value to be assigned
-    def type=(type)
-      if type.nil?
-        fail ArgumentError, 'type cannot be nil'
-      end
-
-      if type.to_s.length < 1
-        fail ArgumentError, 'invalid value for "type", the character length must be greater than or equal to 1.'
-      end
-
-      @type = type
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] attributes Value to be assigned
-    def attributes=(attributes)
-      if attributes.nil?
-        fail ArgumentError, 'attributes cannot be nil'
-      end
-
-      @attributes = attributes
+      @integration_id = integration_id
     end
 
     # Checks equality by comparing each attribute.
@@ -195,10 +115,7 @@ module TalonOne
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          profile_id == o.profile_id &&
-          store_integration_id == o.store_integration_id &&
-          type == o.type &&
-          attributes == o.attributes
+          integration_id == o.integration_id
     end
 
     # @see the `==` method
@@ -210,7 +127,7 @@ module TalonOne
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [profile_id, store_integration_id, type, attributes].hash
+      [integration_id].hash
     end
 
     # Builds the object from hash
