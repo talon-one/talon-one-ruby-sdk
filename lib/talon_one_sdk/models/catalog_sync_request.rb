@@ -41,7 +41,7 @@ module TalonOne
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'actions' => :'Array<Object>',
+        :'actions' => :'Array<CatalogAction>',
         :'version' => :'Integer'
       }
     end

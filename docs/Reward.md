@@ -17,6 +17,7 @@
 | **bindings** | [**Array&lt;Binding&gt;**](Binding.md) | A list of named variables created before the reward&#39;s rules are evaluated.  Each binding pairs a name with a talang expression. The expression is evaluated once  and its result is available by name in any rule condition or effect. Bindings must be defined outside of individual rules. | [optional] |
 | **modified** | **Time** | The timestamp when the reward was last updated in RFC3339 format. | [optional] |
 | **status** | **String** | The status of the reward. |  |
+| **points_required** | [**Array&lt;RewardPointsRequired&gt;**](RewardPointsRequired.md) | The loyalty points required to activate a reward. | [optional] |
 
 ## Example
 
@@ -36,7 +37,8 @@ instance = TalonOne::Reward.new(
   rule: null,
   bindings: [],
   modified: null,
-  status: active
+  status: active,
+  points_required: null
 )
 ```
 

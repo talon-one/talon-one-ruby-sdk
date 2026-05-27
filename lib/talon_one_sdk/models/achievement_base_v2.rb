@@ -45,14 +45,8 @@ module TalonOne
     # When `true`, customer progress can be rolled back in completed achievements.
     attr_accessor :allow_rollback_after_completion
 
-    # Indicates if this achievement is a live or sandbox achievement. Achievements of a given type can only be connected to Applications of the same type.
-    attr_accessor :sandbox
-
     # A list containing the IDs of all applications that are subscribed to A list containing the IDs of all Applications that are connected to this achievement.
     attr_accessor :subscribed_applications
-
-    # A string containing an IANA timezone descriptor.
-    attr_accessor :timezone
 
     class EnumAttributeValidator
       attr_reader :datatype
@@ -89,9 +83,7 @@ module TalonOne
         :'fixed_start_date' => :'fixedStartDate',
         :'end_date' => :'endDate',
         :'allow_rollback_after_completion' => :'allowRollbackAfterCompletion',
-        :'sandbox' => :'sandbox',
-        :'subscribed_applications' => :'subscribedApplications',
-        :'timezone' => :'timezone'
+        :'subscribed_applications' => :'subscribedApplications'
       }
     end
 
@@ -118,9 +110,7 @@ module TalonOne
         :'fixed_start_date' => :'Time',
         :'end_date' => :'Time',
         :'allow_rollback_after_completion' => :'Boolean',
-        :'sandbox' => :'Boolean',
-        :'subscribed_applications' => :'Array<Integer>',
-        :'timezone' => :'String'
+        :'subscribed_applications' => :'Array<Integer>'
       }
     end
 
@@ -186,18 +176,10 @@ module TalonOne
         self.allow_rollback_after_completion = attributes[:'allow_rollback_after_completion']
       end
 
-      if attributes.key?(:'sandbox')
-        self.sandbox = attributes[:'sandbox']
-      end
-
       if attributes.key?(:'subscribed_applications')
         if (value = attributes[:'subscribed_applications']).is_a?(Array)
           self.subscribed_applications = value
         end
-      end
-
-      if attributes.key?(:'timezone')
-        self.timezone = attributes[:'timezone']
       end
     end
 
@@ -223,10 +205,6 @@ module TalonOne
         invalid_properties.push('invalid value for "subscribed_applications", number of items must be greater than or equal to 0.')
       end
 
-      if !@timezone.nil? && @timezone.to_s.length < 1
-        invalid_properties.push('invalid value for "timezone", the character length must be greater than or equal to 1.')
-      end
-
       invalid_properties
     end
 
@@ -242,7 +220,6 @@ module TalonOne
       activation_policy_validator = EnumAttributeValidator.new('String', ["user_action", "fixed_schedule"])
       return false unless activation_policy_validator.valid?(@activation_policy)
       return false if !@subscribed_applications.nil? && @subscribed_applications.length < 0
-      return false if !@timezone.nil? && @timezone.to_s.length < 1
       true
     end
 
@@ -303,20 +280,6 @@ module TalonOne
       @subscribed_applications = subscribed_applications
     end
 
-    # Custom attribute writer method with validation
-    # @param [Object] timezone Value to be assigned
-    def timezone=(timezone)
-      if timezone.nil?
-        fail ArgumentError, 'timezone cannot be nil'
-      end
-
-      if timezone.to_s.length < 1
-        fail ArgumentError, 'invalid value for "timezone", the character length must be greater than or equal to 1.'
-      end
-
-      @timezone = timezone
-    end
-
     # Checks equality by comparing each attribute.
     # @param [Object] Object to be compared
     def ==(o)
@@ -332,9 +295,7 @@ module TalonOne
           fixed_start_date == o.fixed_start_date &&
           end_date == o.end_date &&
           allow_rollback_after_completion == o.allow_rollback_after_completion &&
-          sandbox == o.sandbox &&
-          subscribed_applications == o.subscribed_applications &&
-          timezone == o.timezone
+          subscribed_applications == o.subscribed_applications
     end
 
     # @see the `==` method
@@ -346,7 +307,7 @@ module TalonOne
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, title, description, target, period, recurrence_policy, activation_policy, fixed_start_date, end_date, allow_rollback_after_completion, sandbox, subscribed_applications, timezone].hash
+      [name, title, description, target, period, recurrence_policy, activation_policy, fixed_start_date, end_date, allow_rollback_after_completion, subscribed_applications].hash
     end
 
     # Builds the object from hash

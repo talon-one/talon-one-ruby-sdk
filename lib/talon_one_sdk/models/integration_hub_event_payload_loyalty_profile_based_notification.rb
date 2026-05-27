@@ -19,9 +19,15 @@ module TalonOne
 
     attr_accessor :loyalty_program_id
 
+    # The name of the loyalty program.
+    attr_accessor :loyalty_program_name
+
     attr_accessor :subledger_id
 
     attr_accessor :source_of_event
+
+    # The name of the customer's current tier.
+    attr_accessor :current_tier
 
     attr_accessor :employee_name
 
@@ -33,8 +39,6 @@ module TalonOne
 
     # Timestamp when the event was published.
     attr_accessor :published_at
-
-    attr_accessor :current_tier
 
     attr_accessor :old_tier
 
@@ -51,14 +55,15 @@ module TalonOne
       {
         :'profile_integration_id' => :'ProfileIntegrationID',
         :'loyalty_program_id' => :'LoyaltyProgramID',
+        :'loyalty_program_name' => :'LoyaltyProgramName',
         :'subledger_id' => :'SubledgerID',
         :'source_of_event' => :'SourceOfEvent',
+        :'current_tier' => :'CurrentTier',
         :'employee_name' => :'EmployeeName',
         :'user_id' => :'UserID',
         :'current_points' => :'CurrentPoints',
         :'actions' => :'Actions',
         :'published_at' => :'PublishedAt',
-        :'current_tier' => :'CurrentTier',
         :'old_tier' => :'OldTier',
         :'tier_expiration_date' => :'TierExpirationDate',
         :'timestamp_of_tier_change' => :'TimestampOfTierChange',
@@ -82,14 +87,15 @@ module TalonOne
       {
         :'profile_integration_id' => :'String',
         :'loyalty_program_id' => :'Integer',
+        :'loyalty_program_name' => :'String',
         :'subledger_id' => :'String',
         :'source_of_event' => :'String',
+        :'current_tier' => :'String',
         :'employee_name' => :'String',
         :'user_id' => :'Integer',
         :'current_points' => :'Float',
         :'actions' => :'Array<IntegrationHubEventPayloadLoyaltyProfileBasedPointsChangedNotificationAction>',
         :'published_at' => :'Time',
-        :'current_tier' => :'String',
         :'old_tier' => :'String',
         :'tier_expiration_date' => :'Time',
         :'timestamp_of_tier_change' => :'Time',
@@ -141,6 +147,12 @@ module TalonOne
         self.loyalty_program_id = nil
       end
 
+      if attributes.key?(:'loyalty_program_name')
+        self.loyalty_program_name = attributes[:'loyalty_program_name']
+      else
+        self.loyalty_program_name = nil
+      end
+
       if attributes.key?(:'subledger_id')
         self.subledger_id = attributes[:'subledger_id']
       else
@@ -151,6 +163,12 @@ module TalonOne
         self.source_of_event = attributes[:'source_of_event']
       else
         self.source_of_event = nil
+      end
+
+      if attributes.key?(:'current_tier')
+        self.current_tier = attributes[:'current_tier']
+      else
+        self.current_tier = nil
       end
 
       if attributes.key?(:'employee_name')
@@ -177,10 +195,6 @@ module TalonOne
         self.published_at = attributes[:'published_at']
       else
         self.published_at = nil
-      end
-
-      if attributes.key?(:'current_tier')
-        self.current_tier = attributes[:'current_tier']
       end
 
       if attributes.key?(:'old_tier')
@@ -217,12 +231,20 @@ module TalonOne
         invalid_properties.push('invalid value for "loyalty_program_id", loyalty_program_id cannot be nil.')
       end
 
+      if @loyalty_program_name.nil?
+        invalid_properties.push('invalid value for "loyalty_program_name", loyalty_program_name cannot be nil.')
+      end
+
       if @subledger_id.nil?
         invalid_properties.push('invalid value for "subledger_id", subledger_id cannot be nil.')
       end
 
       if @source_of_event.nil?
         invalid_properties.push('invalid value for "source_of_event", source_of_event cannot be nil.')
+      end
+
+      if @current_tier.nil?
+        invalid_properties.push('invalid value for "current_tier", current_tier cannot be nil.')
       end
 
       if @current_points.nil?
@@ -242,8 +264,10 @@ module TalonOne
       warn '[DEPRECATED] the `valid?` method is obsolete'
       return false if @profile_integration_id.nil?
       return false if @loyalty_program_id.nil?
+      return false if @loyalty_program_name.nil?
       return false if @subledger_id.nil?
       return false if @source_of_event.nil?
+      return false if @current_tier.nil?
       return false if @current_points.nil?
       return false if @published_at.nil?
       true
@@ -270,6 +294,16 @@ module TalonOne
     end
 
     # Custom attribute writer method with validation
+    # @param [Object] loyalty_program_name Value to be assigned
+    def loyalty_program_name=(loyalty_program_name)
+      if loyalty_program_name.nil?
+        fail ArgumentError, 'loyalty_program_name cannot be nil'
+      end
+
+      @loyalty_program_name = loyalty_program_name
+    end
+
+    # Custom attribute writer method with validation
     # @param [Object] subledger_id Value to be assigned
     def subledger_id=(subledger_id)
       if subledger_id.nil?
@@ -287,6 +321,16 @@ module TalonOne
       end
 
       @source_of_event = source_of_event
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] current_tier Value to be assigned
+    def current_tier=(current_tier)
+      if current_tier.nil?
+        fail ArgumentError, 'current_tier cannot be nil'
+      end
+
+      @current_tier = current_tier
     end
 
     # Custom attribute writer method with validation
@@ -316,14 +360,15 @@ module TalonOne
       self.class == o.class &&
           profile_integration_id == o.profile_integration_id &&
           loyalty_program_id == o.loyalty_program_id &&
+          loyalty_program_name == o.loyalty_program_name &&
           subledger_id == o.subledger_id &&
           source_of_event == o.source_of_event &&
+          current_tier == o.current_tier &&
           employee_name == o.employee_name &&
           user_id == o.user_id &&
           current_points == o.current_points &&
           actions == o.actions &&
           published_at == o.published_at &&
-          current_tier == o.current_tier &&
           old_tier == o.old_tier &&
           tier_expiration_date == o.tier_expiration_date &&
           timestamp_of_tier_change == o.timestamp_of_tier_change &&
@@ -340,7 +385,7 @@ module TalonOne
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [profile_integration_id, loyalty_program_id, subledger_id, source_of_event, employee_name, user_id, current_points, actions, published_at, current_tier, old_tier, tier_expiration_date, timestamp_of_tier_change, points_required_to_the_next_tier, next_tier].hash
+      [profile_integration_id, loyalty_program_id, loyalty_program_name, subledger_id, source_of_event, current_tier, employee_name, user_id, current_points, actions, published_at, old_tier, tier_expiration_date, timestamp_of_tier_change, points_required_to_the_next_tier, next_tier].hash
     end
 
     # Builds the object from hash

@@ -33,10 +33,13 @@ module TalonOne
     # The integration ID of the store. You choose this ID when you create a store.
     attr_accessor :store_integration_id
 
+    # The unique ID of the event. Only one event with this ID can be registered. 
+    attr_accessor :integration_id
+
     # The globally unique Talon.One ID of the session that contains this event.
     attr_accessor :session_id
 
-    # A string representing the event. Must not be a reserved event name.
+    # The name of the event. Must be a [custom event](https://docs.talon.one/docs/dev/concepts/entities/events#custom-events), not a built-in event.
     attr_accessor :type
 
     # Additional JSON serialized data associated with the event.
@@ -57,6 +60,7 @@ module TalonOne
         :'profile_id' => :'profileId',
         :'store_id' => :'storeId',
         :'store_integration_id' => :'storeIntegrationId',
+        :'integration_id' => :'integrationId',
         :'session_id' => :'sessionId',
         :'type' => :'type',
         :'attributes' => :'attributes',
@@ -84,6 +88,7 @@ module TalonOne
         :'profile_id' => :'Integer',
         :'store_id' => :'Integer',
         :'store_integration_id' => :'String',
+        :'integration_id' => :'String',
         :'session_id' => :'Integer',
         :'type' => :'String',
         :'attributes' => :'Object',
@@ -105,6 +110,7 @@ module TalonOne
       :'ApplicationEntity',
       :'ApplicationStoreEntity',
       :'Entity',
+      :'EventV3Entity',
       :'IntegrationStoreEntity'
       ]
     end
@@ -153,6 +159,10 @@ module TalonOne
 
       if attributes.key?(:'store_integration_id')
         self.store_integration_id = attributes[:'store_integration_id']
+      end
+
+      if attributes.key?(:'integration_id')
+        self.integration_id = attributes[:'integration_id']
       end
 
       if attributes.key?(:'session_id')
@@ -211,6 +221,10 @@ module TalonOne
         invalid_properties.push('invalid value for "store_integration_id", the character length must be greater than or equal to 1.')
       end
 
+      if !@integration_id.nil? && @integration_id.to_s.length < 1
+        invalid_properties.push('invalid value for "integration_id", the character length must be greater than or equal to 1.')
+      end
+
       if @type.nil?
         invalid_properties.push('invalid value for "type", type cannot be nil.')
       end
@@ -235,6 +249,7 @@ module TalonOne
       return false if @application_id.nil?
       return false if !@store_integration_id.nil? && @store_integration_id.to_s.length > 1000
       return false if !@store_integration_id.nil? && @store_integration_id.to_s.length < 1
+      return false if !@integration_id.nil? && @integration_id.to_s.length < 1
       return false if @type.nil?
       return false if @attributes.nil?
       return false if @effects.nil?
@@ -290,6 +305,20 @@ module TalonOne
     end
 
     # Custom attribute writer method with validation
+    # @param [Object] integration_id Value to be assigned
+    def integration_id=(integration_id)
+      if integration_id.nil?
+        fail ArgumentError, 'integration_id cannot be nil'
+      end
+
+      if integration_id.to_s.length < 1
+        fail ArgumentError, 'invalid value for "integration_id", the character length must be greater than or equal to 1.'
+      end
+
+      @integration_id = integration_id
+    end
+
+    # Custom attribute writer method with validation
     # @param [Object] type Value to be assigned
     def type=(type)
       if type.nil?
@@ -330,6 +359,7 @@ module TalonOne
           profile_id == o.profile_id &&
           store_id == o.store_id &&
           store_integration_id == o.store_integration_id &&
+          integration_id == o.integration_id &&
           session_id == o.session_id &&
           type == o.type &&
           attributes == o.attributes &&
@@ -346,7 +376,7 @@ module TalonOne
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, created, application_id, profile_id, store_id, store_integration_id, session_id, type, attributes, effects, rule_failure_reasons].hash
+      [id, created, application_id, profile_id, store_id, store_integration_id, integration_id, session_id, type, attributes, effects, rule_failure_reasons].hash
     end
 
     # Builds the object from hash

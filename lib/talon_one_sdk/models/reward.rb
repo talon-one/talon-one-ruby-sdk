@@ -54,6 +54,9 @@ module TalonOne
     # The status of the reward.
     attr_accessor :status
 
+    # The loyalty points required to activate a reward.
+    attr_accessor :points_required
+
     class EnumAttributeValidator
       attr_reader :datatype
       attr_reader :allowable_values
@@ -91,7 +94,8 @@ module TalonOne
         :'rule' => :'rule',
         :'bindings' => :'bindings',
         :'modified' => :'modified',
-        :'status' => :'status'
+        :'status' => :'status',
+        :'points_required' => :'pointsRequired'
       }
     end
 
@@ -120,7 +124,8 @@ module TalonOne
         :'rule' => :'Rule',
         :'bindings' => :'Array<Binding>',
         :'modified' => :'Time',
-        :'status' => :'String'
+        :'status' => :'String',
+        :'points_required' => :'Array<RewardPointsRequired>'
       }
     end
 
@@ -225,6 +230,12 @@ module TalonOne
         self.status = attributes[:'status']
       else
         self.status = nil
+      end
+
+      if attributes.key?(:'points_required')
+        if (value = attributes[:'points_required']).is_a?(Array)
+          self.points_required = value
+        end
       end
     end
 
@@ -400,7 +411,8 @@ module TalonOne
           rule == o.rule &&
           bindings == o.bindings &&
           modified == o.modified &&
-          status == o.status
+          status == o.status &&
+          points_required == o.points_required
     end
 
     # @see the `==` method
@@ -412,7 +424,7 @@ module TalonOne
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, created, account_id, name, api_name, description, application_ids, sandbox, visibility_conditions, rule, bindings, modified, status].hash
+      [id, created, account_id, name, api_name, description, application_ids, sandbox, visibility_conditions, rule, bindings, modified, status, points_required].hash
     end
 
     # Builds the object from hash

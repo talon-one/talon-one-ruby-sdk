@@ -157,6 +157,12 @@ describe TalonOne::CustomerSessionV2 do
     end
   end
 
+  describe 'test attribute "cart_item_additional_cost_total"' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
   describe 'test attribute "updated"' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/

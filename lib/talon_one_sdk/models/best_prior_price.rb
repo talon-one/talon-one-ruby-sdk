@@ -24,7 +24,10 @@ module TalonOne
     # The date and time when the price was observed.
     attr_accessor :observed_at
 
-    # The context ID of the context active at the time of observation. 
+    # The identifiers of the relevant context at the time the price was observed. Includes the context IDs of any price adjustments and of the campaigns that influenced the final price. 
+    attr_accessor :context_ids
+
+    # This property is **deprecated**. Use `contextIds` instead. Defaults to an empty string. 
     attr_accessor :context_id
 
     # Price of the item.
@@ -40,6 +43,7 @@ module TalonOne
         :'id' => :'id',
         :'sku' => :'sku',
         :'observed_at' => :'observedAt',
+        :'context_ids' => :'contextIds',
         :'context_id' => :'contextId',
         :'price' => :'price',
         :'metadata' => :'metadata',
@@ -63,6 +67,7 @@ module TalonOne
         :'id' => :'Integer',
         :'sku' => :'String',
         :'observed_at' => :'Time',
+        :'context_ids' => :'Array<String>',
         :'context_id' => :'String',
         :'price' => :'Float',
         :'metadata' => :'BestPriorPriceMetadata',
@@ -110,10 +115,18 @@ module TalonOne
         self.observed_at = nil
       end
 
+      if attributes.key?(:'context_ids')
+        if (value = attributes[:'context_ids']).is_a?(Array)
+          self.context_ids = value
+        end
+      else
+        self.context_ids = nil
+      end
+
       if attributes.key?(:'context_id')
         self.context_id = attributes[:'context_id']
       else
-        self.context_id = nil
+        self.context_id = ''
       end
 
       if attributes.key?(:'price')
@@ -152,8 +165,8 @@ module TalonOne
         invalid_properties.push('invalid value for "observed_at", observed_at cannot be nil.')
       end
 
-      if @context_id.nil?
-        invalid_properties.push('invalid value for "context_id", context_id cannot be nil.')
+      if @context_ids.nil?
+        invalid_properties.push('invalid value for "context_ids", context_ids cannot be nil.')
       end
 
       if @price.nil?
@@ -178,7 +191,7 @@ module TalonOne
       return false if @id.nil?
       return false if @sku.nil?
       return false if @observed_at.nil?
-      return false if @context_id.nil?
+      return false if @context_ids.nil?
       return false if @price.nil?
       return false if @metadata.nil?
       return false if @target.nil?
@@ -216,13 +229,13 @@ module TalonOne
     end
 
     # Custom attribute writer method with validation
-    # @param [Object] context_id Value to be assigned
-    def context_id=(context_id)
-      if context_id.nil?
-        fail ArgumentError, 'context_id cannot be nil'
+    # @param [Object] context_ids Value to be assigned
+    def context_ids=(context_ids)
+      if context_ids.nil?
+        fail ArgumentError, 'context_ids cannot be nil'
       end
 
-      @context_id = context_id
+      @context_ids = context_ids
     end
 
     # Custom attribute writer method with validation
@@ -263,6 +276,7 @@ module TalonOne
           id == o.id &&
           sku == o.sku &&
           observed_at == o.observed_at &&
+          context_ids == o.context_ids &&
           context_id == o.context_id &&
           price == o.price &&
           metadata == o.metadata &&
@@ -278,7 +292,7 @@ module TalonOne
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, sku, observed_at, context_id, price, metadata, target].hash
+      [id, sku, observed_at, context_ids, context_id, price, metadata, target].hash
     end
 
     # Builds the object from hash

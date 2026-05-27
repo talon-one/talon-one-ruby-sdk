@@ -20,10 +20,10 @@ module TalonOne
 
     attr_accessor :campaign
 
-    # The goal of the experiment. Determines which single metric is used to decide the winning variant. When set to `other`, multiple metrics are used. 
+    # The goal of the experiment. Determines which single metric is used to decide the winning variant. When set to `other`, multiple metrics are used. If omitted, the current value is preserved. 
     attr_accessor :goal_type
 
-    # A description of the experiment goal. Provides context for the AI summary and helps it interpret the outcome of the experiment against the stated goal. 
+    # A description of the experiment goal. Provides context for the AI summary and helps it interpret the outcome of the experiment against the stated goal. If omitted, the current value is preserved. 
     attr_accessor :goal_description
 
     class EnumAttributeValidator
@@ -143,7 +143,7 @@ module TalonOne
       warn '[DEPRECATED] the `valid?` method is obsolete'
       return false if @is_variant_assignment_external.nil?
       return false if @campaign.nil?
-      goal_type_validator = EnumAttributeValidator.new('String', ["other", "maximize_revenue", "optimize_discount_efficiency", "maximize_items_sold"])
+      goal_type_validator = EnumAttributeValidator.new('String', ["other", "maximize_revenue", "maximize_items_sold", "optimize_discount_efficiency"])
       return false unless goal_type_validator.valid?(@goal_type)
       true
     end
@@ -171,7 +171,7 @@ module TalonOne
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] goal_type Object to be assigned
     def goal_type=(goal_type)
-      validator = EnumAttributeValidator.new('String', ["other", "maximize_revenue", "optimize_discount_efficiency", "maximize_items_sold"])
+      validator = EnumAttributeValidator.new('String', ["other", "maximize_revenue", "maximize_items_sold", "optimize_discount_efficiency"])
       unless validator.valid?(goal_type)
         fail ArgumentError, "invalid value for \"goal_type\", must be one of #{validator.allowable_values}."
       end

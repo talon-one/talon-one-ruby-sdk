@@ -10,6 +10,7 @@
 | **event_data** | **Object** |  |  |
 | **published_at** | **Time** |  |  |
 | **processed_at** | **Time** |  | [optional] |
+| **delivered_at** | **Time** |  | [optional] |
 | **process_after** | **Time** |  |  |
 | **_retry** | **Integer** |  |  |
 
@@ -25,6 +26,7 @@ instance = TalonOne::IntegrationHubEventRecord.new(
   event_data: null,
   published_at: null,
   processed_at: null,
+  delivered_at: null,
   process_after: null,
   _retry: null
 )

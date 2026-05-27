@@ -45,14 +45,8 @@ module TalonOne
     # When `true`, customer progress can be rolled back in completed achievements.
     attr_accessor :allow_rollback_after_completion
 
-    # Indicates if this achievement is a live or sandbox achievement. Achievements of a given type can only be connected to Applications of the same type.
-    attr_accessor :sandbox
-
     # A list containing the IDs of all applications that are subscribed to A list containing the IDs of all Applications that are connected to this achievement.
     attr_accessor :subscribed_applications
-
-    # A string containing an IANA timezone descriptor.
-    attr_accessor :timezone
 
     class EnumAttributeValidator
       attr_reader :datatype
@@ -89,9 +83,7 @@ module TalonOne
         :'fixed_start_date' => :'fixedStartDate',
         :'end_date' => :'endDate',
         :'allow_rollback_after_completion' => :'allowRollbackAfterCompletion',
-        :'sandbox' => :'sandbox',
-        :'subscribed_applications' => :'subscribedApplications',
-        :'timezone' => :'timezone'
+        :'subscribed_applications' => :'subscribedApplications'
       }
     end
 
@@ -118,9 +110,7 @@ module TalonOne
         :'fixed_start_date' => :'Time',
         :'end_date' => :'Time',
         :'allow_rollback_after_completion' => :'Boolean',
-        :'sandbox' => :'Boolean',
-        :'subscribed_applications' => :'Array<Integer>',
-        :'timezone' => :'String'
+        :'subscribed_applications' => :'Array<Integer>'
       }
     end
 
@@ -155,18 +145,26 @@ module TalonOne
 
       if attributes.key?(:'name')
         self.name = attributes[:'name']
+      else
+        self.name = nil
       end
 
       if attributes.key?(:'title')
         self.title = attributes[:'title']
+      else
+        self.title = nil
       end
 
       if attributes.key?(:'description')
         self.description = attributes[:'description']
+      else
+        self.description = nil
       end
 
       if attributes.key?(:'target')
         self.target = attributes[:'target']
+      else
+        self.target = nil
       end
 
       if attributes.key?(:'period')
@@ -193,18 +191,12 @@ module TalonOne
         self.allow_rollback_after_completion = attributes[:'allow_rollback_after_completion']
       end
 
-      if attributes.key?(:'sandbox')
-        self.sandbox = attributes[:'sandbox']
-      end
-
       if attributes.key?(:'subscribed_applications')
         if (value = attributes[:'subscribed_applications']).is_a?(Array)
           self.subscribed_applications = value
         end
-      end
-
-      if attributes.key?(:'timezone')
-        self.timezone = attributes[:'timezone']
+      else
+        self.subscribed_applications = nil
       end
     end
 
@@ -213,25 +205,41 @@ module TalonOne
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
-      if !@name.nil? && @name.to_s.length > 1000
+      if @name.nil?
+        invalid_properties.push('invalid value for "name", name cannot be nil.')
+      end
+
+      if @name.to_s.length > 1000
         invalid_properties.push('invalid value for "name", the character length must be smaller than or equal to 1000.')
       end
 
-      if !@name.nil? && @name.to_s.length < 1
+      if @name.to_s.length < 1
         invalid_properties.push('invalid value for "name", the character length must be greater than or equal to 1.')
       end
 
       pattern = Regexp.new(/^[a-zA-Z]\w+$/)
-      if !@name.nil? && @name !~ pattern
+      if @name !~ pattern
         invalid_properties.push("invalid value for \"name\", must conform to the pattern #{pattern}.")
       end
 
-      if !@subscribed_applications.nil? && @subscribed_applications.length < 0
-        invalid_properties.push('invalid value for "subscribed_applications", number of items must be greater than or equal to 0.')
+      if @title.nil?
+        invalid_properties.push('invalid value for "title", title cannot be nil.')
       end
 
-      if !@timezone.nil? && @timezone.to_s.length < 1
-        invalid_properties.push('invalid value for "timezone", the character length must be greater than or equal to 1.')
+      if @description.nil?
+        invalid_properties.push('invalid value for "description", description cannot be nil.')
+      end
+
+      if @target.nil?
+        invalid_properties.push('invalid value for "target", target cannot be nil.')
+      end
+
+      if @subscribed_applications.nil?
+        invalid_properties.push('invalid value for "subscribed_applications", subscribed_applications cannot be nil.')
+      end
+
+      if @subscribed_applications.length < 0
+        invalid_properties.push('invalid value for "subscribed_applications", number of items must be greater than or equal to 0.')
       end
 
       invalid_properties
@@ -241,15 +249,19 @@ module TalonOne
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
-      return false if !@name.nil? && @name.to_s.length > 1000
-      return false if !@name.nil? && @name.to_s.length < 1
-      return false if !@name.nil? && @name !~ Regexp.new(/^[a-zA-Z]\w+$/)
+      return false if @name.nil?
+      return false if @name.to_s.length > 1000
+      return false if @name.to_s.length < 1
+      return false if @name !~ Regexp.new(/^[a-zA-Z]\w+$/)
+      return false if @title.nil?
+      return false if @description.nil?
+      return false if @target.nil?
       recurrence_policy_validator = EnumAttributeValidator.new('String', ["no_recurrence", "on_expiration", "on_completion"])
       return false unless recurrence_policy_validator.valid?(@recurrence_policy)
       activation_policy_validator = EnumAttributeValidator.new('String', ["user_action", "fixed_schedule"])
       return false unless activation_policy_validator.valid?(@activation_policy)
-      return false if !@subscribed_applications.nil? && @subscribed_applications.length < 0
-      return false if !@timezone.nil? && @timezone.to_s.length < 1
+      return false if @subscribed_applications.nil?
+      return false if @subscribed_applications.length < 0
       true
     end
 
@@ -274,6 +286,36 @@ module TalonOne
       end
 
       @name = name
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] title Value to be assigned
+    def title=(title)
+      if title.nil?
+        fail ArgumentError, 'title cannot be nil'
+      end
+
+      @title = title
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] description Value to be assigned
+    def description=(description)
+      if description.nil?
+        fail ArgumentError, 'description cannot be nil'
+      end
+
+      @description = description
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] target Value to be assigned
+    def target=(target)
+      if target.nil?
+        fail ArgumentError, 'target cannot be nil'
+      end
+
+      @target = target
     end
 
     # Custom attribute writer method checking allowed values (enum).
@@ -310,20 +352,6 @@ module TalonOne
       @subscribed_applications = subscribed_applications
     end
 
-    # Custom attribute writer method with validation
-    # @param [Object] timezone Value to be assigned
-    def timezone=(timezone)
-      if timezone.nil?
-        fail ArgumentError, 'timezone cannot be nil'
-      end
-
-      if timezone.to_s.length < 1
-        fail ArgumentError, 'invalid value for "timezone", the character length must be greater than or equal to 1.'
-      end
-
-      @timezone = timezone
-    end
-
     # Checks equality by comparing each attribute.
     # @param [Object] Object to be compared
     def ==(o)
@@ -339,9 +367,7 @@ module TalonOne
           fixed_start_date == o.fixed_start_date &&
           end_date == o.end_date &&
           allow_rollback_after_completion == o.allow_rollback_after_completion &&
-          sandbox == o.sandbox &&
-          subscribed_applications == o.subscribed_applications &&
-          timezone == o.timezone
+          subscribed_applications == o.subscribed_applications
     end
 
     # @see the `==` method
@@ -353,7 +379,7 @@ module TalonOne
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, title, description, target, period, recurrence_policy, activation_policy, fixed_start_date, end_date, allow_rollback_after_completion, sandbox, subscribed_applications, timezone].hash
+      [name, title, description, target, period, recurrence_policy, activation_policy, fixed_start_date, end_date, allow_rollback_after_completion, subscribed_applications].hash
     end
 
     # Builds the object from hash
