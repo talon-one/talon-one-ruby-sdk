@@ -207,7 +207,7 @@ module TalonOne
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
-      entity_validator = EnumAttributeValidator.new('String', ["AdvocateProfile", "Account", "Application", "AwardedGiveaway", "Bundle", "Campaign", "CartItem", "Coupon", "CustomerProfile", "CustomerSession", "Event", "Item", "Loyalty", "LoyaltyCard", "Profile", "Giveaway", "Referral", "Session", "Store", "Achievements"])
+      entity_validator = EnumAttributeValidator.new('String', ["AdvocateProfile", "Account", "Application", "AwardedGiveaway", "Bundle", "Campaign", "CartItem", "Coupon", "CustomerProfile", "CustomerSession", "Event", "Item", "Loyalty", "LoyaltyCard", "Profile", "Giveaway", "Referral", "Session", "Store", "Achievements", "AdvancedEvent", "AdvancedEventConnectedSession"])
       return false unless entity_validator.valid?(@entity)
       return false if @name.nil?
       return false if @type.nil?
@@ -222,7 +222,7 @@ module TalonOne
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] entity Object to be assigned
     def entity=(entity)
-      validator = EnumAttributeValidator.new('String', ["AdvocateProfile", "Account", "Application", "AwardedGiveaway", "Bundle", "Campaign", "CartItem", "Coupon", "CustomerProfile", "CustomerSession", "Event", "Item", "Loyalty", "LoyaltyCard", "Profile", "Giveaway", "Referral", "Session", "Store", "Achievements"])
+      validator = EnumAttributeValidator.new('String', ["AdvocateProfile", "Account", "Application", "AwardedGiveaway", "Bundle", "Campaign", "CartItem", "Coupon", "CustomerProfile", "CustomerSession", "Event", "Item", "Loyalty", "LoyaltyCard", "Profile", "Giveaway", "Referral", "Session", "Store", "Achievements", "AdvancedEvent", "AdvancedEventConnectedSession"])
       unless validator.valid?(entity)
         fail ArgumentError, "invalid value for \"entity\", must be one of #{validator.allowable_values}."
       end

@@ -170,6 +170,7 @@ docs/CardLedgerTransactionLogEntryIntegrationAPI.md
 docs/CartItem.md
 docs/CartItemFilterTemplate.md
 docs/Catalog.md
+docs/CatalogAction.md
 docs/CatalogActionFilter.md
 docs/CatalogItem.md
 docs/CatalogRule.md
@@ -249,6 +250,9 @@ docs/EventAttributesEntity.md
 docs/EventType.md
 docs/EventV2.md
 docs/EventV3.md
+docs/EventV3Connections.md
+docs/EventV3Entity.md
+docs/EventV3RequestEntity.md
 docs/Experiment.md
 docs/ExperimentCampaignCopy.md
 docs/ExperimentCopy.md
@@ -374,6 +378,7 @@ docs/IntegrationHubEventPayloadLoyaltyProfileBasedPointsChangedNotificationActio
 docs/IntegrationHubEventPayloadLoyaltyProfileBasedTierDowngradeNotification.md
 docs/IntegrationHubEventPayloadLoyaltyProfileBasedTierUpgradeNotification.md
 docs/IntegrationHubEventRecord.md
+docs/IntegrationHubEventStatusUpdate.md
 docs/IntegrationHubFlow.md
 docs/IntegrationHubFlowConfig.md
 docs/IntegrationHubFlowConfigResponse.md
@@ -489,6 +494,7 @@ docs/NewCustomerSession.md
 docs/NewCustomerSessionV2.md
 docs/NewEvent.md
 docs/NewEventType.md
+docs/NewEventV3Entity.md
 docs/NewExperiment.md
 docs/NewExperimentVariant.md
 docs/NewExperimentVariantArray.md
@@ -584,6 +590,7 @@ docs/RevisionActivation.md
 docs/RevisionActivationRequest.md
 docs/RevisionVersion.md
 docs/Reward.md
+docs/RewardPointsRequired.md
 docs/RiskNotification.md
 docs/Role.md
 docs/RoleAssign.md
@@ -658,6 +665,8 @@ docs/StrikethroughSetDiscountPerItemMemberEffectProps.md
 docs/StrikethroughTrigger.md
 docs/SummarizeCampaignStoreBudget200Response.md
 docs/SummaryCampaignStoreBudget.md
+docs/SupportRequest.md
+docs/SupportRequestInput.md
 docs/TalangAttribute.md
 docs/TalangAttributeVisibility.md
 docs/TemplateArgDef.md
@@ -715,6 +724,7 @@ docs/UpdateReferralBatch.md
 docs/UpdateReward.md
 docs/UpdateRole.md
 docs/UpdateStore.md
+docs/UpdateSupportRequest.md
 docs/UpdateUser.md
 docs/User.md
 docs/UserEntity.md
@@ -888,6 +898,7 @@ lib/talon_one_sdk/models/card_ledger_transaction_log_entry_integration_api.rb
 lib/talon_one_sdk/models/cart_item.rb
 lib/talon_one_sdk/models/cart_item_filter_template.rb
 lib/talon_one_sdk/models/catalog.rb
+lib/talon_one_sdk/models/catalog_action.rb
 lib/talon_one_sdk/models/catalog_action_filter.rb
 lib/talon_one_sdk/models/catalog_item.rb
 lib/talon_one_sdk/models/catalog_rule.rb
@@ -967,6 +978,9 @@ lib/talon_one_sdk/models/event_attributes_entity.rb
 lib/talon_one_sdk/models/event_type.rb
 lib/talon_one_sdk/models/event_v2.rb
 lib/talon_one_sdk/models/event_v3.rb
+lib/talon_one_sdk/models/event_v3_connections.rb
+lib/talon_one_sdk/models/event_v3_entity.rb
+lib/talon_one_sdk/models/event_v3_request_entity.rb
 lib/talon_one_sdk/models/experiment.rb
 lib/talon_one_sdk/models/experiment_campaign_copy.rb
 lib/talon_one_sdk/models/experiment_copy.rb
@@ -1091,6 +1105,7 @@ lib/talon_one_sdk/models/integration_hub_event_payload_loyalty_profile_based_poi
 lib/talon_one_sdk/models/integration_hub_event_payload_loyalty_profile_based_tier_downgrade_notification.rb
 lib/talon_one_sdk/models/integration_hub_event_payload_loyalty_profile_based_tier_upgrade_notification.rb
 lib/talon_one_sdk/models/integration_hub_event_record.rb
+lib/talon_one_sdk/models/integration_hub_event_status_update.rb
 lib/talon_one_sdk/models/integration_hub_flow.rb
 lib/talon_one_sdk/models/integration_hub_flow_config.rb
 lib/talon_one_sdk/models/integration_hub_flow_config_response.rb
@@ -1205,6 +1220,7 @@ lib/talon_one_sdk/models/new_customer_session.rb
 lib/talon_one_sdk/models/new_customer_session_v2.rb
 lib/talon_one_sdk/models/new_event.rb
 lib/talon_one_sdk/models/new_event_type.rb
+lib/talon_one_sdk/models/new_event_v3_entity.rb
 lib/talon_one_sdk/models/new_experiment.rb
 lib/talon_one_sdk/models/new_experiment_variant.rb
 lib/talon_one_sdk/models/new_experiment_variant_array.rb
@@ -1300,6 +1316,7 @@ lib/talon_one_sdk/models/revision_activation.rb
 lib/talon_one_sdk/models/revision_activation_request.rb
 lib/talon_one_sdk/models/revision_version.rb
 lib/talon_one_sdk/models/reward.rb
+lib/talon_one_sdk/models/reward_points_required.rb
 lib/talon_one_sdk/models/risk_notification.rb
 lib/talon_one_sdk/models/role.rb
 lib/talon_one_sdk/models/role_assign.rb
@@ -1374,6 +1391,8 @@ lib/talon_one_sdk/models/strikethrough_set_discount_per_item_member_effect_props
 lib/talon_one_sdk/models/strikethrough_trigger.rb
 lib/talon_one_sdk/models/summarize_campaign_store_budget200_response.rb
 lib/talon_one_sdk/models/summary_campaign_store_budget.rb
+lib/talon_one_sdk/models/support_request.rb
+lib/talon_one_sdk/models/support_request_input.rb
 lib/talon_one_sdk/models/talang_attribute.rb
 lib/talon_one_sdk/models/talang_attribute_visibility.rb
 lib/talon_one_sdk/models/template_arg_def.rb
@@ -1431,6 +1450,7 @@ lib/talon_one_sdk/models/update_referral_batch.rb
 lib/talon_one_sdk/models/update_reward.rb
 lib/talon_one_sdk/models/update_role.rb
 lib/talon_one_sdk/models/update_store.rb
+lib/talon_one_sdk/models/update_support_request.rb
 lib/talon_one_sdk/models/update_user.rb
 lib/talon_one_sdk/models/user.rb
 lib/talon_one_sdk/models/user_entity.rb
@@ -1599,6 +1619,7 @@ spec/models/card_ledger_transaction_log_entry_spec.rb
 spec/models/cart_item_filter_template_spec.rb
 spec/models/cart_item_spec.rb
 spec/models/catalog_action_filter_spec.rb
+spec/models/catalog_action_spec.rb
 spec/models/catalog_item_spec.rb
 spec/models/catalog_rule_spec.rb
 spec/models/catalog_spec.rb
@@ -1677,6 +1698,9 @@ spec/models/event_attributes_entity_spec.rb
 spec/models/event_spec.rb
 spec/models/event_type_spec.rb
 spec/models/event_v2_spec.rb
+spec/models/event_v3_connections_spec.rb
+spec/models/event_v3_entity_spec.rb
+spec/models/event_v3_request_entity_spec.rb
 spec/models/event_v3_spec.rb
 spec/models/experiment_campaign_copy_spec.rb
 spec/models/experiment_copy_experiment_spec.rb
@@ -1802,6 +1826,7 @@ spec/models/integration_hub_event_payload_loyalty_profile_based_points_changed_n
 spec/models/integration_hub_event_payload_loyalty_profile_based_tier_downgrade_notification_spec.rb
 spec/models/integration_hub_event_payload_loyalty_profile_based_tier_upgrade_notification_spec.rb
 spec/models/integration_hub_event_record_spec.rb
+spec/models/integration_hub_event_status_update_spec.rb
 spec/models/integration_hub_flow_config_response_spec.rb
 spec/models/integration_hub_flow_config_spec.rb
 spec/models/integration_hub_flow_response_spec.rb
@@ -1916,6 +1941,7 @@ spec/models/new_customer_session_spec.rb
 spec/models/new_customer_session_v2_spec.rb
 spec/models/new_event_spec.rb
 spec/models/new_event_type_spec.rb
+spec/models/new_event_v3_entity_spec.rb
 spec/models/new_experiment_spec.rb
 spec/models/new_experiment_variant_array_spec.rb
 spec/models/new_experiment_variant_spec.rb
@@ -2010,6 +2036,7 @@ spec/models/revision_activation_request_spec.rb
 spec/models/revision_activation_spec.rb
 spec/models/revision_spec.rb
 spec/models/revision_version_spec.rb
+spec/models/reward_points_required_spec.rb
 spec/models/reward_spec.rb
 spec/models/risk_notification_spec.rb
 spec/models/role_assign_spec.rb
@@ -2085,6 +2112,8 @@ spec/models/strikethrough_set_discount_per_item_member_effect_props_spec.rb
 spec/models/strikethrough_trigger_spec.rb
 spec/models/summarize_campaign_store_budget200_response_spec.rb
 spec/models/summary_campaign_store_budget_spec.rb
+spec/models/support_request_input_spec.rb
+spec/models/support_request_spec.rb
 spec/models/talang_attribute_spec.rb
 spec/models/talang_attribute_visibility_spec.rb
 spec/models/template_arg_def_spec.rb
@@ -2142,6 +2171,7 @@ spec/models/update_referral_spec.rb
 spec/models/update_reward_spec.rb
 spec/models/update_role_spec.rb
 spec/models/update_store_spec.rb
+spec/models/update_support_request_spec.rb
 spec/models/update_user_spec.rb
 spec/models/user_entity_spec.rb
 spec/models/user_spec.rb

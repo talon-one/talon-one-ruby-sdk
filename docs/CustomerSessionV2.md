@@ -25,6 +25,7 @@
 | **total** | **Float** | The total value of cart items and additional costs in the session, before any discounts are applied. |  |
 | **cart_item_total** | **Float** | The total value of cart items, before any discounts are applied. |  |
 | **additional_cost_total** | **Float** | The total value of additional costs, before any discounts are applied. |  |
+| **cart_item_additional_cost_total** | **Float** | The total value of additional costs applied to individual items, before any discounts are applied. | [readonly] |
 | **updated** | **Time** | Timestamp of the most recent event received on this session. |  |
 
 ## Example
@@ -51,9 +52,10 @@ instance = TalonOne::CustomerSessionV2.new(
   attributes: {ShippingCity&#x3D;Berlin},
   first_session: true,
   update_count: 3,
-  total: 119.99,
+  total: 134.99,
   cart_item_total: 99.99,
   additional_cost_total: 20,
+  cart_item_additional_cost_total: 15,
   updated: 2020-02-08T14:15:22Z
 )
 ```

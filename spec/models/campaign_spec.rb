@@ -112,7 +112,7 @@ describe TalonOne::Campaign do
   describe 'test attribute "features"' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-      # validator = Petstore::EnumTest::EnumAttributeValidator.new('Array<String>', ["coupons", "referrals", "loyalty", "giveaways", "strikethrough", "achievements"])
+      # validator = Petstore::EnumTest::EnumAttributeValidator.new('Array<String>', ["coupons", "referrals", "loyalty", "giveaways", "strikethrough", "achievements", "advancedEvents"])
       # validator.allowable_values.each do |value|
       #   expect { instance.features = value }.not_to raise_error
       # end

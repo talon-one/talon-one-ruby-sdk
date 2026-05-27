@@ -51,14 +51,8 @@ module TalonOne
     # When `true`, customer progress can be rolled back in completed achievements.
     attr_accessor :allow_rollback_after_completion
 
-    # Indicates if this achievement is a live or sandbox achievement. Achievements of a given type can only be connected to Applications of the same type.
-    attr_accessor :sandbox
-
     # A list containing the IDs of all applications that are subscribed to A list containing the IDs of all Applications that are connected to this achievement.
     attr_accessor :subscribed_applications
-
-    # A string containing an IANA timezone descriptor.
-    attr_accessor :timezone
 
     # The ID of the user that created this achievement.
     attr_accessor :user_id
@@ -71,6 +65,12 @@ module TalonOne
 
     # The status of the achievement.
     attr_accessor :status
+
+    # Indicates if this achievement is a live or sandbox achievement. Achievements of a given type can only be connected to Applications of the same type.
+    attr_accessor :sandbox
+
+    # A string containing an IANA timezone descriptor.
+    attr_accessor :timezone
 
     class EnumAttributeValidator
       attr_reader :datatype
@@ -109,13 +109,13 @@ module TalonOne
         :'fixed_start_date' => :'fixedStartDate',
         :'end_date' => :'endDate',
         :'allow_rollback_after_completion' => :'allowRollbackAfterCompletion',
-        :'sandbox' => :'sandbox',
         :'subscribed_applications' => :'subscribedApplications',
-        :'timezone' => :'timezone',
         :'user_id' => :'userId',
         :'created_by' => :'createdBy',
         :'has_progress' => :'hasProgress',
-        :'status' => :'status'
+        :'status' => :'status',
+        :'sandbox' => :'sandbox',
+        :'timezone' => :'timezone'
       }
     end
 
@@ -144,13 +144,13 @@ module TalonOne
         :'fixed_start_date' => :'Time',
         :'end_date' => :'Time',
         :'allow_rollback_after_completion' => :'Boolean',
-        :'sandbox' => :'Boolean',
         :'subscribed_applications' => :'Array<Integer>',
-        :'timezone' => :'String',
         :'user_id' => :'Integer',
         :'created_by' => :'String',
         :'has_progress' => :'Boolean',
-        :'status' => :'String'
+        :'status' => :'String',
+        :'sandbox' => :'Boolean',
+        :'timezone' => :'String'
       }
     end
 
@@ -249,24 +249,12 @@ module TalonOne
         self.allow_rollback_after_completion = attributes[:'allow_rollback_after_completion']
       end
 
-      if attributes.key?(:'sandbox')
-        self.sandbox = attributes[:'sandbox']
-      else
-        self.sandbox = nil
-      end
-
       if attributes.key?(:'subscribed_applications')
         if (value = attributes[:'subscribed_applications']).is_a?(Array)
           self.subscribed_applications = value
         end
       else
         self.subscribed_applications = nil
-      end
-
-      if attributes.key?(:'timezone')
-        self.timezone = attributes[:'timezone']
-      else
-        self.timezone = nil
       end
 
       if attributes.key?(:'user_id')
@@ -285,6 +273,18 @@ module TalonOne
 
       if attributes.key?(:'status')
         self.status = attributes[:'status']
+      end
+
+      if attributes.key?(:'sandbox')
+        self.sandbox = attributes[:'sandbox']
+      else
+        self.sandbox = nil
+      end
+
+      if attributes.key?(:'timezone')
+        self.timezone = attributes[:'timezone']
+      else
+        self.timezone = nil
       end
     end
 
@@ -338,10 +338,6 @@ module TalonOne
         invalid_properties.push('invalid value for "activation_policy", activation_policy cannot be nil.')
       end
 
-      if @sandbox.nil?
-        invalid_properties.push('invalid value for "sandbox", sandbox cannot be nil.')
-      end
-
       if @subscribed_applications.nil?
         invalid_properties.push('invalid value for "subscribed_applications", subscribed_applications cannot be nil.')
       end
@@ -350,16 +346,20 @@ module TalonOne
         invalid_properties.push('invalid value for "subscribed_applications", number of items must be greater than or equal to 0.')
       end
 
+      if @user_id.nil?
+        invalid_properties.push('invalid value for "user_id", user_id cannot be nil.')
+      end
+
+      if @sandbox.nil?
+        invalid_properties.push('invalid value for "sandbox", sandbox cannot be nil.')
+      end
+
       if @timezone.nil?
         invalid_properties.push('invalid value for "timezone", timezone cannot be nil.')
       end
 
       if @timezone.to_s.length < 1
         invalid_properties.push('invalid value for "timezone", the character length must be greater than or equal to 1.')
-      end
-
-      if @user_id.nil?
-        invalid_properties.push('invalid value for "user_id", user_id cannot be nil.')
       end
 
       invalid_properties
@@ -384,14 +384,14 @@ module TalonOne
       return false if @activation_policy.nil?
       activation_policy_validator = EnumAttributeValidator.new('String', ["user_action", "fixed_schedule"])
       return false unless activation_policy_validator.valid?(@activation_policy)
-      return false if @sandbox.nil?
       return false if @subscribed_applications.nil?
       return false if @subscribed_applications.length < 0
-      return false if @timezone.nil?
-      return false if @timezone.to_s.length < 1
       return false if @user_id.nil?
       status_validator = EnumAttributeValidator.new('String', ["inprogress", "expired", "not_started", "completed"])
       return false unless status_validator.valid?(@status)
+      return false if @sandbox.nil?
+      return false if @timezone.nil?
+      return false if @timezone.to_s.length < 1
       true
     end
 
@@ -489,16 +489,6 @@ module TalonOne
     end
 
     # Custom attribute writer method with validation
-    # @param [Object] sandbox Value to be assigned
-    def sandbox=(sandbox)
-      if sandbox.nil?
-        fail ArgumentError, 'sandbox cannot be nil'
-      end
-
-      @sandbox = sandbox
-    end
-
-    # Custom attribute writer method with validation
     # @param [Object] subscribed_applications Value to be assigned
     def subscribed_applications=(subscribed_applications)
       if subscribed_applications.nil?
@@ -510,20 +500,6 @@ module TalonOne
       end
 
       @subscribed_applications = subscribed_applications
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] timezone Value to be assigned
-    def timezone=(timezone)
-      if timezone.nil?
-        fail ArgumentError, 'timezone cannot be nil'
-      end
-
-      if timezone.to_s.length < 1
-        fail ArgumentError, 'invalid value for "timezone", the character length must be greater than or equal to 1.'
-      end
-
-      @timezone = timezone
     end
 
     # Custom attribute writer method with validation
@@ -546,6 +522,30 @@ module TalonOne
       @status = status
     end
 
+    # Custom attribute writer method with validation
+    # @param [Object] sandbox Value to be assigned
+    def sandbox=(sandbox)
+      if sandbox.nil?
+        fail ArgumentError, 'sandbox cannot be nil'
+      end
+
+      @sandbox = sandbox
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] timezone Value to be assigned
+    def timezone=(timezone)
+      if timezone.nil?
+        fail ArgumentError, 'timezone cannot be nil'
+      end
+
+      if timezone.to_s.length < 1
+        fail ArgumentError, 'invalid value for "timezone", the character length must be greater than or equal to 1.'
+      end
+
+      @timezone = timezone
+    end
+
     # Checks equality by comparing each attribute.
     # @param [Object] Object to be compared
     def ==(o)
@@ -563,13 +563,13 @@ module TalonOne
           fixed_start_date == o.fixed_start_date &&
           end_date == o.end_date &&
           allow_rollback_after_completion == o.allow_rollback_after_completion &&
-          sandbox == o.sandbox &&
           subscribed_applications == o.subscribed_applications &&
-          timezone == o.timezone &&
           user_id == o.user_id &&
           created_by == o.created_by &&
           has_progress == o.has_progress &&
-          status == o.status
+          status == o.status &&
+          sandbox == o.sandbox &&
+          timezone == o.timezone
     end
 
     # @see the `==` method
@@ -581,7 +581,7 @@ module TalonOne
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, created, name, title, description, target, period, recurrence_policy, activation_policy, fixed_start_date, end_date, allow_rollback_after_completion, sandbox, subscribed_applications, timezone, user_id, created_by, has_progress, status].hash
+      [id, created, name, title, description, target, period, recurrence_policy, activation_policy, fixed_start_date, end_date, allow_rollback_after_completion, subscribed_applications, user_id, created_by, has_progress, status, sandbox, timezone].hash
     end
 
     # Builds the object from hash

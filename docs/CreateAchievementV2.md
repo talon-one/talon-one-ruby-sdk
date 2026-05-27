@@ -14,8 +14,8 @@
 | **fixed_start_date** | **Time** | The achievement&#39;s start date when &#x60;activationPolicy&#x60; is set to &#x60;fixed_schedule&#x60;.  **Note:** It must be an RFC3339 timestamp string.  | [optional] |
 | **end_date** | **Time** | The achievement&#39;s end date. If defined, customers cannot participate in the achievement after this date.  **Note:** It must be an RFC3339 timestamp string.  | [optional] |
 | **allow_rollback_after_completion** | **Boolean** | When &#x60;true&#x60;, customer progress can be rolled back in completed achievements. | [optional] |
-| **sandbox** | **Boolean** | Indicates if this achievement is a live or sandbox achievement. Achievements of a given type can only be connected to Applications of the same type. |  |
 | **subscribed_applications** | **Array&lt;Integer&gt;** | A list containing the IDs of all applications that are subscribed to A list containing the IDs of all Applications that are connected to this achievement. | [optional] |
+| **sandbox** | **Boolean** | Indicates if this achievement is a live or sandbox achievement. Achievements of a given type can only be connected to Applications of the same type. |  |
 | **timezone** | **String** | A string containing an IANA timezone descriptor. |  |
 
 ## Example
@@ -34,8 +34,8 @@ instance = TalonOne::CreateAchievementV2.new(
   fixed_start_date: 2024-01-15T15:04:05+07:00,
   end_date: 2024-01-15T15:04:05+07:00,
   allow_rollback_after_completion: false,
-  sandbox: true,
   subscribed_applications: [132, 97],
+  sandbox: true,
   timezone: Europe/Berlin
 )
 ```

@@ -27,6 +27,8 @@ module TalonOne
 
     attr_accessor :processed_at
 
+    attr_accessor :delivered_at
+
     attr_accessor :process_after
 
     attr_accessor :_retry
@@ -40,6 +42,7 @@ module TalonOne
         :'event_data' => :'EventData',
         :'published_at' => :'PublishedAt',
         :'processed_at' => :'ProcessedAt',
+        :'delivered_at' => :'DeliveredAt',
         :'process_after' => :'ProcessAfter',
         :'_retry' => :'Retry'
       }
@@ -64,6 +67,7 @@ module TalonOne
         :'event_data' => :'Object',
         :'published_at' => :'Time',
         :'processed_at' => :'Time',
+        :'delivered_at' => :'Time',
         :'process_after' => :'Time',
         :'_retry' => :'Integer'
       }
@@ -124,6 +128,10 @@ module TalonOne
 
       if attributes.key?(:'processed_at')
         self.processed_at = attributes[:'processed_at']
+      end
+
+      if attributes.key?(:'delivered_at')
+        self.delivered_at = attributes[:'delivered_at']
       end
 
       if attributes.key?(:'process_after')
@@ -255,6 +263,7 @@ module TalonOne
           event_data == o.event_data &&
           published_at == o.published_at &&
           processed_at == o.processed_at &&
+          delivered_at == o.delivered_at &&
           process_after == o.process_after &&
           _retry == o._retry
     end
@@ -268,7 +277,7 @@ module TalonOne
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, flow_id, event_type, event_data, published_at, processed_at, process_after, _retry].hash
+      [id, flow_id, event_type, event_data, published_at, processed_at, delivered_at, process_after, _retry].hash
     end
 
     # Builds the object from hash

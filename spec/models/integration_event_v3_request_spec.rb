@@ -45,12 +45,6 @@ describe TalonOne::IntegrationEventV3Request do
     end
   end
 
-  describe 'test attribute "integration_id"' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
   describe 'test attribute "type"' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
@@ -63,13 +57,13 @@ describe TalonOne::IntegrationEventV3Request do
     end
   end
 
-  describe 'test attribute "connected_session_id"' do
+  describe 'test attribute "integration_id"' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
     end
   end
 
-  describe 'test attribute "previous_event_id"' do
+  describe 'test attribute "connected_session_id"' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
     end

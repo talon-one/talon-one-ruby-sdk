@@ -6,9 +6,10 @@
 | ---- | ---- | ----------- | ----- |
 | **profile_integration_id** | **String** |  |  |
 | **loyalty_program_id** | **Integer** |  |  |
+| **loyalty_program_name** | **String** | The name of the loyalty program. |  |
 | **subledger_id** | **String** |  |  |
 | **source_of_event** | **String** |  |  |
-| **current_tier** | **String** |  | [optional] |
+| **current_tier** | **String** | The name of the customer&#39;s current tier. |  |
 | **current_points** | **Float** |  |  |
 | **old_tier** | **String** |  | [optional] |
 | **points_required_to_the_next_tier** | **Float** |  | [optional] |
@@ -25,6 +26,7 @@ require 'talon_one_sdk'
 instance = TalonOne::IntegrationHubEventPayloadLoyaltyProfileBasedTierUpgradeNotification.new(
   profile_integration_id: null,
   loyalty_program_id: null,
+  loyalty_program_name: null,
   subledger_id: null,
   source_of_event: null,
   current_tier: null,

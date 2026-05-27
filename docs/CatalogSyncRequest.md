@@ -4,7 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **actions** | **Array&lt;Object&gt;** |  |  |
+| **actions** | [**Array&lt;CatalogAction&gt;**](CatalogAction.md) |  |  |
 | **version** | **Integer** | The version number of the catalog to apply the actions on. | [optional] |
 
 ## Example

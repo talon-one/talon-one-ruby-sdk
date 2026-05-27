@@ -115,7 +115,7 @@ module TalonOne
       if attributes.key?(:'goal_type')
         self.goal_type = attributes[:'goal_type']
       else
-        self.goal_type = nil
+        self.goal_type = 'other'
       end
 
       if attributes.key?(:'goal_description')
@@ -150,7 +150,7 @@ module TalonOne
       return false if @is_variant_assignment_external.nil?
       return false if @campaign.nil?
       return false if @goal_type.nil?
-      goal_type_validator = EnumAttributeValidator.new('String', ["other", "maximize_revenue", "optimize_discount_efficiency", "maximize_items_sold"])
+      goal_type_validator = EnumAttributeValidator.new('String', ["other", "maximize_revenue", "maximize_items_sold", "optimize_discount_efficiency"])
       return false unless goal_type_validator.valid?(@goal_type)
       true
     end
@@ -178,7 +178,7 @@ module TalonOne
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] goal_type Object to be assigned
     def goal_type=(goal_type)
-      validator = EnumAttributeValidator.new('String', ["other", "maximize_revenue", "optimize_discount_efficiency", "maximize_items_sold"])
+      validator = EnumAttributeValidator.new('String', ["other", "maximize_revenue", "maximize_items_sold", "optimize_discount_efficiency"])
       unless validator.valid?(goal_type)
         fail ArgumentError, "invalid value for \"goal_type\", must be one of #{validator.allowable_values}."
       end

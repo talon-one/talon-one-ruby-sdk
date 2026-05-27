@@ -16,7 +16,7 @@ See our [migration guide](MIGRATION.md).
 Add this to the Gemfile:
 
 ```shell
-gem 'talon_one_sdk', '~> 26.10.0'
+gem 'talon_one_sdk', '~> 26.11.0'
 ```
 
 ### Build a gem
@@ -32,10 +32,10 @@ gem build talon_one_sdk.gemspec
 To install the gem locally:
 
 ```shell
-gem install ./talon_one_sdk-26.10.0.gem
+gem install ./talon_one_sdk-26.11.0.gem
 ```
 
-For development, run `gem install --dev ./talon_one_sdk-26.10.0.gem` to install the development dependencies.
+For development, run `gem install --dev ./talon_one_sdk-26.11.0.gem` to install the development dependencies.
 
 ### RubyGems
 
@@ -557,6 +557,7 @@ Class | Method | HTTP request | Description
 - [TalonOne::CartItem](docs/CartItem.md)
 - [TalonOne::CartItemFilterTemplate](docs/CartItemFilterTemplate.md)
 - [TalonOne::Catalog](docs/Catalog.md)
+- [TalonOne::CatalogAction](docs/CatalogAction.md)
 - [TalonOne::CatalogActionFilter](docs/CatalogActionFilter.md)
 - [TalonOne::CatalogItem](docs/CatalogItem.md)
 - [TalonOne::CatalogRule](docs/CatalogRule.md)
@@ -636,6 +637,9 @@ Class | Method | HTTP request | Description
 - [TalonOne::EventType](docs/EventType.md)
 - [TalonOne::EventV2](docs/EventV2.md)
 - [TalonOne::EventV3](docs/EventV3.md)
+- [TalonOne::EventV3Connections](docs/EventV3Connections.md)
+- [TalonOne::EventV3Entity](docs/EventV3Entity.md)
+- [TalonOne::EventV3RequestEntity](docs/EventV3RequestEntity.md)
 - [TalonOne::Experiment](docs/Experiment.md)
 - [TalonOne::ExperimentCampaignCopy](docs/ExperimentCampaignCopy.md)
 - [TalonOne::ExperimentCopy](docs/ExperimentCopy.md)
@@ -760,6 +764,7 @@ Class | Method | HTTP request | Description
 - [TalonOne::IntegrationHubEventPayloadLoyaltyProfileBasedTierDowngradeNotification](docs/IntegrationHubEventPayloadLoyaltyProfileBasedTierDowngradeNotification.md)
 - [TalonOne::IntegrationHubEventPayloadLoyaltyProfileBasedTierUpgradeNotification](docs/IntegrationHubEventPayloadLoyaltyProfileBasedTierUpgradeNotification.md)
 - [TalonOne::IntegrationHubEventRecord](docs/IntegrationHubEventRecord.md)
+- [TalonOne::IntegrationHubEventStatusUpdate](docs/IntegrationHubEventStatusUpdate.md)
 - [TalonOne::IntegrationHubFlow](docs/IntegrationHubFlow.md)
 - [TalonOne::IntegrationHubFlowConfig](docs/IntegrationHubFlowConfig.md)
 - [TalonOne::IntegrationHubFlowConfigResponse](docs/IntegrationHubFlowConfigResponse.md)
@@ -874,6 +879,7 @@ Class | Method | HTTP request | Description
 - [TalonOne::NewCustomerSessionV2](docs/NewCustomerSessionV2.md)
 - [TalonOne::NewEvent](docs/NewEvent.md)
 - [TalonOne::NewEventType](docs/NewEventType.md)
+- [TalonOne::NewEventV3Entity](docs/NewEventV3Entity.md)
 - [TalonOne::NewExperiment](docs/NewExperiment.md)
 - [TalonOne::NewExperimentVariant](docs/NewExperimentVariant.md)
 - [TalonOne::NewExperimentVariantArray](docs/NewExperimentVariantArray.md)
@@ -969,6 +975,7 @@ Class | Method | HTTP request | Description
 - [TalonOne::RevisionActivationRequest](docs/RevisionActivationRequest.md)
 - [TalonOne::RevisionVersion](docs/RevisionVersion.md)
 - [TalonOne::Reward](docs/Reward.md)
+- [TalonOne::RewardPointsRequired](docs/RewardPointsRequired.md)
 - [TalonOne::RiskNotification](docs/RiskNotification.md)
 - [TalonOne::Role](docs/Role.md)
 - [TalonOne::RoleAssign](docs/RoleAssign.md)
@@ -1043,6 +1050,8 @@ Class | Method | HTTP request | Description
 - [TalonOne::StrikethroughTrigger](docs/StrikethroughTrigger.md)
 - [TalonOne::SummarizeCampaignStoreBudget200Response](docs/SummarizeCampaignStoreBudget200Response.md)
 - [TalonOne::SummaryCampaignStoreBudget](docs/SummaryCampaignStoreBudget.md)
+- [TalonOne::SupportRequest](docs/SupportRequest.md)
+- [TalonOne::SupportRequestInput](docs/SupportRequestInput.md)
 - [TalonOne::TalangAttribute](docs/TalangAttribute.md)
 - [TalonOne::TalangAttributeVisibility](docs/TalangAttributeVisibility.md)
 - [TalonOne::TemplateArgDef](docs/TemplateArgDef.md)
@@ -1100,6 +1109,7 @@ Class | Method | HTTP request | Description
 - [TalonOne::UpdateReward](docs/UpdateReward.md)
 - [TalonOne::UpdateRole](docs/UpdateRole.md)
 - [TalonOne::UpdateStore](docs/UpdateStore.md)
+- [TalonOne::UpdateSupportRequest](docs/UpdateSupportRequest.md)
 - [TalonOne::UpdateUser](docs/UpdateUser.md)
 - [TalonOne::User](docs/User.md)
 - [TalonOne::UserEntity](docs/UserEntity.md)

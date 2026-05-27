@@ -107,19 +107,7 @@ describe TalonOne::AchievementV2 do
     end
   end
 
-  describe 'test attribute "sandbox"' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
   describe 'test attribute "subscribed_applications"' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
-  describe 'test attribute "timezone"' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
     end
@@ -150,6 +138,18 @@ describe TalonOne::AchievementV2 do
       # validator.allowable_values.each do |value|
       #   expect { instance.status = value }.not_to raise_error
       # end
+    end
+  end
+
+  describe 'test attribute "sandbox"' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  describe 'test attribute "timezone"' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
     end
   end
 

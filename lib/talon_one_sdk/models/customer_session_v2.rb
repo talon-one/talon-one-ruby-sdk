@@ -78,6 +78,9 @@ module TalonOne
     # The total value of additional costs, before any discounts are applied.
     attr_accessor :additional_cost_total
 
+    # The total value of additional costs applied to individual items, before any discounts are applied.
+    attr_accessor :cart_item_additional_cost_total
+
     # Timestamp of the most recent event received on this session.
     attr_accessor :updated
 
@@ -127,6 +130,7 @@ module TalonOne
         :'total' => :'total',
         :'cart_item_total' => :'cartItemTotal',
         :'additional_cost_total' => :'additionalCostTotal',
+        :'cart_item_additional_cost_total' => :'cartItemAdditionalCostTotal',
         :'updated' => :'updated'
       }
     end
@@ -165,6 +169,7 @@ module TalonOne
         :'total' => :'Float',
         :'cart_item_total' => :'Float',
         :'additional_cost_total' => :'Float',
+        :'cart_item_additional_cost_total' => :'Float',
         :'updated' => :'Time'
       }
     end
@@ -321,6 +326,12 @@ module TalonOne
         self.additional_cost_total = nil
       end
 
+      if attributes.key?(:'cart_item_additional_cost_total')
+        self.cart_item_additional_cost_total = attributes[:'cart_item_additional_cost_total']
+      else
+        self.cart_item_additional_cost_total = nil
+      end
+
       if attributes.key?(:'updated')
         self.updated = attributes[:'updated']
       else
@@ -393,6 +404,10 @@ module TalonOne
         invalid_properties.push('invalid value for "additional_cost_total", additional_cost_total cannot be nil.')
       end
 
+      if @cart_item_additional_cost_total.nil?
+        invalid_properties.push('invalid value for "cart_item_additional_cost_total", cart_item_additional_cost_total cannot be nil.')
+      end
+
       if @updated.nil?
         invalid_properties.push('invalid value for "updated", updated cannot be nil.')
       end
@@ -421,6 +436,7 @@ module TalonOne
       return false if @total.nil?
       return false if @cart_item_total.nil?
       return false if @additional_cost_total.nil?
+      return false if @cart_item_additional_cost_total.nil?
       return false if @updated.nil?
       true
     end
@@ -590,6 +606,16 @@ module TalonOne
     end
 
     # Custom attribute writer method with validation
+    # @param [Object] cart_item_additional_cost_total Value to be assigned
+    def cart_item_additional_cost_total=(cart_item_additional_cost_total)
+      if cart_item_additional_cost_total.nil?
+        fail ArgumentError, 'cart_item_additional_cost_total cannot be nil'
+      end
+
+      @cart_item_additional_cost_total = cart_item_additional_cost_total
+    end
+
+    # Custom attribute writer method with validation
     # @param [Object] updated Value to be assigned
     def updated=(updated)
       if updated.nil?
@@ -625,6 +651,7 @@ module TalonOne
           total == o.total &&
           cart_item_total == o.cart_item_total &&
           additional_cost_total == o.additional_cost_total &&
+          cart_item_additional_cost_total == o.cart_item_additional_cost_total &&
           updated == o.updated
     end
 
@@ -637,7 +664,7 @@ module TalonOne
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, created, integration_id, application_id, profile_id, store_integration_id, evaluable_campaign_ids, coupon_codes, referral_code, loyalty_cards, state, cart_items, experiment_variant_allocations, additional_costs, identifiers, attributes, first_session, update_count, total, cart_item_total, additional_cost_total, updated].hash
+      [id, created, integration_id, application_id, profile_id, store_integration_id, evaluable_campaign_ids, coupon_codes, referral_code, loyalty_cards, state, cart_items, experiment_variant_allocations, additional_costs, identifiers, attributes, first_session, update_count, total, cart_item_total, additional_cost_total, cart_item_additional_cost_total, updated].hash
     end
 
     # Builds the object from hash

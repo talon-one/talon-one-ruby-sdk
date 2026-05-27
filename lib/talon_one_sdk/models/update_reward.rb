@@ -33,6 +33,9 @@ module TalonOne
     # A list of named variables created before the reward's rules are evaluated.  Each binding pairs a name with a talang expression. The expression is evaluated once  and its result is available by name in any rule condition or effect. Bindings must be defined outside of individual rules.
     attr_accessor :bindings
 
+    # The loyalty points required to activate the reward. Each object defines the specific loyalty program and subledger from which points are deducted when activating the reward.  **Note:** - Objects with an `id` are updated. - Objects without an `id` are created. - Existing objects omitted from the payload are deleted. 
+    attr_accessor :points_required
+
     class EnumAttributeValidator
       attr_reader :datatype
       attr_reader :allowable_values
@@ -63,7 +66,8 @@ module TalonOne
         :'status' => :'status',
         :'visibility_conditions' => :'visibilityConditions',
         :'rule' => :'rule',
-        :'bindings' => :'bindings'
+        :'bindings' => :'bindings',
+        :'points_required' => :'pointsRequired'
       }
     end
 
@@ -85,7 +89,8 @@ module TalonOne
         :'status' => :'String',
         :'visibility_conditions' => :'Rule',
         :'rule' => :'Rule',
-        :'bindings' => :'Array<Binding>'
+        :'bindings' => :'Array<Binding>',
+        :'points_required' => :'Array<RewardPointsRequired>'
       }
     end
 
@@ -138,6 +143,12 @@ module TalonOne
       if attributes.key?(:'bindings')
         if (value = attributes[:'bindings']).is_a?(Array)
           self.bindings = value
+        end
+      end
+
+      if attributes.key?(:'points_required')
+        if (value = attributes[:'points_required']).is_a?(Array)
+          self.points_required = value
         end
       end
     end
@@ -208,7 +219,8 @@ module TalonOne
           status == o.status &&
           visibility_conditions == o.visibility_conditions &&
           rule == o.rule &&
-          bindings == o.bindings
+          bindings == o.bindings &&
+          points_required == o.points_required
     end
 
     # @see the `==` method
@@ -220,7 +232,7 @@ module TalonOne
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, description, status, visibility_conditions, rule, bindings].hash
+      [name, description, status, visibility_conditions, rule, bindings, points_required].hash
     end
 
     # Builds the object from hash
