@@ -7,7 +7,7 @@
 | **profile_id** | **String** | ID of the customer profile set by your integration layer.  **Note:** If the customer does not yet have a known &#x60;profileId&#x60;, we recommend you use a guest &#x60;profileId&#x60;.  | [optional] |
 | **store_integration_id** | **String** | The integration ID of the store. You choose this ID when you create a store. | [optional] |
 | **type** | **String** | The name of the event. Must be a [custom event](https://docs.talon.one/docs/dev/concepts/entities/events#custom-events), not a built-in event. |  |
-| **attributes** | **Object** | Arbitrary additional JSON data associated with the event. |  |
+| **attributes** | **Object** | Arbitrary properties associated with this campaign. |  |
 
 ## Example
 
@@ -18,7 +18,7 @@ instance = TalonOne::IntegrationEvent.new(
   profile_id: URNGV8294NV,
   store_integration_id: STORE-001,
   type: pageViewed,
-  attributes: {myAttribute&#x3D;myValue}
+  attributes: null
 )
 ```
 

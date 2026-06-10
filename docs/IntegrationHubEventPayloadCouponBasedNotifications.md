@@ -20,7 +20,7 @@
 | **recipient_integration_id** | **String** |  | [optional] |
 | **import_id** | **Integer** |  | [optional] |
 | **batch_id** | **String** |  | [optional] |
-| **attributes** | **Object** |  | [optional] |
+| **attributes** | **Object** | Arbitrary properties associated with this campaign. | [optional] |
 | **limits** | [**Array&lt;IntegrationHubEventPayloadCouponBasedNotificationsLimits&gt;**](IntegrationHubEventPayloadCouponBasedNotificationsLimits.md) |  | [optional] |
 | **published_at** | **Time** | Timestamp when the event was published. |  |
 | **source_of_event** | **String** |  |  |

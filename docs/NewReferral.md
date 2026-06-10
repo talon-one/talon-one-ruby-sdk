@@ -10,7 +10,7 @@
 | **campaign_id** | **Integer** | ID of the campaign from which the referral received the referral code. |  |
 | **advocate_profile_integration_id** | **String** | The Integration ID of the Advocate&#39;s Profile. |  |
 | **friend_profile_integration_id** | **String** | An optional Integration ID of the Friend&#39;s Profile. | [optional] |
-| **attributes** | **Object** | Arbitrary properties associated with this item. | [optional] |
+| **attributes** | **Object** | Arbitrary properties associated with this campaign. | [optional] |
 
 ## Example
 
@@ -24,7 +24,7 @@ instance = TalonOne::NewReferral.new(
   campaign_id: 78,
   advocate_profile_integration_id: URNGV8294NV,
   friend_profile_integration_id: BZGGC2454PA,
-  attributes: {channel&#x3D;web}
+  attributes: null
 )
 ```
 

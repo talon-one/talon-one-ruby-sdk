@@ -12,7 +12,7 @@
 | **campaign_id** | **Integer** | ID of the campaign from which the referral received the referral code. |  |
 | **advocate_profile_integration_id** | **String** | The Integration ID of the Advocate&#39;s Profile. |  |
 | **friend_profile_integration_id** | **String** | An optional Integration ID of the Friend&#39;s Profile. | [optional] |
-| **attributes** | **Object** | Arbitrary properties associated with this item. | [optional] |
+| **attributes** | **Object** | Arbitrary properties associated with this campaign. | [optional] |
 | **import_id** | **Integer** | The ID of the Import which created this referral. | [optional] |
 | **code** | **String** | The referral code. |  |
 | **usage_counter** | **Integer** | The number of times this referral code has been successfully used. |  |
@@ -33,7 +33,7 @@ instance = TalonOne::InventoryReferral.new(
   campaign_id: 78,
   advocate_profile_integration_id: URNGV8294NV,
   friend_profile_integration_id: BZGGC2454PA,
-  attributes: {channel&#x3D;web},
+  attributes: null,
   import_id: 4,
   code: 27G47Y54VH9L,
   usage_counter: 1,

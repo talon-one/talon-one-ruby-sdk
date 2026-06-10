@@ -16,6 +16,7 @@
 | **features** | **Array&lt;String&gt;** | The features enabled in this campaign. |  |
 | **eligibility** | [**Array&lt;CampaignEligibilityDetails&gt;**](CampaignEligibilityDetails.md) | The customer&#39;s eligibility for each campaign in the current customer session. |  |
 | **rules** | [**Array&lt;RuleMetadataEligibility&gt;**](RuleMetadataEligibility.md) | A list of rules containing customer-facing details of the rewards defined in the campaign. |  |
+| **experiment** | [**CampaignEligibilityExperiment**](CampaignEligibilityExperiment.md) |  | [optional] |
 
 ## Example
 
@@ -34,7 +35,8 @@ instance = TalonOne::CampaignEligibility.new(
   tags: [summer],
   features: [coupons, referrals],
   eligibility: null,
-  rules: null
+  rules: null,
+  experiment: null
 )
 ```
 

@@ -4,7 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **path** | **String** | The exact path of the attribute that was updated. |  |
+| **path** | **String** | The entity type and the attribute name. |  |
 | **value** | **Object** |  |  |
 
 ## Example

@@ -6,12 +6,12 @@
 | ---- | ---- | ----------- | ----- |
 | **program_id** | **Integer** | The ID of the loyalty program where these points were reimbursed. |  |
 | **sub_ledger_id** | **String** | The ID of the subledger within the loyalty program where these points were reimbursed. |  |
-| **value** | **Float** | The amount of reimbursed points that were added. |  |
+| **value** | **Float** | The amount of points that were reimbursed. |  |
 | **recipient_integration_id** | **String** | The user for whom these points were reimbursed. |  |
-| **start_date** | **Time** | Date after which the reimbursed points will be valid. | [optional] |
-| **expiry_date** | **Time** | Date after which the reimbursed points will expire. | [optional] |
-| **transaction_uuid** | **String** | The identifier of &#39;addition&#39; entries added to the ledger as the &#x60;deductLoyaltyPoints&#x60; effect is rolled back. |  |
-| **card_identifier** | **String** | The card on which these points were added. | [optional] |
+| **start_date** | **Time** | The date after which the reimbursed points will be valid. | [optional] |
+| **expiry_date** | **Time** | The date after which the reimbursed points will expire. | [optional] |
+| **transaction_uuid** | **String** | The identifier of this loyalty point transaction. |  |
+| **card_identifier** | **String** | The identifier of the card from which these points were originally deducted. | [optional] |
 
 ## Example
 

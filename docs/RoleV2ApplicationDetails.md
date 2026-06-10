@@ -8,7 +8,6 @@
 | **campaign** | **String** | Name of the campaign-related permission set for the given Application. | [optional] |
 | **draft_campaign** | **String** | Name of the draft campaign-related permission set for the given Application. | [optional] |
 | **tools** | **String** | Name of the tools-related permission set. | [optional] |
-| **thresholds** | [**RolesV2Thresholds**](RolesV2Thresholds.md) | Support user limits for actions that require admin approval within the given application. | [optional] |
 
 ## Example
 
@@ -19,8 +18,7 @@ instance = TalonOne::RoleV2ApplicationDetails.new(
   application: null,
   campaign: null,
   draft_campaign: null,
-  tools: Tools permission set,
-  thresholds: null
+  tools: Tools permission set
 )
 ```
 

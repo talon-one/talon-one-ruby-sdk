@@ -16,7 +16,7 @@ See our [migration guide](MIGRATION.md).
 Add this to the Gemfile:
 
 ```shell
-gem 'talon_one_sdk', '~> 26.11.0'
+gem 'talon_one_sdk', '~> 26.12.0'
 ```
 
 ### Build a gem
@@ -32,10 +32,10 @@ gem build talon_one_sdk.gemspec
 To install the gem locally:
 
 ```shell
-gem install ./talon_one_sdk-26.11.0.gem
+gem install ./talon_one_sdk-26.12.0.gem
 ```
 
-For development, run `gem install --dev ./talon_one_sdk-26.11.0.gem` to install the development dependencies.
+For development, run `gem install --dev ./talon_one_sdk-26.12.0.gem` to install the development dependencies.
 
 ### RubyGems
 
@@ -196,6 +196,7 @@ Class | Method | HTTP request | Description
 *TalonOne::IntegrationApi* | [**get_customer_achievements**](docs/IntegrationApi.md#get_customer_achievements) | **GET** /v1/customer_profiles/{integrationId}/achievements | List customer's available achievements
 *TalonOne::IntegrationApi* | [**get_customer_inventory**](docs/IntegrationApi.md#get_customer_inventory) | **GET** /v1/customer_profiles/{integrationId}/inventory | List customer data
 *TalonOne::IntegrationApi* | [**get_customer_session**](docs/IntegrationApi.md#get_customer_session) | **GET** /v2/customer_sessions/{customerSessionId} | Get customer session
+*TalonOne::IntegrationApi* | [**get_event_v3**](docs/IntegrationApi.md#get_event_v3) | **GET** /v3/events/{integrationId} | Get advanced event
 *TalonOne::IntegrationApi* | [**get_loyalty_balances**](docs/IntegrationApi.md#get_loyalty_balances) | **GET** /v1/loyalty_programs/{loyaltyProgramId}/profile/{integrationId}/balances | Get customer's loyalty balances
 *TalonOne::IntegrationApi* | [**get_loyalty_card_balances**](docs/IntegrationApi.md#get_loyalty_card_balances) | **GET** /v1/loyalty_programs/{loyaltyProgramId}/cards/{loyaltyCardId}/balances | Get card's point balances
 *TalonOne::IntegrationApi* | [**get_loyalty_card_points**](docs/IntegrationApi.md#get_loyalty_card_points) | **GET** /v1/loyalty_programs/{loyaltyProgramId}/cards/{loyaltyCardId}/points | List card's unused loyalty points
@@ -209,6 +210,7 @@ Class | Method | HTTP request | Description
 *TalonOne::IntegrationApi* | [**return_cart_items**](docs/IntegrationApi.md#return_cart_items) | **POST** /v2/customer_sessions/{customerSessionId}/returns | Return cart items
 *TalonOne::IntegrationApi* | [**sync_catalog**](docs/IntegrationApi.md#sync_catalog) | **PUT** /v1/catalogs/{catalogId}/sync | Sync cart item catalog
 *TalonOne::IntegrationApi* | [**track_event_v2**](docs/IntegrationApi.md#track_event_v2) | **POST** /v2/events | Track event
+*TalonOne::IntegrationApi* | [**track_event_v3**](docs/IntegrationApi.md#track_event_v3) | **POST** /v3/events | Track advanced event
 *TalonOne::IntegrationApi* | [**unlink_loyalty_card_from_profile**](docs/IntegrationApi.md#unlink_loyalty_card_from_profile) | **POST** /v2/loyalty_programs/{loyaltyProgramId}/cards/{loyaltyCardId}/unlink_profile | Unlink customer profile from a loyalty card
 *TalonOne::IntegrationApi* | [**update_audience_customers_attributes**](docs/IntegrationApi.md#update_audience_customers_attributes) | **PUT** /v2/audience_customers/{audienceId}/attributes | Update profile attributes for all customers in audience
 *TalonOne::IntegrationApi* | [**update_audience_v2**](docs/IntegrationApi.md#update_audience_v2) | **PUT** /v2/audiences/{audienceId} | Update audience name
@@ -350,6 +352,7 @@ Class | Method | HTTP request | Description
 *TalonOne::ManagementApi* | [**import_coupons**](docs/ManagementApi.md#import_coupons) | **POST** /v1/applications/{applicationId}/campaigns/{campaignId}/import_coupons | Import coupons
 *TalonOne::ManagementApi* | [**import_loyalty_cards**](docs/ManagementApi.md#import_loyalty_cards) | **POST** /v1/loyalty_programs/{loyaltyProgramId}/import_cards | Import loyalty cards
 *TalonOne::ManagementApi* | [**import_loyalty_customers_tiers**](docs/ManagementApi.md#import_loyalty_customers_tiers) | **POST** /v1/loyalty_programs/{loyaltyProgramId}/import_customers_tiers | Import customers into loyalty tiers
+*TalonOne::ManagementApi* | [**import_loyalty_join_dates**](docs/ManagementApi.md#import_loyalty_join_dates) | **POST** /v1/loyalty_programs/{loyaltyProgramId}/import_join_dates | Import join dates for a loyalty program
 *TalonOne::ManagementApi* | [**import_loyalty_points**](docs/ManagementApi.md#import_loyalty_points) | **POST** /v1/loyalty_programs/{loyaltyProgramId}/import_points | Import loyalty points
 *TalonOne::ManagementApi* | [**import_pool_giveaways**](docs/ManagementApi.md#import_pool_giveaways) | **POST** /v1/giveaways/pools/{poolId}/import | Import giveaway codes into a giveaway pool
 *TalonOne::ManagementApi* | [**import_referrals**](docs/ManagementApi.md#import_referrals) | **POST** /v1/applications/{applicationId}/campaigns/{campaignId}/import_referrals | Import referrals
@@ -516,6 +519,7 @@ Class | Method | HTTP request | Description
 - [TalonOne::CampaignEditedNotificationItem](docs/CampaignEditedNotificationItem.md)
 - [TalonOne::CampaignEligibility](docs/CampaignEligibility.md)
 - [TalonOne::CampaignEligibilityDetails](docs/CampaignEligibilityDetails.md)
+- [TalonOne::CampaignEligibilityExperiment](docs/CampaignEligibilityExperiment.md)
 - [TalonOne::CampaignEligibilityFailureDetails](docs/CampaignEligibilityFailureDetails.md)
 - [TalonOne::CampaignEntity](docs/CampaignEntity.md)
 - [TalonOne::CampaignEvaluationGroup](docs/CampaignEvaluationGroup.md)
@@ -642,6 +646,8 @@ Class | Method | HTTP request | Description
 - [TalonOne::EventV3RequestEntity](docs/EventV3RequestEntity.md)
 - [TalonOne::Experiment](docs/Experiment.md)
 - [TalonOne::ExperimentCampaignCopy](docs/ExperimentCampaignCopy.md)
+- [TalonOne::ExperimentConfidenceTimeline](docs/ExperimentConfidenceTimeline.md)
+- [TalonOne::ExperimentConfidenceTimelineDataPoint](docs/ExperimentConfidenceTimelineDataPoint.md)
 - [TalonOne::ExperimentCopy](docs/ExperimentCopy.md)
 - [TalonOne::ExperimentCopyExperiment](docs/ExperimentCopyExperiment.md)
 - [TalonOne::ExperimentListResults](docs/ExperimentListResults.md)
@@ -758,13 +764,13 @@ Class | Method | HTTP request | Description
 - [TalonOne::IntegrationHubConfig](docs/IntegrationHubConfig.md)
 - [TalonOne::IntegrationHubEventPayloadCouponBasedNotifications](docs/IntegrationHubEventPayloadCouponBasedNotifications.md)
 - [TalonOne::IntegrationHubEventPayloadCouponBasedNotificationsLimits](docs/IntegrationHubEventPayloadCouponBasedNotificationsLimits.md)
-- [TalonOne::IntegrationHubEventPayloadLoyaltyProfileBasedNotification](docs/IntegrationHubEventPayloadLoyaltyProfileBasedNotification.md)
 - [TalonOne::IntegrationHubEventPayloadLoyaltyProfileBasedPointsChangedNotification](docs/IntegrationHubEventPayloadLoyaltyProfileBasedPointsChangedNotification.md)
 - [TalonOne::IntegrationHubEventPayloadLoyaltyProfileBasedPointsChangedNotificationAction](docs/IntegrationHubEventPayloadLoyaltyProfileBasedPointsChangedNotificationAction.md)
 - [TalonOne::IntegrationHubEventPayloadLoyaltyProfileBasedTierDowngradeNotification](docs/IntegrationHubEventPayloadLoyaltyProfileBasedTierDowngradeNotification.md)
 - [TalonOne::IntegrationHubEventPayloadLoyaltyProfileBasedTierUpgradeNotification](docs/IntegrationHubEventPayloadLoyaltyProfileBasedTierUpgradeNotification.md)
 - [TalonOne::IntegrationHubEventRecord](docs/IntegrationHubEventRecord.md)
 - [TalonOne::IntegrationHubEventStatusUpdate](docs/IntegrationHubEventStatusUpdate.md)
+- [TalonOne::IntegrationHubEventType](docs/IntegrationHubEventType.md)
 - [TalonOne::IntegrationHubFlow](docs/IntegrationHubFlow.md)
 - [TalonOne::IntegrationHubFlowConfig](docs/IntegrationHubFlowConfig.md)
 - [TalonOne::IntegrationHubFlowConfigResponse](docs/IntegrationHubFlowConfigResponse.md)
@@ -1023,8 +1029,6 @@ Class | Method | HTTP request | Description
 - [TalonOne::ScimServiceProviderConfigResponseBulk](docs/ScimServiceProviderConfigResponseBulk.md)
 - [TalonOne::ScimServiceProviderConfigResponseChangePassword](docs/ScimServiceProviderConfigResponseChangePassword.md)
 - [TalonOne::ScimServiceProviderConfigResponseFilter](docs/ScimServiceProviderConfigResponseFilter.md)
-- [TalonOne::ScimServiceProviderConfigResponsePatch](docs/ScimServiceProviderConfigResponsePatch.md)
-- [TalonOne::ScimServiceProviderConfigResponseSort](docs/ScimServiceProviderConfigResponseSort.md)
 - [TalonOne::ScimUser](docs/ScimUser.md)
 - [TalonOne::ScimUsersListResponse](docs/ScimUsersListResponse.md)
 - [TalonOne::SecondaryDeployment](docs/SecondaryDeployment.md)
@@ -1092,7 +1096,6 @@ Class | Method | HTTP request | Description
 - [TalonOne::UpdateCouponBatch](docs/UpdateCouponBatch.md)
 - [TalonOne::UpdateCouponsData](docs/UpdateCouponsData.md)
 - [TalonOne::UpdateCustomEffect](docs/UpdateCustomEffect.md)
-- [TalonOne::UpdateCustomerProfileV2409Response](docs/UpdateCustomerProfileV2409Response.md)
 - [TalonOne::UpdateCustomerSessionV2409Response](docs/UpdateCustomerSessionV2409Response.md)
 - [TalonOne::UpdateExperiment](docs/UpdateExperiment.md)
 - [TalonOne::UpdateExperimentVariant](docs/UpdateExperimentVariant.md)
@@ -1107,6 +1110,7 @@ Class | Method | HTTP request | Description
 - [TalonOne::UpdateReferral](docs/UpdateReferral.md)
 - [TalonOne::UpdateReferralBatch](docs/UpdateReferralBatch.md)
 - [TalonOne::UpdateReward](docs/UpdateReward.md)
+- [TalonOne::UpdateRiskNotification](docs/UpdateRiskNotification.md)
 - [TalonOne::UpdateRole](docs/UpdateRole.md)
 - [TalonOne::UpdateStore](docs/UpdateStore.md)
 - [TalonOne::UpdateSupportRequest](docs/UpdateSupportRequest.md)
