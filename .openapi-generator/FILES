@@ -129,6 +129,7 @@ docs/CampaignEditedNotification.md
 docs/CampaignEditedNotificationItem.md
 docs/CampaignEligibility.md
 docs/CampaignEligibilityDetails.md
+docs/CampaignEligibilityExperiment.md
 docs/CampaignEligibilityFailureDetails.md
 docs/CampaignEntity.md
 docs/CampaignEvaluationGroup.md
@@ -255,6 +256,8 @@ docs/EventV3Entity.md
 docs/EventV3RequestEntity.md
 docs/Experiment.md
 docs/ExperimentCampaignCopy.md
+docs/ExperimentConfidenceTimeline.md
+docs/ExperimentConfidenceTimelineDataPoint.md
 docs/ExperimentCopy.md
 docs/ExperimentCopyExperiment.md
 docs/ExperimentListResults.md
@@ -372,13 +375,13 @@ docs/IntegrationGetAllCampaigns200Response.md
 docs/IntegrationHubConfig.md
 docs/IntegrationHubEventPayloadCouponBasedNotifications.md
 docs/IntegrationHubEventPayloadCouponBasedNotificationsLimits.md
-docs/IntegrationHubEventPayloadLoyaltyProfileBasedNotification.md
 docs/IntegrationHubEventPayloadLoyaltyProfileBasedPointsChangedNotification.md
 docs/IntegrationHubEventPayloadLoyaltyProfileBasedPointsChangedNotificationAction.md
 docs/IntegrationHubEventPayloadLoyaltyProfileBasedTierDowngradeNotification.md
 docs/IntegrationHubEventPayloadLoyaltyProfileBasedTierUpgradeNotification.md
 docs/IntegrationHubEventRecord.md
 docs/IntegrationHubEventStatusUpdate.md
+docs/IntegrationHubEventType.md
 docs/IntegrationHubFlow.md
 docs/IntegrationHubFlowConfig.md
 docs/IntegrationHubFlowConfigResponse.md
@@ -638,8 +641,6 @@ docs/ScimServiceProviderConfigResponse.md
 docs/ScimServiceProviderConfigResponseBulk.md
 docs/ScimServiceProviderConfigResponseChangePassword.md
 docs/ScimServiceProviderConfigResponseFilter.md
-docs/ScimServiceProviderConfigResponsePatch.md
-docs/ScimServiceProviderConfigResponseSort.md
 docs/ScimUser.md
 docs/ScimUsersListResponse.md
 docs/SecondaryDeployment.md
@@ -707,7 +708,6 @@ docs/UpdateCoupon.md
 docs/UpdateCouponBatch.md
 docs/UpdateCouponsData.md
 docs/UpdateCustomEffect.md
-docs/UpdateCustomerProfileV2409Response.md
 docs/UpdateCustomerSessionV2409Response.md
 docs/UpdateExperiment.md
 docs/UpdateExperimentVariant.md
@@ -722,6 +722,7 @@ docs/UpdatePriceType.md
 docs/UpdateReferral.md
 docs/UpdateReferralBatch.md
 docs/UpdateReward.md
+docs/UpdateRiskNotification.md
 docs/UpdateRole.md
 docs/UpdateStore.md
 docs/UpdateSupportRequest.md
@@ -857,6 +858,7 @@ lib/talon_one_sdk/models/campaign_edited_notification.rb
 lib/talon_one_sdk/models/campaign_edited_notification_item.rb
 lib/talon_one_sdk/models/campaign_eligibility.rb
 lib/talon_one_sdk/models/campaign_eligibility_details.rb
+lib/talon_one_sdk/models/campaign_eligibility_experiment.rb
 lib/talon_one_sdk/models/campaign_eligibility_failure_details.rb
 lib/talon_one_sdk/models/campaign_entity.rb
 lib/talon_one_sdk/models/campaign_evaluation_group.rb
@@ -983,6 +985,8 @@ lib/talon_one_sdk/models/event_v3_entity.rb
 lib/talon_one_sdk/models/event_v3_request_entity.rb
 lib/talon_one_sdk/models/experiment.rb
 lib/talon_one_sdk/models/experiment_campaign_copy.rb
+lib/talon_one_sdk/models/experiment_confidence_timeline.rb
+lib/talon_one_sdk/models/experiment_confidence_timeline_data_point.rb
 lib/talon_one_sdk/models/experiment_copy.rb
 lib/talon_one_sdk/models/experiment_copy_experiment.rb
 lib/talon_one_sdk/models/experiment_list_results.rb
@@ -1099,13 +1103,13 @@ lib/talon_one_sdk/models/integration_get_all_campaigns200_response.rb
 lib/talon_one_sdk/models/integration_hub_config.rb
 lib/talon_one_sdk/models/integration_hub_event_payload_coupon_based_notifications.rb
 lib/talon_one_sdk/models/integration_hub_event_payload_coupon_based_notifications_limits.rb
-lib/talon_one_sdk/models/integration_hub_event_payload_loyalty_profile_based_notification.rb
 lib/talon_one_sdk/models/integration_hub_event_payload_loyalty_profile_based_points_changed_notification.rb
 lib/talon_one_sdk/models/integration_hub_event_payload_loyalty_profile_based_points_changed_notification_action.rb
 lib/talon_one_sdk/models/integration_hub_event_payload_loyalty_profile_based_tier_downgrade_notification.rb
 lib/talon_one_sdk/models/integration_hub_event_payload_loyalty_profile_based_tier_upgrade_notification.rb
 lib/talon_one_sdk/models/integration_hub_event_record.rb
 lib/talon_one_sdk/models/integration_hub_event_status_update.rb
+lib/talon_one_sdk/models/integration_hub_event_type.rb
 lib/talon_one_sdk/models/integration_hub_flow.rb
 lib/talon_one_sdk/models/integration_hub_flow_config.rb
 lib/talon_one_sdk/models/integration_hub_flow_config_response.rb
@@ -1363,8 +1367,6 @@ lib/talon_one_sdk/models/scim_service_provider_config_response.rb
 lib/talon_one_sdk/models/scim_service_provider_config_response_bulk.rb
 lib/talon_one_sdk/models/scim_service_provider_config_response_change_password.rb
 lib/talon_one_sdk/models/scim_service_provider_config_response_filter.rb
-lib/talon_one_sdk/models/scim_service_provider_config_response_patch.rb
-lib/talon_one_sdk/models/scim_service_provider_config_response_sort.rb
 lib/talon_one_sdk/models/scim_user.rb
 lib/talon_one_sdk/models/scim_users_list_response.rb
 lib/talon_one_sdk/models/secondary_deployment.rb
@@ -1433,7 +1435,6 @@ lib/talon_one_sdk/models/update_coupon.rb
 lib/talon_one_sdk/models/update_coupon_batch.rb
 lib/talon_one_sdk/models/update_coupons_data.rb
 lib/talon_one_sdk/models/update_custom_effect.rb
-lib/talon_one_sdk/models/update_customer_profile_v2409_response.rb
 lib/talon_one_sdk/models/update_customer_session_v2409_response.rb
 lib/talon_one_sdk/models/update_experiment.rb
 lib/talon_one_sdk/models/update_experiment_variant.rb
@@ -1448,6 +1449,7 @@ lib/talon_one_sdk/models/update_price_type.rb
 lib/talon_one_sdk/models/update_referral.rb
 lib/talon_one_sdk/models/update_referral_batch.rb
 lib/talon_one_sdk/models/update_reward.rb
+lib/talon_one_sdk/models/update_risk_notification.rb
 lib/talon_one_sdk/models/update_role.rb
 lib/talon_one_sdk/models/update_store.rb
 lib/talon_one_sdk/models/update_support_request.rb
@@ -1576,6 +1578,7 @@ spec/models/campaign_detail_spec.rb
 spec/models/campaign_edited_notification_item_spec.rb
 spec/models/campaign_edited_notification_spec.rb
 spec/models/campaign_eligibility_details_spec.rb
+spec/models/campaign_eligibility_experiment_spec.rb
 spec/models/campaign_eligibility_failure_details_spec.rb
 spec/models/campaign_eligibility_spec.rb
 spec/models/campaign_entity_spec.rb
@@ -1703,6 +1706,8 @@ spec/models/event_v3_entity_spec.rb
 spec/models/event_v3_request_entity_spec.rb
 spec/models/event_v3_spec.rb
 spec/models/experiment_campaign_copy_spec.rb
+spec/models/experiment_confidence_timeline_data_point_spec.rb
+spec/models/experiment_confidence_timeline_spec.rb
 spec/models/experiment_copy_experiment_spec.rb
 spec/models/experiment_copy_spec.rb
 spec/models/experiment_list_results_request_spec.rb
@@ -1820,13 +1825,13 @@ spec/models/integration_get_all_campaigns200_response_spec.rb
 spec/models/integration_hub_config_spec.rb
 spec/models/integration_hub_event_payload_coupon_based_notifications_limits_spec.rb
 spec/models/integration_hub_event_payload_coupon_based_notifications_spec.rb
-spec/models/integration_hub_event_payload_loyalty_profile_based_notification_spec.rb
 spec/models/integration_hub_event_payload_loyalty_profile_based_points_changed_notification_action_spec.rb
 spec/models/integration_hub_event_payload_loyalty_profile_based_points_changed_notification_spec.rb
 spec/models/integration_hub_event_payload_loyalty_profile_based_tier_downgrade_notification_spec.rb
 spec/models/integration_hub_event_payload_loyalty_profile_based_tier_upgrade_notification_spec.rb
 spec/models/integration_hub_event_record_spec.rb
 spec/models/integration_hub_event_status_update_spec.rb
+spec/models/integration_hub_event_type_spec.rb
 spec/models/integration_hub_flow_config_response_spec.rb
 spec/models/integration_hub_flow_config_spec.rb
 spec/models/integration_hub_flow_response_spec.rb
@@ -2083,8 +2088,6 @@ spec/models/scim_schemas_list_response_spec.rb
 spec/models/scim_service_provider_config_response_bulk_spec.rb
 spec/models/scim_service_provider_config_response_change_password_spec.rb
 spec/models/scim_service_provider_config_response_filter_spec.rb
-spec/models/scim_service_provider_config_response_patch_spec.rb
-spec/models/scim_service_provider_config_response_sort_spec.rb
 spec/models/scim_service_provider_config_response_spec.rb
 spec/models/scim_user_spec.rb
 spec/models/scim_users_list_response_spec.rb
@@ -2154,7 +2157,6 @@ spec/models/update_coupon_batch_spec.rb
 spec/models/update_coupon_spec.rb
 spec/models/update_coupons_data_spec.rb
 spec/models/update_custom_effect_spec.rb
-spec/models/update_customer_profile_v2409_response_spec.rb
 spec/models/update_customer_session_v2409_response_spec.rb
 spec/models/update_experiment_spec.rb
 spec/models/update_experiment_variant_array_spec.rb
@@ -2169,6 +2171,7 @@ spec/models/update_price_type_spec.rb
 spec/models/update_referral_batch_spec.rb
 spec/models/update_referral_spec.rb
 spec/models/update_reward_spec.rb
+spec/models/update_risk_notification_spec.rb
 spec/models/update_role_spec.rb
 spec/models/update_store_spec.rb
 spec/models/update_support_request_spec.rb
