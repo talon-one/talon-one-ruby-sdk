@@ -3372,6 +3372,8 @@ module TalonOne
     # @option opts [String] :date_format Determines the format of dates in the export document.
     # @option opts [String] :campaign_state Filter results by the state of the campaign.  - &#x60;enabled&#x60;: Campaigns that are scheduled, running (activated), or expired. - &#x60;running&#x60;: Campaigns that are running (activated). - &#x60;disabled&#x60;: Campaigns that are disabled. - &#x60;expired&#x60;: Campaigns that are expired. - &#x60;archived&#x60;: Campaigns that are archived. 
     # @option opts [Boolean] :values_only Filter results to only return the coupon codes (&#x60;value&#x60; column) without the associated coupon data. (default to false)
+    # @option opts [Time] :deleted_before Timestamp that filters the results to only contain coupons deleted before this date. Must be an RFC3339 timestamp string. You can use any time zone setting. Talon.One will convert to UTC internally.  **Note:** Only coupons deleted in the last 7 days will appear in the results.
+    # @option opts [Time] :deleted_after Timestamp that filters the results to only contain coupons deleted after this date. Must be an RFC3339 timestamp string. You can use any time zone setting. Talon.One will convert to UTC internally.  **Note:** Only coupons deleted in the last 7 days will appear in the results.
     # @return [String]
     def export_coupons(application_id, opts = {})
       data, _status_code, _headers = export_coupons_with_http_info(application_id, opts)
@@ -3396,6 +3398,8 @@ module TalonOne
     # @option opts [String] :date_format Determines the format of dates in the export document.
     # @option opts [String] :campaign_state Filter results by the state of the campaign.  - &#x60;enabled&#x60;: Campaigns that are scheduled, running (activated), or expired. - &#x60;running&#x60;: Campaigns that are running (activated). - &#x60;disabled&#x60;: Campaigns that are disabled. - &#x60;expired&#x60;: Campaigns that are expired. - &#x60;archived&#x60;: Campaigns that are archived. 
     # @option opts [Boolean] :values_only Filter results to only return the coupon codes (&#x60;value&#x60; column) without the associated coupon data. (default to false)
+    # @option opts [Time] :deleted_before Timestamp that filters the results to only contain coupons deleted before this date. Must be an RFC3339 timestamp string. You can use any time zone setting. Talon.One will convert to UTC internally.  **Note:** Only coupons deleted in the last 7 days will appear in the results.
+    # @option opts [Time] :deleted_after Timestamp that filters the results to only contain coupons deleted after this date. Must be an RFC3339 timestamp string. You can use any time zone setting. Talon.One will convert to UTC internally.  **Note:** Only coupons deleted in the last 7 days will appear in the results.
     # @return [Array<(String, Integer, Hash)>] String data, response status code and response headers
     def export_coupons_with_http_info(application_id, opts = {})
       if @api_client.config.debugging
@@ -3440,6 +3444,8 @@ module TalonOne
       query_params[:'dateFormat'] = opts[:'date_format'] if !opts[:'date_format'].nil?
       query_params[:'campaignState'] = opts[:'campaign_state'] if !opts[:'campaign_state'].nil?
       query_params[:'valuesOnly'] = opts[:'values_only'] if !opts[:'values_only'].nil?
+      query_params[:'deletedBefore'] = opts[:'deleted_before'] if !opts[:'deleted_before'].nil?
+      query_params[:'deletedAfter'] = opts[:'deleted_after'] if !opts[:'deleted_after'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}
@@ -6064,6 +6070,7 @@ module TalonOne
     # @option opts [String] :sort The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. 
     # @option opts [String] :entity Returned attributes will be filtered by supplied entity.
     # @option opts [String] :application_ids Returned attributes will be filtered by supplied application ids
+    # @option opts [String] :loyalty_program_ids Returned attributes will be filtered by the specified loyalty program ids, separated by commas. You can only use this parameter when &#x60;entity&#x60; is &#x60;LoyaltyCard&#x60;.
     # @option opts [String] :type Returned attributes will be filtered by supplied type
     # @option opts [String] :kind Returned attributes will be filtered by supplied kind (builtin or custom)
     # @option opts [String] :search Returned attributes will be filtered by searching case insensitive through Attribute name, description and type
@@ -6081,6 +6088,7 @@ module TalonOne
     # @option opts [String] :sort The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. 
     # @option opts [String] :entity Returned attributes will be filtered by supplied entity.
     # @option opts [String] :application_ids Returned attributes will be filtered by supplied application ids
+    # @option opts [String] :loyalty_program_ids Returned attributes will be filtered by the specified loyalty program ids, separated by commas. You can only use this parameter when &#x60;entity&#x60; is &#x60;LoyaltyCard&#x60;.
     # @option opts [String] :type Returned attributes will be filtered by supplied type
     # @option opts [String] :kind Returned attributes will be filtered by supplied kind (builtin or custom)
     # @option opts [String] :search Returned attributes will be filtered by searching case insensitive through Attribute name, description and type
@@ -6111,6 +6119,7 @@ module TalonOne
       query_params[:'sort'] = opts[:'sort'] if !opts[:'sort'].nil?
       query_params[:'entity'] = opts[:'entity'] if !opts[:'entity'].nil?
       query_params[:'applicationIds'] = opts[:'application_ids'] if !opts[:'application_ids'].nil?
+      query_params[:'loyaltyProgramIds'] = opts[:'loyalty_program_ids'] if !opts[:'loyalty_program_ids'].nil?
       query_params[:'type'] = opts[:'type'] if !opts[:'type'].nil?
       query_params[:'kind'] = opts[:'kind'] if !opts[:'kind'].nil?
       query_params[:'search'] = opts[:'search'] if !opts[:'search'].nil?
@@ -9471,6 +9480,81 @@ module TalonOne
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: ManagementApi#get_ruleset\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Get ruleset (V2)
+    # Retrieve the specified ruleset as a JSON object.
+    # @param application_id [Integer] The ID of the Application. It is displayed in your Talon.One deployment URL.
+    # @param campaign_id [Integer] The ID of the campaign. It is displayed in your Talon.One deployment URL.
+    # @param ruleset_id [Integer] The ID of the ruleset.
+    # @param [Hash] opts the optional parameters
+    # @return [RulesetV2]
+    def get_ruleset_v2(application_id, campaign_id, ruleset_id, opts = {})
+      data, _status_code, _headers = get_ruleset_v2_with_http_info(application_id, campaign_id, ruleset_id, opts)
+      data
+    end
+
+    # Get ruleset (V2)
+    # Retrieve the specified ruleset as a JSON object.
+    # @param application_id [Integer] The ID of the Application. It is displayed in your Talon.One deployment URL.
+    # @param campaign_id [Integer] The ID of the campaign. It is displayed in your Talon.One deployment URL.
+    # @param ruleset_id [Integer] The ID of the ruleset.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(RulesetV2, Integer, Hash)>] RulesetV2 data, response status code and response headers
+    def get_ruleset_v2_with_http_info(application_id, campaign_id, ruleset_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ManagementApi.get_ruleset_v2 ...'
+      end
+      # verify the required parameter 'application_id' is set
+      if @api_client.config.client_side_validation && application_id.nil?
+        fail ArgumentError, "Missing the required parameter 'application_id' when calling ManagementApi.get_ruleset_v2"
+      end
+      # verify the required parameter 'campaign_id' is set
+      if @api_client.config.client_side_validation && campaign_id.nil?
+        fail ArgumentError, "Missing the required parameter 'campaign_id' when calling ManagementApi.get_ruleset_v2"
+      end
+      # verify the required parameter 'ruleset_id' is set
+      if @api_client.config.client_side_validation && ruleset_id.nil?
+        fail ArgumentError, "Missing the required parameter 'ruleset_id' when calling ManagementApi.get_ruleset_v2"
+      end
+      # resource path
+      local_var_path = '/v2/applications/{applicationId}/campaigns/{campaignId}/rulesets/{rulesetId}'.sub('{applicationId}', CGI.escape(application_id.to_s)).sub('{campaignId}', CGI.escape(campaign_id.to_s)).sub('{rulesetId}', CGI.escape(ruleset_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'RulesetV2'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['api_key_v1']
+
+      new_options = opts.merge(
+        :operation => :"ManagementApi.get_ruleset_v2",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ManagementApi#get_ruleset_v2\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

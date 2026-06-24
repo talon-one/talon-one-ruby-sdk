@@ -48,6 +48,12 @@ module TalonOne
     # A list of rules containing customer-facing details of the rewards defined in the campaign.
     attr_accessor :rules
 
+    # A list of store IDs linked to this campaign.
+    attr_accessor :linked_store_ids
+
+    # A list of audience IDs linked to this campaign.
+    attr_accessor :linked_audience_ids
+
     class EnumAttributeValidator
       attr_reader :datatype
       attr_reader :allowable_values
@@ -83,7 +89,9 @@ module TalonOne
         :'state' => :'state',
         :'tags' => :'tags',
         :'features' => :'features',
-        :'rules' => :'rules'
+        :'rules' => :'rules',
+        :'linked_store_ids' => :'linkedStoreIds',
+        :'linked_audience_ids' => :'linkedAudienceIds'
       }
     end
 
@@ -110,7 +118,9 @@ module TalonOne
         :'state' => :'String',
         :'tags' => :'Array<String>',
         :'features' => :'Array<String>',
-        :'rules' => :'Array<RuleMetadata>'
+        :'rules' => :'Array<RuleMetadata>',
+        :'linked_store_ids' => :'Array<Integer>',
+        :'linked_audience_ids' => :'Array<Integer>'
       }
     end
 
@@ -205,6 +215,18 @@ module TalonOne
         end
       else
         self.rules = nil
+      end
+
+      if attributes.key?(:'linked_store_ids')
+        if (value = attributes[:'linked_store_ids']).is_a?(Array)
+          self.linked_store_ids = value
+        end
+      end
+
+      if attributes.key?(:'linked_audience_ids')
+        if (value = attributes[:'linked_audience_ids']).is_a?(Array)
+          self.linked_audience_ids = value
+        end
       end
     end
 
@@ -353,7 +375,9 @@ module TalonOne
           state == o.state &&
           tags == o.tags &&
           features == o.features &&
-          rules == o.rules
+          rules == o.rules &&
+          linked_store_ids == o.linked_store_ids &&
+          linked_audience_ids == o.linked_audience_ids
     end
 
     # @see the `==` method
@@ -365,7 +389,7 @@ module TalonOne
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [application_id, id, name, description, start_time, end_time, attributes, state, tags, features, rules].hash
+      [application_id, id, name, description, start_time, end_time, attributes, state, tags, features, rules, linked_store_ids, linked_audience_ids].hash
     end
 
     # Builds the object from hash

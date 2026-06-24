@@ -42,6 +42,9 @@ module TalonOne
     # The giveaways that were awarded during the event processing.
     attr_accessor :awarded_giveaways
 
+    # The achievements progress of the customer.
+    attr_accessor :achievements
+
     # The advanced event that was processed.
     attr_accessor :advanced_event
 
@@ -57,6 +60,7 @@ module TalonOne
         :'created_coupons' => :'createdCoupons',
         :'created_referrals' => :'createdReferrals',
         :'awarded_giveaways' => :'awardedGiveaways',
+        :'achievements' => :'achievements',
         :'advanced_event' => :'advancedEvent'
       }
     end
@@ -83,6 +87,7 @@ module TalonOne
         :'created_coupons' => :'Array<Coupon>',
         :'created_referrals' => :'Array<Referral>',
         :'awarded_giveaways' => :'Array<Giveaway>',
+        :'achievements' => :'Array<CustomerAchievement>',
         :'advanced_event' => :'EventV3'
       }
     end
@@ -172,6 +177,12 @@ module TalonOne
         end
       end
 
+      if attributes.key?(:'achievements')
+        if (value = attributes[:'achievements']).is_a?(Array)
+          self.achievements = value
+        end
+      end
+
       if attributes.key?(:'advanced_event')
         self.advanced_event = attributes[:'advanced_event']
       end
@@ -251,6 +262,7 @@ module TalonOne
           created_coupons == o.created_coupons &&
           created_referrals == o.created_referrals &&
           awarded_giveaways == o.awarded_giveaways &&
+          achievements == o.achievements &&
           advanced_event == o.advanced_event
     end
 
@@ -263,7 +275,7 @@ module TalonOne
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [customer_profile, loyalty, triggered_campaigns, campaign_eligibility, effects, rule_failure_reasons, created_coupons, created_referrals, awarded_giveaways, advanced_event].hash
+      [customer_profile, loyalty, triggered_campaigns, campaign_eligibility, effects, rule_failure_reasons, created_coupons, created_referrals, awarded_giveaways, achievements, advanced_event].hash
     end
 
     # Builds the object from hash

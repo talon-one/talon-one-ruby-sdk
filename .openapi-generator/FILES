@@ -95,6 +95,7 @@ docs/AudienceIntegrationID.md
 docs/AudienceMembership.md
 docs/AudienceReference.md
 docs/AwardGiveawayEffectProps.md
+docs/BaseBlock.md
 docs/BaseCampaign.md
 docs/BaseLoyaltyProgram.md
 docs/BaseNotification.md
@@ -212,6 +213,7 @@ docs/CreateTemplateCampaign.md
 docs/CreateTemplateCampaignResponse.md
 docs/CustomEffect.md
 docs/CustomEffectProps.md
+docs/CustomerAchievement.md
 docs/CustomerActivityReport.md
 docs/CustomerAnalytics.md
 docs/CustomerInventory.md
@@ -552,6 +554,7 @@ docs/OutgoingIntegrationTemplateWithConfigurationDetails.md
 docs/OutgoingIntegrationTemplates.md
 docs/OutgoingIntegrationType.md
 docs/OutgoingIntegrationTypes.md
+docs/PassthroughBlock.md
 docs/PatchItemCatalogAction.md
 docs/PatchManyItemsCatalogAction.md
 docs/PendingActivePointsData.md
@@ -573,6 +576,8 @@ docs/ProductUnitAnalyticsTotals.md
 docs/ProfileAudiencesChanges.md
 docs/ProjectedTier.md
 docs/PromoteExperiment.md
+docs/PromotionGroupBlock.md
+docs/PromotionRuleV2.md
 docs/RedeemReferralEffectProps.md
 docs/Referral.md
 docs/ReferralConstraints.md
@@ -594,6 +599,9 @@ docs/RevisionActivationRequest.md
 docs/RevisionVersion.md
 docs/Reward.md
 docs/RewardPointsRequired.md
+docs/Risk.md
+docs/RiskAffectedEntityItem.md
+docs/RiskDetail.md
 docs/RiskNotification.md
 docs/Role.md
 docs/RoleAssign.md
@@ -618,7 +626,9 @@ docs/RuleEligibilityFailureDetails.md
 docs/RuleFailureReason.md
 docs/RuleMetadata.md
 docs/RuleMetadataEligibility.md
+docs/RuleV2.md
 docs/Ruleset.md
+docs/RulesetV2.md
 docs/SSOConfig.md
 docs/SamlConnection.md
 docs/SamlConnectionInternal.md
@@ -660,7 +670,9 @@ docs/StrikethroughChangedItem.md
 docs/StrikethroughCustomEffectPerItemProps.md
 docs/StrikethroughDebugResponse.md
 docs/StrikethroughEffect.md
+docs/StrikethroughGroupBlock.md
 docs/StrikethroughLabelingNotification.md
+docs/StrikethroughRuleV2.md
 docs/StrikethroughSetDiscountPerItemEffectProps.md
 docs/StrikethroughSetDiscountPerItemMemberEffectProps.md
 docs/StrikethroughTrigger.md
@@ -824,6 +836,7 @@ lib/talon_one_sdk/models/audience_integration_id.rb
 lib/talon_one_sdk/models/audience_membership.rb
 lib/talon_one_sdk/models/audience_reference.rb
 lib/talon_one_sdk/models/award_giveaway_effect_props.rb
+lib/talon_one_sdk/models/base_block.rb
 lib/talon_one_sdk/models/base_campaign.rb
 lib/talon_one_sdk/models/base_loyalty_program.rb
 lib/talon_one_sdk/models/base_notification.rb
@@ -941,6 +954,7 @@ lib/talon_one_sdk/models/create_template_campaign.rb
 lib/talon_one_sdk/models/create_template_campaign_response.rb
 lib/talon_one_sdk/models/custom_effect.rb
 lib/talon_one_sdk/models/custom_effect_props.rb
+lib/talon_one_sdk/models/customer_achievement.rb
 lib/talon_one_sdk/models/customer_activity_report.rb
 lib/talon_one_sdk/models/customer_analytics.rb
 lib/talon_one_sdk/models/customer_inventory.rb
@@ -1279,6 +1293,7 @@ lib/talon_one_sdk/models/outgoing_integration_template_with_configuration_detail
 lib/talon_one_sdk/models/outgoing_integration_templates.rb
 lib/talon_one_sdk/models/outgoing_integration_type.rb
 lib/talon_one_sdk/models/outgoing_integration_types.rb
+lib/talon_one_sdk/models/passthrough_block.rb
 lib/talon_one_sdk/models/patch_item_catalog_action.rb
 lib/talon_one_sdk/models/patch_many_items_catalog_action.rb
 lib/talon_one_sdk/models/pending_active_points_data.rb
@@ -1300,6 +1315,8 @@ lib/talon_one_sdk/models/product_unit_analytics_totals.rb
 lib/talon_one_sdk/models/profile_audiences_changes.rb
 lib/talon_one_sdk/models/projected_tier.rb
 lib/talon_one_sdk/models/promote_experiment.rb
+lib/talon_one_sdk/models/promotion_group_block.rb
+lib/talon_one_sdk/models/promotion_rule_v2.rb
 lib/talon_one_sdk/models/redeem_referral_effect_props.rb
 lib/talon_one_sdk/models/referral.rb
 lib/talon_one_sdk/models/referral_constraints.rb
@@ -1321,6 +1338,9 @@ lib/talon_one_sdk/models/revision_activation_request.rb
 lib/talon_one_sdk/models/revision_version.rb
 lib/talon_one_sdk/models/reward.rb
 lib/talon_one_sdk/models/reward_points_required.rb
+lib/talon_one_sdk/models/risk.rb
+lib/talon_one_sdk/models/risk_affected_entity_item.rb
+lib/talon_one_sdk/models/risk_detail.rb
 lib/talon_one_sdk/models/risk_notification.rb
 lib/talon_one_sdk/models/role.rb
 lib/talon_one_sdk/models/role_assign.rb
@@ -1345,7 +1365,9 @@ lib/talon_one_sdk/models/rule_eligibility_failure_details.rb
 lib/talon_one_sdk/models/rule_failure_reason.rb
 lib/talon_one_sdk/models/rule_metadata.rb
 lib/talon_one_sdk/models/rule_metadata_eligibility.rb
+lib/talon_one_sdk/models/rule_v2.rb
 lib/talon_one_sdk/models/ruleset.rb
+lib/talon_one_sdk/models/ruleset_v2.rb
 lib/talon_one_sdk/models/saml_connection.rb
 lib/talon_one_sdk/models/saml_connection_internal.rb
 lib/talon_one_sdk/models/saml_connection_metadata.rb
@@ -1387,7 +1409,9 @@ lib/talon_one_sdk/models/strikethrough_changed_item.rb
 lib/talon_one_sdk/models/strikethrough_custom_effect_per_item_props.rb
 lib/talon_one_sdk/models/strikethrough_debug_response.rb
 lib/talon_one_sdk/models/strikethrough_effect.rb
+lib/talon_one_sdk/models/strikethrough_group_block.rb
 lib/talon_one_sdk/models/strikethrough_labeling_notification.rb
+lib/talon_one_sdk/models/strikethrough_rule_v2.rb
 lib/talon_one_sdk/models/strikethrough_set_discount_per_item_effect_props.rb
 lib/talon_one_sdk/models/strikethrough_set_discount_per_item_member_effect_props.rb
 lib/talon_one_sdk/models/strikethrough_trigger.rb
@@ -1546,6 +1570,7 @@ spec/models/audience_membership_spec.rb
 spec/models/audience_reference_spec.rb
 spec/models/audience_spec.rb
 spec/models/award_giveaway_effect_props_spec.rb
+spec/models/base_block_spec.rb
 spec/models/base_campaign_spec.rb
 spec/models/base_loyalty_program_spec.rb
 spec/models/base_notification_entity_spec.rb
@@ -1663,6 +1688,7 @@ spec/models/create_template_campaign_response_spec.rb
 spec/models/create_template_campaign_spec.rb
 spec/models/custom_effect_props_spec.rb
 spec/models/custom_effect_spec.rb
+spec/models/customer_achievement_spec.rb
 spec/models/customer_activity_report_spec.rb
 spec/models/customer_analytics_spec.rb
 spec/models/customer_inventory_spec.rb
@@ -2001,6 +2027,7 @@ spec/models/outgoing_integration_template_with_configuration_details_spec.rb
 spec/models/outgoing_integration_templates_spec.rb
 spec/models/outgoing_integration_type_spec.rb
 spec/models/outgoing_integration_types_spec.rb
+spec/models/passthrough_block_spec.rb
 spec/models/patch_item_catalog_action_spec.rb
 spec/models/patch_many_items_catalog_action_spec.rb
 spec/models/pending_active_points_data_spec.rb
@@ -2022,6 +2049,8 @@ spec/models/product_unit_analytics_totals_spec.rb
 spec/models/profile_audiences_changes_spec.rb
 spec/models/projected_tier_spec.rb
 spec/models/promote_experiment_spec.rb
+spec/models/promotion_group_block_spec.rb
+spec/models/promotion_rule_v2_spec.rb
 spec/models/redeem_referral_effect_props_spec.rb
 spec/models/referral_constraints_spec.rb
 spec/models/referral_created_effect_props_spec.rb
@@ -2043,7 +2072,10 @@ spec/models/revision_spec.rb
 spec/models/revision_version_spec.rb
 spec/models/reward_points_required_spec.rb
 spec/models/reward_spec.rb
+spec/models/risk_affected_entity_item_spec.rb
+spec/models/risk_detail_spec.rb
 spec/models/risk_notification_spec.rb
+spec/models/risk_spec.rb
 spec/models/role_assign_spec.rb
 spec/models/role_membership_spec.rb
 spec/models/role_spec.rb
@@ -2067,7 +2099,9 @@ spec/models/rule_failure_reason_spec.rb
 spec/models/rule_metadata_eligibility_spec.rb
 spec/models/rule_metadata_spec.rb
 spec/models/rule_spec.rb
+spec/models/rule_v2_spec.rb
 spec/models/ruleset_spec.rb
+spec/models/ruleset_v2_spec.rb
 spec/models/saml_connection_internal_spec.rb
 spec/models/saml_connection_metadata_spec.rb
 spec/models/saml_connection_spec.rb
@@ -2109,7 +2143,9 @@ spec/models/strikethrough_changed_item_spec.rb
 spec/models/strikethrough_custom_effect_per_item_props_spec.rb
 spec/models/strikethrough_debug_response_spec.rb
 spec/models/strikethrough_effect_spec.rb
+spec/models/strikethrough_group_block_spec.rb
 spec/models/strikethrough_labeling_notification_spec.rb
+spec/models/strikethrough_rule_v2_spec.rb
 spec/models/strikethrough_set_discount_per_item_effect_props_spec.rb
 spec/models/strikethrough_set_discount_per_item_member_effect_props_spec.rb
 spec/models/strikethrough_trigger_spec.rb

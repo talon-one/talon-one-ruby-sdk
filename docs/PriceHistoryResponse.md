@@ -13,7 +13,7 @@
 require 'talon_one_sdk'
 
 instance = TalonOne::PriceHistoryResponse.new(
-  sku: [SKU1241028],
+  sku: SKU1241028,
   history: null
 )
 ```

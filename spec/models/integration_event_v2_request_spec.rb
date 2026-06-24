@@ -60,7 +60,7 @@ describe TalonOne::IntegrationEventV2Request do
   describe 'test attribute "response_content"' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-      # validator = Petstore::EnumTest::EnumAttributeValidator.new('Array<String>', ["customerProfile", "triggeredCampaigns", "loyalty", "event", "awardedGiveaways", "ruleFailureReasons", "campaignEligibility"])
+      # validator = Petstore::EnumTest::EnumAttributeValidator.new('Array<String>', ["customerProfile", "triggeredCampaigns", "loyalty", "event", "awardedGiveaways", "ruleFailureReasons", "campaignEligibility", "achievements"])
       # validator.allowable_values.each do |value|
       #   expect { instance.response_content = value }.not_to raise_error
       # end

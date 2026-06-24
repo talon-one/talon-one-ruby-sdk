@@ -659,6 +659,8 @@ describe 'ManagementApi' do
   # @option opts [String] :date_format Determines the format of dates in the export document.
   # @option opts [String] :campaign_state Filter results by the state of the campaign.  - &#x60;enabled&#x60;: Campaigns that are scheduled, running (activated), or expired. - &#x60;running&#x60;: Campaigns that are running (activated). - &#x60;disabled&#x60;: Campaigns that are disabled. - &#x60;expired&#x60;: Campaigns that are expired. - &#x60;archived&#x60;: Campaigns that are archived. 
   # @option opts [Boolean] :values_only Filter results to only return the coupon codes (&#x60;value&#x60; column) without the associated coupon data.
+  # @option opts [Time] :deleted_before Timestamp that filters the results to only contain coupons deleted before this date. Must be an RFC3339 timestamp string. You can use any time zone setting. Talon.One will convert to UTC internally.  **Note:** Only coupons deleted in the last 7 days will appear in the results.
+  # @option opts [Time] :deleted_after Timestamp that filters the results to only contain coupons deleted after this date. Must be an RFC3339 timestamp string. You can use any time zone setting. Talon.One will convert to UTC internally.  **Note:** Only coupons deleted in the last 7 days will appear in the results.
   # @return [String]
   describe 'export_coupons test' do
     it 'should work' do
@@ -1175,6 +1177,7 @@ describe 'ManagementApi' do
   # @option opts [String] :sort The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. 
   # @option opts [String] :entity Returned attributes will be filtered by supplied entity.
   # @option opts [String] :application_ids Returned attributes will be filtered by supplied application ids
+  # @option opts [String] :loyalty_program_ids Returned attributes will be filtered by the specified loyalty program ids, separated by commas. You can only use this parameter when &#x60;entity&#x60; is &#x60;LoyaltyCard&#x60;.
   # @option opts [String] :type Returned attributes will be filtered by supplied type
   # @option opts [String] :kind Returned attributes will be filtered by supplied kind (builtin or custom)
   # @option opts [String] :search Returned attributes will be filtered by searching case insensitive through Attribute name, description and type
@@ -1826,6 +1829,20 @@ describe 'ManagementApi' do
   # @param [Hash] opts the optional parameters
   # @return [Ruleset]
   describe 'get_ruleset test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  # unit tests for get_ruleset_v2
+  # Get ruleset (V2)
+  # Retrieve the specified ruleset as a JSON object.
+  # @param application_id The ID of the Application. It is displayed in your Talon.One deployment URL.
+  # @param campaign_id The ID of the campaign. It is displayed in your Talon.One deployment URL.
+  # @param ruleset_id The ID of the ruleset.
+  # @param [Hash] opts the optional parameters
+  # @return [RulesetV2]
+  describe 'get_ruleset_v2 test' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
     end

@@ -43,6 +43,9 @@ module TalonOne
     # The giveaways that were awarded during the event processing.
     attr_accessor :awarded_giveaways
 
+    # The achievements progress of the customer.
+    attr_accessor :achievements
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -54,7 +57,8 @@ module TalonOne
         :'rule_failure_reasons' => :'ruleFailureReasons',
         :'created_coupons' => :'createdCoupons',
         :'created_referrals' => :'createdReferrals',
-        :'awarded_giveaways' => :'awardedGiveaways'
+        :'awarded_giveaways' => :'awardedGiveaways',
+        :'achievements' => :'achievements'
       }
     end
 
@@ -79,7 +83,8 @@ module TalonOne
         :'rule_failure_reasons' => :'Array<RuleFailureReason>',
         :'created_coupons' => :'Array<Coupon>',
         :'created_referrals' => :'Array<Referral>',
-        :'awarded_giveaways' => :'Array<Giveaway>'
+        :'awarded_giveaways' => :'Array<Giveaway>',
+        :'achievements' => :'Array<CustomerAchievement>'
       }
     end
 
@@ -160,6 +165,12 @@ module TalonOne
           self.awarded_giveaways = value
         end
       end
+
+      if attributes.key?(:'achievements')
+        if (value = attributes[:'achievements']).is_a?(Array)
+          self.achievements = value
+        end
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -235,7 +246,8 @@ module TalonOne
           rule_failure_reasons == o.rule_failure_reasons &&
           created_coupons == o.created_coupons &&
           created_referrals == o.created_referrals &&
-          awarded_giveaways == o.awarded_giveaways
+          awarded_giveaways == o.awarded_giveaways &&
+          achievements == o.achievements
     end
 
     # @see the `==` method
@@ -247,7 +259,7 @@ module TalonOne
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [customer_profile, loyalty, triggered_campaigns, campaign_eligibility, effects, rule_failure_reasons, created_coupons, created_referrals, awarded_giveaways].hash
+      [customer_profile, loyalty, triggered_campaigns, campaign_eligibility, effects, rule_failure_reasons, created_coupons, created_referrals, awarded_giveaways, achievements].hash
     end
 
     # Builds the object from hash

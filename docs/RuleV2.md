@@ -1,0 +1,24 @@
+# TalonOne::RuleV2
+
+## Properties
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **String** | Unique identifier of the rule. | [optional] |
+| **parent_id** | **String** | ID of the parent rule, if any. | [optional] |
+| **title** | **String** | A short description of the rule. |  |
+| **description** | **String** | A longer description of the rule. | [optional] |
+
+## Example
+
+```ruby
+require 'talon_one_sdk'
+
+instance = TalonOne::RuleV2.new(
+  id: a1b2c3d4-e5f6-7890-abcd-ef1234567890,
+  parent_id: null,
+  title: 10% off for loyalty members,
+  description: null
+)
+```
+
