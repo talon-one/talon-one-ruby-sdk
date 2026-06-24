@@ -13,6 +13,7 @@
 | **created_coupons** | [**Array&lt;Coupon&gt;**](Coupon.md) | The coupons that were created during the event processing. |  |
 | **created_referrals** | [**Array&lt;Referral&gt;**](Referral.md) | The referrals that were created during the event processing. |  |
 | **awarded_giveaways** | [**Array&lt;Giveaway&gt;**](Giveaway.md) | The giveaways that were awarded during the event processing. | [optional] |
+| **achievements** | [**Array&lt;CustomerAchievement&gt;**](CustomerAchievement.md) | The achievements progress of the customer. | [optional] |
 | **event** | [**Event**](Event.md) | The event that was processed. | [optional] |
 
 ## Example
@@ -30,6 +31,7 @@ instance = TalonOne::IntegrationEventV2Response.new(
   created_coupons: null,
   created_referrals: null,
   awarded_giveaways: null,
+  achievements: null,
   event: null
 )
 ```

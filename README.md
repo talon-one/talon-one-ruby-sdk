@@ -16,7 +16,7 @@ See our [migration guide](MIGRATION.md).
 Add this to the Gemfile:
 
 ```shell
-gem 'talon_one_sdk', '~> 26.12.0'
+gem 'talon_one_sdk', '~> 26.13.0'
 ```
 
 ### Build a gem
@@ -32,10 +32,10 @@ gem build talon_one_sdk.gemspec
 To install the gem locally:
 
 ```shell
-gem install ./talon_one_sdk-26.12.0.gem
+gem install ./talon_one_sdk-26.13.0.gem
 ```
 
-For development, run `gem install --dev ./talon_one_sdk-26.12.0.gem` to install the development dependencies.
+For development, run `gem install --dev ./talon_one_sdk-26.13.0.gem` to install the development dependencies.
 
 ### RubyGems
 
@@ -205,6 +205,7 @@ Class | Method | HTTP request | Description
 *TalonOne::IntegrationApi* | [**get_loyalty_program_profile_transactions**](docs/IntegrationApi.md#get_loyalty_program_profile_transactions) | **GET** /v1/loyalty_programs/{loyaltyProgramId}/profile/{integrationId}/transactions | List customer's loyalty transactions
 *TalonOne::IntegrationApi* | [**get_reserved_customers**](docs/IntegrationApi.md#get_reserved_customers) | **GET** /v1/coupon_reservations/customerprofiles/{couponValue} | List customers that have this coupon reserved
 *TalonOne::IntegrationApi* | [**integration_get_all_campaigns**](docs/IntegrationApi.md#integration_get_all_campaigns) | **GET** /v1/integration/campaigns | List all running campaigns
+*TalonOne::IntegrationApi* | [**join_loyalty_program**](docs/IntegrationApi.md#join_loyalty_program) | **POST** /v1/loyalty_programs/{loyaltyProgramId}/profile/{integrationId}/join | Join customer profile to loyalty program
 *TalonOne::IntegrationApi* | [**link_loyalty_card_to_profile**](docs/IntegrationApi.md#link_loyalty_card_to_profile) | **POST** /v2/loyalty_programs/{loyaltyProgramId}/cards/{loyaltyCardId}/link_profile | Link customer profile to card
 *TalonOne::IntegrationApi* | [**reopen_customer_session**](docs/IntegrationApi.md#reopen_customer_session) | **PUT** /v2/customer_sessions/{customerSessionId}/reopen | Reopen customer session
 *TalonOne::IntegrationApi* | [**return_cart_items**](docs/IntegrationApi.md#return_cart_items) | **POST** /v2/customer_sessions/{customerSessionId}/returns | Return cart items
@@ -337,6 +338,7 @@ Class | Method | HTTP request | Description
 *TalonOne::ManagementApi* | [**get_referrals_without_total_count**](docs/ManagementApi.md#get_referrals_without_total_count) | **GET** /v1/applications/{applicationId}/campaigns/{campaignId}/referrals/no_total | List referrals
 *TalonOne::ManagementApi* | [**get_role_v2**](docs/ManagementApi.md#get_role_v2) | **GET** /v2/roles/{roleId} | Get role
 *TalonOne::ManagementApi* | [**get_ruleset**](docs/ManagementApi.md#get_ruleset) | **GET** /v1/applications/{applicationId}/campaigns/{campaignId}/rulesets/{rulesetId} | Get ruleset
+*TalonOne::ManagementApi* | [**get_ruleset_v2**](docs/ManagementApi.md#get_ruleset_v2) | **GET** /v2/applications/{applicationId}/campaigns/{campaignId}/rulesets/{rulesetId} | Get ruleset (V2)
 *TalonOne::ManagementApi* | [**get_rulesets**](docs/ManagementApi.md#get_rulesets) | **GET** /v1/applications/{applicationId}/campaigns/{campaignId}/rulesets | List campaign rulesets
 *TalonOne::ManagementApi* | [**get_store**](docs/ManagementApi.md#get_store) | **GET** /v1/applications/{applicationId}/stores/{storeId} | Get store
 *TalonOne::ManagementApi* | [**get_user**](docs/ManagementApi.md#get_user) | **GET** /v1/users/{userId} | Get user
@@ -485,6 +487,7 @@ Class | Method | HTTP request | Description
 - [TalonOne::AudienceMembership](docs/AudienceMembership.md)
 - [TalonOne::AudienceReference](docs/AudienceReference.md)
 - [TalonOne::AwardGiveawayEffectProps](docs/AwardGiveawayEffectProps.md)
+- [TalonOne::BaseBlock](docs/BaseBlock.md)
 - [TalonOne::BaseCampaign](docs/BaseCampaign.md)
 - [TalonOne::BaseLoyaltyProgram](docs/BaseLoyaltyProgram.md)
 - [TalonOne::BaseNotification](docs/BaseNotification.md)
@@ -602,6 +605,7 @@ Class | Method | HTTP request | Description
 - [TalonOne::CreateTemplateCampaignResponse](docs/CreateTemplateCampaignResponse.md)
 - [TalonOne::CustomEffect](docs/CustomEffect.md)
 - [TalonOne::CustomEffectProps](docs/CustomEffectProps.md)
+- [TalonOne::CustomerAchievement](docs/CustomerAchievement.md)
 - [TalonOne::CustomerActivityReport](docs/CustomerActivityReport.md)
 - [TalonOne::CustomerAnalytics](docs/CustomerAnalytics.md)
 - [TalonOne::CustomerInventory](docs/CustomerInventory.md)
@@ -940,6 +944,7 @@ Class | Method | HTTP request | Description
 - [TalonOne::OutgoingIntegrationTemplates](docs/OutgoingIntegrationTemplates.md)
 - [TalonOne::OutgoingIntegrationType](docs/OutgoingIntegrationType.md)
 - [TalonOne::OutgoingIntegrationTypes](docs/OutgoingIntegrationTypes.md)
+- [TalonOne::PassthroughBlock](docs/PassthroughBlock.md)
 - [TalonOne::PatchItemCatalogAction](docs/PatchItemCatalogAction.md)
 - [TalonOne::PatchManyItemsCatalogAction](docs/PatchManyItemsCatalogAction.md)
 - [TalonOne::PendingActivePointsData](docs/PendingActivePointsData.md)
@@ -961,6 +966,8 @@ Class | Method | HTTP request | Description
 - [TalonOne::ProfileAudiencesChanges](docs/ProfileAudiencesChanges.md)
 - [TalonOne::ProjectedTier](docs/ProjectedTier.md)
 - [TalonOne::PromoteExperiment](docs/PromoteExperiment.md)
+- [TalonOne::PromotionGroupBlock](docs/PromotionGroupBlock.md)
+- [TalonOne::PromotionRuleV2](docs/PromotionRuleV2.md)
 - [TalonOne::RedeemReferralEffectProps](docs/RedeemReferralEffectProps.md)
 - [TalonOne::Referral](docs/Referral.md)
 - [TalonOne::ReferralConstraints](docs/ReferralConstraints.md)
@@ -982,6 +989,9 @@ Class | Method | HTTP request | Description
 - [TalonOne::RevisionVersion](docs/RevisionVersion.md)
 - [TalonOne::Reward](docs/Reward.md)
 - [TalonOne::RewardPointsRequired](docs/RewardPointsRequired.md)
+- [TalonOne::Risk](docs/Risk.md)
+- [TalonOne::RiskAffectedEntityItem](docs/RiskAffectedEntityItem.md)
+- [TalonOne::RiskDetail](docs/RiskDetail.md)
 - [TalonOne::RiskNotification](docs/RiskNotification.md)
 - [TalonOne::Role](docs/Role.md)
 - [TalonOne::RoleAssign](docs/RoleAssign.md)
@@ -1006,7 +1016,9 @@ Class | Method | HTTP request | Description
 - [TalonOne::RuleFailureReason](docs/RuleFailureReason.md)
 - [TalonOne::RuleMetadata](docs/RuleMetadata.md)
 - [TalonOne::RuleMetadataEligibility](docs/RuleMetadataEligibility.md)
+- [TalonOne::RuleV2](docs/RuleV2.md)
 - [TalonOne::Ruleset](docs/Ruleset.md)
+- [TalonOne::RulesetV2](docs/RulesetV2.md)
 - [TalonOne::SSOConfig](docs/SSOConfig.md)
 - [TalonOne::SamlConnection](docs/SamlConnection.md)
 - [TalonOne::SamlConnectionInternal](docs/SamlConnectionInternal.md)
@@ -1048,7 +1060,9 @@ Class | Method | HTTP request | Description
 - [TalonOne::StrikethroughCustomEffectPerItemProps](docs/StrikethroughCustomEffectPerItemProps.md)
 - [TalonOne::StrikethroughDebugResponse](docs/StrikethroughDebugResponse.md)
 - [TalonOne::StrikethroughEffect](docs/StrikethroughEffect.md)
+- [TalonOne::StrikethroughGroupBlock](docs/StrikethroughGroupBlock.md)
 - [TalonOne::StrikethroughLabelingNotification](docs/StrikethroughLabelingNotification.md)
+- [TalonOne::StrikethroughRuleV2](docs/StrikethroughRuleV2.md)
 - [TalonOne::StrikethroughSetDiscountPerItemEffectProps](docs/StrikethroughSetDiscountPerItemEffectProps.md)
 - [TalonOne::StrikethroughSetDiscountPerItemMemberEffectProps](docs/StrikethroughSetDiscountPerItemMemberEffectProps.md)
 - [TalonOne::StrikethroughTrigger](docs/StrikethroughTrigger.md)

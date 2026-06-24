@@ -14,7 +14,7 @@
 require 'talon_one_sdk'
 
 instance = TalonOne::PriceHistoryRequest.new(
-  sku: [sku-124],
+  sku: SKU1241028,
   start_date: 2020-11-10T23:00:00Z,
   end_date: 2020-12-10T23:00:00Z
 )

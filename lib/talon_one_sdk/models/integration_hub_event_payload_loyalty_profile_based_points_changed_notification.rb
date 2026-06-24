@@ -29,6 +29,9 @@ module TalonOne
     # The name of the customer's current tier.
     attr_accessor :current_tier
 
+    # The integration ID of the session through which the points were earned or lost. Only set when the change results from a rule engine execution; empty otherwise.
+    attr_accessor :session_integration_id
+
     attr_accessor :employee_name
 
     attr_accessor :user_id
@@ -49,6 +52,7 @@ module TalonOne
         :'subledger_id' => :'SubledgerID',
         :'source_of_event' => :'SourceOfEvent',
         :'current_tier' => :'CurrentTier',
+        :'session_integration_id' => :'SessionIntegrationID',
         :'employee_name' => :'EmployeeName',
         :'user_id' => :'UserID',
         :'current_points' => :'CurrentPoints',
@@ -76,6 +80,7 @@ module TalonOne
         :'subledger_id' => :'String',
         :'source_of_event' => :'String',
         :'current_tier' => :'String',
+        :'session_integration_id' => :'String',
         :'employee_name' => :'String',
         :'user_id' => :'Integer',
         :'current_points' => :'Float',
@@ -140,6 +145,10 @@ module TalonOne
         self.current_tier = attributes[:'current_tier']
       else
         self.current_tier = nil
+      end
+
+      if attributes.key?(:'session_integration_id')
+        self.session_integration_id = attributes[:'session_integration_id']
       end
 
       if attributes.key?(:'employee_name')
@@ -315,6 +324,7 @@ module TalonOne
           subledger_id == o.subledger_id &&
           source_of_event == o.source_of_event &&
           current_tier == o.current_tier &&
+          session_integration_id == o.session_integration_id &&
           employee_name == o.employee_name &&
           user_id == o.user_id &&
           current_points == o.current_points &&
@@ -331,7 +341,7 @@ module TalonOne
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [profile_integration_id, loyalty_program_id, loyalty_program_name, subledger_id, source_of_event, current_tier, employee_name, user_id, current_points, actions, published_at].hash
+      [profile_integration_id, loyalty_program_id, loyalty_program_name, subledger_id, source_of_event, current_tier, session_integration_id, employee_name, user_id, current_points, actions, published_at].hash
     end
 
     # Builds the object from hash

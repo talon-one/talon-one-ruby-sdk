@@ -40,7 +40,7 @@ module TalonOne
     attr_accessor :sandbox
 
     # An optional rule that manages who can see this reward. If not specified, the reward is visible to all customers.  **Note:** Only the `condition` field is evaluated within this rule. The `effects` field must be an empty array, and `bindings` are not supported. 
-    attr_accessor :visibility_conditions
+    attr_accessor :eligibility_conditions
 
     # Rule to apply.  **Note**: The `bindings` field inside the rule must not be used in this endpoint. All bindings should be defined at the reward level via the top-level `bindings` field. 
     attr_accessor :rule
@@ -90,7 +90,7 @@ module TalonOne
         :'description' => :'description',
         :'application_ids' => :'applicationIds',
         :'sandbox' => :'sandbox',
-        :'visibility_conditions' => :'visibilityConditions',
+        :'eligibility_conditions' => :'eligibilityConditions',
         :'rule' => :'rule',
         :'bindings' => :'bindings',
         :'modified' => :'modified',
@@ -120,7 +120,7 @@ module TalonOne
         :'description' => :'String',
         :'application_ids' => :'Array<Integer>',
         :'sandbox' => :'Boolean',
-        :'visibility_conditions' => :'Rule',
+        :'eligibility_conditions' => :'Rule',
         :'rule' => :'Rule',
         :'bindings' => :'Array<Binding>',
         :'modified' => :'Time',
@@ -208,8 +208,8 @@ module TalonOne
         self.sandbox = nil
       end
 
-      if attributes.key?(:'visibility_conditions')
-        self.visibility_conditions = attributes[:'visibility_conditions']
+      if attributes.key?(:'eligibility_conditions')
+        self.eligibility_conditions = attributes[:'eligibility_conditions']
       end
 
       if attributes.key?(:'rule')
@@ -407,7 +407,7 @@ module TalonOne
           description == o.description &&
           application_ids == o.application_ids &&
           sandbox == o.sandbox &&
-          visibility_conditions == o.visibility_conditions &&
+          eligibility_conditions == o.eligibility_conditions &&
           rule == o.rule &&
           bindings == o.bindings &&
           modified == o.modified &&
@@ -424,7 +424,7 @@ module TalonOne
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, created, account_id, name, api_name, description, application_ids, sandbox, visibility_conditions, rule, bindings, modified, status, points_required].hash
+      [id, created, account_id, name, api_name, description, application_ids, sandbox, eligibility_conditions, rule, bindings, modified, status, points_required].hash
     end
 
     # Builds the object from hash

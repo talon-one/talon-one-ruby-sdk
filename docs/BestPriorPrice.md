@@ -20,7 +20,7 @@ require 'talon_one_sdk'
 
 instance = TalonOne::BestPriorPrice.new(
   id: 1,
-  sku: NVR-GN-GV-UUP,
+  sku: SKU7345278,
   observed_at: 2025-11-10T23:00:00Z,
   context_ids: [SpringSale, SummerSale2025],
   context_id: ,

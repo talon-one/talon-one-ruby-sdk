@@ -25,7 +25,7 @@ module TalonOne
     attr_accessor :status
 
     # An optional rule that manages who can see this reward. If not specified, the reward is visible to all customers.  **Note:** Only the `condition` field is evaluated within this rule. The `effects` field must be an empty array, and `bindings` are not supported. 
-    attr_accessor :visibility_conditions
+    attr_accessor :eligibility_conditions
 
     # Rule to apply.  **Note**: The `bindings` field inside the rule must not be used in this endpoint. All bindings should be defined at the reward level via the top-level `bindings` field. 
     attr_accessor :rule
@@ -64,7 +64,7 @@ module TalonOne
         :'name' => :'name',
         :'description' => :'description',
         :'status' => :'status',
-        :'visibility_conditions' => :'visibilityConditions',
+        :'eligibility_conditions' => :'eligibilityConditions',
         :'rule' => :'rule',
         :'bindings' => :'bindings',
         :'points_required' => :'pointsRequired'
@@ -87,7 +87,7 @@ module TalonOne
         :'name' => :'String',
         :'description' => :'String',
         :'status' => :'String',
-        :'visibility_conditions' => :'Rule',
+        :'eligibility_conditions' => :'Rule',
         :'rule' => :'Rule',
         :'bindings' => :'Array<Binding>',
         :'points_required' => :'Array<RewardPointsRequired>'
@@ -132,8 +132,8 @@ module TalonOne
         self.status = nil
       end
 
-      if attributes.key?(:'visibility_conditions')
-        self.visibility_conditions = attributes[:'visibility_conditions']
+      if attributes.key?(:'eligibility_conditions')
+        self.eligibility_conditions = attributes[:'eligibility_conditions']
       end
 
       if attributes.key?(:'rule')
@@ -217,7 +217,7 @@ module TalonOne
           name == o.name &&
           description == o.description &&
           status == o.status &&
-          visibility_conditions == o.visibility_conditions &&
+          eligibility_conditions == o.eligibility_conditions &&
           rule == o.rule &&
           bindings == o.bindings &&
           points_required == o.points_required
@@ -232,7 +232,7 @@ module TalonOne
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, description, status, visibility_conditions, rule, bindings, points_required].hash
+      [name, description, status, eligibility_conditions, rule, bindings, points_required].hash
     end
 
     # Builds the object from hash

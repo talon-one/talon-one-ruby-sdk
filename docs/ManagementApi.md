@@ -123,6 +123,7 @@ All URIs are relative to *https://yourbaseurl.talon.one*
 | [**get_referrals_without_total_count**](ManagementApi.md#get_referrals_without_total_count) | **GET** /v1/applications/{applicationId}/campaigns/{campaignId}/referrals/no_total | List referrals |
 | [**get_role_v2**](ManagementApi.md#get_role_v2) | **GET** /v2/roles/{roleId} | Get role |
 | [**get_ruleset**](ManagementApi.md#get_ruleset) | **GET** /v1/applications/{applicationId}/campaigns/{campaignId}/rulesets/{rulesetId} | Get ruleset |
+| [**get_ruleset_v2**](ManagementApi.md#get_ruleset_v2) | **GET** /v2/applications/{applicationId}/campaigns/{campaignId}/rulesets/{rulesetId} | Get ruleset (V2) |
 | [**get_rulesets**](ManagementApi.md#get_rulesets) | **GET** /v1/applications/{applicationId}/campaigns/{campaignId}/rulesets | List campaign rulesets |
 | [**get_store**](ManagementApi.md#get_store) | **GET** /v1/applications/{applicationId}/stores/{storeId} | Get store |
 | [**get_user**](ManagementApi.md#get_user) | **GET** /v1/users/{userId} | Get user |
@@ -3550,7 +3551,9 @@ opts = {
   exact_match: true, # Boolean | Filter results to an exact case-insensitive matching against the coupon code.
   date_format: 'excel', # String | Determines the format of dates in the export document.
   campaign_state: 'enabled', # String | Filter results by the state of the campaign.  - `enabled`: Campaigns that are scheduled, running (activated), or expired. - `running`: Campaigns that are running (activated). - `disabled`: Campaigns that are disabled. - `expired`: Campaigns that are expired. - `archived`: Campaigns that are archived. 
-  values_only: true # Boolean | Filter results to only return the coupon codes (`value` column) without the associated coupon data.
+  values_only: true, # Boolean | Filter results to only return the coupon codes (`value` column) without the associated coupon data.
+  deleted_before: Time.parse('2013-10-20T19:20:30+01:00'), # Time | Timestamp that filters the results to only contain coupons deleted before this date. Must be an RFC3339 timestamp string. You can use any time zone setting. Talon.One will convert to UTC internally.  **Note:** Only coupons deleted in the last 7 days will appear in the results.
+  deleted_after: Time.parse('2013-10-20T19:20:30+01:00') # Time | Timestamp that filters the results to only contain coupons deleted after this date. Must be an RFC3339 timestamp string. You can use any time zone setting. Talon.One will convert to UTC internally.  **Note:** Only coupons deleted in the last 7 days will appear in the results.
 }
 
 begin
@@ -3599,6 +3602,8 @@ end
 | **date_format** | **String** | Determines the format of dates in the export document. | [optional] |
 | **campaign_state** | **String** | Filter results by the state of the campaign.  - &#x60;enabled&#x60;: Campaigns that are scheduled, running (activated), or expired. - &#x60;running&#x60;: Campaigns that are running (activated). - &#x60;disabled&#x60;: Campaigns that are disabled. - &#x60;expired&#x60;: Campaigns that are expired. - &#x60;archived&#x60;: Campaigns that are archived.  | [optional] |
 | **values_only** | **Boolean** | Filter results to only return the coupon codes (&#x60;value&#x60; column) without the associated coupon data. | [optional][default to false] |
+| **deleted_before** | **Time** | Timestamp that filters the results to only contain coupons deleted before this date. Must be an RFC3339 timestamp string. You can use any time zone setting. Talon.One will convert to UTC internally.  **Note:** Only coupons deleted in the last 7 days will appear in the results. | [optional] |
+| **deleted_after** | **Time** | Timestamp that filters the results to only contain coupons deleted after this date. Must be an RFC3339 timestamp string. You can use any time zone setting. Talon.One will convert to UTC internally.  **Note:** Only coupons deleted in the last 7 days will appear in the results. | [optional] |
 
 ### Return type
 
@@ -6235,6 +6240,7 @@ opts = {
   sort: 'sort_example', # String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. 
   entity: 'entity_example', # String | Returned attributes will be filtered by supplied entity.
   application_ids: 'application_ids_example', # String | Returned attributes will be filtered by supplied application ids
+  loyalty_program_ids: 'loyalty_program_ids_example', # String | Returned attributes will be filtered by the specified loyalty program ids, separated by commas. You can only use this parameter when `entity` is `LoyaltyCard`.
   type: 'type_example', # String | Returned attributes will be filtered by supplied type
   kind: 'builtin', # String | Returned attributes will be filtered by supplied kind (builtin or custom)
   search: 'search_example' # String | Returned attributes will be filtered by searching case insensitive through Attribute name, description and type
@@ -6276,6 +6282,7 @@ end
 | **sort** | **String** | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations.  | [optional] |
 | **entity** | **String** | Returned attributes will be filtered by supplied entity. | [optional] |
 | **application_ids** | **String** | Returned attributes will be filtered by supplied application ids | [optional] |
+| **loyalty_program_ids** | **String** | Returned attributes will be filtered by the specified loyalty program ids, separated by commas. You can only use this parameter when &#x60;entity&#x60; is &#x60;LoyaltyCard&#x60;. | [optional] |
 | **type** | **String** | Returned attributes will be filtered by supplied type | [optional] |
 | **kind** | **String** | Returned attributes will be filtered by supplied kind (builtin or custom) | [optional] |
 | **search** | **String** | Returned attributes will be filtered by searching case insensitive through Attribute name, description and type | [optional] |
@@ -9472,6 +9479,81 @@ end
 - **Accept**: application/json
 
 
+## get_ruleset_v2
+
+> <RulesetV2> get_ruleset_v2(application_id, campaign_id, ruleset_id)
+
+Get ruleset (V2)
+
+Retrieve the specified ruleset as a JSON object.
+
+### Examples
+
+```ruby
+require 'time'
+require 'talon_one_sdk'
+# setup authorization
+TalonOne.configure do |config|
+  # Configure API key authorization: api_key_v1
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+end
+
+api_instance = TalonOne::ManagementApi.new
+application_id = 789 # Integer | The ID of the Application. It is displayed in your Talon.One deployment URL.
+campaign_id = 789 # Integer | The ID of the campaign. It is displayed in your Talon.One deployment URL.
+ruleset_id = 789 # Integer | The ID of the ruleset.
+
+begin
+  # Get ruleset (V2)
+  result = api_instance.get_ruleset_v2(application_id, campaign_id, ruleset_id)
+  p result
+rescue TalonOne::ApiError => e
+  puts "Error when calling ManagementApi->get_ruleset_v2: #{e}"
+end
+```
+
+#### Using the get_ruleset_v2_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<RulesetV2>, Integer, Hash)> get_ruleset_v2_with_http_info(application_id, campaign_id, ruleset_id)
+
+```ruby
+begin
+  # Get ruleset (V2)
+  data, status_code, headers = api_instance.get_ruleset_v2_with_http_info(application_id, campaign_id, ruleset_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <RulesetV2>
+rescue TalonOne::ApiError => e
+  puts "Error when calling ManagementApi->get_ruleset_v2_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **application_id** | **Integer** | The ID of the Application. It is displayed in your Talon.One deployment URL. |  |
+| **campaign_id** | **Integer** | The ID of the campaign. It is displayed in your Talon.One deployment URL. |  |
+| **ruleset_id** | **Integer** | The ID of the ruleset. |  |
+
+### Return type
+
+[**RulesetV2**](RulesetV2.md)
+
+### Authorization
+
+[api_key_v1](../README.md#api_key_v1)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## get_rulesets
 
 > <GetRulesets200Response> get_rulesets(application_id, campaign_id, opts)
@@ -11894,7 +11976,7 @@ end
 
 api_instance = TalonOne::ManagementApi.new
 application_id = 789 # Integer | The ID of the Application. It is displayed in your Talon.One deployment URL.
-price_history_request = TalonOne::PriceHistoryRequest.new({sku: '[sku-124]', start_date: Time.parse('2020-11-10T23:00:00Z'), end_date: Time.parse('2020-12-10T23:00:00Z')}) # PriceHistoryRequest | body
+price_history_request = TalonOne::PriceHistoryRequest.new({sku: 'SKU1241028', start_date: Time.parse('2020-11-10T23:00:00Z'), end_date: Time.parse('2020-12-10T23:00:00Z')}) # PriceHistoryRequest | body
 
 begin
   # Get summary of price history

@@ -42,6 +42,9 @@ module TalonOne
     # The giveaways that were awarded during the event processing.
     attr_accessor :awarded_giveaways
 
+    # The achievements progress of the customer.
+    attr_accessor :achievements
+
     # The referral that was processed.
     attr_accessor :referral
 
@@ -75,6 +78,7 @@ module TalonOne
         :'created_coupons' => :'createdCoupons',
         :'created_referrals' => :'createdReferrals',
         :'awarded_giveaways' => :'awardedGiveaways',
+        :'achievements' => :'achievements',
         :'referral' => :'referral',
         :'coupons' => :'coupons',
         :'event' => :'event',
@@ -107,6 +111,7 @@ module TalonOne
         :'created_coupons' => :'Array<Coupon>',
         :'created_referrals' => :'Array<Referral>',
         :'awarded_giveaways' => :'Array<Giveaway>',
+        :'achievements' => :'Array<CustomerAchievement>',
         :'referral' => :'InventoryReferral',
         :'coupons' => :'Array<IntegrationCoupon>',
         :'event' => :'Event',
@@ -199,6 +204,12 @@ module TalonOne
       if attributes.key?(:'awarded_giveaways')
         if (value = attributes[:'awarded_giveaways']).is_a?(Array)
           self.awarded_giveaways = value
+        end
+      end
+
+      if attributes.key?(:'achievements')
+        if (value = attributes[:'achievements']).is_a?(Array)
+          self.achievements = value
         end
       end
 
@@ -309,6 +320,7 @@ module TalonOne
           created_coupons == o.created_coupons &&
           created_referrals == o.created_referrals &&
           awarded_giveaways == o.awarded_giveaways &&
+          achievements == o.achievements &&
           referral == o.referral &&
           coupons == o.coupons &&
           event == o.event &&
@@ -327,7 +339,7 @@ module TalonOne
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [customer_profile, loyalty, triggered_campaigns, campaign_eligibility, effects, rule_failure_reasons, created_coupons, created_referrals, awarded_giveaways, referral, coupons, event, advanced_event, customer_session, _return, previous_returns].hash
+      [customer_profile, loyalty, triggered_campaigns, campaign_eligibility, effects, rule_failure_reasons, created_coupons, created_referrals, awarded_giveaways, achievements, referral, coupons, event, advanced_event, customer_session, _return, previous_returns].hash
     end
 
     # Builds the object from hash

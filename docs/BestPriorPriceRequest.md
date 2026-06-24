@@ -16,7 +16,7 @@
 require 'talon_one_sdk'
 
 instance = TalonOne::BestPriorPriceRequest.new(
-  skus: [comma, period],
+  skus: [SKU1241028, SKU7345278],
   timeframe_end_date: 2020-11-10T23:00:00Z,
   timeframe: 30,
   timeframe_end_date_type: sale,
