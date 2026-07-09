@@ -25,8 +25,8 @@ module TalonOne
     # The ID of the risk notification rule that flagged this risk.
     attr_accessor :notification_id
 
-    # The date of the ML pipeline run that detected this risk.
-    attr_accessor :run_date
+    # The date of the activity data in which this risk was detected. The anomaly detection pipeline scores complete 24-hour cycles, so this is always the day before the risk was reported, not the reporting date itself. 
+    attr_accessor :feature_date
 
     # The Application group this risk was detected in. Contains the Application ID, or `__GLOBAL__` for metrics that are not grouped by Application. 
     attr_accessor :group_key
@@ -89,7 +89,7 @@ module TalonOne
         :'id' => :'id',
         :'created' => :'created',
         :'notification_id' => :'notificationId',
-        :'run_date' => :'runDate',
+        :'feature_date' => :'featureDate',
         :'group_key' => :'groupKey',
         :'application_id' => :'applicationId',
         :'status' => :'status',
@@ -120,7 +120,7 @@ module TalonOne
         :'id' => :'Integer',
         :'created' => :'Time',
         :'notification_id' => :'Integer',
-        :'run_date' => :'Date',
+        :'feature_date' => :'Date',
         :'group_key' => :'String',
         :'application_id' => :'Integer',
         :'status' => :'String',
@@ -182,10 +182,10 @@ module TalonOne
         self.notification_id = nil
       end
 
-      if attributes.key?(:'run_date')
-        self.run_date = attributes[:'run_date']
+      if attributes.key?(:'feature_date')
+        self.feature_date = attributes[:'feature_date']
       else
-        self.run_date = nil
+        self.feature_date = nil
       end
 
       if attributes.key?(:'group_key')
@@ -268,8 +268,8 @@ module TalonOne
         invalid_properties.push('invalid value for "notification_id", notification_id cannot be nil.')
       end
 
-      if @run_date.nil?
-        invalid_properties.push('invalid value for "run_date", run_date cannot be nil.')
+      if @feature_date.nil?
+        invalid_properties.push('invalid value for "feature_date", feature_date cannot be nil.')
       end
 
       if @group_key.nil?
@@ -318,7 +318,7 @@ module TalonOne
       return false if @id.nil?
       return false if @created.nil?
       return false if @notification_id.nil?
-      return false if @run_date.nil?
+      return false if @feature_date.nil?
       return false if @group_key.nil?
       return false if @status.nil?
       status_validator = EnumAttributeValidator.new('String', ["active", "in_review", "confirmed", "discarded"])
@@ -333,7 +333,7 @@ module TalonOne
       activity_validator = EnumAttributeValidator.new('String', ["loyalty_points_earned", "discounted_amount", "completed_orders", "coupon_attempts"])
       return false unless activity_validator.valid?(@activity)
       return false if @time_frame.nil?
-      time_frame_validator = EnumAttributeValidator.new('String', ["1_day", "1_week", "1_month"])
+      time_frame_validator = EnumAttributeValidator.new('String', ["1D", "7D", "30D"])
       return false unless time_frame_validator.valid?(@time_frame)
       return false if @reported_date.nil?
       return false if @affected_entity_count.nil?
@@ -372,13 +372,13 @@ module TalonOne
     end
 
     # Custom attribute writer method with validation
-    # @param [Object] run_date Value to be assigned
-    def run_date=(run_date)
-      if run_date.nil?
-        fail ArgumentError, 'run_date cannot be nil'
+    # @param [Object] feature_date Value to be assigned
+    def feature_date=(feature_date)
+      if feature_date.nil?
+        fail ArgumentError, 'feature_date cannot be nil'
       end
 
-      @run_date = run_date
+      @feature_date = feature_date
     end
 
     # Custom attribute writer method with validation
@@ -434,7 +434,7 @@ module TalonOne
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] time_frame Object to be assigned
     def time_frame=(time_frame)
-      validator = EnumAttributeValidator.new('String', ["1_day", "1_week", "1_month"])
+      validator = EnumAttributeValidator.new('String', ["1D", "7D", "30D"])
       unless validator.valid?(time_frame)
         fail ArgumentError, "invalid value for \"time_frame\", must be one of #{validator.allowable_values}."
       end
@@ -479,7 +479,7 @@ module TalonOne
           id == o.id &&
           created == o.created &&
           notification_id == o.notification_id &&
-          run_date == o.run_date &&
+          feature_date == o.feature_date &&
           group_key == o.group_key &&
           application_id == o.application_id &&
           status == o.status &&
@@ -502,7 +502,7 @@ module TalonOne
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, created, notification_id, run_date, group_key, application_id, status, criticality, entity, activity, time_frame, reported_date, affected_entity_count, description, modified].hash
+      [id, created, notification_id, feature_date, group_key, application_id, status, criticality, entity, activity, time_frame, reported_date, affected_entity_count, description, modified].hash
     end
 
     # Builds the object from hash

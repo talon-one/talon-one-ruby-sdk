@@ -30,6 +30,18 @@ module TalonOne
     # Indicates if this is a live or sandbox reward. Rewards of a given type can only be connected to Applications of the same type.
     attr_accessor :sandbox
 
+    # An optional rule that manages who can see this reward. If not specified, the reward is visible to all customers.  **Note:** Only the `condition` field is evaluated within this rule. The `effects` field must be an empty array, and `bindings` are not supported. 
+    attr_accessor :eligibility_conditions
+
+    # Rule to apply.  **Note**: The `bindings` field inside the rule must not be used in this endpoint. All bindings should be defined at the reward level via the top-level `bindings` field. 
+    attr_accessor :rule
+
+    # A list of named variables created before the reward's rules are evaluated. Each binding pairs a name with a talang expression. The expression is evaluated once and its result is available by name in any rule condition or effect. Bindings must be defined outside of individual rules.
+    attr_accessor :bindings
+
+    # The loyalty points required to activate the reward. Each object defines the specific loyalty program and subledger from which points are deducted when activating the reward.  **Note:** When creating a reward, the `id` of each entry is ignored and a new entry is always created. 
+    attr_accessor :points_required
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -37,7 +49,11 @@ module TalonOne
         :'api_name' => :'apiName',
         :'description' => :'description',
         :'application_ids' => :'applicationIds',
-        :'sandbox' => :'sandbox'
+        :'sandbox' => :'sandbox',
+        :'eligibility_conditions' => :'eligibilityConditions',
+        :'rule' => :'rule',
+        :'bindings' => :'bindings',
+        :'points_required' => :'pointsRequired'
       }
     end
 
@@ -58,7 +74,11 @@ module TalonOne
         :'api_name' => :'String',
         :'description' => :'String',
         :'application_ids' => :'Array<Integer>',
-        :'sandbox' => :'Boolean'
+        :'sandbox' => :'Boolean',
+        :'eligibility_conditions' => :'Rule',
+        :'rule' => :'Rule',
+        :'bindings' => :'Array<Binding>',
+        :'points_required' => :'Array<RewardPointsRequired>'
       }
     end
 
@@ -112,6 +132,26 @@ module TalonOne
         self.sandbox = attributes[:'sandbox']
       else
         self.sandbox = nil
+      end
+
+      if attributes.key?(:'eligibility_conditions')
+        self.eligibility_conditions = attributes[:'eligibility_conditions']
+      end
+
+      if attributes.key?(:'rule')
+        self.rule = attributes[:'rule']
+      end
+
+      if attributes.key?(:'bindings')
+        if (value = attributes[:'bindings']).is_a?(Array)
+          self.bindings = value
+        end
+      end
+
+      if attributes.key?(:'points_required')
+        if (value = attributes[:'points_required']).is_a?(Array)
+          self.points_required = value
+        end
       end
     end
 
@@ -217,7 +257,11 @@ module TalonOne
           api_name == o.api_name &&
           description == o.description &&
           application_ids == o.application_ids &&
-          sandbox == o.sandbox
+          sandbox == o.sandbox &&
+          eligibility_conditions == o.eligibility_conditions &&
+          rule == o.rule &&
+          bindings == o.bindings &&
+          points_required == o.points_required
     end
 
     # @see the `==` method
@@ -229,7 +273,7 @@ module TalonOne
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, api_name, description, application_ids, sandbox].hash
+      [name, api_name, description, application_ids, sandbox, eligibility_conditions, rule, bindings, points_required].hash
     end
 
     # Builds the object from hash

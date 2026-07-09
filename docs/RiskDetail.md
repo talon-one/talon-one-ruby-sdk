@@ -7,7 +7,7 @@
 | **id** | **Integer** | The internal ID of this entity. |  |
 | **created** | **Time** | The time this entity was created. |  |
 | **notification_id** | **Integer** | The ID of the risk notification rule that flagged this risk. |  |
-| **run_date** | **Date** | The date of the ML pipeline run that detected this risk. |  |
+| **feature_date** | **Date** | The date of the activity data in which this risk was detected. The anomaly detection pipeline scores complete 24-hour cycles, so this is always the day before the risk was reported, not the reporting date itself.  |  |
 | **group_key** | **String** | The Application group this risk was detected in. Contains the Application ID, or &#x60;__GLOBAL__&#x60; for metrics that are not grouped by Application.  |  |
 | **application_id** | **Integer** | The ID of the Application this risk belongs to. Absent for global metrics. | [optional] |
 | **status** | **String** | The triage lifecycle status of this risk. |  |
@@ -30,14 +30,14 @@ instance = TalonOne::RiskDetail.new(
   id: 6,
   created: 2020-06-10T09:05:27.993483Z,
   notification_id: 3,
-  run_date: 2026-06-05,
+  feature_date: 2026-06-05,
   group_key: 7,
   application_id: 7,
   status: active,
   criticality: critical,
   entity: customer_profile,
   activity: discounted_amount,
-  time_frame: 1_week,
+  time_frame: 7D,
   reported_date: 2026-06-05T06:26:13.698884Z,
   affected_entity_count: 4437,
   description: Unusual discount usage detected for 4437 customer profiles.,

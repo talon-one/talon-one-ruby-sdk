@@ -16,7 +16,7 @@ See our [migration guide](MIGRATION.md).
 Add this to the Gemfile:
 
 ```shell
-gem 'talon_one_sdk', '~> 26.13.0'
+gem 'talon_one_sdk', '~> 26.14.0'
 ```
 
 ### Build a gem
@@ -32,10 +32,10 @@ gem build talon_one_sdk.gemspec
 To install the gem locally:
 
 ```shell
-gem install ./talon_one_sdk-26.13.0.gem
+gem install ./talon_one_sdk-26.14.0.gem
 ```
 
-For development, run `gem install --dev ./talon_one_sdk-26.13.0.gem` to install the development dependencies.
+For development, run `gem install --dev ./talon_one_sdk-26.14.0.gem` to install the development dependencies.
 
 ### RubyGems
 
@@ -296,6 +296,7 @@ Class | Method | HTTP request | Description
 *TalonOne::ManagementApi* | [**get_application_events_without_total_count**](docs/ManagementApi.md#get_application_events_without_total_count) | **GET** /v1/applications/{applicationId}/events/no_total | List Applications events
 *TalonOne::ManagementApi* | [**get_application_session**](docs/ManagementApi.md#get_application_session) | **GET** /v1/applications/{applicationId}/sessions/{sessionId} | Get Application session
 *TalonOne::ManagementApi* | [**get_application_sessions**](docs/ManagementApi.md#get_application_sessions) | **GET** /v1/applications/{applicationId}/sessions | List Application sessions
+*TalonOne::ManagementApi* | [**get_application_sessions_by_customer_attributes**](docs/ManagementApi.md#get_application_sessions_by_customer_attributes) | **POST** /v1/applications/{applicationId}/sessions_search | List Application sessions matching the given customer attributes
 *TalonOne::ManagementApi* | [**get_applications**](docs/ManagementApi.md#get_applications) | **GET** /v1/applications | List Applications
 *TalonOne::ManagementApi* | [**get_attribute**](docs/ManagementApi.md#get_attribute) | **GET** /v1/attributes/{attributeId} | Get custom attribute
 *TalonOne::ManagementApi* | [**get_attributes**](docs/ManagementApi.md#get_attributes) | **GET** /v1/attributes | List custom attributes
@@ -486,7 +487,10 @@ Class | Method | HTTP request | Description
 - [TalonOne::AudienceIntegrationID](docs/AudienceIntegrationID.md)
 - [TalonOne::AudienceMembership](docs/AudienceMembership.md)
 - [TalonOne::AudienceReference](docs/AudienceReference.md)
+- [TalonOne::AwardGiveawayBlock](docs/AwardGiveawayBlock.md)
+- [TalonOne::AwardGiveawayBlock1GiveawayPool](docs/AwardGiveawayBlock1GiveawayPool.md)
 - [TalonOne::AwardGiveawayEffectProps](docs/AwardGiveawayEffectProps.md)
+- [TalonOne::AwardItemBlock](docs/AwardItemBlock.md)
 - [TalonOne::BaseBlock](docs/BaseBlock.md)
 - [TalonOne::BaseCampaign](docs/BaseCampaign.md)
 - [TalonOne::BaseLoyaltyProgram](docs/BaseLoyaltyProgram.md)
@@ -498,7 +502,9 @@ Class | Method | HTTP request | Description
 - [TalonOne::BestPriorPrice](docs/BestPriorPrice.md)
 - [TalonOne::BestPriorPriceMetadata](docs/BestPriorPriceMetadata.md)
 - [TalonOne::BestPriorPriceRequest](docs/BestPriorPriceRequest.md)
+- [TalonOne::BestPriorPriceSettings](docs/BestPriorPriceSettings.md)
 - [TalonOne::BestPriorTarget](docs/BestPriorTarget.md)
+- [TalonOne::BetweenCheckAttributeBlock](docs/BetweenCheckAttributeBlock.md)
 - [TalonOne::Binding](docs/Binding.md)
 - [TalonOne::Blueprint](docs/Blueprint.md)
 - [TalonOne::BulkApplicationNotification](docs/BulkApplicationNotification.md)
@@ -573,6 +579,11 @@ Class | Method | HTTP request | Description
 - [TalonOne::Change](docs/Change.md)
 - [TalonOne::ChangeLoyaltyTierLevelEffectProps](docs/ChangeLoyaltyTierLevelEffectProps.md)
 - [TalonOne::ChangeProfilePassword](docs/ChangeProfilePassword.md)
+- [TalonOne::CheckAttributeBlock](docs/CheckAttributeBlock.md)
+- [TalonOne::CheckAudienceBlock](docs/CheckAudienceBlock.md)
+- [TalonOne::CheckAudienceBlock1Audience](docs/CheckAudienceBlock1Audience.md)
+- [TalonOne::CheckCouponBlock](docs/CheckCouponBlock.md)
+- [TalonOne::CheckReferralBlock](docs/CheckReferralBlock.md)
 - [TalonOne::CodeGeneratorSettings](docs/CodeGeneratorSettings.md)
 - [TalonOne::Collection](docs/Collection.md)
 - [TalonOne::CollectionItem](docs/CollectionItem.md)
@@ -706,6 +717,7 @@ Class | Method | HTTP request | Description
 - [TalonOne::GetApplicationEventTypes200Response](docs/GetApplicationEventTypes200Response.md)
 - [TalonOne::GetApplicationEventsWithoutTotalCount200Response](docs/GetApplicationEventsWithoutTotalCount200Response.md)
 - [TalonOne::GetApplicationSessions200Response](docs/GetApplicationSessions200Response.md)
+- [TalonOne::GetApplicationSessionsByCustomerAttributes200Response](docs/GetApplicationSessionsByCustomerAttributes200Response.md)
 - [TalonOne::GetApplications200Response](docs/GetApplications200Response.md)
 - [TalonOne::GetAttributes200Response](docs/GetAttributes200Response.md)
 - [TalonOne::GetAudienceMemberships200Response](docs/GetAudienceMemberships200Response.md)
@@ -808,8 +820,10 @@ Class | Method | HTTP request | Description
 - [TalonOne::ListCampaignStoreBudgets](docs/ListCampaignStoreBudgets.md)
 - [TalonOne::ListCampaignStoreBudgetsStore](docs/ListCampaignStoreBudgetsStore.md)
 - [TalonOne::ListCatalogItems200Response](docs/ListCatalogItems200Response.md)
+- [TalonOne::ListCheckAttributeBlock](docs/ListCheckAttributeBlock.md)
 - [TalonOne::ListExperiments200Response](docs/ListExperiments200Response.md)
 - [TalonOne::ListStores200Response](docs/ListStores200Response.md)
+- [TalonOne::ListWithCountCheckAttributeBlock](docs/ListWithCountCheckAttributeBlock.md)
 - [TalonOne::LoginParams](docs/LoginParams.md)
 - [TalonOne::Loyalty](docs/Loyalty.md)
 - [TalonOne::LoyaltyBalance](docs/LoyaltyBalance.md)
@@ -966,6 +980,7 @@ Class | Method | HTTP request | Description
 - [TalonOne::ProfileAudiencesChanges](docs/ProfileAudiencesChanges.md)
 - [TalonOne::ProjectedTier](docs/ProjectedTier.md)
 - [TalonOne::PromoteExperiment](docs/PromoteExperiment.md)
+- [TalonOne::PromotionCheckAttributeBlock](docs/PromotionCheckAttributeBlock.md)
 - [TalonOne::PromotionGroupBlock](docs/PromotionGroupBlock.md)
 - [TalonOne::PromotionRuleV2](docs/PromotionRuleV2.md)
 - [TalonOne::RedeemReferralEffectProps](docs/RedeemReferralEffectProps.md)
@@ -1024,6 +1039,7 @@ Class | Method | HTTP request | Description
 - [TalonOne::SamlConnectionInternal](docs/SamlConnectionInternal.md)
 - [TalonOne::SamlConnectionMetadata](docs/SamlConnectionMetadata.md)
 - [TalonOne::SamlLoginEndpoint](docs/SamlLoginEndpoint.md)
+- [TalonOne::ScalarCheckAttributeBlock](docs/ScalarCheckAttributeBlock.md)
 - [TalonOne::ScimBaseGroup](docs/ScimBaseGroup.md)
 - [TalonOne::ScimBaseUser](docs/ScimBaseUser.md)
 - [TalonOne::ScimBaseUserName](docs/ScimBaseUserName.md)
@@ -1051,12 +1067,14 @@ Class | Method | HTTP request | Description
 - [TalonOne::SetDiscountPerItemEffectProps](docs/SetDiscountPerItemEffectProps.md)
 - [TalonOne::SetLoyaltyPointsExpiryDateEffectProps](docs/SetLoyaltyPointsExpiryDateEffectProps.md)
 - [TalonOne::ShowBundleMetadataEffectProps](docs/ShowBundleMetadataEffectProps.md)
+- [TalonOne::ShowNotificationBlock](docs/ShowNotificationBlock.md)
 - [TalonOne::ShowNotificationEffectProps](docs/ShowNotificationEffectProps.md)
 - [TalonOne::SkuUnitAnalytics](docs/SkuUnitAnalytics.md)
 - [TalonOne::SkuUnitAnalyticsDataPoint](docs/SkuUnitAnalyticsDataPoint.md)
 - [TalonOne::SlotDef](docs/SlotDef.md)
 - [TalonOne::Store](docs/Store.md)
 - [TalonOne::StrikethroughChangedItem](docs/StrikethroughChangedItem.md)
+- [TalonOne::StrikethroughCheckAttributeBlock](docs/StrikethroughCheckAttributeBlock.md)
 - [TalonOne::StrikethroughCustomEffectPerItemProps](docs/StrikethroughCustomEffectPerItemProps.md)
 - [TalonOne::StrikethroughDebugResponse](docs/StrikethroughDebugResponse.md)
 - [TalonOne::StrikethroughEffect](docs/StrikethroughEffect.md)
@@ -1090,6 +1108,7 @@ Class | Method | HTTP request | Description
 - [TalonOne::TransferLoyaltyCard](docs/TransferLoyaltyCard.md)
 - [TalonOne::TriggerWebhookEffectProps](docs/TriggerWebhookEffectProps.md)
 - [TalonOne::TwoFAConfig](docs/TwoFAConfig.md)
+- [TalonOne::UnaryCheckAttributeBlock](docs/UnaryCheckAttributeBlock.md)
 - [TalonOne::UpdateAccount](docs/UpdateAccount.md)
 - [TalonOne::UpdateAchievement](docs/UpdateAchievement.md)
 - [TalonOne::UpdateAchievementV2](docs/UpdateAchievementV2.md)

@@ -48,6 +48,9 @@ module TalonOne
     # The location where the SAML assertion is sent with a HTTP POST.
     attr_accessor :assertion_consumer_service_url
 
+    # The expiry date of the X.509 certificate.
+    attr_accessor :certificate_expiry
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -61,7 +64,8 @@ module TalonOne
         :'audience_uri' => :'audienceURI',
         :'id' => :'id',
         :'created' => :'created',
-        :'assertion_consumer_service_url' => :'assertionConsumerServiceURL'
+        :'assertion_consumer_service_url' => :'assertionConsumerServiceURL',
+        :'certificate_expiry' => :'certificateExpiry'
       }
     end
 
@@ -88,7 +92,8 @@ module TalonOne
         :'audience_uri' => :'String',
         :'id' => :'Integer',
         :'created' => :'Time',
-        :'assertion_consumer_service_url' => :'String'
+        :'assertion_consumer_service_url' => :'String',
+        :'certificate_expiry' => :'Time'
       }
     end
 
@@ -182,6 +187,10 @@ module TalonOne
         self.assertion_consumer_service_url = attributes[:'assertion_consumer_service_url']
       else
         self.assertion_consumer_service_url = nil
+      end
+
+      if attributes.key?(:'certificate_expiry')
+        self.certificate_expiry = attributes[:'certificate_expiry']
       end
     end
 
@@ -377,7 +386,8 @@ module TalonOne
           audience_uri == o.audience_uri &&
           id == o.id &&
           created == o.created &&
-          assertion_consumer_service_url == o.assertion_consumer_service_url
+          assertion_consumer_service_url == o.assertion_consumer_service_url &&
+          certificate_expiry == o.certificate_expiry
     end
 
     # @see the `==` method
@@ -389,7 +399,7 @@ module TalonOne
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [account_id, name, enabled, issuer, sign_on_url, sign_out_url, metadata_url, audience_uri, id, created, assertion_consumer_service_url].hash
+      [account_id, name, enabled, issuer, sign_on_url, sign_out_url, metadata_url, audience_uri, id, created, assertion_consumer_service_url, certificate_expiry].hash
     end
 
     # Builds the object from hash

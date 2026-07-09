@@ -22,7 +22,7 @@ instance = TalonOne::RiskNotification.new(
   created: 2020-06-10T09:05:27.993483Z,
   entity: customer_profile,
   activity: loyalty_points_earned,
-  time_frame: 1_week,
+  time_frame: 7D,
   active: true,
   modified: 2026-04-16T09:05:27.993483Z
 )
