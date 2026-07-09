@@ -5925,6 +5925,97 @@ module TalonOne
       return data, status_code, headers
     end
 
+    # List Application sessions matching the given customer attributes
+    # Get a list of the Application sessions matching the provided customer profile attributes.  The match is successful if all the attributes of the request are found in a profile, even if the profile has more attributes that are not present on the request. 
+    # @param application_id [Integer] The ID of the Application. It is displayed in your Talon.One deployment URL.
+    # @param customer_profile_search_query [CustomerProfileSearchQuery] body
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :page_size The number of items in the response. (default to 1000)
+    # @option opts [Integer] :skip The number of items to skip when paging through large result sets.
+    # @option opts [Boolean] :with_total_result_size When this flag is set, the result includes the total number of results for this query. This might decrease performance on large data sets. - When &#x60;true&#x60;: &#x60;totalResultSize&#x60; contains the total number of results for this query. - When &#x60;false&#x60;: Only &#x60;hasMore&#x60; is returned, and it is set to &#x60;true&#x60; when there are more results than shown on the page. 
+    # @return [GetApplicationSessionsByCustomerAttributes200Response]
+    def get_application_sessions_by_customer_attributes(application_id, customer_profile_search_query, opts = {})
+      data, _status_code, _headers = get_application_sessions_by_customer_attributes_with_http_info(application_id, customer_profile_search_query, opts)
+      data
+    end
+
+    # List Application sessions matching the given customer attributes
+    # Get a list of the Application sessions matching the provided customer profile attributes.  The match is successful if all the attributes of the request are found in a profile, even if the profile has more attributes that are not present on the request. 
+    # @param application_id [Integer] The ID of the Application. It is displayed in your Talon.One deployment URL.
+    # @param customer_profile_search_query [CustomerProfileSearchQuery] body
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :page_size The number of items in the response. (default to 1000)
+    # @option opts [Integer] :skip The number of items to skip when paging through large result sets.
+    # @option opts [Boolean] :with_total_result_size When this flag is set, the result includes the total number of results for this query. This might decrease performance on large data sets. - When &#x60;true&#x60;: &#x60;totalResultSize&#x60; contains the total number of results for this query. - When &#x60;false&#x60;: Only &#x60;hasMore&#x60; is returned, and it is set to &#x60;true&#x60; when there are more results than shown on the page. 
+    # @return [Array<(GetApplicationSessionsByCustomerAttributes200Response, Integer, Hash)>] GetApplicationSessionsByCustomerAttributes200Response data, response status code and response headers
+    def get_application_sessions_by_customer_attributes_with_http_info(application_id, customer_profile_search_query, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ManagementApi.get_application_sessions_by_customer_attributes ...'
+      end
+      # verify the required parameter 'application_id' is set
+      if @api_client.config.client_side_validation && application_id.nil?
+        fail ArgumentError, "Missing the required parameter 'application_id' when calling ManagementApi.get_application_sessions_by_customer_attributes"
+      end
+      # verify the required parameter 'customer_profile_search_query' is set
+      if @api_client.config.client_side_validation && customer_profile_search_query.nil?
+        fail ArgumentError, "Missing the required parameter 'customer_profile_search_query' when calling ManagementApi.get_application_sessions_by_customer_attributes"
+      end
+      if @api_client.config.client_side_validation && !opts[:'page_size'].nil? && opts[:'page_size'] > 1000
+        fail ArgumentError, 'invalid value for "opts[:"page_size"]" when calling ManagementApi.get_application_sessions_by_customer_attributes, must be smaller than or equal to 1000.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'page_size'].nil? && opts[:'page_size'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"page_size"]" when calling ManagementApi.get_application_sessions_by_customer_attributes, must be greater than or equal to 1.'
+      end
+
+      # resource path
+      local_var_path = '/v1/applications/{applicationId}/sessions_search'.sub('{applicationId}', CGI.escape(application_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'pageSize'] = opts[:'page_size'] if !opts[:'page_size'].nil?
+      query_params[:'skip'] = opts[:'skip'] if !opts[:'skip'].nil?
+      query_params[:'withTotalResultSize'] = opts[:'with_total_result_size'] if !opts[:'with_total_result_size'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(customer_profile_search_query)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'GetApplicationSessionsByCustomerAttributes200Response'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['api_key_v1']
+
+      new_options = opts.merge(
+        :operation => :"ManagementApi.get_application_sessions_by_customer_attributes",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ManagementApi#get_application_sessions_by_customer_attributes\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # List Applications
     # List all the Applications in the current account.
     # @param [Hash] opts the optional parameters
@@ -6878,7 +6969,7 @@ module TalonOne
     # @option opts [String] :sort The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. 
     # @option opts [String] :campaign_state Filter results by the state of the campaign.  - &#x60;enabled&#x60;: Campaigns that are scheduled, running (activated), or expired. - &#x60;running&#x60;: Campaigns that are running (activated). - &#x60;disabled&#x60;: Campaigns that are disabled. - &#x60;expired&#x60;: Campaigns that are expired. - &#x60;archived&#x60;: Campaigns that are archived. 
     # @option opts [String] :name Filter results performing case-insensitive matching against the name of the campaign.
-    # @option opts [String] :tags Filter results performing case-insensitive matching against the tags of the campaign. When used in conjunction with the \&quot;name\&quot; query parameter, a logical OR will be performed to search both tags and name for the provided values 
+    # @option opts [Array<String>] :tags Filter results performing case-insensitive matching against the tags of the campaign. 
     # @option opts [Time] :created_before Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the campaign creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally.
     # @option opts [Time] :created_after Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the campaign creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally.
     # @option opts [Time] :start_before Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the campaign start time timestamp. You can use any time zone setting. Talon.One will convert to UTC internally.
@@ -6903,7 +6994,7 @@ module TalonOne
     # @option opts [String] :sort The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. 
     # @option opts [String] :campaign_state Filter results by the state of the campaign.  - &#x60;enabled&#x60;: Campaigns that are scheduled, running (activated), or expired. - &#x60;running&#x60;: Campaigns that are running (activated). - &#x60;disabled&#x60;: Campaigns that are disabled. - &#x60;expired&#x60;: Campaigns that are expired. - &#x60;archived&#x60;: Campaigns that are archived. 
     # @option opts [String] :name Filter results performing case-insensitive matching against the name of the campaign.
-    # @option opts [String] :tags Filter results performing case-insensitive matching against the tags of the campaign. When used in conjunction with the \&quot;name\&quot; query parameter, a logical OR will be performed to search both tags and name for the provided values 
+    # @option opts [Array<String>] :tags Filter results performing case-insensitive matching against the tags of the campaign. 
     # @option opts [Time] :created_before Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the campaign creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally.
     # @option opts [Time] :created_after Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the campaign creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally.
     # @option opts [Time] :start_before Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the campaign start time timestamp. You can use any time zone setting. Talon.One will convert to UTC internally.
@@ -6944,7 +7035,7 @@ module TalonOne
       query_params[:'sort'] = opts[:'sort'] if !opts[:'sort'].nil?
       query_params[:'campaignState'] = opts[:'campaign_state'] if !opts[:'campaign_state'].nil?
       query_params[:'name'] = opts[:'name'] if !opts[:'name'].nil?
-      query_params[:'tags'] = opts[:'tags'] if !opts[:'tags'].nil?
+      query_params[:'tags'] = @api_client.build_collection_param(opts[:'tags'], :multi) if !opts[:'tags'].nil?
       query_params[:'createdBefore'] = opts[:'created_before'] if !opts[:'created_before'].nil?
       query_params[:'createdAfter'] = opts[:'created_after'] if !opts[:'created_after'].nil?
       query_params[:'startBefore'] = opts[:'start_before'] if !opts[:'start_before'].nil?

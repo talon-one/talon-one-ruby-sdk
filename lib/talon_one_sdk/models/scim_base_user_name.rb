@@ -14,7 +14,7 @@ require 'date'
 require 'time'
 
 module TalonOne
-  # The components of the user’s real name.
+  # The components of the user's real name.
   class ScimBaseUserName < ApiModelBase
     # The full name, including all middle names, titles, and suffixes as appropriate, formatted for display.
     attr_accessor :formatted

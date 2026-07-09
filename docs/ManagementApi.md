@@ -81,6 +81,7 @@ All URIs are relative to *https://yourbaseurl.talon.one*
 | [**get_application_events_without_total_count**](ManagementApi.md#get_application_events_without_total_count) | **GET** /v1/applications/{applicationId}/events/no_total | List Applications events |
 | [**get_application_session**](ManagementApi.md#get_application_session) | **GET** /v1/applications/{applicationId}/sessions/{sessionId} | Get Application session |
 | [**get_application_sessions**](ManagementApi.md#get_application_sessions) | **GET** /v1/applications/{applicationId}/sessions | List Application sessions |
+| [**get_application_sessions_by_customer_attributes**](ManagementApi.md#get_application_sessions_by_customer_attributes) | **POST** /v1/applications/{applicationId}/sessions_search | List Application sessions matching the given customer attributes |
 | [**get_applications**](ManagementApi.md#get_applications) | **GET** /v1/applications | List Applications |
 | [**get_attribute**](ManagementApi.md#get_attribute) | **GET** /v1/attributes/{attributeId} | Get custom attribute |
 | [**get_attributes**](ManagementApi.md#get_attributes) | **GET** /v1/attributes | List custom attributes |
@@ -6064,6 +6065,87 @@ end
 - **Accept**: application/json
 
 
+## get_application_sessions_by_customer_attributes
+
+> <GetApplicationSessionsByCustomerAttributes200Response> get_application_sessions_by_customer_attributes(application_id, customer_profile_search_query, opts)
+
+List Application sessions matching the given customer attributes
+
+Get a list of the Application sessions matching the provided customer profile attributes.  The match is successful if all the attributes of the request are found in a profile, even if the profile has more attributes that are not present on the request. 
+
+### Examples
+
+```ruby
+require 'time'
+require 'talon_one_sdk'
+# setup authorization
+TalonOne.configure do |config|
+  # Configure API key authorization: api_key_v1
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+end
+
+api_instance = TalonOne::ManagementApi.new
+application_id = 789 # Integer | The ID of the Application. It is displayed in your Talon.One deployment URL.
+customer_profile_search_query = TalonOne::CustomerProfileSearchQuery.new # CustomerProfileSearchQuery | body
+opts = {
+  page_size: 789, # Integer | The number of items in the response.
+  skip: 789, # Integer | The number of items to skip when paging through large result sets.
+  with_total_result_size: true # Boolean | When this flag is set, the result includes the total number of results for this query. This might decrease performance on large data sets. - When `true`: `totalResultSize` contains the total number of results for this query. - When `false`: Only `hasMore` is returned, and it is set to `true` when there are more results than shown on the page. 
+}
+
+begin
+  # List Application sessions matching the given customer attributes
+  result = api_instance.get_application_sessions_by_customer_attributes(application_id, customer_profile_search_query, opts)
+  p result
+rescue TalonOne::ApiError => e
+  puts "Error when calling ManagementApi->get_application_sessions_by_customer_attributes: #{e}"
+end
+```
+
+#### Using the get_application_sessions_by_customer_attributes_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<GetApplicationSessionsByCustomerAttributes200Response>, Integer, Hash)> get_application_sessions_by_customer_attributes_with_http_info(application_id, customer_profile_search_query, opts)
+
+```ruby
+begin
+  # List Application sessions matching the given customer attributes
+  data, status_code, headers = api_instance.get_application_sessions_by_customer_attributes_with_http_info(application_id, customer_profile_search_query, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <GetApplicationSessionsByCustomerAttributes200Response>
+rescue TalonOne::ApiError => e
+  puts "Error when calling ManagementApi->get_application_sessions_by_customer_attributes_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **application_id** | **Integer** | The ID of the Application. It is displayed in your Talon.One deployment URL. |  |
+| **customer_profile_search_query** | [**CustomerProfileSearchQuery**](CustomerProfileSearchQuery.md) | body |  |
+| **page_size** | **Integer** | The number of items in the response. | [optional][default to 1000] |
+| **skip** | **Integer** | The number of items to skip when paging through large result sets. | [optional] |
+| **with_total_result_size** | **Boolean** | When this flag is set, the result includes the total number of results for this query. This might decrease performance on large data sets. - When &#x60;true&#x60;: &#x60;totalResultSize&#x60; contains the total number of results for this query. - When &#x60;false&#x60;: Only &#x60;hasMore&#x60; is returned, and it is set to &#x60;true&#x60; when there are more results than shown on the page.  | [optional] |
+
+### Return type
+
+[**GetApplicationSessionsByCustomerAttributes200Response**](GetApplicationSessionsByCustomerAttributes200Response.md)
+
+### Authorization
+
+[api_key_v1](../README.md#api_key_v1)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
 ## get_applications
 
 > <GetApplications200Response> get_applications(opts)
@@ -7035,7 +7117,7 @@ opts = {
   sort: 'sort_example', # String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. 
   campaign_state: 'enabled', # String | Filter results by the state of the campaign.  - `enabled`: Campaigns that are scheduled, running (activated), or expired. - `running`: Campaigns that are running (activated). - `disabled`: Campaigns that are disabled. - `expired`: Campaigns that are expired. - `archived`: Campaigns that are archived. 
   name: 'name_example', # String | Filter results performing case-insensitive matching against the name of the campaign.
-  tags: 'tags_example', # String | Filter results performing case-insensitive matching against the tags of the campaign. When used in conjunction with the \"name\" query parameter, a logical OR will be performed to search both tags and name for the provided values 
+  tags: ['inner_example'], # Array<String> | Filter results performing case-insensitive matching against the tags of the campaign. 
   created_before: Time.parse('2013-10-20T19:20:30+01:00'), # Time | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the campaign creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally.
   created_after: Time.parse('2013-10-20T19:20:30+01:00'), # Time | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the campaign creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally.
   start_before: Time.parse('2013-10-20T19:20:30+01:00'), # Time | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the campaign start time timestamp. You can use any time zone setting. Talon.One will convert to UTC internally.
@@ -7084,7 +7166,7 @@ end
 | **sort** | **String** | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations.  | [optional] |
 | **campaign_state** | **String** | Filter results by the state of the campaign.  - &#x60;enabled&#x60;: Campaigns that are scheduled, running (activated), or expired. - &#x60;running&#x60;: Campaigns that are running (activated). - &#x60;disabled&#x60;: Campaigns that are disabled. - &#x60;expired&#x60;: Campaigns that are expired. - &#x60;archived&#x60;: Campaigns that are archived.  | [optional] |
 | **name** | **String** | Filter results performing case-insensitive matching against the name of the campaign. | [optional] |
-| **tags** | **String** | Filter results performing case-insensitive matching against the tags of the campaign. When used in conjunction with the \&quot;name\&quot; query parameter, a logical OR will be performed to search both tags and name for the provided values  | [optional] |
+| **tags** | [**Array&lt;String&gt;**](String.md) | Filter results performing case-insensitive matching against the tags of the campaign.  | [optional] |
 | **created_before** | **Time** | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the campaign creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. | [optional] |
 | **created_after** | **Time** | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the campaign creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. | [optional] |
 | **start_before** | **Time** | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the campaign start time timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. | [optional] |

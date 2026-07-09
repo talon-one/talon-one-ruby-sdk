@@ -14,7 +14,7 @@ require 'talon_one_sdk'
 
 instance = TalonOne::CartItemFilterTemplate.new(
   name: Filter items by product,
-  expression: [filter, [., Session, CartItems], [[Item], [catch, false, [&#x3D;, [., Item, Category], Kitchen]]]]
+  expression: [filter, [., Session, CartItems], [[Item], [catch, false, [contains, [., Item, Category], Kitchen]]]]
 )
 ```
 

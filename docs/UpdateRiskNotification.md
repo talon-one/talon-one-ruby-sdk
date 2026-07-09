@@ -17,7 +17,7 @@ require 'talon_one_sdk'
 instance = TalonOne::UpdateRiskNotification.new(
   entity: customer_profile,
   activity: loyalty_points_earned,
-  time_frame: 1_week,
+  time_frame: 7D,
   active: true
 )
 ```

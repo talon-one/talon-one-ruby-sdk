@@ -15,6 +15,7 @@
 | **id** | **Integer** | The internal ID of this entity. |  |
 | **created** | **Time** | The time this entity was created. |  |
 | **assertion_consumer_service_url** | **String** | The location where the SAML assertion is sent with a HTTP POST. |  |
+| **certificate_expiry** | **Time** | The expiry date of the X.509 certificate. | [optional] |
 
 ## Example
 
@@ -32,7 +33,8 @@ instance = TalonOne::SamlConnection.new(
   audience_uri: null,
   id: 6,
   created: 2020-06-10T09:05:27.993483Z,
-  assertion_consumer_service_url: null
+  assertion_consumer_service_url: null,
+  certificate_expiry: 2021-07-20T21:59:00Z
 )
 ```
 

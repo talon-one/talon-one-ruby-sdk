@@ -147,7 +147,7 @@ module TalonOne
       activity_validator = EnumAttributeValidator.new('String', ["loyalty_points_earned", "discounted_amount", "completed_orders", "coupon_attempts"])
       return false unless activity_validator.valid?(@activity)
       return false if @time_frame.nil?
-      time_frame_validator = EnumAttributeValidator.new('String', ["1_day", "1_week", "1_month"])
+      time_frame_validator = EnumAttributeValidator.new('String', ["1D", "7D", "30D"])
       return false unless time_frame_validator.valid?(@time_frame)
       true
     end
@@ -175,7 +175,7 @@ module TalonOne
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] time_frame Object to be assigned
     def time_frame=(time_frame)
-      validator = EnumAttributeValidator.new('String', ["1_day", "1_week", "1_month"])
+      validator = EnumAttributeValidator.new('String', ["1D", "7D", "30D"])
       unless validator.valid?(time_frame)
         fail ArgumentError, "invalid value for \"time_frame\", must be one of #{validator.allowable_values}."
       end

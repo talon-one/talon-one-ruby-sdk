@@ -62,7 +62,7 @@ describe TalonOne::RiskNotification do
   describe 'test attribute "time_frame"' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-      # validator = Petstore::EnumTest::EnumAttributeValidator.new('String', ["1_day", "1_week", "1_month"])
+      # validator = Petstore::EnumTest::EnumAttributeValidator.new('String', ["1D", "7D", "30D"])
       # validator.allowable_values.each do |value|
       #   expect { instance.time_frame = value }.not_to raise_error
       # end
