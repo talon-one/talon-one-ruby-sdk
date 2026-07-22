@@ -25,7 +25,7 @@ instance = TalonOne::LoyaltyBalanceWithTier.new(
   spent_points: 150,
   expired_points: 286,
   negative_points: 286,
-  current_tier: null,
+  current_tier: bronze,
   projected_tier: null,
   points_to_next_tier: 20,
   next_tier_name: Silver

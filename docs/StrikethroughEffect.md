@@ -9,13 +9,13 @@
 | **rule_index** | **Integer** | The position of the rule that triggered this effect within the ruleset. |  |
 | **rule_name** | **String** | The name of the rule that triggered this effect. |  |
 | **type** | **String** | The type of this effect. |  |
-| **props** | **Object** | Arbitrary properties associated with this effect type. |  |
+| **props** | [**StrikethroughEffectProps**](StrikethroughEffectProps.md) | Arbitrary properties associated with this effect type. |  |
 | **start_time** | **Time** | The start of the time frame where the effect is active in UTC. | [optional] |
 | **end_time** | **Time** | The end of the time frame where the effect is active in UTC. | [optional] |
 | **selected_price_type** | **String** | The selected price type for this cart item (e.g. the price for members only). | [optional] |
 | **selected_price** | **Float** | The value of the selected price type to apply to the SKU targeted by this effect, before any discounts are applied. | [optional] |
 | **adjustment_reference_id** | **String** | The reference identifier of the selected price adjustment for this cart item. | [optional] |
-| **targets** | **Array&lt;Object&gt;** | A list of entities (e.g. audiences) targeted by this effect. | [optional] |
+| **targets** | [**Array&lt;LabelTarget&gt;**](LabelTarget.md) | A list of entities (e.g. audiences) targeted by this effect. | [optional] |
 
 ## Example
 

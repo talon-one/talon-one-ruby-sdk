@@ -10,8 +10,8 @@
 | **notification_type** | **String** | The type of notification to display. |  |
 | **title** | **String** | The notification heading shown to the customer. |  |
 | **body** | **String** | The notification body text. Supports template placeholders (e.g. \&quot;{{$Session.Total}}\&quot;) evaluated at rule execution time. | [optional] |
-| **on_failure** | **Array&lt;Object&gt;** | Blocks evaluated when this block fails or returns false. | [optional] |
-| **on_error** | **Hash&lt;String, Array&lt;Object&gt;&gt;** | Named error handlers evaluated when a specific error occurs. | [optional] |
+| **on_failure** | [**Array&lt;PromotionBlock&gt;**](PromotionBlock.md) | Blocks evaluated when this block fails or returns false. | [optional] |
+| **on_error** | **Hash&lt;String, Array&lt;PromotionBlock&gt;&gt;** | Named error handlers evaluated when a specific error occurs. | [optional] |
 
 ## Example
 

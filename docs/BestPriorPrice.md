@@ -11,7 +11,7 @@
 | **context_id** | **String** | This property is **deprecated**. Use &#x60;contextIds&#x60; instead. Defaults to an empty string.  | [optional][default to &#39;&#39;] |
 | **price** | **Float** | Price of the item. |  |
 | **metadata** | [**BestPriorPriceMetadata**](BestPriorPriceMetadata.md) |  |  |
-| **target** | **Object** |  |  |
+| **target** | [**LabelTarget**](LabelTarget.md) |  |  |
 
 ## Example
 

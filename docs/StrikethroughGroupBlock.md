@@ -8,9 +8,9 @@
 | **type** | **String** | Identifies the block variant and determines which additional properties are present in it. |  |
 | **tags** | **Array&lt;String&gt;** | Semantic labels attached to this block. | [optional] |
 | **operator** | **String** | Logical operator applied across child blocks. &#x60;all&#x60; requires every child to pass, &#x60;atLeastOne&#x60; requires at least one, &#x60;none&#x60; requires all to fail. |  |
-| **blocks** | **Array&lt;Object&gt;** | Child blocks evaluated according to the operator. |  |
-| **on_failure** | **Array&lt;Object&gt;** | Strikethrough blocks evaluated when this block fails or returns false. | [optional] |
-| **on_error** | **Hash&lt;String, Array&lt;Object&gt;&gt;** | Named error handlers evaluated when a specific error occurs. | [optional] |
+| **blocks** | [**Array&lt;StrikethroughBlock&gt;**](StrikethroughBlock.md) | Child blocks evaluated according to the operator. |  |
+| **on_failure** | [**Array&lt;StrikethroughBlock&gt;**](StrikethroughBlock.md) | Strikethrough blocks evaluated when this block fails or returns false. | [optional] |
+| **on_error** | **Hash&lt;String, Array&lt;StrikethroughBlock&gt;&gt;** | Named error handlers evaluated when a specific error occurs. | [optional] |
 
 ## Example
 
