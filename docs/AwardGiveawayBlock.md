@@ -9,8 +9,8 @@
 | **tags** | **Array&lt;String&gt;** | Semantic labels attached to this block. | [optional] |
 | **giveaway_pool** | [**AwardGiveawayBlock1GiveawayPool**](AwardGiveawayBlock1GiveawayPool.md) |  |  |
 | **profile** | **String** | The customer profile to award the giveaway to. &#x60;Current&#x60; targets the customer in the current session; &#x60;Advocate&#x60; targets the person who invited their friend via referral program. |  |
-| **on_failure** | **Array&lt;Object&gt;** | Blocks evaluated when this block fails or returns false. | [optional] |
-| **on_error** | **Hash&lt;String, Array&lt;Object&gt;&gt;** | Named error handlers evaluated when a specific error occurs. | [optional] |
+| **on_failure** | [**Array&lt;PromotionBlock&gt;**](PromotionBlock.md) | Blocks evaluated when this block fails or returns false. | [optional] |
+| **on_error** | **Hash&lt;String, Array&lt;PromotionBlock&gt;&gt;** | Named error handlers evaluated when a specific error occurs. | [optional] |
 
 ## Example
 

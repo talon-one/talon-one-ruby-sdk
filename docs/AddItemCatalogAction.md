@@ -18,7 +18,7 @@ require 'talon_one_sdk'
 instance = TalonOne::AddItemCatalogAction.new(
   sku: SKU1241028,
   price: 99.99,
-  attributes: {&quot;origin&quot;:&quot;germany&quot;,&quot;color&quot;:&quot;blue&quot;},
+  attributes: {origin&#x3D;germany, color&#x3D;blue},
   product: null,
   replace_if_exists: false
 )

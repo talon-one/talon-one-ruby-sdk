@@ -18,6 +18,10 @@
 | **reported_date** | **Time** | The time the ML service reported this risk. |  |
 | **affected_entity_count** | **Integer** | The total number of entities affected by this risk. |  |
 | **description** | **String** | Human-readable description of the detected anomaly. | [optional] |
+| **discard_reason** | **String** | The reason this risk was discarded. Only present on discarded risks. | [optional] |
+| **status_comment** | **String** | The free-text details of the latest reclassification action: the description for resolving confirmed risks, or the details for discarding risks.  | [optional] |
+| **status_changed_by** | **Integer** | The ID of the user who performed the latest reclassification action. | [optional] |
+| **status_changed_at** | **Time** | The time of the latest reclassification action. | [optional] |
 | **modified** | **Time** | Timestamp of the most recent update. |  |
 
 ## Example
@@ -40,6 +44,10 @@ instance = TalonOne::Risk.new(
   reported_date: 2026-06-05T06:26:13.698884Z,
   affected_entity_count: 4437,
   description: Unusual discount usage detected for 4437 customer profiles.,
+  discard_reason: expected_behavior,
+  status_comment: Investigated with the customer and fixed the loyalty rule.,
+  status_changed_by: 42,
+  status_changed_at: 2026-06-06T09:12:45.000000Z,
   modified: 2026-06-05T06:26:13.698884Z
 )
 ```

@@ -6,7 +6,7 @@
 | ---- | ---- | ----------- | ----- |
 | **notification_type** | **String** | The type of the notification |  |
 | **total_result_size** | **Integer** | The total size of the result set. |  |
-| **data** | [**Array&lt;ApplicationNotification&gt;**](ApplicationNotification.md) | The array of changes. | [optional] |
+| **data** | [**Array&lt;CampaignEvaluationTreeChangedNotification&gt;**](CampaignEvaluationTreeChangedNotification.md) | The array of changes. | [optional] |
 
 ## Example
 

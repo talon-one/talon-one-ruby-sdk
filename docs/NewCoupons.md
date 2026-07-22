@@ -12,12 +12,14 @@
 | **limits** | [**Array&lt;LimitConfig&gt;**](LimitConfig.md) | Limits configuration for a coupon. These limits will override the limits set from the campaign.  **Note:** Only usable when creating a single coupon which is not tied to a specific recipient. Only per-profile limits are allowed to be configured.  | [optional] |
 | **number_of_coupons** | **Integer** | The number of new coupon codes to generate for the campaign. Must be at least 1. |  |
 | **unique_prefix** | **String** | **DEPRECATED** To create more than 20,000 coupons in one request, use [Create coupons asynchronously](https://docs.talon.one/management-api#tag/Coupons/operation/createCouponsAsync) endpoint.  | [optional] |
-| **attributes** | **Object** | Arbitrary properties associated with this campaign. | [optional] |
+| **attributes** | **Object** | Arbitrary properties associated with this item. | [optional] |
 | **recipient_integration_id** | **String** | The integration ID for this coupon&#39;s beneficiary&#39;s profile. | [optional] |
 | **valid_characters** | **Array&lt;String&gt;** | List of characters used to generate the random parts of a code. By default, the list of characters is equivalent to the &#x60;[A-Z, 0-9]&#x60; regular expression.  | [optional] |
 | **coupon_pattern** | **String** | The pattern used to generate coupon codes. The character &#x60;#&#x60; is a placeholder and is replaced by a random character from the &#x60;validCharacters&#x60; set.  | [optional] |
 | **is_reservation_mandatory** | **Boolean** | An indication of whether the code can be redeemed only if it has been reserved first. | [optional][default to false] |
 | **implicitly_reserved** | **Boolean** | An indication of whether the coupon is implicitly reserved for all customers. | [optional] |
+| **support_request_id** | **Integer** | The identifier of the support request to link to the coupon creation. The request must exist and not yet be processed. | [optional] |
+| **support_request_note** | **String** | A note recorded when the linked support request is approved or rejected. Applied when &#x60;supportRequestId&#x60; is provided. | [optional] |
 
 ## Example
 
@@ -33,12 +35,14 @@ instance = TalonOne::NewCoupons.new(
   limits: null,
   number_of_coupons: 1,
   unique_prefix: ,
-  attributes: null,
+  attributes: {venueId&#x3D;12},
   recipient_integration_id: URNGV8294NV,
   valid_characters: [A, B, G, Y],
   coupon_pattern: SUMMER-#####,
   is_reservation_mandatory: false,
-  implicitly_reserved: false
+  implicitly_reserved: false,
+  support_request_id: 42,
+  support_request_note: Approved as compensation for the delayed order.
 )
 ```
 

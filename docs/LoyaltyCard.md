@@ -41,7 +41,7 @@ instance = TalonOne::LoyaltyCard.new(
   subledgers: null,
   modified: 2021-09-12T10:12:42Z,
   old_card_identifier: summer-loyalty-card-0543,
-  new_card_identifier: summer-loyalty-card-0543,
+  new_card_identifier: autumn-loyalty-card-5822,
   batch_id: wdefpov
 )
 ```

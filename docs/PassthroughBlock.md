@@ -6,7 +6,7 @@
 | ---- | ---- | ----------- | ----- |
 | **id** | **String** | Unique identifier for this block. |  |
 | **type** | **String** | The type discriminator for this block. |  |
-| **expression** | **Array&lt;Object&gt;** | The raw Talang expression as an array. The first element is the function name; subsequent elements are its arguments, which may themselves be nested expressions. |  |
+| **expression** | **Array&lt;Object&gt;** | The raw Talang expression as an array. For a function call, the first element is the function name and subsequent elements are its arguments. For any other expression (for example a bare attribute path or a literal value), this is a single-element array containing that value. |  |
 
 ## Example
 

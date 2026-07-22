@@ -19,6 +19,7 @@
 | **processed_at** | **Time** | Timestamp when the request was approved or rejected. | [optional] |
 | **processing_note** | **String** | Notes attached by the admin when rejecting or approving a request. | [optional] |
 | **processed_by_user** | **String** | Email address of the admin who approved or rejected the support request. | [optional] |
+| **coupon_code** | **String** | Coupon code associated with the approved support request. | [optional] |
 
 ## Example
 
@@ -40,7 +41,8 @@ instance = TalonOne::SupportRequest.new(
   request_status: approved,
   processed_at: 2025-07-20T22:10:00Z,
   processing_note: Rejected as the customer was awarded points already.,
-  processed_by_user: admin.name@company.com
+  processed_by_user: admin.name@company.com,
+  coupon_code: SUMMER-2025-XYZ
 )
 ```
 

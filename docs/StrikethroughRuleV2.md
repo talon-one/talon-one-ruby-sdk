@@ -8,7 +8,7 @@
 | **parent_id** | **String** | ID of the parent rule, if any. | [optional] |
 | **title** | **String** | A short description of the rule. |  |
 | **description** | **String** | A longer description of the rule. | [optional] |
-| **blocks** | **Array&lt;Object&gt;** | The condition and effect blocks that make up this strikethrough rule. |  |
+| **blocks** | [**Array&lt;StrikethroughBlock&gt;**](StrikethroughBlock.md) | The condition and effect blocks that make up this strikethrough rule. |  |
 
 ## Example
 

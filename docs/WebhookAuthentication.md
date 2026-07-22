@@ -12,7 +12,7 @@
 | **webhooks** | [**Array&lt;WebhookAuthenticationWebhookRef&gt;**](WebhookAuthenticationWebhookRef.md) |  |  |
 | **name** | **String** | The name of the webhook authentication. |  |
 | **type** | **String** |  |  |
-| **data** | **Object** |  |  |
+| **data** | [**WebhookAuthenticationAllOfData**](WebhookAuthenticationAllOfData.md) |  |  |
 
 ## Example
 
