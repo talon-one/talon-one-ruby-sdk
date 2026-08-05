@@ -87,7 +87,7 @@ module TalonOne
         :'activated_at' => :'Time',
         :'promotion_rules' => :'Array<PromotionRuleV2>',
         :'strikethrough_rules' => :'Array<StrikethroughRuleV2>',
-        :'selectors' => :'Array<Hash<String, Object>>',
+        :'selectors' => :'Array<Selector>',
         :'bundles' => :'Array<Hash<String, Object>>',
         :'parameters' => :'Array<Hash<String, Object>>'
       }

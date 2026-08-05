@@ -6,7 +6,7 @@
 | ---- | ---- | ----------- | ----- |
 | **achievement_id** | **Integer** | The internal ID of the achievement. |  |
 | **achievement_name** | **String** | The name of the achievement. |  |
-| **progress_tracker_id** | **Integer** | The internal ID of the customer progress tracker. For [on-completion achievements](https://docs.talon.one/docs/product/campaigns/achievements/achievements-overview#recurring-on-completion-achievements), this effect generates a unique ID for each iteration. | [optional] |
+| **progress_tracker_id** | **Integer** | The internal ID of the customer progress tracker. For [on-completion achievements](https://docs.talon.one/docs/product/achievements/achievements-overview#recurring-on-completion-achievements), this effect generates a unique ID for each iteration. | [optional] |
 | **delta** | **Float** | The value by which the customer&#39;s current progress in the achievement has increased. |  |
 | **value** | **Float** | The current progress of the customer in the achievement. |  |
 | **target** | **Float** | The target value to complete the achievement. |  |

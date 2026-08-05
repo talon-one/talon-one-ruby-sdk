@@ -531,6 +531,19 @@ describe 'ManagementApi' do
     end
   end
 
+  # unit tests for exclude_price_history
+  # Exclude price records from price history
+  # Select a batch of historical price IDs to exclude from [best prior price calculation](https://docs.talon.one/integration-api#tag/Catalogs/operation/bestPriorPrice). All IDs in the batch must be valid &#x60;id&#x60; values obtained from the [Get summary of price history](https://docs.talon.one/management-api#tag/Catalogs/operation/priceHistory.responses.200.history) endpoint, must belong to the specified Application, must not already be excluded from best prior price calculation, and must not be associated with a scheduled strikethrough pricing notification. 
+  # @param application_id The ID of the Application. It is displayed in your Talon.One deployment URL.
+  # @param exclude_price_observations_request body
+  # @param [Hash] opts the optional parameters
+  # @return [nil]
+  describe 'exclude_price_history test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
   # unit tests for export_account_collection_items
   # Export account-level collection&#39;s items
   # Download a CSV file containing items from a given account-level collection.  &gt; [!tip] If the exported CSV file is too large to view, you can &gt; [split it into multiple files](https://www.google.com/search?q&#x3D;split+CSV+into+multiple+files). 

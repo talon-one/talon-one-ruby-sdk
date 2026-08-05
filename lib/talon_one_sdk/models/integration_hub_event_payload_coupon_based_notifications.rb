@@ -15,6 +15,9 @@ require 'time'
 
 module TalonOne
   class IntegrationHubEventPayloadCouponBasedNotifications < ApiModelBase
+    # The ID of the integration hub event. Return this value in the delivery-status callback to mark the event delivered or failed.
+    attr_accessor :event_id
+
     attr_accessor :id
 
     attr_accessor :created
@@ -61,6 +64,7 @@ module TalonOne
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'event_id' => :'EventId',
         :'id' => :'Id',
         :'created' => :'Created',
         :'campaign_id' => :'CampaignId',
@@ -98,6 +102,7 @@ module TalonOne
     # Attribute type mapping.
     def self.openapi_types
       {
+        :'event_id' => :'Integer',
         :'id' => :'Integer',
         :'created' => :'Time',
         :'campaign_id' => :'Integer',
@@ -143,6 +148,12 @@ module TalonOne
         end
         h[k.to_sym] = v
       }
+
+      if attributes.key?(:'event_id')
+        self.event_id = attributes[:'event_id']
+      else
+        self.event_id = nil
+      end
 
       if attributes.key?(:'id')
         self.id = attributes[:'id']
@@ -254,6 +265,10 @@ module TalonOne
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
+      if @event_id.nil?
+        invalid_properties.push('invalid value for "event_id", event_id cannot be nil.')
+      end
+
       if @id.nil?
         invalid_properties.push('invalid value for "id", id cannot be nil.')
       end
@@ -297,6 +312,7 @@ module TalonOne
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
+      return false if @event_id.nil?
       return false if @id.nil?
       return false if @created.nil?
       return false if @campaign_id.nil?
@@ -307,6 +323,16 @@ module TalonOne
       return false if @source_of_event.nil?
       return false if @employee_name.nil?
       true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] event_id Value to be assigned
+    def event_id=(event_id)
+      if event_id.nil?
+        fail ArgumentError, 'event_id cannot be nil'
+      end
+
+      @event_id = event_id
     end
 
     # Custom attribute writer method with validation
@@ -404,6 +430,7 @@ module TalonOne
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          event_id == o.event_id &&
           id == o.id &&
           created == o.created &&
           campaign_id == o.campaign_id &&
@@ -436,7 +463,7 @@ module TalonOne
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, created, campaign_id, value, usage_limit, discount_limit, reservation_limit, start_date, expiry_date, usage_counter, discount_counter, discount_remainder, referral_id, recipient_integration_id, import_id, batch_id, attributes, limits, published_at, source_of_event, employee_name].hash
+      [event_id, id, created, campaign_id, value, usage_limit, discount_limit, reservation_limit, start_date, expiry_date, usage_counter, discount_counter, discount_remainder, referral_id, recipient_integration_id, import_id, batch_id, attributes, limits, published_at, source_of_event, employee_name].hash
     end
 
     # Builds the object from hash

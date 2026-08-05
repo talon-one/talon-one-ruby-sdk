@@ -9,6 +9,7 @@
 | **application_name** | **String** | The name of the Application associated with the campaign that references this achievement. |  |
 | **campaign_id** | **Integer** | The ID of the campaign that references this achievement. |  |
 | **campaign_name** | **String** | The name of the campaign that references this achievement. |  |
+| **campaign_state** | **String** | The state of the campaign that references this achievement. |  |
 
 ## Example
 
@@ -20,7 +21,8 @@ instance = TalonOne::AchievementReference.new(
   application_id: 101,
   application_name: North America Storefront,
   campaign_id: 4501,
-  campaign_name: Summer promotions
+  campaign_name: Summer promotions,
+  campaign_state: enabled
 )
 ```
 

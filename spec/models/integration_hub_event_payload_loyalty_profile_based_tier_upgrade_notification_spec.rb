@@ -27,6 +27,12 @@ describe TalonOne::IntegrationHubEventPayloadLoyaltyProfileBasedTierUpgradeNotif
     end
   end
 
+  describe 'test attribute "event_id"' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
   describe 'test attribute "profile_integration_id"' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/

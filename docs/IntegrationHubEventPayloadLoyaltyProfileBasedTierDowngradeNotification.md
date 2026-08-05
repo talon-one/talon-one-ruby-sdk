@@ -4,6 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
+| **event_id** | **Integer** | The ID of the integration hub event. Return this value in the delivery-status callback to mark the event delivered or failed. |  |
 | **profile_integration_id** | **String** |  |  |
 | **loyalty_program_id** | **Integer** |  |  |
 | **loyalty_program_name** | **String** | The name of the loyalty program. |  |
@@ -22,6 +23,7 @@
 require 'talon_one_sdk'
 
 instance = TalonOne::IntegrationHubEventPayloadLoyaltyProfileBasedTierDowngradeNotification.new(
+  event_id: 123,
   profile_integration_id: null,
   loyalty_program_id: null,
   loyalty_program_name: null,

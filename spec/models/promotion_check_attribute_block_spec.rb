@@ -48,7 +48,7 @@ describe TalonOne::PromotionCheckAttributeBlock do
   describe 'test attribute "operator"' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-      # validator = Petstore::EnumTest::EnumAttributeValidator.new('String', ["equals", "not(equals)", "lessThan", "lessThanOrEqual", "greaterThan", "greaterThanOrEqual", "between", "contains", "not(contains)", "matchesRegexp", "startsWith", "endsWith", "oneOf", "not(oneOf)", "inCollection", "not(inCollection)", "empty", "not(empty)", "exists", "not(exists)", "isTrue", "isFalse", "containsAtLeast", "containsExactly", "containsOneOf", "containsNoneOf", "containsAllOf"])
+      # validator = Petstore::EnumTest::EnumAttributeValidator.new('String', ["equals", "not(equals)", "lessThan", "lessThanOrEqual", "greaterThan", "greaterThanOrEqual", "between", "contains", "not(contains)", "matchesRegexp", "startsWith", "endsWith", "oneOf", "not(oneOf)", "inCollection", "not(inCollection)", "empty", "not(empty)", "exists", "not(exists)", "isTrue", "isFalse", "containsAtLeast", "containsExactly", "containsOneOf", "containsNoneOf", "containsAllOf", "after", "before", "within", "not(within)"])
       # validator.allowable_values.each do |value|
       #   expect { instance.operator = value }.not_to raise_error
       # end
@@ -74,6 +74,36 @@ describe TalonOne::PromotionCheckAttributeBlock do
   end
 
   describe 'test attribute "max"' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  describe 'test attribute "start"' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  describe 'test attribute "_end"' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  describe 'test attribute "start_inclusive"' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  describe 'test attribute "end_inclusive"' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  describe 'test attribute "timezone_insensitive"' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
     end

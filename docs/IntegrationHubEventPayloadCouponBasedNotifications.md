@@ -4,6 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
+| **event_id** | **Integer** | The ID of the integration hub event. Return this value in the delivery-status callback to mark the event delivered or failed. |  |
 | **id** | **Integer** |  |  |
 | **created** | **Time** |  |  |
 | **campaign_id** | **Integer** |  |  |
@@ -32,6 +33,7 @@
 require 'talon_one_sdk'
 
 instance = TalonOne::IntegrationHubEventPayloadCouponBasedNotifications.new(
+  event_id: 123,
   id: null,
   created: null,
   campaign_id: null,

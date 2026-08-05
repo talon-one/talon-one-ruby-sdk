@@ -16,7 +16,7 @@ See our [migration guide](MIGRATION.md).
 Add this to the Gemfile:
 
 ```shell
-gem 'talon_one_sdk', '~> 26.15.0'
+gem 'talon_one_sdk', '~> 26.16.0'
 ```
 
 ### Build a gem
@@ -32,10 +32,10 @@ gem build talon_one_sdk.gemspec
 To install the gem locally:
 
 ```shell
-gem install ./talon_one_sdk-26.15.0.gem
+gem install ./talon_one_sdk-26.16.0.gem
 ```
 
-For development, run `gem install --dev ./talon_one_sdk-26.15.0.gem` to install the development dependencies.
+For development, run `gem install --dev ./talon_one_sdk-26.16.0.gem` to install the development dependencies.
 
 ### RubyGems
 
@@ -256,6 +256,7 @@ Class | Method | HTTP request | Description
 *TalonOne::ManagementApi* | [**delete_user_by_email**](docs/ManagementApi.md#delete_user_by_email) | **POST** /v1/users/delete | Delete user by email address
 *TalonOne::ManagementApi* | [**destroy_session**](docs/ManagementApi.md#destroy_session) | **DELETE** /v1/sessions | Destroy session
 *TalonOne::ManagementApi* | [**disconnect_campaign_stores**](docs/ManagementApi.md#disconnect_campaign_stores) | **DELETE** /v1/applications/{applicationId}/campaigns/{campaignId}/stores | Disconnect stores
+*TalonOne::ManagementApi* | [**exclude_price_history**](docs/ManagementApi.md#exclude_price_history) | **POST** /v1/applications/{applicationId}/price_history/exclusions | Exclude price records from price history
 *TalonOne::ManagementApi* | [**export_account_collection_items**](docs/ManagementApi.md#export_account_collection_items) | **GET** /v1/collections/{collectionId}/export | Export account-level collection's items
 *TalonOne::ManagementApi* | [**export_achievements**](docs/ManagementApi.md#export_achievements) | **GET** /v1/applications/{applicationId}/campaigns/{campaignId}/achievements/{achievementId}/export | Export achievement customer data
 *TalonOne::ManagementApi* | [**export_application_campaign_analytics**](docs/ManagementApi.md#export_application_campaign_analytics) | **GET** /v1/applications/{applicationId}/campaign_analytics/export | Export Application analytics aggregated by campaign
@@ -450,6 +451,7 @@ Class | Method | HTTP request | Description
 - [TalonOne::AddedDeductedPointsNotificationPolicy](docs/AddedDeductedPointsNotificationPolicy.md)
 - [TalonOne::AdditionalCampaignProperties](docs/AdditionalCampaignProperties.md)
 - [TalonOne::AdditionalCost](docs/AdditionalCost.md)
+- [TalonOne::AdditionalCostReference](docs/AdditionalCostReference.md)
 - [TalonOne::AdjustmentDetails](docs/AdjustmentDetails.md)
 - [TalonOne::AnalyticsDataPoint](docs/AnalyticsDataPoint.md)
 - [TalonOne::AnalyticsDataPointWithTrend](docs/AnalyticsDataPointWithTrend.md)
@@ -486,6 +488,19 @@ Class | Method | HTTP request | Description
 - [TalonOne::AudienceIntegrationID](docs/AudienceIntegrationID.md)
 - [TalonOne::AudienceMembership](docs/AudienceMembership.md)
 - [TalonOne::AudienceReference](docs/AudienceReference.md)
+- [TalonOne::AwardDiscountAdditionalCostTarget](docs/AwardDiscountAdditionalCostTarget.md)
+- [TalonOne::AwardDiscountAdditionalCostTargetTarget](docs/AwardDiscountAdditionalCostTargetTarget.md)
+- [TalonOne::AwardDiscountAllItemsTarget](docs/AwardDiscountAllItemsTarget.md)
+- [TalonOne::AwardDiscountBlock](docs/AwardDiscountBlock.md)
+- [TalonOne::AwardDiscountBlock1Value](docs/AwardDiscountBlock1Value.md)
+- [TalonOne::AwardDiscountBundleItem](docs/AwardDiscountBundleItem.md)
+- [TalonOne::AwardDiscountBundleItemByAttribute](docs/AwardDiscountBundleItemByAttribute.md)
+- [TalonOne::AwardDiscountBundleItemByIndex](docs/AwardDiscountBundleItemByIndex.md)
+- [TalonOne::AwardDiscountBundleTarget](docs/AwardDiscountBundleTarget.md)
+- [TalonOne::AwardDiscountCartTarget](docs/AwardDiscountCartTarget.md)
+- [TalonOne::AwardDiscountGlobalFilterTarget](docs/AwardDiscountGlobalFilterTarget.md)
+- [TalonOne::AwardDiscountSelectorTarget](docs/AwardDiscountSelectorTarget.md)
+- [TalonOne::AwardDiscountTarget](docs/AwardDiscountTarget.md)
 - [TalonOne::AwardGiveawayBlock](docs/AwardGiveawayBlock.md)
 - [TalonOne::AwardGiveawayBlock1GiveawayPool](docs/AwardGiveawayBlock1GiveawayPool.md)
 - [TalonOne::AwardGiveawayEffectProps](docs/AwardGiveawayEffectProps.md)
@@ -504,6 +519,7 @@ Class | Method | HTTP request | Description
 - [TalonOne::BestPriorPriceRequest](docs/BestPriorPriceRequest.md)
 - [TalonOne::BestPriorPriceSettings](docs/BestPriorPriceSettings.md)
 - [TalonOne::BestPriorTarget](docs/BestPriorTarget.md)
+- [TalonOne::BetweenCheckAttributeBlock](docs/BetweenCheckAttributeBlock.md)
 - [TalonOne::Binding](docs/Binding.md)
 - [TalonOne::Blueprint](docs/Blueprint.md)
 - [TalonOne::BulkApplicationNotification](docs/BulkApplicationNotification.md)
@@ -584,10 +600,17 @@ Class | Method | HTTP request | Description
 - [TalonOne::Change](docs/Change.md)
 - [TalonOne::ChangeLoyaltyTierLevelEffectProps](docs/ChangeLoyaltyTierLevelEffectProps.md)
 - [TalonOne::ChangeProfilePassword](docs/ChangeProfilePassword.md)
+- [TalonOne::CheckAchievementBlock](docs/CheckAchievementBlock.md)
+- [TalonOne::CheckAchievementBlock1Achievement](docs/CheckAchievementBlock1Achievement.md)
+- [TalonOne::CheckAttributeBlock](docs/CheckAttributeBlock.md)
 - [TalonOne::CheckAttributeBlockBase](docs/CheckAttributeBlockBase.md)
 - [TalonOne::CheckAudienceBlock](docs/CheckAudienceBlock.md)
 - [TalonOne::CheckAudienceBlock1Audience](docs/CheckAudienceBlock1Audience.md)
+- [TalonOne::CheckBudgetBlock](docs/CheckBudgetBlock.md)
 - [TalonOne::CheckCouponBlock](docs/CheckCouponBlock.md)
+- [TalonOne::CheckEventBlock](docs/CheckEventBlock.md)
+- [TalonOne::CheckLoyaltyBalanceBlock](docs/CheckLoyaltyBalanceBlock.md)
+- [TalonOne::CheckLoyaltyBalanceBlock1Program](docs/CheckLoyaltyBalanceBlock1Program.md)
 - [TalonOne::CheckReferralBlock](docs/CheckReferralBlock.md)
 - [TalonOne::CodeGeneratorSettings](docs/CodeGeneratorSettings.md)
 - [TalonOne::Collection](docs/Collection.md)
@@ -613,10 +636,17 @@ Class | Method | HTTP request | Description
 - [TalonOne::CreateAchievement](docs/CreateAchievement.md)
 - [TalonOne::CreateAchievementV2](docs/CreateAchievementV2.md)
 - [TalonOne::CreateApplicationAPIKey](docs/CreateApplicationAPIKey.md)
+- [TalonOne::CreateCouponBlock](docs/CreateCouponBlock.md)
+- [TalonOne::CreateCouponBlock1CampaignId](docs/CreateCouponBlock1CampaignId.md)
+- [TalonOne::CreateCouponBlock1DiscountLimit](docs/CreateCouponBlock1DiscountLimit.md)
+- [TalonOne::CreateCouponBlock1UsageLimit](docs/CreateCouponBlock1UsageLimit.md)
 - [TalonOne::CreateCouponData](docs/CreateCouponData.md)
 - [TalonOne::CreateCoupons200Response](docs/CreateCoupons200Response.md)
 - [TalonOne::CreateMCPKey](docs/CreateMCPKey.md)
 - [TalonOne::CreateManagementKey](docs/CreateManagementKey.md)
+- [TalonOne::CreateReferralBlock](docs/CreateReferralBlock.md)
+- [TalonOne::CreateReferralBlock1CampaignId](docs/CreateReferralBlock1CampaignId.md)
+- [TalonOne::CreateReferralBlock1UsageLimit](docs/CreateReferralBlock1UsageLimit.md)
 - [TalonOne::CreateReferralsForMultipleAdvocates201Response](docs/CreateReferralsForMultipleAdvocates201Response.md)
 - [TalonOne::CreateTemplateCampaign](docs/CreateTemplateCampaign.md)
 - [TalonOne::CreateTemplateCampaignResponse](docs/CreateTemplateCampaignResponse.md)
@@ -670,6 +700,7 @@ Class | Method | HTTP request | Description
 - [TalonOne::EventV3Connections](docs/EventV3Connections.md)
 - [TalonOne::EventV3Entity](docs/EventV3Entity.md)
 - [TalonOne::EventV3RequestEntity](docs/EventV3RequestEntity.md)
+- [TalonOne::ExcludePriceObservationsRequest](docs/ExcludePriceObservationsRequest.md)
 - [TalonOne::Experiment](docs/Experiment.md)
 - [TalonOne::ExperimentCampaignCopy](docs/ExperimentCampaignCopy.md)
 - [TalonOne::ExperimentConfidenceTimeline](docs/ExperimentConfidenceTimeline.md)
@@ -706,6 +737,8 @@ Class | Method | HTTP request | Description
 - [TalonOne::FeatureFlag](docs/FeatureFlag.md)
 - [TalonOne::FeatureFlagUpdate](docs/FeatureFlagUpdate.md)
 - [TalonOne::FeaturesFeed](docs/FeaturesFeed.md)
+- [TalonOne::FilterAndMapValuesSelectorStep](docs/FilterAndMapValuesSelectorStep.md)
+- [TalonOne::FilterSelectorStep](docs/FilterSelectorStep.md)
 - [TalonOne::FuncArgDef](docs/FuncArgDef.md)
 - [TalonOne::FunctionDef](docs/FunctionDef.md)
 - [TalonOne::GenerateAuditLogSummary](docs/GenerateAuditLogSummary.md)
@@ -833,8 +866,10 @@ Class | Method | HTTP request | Description
 - [TalonOne::ListCampaignStoreBudgets](docs/ListCampaignStoreBudgets.md)
 - [TalonOne::ListCampaignStoreBudgetsStore](docs/ListCampaignStoreBudgetsStore.md)
 - [TalonOne::ListCatalogItems200Response](docs/ListCatalogItems200Response.md)
+- [TalonOne::ListCheckAttributeBlock](docs/ListCheckAttributeBlock.md)
 - [TalonOne::ListExperiments200Response](docs/ListExperiments200Response.md)
 - [TalonOne::ListStores200Response](docs/ListStores200Response.md)
+- [TalonOne::ListWithCountCheckAttributeBlock](docs/ListWithCountCheckAttributeBlock.md)
 - [TalonOne::LoginParams](docs/LoginParams.md)
 - [TalonOne::Loyalty](docs/Loyalty.md)
 - [TalonOne::LoyaltyBalance](docs/LoyaltyBalance.md)
@@ -862,11 +897,18 @@ Class | Method | HTTP request | Description
 - [TalonOne::LoyaltyProgramTransaction](docs/LoyaltyProgramTransaction.md)
 - [TalonOne::LoyaltySubLedger](docs/LoyaltySubLedger.md)
 - [TalonOne::LoyaltyTier](docs/LoyaltyTier.md)
+- [TalonOne::MCPCompleteOAuthSession](docs/MCPCompleteOAuthSession.md)
 - [TalonOne::MCPKey](docs/MCPKey.md)
+- [TalonOne::MCPOAuthClient](docs/MCPOAuthClient.md)
+- [TalonOne::MCPOAuthCompleteResult](docs/MCPOAuthCompleteResult.md)
 - [TalonOne::MCPOAuthProtectedResource](docs/MCPOAuthProtectedResource.md)
 - [TalonOne::MCPOAuthServerMetadata](docs/MCPOAuthServerMetadata.md)
+- [TalonOne::MCPOAuthToken](docs/MCPOAuthToken.md)
+- [TalonOne::MCPOAuthTokenError](docs/MCPOAuthTokenError.md)
+- [TalonOne::MCPOAuthTokenRequest](docs/MCPOAuthTokenRequest.md)
 - [TalonOne::ManagementKey](docs/ManagementKey.md)
 - [TalonOne::ManagerConfig](docs/ManagerConfig.md)
+- [TalonOne::MapSelectorStep](docs/MapSelectorStep.md)
 - [TalonOne::MessageLogEntries](docs/MessageLogEntries.md)
 - [TalonOne::MessageLogEntry](docs/MessageLogEntry.md)
 - [TalonOne::MessageLogRequest](docs/MessageLogRequest.md)
@@ -929,6 +971,7 @@ Class | Method | HTTP request | Description
 - [TalonOne::NewLoyaltyProgram](docs/NewLoyaltyProgram.md)
 - [TalonOne::NewLoyaltyTier](docs/NewLoyaltyTier.md)
 - [TalonOne::NewMCPKey](docs/NewMCPKey.md)
+- [TalonOne::NewMCPOAuthClient](docs/NewMCPOAuthClient.md)
 - [TalonOne::NewManagementKey](docs/NewManagementKey.md)
 - [TalonOne::NewMessageTest](docs/NewMessageTest.md)
 - [TalonOne::NewMultipleAudiencesItem](docs/NewMultipleAudiencesItem.md)
@@ -1000,6 +1043,7 @@ Class | Method | HTTP request | Description
 - [TalonOne::PromotionGroupBlock](docs/PromotionGroupBlock.md)
 - [TalonOne::PromotionRuleV2](docs/PromotionRuleV2.md)
 - [TalonOne::RedeemReferralEffectProps](docs/RedeemReferralEffectProps.md)
+- [TalonOne::ReduceSelectorStep](docs/ReduceSelectorStep.md)
 - [TalonOne::Referral](docs/Referral.md)
 - [TalonOne::ReferralConstraints](docs/ReferralConstraints.md)
 - [TalonOne::ReferralCreatedEffectProps](docs/ReferralCreatedEffectProps.md)
@@ -1010,10 +1054,12 @@ Class | Method | HTTP request | Description
 - [TalonOne::RemoveItemCatalogAction](docs/RemoveItemCatalogAction.md)
 - [TalonOne::RemoveManyItemsCatalogAction](docs/RemoveManyItemsCatalogAction.md)
 - [TalonOne::ReopenSessionResponse](docs/ReopenSessionResponse.md)
+- [TalonOne::ReserveCouponBlock](docs/ReserveCouponBlock.md)
 - [TalonOne::ReserveCouponEffectProps](docs/ReserveCouponEffectProps.md)
 - [TalonOne::ResponseContentObject](docs/ResponseContentObject.md)
 - [TalonOne::ReturnIntegrationRequest](docs/ReturnIntegrationRequest.md)
 - [TalonOne::ReturnedCartItem](docs/ReturnedCartItem.md)
+- [TalonOne::ReverseSelectorStep](docs/ReverseSelectorStep.md)
 - [TalonOne::ReviewRisksRequest](docs/ReviewRisksRequest.md)
 - [TalonOne::Revision](docs/Revision.md)
 - [TalonOne::RevisionActivation](docs/RevisionActivation.md)
@@ -1057,6 +1103,7 @@ Class | Method | HTTP request | Description
 - [TalonOne::SamlConnectionInternal](docs/SamlConnectionInternal.md)
 - [TalonOne::SamlConnectionMetadata](docs/SamlConnectionMetadata.md)
 - [TalonOne::SamlLoginEndpoint](docs/SamlLoginEndpoint.md)
+- [TalonOne::ScalarCheckAttributeBlock](docs/ScalarCheckAttributeBlock.md)
 - [TalonOne::ScimBaseGroup](docs/ScimBaseGroup.md)
 - [TalonOne::ScimBaseUser](docs/ScimBaseUser.md)
 - [TalonOne::ScimBaseUserName](docs/ScimBaseUserName.md)
@@ -1079,6 +1126,13 @@ Class | Method | HTTP request | Description
 - [TalonOne::ScimUser](docs/ScimUser.md)
 - [TalonOne::ScimUsersListResponse](docs/ScimUsersListResponse.md)
 - [TalonOne::SecondaryDeployment](docs/SecondaryDeployment.md)
+- [TalonOne::SelectSelectorStep](docs/SelectSelectorStep.md)
+- [TalonOne::SelectSelectorStepFrom](docs/SelectSelectorStepFrom.md)
+- [TalonOne::Selector](docs/Selector.md)
+- [TalonOne::SelectorBlock](docs/SelectorBlock.md)
+- [TalonOne::SelectorGroupBlock](docs/SelectorGroupBlock.md)
+- [TalonOne::SelectorStep](docs/SelectorStep.md)
+- [TalonOne::SelectorValueMapRef](docs/SelectorValueMapRef.md)
 - [TalonOne::Session](docs/Session.md)
 - [TalonOne::SetDiscountEffectProps](docs/SetDiscountEffectProps.md)
 - [TalonOne::SetDiscountPerAdditionalCostEffectProps](docs/SetDiscountPerAdditionalCostEffectProps.md)
@@ -1091,6 +1145,9 @@ Class | Method | HTTP request | Description
 - [TalonOne::SkuUnitAnalytics](docs/SkuUnitAnalytics.md)
 - [TalonOne::SkuUnitAnalyticsDataPoint](docs/SkuUnitAnalyticsDataPoint.md)
 - [TalonOne::SlotDef](docs/SlotDef.md)
+- [TalonOne::SortSelectorStep](docs/SortSelectorStep.md)
+- [TalonOne::SortSelectorStepField](docs/SortSelectorStepField.md)
+- [TalonOne::StartAchievementProgressEffectProps](docs/StartAchievementProgressEffectProps.md)
 - [TalonOne::Store](docs/Store.md)
 - [TalonOne::StrikethroughBlock](docs/StrikethroughBlock.md)
 - [TalonOne::StrikethroughChangedItem](docs/StrikethroughChangedItem.md)
@@ -1127,8 +1184,14 @@ Class | Method | HTTP request | Description
 - [TalonOne::TierWillDowngradeNotificationTrigger](docs/TierWillDowngradeNotificationTrigger.md)
 - [TalonOne::TimePoint](docs/TimePoint.md)
 - [TalonOne::TransferLoyaltyCard](docs/TransferLoyaltyCard.md)
+- [TalonOne::TriggerCustomEffectBlock](docs/TriggerCustomEffectBlock.md)
+- [TalonOne::TriggerCustomEffectBlock1CustomEffect](docs/TriggerCustomEffectBlock1CustomEffect.md)
+- [TalonOne::TriggerCustomEffectBlock1Target](docs/TriggerCustomEffectBlock1Target.md)
+- [TalonOne::TriggerWebhookBlock](docs/TriggerWebhookBlock.md)
+- [TalonOne::TriggerWebhookBlock1Webhook](docs/TriggerWebhookBlock1Webhook.md)
 - [TalonOne::TriggerWebhookEffectProps](docs/TriggerWebhookEffectProps.md)
 - [TalonOne::TwoFAConfig](docs/TwoFAConfig.md)
+- [TalonOne::UnaryCheckAttributeBlock](docs/UnaryCheckAttributeBlock.md)
 - [TalonOne::UpdateAccount](docs/UpdateAccount.md)
 - [TalonOne::UpdateAchievement](docs/UpdateAchievement.md)
 - [TalonOne::UpdateAchievementProgressBlock](docs/UpdateAchievementProgressBlock.md)
@@ -1190,6 +1253,7 @@ Class | Method | HTTP request | Description
 - [TalonOne::WebhookAuthenticationWebhookRef](docs/WebhookAuthenticationWebhookRef.md)
 - [TalonOne::WebhookWithOutgoingIntegrationDetails](docs/WebhookWithOutgoingIntegrationDetails.md)
 - [TalonOne::WillAwardGiveawayEffectProps](docs/WillAwardGiveawayEffectProps.md)
+- [TalonOne::WithinCheckAttributeBlock](docs/WithinCheckAttributeBlock.md)
 
 ## Authorization
 

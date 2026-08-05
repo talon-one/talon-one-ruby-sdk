@@ -34,6 +34,12 @@ module TalonOne
 
     attr_accessor :target
 
+    # The date and time when the historical price ID was excluded.
+    attr_accessor :excluded_at
+
+    # The reason for excluding this historical price ID.
+    attr_accessor :exclusion_reason
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -43,7 +49,9 @@ module TalonOne
         :'context_id' => :'contextId',
         :'price' => :'price',
         :'metadata' => :'metadata',
-        :'target' => :'target'
+        :'target' => :'target',
+        :'excluded_at' => :'excludedAt',
+        :'exclusion_reason' => :'exclusionReason'
       }
     end
 
@@ -66,7 +74,9 @@ module TalonOne
         :'context_id' => :'String',
         :'price' => :'Float',
         :'metadata' => :'BestPriorPriceMetadata',
-        :'target' => :'LabelTarget'
+        :'target' => :'LabelTarget',
+        :'excluded_at' => :'Time',
+        :'exclusion_reason' => :'String'
       }
     end
 
@@ -134,6 +144,14 @@ module TalonOne
         self.target = attributes[:'target']
       else
         self.target = nil
+      end
+
+      if attributes.key?(:'excluded_at')
+        self.excluded_at = attributes[:'excluded_at']
+      end
+
+      if attributes.key?(:'exclusion_reason')
+        self.exclusion_reason = attributes[:'exclusion_reason']
       end
     end
 
@@ -253,7 +271,9 @@ module TalonOne
           context_id == o.context_id &&
           price == o.price &&
           metadata == o.metadata &&
-          target == o.target
+          target == o.target &&
+          excluded_at == o.excluded_at &&
+          exclusion_reason == o.exclusion_reason
     end
 
     # @see the `==` method
@@ -265,7 +285,7 @@ module TalonOne
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, observed_at, context_ids, context_id, price, metadata, target].hash
+      [id, observed_at, context_ids, context_id, price, metadata, target, excluded_at, exclusion_reason].hash
     end
 
     # Builds the object from hash

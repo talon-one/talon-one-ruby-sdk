@@ -46,6 +46,7 @@ TalonOne::EffectAllOfProps.openapi_one_of
 #   :'SetLoyaltyPointsExpiryDateEffectProps',
 #   :'ShowBundleMetadataEffectProps',
 #   :'ShowNotificationEffectProps',
+#   :'StartAchievementProgressEffectProps',
 #   :'TriggerWebhookEffectProps',
 #   :'UpdateAttributeEffectProps',
 #   :'WillAwardGiveawayEffectProps'
@@ -108,6 +109,7 @@ TalonOne::EffectAllOfProps.build(data_that_doesnt_match)
 - `SetLoyaltyPointsExpiryDateEffectProps`
 - `ShowBundleMetadataEffectProps`
 - `ShowNotificationEffectProps`
+- `StartAchievementProgressEffectProps`
 - `TriggerWebhookEffectProps`
 - `UpdateAttributeEffectProps`
 - `WillAwardGiveawayEffectProps`

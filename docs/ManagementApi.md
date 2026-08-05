@@ -41,6 +41,7 @@ All URIs are relative to *https://yourbaseurl.talon.one*
 | [**delete_user_by_email**](ManagementApi.md#delete_user_by_email) | **POST** /v1/users/delete | Delete user by email address |
 | [**destroy_session**](ManagementApi.md#destroy_session) | **DELETE** /v1/sessions | Destroy session |
 | [**disconnect_campaign_stores**](ManagementApi.md#disconnect_campaign_stores) | **DELETE** /v1/applications/{applicationId}/campaigns/{campaignId}/stores | Disconnect stores |
+| [**exclude_price_history**](ManagementApi.md#exclude_price_history) | **POST** /v1/applications/{applicationId}/price_history/exclusions | Exclude price records from price history |
 | [**export_account_collection_items**](ManagementApi.md#export_account_collection_items) | **GET** /v1/collections/{collectionId}/export | Export account-level collection&#39;s items |
 | [**export_achievements**](ManagementApi.md#export_achievements) | **GET** /v1/applications/{applicationId}/campaigns/{campaignId}/achievements/{achievementId}/export | Export achievement customer data |
 | [**export_application_campaign_analytics**](ManagementApi.md#export_application_campaign_analytics) | **GET** /v1/applications/{applicationId}/campaign_analytics/export | Export Application analytics aggregated by campaign |
@@ -2915,6 +2916,78 @@ nil (empty response body)
 
 - **Content-Type**: Not defined
 - **Accept**: application/json
+
+
+## exclude_price_history
+
+> exclude_price_history(application_id, exclude_price_observations_request)
+
+Exclude price records from price history
+
+Select a batch of historical price IDs to exclude from [best prior price calculation](https://docs.talon.one/integration-api#tag/Catalogs/operation/bestPriorPrice). All IDs in the batch must be valid `id` values obtained from the [Get summary of price history](https://docs.talon.one/management-api#tag/Catalogs/operation/priceHistory.responses.200.history) endpoint, must belong to the specified Application, must not already be excluded from best prior price calculation, and must not be associated with a scheduled strikethrough pricing notification. 
+
+### Examples
+
+```ruby
+require 'time'
+require 'talon_one_sdk'
+# setup authorization
+TalonOne.configure do |config|
+  # Configure API key authorization: api_key_v1
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+end
+
+api_instance = TalonOne::ManagementApi.new
+application_id = 789 # Integer | The ID of the Application. It is displayed in your Talon.One deployment URL.
+exclude_price_observations_request = TalonOne::ExcludePriceObservationsRequest.new({ids: [3.56], reason: 'Incorrect contextID value.'}) # ExcludePriceObservationsRequest | body
+
+begin
+  # Exclude price records from price history
+  api_instance.exclude_price_history(application_id, exclude_price_observations_request)
+rescue TalonOne::ApiError => e
+  puts "Error when calling ManagementApi->exclude_price_history: #{e}"
+end
+```
+
+#### Using the exclude_price_history_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> exclude_price_history_with_http_info(application_id, exclude_price_observations_request)
+
+```ruby
+begin
+  # Exclude price records from price history
+  data, status_code, headers = api_instance.exclude_price_history_with_http_info(application_id, exclude_price_observations_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue TalonOne::ApiError => e
+  puts "Error when calling ManagementApi->exclude_price_history_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **application_id** | **Integer** | The ID of the Application. It is displayed in your Talon.One deployment URL. |  |
+| **exclude_price_observations_request** | [**ExcludePriceObservationsRequest**](ExcludePriceObservationsRequest.md) | body |  |
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[api_key_v1](../README.md#api_key_v1)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: Not defined
 
 
 ## export_account_collection_items
