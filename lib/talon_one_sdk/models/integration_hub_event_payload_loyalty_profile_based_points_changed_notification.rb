@@ -15,6 +15,9 @@ require 'time'
 
 module TalonOne
   class IntegrationHubEventPayloadLoyaltyProfileBasedPointsChangedNotification < ApiModelBase
+    # The ID of the integration hub event. Return this value in the delivery-status callback to mark the event delivered or failed.
+    attr_accessor :event_id
+
     attr_accessor :profile_integration_id
 
     attr_accessor :loyalty_program_id
@@ -46,6 +49,7 @@ module TalonOne
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'event_id' => :'EventId',
         :'profile_integration_id' => :'ProfileIntegrationID',
         :'loyalty_program_id' => :'LoyaltyProgramID',
         :'loyalty_program_name' => :'LoyaltyProgramName',
@@ -74,6 +78,7 @@ module TalonOne
     # Attribute type mapping.
     def self.openapi_types
       {
+        :'event_id' => :'Integer',
         :'profile_integration_id' => :'String',
         :'loyalty_program_id' => :'Integer',
         :'loyalty_program_name' => :'String',
@@ -110,6 +115,12 @@ module TalonOne
         end
         h[k.to_sym] = v
       }
+
+      if attributes.key?(:'event_id')
+        self.event_id = attributes[:'event_id']
+      else
+        self.event_id = nil
+      end
 
       if attributes.key?(:'profile_integration_id')
         self.profile_integration_id = attributes[:'profile_integration_id']
@@ -183,6 +194,10 @@ module TalonOne
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
+      if @event_id.nil?
+        invalid_properties.push('invalid value for "event_id", event_id cannot be nil.')
+      end
+
       if @profile_integration_id.nil?
         invalid_properties.push('invalid value for "profile_integration_id", profile_integration_id cannot be nil.')
       end
@@ -222,6 +237,7 @@ module TalonOne
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
+      return false if @event_id.nil?
       return false if @profile_integration_id.nil?
       return false if @loyalty_program_id.nil?
       return false if @loyalty_program_name.nil?
@@ -231,6 +247,16 @@ module TalonOne
       return false if @current_points.nil?
       return false if @published_at.nil?
       true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] event_id Value to be assigned
+    def event_id=(event_id)
+      if event_id.nil?
+        fail ArgumentError, 'event_id cannot be nil'
+      end
+
+      @event_id = event_id
     end
 
     # Custom attribute writer method with validation
@@ -318,6 +344,7 @@ module TalonOne
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          event_id == o.event_id &&
           profile_integration_id == o.profile_integration_id &&
           loyalty_program_id == o.loyalty_program_id &&
           loyalty_program_name == o.loyalty_program_name &&
@@ -341,7 +368,7 @@ module TalonOne
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [profile_integration_id, loyalty_program_id, loyalty_program_name, subledger_id, source_of_event, current_tier, session_integration_id, employee_name, user_id, current_points, actions, published_at].hash
+      [event_id, profile_integration_id, loyalty_program_id, loyalty_program_name, subledger_id, source_of_event, current_tier, session_integration_id, employee_name, user_id, current_points, actions, published_at].hash
     end
 
     # Builds the object from hash

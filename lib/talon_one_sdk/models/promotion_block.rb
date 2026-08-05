@@ -20,15 +20,25 @@ module TalonOne
       # List of class defined in oneOf (OpenAPI v3)
       def openapi_one_of
         [
+          :'AwardDiscountBlock',
           :'AwardGiveawayBlock',
           :'AwardItemBlock',
+          :'CheckAchievementBlock',
           :'CheckAudienceBlock',
+          :'CheckBudgetBlock',
           :'CheckCouponBlock',
+          :'CheckEventBlock',
+          :'CheckLoyaltyBalanceBlock',
           :'CheckReferralBlock',
+          :'CreateCouponBlock',
+          :'CreateReferralBlock',
           :'PassthroughBlock',
           :'PromotionCheckAttributeBlock',
           :'PromotionGroupBlock',
+          :'ReserveCouponBlock',
           :'ShowNotificationBlock',
+          :'TriggerCustomEffectBlock',
+          :'TriggerWebhookBlock',
           :'UpdateAchievementProgressBlock',
           :'UpdateAttributeValueBlock',
           :'UpdateAudienceMembershipBlock'
@@ -43,15 +53,25 @@ module TalonOne
       # Discriminator's mapping (OpenAPI v3)
       def openapi_discriminator_mapping
         {
+          :'awardDiscount' => :'AwardDiscountBlock',
           :'awardGiveaway' => :'AwardGiveawayBlock',
           :'awardItem' => :'AwardItemBlock',
+          :'checkAchievement' => :'CheckAchievementBlock',
           :'checkAttribute' => :'PromotionCheckAttributeBlock',
           :'checkAudience' => :'CheckAudienceBlock',
+          :'checkBudget' => :'CheckBudgetBlock',
           :'checkCoupon' => :'CheckCouponBlock',
+          :'checkEvent' => :'CheckEventBlock',
+          :'checkLoyaltyBalance' => :'CheckLoyaltyBalanceBlock',
           :'checkReferral' => :'CheckReferralBlock',
+          :'createCoupon' => :'CreateCouponBlock',
+          :'createReferral' => :'CreateReferralBlock',
           :'group' => :'PromotionGroupBlock',
           :'passthrough' => :'PassthroughBlock',
+          :'reserveCoupon' => :'ReserveCouponBlock',
           :'showNotification' => :'ShowNotificationBlock',
+          :'triggerCustomEffect' => :'TriggerCustomEffectBlock',
+          :'triggerWebhook' => :'TriggerWebhookBlock',
           :'updateAchievementProgress' => :'UpdateAchievementProgressBlock',
           :'updateAttributeValue' => :'UpdateAttributeValueBlock',
           :'updateAudienceMembership' => :'UpdateAudienceMembershipBlock'

@@ -14,6 +14,7 @@ require 'talon_one_sdk'
 TalonOne::StrikethroughBlock.openapi_one_of
 # =>
 # [
+#   :'AwardDiscountBlock',
 #   :'PassthroughBlock',
 #   :'StrikethroughCheckAttributeBlock',
 #   :'StrikethroughGroupBlock'
@@ -45,6 +46,7 @@ require 'talon_one_sdk'
 TalonOne::StrikethroughBlock.openapi_discriminator_mapping
 # =>
 # {
+#   :'awardDiscount' => :'AwardDiscountBlock',
 #   :'checkAttribute' => :'StrikethroughCheckAttributeBlock',
 #   :'group' => :'StrikethroughGroupBlock',
 #   :'passthrough' => :'PassthroughBlock'
@@ -61,7 +63,7 @@ Find the appropriate object from the `openapi_one_of` list and casts the data in
 require 'talon_one_sdk'
 
 TalonOne::StrikethroughBlock.build(data)
-# => #<PassthroughBlock:0x00007fdd4aab02a0>
+# => #<AwardDiscountBlock:0x00007fdd4aab02a0>
 
 TalonOne::StrikethroughBlock.build(data_that_doesnt_match)
 # => nil
@@ -75,6 +77,7 @@ TalonOne::StrikethroughBlock.build(data_that_doesnt_match)
 
 #### Return type
 
+- `AwardDiscountBlock`
 - `PassthroughBlock`
 - `StrikethroughCheckAttributeBlock`
 - `StrikethroughGroupBlock`

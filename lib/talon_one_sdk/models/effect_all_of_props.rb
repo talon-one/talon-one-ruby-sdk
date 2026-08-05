@@ -51,6 +51,7 @@ module TalonOne
           :'SetLoyaltyPointsExpiryDateEffectProps',
           :'ShowBundleMetadataEffectProps',
           :'ShowNotificationEffectProps',
+          :'StartAchievementProgressEffectProps',
           :'TriggerWebhookEffectProps',
           :'UpdateAttributeEffectProps',
           :'WillAwardGiveawayEffectProps'

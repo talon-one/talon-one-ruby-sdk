@@ -27,7 +27,6 @@ module TalonOne
     # The comparison operator applied to the attribute.
     attr_accessor :operator
 
-    # The attribute path identifier (e.g. \"$Session.Total\").
     attr_accessor :attribute
 
     attr_accessor :value
@@ -35,6 +34,19 @@ module TalonOne
     attr_accessor :min
 
     attr_accessor :max
+
+    attr_accessor :start
+
+    attr_accessor :_end
+
+    # When `true`, the `start` value is included in the range for the `within` operator.
+    attr_accessor :start_inclusive
+
+    # When `true`, the `end` value is included in the range for the `within` operator.
+    attr_accessor :end_inclusive
+
+    # Indicates whether the `within` operator ignores time zones and compares the wall-clock time only. When `false`, time zones are taken into account.
+    attr_accessor :timezone_insensitive
 
     attr_accessor :values
 
@@ -73,6 +85,11 @@ module TalonOne
         :'value' => :'value',
         :'min' => :'min',
         :'max' => :'max',
+        :'start' => :'start',
+        :'_end' => :'end',
+        :'start_inclusive' => :'startInclusive',
+        :'end_inclusive' => :'endInclusive',
+        :'timezone_insensitive' => :'timezoneInsensitive',
         :'values' => :'values',
         :'count' => :'count'
       }
@@ -95,10 +112,15 @@ module TalonOne
         :'type' => :'String',
         :'tags' => :'Array<String>',
         :'operator' => :'String',
-        :'attribute' => :'String',
+        :'attribute' => :'Object',
         :'value' => :'Object',
         :'min' => :'Object',
         :'max' => :'Object',
+        :'start' => :'Object',
+        :'_end' => :'Object',
+        :'start_inclusive' => :'Boolean',
+        :'end_inclusive' => :'Boolean',
+        :'timezone_insensitive' => :'Boolean',
         :'values' => :'Object',
         :'count' => :'Object'
       }
@@ -107,9 +129,12 @@ module TalonOne
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
+        :'attribute',
         :'value',
         :'min',
         :'max',
+        :'start',
+        :'_end',
         :'values',
         :'count'
       ])
@@ -180,6 +205,26 @@ module TalonOne
         self.max = attributes[:'max']
       end
 
+      if attributes.key?(:'start')
+        self.start = attributes[:'start']
+      end
+
+      if attributes.key?(:'_end')
+        self._end = attributes[:'_end']
+      end
+
+      if attributes.key?(:'start_inclusive')
+        self.start_inclusive = attributes[:'start_inclusive']
+      end
+
+      if attributes.key?(:'end_inclusive')
+        self.end_inclusive = attributes[:'end_inclusive']
+      end
+
+      if attributes.key?(:'timezone_insensitive')
+        self.timezone_insensitive = attributes[:'timezone_insensitive']
+      end
+
       if attributes.key?(:'values')
         self.values = attributes[:'values']
       end
@@ -206,10 +251,6 @@ module TalonOne
         invalid_properties.push('invalid value for "operator", operator cannot be nil.')
       end
 
-      if @attribute.nil?
-        invalid_properties.push('invalid value for "attribute", attribute cannot be nil.')
-      end
-
       invalid_properties
     end
 
@@ -220,9 +261,8 @@ module TalonOne
       return false if @id.nil?
       return false if @type.nil?
       return false if @operator.nil?
-      operator_validator = EnumAttributeValidator.new('String', ["equals", "not(equals)", "lessThan", "lessThanOrEqual", "greaterThan", "greaterThanOrEqual", "between", "contains", "not(contains)", "matchesRegexp", "startsWith", "endsWith", "oneOf", "not(oneOf)", "inCollection", "not(inCollection)", "empty", "not(empty)", "exists", "not(exists)", "isTrue", "isFalse", "containsAtLeast", "containsExactly", "containsOneOf", "containsNoneOf", "containsAllOf"])
+      operator_validator = EnumAttributeValidator.new('String', ["equals", "not(equals)", "lessThan", "lessThanOrEqual", "greaterThan", "greaterThanOrEqual", "between", "contains", "not(contains)", "matchesRegexp", "startsWith", "endsWith", "oneOf", "not(oneOf)", "inCollection", "not(inCollection)", "empty", "not(empty)", "exists", "not(exists)", "isTrue", "isFalse", "containsAtLeast", "containsExactly", "containsOneOf", "containsNoneOf", "containsAllOf", "after", "before", "within", "not(within)"])
       return false unless operator_validator.valid?(@operator)
-      return false if @attribute.nil?
       true
     end
 
@@ -249,21 +289,11 @@ module TalonOne
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] operator Object to be assigned
     def operator=(operator)
-      validator = EnumAttributeValidator.new('String', ["equals", "not(equals)", "lessThan", "lessThanOrEqual", "greaterThan", "greaterThanOrEqual", "between", "contains", "not(contains)", "matchesRegexp", "startsWith", "endsWith", "oneOf", "not(oneOf)", "inCollection", "not(inCollection)", "empty", "not(empty)", "exists", "not(exists)", "isTrue", "isFalse", "containsAtLeast", "containsExactly", "containsOneOf", "containsNoneOf", "containsAllOf"])
+      validator = EnumAttributeValidator.new('String', ["equals", "not(equals)", "lessThan", "lessThanOrEqual", "greaterThan", "greaterThanOrEqual", "between", "contains", "not(contains)", "matchesRegexp", "startsWith", "endsWith", "oneOf", "not(oneOf)", "inCollection", "not(inCollection)", "empty", "not(empty)", "exists", "not(exists)", "isTrue", "isFalse", "containsAtLeast", "containsExactly", "containsOneOf", "containsNoneOf", "containsAllOf", "after", "before", "within", "not(within)"])
       unless validator.valid?(operator)
         fail ArgumentError, "invalid value for \"operator\", must be one of #{validator.allowable_values}."
       end
       @operator = operator
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] attribute Value to be assigned
-    def attribute=(attribute)
-      if attribute.nil?
-        fail ArgumentError, 'attribute cannot be nil'
-      end
-
-      @attribute = attribute
     end
 
     # Checks equality by comparing each attribute.
@@ -279,6 +309,11 @@ module TalonOne
           value == o.value &&
           min == o.min &&
           max == o.max &&
+          start == o.start &&
+          _end == o._end &&
+          start_inclusive == o.start_inclusive &&
+          end_inclusive == o.end_inclusive &&
+          timezone_insensitive == o.timezone_insensitive &&
           values == o.values &&
           count == o.count
     end
@@ -292,7 +327,7 @@ module TalonOne
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, type, tags, operator, attribute, value, min, max, values, count].hash
+      [id, type, tags, operator, attribute, value, min, max, start, _end, start_inclusive, end_inclusive, timezone_insensitive, values, count].hash
     end
 
     # Builds the object from hash

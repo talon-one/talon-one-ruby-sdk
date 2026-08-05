@@ -14,15 +14,25 @@ require 'talon_one_sdk'
 TalonOne::PromotionBlock.openapi_one_of
 # =>
 # [
+#   :'AwardDiscountBlock',
 #   :'AwardGiveawayBlock',
 #   :'AwardItemBlock',
+#   :'CheckAchievementBlock',
 #   :'CheckAudienceBlock',
+#   :'CheckBudgetBlock',
 #   :'CheckCouponBlock',
+#   :'CheckEventBlock',
+#   :'CheckLoyaltyBalanceBlock',
 #   :'CheckReferralBlock',
+#   :'CreateCouponBlock',
+#   :'CreateReferralBlock',
 #   :'PassthroughBlock',
 #   :'PromotionCheckAttributeBlock',
 #   :'PromotionGroupBlock',
+#   :'ReserveCouponBlock',
 #   :'ShowNotificationBlock',
+#   :'TriggerCustomEffectBlock',
+#   :'TriggerWebhookBlock',
 #   :'UpdateAchievementProgressBlock',
 #   :'UpdateAttributeValueBlock',
 #   :'UpdateAudienceMembershipBlock'
@@ -54,15 +64,25 @@ require 'talon_one_sdk'
 TalonOne::PromotionBlock.openapi_discriminator_mapping
 # =>
 # {
+#   :'awardDiscount' => :'AwardDiscountBlock',
 #   :'awardGiveaway' => :'AwardGiveawayBlock',
 #   :'awardItem' => :'AwardItemBlock',
+#   :'checkAchievement' => :'CheckAchievementBlock',
 #   :'checkAttribute' => :'PromotionCheckAttributeBlock',
 #   :'checkAudience' => :'CheckAudienceBlock',
+#   :'checkBudget' => :'CheckBudgetBlock',
 #   :'checkCoupon' => :'CheckCouponBlock',
+#   :'checkEvent' => :'CheckEventBlock',
+#   :'checkLoyaltyBalance' => :'CheckLoyaltyBalanceBlock',
 #   :'checkReferral' => :'CheckReferralBlock',
+#   :'createCoupon' => :'CreateCouponBlock',
+#   :'createReferral' => :'CreateReferralBlock',
 #   :'group' => :'PromotionGroupBlock',
 #   :'passthrough' => :'PassthroughBlock',
+#   :'reserveCoupon' => :'ReserveCouponBlock',
 #   :'showNotification' => :'ShowNotificationBlock',
+#   :'triggerCustomEffect' => :'TriggerCustomEffectBlock',
+#   :'triggerWebhook' => :'TriggerWebhookBlock',
 #   :'updateAchievementProgress' => :'UpdateAchievementProgressBlock',
 #   :'updateAttributeValue' => :'UpdateAttributeValueBlock',
 #   :'updateAudienceMembership' => :'UpdateAudienceMembershipBlock'
@@ -79,7 +99,7 @@ Find the appropriate object from the `openapi_one_of` list and casts the data in
 require 'talon_one_sdk'
 
 TalonOne::PromotionBlock.build(data)
-# => #<AwardGiveawayBlock:0x00007fdd4aab02a0>
+# => #<AwardDiscountBlock:0x00007fdd4aab02a0>
 
 TalonOne::PromotionBlock.build(data_that_doesnt_match)
 # => nil
@@ -93,15 +113,25 @@ TalonOne::PromotionBlock.build(data_that_doesnt_match)
 
 #### Return type
 
+- `AwardDiscountBlock`
 - `AwardGiveawayBlock`
 - `AwardItemBlock`
+- `CheckAchievementBlock`
 - `CheckAudienceBlock`
+- `CheckBudgetBlock`
 - `CheckCouponBlock`
+- `CheckEventBlock`
+- `CheckLoyaltyBalanceBlock`
 - `CheckReferralBlock`
+- `CreateCouponBlock`
+- `CreateReferralBlock`
 - `PassthroughBlock`
 - `PromotionCheckAttributeBlock`
 - `PromotionGroupBlock`
+- `ReserveCouponBlock`
 - `ShowNotificationBlock`
+- `TriggerCustomEffectBlock`
+- `TriggerWebhookBlock`
 - `UpdateAchievementProgressBlock`
 - `UpdateAttributeValueBlock`
 - `UpdateAudienceMembershipBlock`

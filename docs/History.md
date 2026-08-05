@@ -11,6 +11,8 @@
 | **price** | **Float** | Price of the item. |  |
 | **metadata** | [**BestPriorPriceMetadata**](BestPriorPriceMetadata.md) |  |  |
 | **target** | [**LabelTarget**](LabelTarget.md) |  |  |
+| **excluded_at** | **Time** | The date and time when the historical price ID was excluded. | [optional] |
+| **exclusion_reason** | **String** | The reason for excluding this historical price ID. | [optional] |
 
 ## Example
 
@@ -24,7 +26,9 @@ instance = TalonOne::History.new(
   context_id: ,
   price: 99.99,
   metadata: null,
-  target: null
+  target: null,
+  excluded_at: 2025-11-10T23:00:00Z,
+  exclusion_reason: Incorrect contextID value
 )
 ```
 

@@ -2771,6 +2771,78 @@ module TalonOne
       return data, status_code, headers
     end
 
+    # Exclude price records from price history
+    # Select a batch of historical price IDs to exclude from [best prior price calculation](https://docs.talon.one/integration-api#tag/Catalogs/operation/bestPriorPrice). All IDs in the batch must be valid `id` values obtained from the [Get summary of price history](https://docs.talon.one/management-api#tag/Catalogs/operation/priceHistory.responses.200.history) endpoint, must belong to the specified Application, must not already be excluded from best prior price calculation, and must not be associated with a scheduled strikethrough pricing notification. 
+    # @param application_id [Integer] The ID of the Application. It is displayed in your Talon.One deployment URL.
+    # @param exclude_price_observations_request [ExcludePriceObservationsRequest] body
+    # @param [Hash] opts the optional parameters
+    # @return [nil]
+    def exclude_price_history(application_id, exclude_price_observations_request, opts = {})
+      exclude_price_history_with_http_info(application_id, exclude_price_observations_request, opts)
+      nil
+    end
+
+    # Exclude price records from price history
+    # Select a batch of historical price IDs to exclude from [best prior price calculation](https://docs.talon.one/integration-api#tag/Catalogs/operation/bestPriorPrice). All IDs in the batch must be valid &#x60;id&#x60; values obtained from the [Get summary of price history](https://docs.talon.one/management-api#tag/Catalogs/operation/priceHistory.responses.200.history) endpoint, must belong to the specified Application, must not already be excluded from best prior price calculation, and must not be associated with a scheduled strikethrough pricing notification. 
+    # @param application_id [Integer] The ID of the Application. It is displayed in your Talon.One deployment URL.
+    # @param exclude_price_observations_request [ExcludePriceObservationsRequest] body
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    def exclude_price_history_with_http_info(application_id, exclude_price_observations_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ManagementApi.exclude_price_history ...'
+      end
+      # verify the required parameter 'application_id' is set
+      if @api_client.config.client_side_validation && application_id.nil?
+        fail ArgumentError, "Missing the required parameter 'application_id' when calling ManagementApi.exclude_price_history"
+      end
+      # verify the required parameter 'exclude_price_observations_request' is set
+      if @api_client.config.client_side_validation && exclude_price_observations_request.nil?
+        fail ArgumentError, "Missing the required parameter 'exclude_price_observations_request' when calling ManagementApi.exclude_price_history"
+      end
+      # resource path
+      local_var_path = '/v1/applications/{applicationId}/price_history/exclusions'.sub('{applicationId}', CGI.escape(application_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(exclude_price_observations_request)
+
+      # return_type
+      return_type = opts[:debug_return_type]
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['api_key_v1']
+
+      new_options = opts.merge(
+        :operation => :"ManagementApi.exclude_price_history",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ManagementApi#exclude_price_history\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Export account-level collection's items
     # Download a CSV file containing items from a given account-level collection.  > [!tip] If the exported CSV file is too large to view, you can > [split it into multiple files](https://www.google.com/search?q=split+CSV+into+multiple+files). 
     # @param collection_id [Integer] The ID of the collection. You can get it with the [List collections in account](#tag/Collections/operation/listAccountCollections) endpoint.

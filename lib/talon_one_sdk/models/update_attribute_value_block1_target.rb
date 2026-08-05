@@ -19,6 +19,9 @@ module TalonOne
     # Identifies the target scope of the attribute update.
     attr_accessor :type
 
+    # Identifies the name of the target when its type is set to `selector` or `globalFilter`.
+    attr_accessor :name
+
     class EnumAttributeValidator
       attr_reader :datatype
       attr_reader :allowable_values
@@ -44,7 +47,8 @@ module TalonOne
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'type' => :'type'
+        :'type' => :'type',
+        :'name' => :'name'
       }
     end
 
@@ -61,7 +65,8 @@ module TalonOne
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'type' => :'String'
+        :'type' => :'String',
+        :'name' => :'String'
       }
     end
 
@@ -91,6 +96,10 @@ module TalonOne
         self.type = attributes[:'type']
       else
         self.type = nil
+      end
+
+      if attributes.key?(:'name')
+        self.name = attributes[:'name']
       end
     end
 
@@ -131,7 +140,8 @@ module TalonOne
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          type == o.type
+          type == o.type &&
+          name == o.name
     end
 
     # @see the `==` method
@@ -143,7 +153,7 @@ module TalonOne
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [type].hash
+      [type, name].hash
     end
 
     # Builds the object from hash

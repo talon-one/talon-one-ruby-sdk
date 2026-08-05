@@ -20,6 +20,7 @@ module TalonOne
       # List of class defined in oneOf (OpenAPI v3)
       def openapi_one_of
         [
+          :'AwardDiscountBlock',
           :'PassthroughBlock',
           :'StrikethroughCheckAttributeBlock',
           :'StrikethroughGroupBlock'
@@ -34,6 +35,7 @@ module TalonOne
       # Discriminator's mapping (OpenAPI v3)
       def openapi_discriminator_mapping
         {
+          :'awardDiscount' => :'AwardDiscountBlock',
           :'checkAttribute' => :'StrikethroughCheckAttributeBlock',
           :'group' => :'StrikethroughGroupBlock',
           :'passthrough' => :'PassthroughBlock'

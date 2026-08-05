@@ -12,7 +12,7 @@
 | **activated_at** | **Time** | Timestamp indicating when this ruleset was activated. | [optional] |
 | **promotion_rules** | [**Array&lt;PromotionRuleV2&gt;**](PromotionRuleV2.md) | Set of promotion rules. |  |
 | **strikethrough_rules** | [**Array&lt;StrikethroughRuleV2&gt;**](StrikethroughRuleV2.md) | Set of strikethrough rules. |  |
-| **selectors** | **Array&lt;Hash&lt;String, Object&gt;&gt;** | Variable bindings of type selector. | [optional] |
+| **selectors** | [**Array&lt;Selector&gt;**](Selector.md) | Variable bindings of type selector. | [optional] |
 | **bundles** | **Array&lt;Hash&lt;String, Object&gt;&gt;** | Variable bindings of type bundle. | [optional] |
 | **parameters** | **Array&lt;Hash&lt;String, Object&gt;&gt;** | Variable bindings of type template parameter. | [optional] |
 
