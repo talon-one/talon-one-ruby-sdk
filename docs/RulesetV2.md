@@ -13,8 +13,8 @@
 | **promotion_rules** | [**Array&lt;PromotionRuleV2&gt;**](PromotionRuleV2.md) | Set of promotion rules. |  |
 | **strikethrough_rules** | [**Array&lt;StrikethroughRuleV2&gt;**](StrikethroughRuleV2.md) | Set of strikethrough rules. |  |
 | **selectors** | [**Array&lt;Selector&gt;**](Selector.md) | Variable bindings of type selector. | [optional] |
-| **bundles** | **Array&lt;Hash&lt;String, Object&gt;&gt;** | Variable bindings of type bundle. | [optional] |
-| **parameters** | **Array&lt;Hash&lt;String, Object&gt;&gt;** | Variable bindings of type template parameter. | [optional] |
+| **bundles** | [**Array&lt;Bundle&gt;**](Bundle.md) | Variable bindings of type bundle. | [optional] |
+| **parameters** | [**Array&lt;TemplateParameter&gt;**](TemplateParameter.md) | Variable bindings of type template parameter. | [optional] |
 
 ## Example
 

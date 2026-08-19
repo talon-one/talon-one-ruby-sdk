@@ -48,6 +48,7 @@ docs/AddFreeItemEffectProps.md
 docs/AddItemCatalogAction.md
 docs/AddLoyaltyPoints.md
 docs/AddLoyaltyPointsEffectProps.md
+docs/AddLoyaltyPointsSupport.md
 docs/AddPriceAdjustmentCatalogAction.md
 docs/AddToAudienceEffectProps.md
 docs/AddedDeductedPointsBalancesAction.md
@@ -78,6 +79,7 @@ docs/ApplicationCustomer.md
 docs/ApplicationCustomerEntity.md
 docs/ApplicationEntity.md
 docs/ApplicationEvent.md
+docs/ApplicationMembership.md
 docs/ApplicationReferee.md
 docs/ApplicationSession.md
 docs/ApplicationSessionEntity.md
@@ -130,6 +132,7 @@ docs/Binding.md
 docs/Blueprint.md
 docs/BulkApplicationNotification.md
 docs/BulkOperationOnCampaigns.md
+docs/Bundle.md
 docs/Campaign.md
 docs/CampaignActivationRequest.md
 docs/CampaignAnalytics.md
@@ -163,6 +166,7 @@ docs/CampaignNotificationBase.md
 docs/CampaignNotificationGeneric.md
 docs/CampaignNotificationItemBase.md
 docs/CampaignNotificationPolicy.md
+docs/CampaignReference.md
 docs/CampaignRulesetChangedNotification.md
 docs/CampaignRulesetChangedNotificationItem.md
 docs/CampaignSearch.md
@@ -192,13 +196,13 @@ docs/CartItem.md
 docs/CartItemFilterTemplate.md
 docs/Catalog.md
 docs/CatalogAction.md
+docs/CatalogActionAdd.md
+docs/CatalogActionAddPriceAdjustment.md
 docs/CatalogActionFilter.md
-docs/CatalogActionOneOf.md
-docs/CatalogActionOneOf1.md
-docs/CatalogActionOneOf2.md
-docs/CatalogActionOneOf3.md
-docs/CatalogActionOneOf4.md
-docs/CatalogActionOneOf5.md
+docs/CatalogActionPatch.md
+docs/CatalogActionPatchMany.md
+docs/CatalogActionRemove.md
+docs/CatalogActionRemoveMany.md
 docs/CatalogItem.md
 docs/CatalogRule.md
 docs/CatalogSyncRequest.md
@@ -217,7 +221,10 @@ docs/CheckCouponBlock.md
 docs/CheckEventBlock.md
 docs/CheckLoyaltyBalanceBlock.md
 docs/CheckLoyaltyBalanceBlock1Program.md
+docs/CheckLoyaltyCardBlock.md
 docs/CheckReferralBlock.md
+docs/CheckTierBlock.md
+docs/CheckTierBlock1Tier.md
 docs/CodeGeneratorSettings.md
 docs/Collection.md
 docs/CollectionItem.md
@@ -271,6 +278,7 @@ docs/CustomerProfileIntegrationResponseV2.md
 docs/CustomerProfileReward.md
 docs/CustomerProfileSearchQuery.md
 docs/CustomerProfileUpdateV2Response.md
+docs/CustomerReward.md
 docs/CustomerSession.md
 docs/CustomerSessionV2.md
 docs/DeactivateUserRequest.md
@@ -282,9 +290,7 @@ docs/DeleteUserRequest.md
 docs/DigitalPass.md
 docs/DiscardRisksRequest.md
 docs/Effect.md
-docs/EffectAllOfProps.md
 docs/EffectEntity.md
-docs/EffectProps.md
 docs/EmailEntity.md
 docs/EmbeddedAnalyticsConfiguration.md
 docs/EmbeddedAnalyticsConfigurationDashboards.md
@@ -305,6 +311,7 @@ docs/EventV2.md
 docs/EventV3.md
 docs/EventV3Connections.md
 docs/EventV3Entity.md
+docs/EventV3ReferralEntity.md
 docs/EventV3RequestEntity.md
 docs/ExcludePriceObservationsRequest.md
 docs/Experiment.md
@@ -452,6 +459,7 @@ docs/IntegrationResponse.md
 docs/IntegrationState.md
 docs/IntegrationStateV2.md
 docs/IntegrationStoreEntity.md
+docs/IntegrationUnlockRewardRequest.md
 docs/InventoryCoupon.md
 docs/InventoryReferral.md
 docs/ItemAttribute.md
@@ -467,6 +475,7 @@ docs/LimitConfig.md
 docs/LimitCounter.md
 docs/ListAccountCollections200Response.md
 docs/ListAchievements200Response.md
+docs/ListAchievementsV2200Response.md
 docs/ListAllRolesV2200Response.md
 docs/ListApplicationCartItemFilters200Response.md
 docs/ListCampaignStoreBudgetLimits200Response.md
@@ -510,6 +519,7 @@ docs/MCPOAuthClient.md
 docs/MCPOAuthCompleteResult.md
 docs/MCPOAuthProtectedResource.md
 docs/MCPOAuthServerMetadata.md
+docs/MCPOAuthSessionInfo.md
 docs/MCPOAuthToken.md
 docs/MCPOAuthTokenError.md
 docs/MCPOAuthTokenRequest.md
@@ -650,6 +660,9 @@ docs/PromotionBlock.md
 docs/PromotionCheckAttributeBlock.md
 docs/PromotionGroupBlock.md
 docs/PromotionRuleV2.md
+docs/RedeemLoyaltyPointsBlock.md
+docs/RedeemLoyaltyPointsBlock1Program.md
+docs/RedeemLoyaltyPointsBlock1Value.md
 docs/RedeemReferralEffectProps.md
 docs/ReduceSelectorStep.md
 docs/Referral.md
@@ -674,6 +687,9 @@ docs/RevisionActivation.md
 docs/RevisionActivationRequest.md
 docs/RevisionVersion.md
 docs/Reward.md
+docs/RewardCatalogItem.md
+docs/RewardEligibility.md
+docs/RewardEligibilityFailureDetails.md
 docs/RewardPointsRequired.md
 docs/Risk.md
 docs/RiskAffectedEntityItem.md
@@ -697,6 +713,7 @@ docs/RollbackDeductedLoyaltyPointsEffectProps.md
 docs/RollbackDiscountEffectProps.md
 docs/RollbackIncreasedAchievementProgressEffectProps.md
 docs/RollbackReferralEffectProps.md
+docs/RollbackUseRewardEffectProps.md
 docs/Rule.md
 docs/RuleEligibility.md
 docs/RuleEligibilityFailureDetails.md
@@ -763,7 +780,6 @@ docs/StrikethroughCheckAttributeBlock.md
 docs/StrikethroughCustomEffectPerItemProps.md
 docs/StrikethroughDebugResponse.md
 docs/StrikethroughEffect.md
-docs/StrikethroughEffectProps.md
 docs/StrikethroughGroupBlock.md
 docs/StrikethroughLabelingNotification.md
 docs/StrikethroughRuleV2.md
@@ -772,6 +788,7 @@ docs/StrikethroughSetDiscountPerItemMemberEffectProps.md
 docs/StrikethroughTrigger.md
 docs/SummarizeCampaignStoreBudget200Response.md
 docs/SummaryCampaignStoreBudget.md
+docs/SupportCustomerProfile.md
 docs/SupportRequest.md
 docs/SupportRequestInput.md
 docs/TalangAttribute.md
@@ -779,6 +796,7 @@ docs/TalangAttributeVisibility.md
 docs/TemplateArgDef.md
 docs/TemplateDef.md
 docs/TemplateLimitConfig.md
+docs/TemplateParameter.md
 docs/Tier.md
 docs/TierDowngradeData.md
 docs/TierDowngradeNotification.md
@@ -800,6 +818,7 @@ docs/TriggerWebhookBlock1Webhook.md
 docs/TriggerWebhookEffectProps.md
 docs/TwoFAConfig.md
 docs/UnaryCheckAttributeBlock.md
+docs/UnlockRewardEffectProps.md
 docs/UpdateAccount.md
 docs/UpdateAchievement.md
 docs/UpdateAchievementProgressBlock.md
@@ -847,6 +866,7 @@ docs/UpdateRole.md
 docs/UpdateStore.md
 docs/UpdateSupportRequest.md
 docs/UpdateUser.md
+docs/UseRewardEffectProps.md
 docs/User.md
 docs/UserEntity.md
 docs/ValueMap.md
@@ -901,6 +921,7 @@ lib/talon_one_sdk/models/add_free_item_effect_props.rb
 lib/talon_one_sdk/models/add_item_catalog_action.rb
 lib/talon_one_sdk/models/add_loyalty_points.rb
 lib/talon_one_sdk/models/add_loyalty_points_effect_props.rb
+lib/talon_one_sdk/models/add_loyalty_points_support.rb
 lib/talon_one_sdk/models/add_price_adjustment_catalog_action.rb
 lib/talon_one_sdk/models/add_to_audience_effect_props.rb
 lib/talon_one_sdk/models/added_deducted_points_balances_action.rb
@@ -932,6 +953,7 @@ lib/talon_one_sdk/models/application_customer.rb
 lib/talon_one_sdk/models/application_customer_entity.rb
 lib/talon_one_sdk/models/application_entity.rb
 lib/talon_one_sdk/models/application_event.rb
+lib/talon_one_sdk/models/application_membership.rb
 lib/talon_one_sdk/models/application_referee.rb
 lib/talon_one_sdk/models/application_session.rb
 lib/talon_one_sdk/models/application_session_entity.rb
@@ -984,6 +1006,7 @@ lib/talon_one_sdk/models/binding.rb
 lib/talon_one_sdk/models/blueprint.rb
 lib/talon_one_sdk/models/bulk_application_notification.rb
 lib/talon_one_sdk/models/bulk_operation_on_campaigns.rb
+lib/talon_one_sdk/models/bundle.rb
 lib/talon_one_sdk/models/campaign.rb
 lib/talon_one_sdk/models/campaign_activation_request.rb
 lib/talon_one_sdk/models/campaign_analytics.rb
@@ -1017,6 +1040,7 @@ lib/talon_one_sdk/models/campaign_notification_base.rb
 lib/talon_one_sdk/models/campaign_notification_generic.rb
 lib/talon_one_sdk/models/campaign_notification_item_base.rb
 lib/talon_one_sdk/models/campaign_notification_policy.rb
+lib/talon_one_sdk/models/campaign_reference.rb
 lib/talon_one_sdk/models/campaign_ruleset_changed_notification.rb
 lib/talon_one_sdk/models/campaign_ruleset_changed_notification_item.rb
 lib/talon_one_sdk/models/campaign_search.rb
@@ -1046,13 +1070,13 @@ lib/talon_one_sdk/models/cart_item.rb
 lib/talon_one_sdk/models/cart_item_filter_template.rb
 lib/talon_one_sdk/models/catalog.rb
 lib/talon_one_sdk/models/catalog_action.rb
+lib/talon_one_sdk/models/catalog_action_add.rb
+lib/talon_one_sdk/models/catalog_action_add_price_adjustment.rb
 lib/talon_one_sdk/models/catalog_action_filter.rb
-lib/talon_one_sdk/models/catalog_action_one_of.rb
-lib/talon_one_sdk/models/catalog_action_one_of1.rb
-lib/talon_one_sdk/models/catalog_action_one_of2.rb
-lib/talon_one_sdk/models/catalog_action_one_of3.rb
-lib/talon_one_sdk/models/catalog_action_one_of4.rb
-lib/talon_one_sdk/models/catalog_action_one_of5.rb
+lib/talon_one_sdk/models/catalog_action_patch.rb
+lib/talon_one_sdk/models/catalog_action_patch_many.rb
+lib/talon_one_sdk/models/catalog_action_remove.rb
+lib/talon_one_sdk/models/catalog_action_remove_many.rb
 lib/talon_one_sdk/models/catalog_item.rb
 lib/talon_one_sdk/models/catalog_rule.rb
 lib/talon_one_sdk/models/catalog_sync_request.rb
@@ -1071,7 +1095,10 @@ lib/talon_one_sdk/models/check_coupon_block.rb
 lib/talon_one_sdk/models/check_event_block.rb
 lib/talon_one_sdk/models/check_loyalty_balance_block.rb
 lib/talon_one_sdk/models/check_loyalty_balance_block1_program.rb
+lib/talon_one_sdk/models/check_loyalty_card_block.rb
 lib/talon_one_sdk/models/check_referral_block.rb
+lib/talon_one_sdk/models/check_tier_block.rb
+lib/talon_one_sdk/models/check_tier_block1_tier.rb
 lib/talon_one_sdk/models/code_generator_settings.rb
 lib/talon_one_sdk/models/collection.rb
 lib/talon_one_sdk/models/collection_item.rb
@@ -1125,6 +1152,7 @@ lib/talon_one_sdk/models/customer_profile_integration_response_v2.rb
 lib/talon_one_sdk/models/customer_profile_reward.rb
 lib/talon_one_sdk/models/customer_profile_search_query.rb
 lib/talon_one_sdk/models/customer_profile_update_v2_response.rb
+lib/talon_one_sdk/models/customer_reward.rb
 lib/talon_one_sdk/models/customer_session.rb
 lib/talon_one_sdk/models/customer_session_v2.rb
 lib/talon_one_sdk/models/deactivate_user_request.rb
@@ -1136,9 +1164,7 @@ lib/talon_one_sdk/models/delete_user_request.rb
 lib/talon_one_sdk/models/digital_pass.rb
 lib/talon_one_sdk/models/discard_risks_request.rb
 lib/talon_one_sdk/models/effect.rb
-lib/talon_one_sdk/models/effect_all_of_props.rb
 lib/talon_one_sdk/models/effect_entity.rb
-lib/talon_one_sdk/models/effect_props.rb
 lib/talon_one_sdk/models/email_entity.rb
 lib/talon_one_sdk/models/embedded_analytics_configuration.rb
 lib/talon_one_sdk/models/embedded_analytics_configuration_dashboards.rb
@@ -1159,6 +1185,7 @@ lib/talon_one_sdk/models/event_v2.rb
 lib/talon_one_sdk/models/event_v3.rb
 lib/talon_one_sdk/models/event_v3_connections.rb
 lib/talon_one_sdk/models/event_v3_entity.rb
+lib/talon_one_sdk/models/event_v3_referral_entity.rb
 lib/talon_one_sdk/models/event_v3_request_entity.rb
 lib/talon_one_sdk/models/exclude_price_observations_request.rb
 lib/talon_one_sdk/models/experiment.rb
@@ -1305,6 +1332,7 @@ lib/talon_one_sdk/models/integration_response.rb
 lib/talon_one_sdk/models/integration_state.rb
 lib/talon_one_sdk/models/integration_state_v2.rb
 lib/talon_one_sdk/models/integration_store_entity.rb
+lib/talon_one_sdk/models/integration_unlock_reward_request.rb
 lib/talon_one_sdk/models/inventory_coupon.rb
 lib/talon_one_sdk/models/inventory_referral.rb
 lib/talon_one_sdk/models/item_attribute.rb
@@ -1320,6 +1348,7 @@ lib/talon_one_sdk/models/limit_config.rb
 lib/talon_one_sdk/models/limit_counter.rb
 lib/talon_one_sdk/models/list_account_collections200_response.rb
 lib/talon_one_sdk/models/list_achievements200_response.rb
+lib/talon_one_sdk/models/list_achievements_v2200_response.rb
 lib/talon_one_sdk/models/list_all_roles_v2200_response.rb
 lib/talon_one_sdk/models/list_application_cart_item_filters200_response.rb
 lib/talon_one_sdk/models/list_campaign_store_budget_limits200_response.rb
@@ -1366,6 +1395,7 @@ lib/talon_one_sdk/models/mcpo_auth_client.rb
 lib/talon_one_sdk/models/mcpo_auth_complete_result.rb
 lib/talon_one_sdk/models/mcpo_auth_protected_resource.rb
 lib/talon_one_sdk/models/mcpo_auth_server_metadata.rb
+lib/talon_one_sdk/models/mcpo_auth_session_info.rb
 lib/talon_one_sdk/models/mcpo_auth_token.rb
 lib/talon_one_sdk/models/mcpo_auth_token_error.rb
 lib/talon_one_sdk/models/mcpo_auth_token_request.rb
@@ -1502,6 +1532,9 @@ lib/talon_one_sdk/models/promotion_block.rb
 lib/talon_one_sdk/models/promotion_check_attribute_block.rb
 lib/talon_one_sdk/models/promotion_group_block.rb
 lib/talon_one_sdk/models/promotion_rule_v2.rb
+lib/talon_one_sdk/models/redeem_loyalty_points_block.rb
+lib/talon_one_sdk/models/redeem_loyalty_points_block1_program.rb
+lib/talon_one_sdk/models/redeem_loyalty_points_block1_value.rb
 lib/talon_one_sdk/models/redeem_referral_effect_props.rb
 lib/talon_one_sdk/models/reduce_selector_step.rb
 lib/talon_one_sdk/models/referral.rb
@@ -1526,6 +1559,9 @@ lib/talon_one_sdk/models/revision_activation.rb
 lib/talon_one_sdk/models/revision_activation_request.rb
 lib/talon_one_sdk/models/revision_version.rb
 lib/talon_one_sdk/models/reward.rb
+lib/talon_one_sdk/models/reward_catalog_item.rb
+lib/talon_one_sdk/models/reward_eligibility.rb
+lib/talon_one_sdk/models/reward_eligibility_failure_details.rb
 lib/talon_one_sdk/models/reward_points_required.rb
 lib/talon_one_sdk/models/risk.rb
 lib/talon_one_sdk/models/risk_affected_entity_item.rb
@@ -1549,6 +1585,7 @@ lib/talon_one_sdk/models/rollback_deducted_loyalty_points_effect_props.rb
 lib/talon_one_sdk/models/rollback_discount_effect_props.rb
 lib/talon_one_sdk/models/rollback_increased_achievement_progress_effect_props.rb
 lib/talon_one_sdk/models/rollback_referral_effect_props.rb
+lib/talon_one_sdk/models/rollback_use_reward_effect_props.rb
 lib/talon_one_sdk/models/rule.rb
 lib/talon_one_sdk/models/rule_eligibility.rb
 lib/talon_one_sdk/models/rule_eligibility_failure_details.rb
@@ -1615,7 +1652,6 @@ lib/talon_one_sdk/models/strikethrough_check_attribute_block.rb
 lib/talon_one_sdk/models/strikethrough_custom_effect_per_item_props.rb
 lib/talon_one_sdk/models/strikethrough_debug_response.rb
 lib/talon_one_sdk/models/strikethrough_effect.rb
-lib/talon_one_sdk/models/strikethrough_effect_props.rb
 lib/talon_one_sdk/models/strikethrough_group_block.rb
 lib/talon_one_sdk/models/strikethrough_labeling_notification.rb
 lib/talon_one_sdk/models/strikethrough_rule_v2.rb
@@ -1624,6 +1660,7 @@ lib/talon_one_sdk/models/strikethrough_set_discount_per_item_member_effect_props
 lib/talon_one_sdk/models/strikethrough_trigger.rb
 lib/talon_one_sdk/models/summarize_campaign_store_budget200_response.rb
 lib/talon_one_sdk/models/summary_campaign_store_budget.rb
+lib/talon_one_sdk/models/support_customer_profile.rb
 lib/talon_one_sdk/models/support_request.rb
 lib/talon_one_sdk/models/support_request_input.rb
 lib/talon_one_sdk/models/talang_attribute.rb
@@ -1631,6 +1668,7 @@ lib/talon_one_sdk/models/talang_attribute_visibility.rb
 lib/talon_one_sdk/models/template_arg_def.rb
 lib/talon_one_sdk/models/template_def.rb
 lib/talon_one_sdk/models/template_limit_config.rb
+lib/talon_one_sdk/models/template_parameter.rb
 lib/talon_one_sdk/models/tier.rb
 lib/talon_one_sdk/models/tier_downgrade_data.rb
 lib/talon_one_sdk/models/tier_downgrade_notification.rb
@@ -1652,6 +1690,7 @@ lib/talon_one_sdk/models/trigger_webhook_block1_webhook.rb
 lib/talon_one_sdk/models/trigger_webhook_effect_props.rb
 lib/talon_one_sdk/models/two_fa_config.rb
 lib/talon_one_sdk/models/unary_check_attribute_block.rb
+lib/talon_one_sdk/models/unlock_reward_effect_props.rb
 lib/talon_one_sdk/models/update_account.rb
 lib/talon_one_sdk/models/update_achievement.rb
 lib/talon_one_sdk/models/update_achievement_progress_block.rb
@@ -1699,6 +1738,7 @@ lib/talon_one_sdk/models/update_role.rb
 lib/talon_one_sdk/models/update_store.rb
 lib/talon_one_sdk/models/update_support_request.rb
 lib/talon_one_sdk/models/update_user.rb
+lib/talon_one_sdk/models/use_reward_effect_props.rb
 lib/talon_one_sdk/models/user.rb
 lib/talon_one_sdk/models/user_entity.rb
 lib/talon_one_sdk/models/value_map.rb
@@ -1748,6 +1788,7 @@ spec/models/add_free_item_effect_props_spec.rb
 spec/models/add_item_catalog_action_spec.rb
 spec/models/add_loyalty_points_effect_props_spec.rb
 spec/models/add_loyalty_points_spec.rb
+spec/models/add_loyalty_points_support_spec.rb
 spec/models/add_price_adjustment_catalog_action_spec.rb
 spec/models/add_to_audience_effect_props_spec.rb
 spec/models/added_deducted_points_balances_action_spec.rb
@@ -1778,6 +1819,7 @@ spec/models/application_customer_entity_spec.rb
 spec/models/application_customer_spec.rb
 spec/models/application_entity_spec.rb
 spec/models/application_event_spec.rb
+spec/models/application_membership_spec.rb
 spec/models/application_referee_spec.rb
 spec/models/application_session_entity_spec.rb
 spec/models/application_session_spec.rb
@@ -1831,6 +1873,7 @@ spec/models/binding_spec.rb
 spec/models/blueprint_spec.rb
 spec/models/bulk_application_notification_spec.rb
 spec/models/bulk_operation_on_campaigns_spec.rb
+spec/models/bundle_spec.rb
 spec/models/campaign_activation_request_spec.rb
 spec/models/campaign_analytics_spec.rb
 spec/models/campaign_budget_spec.rb
@@ -1863,6 +1906,7 @@ spec/models/campaign_notification_base_spec.rb
 spec/models/campaign_notification_generic_spec.rb
 spec/models/campaign_notification_item_base_spec.rb
 spec/models/campaign_notification_policy_spec.rb
+spec/models/campaign_reference_spec.rb
 spec/models/campaign_ruleset_changed_notification_item_spec.rb
 spec/models/campaign_ruleset_changed_notification_spec.rb
 spec/models/campaign_search_spec.rb
@@ -1891,13 +1935,13 @@ spec/models/card_ledger_transaction_log_entry_integration_api_spec.rb
 spec/models/card_ledger_transaction_log_entry_spec.rb
 spec/models/cart_item_filter_template_spec.rb
 spec/models/cart_item_spec.rb
+spec/models/catalog_action_add_price_adjustment_spec.rb
+spec/models/catalog_action_add_spec.rb
 spec/models/catalog_action_filter_spec.rb
-spec/models/catalog_action_one_of1_spec.rb
-spec/models/catalog_action_one_of2_spec.rb
-spec/models/catalog_action_one_of3_spec.rb
-spec/models/catalog_action_one_of4_spec.rb
-spec/models/catalog_action_one_of5_spec.rb
-spec/models/catalog_action_one_of_spec.rb
+spec/models/catalog_action_patch_many_spec.rb
+spec/models/catalog_action_patch_spec.rb
+spec/models/catalog_action_remove_many_spec.rb
+spec/models/catalog_action_remove_spec.rb
 spec/models/catalog_action_spec.rb
 spec/models/catalog_item_spec.rb
 spec/models/catalog_rule_spec.rb
@@ -1918,7 +1962,10 @@ spec/models/check_coupon_block_spec.rb
 spec/models/check_event_block_spec.rb
 spec/models/check_loyalty_balance_block1_program_spec.rb
 spec/models/check_loyalty_balance_block_spec.rb
+spec/models/check_loyalty_card_block_spec.rb
 spec/models/check_referral_block_spec.rb
+spec/models/check_tier_block1_tier_spec.rb
+spec/models/check_tier_block_spec.rb
 spec/models/code_generator_settings_spec.rb
 spec/models/collection_item_spec.rb
 spec/models/collection_spec.rb
@@ -1972,6 +2019,7 @@ spec/models/customer_profile_reward_spec.rb
 spec/models/customer_profile_search_query_spec.rb
 spec/models/customer_profile_spec.rb
 spec/models/customer_profile_update_v2_response_spec.rb
+spec/models/customer_reward_spec.rb
 spec/models/customer_session_spec.rb
 spec/models/customer_session_v2_spec.rb
 spec/models/deactivate_user_request_spec.rb
@@ -1982,9 +2030,7 @@ spec/models/delete_loyalty_transactions_request_spec.rb
 spec/models/delete_user_request_spec.rb
 spec/models/digital_pass_spec.rb
 spec/models/discard_risks_request_spec.rb
-spec/models/effect_all_of_props_spec.rb
 spec/models/effect_entity_spec.rb
-spec/models/effect_props_spec.rb
 spec/models/effect_spec.rb
 spec/models/email_entity_spec.rb
 spec/models/embedded_analytics_configuration_dashboards_spec.rb
@@ -2005,6 +2051,7 @@ spec/models/event_type_spec.rb
 spec/models/event_v2_spec.rb
 spec/models/event_v3_connections_spec.rb
 spec/models/event_v3_entity_spec.rb
+spec/models/event_v3_referral_entity_spec.rb
 spec/models/event_v3_request_entity_spec.rb
 spec/models/event_v3_spec.rb
 spec/models/exclude_price_observations_request_spec.rb
@@ -2152,6 +2199,7 @@ spec/models/integration_response_spec.rb
 spec/models/integration_state_spec.rb
 spec/models/integration_state_v2_spec.rb
 spec/models/integration_store_entity_spec.rb
+spec/models/integration_unlock_reward_request_spec.rb
 spec/models/inventory_coupon_spec.rb
 spec/models/inventory_referral_spec.rb
 spec/models/item_attribute_spec.rb
@@ -2167,6 +2215,7 @@ spec/models/limit_config_spec.rb
 spec/models/limit_counter_spec.rb
 spec/models/list_account_collections200_response_spec.rb
 spec/models/list_achievements200_response_spec.rb
+spec/models/list_achievements_v2200_response_spec.rb
 spec/models/list_all_roles_v2200_response_spec.rb
 spec/models/list_application_cart_item_filters200_response_spec.rb
 spec/models/list_campaign_store_budget_limits200_response_spec.rb
@@ -2213,6 +2262,7 @@ spec/models/mcpo_auth_client_spec.rb
 spec/models/mcpo_auth_complete_result_spec.rb
 spec/models/mcpo_auth_protected_resource_spec.rb
 spec/models/mcpo_auth_server_metadata_spec.rb
+spec/models/mcpo_auth_session_info_spec.rb
 spec/models/mcpo_auth_token_error_spec.rb
 spec/models/mcpo_auth_token_request_spec.rb
 spec/models/mcpo_auth_token_spec.rb
@@ -2349,6 +2399,9 @@ spec/models/promotion_block_spec.rb
 spec/models/promotion_check_attribute_block_spec.rb
 spec/models/promotion_group_block_spec.rb
 spec/models/promotion_rule_v2_spec.rb
+spec/models/redeem_loyalty_points_block1_program_spec.rb
+spec/models/redeem_loyalty_points_block1_value_spec.rb
+spec/models/redeem_loyalty_points_block_spec.rb
 spec/models/redeem_referral_effect_props_spec.rb
 spec/models/reduce_selector_step_spec.rb
 spec/models/referral_constraints_spec.rb
@@ -2372,6 +2425,9 @@ spec/models/revision_activation_request_spec.rb
 spec/models/revision_activation_spec.rb
 spec/models/revision_spec.rb
 spec/models/revision_version_spec.rb
+spec/models/reward_catalog_item_spec.rb
+spec/models/reward_eligibility_failure_details_spec.rb
+spec/models/reward_eligibility_spec.rb
 spec/models/reward_points_required_spec.rb
 spec/models/reward_spec.rb
 spec/models/risk_affected_entity_item_spec.rb
@@ -2396,6 +2452,7 @@ spec/models/rollback_deducted_loyalty_points_effect_props_spec.rb
 spec/models/rollback_discount_effect_props_spec.rb
 spec/models/rollback_increased_achievement_progress_effect_props_spec.rb
 spec/models/rollback_referral_effect_props_spec.rb
+spec/models/rollback_use_reward_effect_props_spec.rb
 spec/models/rule_eligibility_failure_details_spec.rb
 spec/models/rule_eligibility_spec.rb
 spec/models/rule_failure_reason_spec.rb
@@ -2461,7 +2518,6 @@ spec/models/strikethrough_changed_item_spec.rb
 spec/models/strikethrough_check_attribute_block_spec.rb
 spec/models/strikethrough_custom_effect_per_item_props_spec.rb
 spec/models/strikethrough_debug_response_spec.rb
-spec/models/strikethrough_effect_props_spec.rb
 spec/models/strikethrough_effect_spec.rb
 spec/models/strikethrough_group_block_spec.rb
 spec/models/strikethrough_labeling_notification_spec.rb
@@ -2471,6 +2527,7 @@ spec/models/strikethrough_set_discount_per_item_member_effect_props_spec.rb
 spec/models/strikethrough_trigger_spec.rb
 spec/models/summarize_campaign_store_budget200_response_spec.rb
 spec/models/summary_campaign_store_budget_spec.rb
+spec/models/support_customer_profile_spec.rb
 spec/models/support_request_input_spec.rb
 spec/models/support_request_spec.rb
 spec/models/talang_attribute_spec.rb
@@ -2478,6 +2535,7 @@ spec/models/talang_attribute_visibility_spec.rb
 spec/models/template_arg_def_spec.rb
 spec/models/template_def_spec.rb
 spec/models/template_limit_config_spec.rb
+spec/models/template_parameter_spec.rb
 spec/models/tier_downgrade_data_spec.rb
 spec/models/tier_downgrade_notification_policy_spec.rb
 spec/models/tier_downgrade_notification_spec.rb
@@ -2499,6 +2557,7 @@ spec/models/trigger_webhook_block_spec.rb
 spec/models/trigger_webhook_effect_props_spec.rb
 spec/models/two_fa_config_spec.rb
 spec/models/unary_check_attribute_block_spec.rb
+spec/models/unlock_reward_effect_props_spec.rb
 spec/models/update_account_spec.rb
 spec/models/update_achievement_progress_block1_achievement_spec.rb
 spec/models/update_achievement_progress_block_spec.rb
@@ -2546,6 +2605,7 @@ spec/models/update_role_spec.rb
 spec/models/update_store_spec.rb
 spec/models/update_support_request_spec.rb
 spec/models/update_user_spec.rb
+spec/models/use_reward_effect_props_spec.rb
 spec/models/user_entity_spec.rb
 spec/models/user_spec.rb
 spec/models/value_map_spec.rb

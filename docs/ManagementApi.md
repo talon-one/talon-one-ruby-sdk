@@ -10,6 +10,7 @@ All URIs are relative to *https://yourbaseurl.talon.one*
 | [**copy_campaign_to_applications**](ManagementApi.md#copy_campaign_to_applications) | **POST** /v1/applications/{applicationId}/campaigns/{campaignId}/copy | Copy the campaign into the specified Application |
 | [**create_account_collection**](ManagementApi.md#create_account_collection) | **POST** /v1/collections | Create account-level collection |
 | [**create_achievement**](ManagementApi.md#create_achievement) | **POST** /v1/applications/{applicationId}/campaigns/{campaignId}/achievements | Create achievement |
+| [**create_achievement_v2**](ManagementApi.md#create_achievement_v2) | **POST** /v2/achievements | Create achievement |
 | [**create_additional_cost**](ManagementApi.md#create_additional_cost) | **POST** /v1/additional_costs | Create additional cost |
 | [**create_attribute**](ManagementApi.md#create_attribute) | **POST** /v1/attributes | Create custom attribute |
 | [**create_batch_loyalty_cards**](ManagementApi.md#create_batch_loyalty_cards) | **POST** /v1/loyalty_programs/{loyaltyProgramId}/cards/batch | Create loyalty cards |
@@ -29,6 +30,7 @@ All URIs are relative to *https://yourbaseurl.talon.one*
 | [**deduct_loyalty_card_points**](ManagementApi.md#deduct_loyalty_card_points) | **PUT** /v1/loyalty_programs/{loyaltyProgramId}/cards/{loyaltyCardId}/deduct_points | Deduct points from card |
 | [**delete_account_collection**](ManagementApi.md#delete_account_collection) | **DELETE** /v1/collections/{collectionId} | Delete account-level collection |
 | [**delete_achievement**](ManagementApi.md#delete_achievement) | **DELETE** /v1/applications/{applicationId}/campaigns/{campaignId}/achievements/{achievementId} | Delete achievement |
+| [**delete_achievement_v2**](ManagementApi.md#delete_achievement_v2) | **DELETE** /v2/achievements/{achievementId} | Delete achievement |
 | [**delete_campaign**](ManagementApi.md#delete_campaign) | **DELETE** /v1/applications/{applicationId}/campaigns/{campaignId} | Delete campaign |
 | [**delete_campaign_store_budgets**](ManagementApi.md#delete_campaign_store_budgets) | **DELETE** /v1/applications/{applicationId}/campaigns/{campaignId}/stores/budgets | Delete campaign store budgets |
 | [**delete_collection**](ManagementApi.md#delete_collection) | **DELETE** /v1/applications/{applicationId}/campaigns/{campaignId}/collections/{collectionId} | Delete campaign-level collection |
@@ -43,6 +45,7 @@ All URIs are relative to *https://yourbaseurl.talon.one*
 | [**disconnect_campaign_stores**](ManagementApi.md#disconnect_campaign_stores) | **DELETE** /v1/applications/{applicationId}/campaigns/{campaignId}/stores | Disconnect stores |
 | [**exclude_price_history**](ManagementApi.md#exclude_price_history) | **POST** /v1/applications/{applicationId}/price_history/exclusions | Exclude price records from price history |
 | [**export_account_collection_items**](ManagementApi.md#export_account_collection_items) | **GET** /v1/collections/{collectionId}/export | Export account-level collection&#39;s items |
+| [**export_achievement_v2**](ManagementApi.md#export_achievement_v2) | **GET** /v2/achievements/{achievementId}/export | Export achievement customer data |
 | [**export_achievements**](ManagementApi.md#export_achievements) | **GET** /v1/applications/{applicationId}/campaigns/{campaignId}/achievements/{achievementId}/export | Export achievement customer data |
 | [**export_application_campaign_analytics**](ManagementApi.md#export_application_campaign_analytics) | **GET** /v1/applications/{applicationId}/campaign_analytics/export | Export Application analytics aggregated by campaign |
 | [**export_audiences_memberships**](ManagementApi.md#export_audiences_memberships) | **GET** /v1/audiences/{audienceId}/memberships/export | Export audience members |
@@ -69,6 +72,7 @@ All URIs are relative to *https://yourbaseurl.talon.one*
 | [**get_account_analytics**](ManagementApi.md#get_account_analytics) | **GET** /v1/accounts/{accountId}/analytics | Get account analytics |
 | [**get_account_collection**](ManagementApi.md#get_account_collection) | **GET** /v1/collections/{collectionId} | Get account-level collection |
 | [**get_achievement**](ManagementApi.md#get_achievement) | **GET** /v1/applications/{applicationId}/campaigns/{campaignId}/achievements/{achievementId} | Get achievement |
+| [**get_achievement_v2**](ManagementApi.md#get_achievement_v2) | **GET** /v2/achievements/{achievementId} | Get achievement |
 | [**get_additional_cost**](ManagementApi.md#get_additional_cost) | **GET** /v1/additional_costs/{additionalCostId} | Get additional cost |
 | [**get_additional_costs**](ManagementApi.md#get_additional_costs) | **GET** /v1/additional_costs | List additional costs |
 | [**get_application**](ManagementApi.md#get_application) | **GET** /v1/applications/{applicationId} | Get Application |
@@ -148,6 +152,7 @@ All URIs are relative to *https://yourbaseurl.talon.one*
 | [**invite_user_external**](ManagementApi.md#invite_user_external) | **POST** /v1/users/invite | Invite user from identity provider |
 | [**list_account_collections**](ManagementApi.md#list_account_collections) | **GET** /v1/collections | List collections in account |
 | [**list_achievements**](ManagementApi.md#list_achievements) | **GET** /v1/applications/{applicationId}/campaigns/{campaignId}/achievements | List achievements |
+| [**list_achievements_v2**](ManagementApi.md#list_achievements_v2) | **GET** /v2/achievements | List achievements |
 | [**list_all_roles_v2**](ManagementApi.md#list_all_roles_v2) | **GET** /v2/roles | List roles |
 | [**list_application_cart_item_filters**](ManagementApi.md#list_application_cart_item_filters) | **GET** /v1/applications/{applicationId}/cart_item_filters | List Application cart item filters |
 | [**list_campaign_store_budget_limits**](ManagementApi.md#list_campaign_store_budget_limits) | **GET** /v1/applications/{applicationId}/campaigns/{campaignId}/stores/budgets | List campaign store budget limits |
@@ -181,6 +186,7 @@ All URIs are relative to *https://yourbaseurl.talon.one*
 | [**transfer_loyalty_card**](ManagementApi.md#transfer_loyalty_card) | **PUT** /v1/loyalty_programs/{loyaltyProgramId}/cards/{loyaltyCardId}/transfer | Transfer card data |
 | [**update_account_collection**](ManagementApi.md#update_account_collection) | **PUT** /v1/collections/{collectionId} | Update account-level collection |
 | [**update_achievement**](ManagementApi.md#update_achievement) | **PUT** /v1/applications/{applicationId}/campaigns/{campaignId}/achievements/{achievementId} | Update achievement |
+| [**update_achievement_v2**](ManagementApi.md#update_achievement_v2) | **PUT** /v2/achievements/{achievementId} | Update achievement |
 | [**update_additional_cost**](ManagementApi.md#update_additional_cost) | **PUT** /v1/additional_costs/{additionalCostId} | Update additional cost |
 | [**update_attribute**](ManagementApi.md#update_attribute) | **PUT** /v1/attributes/{attributeId} | Update custom attribute |
 | [**update_campaign**](ManagementApi.md#update_campaign) | **PUT** /v1/applications/{applicationId}/campaigns/{campaignId} | Update campaign |
@@ -622,6 +628,77 @@ end
 ### Return type
 
 [**Achievement**](Achievement.md)
+
+### Authorization
+
+[api_key_v1](../README.md#api_key_v1)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## create_achievement_v2
+
+> <AchievementV2> create_achievement_v2(create_achievement_v2)
+
+Create achievement
+
+Create a new account-level achievement.
+
+### Examples
+
+```ruby
+require 'time'
+require 'talon_one_sdk'
+# setup authorization
+TalonOne.configure do |config|
+  # Configure API key authorization: api_key_v1
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+end
+
+api_instance = TalonOne::ManagementApi.new
+create_achievement_v2 = TalonOne::CreateAchievementV2.new({sandbox: true, timezone: 'Europe/Berlin'}) # CreateAchievementV2 | body
+
+begin
+  # Create achievement
+  result = api_instance.create_achievement_v2(create_achievement_v2)
+  p result
+rescue TalonOne::ApiError => e
+  puts "Error when calling ManagementApi->create_achievement_v2: #{e}"
+end
+```
+
+#### Using the create_achievement_v2_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AchievementV2>, Integer, Hash)> create_achievement_v2_with_http_info(create_achievement_v2)
+
+```ruby
+begin
+  # Create achievement
+  data, status_code, headers = api_instance.create_achievement_v2_with_http_info(create_achievement_v2)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AchievementV2>
+rescue TalonOne::ApiError => e
+  puts "Error when calling ManagementApi->create_achievement_v2_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **create_achievement_v2** | [**CreateAchievementV2**](CreateAchievementV2.md) | body |  |
+
+### Return type
+
+[**AchievementV2**](AchievementV2.md)
 
 ### Authorization
 
@@ -2023,6 +2100,76 @@ nil (empty response body)
 - **Accept**: application/json
 
 
+## delete_achievement_v2
+
+> delete_achievement_v2(achievement_id)
+
+Delete achievement
+
+Delete a specific achievement.
+
+### Examples
+
+```ruby
+require 'time'
+require 'talon_one_sdk'
+# setup authorization
+TalonOne.configure do |config|
+  # Configure API key authorization: api_key_v1
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+end
+
+api_instance = TalonOne::ManagementApi.new
+achievement_id = 789 # Integer | The ID of the achievement. You can get this ID with the [List achievement](https://docs.talon.one/management-api#tag/Achievements/operation/listAchievementsV2) endpoint.
+
+begin
+  # Delete achievement
+  api_instance.delete_achievement_v2(achievement_id)
+rescue TalonOne::ApiError => e
+  puts "Error when calling ManagementApi->delete_achievement_v2: #{e}"
+end
+```
+
+#### Using the delete_achievement_v2_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> delete_achievement_v2_with_http_info(achievement_id)
+
+```ruby
+begin
+  # Delete achievement
+  data, status_code, headers = api_instance.delete_achievement_v2_with_http_info(achievement_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue TalonOne::ApiError => e
+  puts "Error when calling ManagementApi->delete_achievement_v2_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **achievement_id** | **Integer** | The ID of the achievement. You can get this ID with the [List achievement](https://docs.talon.one/management-api#tag/Achievements/operation/listAchievementsV2) endpoint. |  |
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[api_key_v1](../README.md#api_key_v1)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## delete_campaign
 
 > delete_campaign(application_id, campaign_id)
@@ -3046,6 +3193,77 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **collection_id** | **Integer** | The ID of the collection. You can get it with the [List collections in account](#tag/Collections/operation/listAccountCollections) endpoint. |  |
+
+### Return type
+
+**String**
+
+### Authorization
+
+[api_key_v1](../README.md#api_key_v1)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/csv
+
+
+## export_achievement_v2
+
+> String export_achievement_v2(achievement_id)
+
+Export achievement customer data
+
+Download a CSV file containing a list of all the customers who have participated in and are currently participating in the given achievement.  The CSV file contains the following columns: - `profileIntegrationID`: The integration ID of the customer profile participating in the achievement. - `title`: The display name of the achievement in the Campaign Manager. - `target`: The required number of actions or the transactional milestone to complete the achievement. - `progress`: The current progress of the customer in the achievement. - `status`: The status of the achievement. Can be one of: ['inprogress', 'completed', 'expired']. - `startDate`: The date on which the customer profile started the achievement in RFC3339. - `endDate`: The date on which the achievement ends and resets for the customer profile in RFC3339. - `completionDate`: The date on which the customer profile completed the achievement in RFC3339. 
+
+### Examples
+
+```ruby
+require 'time'
+require 'talon_one_sdk'
+# setup authorization
+TalonOne.configure do |config|
+  # Configure API key authorization: api_key_v1
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+end
+
+api_instance = TalonOne::ManagementApi.new
+achievement_id = 789 # Integer | The ID of the achievement. You can get this ID with the [List achievements](https://docs.talon.one/management-api#tag/Achievements/operation/listAchievementsV2) endpoint.
+
+begin
+  # Export achievement customer data
+  result = api_instance.export_achievement_v2(achievement_id)
+  p result
+rescue TalonOne::ApiError => e
+  puts "Error when calling ManagementApi->export_achievement_v2: #{e}"
+end
+```
+
+#### Using the export_achievement_v2_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(String, Integer, Hash)> export_achievement_v2_with_http_info(achievement_id)
+
+```ruby
+begin
+  # Export achievement customer data
+  data, status_code, headers = api_instance.export_achievement_v2_with_http_info(achievement_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => String
+rescue TalonOne::ApiError => e
+  puts "Error when calling ManagementApi->export_achievement_v2_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **achievement_id** | **Integer** | The ID of the achievement. You can get this ID with the [List achievements](https://docs.talon.one/management-api#tag/Achievements/operation/listAchievementsV2) endpoint. |  |
 
 ### Return type
 
@@ -5092,6 +5310,77 @@ end
 ### Return type
 
 [**Achievement**](Achievement.md)
+
+### Authorization
+
+[api_key_v1](../README.md#api_key_v1)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_achievement_v2
+
+> <AchievementV2> get_achievement_v2(achievement_id)
+
+Get achievement
+
+Retrieve the details of a specific achievement.
+
+### Examples
+
+```ruby
+require 'time'
+require 'talon_one_sdk'
+# setup authorization
+TalonOne.configure do |config|
+  # Configure API key authorization: api_key_v1
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+end
+
+api_instance = TalonOne::ManagementApi.new
+achievement_id = 789 # Integer | The ID of the achievement.  You can get this ID with the [List achievement](https://docs.talon.one/management-api#tag/Achievements/operation/listAchievementsV2) endpoint. 
+
+begin
+  # Get achievement
+  result = api_instance.get_achievement_v2(achievement_id)
+  p result
+rescue TalonOne::ApiError => e
+  puts "Error when calling ManagementApi->get_achievement_v2: #{e}"
+end
+```
+
+#### Using the get_achievement_v2_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AchievementV2>, Integer, Hash)> get_achievement_v2_with_http_info(achievement_id)
+
+```ruby
+begin
+  # Get achievement
+  data, status_code, headers = api_instance.get_achievement_v2_with_http_info(achievement_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AchievementV2>
+rescue TalonOne::ApiError => e
+  puts "Error when calling ManagementApi->get_achievement_v2_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **achievement_id** | **Integer** | The ID of the achievement.  You can get this ID with the [List achievement](https://docs.talon.one/management-api#tag/Achievements/operation/listAchievementsV2) endpoint.  |  |
+
+### Return type
+
+[**AchievementV2**](AchievementV2.md)
 
 ### Authorization
 
@@ -9231,7 +9520,7 @@ This endpoint does not need any parameter.
 
 Get loyalty program statistics
 
-> [warning] This endpoint is deprecated.  To retrieve statistics for a loyalty program, use the [Get statistics for loyalty dashboard](/management-api#tag/Loyalty/operation/getDashboardStatistics) endpoint.  Retrieve the statistics of the specified loyalty program, such as the total active points, pending points, spent points, and expired points. 
+> [!warning] This endpoint is deprecated.  To retrieve statistics for a loyalty program, use the [Get statistics for loyalty dashboard](/management-api#tag/Loyalty/operation/getDashboardStatistics) endpoint.  Retrieve the statistics of the specified loyalty program, such as the total active points, pending points, spent points, and expired points. 
 
 ### Examples
 
@@ -11385,6 +11674,87 @@ end
 ### Return type
 
 [**ListAchievements200Response**](ListAchievements200Response.md)
+
+### Authorization
+
+[api_key_v1](../README.md#api_key_v1)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## list_achievements_v2
+
+> <ListAchievementsV2200Response> list_achievements_v2(opts)
+
+List achievements
+
+List all achievements. 
+
+### Examples
+
+```ruby
+require 'time'
+require 'talon_one_sdk'
+# setup authorization
+TalonOne.configure do |config|
+  # Configure API key authorization: api_key_v1
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+end
+
+api_instance = TalonOne::ManagementApi.new
+opts = {
+  page_size: 789, # Integer | The number of items in the response.
+  skip: 789, # Integer | The number of items to skip when paging through large result sets.
+  sort: 'sort_example', # String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. 
+  title: 'title_example', # String | Filter by the display name of the achievement.
+  application_id: 789 # Integer | Filter by the ID of an Application connected to the achievement.
+}
+
+begin
+  # List achievements
+  result = api_instance.list_achievements_v2(opts)
+  p result
+rescue TalonOne::ApiError => e
+  puts "Error when calling ManagementApi->list_achievements_v2: #{e}"
+end
+```
+
+#### Using the list_achievements_v2_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ListAchievementsV2200Response>, Integer, Hash)> list_achievements_v2_with_http_info(opts)
+
+```ruby
+begin
+  # List achievements
+  data, status_code, headers = api_instance.list_achievements_v2_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ListAchievementsV2200Response>
+rescue TalonOne::ApiError => e
+  puts "Error when calling ManagementApi->list_achievements_v2_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **page_size** | **Integer** | The number of items in the response. | [optional][default to 50] |
+| **skip** | **Integer** | The number of items to skip when paging through large result sets. | [optional] |
+| **sort** | **String** | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations.  | [optional] |
+| **title** | **String** | Filter by the display name of the achievement. | [optional] |
+| **application_id** | **Integer** | Filter by the ID of an Application connected to the achievement. | [optional] |
+
+### Return type
+
+[**ListAchievementsV2200Response**](ListAchievementsV2200Response.md)
 
 ### Authorization
 
@@ -13870,6 +14240,79 @@ end
 ### Return type
 
 [**Achievement**](Achievement.md)
+
+### Authorization
+
+[api_key_v1](../README.md#api_key_v1)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## update_achievement_v2
+
+> <AchievementV2> update_achievement_v2(achievement_id, update_achievement_v2)
+
+Update achievement
+
+Update the details of a specific achievement.
+
+### Examples
+
+```ruby
+require 'time'
+require 'talon_one_sdk'
+# setup authorization
+TalonOne.configure do |config|
+  # Configure API key authorization: api_key_v1
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+end
+
+api_instance = TalonOne::ManagementApi.new
+achievement_id = 789 # Integer | The ID of the achievement. You can get this ID with the [List achievement](https://docs.talon.one/management-api#tag/Achievements/operation/listAchievementsV2) endpoint.
+update_achievement_v2 = TalonOne::UpdateAchievementV2.new({name: 'Order50Discount', title: '50% off on 50th purchase.', description: '50% off for every 50th purchase in a year.', target: 50, subscribed_applications: [132,  97]}) # UpdateAchievementV2 | body
+
+begin
+  # Update achievement
+  result = api_instance.update_achievement_v2(achievement_id, update_achievement_v2)
+  p result
+rescue TalonOne::ApiError => e
+  puts "Error when calling ManagementApi->update_achievement_v2: #{e}"
+end
+```
+
+#### Using the update_achievement_v2_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AchievementV2>, Integer, Hash)> update_achievement_v2_with_http_info(achievement_id, update_achievement_v2)
+
+```ruby
+begin
+  # Update achievement
+  data, status_code, headers = api_instance.update_achievement_v2_with_http_info(achievement_id, update_achievement_v2)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AchievementV2>
+rescue TalonOne::ApiError => e
+  puts "Error when calling ManagementApi->update_achievement_v2_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **achievement_id** | **Integer** | The ID of the achievement. You can get this ID with the [List achievement](https://docs.talon.one/management-api#tag/Achievements/operation/listAchievementsV2) endpoint. |  |
+| **update_achievement_v2** | [**UpdateAchievementV2**](UpdateAchievementV2.md) | body |  |
+
+### Return type
+
+[**AchievementV2**](AchievementV2.md)
 
 ### Authorization
 

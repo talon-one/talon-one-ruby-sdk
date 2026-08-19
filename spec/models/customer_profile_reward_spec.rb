@@ -33,6 +33,12 @@ describe TalonOne::CustomerProfileReward do
     end
   end
 
+  describe 'test attribute "integration_id"' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
   describe 'test attribute "reward_id"' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
@@ -61,7 +67,7 @@ describe TalonOne::CustomerProfileReward do
     end
   end
 
-  describe 'test attribute "unlocked_by_integration_id"' do
+  describe 'test attribute "unlocked_by_profile_integration_id"' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
     end
@@ -73,7 +79,7 @@ describe TalonOne::CustomerProfileReward do
     end
   end
 
-  describe 'test attribute "used_by_integration_id"' do
+  describe 'test attribute "used_by_profile_integration_id"' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
     end

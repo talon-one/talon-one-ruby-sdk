@@ -117,13 +117,14 @@ module TalonOne
         :'selected_price_type' => :'String',
         :'selected_price' => :'Float',
         :'adjustment_reference_id' => :'String',
-        :'props' => :'EffectAllOfProps'
+        :'props' => :'Object'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
+        :'props'
       ])
     end
 
@@ -256,10 +257,6 @@ module TalonOne
         invalid_properties.push('invalid value for "effect_type", effect_type cannot be nil.')
       end
 
-      if @props.nil?
-        invalid_properties.push('invalid value for "props", props cannot be nil.')
-      end
-
       invalid_properties
     end
 
@@ -272,7 +269,6 @@ module TalonOne
       return false if @rule_index.nil?
       return false if @rule_name.nil?
       return false if @effect_type.nil?
-      return false if @props.nil?
       true
     end
 
@@ -324,16 +320,6 @@ module TalonOne
       end
 
       @effect_type = effect_type
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] props Value to be assigned
-    def props=(props)
-      if props.nil?
-        fail ArgumentError, 'props cannot be nil'
-      end
-
-      @props = props
     end
 
     # Checks equality by comparing each attribute.

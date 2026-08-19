@@ -53,8 +53,11 @@ module TalonOne
     # When `true`, customer progress can be rolled back in completed achievements.
     attr_accessor :allow_rollback_after_completion
 
-    # The ID of the campaign the achievement belongs to.
+    # This property is **deprecated**. Use `campaignIds` instead. The first campaign ID in `campaignIds`. Only returned when `campaignIds` is not empty.
     attr_accessor :campaign_id
+
+    # The IDs of the campaigns that reference this achievement, in ascending order.
+    attr_accessor :campaign_ids
 
     # The status of the achievement.
     attr_accessor :status
@@ -100,6 +103,7 @@ module TalonOne
         :'end_date' => :'endDate',
         :'allow_rollback_after_completion' => :'allowRollbackAfterCompletion',
         :'campaign_id' => :'campaignId',
+        :'campaign_ids' => :'campaignIds',
         :'status' => :'status',
         :'current_progress' => :'currentProgress'
       }
@@ -132,6 +136,7 @@ module TalonOne
         :'end_date' => :'Time',
         :'allow_rollback_after_completion' => :'Boolean',
         :'campaign_id' => :'Integer',
+        :'campaign_ids' => :'Array<Integer>',
         :'status' => :'String',
         :'current_progress' => :'AchievementProgress'
       }
@@ -235,6 +240,14 @@ module TalonOne
         self.campaign_id = attributes[:'campaign_id']
       end
 
+      if attributes.key?(:'campaign_ids')
+        if (value = attributes[:'campaign_ids']).is_a?(Array)
+          self.campaign_ids = value
+        end
+      else
+        self.campaign_ids = nil
+      end
+
       if attributes.key?(:'status')
         self.status = attributes[:'status']
       end
@@ -286,6 +299,10 @@ module TalonOne
         invalid_properties.push('invalid value for "target", target cannot be nil.')
       end
 
+      if @campaign_ids.nil?
+        invalid_properties.push('invalid value for "campaign_ids", campaign_ids cannot be nil.')
+      end
+
       invalid_properties
     end
 
@@ -306,6 +323,7 @@ module TalonOne
       return false unless recurrence_policy_validator.valid?(@recurrence_policy)
       activation_policy_validator = EnumAttributeValidator.new('String', ["user_action", "fixed_schedule"])
       return false unless activation_policy_validator.valid?(@activation_policy)
+      return false if @campaign_ids.nil?
       status_validator = EnumAttributeValidator.new('String', ["active", "scheduled"])
       return false unless status_validator.valid?(@status)
       true
@@ -404,6 +422,16 @@ module TalonOne
       @activation_policy = activation_policy
     end
 
+    # Custom attribute writer method with validation
+    # @param [Object] campaign_ids Value to be assigned
+    def campaign_ids=(campaign_ids)
+      if campaign_ids.nil?
+        fail ArgumentError, 'campaign_ids cannot be nil'
+      end
+
+      @campaign_ids = campaign_ids
+    end
+
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] status Object to be assigned
     def status=(status)
@@ -433,6 +461,7 @@ module TalonOne
           end_date == o.end_date &&
           allow_rollback_after_completion == o.allow_rollback_after_completion &&
           campaign_id == o.campaign_id &&
+          campaign_ids == o.campaign_ids &&
           status == o.status &&
           current_progress == o.current_progress
     end
@@ -446,7 +475,7 @@ module TalonOne
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, created, name, title, description, target, period, period_end_override, recurrence_policy, activation_policy, fixed_start_date, end_date, allow_rollback_after_completion, campaign_id, status, current_progress].hash
+      [id, created, name, title, description, target, period, period_end_override, recurrence_policy, activation_policy, fixed_start_date, end_date, allow_rollback_after_completion, campaign_id, campaign_ids, status, current_progress].hash
     end
 
     # Builds the object from hash

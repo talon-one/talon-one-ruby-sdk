@@ -481,6 +481,74 @@ module TalonOne
       return data, status_code, headers
     end
 
+    # Create achievement
+    # Create a new account-level achievement.
+    # @param create_achievement_v2 [CreateAchievementV2] body
+    # @param [Hash] opts the optional parameters
+    # @return [AchievementV2]
+    def create_achievement_v2(create_achievement_v2, opts = {})
+      data, _status_code, _headers = create_achievement_v2_with_http_info(create_achievement_v2, opts)
+      data
+    end
+
+    # Create achievement
+    # Create a new account-level achievement.
+    # @param create_achievement_v2 [CreateAchievementV2] body
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(AchievementV2, Integer, Hash)>] AchievementV2 data, response status code and response headers
+    def create_achievement_v2_with_http_info(create_achievement_v2, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ManagementApi.create_achievement_v2 ...'
+      end
+      # verify the required parameter 'create_achievement_v2' is set
+      if @api_client.config.client_side_validation && create_achievement_v2.nil?
+        fail ArgumentError, "Missing the required parameter 'create_achievement_v2' when calling ManagementApi.create_achievement_v2"
+      end
+      # resource path
+      local_var_path = '/v2/achievements'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(create_achievement_v2)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'AchievementV2'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['api_key_v1']
+
+      new_options = opts.merge(
+        :operation => :"ManagementApi.create_achievement_v2",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ManagementApi#create_achievement_v2\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Create additional cost
     # Create an [additional cost](https://docs.talon.one/docs/product/account/dev-tools/managing-additional-costs).  These additional costs are shared across all applications in your account, and are never required. 
     # @param new_additional_cost [NewAdditionalCost] body
@@ -1889,6 +1957,69 @@ module TalonOne
       return data, status_code, headers
     end
 
+    # Delete achievement
+    # Delete a specific achievement.
+    # @param achievement_id [Integer] The ID of the achievement. You can get this ID with the [List achievement](https://docs.talon.one/management-api#tag/Achievements/operation/listAchievementsV2) endpoint.
+    # @param [Hash] opts the optional parameters
+    # @return [nil]
+    def delete_achievement_v2(achievement_id, opts = {})
+      delete_achievement_v2_with_http_info(achievement_id, opts)
+      nil
+    end
+
+    # Delete achievement
+    # Delete a specific achievement.
+    # @param achievement_id [Integer] The ID of the achievement. You can get this ID with the [List achievement](https://docs.talon.one/management-api#tag/Achievements/operation/listAchievementsV2) endpoint.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    def delete_achievement_v2_with_http_info(achievement_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ManagementApi.delete_achievement_v2 ...'
+      end
+      # verify the required parameter 'achievement_id' is set
+      if @api_client.config.client_side_validation && achievement_id.nil?
+        fail ArgumentError, "Missing the required parameter 'achievement_id' when calling ManagementApi.delete_achievement_v2"
+      end
+      # resource path
+      local_var_path = '/v2/achievements/{achievementId}'.sub('{achievementId}', CGI.escape(achievement_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type]
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['api_key_v1']
+
+      new_options = opts.merge(
+        :operation => :"ManagementApi.delete_achievement_v2",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ManagementApi#delete_achievement_v2\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Delete campaign
     # Delete the given campaign.
     # @param application_id [Integer] The ID of the Application. It is displayed in your Talon.One deployment URL.
@@ -2902,6 +3033,69 @@ module TalonOne
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: ManagementApi#export_account_collection_items\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Export achievement customer data
+    # Download a CSV file containing a list of all the customers who have participated in and are currently participating in the given achievement.  The CSV file contains the following columns: - `profileIntegrationID`: The integration ID of the customer profile participating in the achievement. - `title`: The display name of the achievement in the Campaign Manager. - `target`: The required number of actions or the transactional milestone to complete the achievement. - `progress`: The current progress of the customer in the achievement. - `status`: The status of the achievement. Can be one of: ['inprogress', 'completed', 'expired']. - `startDate`: The date on which the customer profile started the achievement in RFC3339. - `endDate`: The date on which the achievement ends and resets for the customer profile in RFC3339. - `completionDate`: The date on which the customer profile completed the achievement in RFC3339. 
+    # @param achievement_id [Integer] The ID of the achievement. You can get this ID with the [List achievements](https://docs.talon.one/management-api#tag/Achievements/operation/listAchievementsV2) endpoint.
+    # @param [Hash] opts the optional parameters
+    # @return [String]
+    def export_achievement_v2(achievement_id, opts = {})
+      data, _status_code, _headers = export_achievement_v2_with_http_info(achievement_id, opts)
+      data
+    end
+
+    # Export achievement customer data
+    # Download a CSV file containing a list of all the customers who have participated in and are currently participating in the given achievement.  The CSV file contains the following columns: - &#x60;profileIntegrationID&#x60;: The integration ID of the customer profile participating in the achievement. - &#x60;title&#x60;: The display name of the achievement in the Campaign Manager. - &#x60;target&#x60;: The required number of actions or the transactional milestone to complete the achievement. - &#x60;progress&#x60;: The current progress of the customer in the achievement. - &#x60;status&#x60;: The status of the achievement. Can be one of: [&#39;inprogress&#39;, &#39;completed&#39;, &#39;expired&#39;]. - &#x60;startDate&#x60;: The date on which the customer profile started the achievement in RFC3339. - &#x60;endDate&#x60;: The date on which the achievement ends and resets for the customer profile in RFC3339. - &#x60;completionDate&#x60;: The date on which the customer profile completed the achievement in RFC3339. 
+    # @param achievement_id [Integer] The ID of the achievement. You can get this ID with the [List achievements](https://docs.talon.one/management-api#tag/Achievements/operation/listAchievementsV2) endpoint.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(String, Integer, Hash)>] String data, response status code and response headers
+    def export_achievement_v2_with_http_info(achievement_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ManagementApi.export_achievement_v2 ...'
+      end
+      # verify the required parameter 'achievement_id' is set
+      if @api_client.config.client_side_validation && achievement_id.nil?
+        fail ArgumentError, "Missing the required parameter 'achievement_id' when calling ManagementApi.export_achievement_v2"
+      end
+      # resource path
+      local_var_path = '/v2/achievements/{achievementId}/export'.sub('{achievementId}', CGI.escape(achievement_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/csv']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'String'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['api_key_v1']
+
+      new_options = opts.merge(
+        :operation => :"ManagementApi.export_achievement_v2",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ManagementApi#export_achievement_v2\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -4939,6 +5133,69 @@ module TalonOne
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: ManagementApi#get_achievement\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Get achievement
+    # Retrieve the details of a specific achievement.
+    # @param achievement_id [Integer] The ID of the achievement.  You can get this ID with the [List achievement](https://docs.talon.one/management-api#tag/Achievements/operation/listAchievementsV2) endpoint. 
+    # @param [Hash] opts the optional parameters
+    # @return [AchievementV2]
+    def get_achievement_v2(achievement_id, opts = {})
+      data, _status_code, _headers = get_achievement_v2_with_http_info(achievement_id, opts)
+      data
+    end
+
+    # Get achievement
+    # Retrieve the details of a specific achievement.
+    # @param achievement_id [Integer] The ID of the achievement.  You can get this ID with the [List achievement](https://docs.talon.one/management-api#tag/Achievements/operation/listAchievementsV2) endpoint. 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(AchievementV2, Integer, Hash)>] AchievementV2 data, response status code and response headers
+    def get_achievement_v2_with_http_info(achievement_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ManagementApi.get_achievement_v2 ...'
+      end
+      # verify the required parameter 'achievement_id' is set
+      if @api_client.config.client_side_validation && achievement_id.nil?
+        fail ArgumentError, "Missing the required parameter 'achievement_id' when calling ManagementApi.get_achievement_v2"
+      end
+      # resource path
+      local_var_path = '/v2/achievements/{achievementId}'.sub('{achievementId}', CGI.escape(achievement_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'AchievementV2'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['api_key_v1']
+
+      new_options = opts.merge(
+        :operation => :"ManagementApi.get_achievement_v2",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ManagementApi#get_achievement_v2\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -9219,7 +9476,7 @@ module TalonOne
     end
 
     # Get loyalty program statistics
-    # > [warning] This endpoint is deprecated.  To retrieve statistics for a loyalty program, use the [Get statistics for loyalty dashboard](/management-api#tag/Loyalty/operation/getDashboardStatistics) endpoint.  Retrieve the statistics of the specified loyalty program, such as the total active points, pending points, spent points, and expired points. 
+    # > [!warning] This endpoint is deprecated.  To retrieve statistics for a loyalty program, use the [Get statistics for loyalty dashboard](/management-api#tag/Loyalty/operation/getDashboardStatistics) endpoint.  Retrieve the statistics of the specified loyalty program, such as the total active points, pending points, spent points, and expired points. 
     # @param loyalty_program_id [Integer] Identifier of the loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. 
     # @param [Hash] opts the optional parameters
     # @return [LoyaltyDashboardData]
@@ -9229,7 +9486,7 @@ module TalonOne
     end
 
     # Get loyalty program statistics
-    # &gt; [warning] This endpoint is deprecated.  To retrieve statistics for a loyalty program, use the [Get statistics for loyalty dashboard](/management-api#tag/Loyalty/operation/getDashboardStatistics) endpoint.  Retrieve the statistics of the specified loyalty program, such as the total active points, pending points, spent points, and expired points. 
+    # &gt; [!warning] This endpoint is deprecated.  To retrieve statistics for a loyalty program, use the [Get statistics for loyalty dashboard](/management-api#tag/Loyalty/operation/getDashboardStatistics) endpoint.  Retrieve the statistics of the specified loyalty program, such as the total active points, pending points, spent points, and expired points. 
     # @param loyalty_program_id [Integer] Identifier of the loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. 
     # @param [Hash] opts the optional parameters
     # @return [Array<(LoyaltyDashboardData, Integer, Hash)>] LoyaltyDashboardData data, response status code and response headers
@@ -11381,6 +11638,86 @@ module TalonOne
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: ManagementApi#list_achievements\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # List achievements
+    # List all achievements. 
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :page_size The number of items in the response. (default to 50)
+    # @option opts [Integer] :skip The number of items to skip when paging through large result sets.
+    # @option opts [String] :sort The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. 
+    # @option opts [String] :title Filter by the display name of the achievement.
+    # @option opts [Integer] :application_id Filter by the ID of an Application connected to the achievement.
+    # @return [ListAchievementsV2200Response]
+    def list_achievements_v2(opts = {})
+      data, _status_code, _headers = list_achievements_v2_with_http_info(opts)
+      data
+    end
+
+    # List achievements
+    # List all achievements. 
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :page_size The number of items in the response. (default to 50)
+    # @option opts [Integer] :skip The number of items to skip when paging through large result sets.
+    # @option opts [String] :sort The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. 
+    # @option opts [String] :title Filter by the display name of the achievement.
+    # @option opts [Integer] :application_id Filter by the ID of an Application connected to the achievement.
+    # @return [Array<(ListAchievementsV2200Response, Integer, Hash)>] ListAchievementsV2200Response data, response status code and response headers
+    def list_achievements_v2_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ManagementApi.list_achievements_v2 ...'
+      end
+      if @api_client.config.client_side_validation && !opts[:'page_size'].nil? && opts[:'page_size'] > 1000
+        fail ArgumentError, 'invalid value for "opts[:"page_size"]" when calling ManagementApi.list_achievements_v2, must be smaller than or equal to 1000.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'page_size'].nil? && opts[:'page_size'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"page_size"]" when calling ManagementApi.list_achievements_v2, must be greater than or equal to 1.'
+      end
+
+      # resource path
+      local_var_path = '/v2/achievements'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'pageSize'] = opts[:'page_size'] if !opts[:'page_size'].nil?
+      query_params[:'skip'] = opts[:'skip'] if !opts[:'skip'].nil?
+      query_params[:'sort'] = opts[:'sort'] if !opts[:'sort'].nil?
+      query_params[:'title'] = opts[:'title'] if !opts[:'title'].nil?
+      query_params[:'applicationId'] = opts[:'application_id'] if !opts[:'application_id'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'ListAchievementsV2200Response'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['api_key_v1']
+
+      new_options = opts.merge(
+        :operation => :"ManagementApi.list_achievements_v2",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ManagementApi#list_achievements_v2\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -13864,6 +14201,80 @@ module TalonOne
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: ManagementApi#update_achievement\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Update achievement
+    # Update the details of a specific achievement.
+    # @param achievement_id [Integer] The ID of the achievement. You can get this ID with the [List achievement](https://docs.talon.one/management-api#tag/Achievements/operation/listAchievementsV2) endpoint.
+    # @param update_achievement_v2 [UpdateAchievementV2] body
+    # @param [Hash] opts the optional parameters
+    # @return [AchievementV2]
+    def update_achievement_v2(achievement_id, update_achievement_v2, opts = {})
+      data, _status_code, _headers = update_achievement_v2_with_http_info(achievement_id, update_achievement_v2, opts)
+      data
+    end
+
+    # Update achievement
+    # Update the details of a specific achievement.
+    # @param achievement_id [Integer] The ID of the achievement. You can get this ID with the [List achievement](https://docs.talon.one/management-api#tag/Achievements/operation/listAchievementsV2) endpoint.
+    # @param update_achievement_v2 [UpdateAchievementV2] body
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(AchievementV2, Integer, Hash)>] AchievementV2 data, response status code and response headers
+    def update_achievement_v2_with_http_info(achievement_id, update_achievement_v2, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ManagementApi.update_achievement_v2 ...'
+      end
+      # verify the required parameter 'achievement_id' is set
+      if @api_client.config.client_side_validation && achievement_id.nil?
+        fail ArgumentError, "Missing the required parameter 'achievement_id' when calling ManagementApi.update_achievement_v2"
+      end
+      # verify the required parameter 'update_achievement_v2' is set
+      if @api_client.config.client_side_validation && update_achievement_v2.nil?
+        fail ArgumentError, "Missing the required parameter 'update_achievement_v2' when calling ManagementApi.update_achievement_v2"
+      end
+      # resource path
+      local_var_path = '/v2/achievements/{achievementId}'.sub('{achievementId}', CGI.escape(achievement_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(update_achievement_v2)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'AchievementV2'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['api_key_v1']
+
+      new_options = opts.merge(
+        :operation => :"ManagementApi.update_achievement_v2",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ManagementApi#update_achievement_v2\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

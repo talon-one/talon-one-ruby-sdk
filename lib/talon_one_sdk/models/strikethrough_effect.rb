@@ -88,7 +88,7 @@ module TalonOne
         :'rule_index' => :'Integer',
         :'rule_name' => :'String',
         :'type' => :'String',
-        :'props' => :'StrikethroughEffectProps',
+        :'props' => :'Object',
         :'start_time' => :'Time',
         :'end_time' => :'Time',
         :'selected_price_type' => :'String',

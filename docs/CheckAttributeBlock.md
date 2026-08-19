@@ -14,7 +14,8 @@ require 'talon_one_sdk'
 TalonOne::CheckAttributeBlock.openapi_one_of
 # =>
 # [
-#   :'CheckAttributeBlockBase'
+#   :'CheckAttributeBlockBase',
+#   :'Object'
 # ]
 ```
 
@@ -102,5 +103,6 @@ TalonOne::CheckAttributeBlock.build(data_that_doesnt_match)
 #### Return type
 
 - `CheckAttributeBlockBase`
+- `Object`
 - `nil` (if no type matches)
 

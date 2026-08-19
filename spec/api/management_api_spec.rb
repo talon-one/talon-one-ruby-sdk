@@ -112,6 +112,18 @@ describe 'ManagementApi' do
     end
   end
 
+  # unit tests for create_achievement_v2
+  # Create achievement
+  # Create a new account-level achievement.
+  # @param create_achievement_v2 body
+  # @param [Hash] opts the optional parameters
+  # @return [AchievementV2]
+  describe 'create_achievement_v2 test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
   # unit tests for create_additional_cost
   # Create additional cost
   # Create an [additional cost](https://docs.talon.one/docs/product/account/dev-tools/managing-additional-costs).  These additional costs are shared across all applications in your account, and are never required. 
@@ -361,6 +373,18 @@ describe 'ManagementApi' do
     end
   end
 
+  # unit tests for delete_achievement_v2
+  # Delete achievement
+  # Delete a specific achievement.
+  # @param achievement_id The ID of the achievement. You can get this ID with the [List achievement](https://docs.talon.one/management-api#tag/Achievements/operation/listAchievementsV2) endpoint.
+  # @param [Hash] opts the optional parameters
+  # @return [nil]
+  describe 'delete_achievement_v2 test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
   # unit tests for delete_campaign
   # Delete campaign
   # Delete the given campaign.
@@ -551,6 +575,18 @@ describe 'ManagementApi' do
   # @param [Hash] opts the optional parameters
   # @return [String]
   describe 'export_account_collection_items test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  # unit tests for export_achievement_v2
+  # Export achievement customer data
+  # Download a CSV file containing a list of all the customers who have participated in and are currently participating in the given achievement.  The CSV file contains the following columns: - &#x60;profileIntegrationID&#x60;: The integration ID of the customer profile participating in the achievement. - &#x60;title&#x60;: The display name of the achievement in the Campaign Manager. - &#x60;target&#x60;: The required number of actions or the transactional milestone to complete the achievement. - &#x60;progress&#x60;: The current progress of the customer in the achievement. - &#x60;status&#x60;: The status of the achievement. Can be one of: [&#39;inprogress&#39;, &#39;completed&#39;, &#39;expired&#39;]. - &#x60;startDate&#x60;: The date on which the customer profile started the achievement in RFC3339. - &#x60;endDate&#x60;: The date on which the achievement ends and resets for the customer profile in RFC3339. - &#x60;completionDate&#x60;: The date on which the customer profile completed the achievement in RFC3339. 
+  # @param achievement_id The ID of the achievement. You can get this ID with the [List achievements](https://docs.talon.one/management-api#tag/Achievements/operation/listAchievementsV2) endpoint.
+  # @param [Hash] opts the optional parameters
+  # @return [String]
+  describe 'export_achievement_v2 test' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
     end
@@ -945,6 +981,18 @@ describe 'ManagementApi' do
   # @param [Hash] opts the optional parameters
   # @return [Achievement]
   describe 'get_achievement test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  # unit tests for get_achievement_v2
+  # Get achievement
+  # Retrieve the details of a specific achievement.
+  # @param achievement_id The ID of the achievement.  You can get this ID with the [List achievement](https://docs.talon.one/management-api#tag/Achievements/operation/listAchievementsV2) endpoint. 
+  # @param [Hash] opts the optional parameters
+  # @return [AchievementV2]
+  describe 'get_achievement_v2 test' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
     end
@@ -1780,7 +1828,7 @@ describe 'ManagementApi' do
 
   # unit tests for get_loyalty_statistics
   # Get loyalty program statistics
-  # &gt; [warning] This endpoint is deprecated.  To retrieve statistics for a loyalty program, use the [Get statistics for loyalty dashboard](/management-api#tag/Loyalty/operation/getDashboardStatistics) endpoint.  Retrieve the statistics of the specified loyalty program, such as the total active points, pending points, spent points, and expired points. 
+  # &gt; [!warning] This endpoint is deprecated.  To retrieve statistics for a loyalty program, use the [Get statistics for loyalty dashboard](/management-api#tag/Loyalty/operation/getDashboardStatistics) endpoint.  Retrieve the statistics of the specified loyalty program, such as the total active points, pending points, spent points, and expired points. 
   # @param loyalty_program_id Identifier of the loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. 
   # @param [Hash] opts the optional parameters
   # @return [LoyaltyDashboardData]
@@ -2181,6 +2229,22 @@ describe 'ManagementApi' do
   # @option opts [String] :title Filter by the display name for the achievement in the campaign manager.  **Note**: If no &#x60;title&#x60; is provided, all the achievements from the campaign are returned. 
   # @return [ListAchievements200Response]
   describe 'list_achievements test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  # unit tests for list_achievements_v2
+  # List achievements
+  # List all achievements. 
+  # @param [Hash] opts the optional parameters
+  # @option opts [Integer] :page_size The number of items in the response.
+  # @option opts [Integer] :skip The number of items to skip when paging through large result sets.
+  # @option opts [String] :sort The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. 
+  # @option opts [String] :title Filter by the display name of the achievement.
+  # @option opts [Integer] :application_id Filter by the ID of an Application connected to the achievement.
+  # @return [ListAchievementsV2200Response]
+  describe 'list_achievements_v2 test' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
     end
@@ -2645,6 +2709,19 @@ describe 'ManagementApi' do
   # @param [Hash] opts the optional parameters
   # @return [Achievement]
   describe 'update_achievement test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  # unit tests for update_achievement_v2
+  # Update achievement
+  # Update the details of a specific achievement.
+  # @param achievement_id The ID of the achievement. You can get this ID with the [List achievement](https://docs.talon.one/management-api#tag/Achievements/operation/listAchievementsV2) endpoint.
+  # @param update_achievement_v2 body
+  # @param [Hash] opts the optional parameters
+  # @return [AchievementV2]
+  describe 'update_achievement_v2 test' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
     end

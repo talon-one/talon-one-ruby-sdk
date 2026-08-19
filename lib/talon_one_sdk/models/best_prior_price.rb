@@ -27,9 +27,6 @@ module TalonOne
     # The identifiers of the relevant context at the time the price was observed. Includes the context IDs of any price adjustments and of the campaigns that influenced the final price. 
     attr_accessor :context_ids
 
-    # This property is **deprecated**. Use `contextIds` instead. Defaults to an empty string. 
-    attr_accessor :context_id
-
     # Price of the item.
     attr_accessor :price
 
@@ -44,7 +41,6 @@ module TalonOne
         :'sku' => :'sku',
         :'observed_at' => :'observedAt',
         :'context_ids' => :'contextIds',
-        :'context_id' => :'contextId',
         :'price' => :'price',
         :'metadata' => :'metadata',
         :'target' => :'target'
@@ -68,7 +64,6 @@ module TalonOne
         :'sku' => :'String',
         :'observed_at' => :'Time',
         :'context_ids' => :'Array<String>',
-        :'context_id' => :'String',
         :'price' => :'Float',
         :'metadata' => :'BestPriorPriceMetadata',
         :'target' => :'LabelTarget'
@@ -121,12 +116,6 @@ module TalonOne
         end
       else
         self.context_ids = nil
-      end
-
-      if attributes.key?(:'context_id')
-        self.context_id = attributes[:'context_id']
-      else
-        self.context_id = ''
       end
 
       if attributes.key?(:'price')
@@ -277,7 +266,6 @@ module TalonOne
           sku == o.sku &&
           observed_at == o.observed_at &&
           context_ids == o.context_ids &&
-          context_id == o.context_id &&
           price == o.price &&
           metadata == o.metadata &&
           target == o.target
@@ -292,7 +280,7 @@ module TalonOne
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, sku, observed_at, context_ids, context_id, price, metadata, target].hash
+      [id, sku, observed_at, context_ids, price, metadata, target].hash
     end
 
     # Builds the object from hash

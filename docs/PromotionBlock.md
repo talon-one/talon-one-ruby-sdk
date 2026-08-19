@@ -23,12 +23,15 @@ TalonOne::PromotionBlock.openapi_one_of
 #   :'CheckCouponBlock',
 #   :'CheckEventBlock',
 #   :'CheckLoyaltyBalanceBlock',
+#   :'CheckLoyaltyCardBlock',
 #   :'CheckReferralBlock',
+#   :'CheckTierBlock',
 #   :'CreateCouponBlock',
 #   :'CreateReferralBlock',
 #   :'PassthroughBlock',
 #   :'PromotionCheckAttributeBlock',
 #   :'PromotionGroupBlock',
+#   :'RedeemLoyaltyPointsBlock',
 #   :'ReserveCouponBlock',
 #   :'ShowNotificationBlock',
 #   :'TriggerCustomEffectBlock',
@@ -74,11 +77,14 @@ TalonOne::PromotionBlock.openapi_discriminator_mapping
 #   :'checkCoupon' => :'CheckCouponBlock',
 #   :'checkEvent' => :'CheckEventBlock',
 #   :'checkLoyaltyBalance' => :'CheckLoyaltyBalanceBlock',
+#   :'checkLoyaltyCard' => :'CheckLoyaltyCardBlock',
 #   :'checkReferral' => :'CheckReferralBlock',
+#   :'checkTier' => :'CheckTierBlock',
 #   :'createCoupon' => :'CreateCouponBlock',
 #   :'createReferral' => :'CreateReferralBlock',
 #   :'group' => :'PromotionGroupBlock',
 #   :'passthrough' => :'PassthroughBlock',
+#   :'redeemLoyaltyPoints' => :'RedeemLoyaltyPointsBlock',
 #   :'reserveCoupon' => :'ReserveCouponBlock',
 #   :'showNotification' => :'ShowNotificationBlock',
 #   :'triggerCustomEffect' => :'TriggerCustomEffectBlock',
@@ -122,12 +128,15 @@ TalonOne::PromotionBlock.build(data_that_doesnt_match)
 - `CheckCouponBlock`
 - `CheckEventBlock`
 - `CheckLoyaltyBalanceBlock`
+- `CheckLoyaltyCardBlock`
 - `CheckReferralBlock`
+- `CheckTierBlock`
 - `CreateCouponBlock`
 - `CreateReferralBlock`
 - `PassthroughBlock`
 - `PromotionCheckAttributeBlock`
 - `PromotionGroupBlock`
+- `RedeemLoyaltyPointsBlock`
 - `ReserveCouponBlock`
 - `ShowNotificationBlock`
 - `TriggerCustomEffectBlock`

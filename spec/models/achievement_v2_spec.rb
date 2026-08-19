@@ -159,4 +159,16 @@ describe TalonOne::AchievementV2 do
     end
   end
 
+  describe 'test attribute "campaign_id"' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  describe 'test attribute "referenced_by_campaigns"' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
 end
