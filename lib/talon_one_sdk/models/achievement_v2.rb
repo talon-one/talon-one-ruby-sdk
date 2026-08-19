@@ -74,6 +74,12 @@ module TalonOne
     # A string containing an IANA timezone descriptor.
     attr_accessor :timezone
 
+    # This property is **deprecated**. Use `referencedByCampaigns` instead. The ID of the first campaign in `referencedByCampaigns`. Only returned when `referencedByCampaigns` is not empty.
+    attr_accessor :campaign_id
+
+    # The campaigns that reference this achievement. They are sorted in ascending order by their id.
+    attr_accessor :referenced_by_campaigns
+
     class EnumAttributeValidator
       attr_reader :datatype
       attr_reader :allowable_values
@@ -118,7 +124,9 @@ module TalonOne
         :'has_progress' => :'hasProgress',
         :'status' => :'status',
         :'sandbox' => :'sandbox',
-        :'timezone' => :'timezone'
+        :'timezone' => :'timezone',
+        :'campaign_id' => :'campaignId',
+        :'referenced_by_campaigns' => :'referencedByCampaigns'
       }
     end
 
@@ -154,7 +162,9 @@ module TalonOne
         :'has_progress' => :'Boolean',
         :'status' => :'String',
         :'sandbox' => :'Boolean',
-        :'timezone' => :'String'
+        :'timezone' => :'String',
+        :'campaign_id' => :'Integer',
+        :'referenced_by_campaigns' => :'Array<CampaignReference>'
       }
     end
 
@@ -203,26 +213,18 @@ module TalonOne
 
       if attributes.key?(:'name')
         self.name = attributes[:'name']
-      else
-        self.name = nil
       end
 
       if attributes.key?(:'title')
         self.title = attributes[:'title']
-      else
-        self.title = nil
       end
 
       if attributes.key?(:'description')
         self.description = attributes[:'description']
-      else
-        self.description = nil
       end
 
       if attributes.key?(:'target')
         self.target = attributes[:'target']
-      else
-        self.target = nil
       end
 
       if attributes.key?(:'period')
@@ -231,14 +233,10 @@ module TalonOne
 
       if attributes.key?(:'recurrence_policy')
         self.recurrence_policy = attributes[:'recurrence_policy']
-      else
-        self.recurrence_policy = nil
       end
 
       if attributes.key?(:'activation_policy')
         self.activation_policy = attributes[:'activation_policy']
-      else
-        self.activation_policy = nil
       end
 
       if attributes.key?(:'fixed_start_date')
@@ -257,8 +255,6 @@ module TalonOne
         if (value = attributes[:'subscribed_applications']).is_a?(Array)
           self.subscribed_applications = value
         end
-      else
-        self.subscribed_applications = nil
       end
 
       if attributes.key?(:'user_id')
@@ -294,6 +290,18 @@ module TalonOne
       else
         self.timezone = nil
       end
+
+      if attributes.key?(:'campaign_id')
+        self.campaign_id = attributes[:'campaign_id']
+      end
+
+      if attributes.key?(:'referenced_by_campaigns')
+        if (value = attributes[:'referenced_by_campaigns']).is_a?(Array)
+          self.referenced_by_campaigns = value
+        end
+      else
+        self.referenced_by_campaigns = nil
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -309,48 +317,20 @@ module TalonOne
         invalid_properties.push('invalid value for "created", created cannot be nil.')
       end
 
-      if @name.nil?
-        invalid_properties.push('invalid value for "name", name cannot be nil.')
-      end
-
-      if @name.to_s.length > 1000
+      if !@name.nil? && @name.to_s.length > 1000
         invalid_properties.push('invalid value for "name", the character length must be smaller than or equal to 1000.')
       end
 
-      if @name.to_s.length < 1
+      if !@name.nil? && @name.to_s.length < 1
         invalid_properties.push('invalid value for "name", the character length must be greater than or equal to 1.')
       end
 
       pattern = Regexp.new(/^[a-zA-Z]\w+$/)
-      if @name !~ pattern
+      if !@name.nil? && @name !~ pattern
         invalid_properties.push("invalid value for \"name\", must conform to the pattern #{pattern}.")
       end
 
-      if @title.nil?
-        invalid_properties.push('invalid value for "title", title cannot be nil.')
-      end
-
-      if @description.nil?
-        invalid_properties.push('invalid value for "description", description cannot be nil.')
-      end
-
-      if @target.nil?
-        invalid_properties.push('invalid value for "target", target cannot be nil.')
-      end
-
-      if @recurrence_policy.nil?
-        invalid_properties.push('invalid value for "recurrence_policy", recurrence_policy cannot be nil.')
-      end
-
-      if @activation_policy.nil?
-        invalid_properties.push('invalid value for "activation_policy", activation_policy cannot be nil.')
-      end
-
-      if @subscribed_applications.nil?
-        invalid_properties.push('invalid value for "subscribed_applications", subscribed_applications cannot be nil.')
-      end
-
-      if @subscribed_applications.length < 0
+      if !@subscribed_applications.nil? && @subscribed_applications.length < 0
         invalid_properties.push('invalid value for "subscribed_applications", number of items must be greater than or equal to 0.')
       end
 
@@ -370,6 +350,10 @@ module TalonOne
         invalid_properties.push('invalid value for "timezone", the character length must be greater than or equal to 1.')
       end
 
+      if @referenced_by_campaigns.nil?
+        invalid_properties.push('invalid value for "referenced_by_campaigns", referenced_by_campaigns cannot be nil.')
+      end
+
       invalid_properties
     end
 
@@ -379,27 +363,21 @@ module TalonOne
       warn '[DEPRECATED] the `valid?` method is obsolete'
       return false if @id.nil?
       return false if @created.nil?
-      return false if @name.nil?
-      return false if @name.to_s.length > 1000
-      return false if @name.to_s.length < 1
-      return false if @name !~ Regexp.new(/^[a-zA-Z]\w+$/)
-      return false if @title.nil?
-      return false if @description.nil?
-      return false if @target.nil?
-      return false if @recurrence_policy.nil?
+      return false if !@name.nil? && @name.to_s.length > 1000
+      return false if !@name.nil? && @name.to_s.length < 1
+      return false if !@name.nil? && @name !~ Regexp.new(/^[a-zA-Z]\w+$/)
       recurrence_policy_validator = EnumAttributeValidator.new('String', ["no_recurrence", "on_expiration", "on_completion"])
       return false unless recurrence_policy_validator.valid?(@recurrence_policy)
-      return false if @activation_policy.nil?
       activation_policy_validator = EnumAttributeValidator.new('String', ["user_action", "fixed_schedule"])
       return false unless activation_policy_validator.valid?(@activation_policy)
-      return false if @subscribed_applications.nil?
-      return false if @subscribed_applications.length < 0
+      return false if !@subscribed_applications.nil? && @subscribed_applications.length < 0
       return false if @user_id.nil?
       status_validator = EnumAttributeValidator.new('String', ["active", "scheduled", "expired"])
       return false unless status_validator.valid?(@status)
       return false if @sandbox.nil?
       return false if @timezone.nil?
       return false if @timezone.to_s.length < 1
+      return false if @referenced_by_campaigns.nil?
       true
     end
 
@@ -444,36 +422,6 @@ module TalonOne
       end
 
       @name = name
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] title Value to be assigned
-    def title=(title)
-      if title.nil?
-        fail ArgumentError, 'title cannot be nil'
-      end
-
-      @title = title
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] description Value to be assigned
-    def description=(description)
-      if description.nil?
-        fail ArgumentError, 'description cannot be nil'
-      end
-
-      @description = description
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] target Value to be assigned
-    def target=(target)
-      if target.nil?
-        fail ArgumentError, 'target cannot be nil'
-      end
-
-      @target = target
     end
 
     # Custom attribute writer method checking allowed values (enum).
@@ -554,6 +502,16 @@ module TalonOne
       @timezone = timezone
     end
 
+    # Custom attribute writer method with validation
+    # @param [Object] referenced_by_campaigns Value to be assigned
+    def referenced_by_campaigns=(referenced_by_campaigns)
+      if referenced_by_campaigns.nil?
+        fail ArgumentError, 'referenced_by_campaigns cannot be nil'
+      end
+
+      @referenced_by_campaigns = referenced_by_campaigns
+    end
+
     # Checks equality by comparing each attribute.
     # @param [Object] Object to be compared
     def ==(o)
@@ -578,7 +536,9 @@ module TalonOne
           has_progress == o.has_progress &&
           status == o.status &&
           sandbox == o.sandbox &&
-          timezone == o.timezone
+          timezone == o.timezone &&
+          campaign_id == o.campaign_id &&
+          referenced_by_campaigns == o.referenced_by_campaigns
     end
 
     # @see the `==` method
@@ -590,7 +550,7 @@ module TalonOne
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, created, name, title, description, target, period, recurrence_policy, activation_policy, fixed_start_date, end_date, allow_rollback_after_completion, subscribed_applications, user_id, created_by, period_end_override, has_progress, status, sandbox, timezone].hash
+      [id, created, name, title, description, target, period, recurrence_policy, activation_policy, fixed_start_date, end_date, allow_rollback_after_completion, subscribed_applications, user_id, created_by, period_end_override, has_progress, status, sandbox, timezone, campaign_id, referenced_by_campaigns].hash
     end
 
     # Builds the object from hash

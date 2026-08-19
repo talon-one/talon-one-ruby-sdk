@@ -14,13 +14,47 @@ require 'talon_one_sdk'
 TalonOne::CatalogAction.openapi_one_of
 # =>
 # [
-#   :'CatalogActionOneOf',
-#   :'CatalogActionOneOf1',
-#   :'CatalogActionOneOf2',
-#   :'CatalogActionOneOf3',
-#   :'CatalogActionOneOf4',
-#   :'CatalogActionOneOf5'
+#   :'CatalogActionAdd',
+#   :'CatalogActionAddPriceAdjustment',
+#   :'CatalogActionPatch',
+#   :'CatalogActionPatchMany',
+#   :'CatalogActionRemove',
+#   :'CatalogActionRemoveMany'
 # ]
+```
+
+### `openapi_discriminator_name`
+
+Returns the discriminator's property name.
+
+#### Example
+
+```ruby
+require 'talon_one_sdk'
+
+TalonOne::CatalogAction.openapi_discriminator_name
+# => :'type'
+```
+
+### `openapi_discriminator_name`
+
+Returns the discriminator's mapping.
+
+#### Example
+
+```ruby
+require 'talon_one_sdk'
+
+TalonOne::CatalogAction.openapi_discriminator_mapping
+# =>
+# {
+#   :'ADD' => :'CatalogActionAdd',
+#   :'ADD_PRICE_ADJUSTMENT' => :'CatalogActionAddPriceAdjustment',
+#   :'PATCH' => :'CatalogActionPatch',
+#   :'PATCH_MANY' => :'CatalogActionPatchMany',
+#   :'REMOVE' => :'CatalogActionRemove',
+#   :'REMOVE_MANY' => :'CatalogActionRemoveMany'
+# }
 ```
 
 ### build
@@ -33,7 +67,7 @@ Find the appropriate object from the `openapi_one_of` list and casts the data in
 require 'talon_one_sdk'
 
 TalonOne::CatalogAction.build(data)
-# => #<CatalogActionOneOf:0x00007fdd4aab02a0>
+# => #<CatalogActionAdd:0x00007fdd4aab02a0>
 
 TalonOne::CatalogAction.build(data_that_doesnt_match)
 # => nil
@@ -47,11 +81,11 @@ TalonOne::CatalogAction.build(data_that_doesnt_match)
 
 #### Return type
 
-- `CatalogActionOneOf`
-- `CatalogActionOneOf1`
-- `CatalogActionOneOf2`
-- `CatalogActionOneOf3`
-- `CatalogActionOneOf4`
-- `CatalogActionOneOf5`
+- `CatalogActionAdd`
+- `CatalogActionAddPriceAdjustment`
+- `CatalogActionPatch`
+- `CatalogActionPatchMany`
+- `CatalogActionRemove`
+- `CatalogActionRemoveMany`
 - `nil` (if no type matches)
 

@@ -75,12 +75,6 @@ describe TalonOne::IntegrationHubFlowResponse do
     end
   end
 
-  describe 'test attribute "integration_hub_flow_url"' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
   describe 'test attribute "config"' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/

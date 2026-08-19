@@ -88,8 +88,8 @@ module TalonOne
         :'promotion_rules' => :'Array<PromotionRuleV2>',
         :'strikethrough_rules' => :'Array<StrikethroughRuleV2>',
         :'selectors' => :'Array<Selector>',
-        :'bundles' => :'Array<Hash<String, Object>>',
-        :'parameters' => :'Array<Hash<String, Object>>'
+        :'bundles' => :'Array<Bundle>',
+        :'parameters' => :'Array<TemplateParameter>'
       }
     end
 

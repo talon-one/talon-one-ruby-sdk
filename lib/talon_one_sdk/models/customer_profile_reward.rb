@@ -19,6 +19,9 @@ module TalonOne
     # The ID of the customer reward instance. A customer profile can have multiple instances of the same reward.
     attr_accessor :id
 
+    # The integration ID of the reward.
+    attr_accessor :integration_id
+
     # The ID of the reward this instance belongs to.
     attr_accessor :reward_id
 
@@ -32,13 +35,13 @@ module TalonOne
     attr_accessor :unlocked_at
 
     # The integration ID of the customer profile that unlocked the reward.   For rewards unlocked with a loyalty card, this can be any customer profile  linked to that loyalty card. 
-    attr_accessor :unlocked_by_integration_id
+    attr_accessor :unlocked_by_profile_integration_id
 
     # The date and time when the reward was used.
     attr_accessor :used_at
 
     # The integration ID of the customer profile that used the reward.   For rewards unlocked with a loyalty card, this can be any customer profile  linked to that loyalty card.   Only returned when the reward has been used. 
-    attr_accessor :used_by_integration_id
+    attr_accessor :used_by_profile_integration_id
 
     # The ID of the loyalty program that the loyalty card belongs to. Only returned for rewards unlocked with a loyalty card.
     attr_accessor :loyalty_program_id
@@ -72,13 +75,14 @@ module TalonOne
     def self.attribute_map
       {
         :'id' => :'id',
+        :'integration_id' => :'integrationId',
         :'reward_id' => :'rewardId',
         :'reward_name' => :'rewardName',
         :'status' => :'status',
         :'unlocked_at' => :'unlockedAt',
-        :'unlocked_by_integration_id' => :'unlockedByIntegrationId',
+        :'unlocked_by_profile_integration_id' => :'unlockedByProfileIntegrationId',
         :'used_at' => :'usedAt',
-        :'used_by_integration_id' => :'usedByIntegrationId',
+        :'used_by_profile_integration_id' => :'usedByProfileIntegrationId',
         :'loyalty_program_id' => :'loyaltyProgramId',
         :'loyalty_card_identifier' => :'loyaltyCardIdentifier'
       }
@@ -98,13 +102,14 @@ module TalonOne
     def self.openapi_types
       {
         :'id' => :'Integer',
+        :'integration_id' => :'String',
         :'reward_id' => :'Integer',
         :'reward_name' => :'String',
         :'status' => :'String',
         :'unlocked_at' => :'Time',
-        :'unlocked_by_integration_id' => :'String',
+        :'unlocked_by_profile_integration_id' => :'String',
         :'used_at' => :'Time',
-        :'used_by_integration_id' => :'String',
+        :'used_by_profile_integration_id' => :'String',
         :'loyalty_program_id' => :'Integer',
         :'loyalty_card_identifier' => :'String'
       }
@@ -138,6 +143,12 @@ module TalonOne
         self.id = nil
       end
 
+      if attributes.key?(:'integration_id')
+        self.integration_id = attributes[:'integration_id']
+      else
+        self.integration_id = nil
+      end
+
       if attributes.key?(:'reward_id')
         self.reward_id = attributes[:'reward_id']
       else
@@ -162,16 +173,16 @@ module TalonOne
         self.unlocked_at = nil
       end
 
-      if attributes.key?(:'unlocked_by_integration_id')
-        self.unlocked_by_integration_id = attributes[:'unlocked_by_integration_id']
+      if attributes.key?(:'unlocked_by_profile_integration_id')
+        self.unlocked_by_profile_integration_id = attributes[:'unlocked_by_profile_integration_id']
       end
 
       if attributes.key?(:'used_at')
         self.used_at = attributes[:'used_at']
       end
 
-      if attributes.key?(:'used_by_integration_id')
-        self.used_by_integration_id = attributes[:'used_by_integration_id']
+      if attributes.key?(:'used_by_profile_integration_id')
+        self.used_by_profile_integration_id = attributes[:'used_by_profile_integration_id']
       end
 
       if attributes.key?(:'loyalty_program_id')
@@ -190,6 +201,10 @@ module TalonOne
       invalid_properties = Array.new
       if @id.nil?
         invalid_properties.push('invalid value for "id", id cannot be nil.')
+      end
+
+      if @integration_id.nil?
+        invalid_properties.push('invalid value for "integration_id", integration_id cannot be nil.')
       end
 
       if @reward_id.nil?
@@ -229,6 +244,7 @@ module TalonOne
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
       return false if @id.nil?
+      return false if @integration_id.nil?
       return false if @reward_id.nil?
       return false if @reward_name.nil?
       return false if @status.nil?
@@ -249,6 +265,16 @@ module TalonOne
       end
 
       @id = id
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] integration_id Value to be assigned
+    def integration_id=(integration_id)
+      if integration_id.nil?
+        fail ArgumentError, 'integration_id cannot be nil'
+      end
+
+      @integration_id = integration_id
     end
 
     # Custom attribute writer method with validation
@@ -320,13 +346,14 @@ module TalonOne
       return true if self.equal?(o)
       self.class == o.class &&
           id == o.id &&
+          integration_id == o.integration_id &&
           reward_id == o.reward_id &&
           reward_name == o.reward_name &&
           status == o.status &&
           unlocked_at == o.unlocked_at &&
-          unlocked_by_integration_id == o.unlocked_by_integration_id &&
+          unlocked_by_profile_integration_id == o.unlocked_by_profile_integration_id &&
           used_at == o.used_at &&
-          used_by_integration_id == o.used_by_integration_id &&
+          used_by_profile_integration_id == o.used_by_profile_integration_id &&
           loyalty_program_id == o.loyalty_program_id &&
           loyalty_card_identifier == o.loyalty_card_identifier
     end
@@ -340,7 +367,7 @@ module TalonOne
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, reward_id, reward_name, status, unlocked_at, unlocked_by_integration_id, used_at, used_by_integration_id, loyalty_program_id, loyalty_card_identifier].hash
+      [id, integration_id, reward_id, reward_name, status, unlocked_at, unlocked_by_profile_integration_id, used_at, used_by_profile_integration_id, loyalty_program_id, loyalty_card_identifier].hash
     end
 
     # Builds the object from hash

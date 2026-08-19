@@ -18,7 +18,7 @@ module TalonOne
     # Unique identifier for this block.
     attr_accessor :id
 
-    # Identifies the block variant and determines which additional properties are present in it.
+    # A block discriminator of type `group`.
     attr_accessor :type
 
     # Semantic labels attached to this block.
@@ -176,6 +176,8 @@ module TalonOne
       warn '[DEPRECATED] the `valid?` method is obsolete'
       return false if @id.nil?
       return false if @type.nil?
+      type_validator = EnumAttributeValidator.new('String', ["group"])
+      return false unless type_validator.valid?(@type)
       return false if @operator.nil?
       operator_validator = EnumAttributeValidator.new('String', ["all", "atLeastOne", "none"])
       return false unless operator_validator.valid?(@operator)
@@ -193,13 +195,13 @@ module TalonOne
       @id = id
     end
 
-    # Custom attribute writer method with validation
-    # @param [Object] type Value to be assigned
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] type Object to be assigned
     def type=(type)
-      if type.nil?
-        fail ArgumentError, 'type cannot be nil'
+      validator = EnumAttributeValidator.new('String', ["group"])
+      unless validator.valid?(type)
+        fail ArgumentError, "invalid value for \"type\", must be one of #{validator.allowable_values}."
       end
-
       @type = type
     end
 

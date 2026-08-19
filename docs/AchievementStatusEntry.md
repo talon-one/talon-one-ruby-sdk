@@ -17,7 +17,8 @@
 | **fixed_start_date** | **Time** | The achievement&#39;s start date when &#x60;activationPolicy&#x60; is set to &#x60;fixed_schedule&#x60;.  **Note:** It must be an RFC3339 timestamp string.  | [optional] |
 | **end_date** | **Time** | The achievement&#39;s end date. If defined, customers cannot participate in the achievement after this date.  **Note:** It must be an RFC3339 timestamp string.  | [optional] |
 | **allow_rollback_after_completion** | **Boolean** | When &#x60;true&#x60;, customer progress can be rolled back in completed achievements. | [optional] |
-| **campaign_id** | **Integer** | The ID of the campaign the achievement belongs to. | [optional] |
+| **campaign_id** | **Integer** | This property is **deprecated**. Use &#x60;campaignIds&#x60; instead. The first campaign ID in &#x60;campaignIds&#x60;. Only returned when &#x60;campaignIds&#x60; is not empty. | [optional] |
+| **campaign_ids** | **Array&lt;Integer&gt;** | The IDs of the campaigns that reference this achievement, in ascending order. |  |
 | **status** | **String** | The status of the achievement. | [optional] |
 | **current_progress** | [**AchievementProgress**](AchievementProgress.md) |  | [optional] |
 
@@ -41,6 +42,7 @@ instance = TalonOne::AchievementStatusEntry.new(
   end_date: 2024-02-15T15:04:05Z07:00,
   allow_rollback_after_completion: false,
   campaign_id: 1,
+  campaign_ids: [1, 14, 27],
   status: active,
   current_progress: null
 )

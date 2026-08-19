@@ -36,6 +36,9 @@ module TalonOne
     # The ID of the session to reference. The session must be in `closed` state. Otherwise, the API call will fail.
     attr_accessor :connected_session_id
 
+    # The referral code submitted with the event. The endpoint does not validate the code, and submitting a code does not redeem it. Use the \"Referral code is valid\" condition in the Rule Builder to validate and redeem the code, or \"Referral code is valid (without redemption)\" to validate without redeeming. 
+    attr_accessor :referral_code
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -45,7 +48,8 @@ module TalonOne
         :'type' => :'type',
         :'attributes' => :'attributes',
         :'integration_id' => :'integrationId',
-        :'connected_session_id' => :'connectedSessionId'
+        :'connected_session_id' => :'connectedSessionId',
+        :'referral_code' => :'referralCode'
       }
     end
 
@@ -68,7 +72,8 @@ module TalonOne
         :'type' => :'String',
         :'attributes' => :'Object',
         :'integration_id' => :'String',
-        :'connected_session_id' => :'String'
+        :'connected_session_id' => :'String',
+        :'referral_code' => :'String'
       }
     end
 
@@ -84,6 +89,7 @@ module TalonOne
       :'EvaluableCampaignIds',
       :'EventAttributesEntity',
       :'EventV3Connections',
+      :'EventV3ReferralEntity',
       :'IntegrationProfileEntityV3',
       :'IntegrationStoreEntity',
       :'NewEventV3Entity'
@@ -141,6 +147,10 @@ module TalonOne
       if attributes.key?(:'connected_session_id')
         self.connected_session_id = attributes[:'connected_session_id']
       end
+
+      if attributes.key?(:'referral_code')
+        self.referral_code = attributes[:'referral_code']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -180,6 +190,10 @@ module TalonOne
         invalid_properties.push('invalid value for "connected_session_id", the character length must be greater than or equal to 1.')
       end
 
+      if !@referral_code.nil? && @referral_code.to_s.length > 100
+        invalid_properties.push('invalid value for "referral_code", the character length must be smaller than or equal to 100.')
+      end
+
       invalid_properties
     end
 
@@ -195,6 +209,7 @@ module TalonOne
       return false if @integration_id.nil?
       return false if @integration_id.to_s.length < 1
       return false if !@connected_session_id.nil? && @connected_session_id.to_s.length < 1
+      return false if !@referral_code.nil? && @referral_code.to_s.length > 100
       true
     end
 
@@ -268,6 +283,20 @@ module TalonOne
       @connected_session_id = connected_session_id
     end
 
+    # Custom attribute writer method with validation
+    # @param [Object] referral_code Value to be assigned
+    def referral_code=(referral_code)
+      if referral_code.nil?
+        fail ArgumentError, 'referral_code cannot be nil'
+      end
+
+      if referral_code.to_s.length > 100
+        fail ArgumentError, 'invalid value for "referral_code", the character length must be smaller than or equal to 100.'
+      end
+
+      @referral_code = referral_code
+    end
+
     # Checks equality by comparing each attribute.
     # @param [Object] Object to be compared
     def ==(o)
@@ -279,7 +308,8 @@ module TalonOne
           type == o.type &&
           attributes == o.attributes &&
           integration_id == o.integration_id &&
-          connected_session_id == o.connected_session_id
+          connected_session_id == o.connected_session_id &&
+          referral_code == o.referral_code
     end
 
     # @see the `==` method
@@ -291,7 +321,7 @@ module TalonOne
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [profile_id, store_integration_id, evaluable_campaign_ids, type, attributes, integration_id, connected_session_id].hash
+      [profile_id, store_integration_id, evaluable_campaign_ids, type, attributes, integration_id, connected_session_id, referral_code].hash
     end
 
     # Builds the object from hash

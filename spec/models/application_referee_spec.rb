@@ -39,6 +39,12 @@ describe TalonOne::ApplicationReferee do
     end
   end
 
+  describe 'test attribute "advanced_event_integration_id"' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
   describe 'test attribute "advocate_integration_id"' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/

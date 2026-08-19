@@ -21,6 +21,9 @@ module TalonOne
     # Integration ID of the session in which the customer redeemed the referral.
     attr_accessor :session_id
 
+    # The unique ID of the advanced event in which the customer redeemed the referral. Omitted when the referral was redeemed through a customer session rather than an advanced event.
+    attr_accessor :advanced_event_integration_id
+
     # Integration ID of the Advocate's Profile.
     attr_accessor :advocate_integration_id
 
@@ -38,6 +41,7 @@ module TalonOne
       {
         :'application_id' => :'applicationId',
         :'session_id' => :'sessionId',
+        :'advanced_event_integration_id' => :'advancedEventIntegrationId',
         :'advocate_integration_id' => :'advocateIntegrationId',
         :'friend_integration_id' => :'friendIntegrationId',
         :'code' => :'code',
@@ -60,6 +64,7 @@ module TalonOne
       {
         :'application_id' => :'Integer',
         :'session_id' => :'String',
+        :'advanced_event_integration_id' => :'String',
         :'advocate_integration_id' => :'String',
         :'friend_integration_id' => :'String',
         :'code' => :'String',
@@ -108,6 +113,10 @@ module TalonOne
         self.session_id = nil
       end
 
+      if attributes.key?(:'advanced_event_integration_id')
+        self.advanced_event_integration_id = attributes[:'advanced_event_integration_id']
+      end
+
       if attributes.key?(:'advocate_integration_id')
         self.advocate_integration_id = attributes[:'advocate_integration_id']
       else
@@ -146,6 +155,10 @@ module TalonOne
         invalid_properties.push('invalid value for "session_id", session_id cannot be nil.')
       end
 
+      if !@advanced_event_integration_id.nil? && @advanced_event_integration_id.to_s.length > 1000
+        invalid_properties.push('invalid value for "advanced_event_integration_id", the character length must be smaller than or equal to 1000.')
+      end
+
       if @advocate_integration_id.nil?
         invalid_properties.push('invalid value for "advocate_integration_id", advocate_integration_id cannot be nil.')
       end
@@ -179,6 +192,7 @@ module TalonOne
       warn '[DEPRECATED] the `valid?` method is obsolete'
       return false if @application_id.nil?
       return false if @session_id.nil?
+      return false if !@advanced_event_integration_id.nil? && @advanced_event_integration_id.to_s.length > 1000
       return false if @advocate_integration_id.nil?
       return false if @advocate_integration_id.to_s.length > 1000
       return false if @friend_integration_id.nil?
@@ -206,6 +220,20 @@ module TalonOne
       end
 
       @session_id = session_id
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] advanced_event_integration_id Value to be assigned
+    def advanced_event_integration_id=(advanced_event_integration_id)
+      if advanced_event_integration_id.nil?
+        fail ArgumentError, 'advanced_event_integration_id cannot be nil'
+      end
+
+      if advanced_event_integration_id.to_s.length > 1000
+        fail ArgumentError, 'invalid value for "advanced_event_integration_id", the character length must be smaller than or equal to 1000.'
+      end
+
+      @advanced_event_integration_id = advanced_event_integration_id
     end
 
     # Custom attribute writer method with validation
@@ -263,6 +291,7 @@ module TalonOne
       self.class == o.class &&
           application_id == o.application_id &&
           session_id == o.session_id &&
+          advanced_event_integration_id == o.advanced_event_integration_id &&
           advocate_integration_id == o.advocate_integration_id &&
           friend_integration_id == o.friend_integration_id &&
           code == o.code &&
@@ -278,7 +307,7 @@ module TalonOne
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [application_id, session_id, advocate_integration_id, friend_integration_id, code, created].hash
+      [application_id, session_id, advanced_event_integration_id, advocate_integration_id, friend_integration_id, code, created].hash
     end
 
     # Builds the object from hash

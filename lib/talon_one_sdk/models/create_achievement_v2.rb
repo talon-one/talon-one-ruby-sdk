@@ -155,26 +155,18 @@ module TalonOne
 
       if attributes.key?(:'name')
         self.name = attributes[:'name']
-      else
-        self.name = nil
       end
 
       if attributes.key?(:'title')
         self.title = attributes[:'title']
-      else
-        self.title = nil
       end
 
       if attributes.key?(:'description')
         self.description = attributes[:'description']
-      else
-        self.description = nil
       end
 
       if attributes.key?(:'target')
         self.target = attributes[:'target']
-      else
-        self.target = nil
       end
 
       if attributes.key?(:'period')
@@ -225,33 +217,17 @@ module TalonOne
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
-      if @name.nil?
-        invalid_properties.push('invalid value for "name", name cannot be nil.')
-      end
-
-      if @name.to_s.length > 1000
+      if !@name.nil? && @name.to_s.length > 1000
         invalid_properties.push('invalid value for "name", the character length must be smaller than or equal to 1000.')
       end
 
-      if @name.to_s.length < 1
+      if !@name.nil? && @name.to_s.length < 1
         invalid_properties.push('invalid value for "name", the character length must be greater than or equal to 1.')
       end
 
       pattern = Regexp.new(/^[a-zA-Z]\w+$/)
-      if @name !~ pattern
+      if !@name.nil? && @name !~ pattern
         invalid_properties.push("invalid value for \"name\", must conform to the pattern #{pattern}.")
-      end
-
-      if @title.nil?
-        invalid_properties.push('invalid value for "title", title cannot be nil.')
-      end
-
-      if @description.nil?
-        invalid_properties.push('invalid value for "description", description cannot be nil.')
-      end
-
-      if @target.nil?
-        invalid_properties.push('invalid value for "target", target cannot be nil.')
       end
 
       if !@subscribed_applications.nil? && @subscribed_applications.length < 0
@@ -277,13 +253,9 @@ module TalonOne
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
-      return false if @name.nil?
-      return false if @name.to_s.length > 1000
-      return false if @name.to_s.length < 1
-      return false if @name !~ Regexp.new(/^[a-zA-Z]\w+$/)
-      return false if @title.nil?
-      return false if @description.nil?
-      return false if @target.nil?
+      return false if !@name.nil? && @name.to_s.length > 1000
+      return false if !@name.nil? && @name.to_s.length < 1
+      return false if !@name.nil? && @name !~ Regexp.new(/^[a-zA-Z]\w+$/)
       recurrence_policy_validator = EnumAttributeValidator.new('String', ["no_recurrence", "on_expiration", "on_completion"])
       return false unless recurrence_policy_validator.valid?(@recurrence_policy)
       activation_policy_validator = EnumAttributeValidator.new('String', ["user_action", "fixed_schedule"])
@@ -316,36 +288,6 @@ module TalonOne
       end
 
       @name = name
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] title Value to be assigned
-    def title=(title)
-      if title.nil?
-        fail ArgumentError, 'title cannot be nil'
-      end
-
-      @title = title
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] description Value to be assigned
-    def description=(description)
-      if description.nil?
-        fail ArgumentError, 'description cannot be nil'
-      end
-
-      @description = description
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] target Value to be assigned
-    def target=(target)
-      if target.nil?
-        fail ArgumentError, 'target cannot be nil'
-      end
-
-      @target = target
     end
 
     # Custom attribute writer method checking allowed values (enum).

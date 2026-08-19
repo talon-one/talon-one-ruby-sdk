@@ -48,6 +48,9 @@ module TalonOne
     # The advanced event that was processed.
     attr_accessor :advanced_event
 
+    # The referral that was processed.
+    attr_accessor :referral
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -61,7 +64,8 @@ module TalonOne
         :'created_referrals' => :'createdReferrals',
         :'awarded_giveaways' => :'awardedGiveaways',
         :'achievements' => :'achievements',
-        :'advanced_event' => :'advancedEvent'
+        :'advanced_event' => :'advancedEvent',
+        :'referral' => :'referral'
       }
     end
 
@@ -88,7 +92,8 @@ module TalonOne
         :'created_referrals' => :'Array<Referral>',
         :'awarded_giveaways' => :'Array<Giveaway>',
         :'achievements' => :'Array<CustomerAchievement>',
-        :'advanced_event' => :'EventV3'
+        :'advanced_event' => :'EventV3',
+        :'referral' => :'InventoryReferral'
       }
     end
 
@@ -186,6 +191,10 @@ module TalonOne
       if attributes.key?(:'advanced_event')
         self.advanced_event = attributes[:'advanced_event']
       end
+
+      if attributes.key?(:'referral')
+        self.referral = attributes[:'referral']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -263,7 +272,8 @@ module TalonOne
           created_referrals == o.created_referrals &&
           awarded_giveaways == o.awarded_giveaways &&
           achievements == o.achievements &&
-          advanced_event == o.advanced_event
+          advanced_event == o.advanced_event &&
+          referral == o.referral
     end
 
     # @see the `==` method
@@ -275,7 +285,7 @@ module TalonOne
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [customer_profile, loyalty, triggered_campaigns, campaign_eligibility, effects, rule_failure_reasons, created_coupons, created_referrals, awarded_giveaways, achievements, advanced_event].hash
+      [customer_profile, loyalty, triggered_campaigns, campaign_eligibility, effects, rule_failure_reasons, created_coupons, created_referrals, awarded_giveaways, achievements, advanced_event, referral].hash
     end
 
     # Builds the object from hash

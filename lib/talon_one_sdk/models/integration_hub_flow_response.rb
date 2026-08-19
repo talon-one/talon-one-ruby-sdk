@@ -39,9 +39,6 @@ module TalonOne
     # The event type we want to register a flow for.
     attr_accessor :event_type
 
-    # The URL of the integration hub flow that we want to trigger for the event.
-    attr_accessor :integration_hub_flow_url
-
     attr_accessor :config
 
     # Attribute mapping from ruby-style variable name to JSON key.
@@ -55,7 +52,6 @@ module TalonOne
         :'application_id' => :'applicationId',
         :'loyalty_program_id' => :'loyaltyProgramId',
         :'event_type' => :'eventType',
-        :'integration_hub_flow_url' => :'integrationHubFlowUrl',
         :'config' => :'config'
       }
     end
@@ -81,7 +77,6 @@ module TalonOne
         :'application_id' => :'Integer',
         :'loyalty_program_id' => :'Integer',
         :'event_type' => :'String',
-        :'integration_hub_flow_url' => :'String',
         :'config' => :'IntegrationHubFlowConfigResponse'
       }
     end
@@ -147,12 +142,6 @@ module TalonOne
         self.event_type = nil
       end
 
-      if attributes.key?(:'integration_hub_flow_url')
-        self.integration_hub_flow_url = attributes[:'integration_hub_flow_url']
-      else
-        self.integration_hub_flow_url = nil
-      end
-
       if attributes.key?(:'config')
         self.config = attributes[:'config']
       else
@@ -177,10 +166,6 @@ module TalonOne
         invalid_properties.push('invalid value for "event_type", event_type cannot be nil.')
       end
 
-      if @integration_hub_flow_url.nil?
-        invalid_properties.push('invalid value for "integration_hub_flow_url", integration_hub_flow_url cannot be nil.')
-      end
-
       if @config.nil?
         invalid_properties.push('invalid value for "config", config cannot be nil.')
       end
@@ -195,7 +180,6 @@ module TalonOne
       return false if @id.nil?
       return false if @created_at.nil?
       return false if @event_type.nil?
-      return false if @integration_hub_flow_url.nil?
       return false if @config.nil?
       true
     end
@@ -231,16 +215,6 @@ module TalonOne
     end
 
     # Custom attribute writer method with validation
-    # @param [Object] integration_hub_flow_url Value to be assigned
-    def integration_hub_flow_url=(integration_hub_flow_url)
-      if integration_hub_flow_url.nil?
-        fail ArgumentError, 'integration_hub_flow_url cannot be nil'
-      end
-
-      @integration_hub_flow_url = integration_hub_flow_url
-    end
-
-    # Custom attribute writer method with validation
     # @param [Object] config Value to be assigned
     def config=(config)
       if config.nil?
@@ -263,7 +237,6 @@ module TalonOne
           application_id == o.application_id &&
           loyalty_program_id == o.loyalty_program_id &&
           event_type == o.event_type &&
-          integration_hub_flow_url == o.integration_hub_flow_url &&
           config == o.config
     end
 
@@ -276,7 +249,7 @@ module TalonOne
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, integration_name, instance_name, created_at, disabled_until, application_id, loyalty_program_id, event_type, integration_hub_flow_url, config].hash
+      [id, integration_name, instance_name, created_at, disabled_until, application_id, loyalty_program_id, event_type, config].hash
     end
 
     # Builds the object from hash
