@@ -8,6 +8,7 @@
 | **parent_id** | **String** | ID of the parent rule, if any. | [optional] |
 | **title** | **String** | A short description of the rule. |  |
 | **description** | **String** | A longer description of the rule. | [optional] |
+| **blocks** | [**Array&lt;Block&gt;**](Block.md) | The condition and effect blocks that make up this rule. |  |
 
 ## Example
 
@@ -18,7 +19,8 @@ instance = TalonOne::RuleV2.new(
   id: a1b2c3d4-e5f6-7890-abcd-ef1234567890,
   parent_id: null,
   title: 10% off for loyalty members,
-  description: null
+  description: null,
+  blocks: null
 )
 ```
 

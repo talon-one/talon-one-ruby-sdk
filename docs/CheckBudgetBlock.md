@@ -4,13 +4,13 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **id** | **String** | Unique identifier for this block. |  |
+| **id** | **String** | Unique identifier for this block. | [optional][readonly] |
 | **type** | **String** | Identifies the block variant and determines which additional properties are present in it. |  |
-| **tags** | **Array&lt;String&gt;** | Semantic labels attached to this block. | [optional] |
+| **tags** | **Array&lt;String&gt;** | Semantic labels attached to this block. | [optional][readonly] |
 | **operator** | **String** | The comparison operator applied to the limit. &#x60;available&#x60; checks if there is budget available for a given limitable action; &#x60;enoughFor&#x60; checks if the available budget meets or exceeds a specific value limit. |  |
 | **action** | **String** | The limitable action to check. |  |
 | **value** | **Float** | The value to check against when using the &#x60;enoughFor&#x60; operator. | [optional] |
-| **on_failure** | [**Array&lt;PromotionBlock&gt;**](PromotionBlock.md) | Promotion blocks evaluated when this block fails or returns false. | [optional] |
+| **on_failure** | [**Array&lt;Block&gt;**](Block.md) | Promotion blocks evaluated when this block fails or returns false. | [optional] |
 
 ## Example
 

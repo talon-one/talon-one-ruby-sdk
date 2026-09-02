@@ -14,9 +14,39 @@ require 'talon_one_sdk'
 TalonOne::WebhookAuthenticationBase.openapi_one_of
 # =>
 # [
-#   :'WebhookAuthenticationBaseOneOf',
-#   :'WebhookAuthenticationBaseOneOf1'
+#   :'WebhookAuthenticationBaseBasic',
+#   :'WebhookAuthenticationBaseCustom'
 # ]
+```
+
+### `openapi_discriminator_name`
+
+Returns the discriminator's property name.
+
+#### Example
+
+```ruby
+require 'talon_one_sdk'
+
+TalonOne::WebhookAuthenticationBase.openapi_discriminator_name
+# => :'type'
+```
+
+### `openapi_discriminator_name`
+
+Returns the discriminator's mapping.
+
+#### Example
+
+```ruby
+require 'talon_one_sdk'
+
+TalonOne::WebhookAuthenticationBase.openapi_discriminator_mapping
+# =>
+# {
+#   :'basic' => :'WebhookAuthenticationBaseBasic',
+#   :'custom' => :'WebhookAuthenticationBaseCustom'
+# }
 ```
 
 ### build
@@ -29,7 +59,7 @@ Find the appropriate object from the `openapi_one_of` list and casts the data in
 require 'talon_one_sdk'
 
 TalonOne::WebhookAuthenticationBase.build(data)
-# => #<WebhookAuthenticationBaseOneOf:0x00007fdd4aab02a0>
+# => #<WebhookAuthenticationBaseBasic:0x00007fdd4aab02a0>
 
 TalonOne::WebhookAuthenticationBase.build(data_that_doesnt_match)
 # => nil
@@ -43,7 +73,7 @@ TalonOne::WebhookAuthenticationBase.build(data_that_doesnt_match)
 
 #### Return type
 
-- `WebhookAuthenticationBaseOneOf`
-- `WebhookAuthenticationBaseOneOf1`
+- `WebhookAuthenticationBaseBasic`
+- `WebhookAuthenticationBaseCustom`
 - `nil` (if no type matches)
 

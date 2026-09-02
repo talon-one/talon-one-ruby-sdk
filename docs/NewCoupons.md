@@ -11,6 +11,7 @@
 | **expiry_date** | **Time** | Expiration date of the coupon. Coupon never expires if this is omitted. | [optional] |
 | **limits** | [**Array&lt;LimitConfig&gt;**](LimitConfig.md) | Limits configuration for a coupon. These limits will override the limits set from the campaign.  **Note:** Only usable when creating a single coupon which is not tied to a specific recipient. Only per-profile limits are allowed to be configured.  | [optional] |
 | **number_of_coupons** | **Integer** | The number of new coupon codes to generate for the campaign. Must be at least 1. |  |
+| **batch_id** | **String** | The batch ID that all coupons created by the request will bear. If omitted, a batch ID is generated automatically. | [optional] |
 | **unique_prefix** | **String** | **DEPRECATED** To create more than 20,000 coupons in one request, use [Create coupons asynchronously](https://docs.talon.one/management-api#tag/Coupons/operation/createCouponsAsync) endpoint.  | [optional] |
 | **attributes** | **Object** | Arbitrary properties associated with this item. | [optional] |
 | **recipient_integration_id** | **String** | The integration ID for this coupon&#39;s beneficiary&#39;s profile. | [optional] |
@@ -34,6 +35,7 @@ instance = TalonOne::NewCoupons.new(
   expiry_date: 2023-08-24T14:15:22Z,
   limits: null,
   number_of_coupons: 1,
+  batch_id: 3rdparty_fjsieoaa,
   unique_prefix: ,
   attributes: {venueId&#x3D;12},
   recipient_integration_id: URNGV8294NV,

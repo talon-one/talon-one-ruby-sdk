@@ -5,7 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **type** | **String** | A step discriminator of type &#x60;filter&#x60;. |  |
-| **predicate** | [**SelectorBlock**](SelectorBlock.md) |  |  |
+| **predicate** | [**Block**](Block.md) |  |  |
 
 ## Example
 

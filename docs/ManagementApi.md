@@ -24,6 +24,7 @@ All URIs are relative to *https://yourbaseurl.talon.one*
 | [**create_invite_email**](ManagementApi.md#create_invite_email) | **POST** /v1/invite_emails | Resend invitation email |
 | [**create_invite_v2**](ManagementApi.md#create_invite_v2) | **POST** /v2/invites | Invite user |
 | [**create_password_recovery_email**](ManagementApi.md#create_password_recovery_email) | **POST** /v1/password_recovery_emails | Request a password reset |
+| [**create_ruleset_v2**](ManagementApi.md#create_ruleset_v2) | **POST** /v2/applications/{applicationId}/campaigns/{campaignId}/rulesets | Create ruleset (V2) |
 | [**create_session**](ManagementApi.md#create_session) | **POST** /v1/sessions | Create session |
 | [**create_store**](ManagementApi.md#create_store) | **POST** /v1/applications/{applicationId}/stores | Create store |
 | [**deactivate_user_by_email**](ManagementApi.md#deactivate_user_by_email) | **POST** /v1/users/deactivate | Disable user by email address |
@@ -1657,6 +1658,81 @@ end
 ### Return type
 
 [**NewPasswordEmail**](NewPasswordEmail.md)
+
+### Authorization
+
+[api_key_v1](../README.md#api_key_v1)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## create_ruleset_v2
+
+> <RulesetV2> create_ruleset_v2(application_id, campaign_id, ruleset_v2)
+
+Create ruleset (V2)
+
+Create a ruleset from promotion and strikethrough rules in the V2 JSON block format. A ruleset is a revision of all the rules of a campaign.  Only `group` and `passthrough` blocks are currently writable, with optional `onFailure` blocks. A payload containing any other block type is rejected. Each rule's `blocks` array may contain at most one block.
+
+### Examples
+
+```ruby
+require 'time'
+require 'talon_one_sdk'
+# setup authorization
+TalonOne.configure do |config|
+  # Configure API key authorization: api_key_v1
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+end
+
+api_instance = TalonOne::ManagementApi.new
+application_id = 789 # Integer | The ID of the Application. It is displayed in your Talon.One deployment URL.
+campaign_id = 789 # Integer | The ID of the campaign. It is displayed in your Talon.One deployment URL.
+ruleset_v2 = TalonOne::RulesetV2.new({promotion_rules: [TalonOne::RuleV2.new({title: '10% off for loyalty members', blocks: [TalonOne::AwardDiscountBlock.new({type: 'type_example', name: '10% Off', value: nil, partial: false, target: TalonOne::AwardDiscountAdditionalCostTarget.new({type: 'additionalCost', additional_cost: TalonOne::AdditionalCostReference.new({id: 42, name: 'shipping'}), target: TalonOne::AwardDiscountAllItemsTarget.new({type: 'allItems'})})})]})]}) # RulesetV2 | body
+
+begin
+  # Create ruleset (V2)
+  result = api_instance.create_ruleset_v2(application_id, campaign_id, ruleset_v2)
+  p result
+rescue TalonOne::ApiError => e
+  puts "Error when calling ManagementApi->create_ruleset_v2: #{e}"
+end
+```
+
+#### Using the create_ruleset_v2_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<RulesetV2>, Integer, Hash)> create_ruleset_v2_with_http_info(application_id, campaign_id, ruleset_v2)
+
+```ruby
+begin
+  # Create ruleset (V2)
+  data, status_code, headers = api_instance.create_ruleset_v2_with_http_info(application_id, campaign_id, ruleset_v2)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <RulesetV2>
+rescue TalonOne::ApiError => e
+  puts "Error when calling ManagementApi->create_ruleset_v2_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **application_id** | **Integer** | The ID of the Application. It is displayed in your Talon.One deployment URL. |  |
+| **campaign_id** | **Integer** | The ID of the campaign. It is displayed in your Talon.One deployment URL. |  |
+| **ruleset_v2** | [**RulesetV2**](RulesetV2.md) | body |  |
+
+### Return type
+
+[**RulesetV2**](RulesetV2.md)
 
 ### Authorization
 
@@ -9615,6 +9691,7 @@ opts = {
   created_before: Time.parse('2013-10-20T19:20:30+01:00'), # Time | Filter results where request and response times to return entries before parameter value, expected to be an RFC3339 timestamp string. Use UTC time.
   created_after: Time.parse('2013-10-20T19:20:30+01:00'), # Time | Filter results where request and response times to return entries after parameter value, expected to be an RFC3339 timestamp string. Use UTC time.
   cursor: BYTE_ARRAY_DATA_HERE, # String | A specific unique value in the database. If this value is not given, the server fetches results starting with the first record. 
+  page_size: 789, # Integer | The maximum number of message log entries to return.
   period: '15m', # String | Filter results by time period. Choose between the available relative time frames. 
   is_successful: true, # Boolean | Indicates whether to return log entries with either successful or unsuccessful HTTP response codes. When set to`true`, only log entries with `2xx` response codes are returned. When set to `false`, only log entries with `4xx` and `5xx` response codes are returned. 
   application_id: 8.14, # Float | Filter results by Application ID.
@@ -9662,6 +9739,7 @@ end
 | **created_before** | **Time** | Filter results where request and response times to return entries before parameter value, expected to be an RFC3339 timestamp string. Use UTC time. | [optional] |
 | **created_after** | **Time** | Filter results where request and response times to return entries after parameter value, expected to be an RFC3339 timestamp string. Use UTC time. | [optional] |
 | **cursor** | **String** | A specific unique value in the database. If this value is not given, the server fetches results starting with the first record.  | [optional] |
+| **page_size** | **Integer** | The maximum number of message log entries to return. | [optional][default to 50] |
 | **period** | **String** | Filter results by time period. Choose between the available relative time frames.  | [optional] |
 | **is_successful** | **Boolean** | Indicates whether to return log entries with either successful or unsuccessful HTTP response codes. When set to&#x60;true&#x60;, only log entries with &#x60;2xx&#x60; response codes are returned. When set to &#x60;false&#x60;, only log entries with &#x60;4xx&#x60; and &#x60;5xx&#x60; response codes are returned.  | [optional] |
 | **application_id** | **Float** | Filter results by Application ID. | [optional] |

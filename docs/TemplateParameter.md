@@ -5,7 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **name** | **String** | The name of the template parameter. |  |
-| **value** | **Object** |  |  |
+| **value** | **Object** | The parameter&#39;s bound value. Its type depends on the &#x60;valueType&#x60;. |  |
 | **value_type** | **String** | The data type of the value, derived from the bound expression (for example &#x60;number&#x60;, &#x60;string&#x60;, &#x60;boolean&#x60;, &#x60;percent&#x60;, &#x60;time&#x60;, &#x60;(list string)&#x60;, or &#x60;(list number)&#x60;). |  |
 | **min_value** | **Float** | The minimum value allowed for this parameter. | [optional] |
 | **max_value** | **Float** | The maximum value allowed for this parameter. | [optional] |
@@ -19,7 +19,7 @@ require 'talon_one_sdk'
 
 instance = TalonOne::TemplateParameter.new(
   name: minCartTotal,
-  value: null,
+  value: 50,
   value_type: number,
   min_value: 0,
   max_value: 10000,

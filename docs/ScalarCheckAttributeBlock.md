@@ -5,7 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **operator** | **String** | The comparison operator applied to the attribute. | [optional] |
-| **value** | **Object** |  |  |
+| **value** | **Object** | The comparison value for this operator. |  |
 
 ## Example
 
@@ -14,7 +14,7 @@ require 'talon_one_sdk'
 
 instance = TalonOne::ScalarCheckAttributeBlock.new(
   operator: null,
-  value: null
+  value: 100
 )
 ```
 

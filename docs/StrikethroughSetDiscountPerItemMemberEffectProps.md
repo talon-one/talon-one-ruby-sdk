@@ -5,7 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **name** | **String** | The effect name. |  |
-| **value** | **Object** |  |  |
+| **value** | **Object** | The discount value. |  |
 
 ## Example
 
@@ -14,7 +14,7 @@ require 'talon_one_sdk'
 
 instance = TalonOne::StrikethroughSetDiscountPerItemMemberEffectProps.new(
   name: 10% off members only,
-  value: null
+  value: 9
 )
 ```
 

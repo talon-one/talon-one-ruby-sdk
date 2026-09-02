@@ -5,7 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **failure_code** | **String** | A code identifying why the customer is not eligible for the reward. |  |
-| **condition_index** | **Integer** | The index of the eligibility condition that the customer did not meet. | [optional] |
+| **condition_index** | **Integer** | The index of the eligibility condition that the customer did not meet. Only applicable when &#x60;failureCode&#x60; is &#x60;CONDITION_NOT_MET&#x60;. | [optional] |
 
 ## Example
 

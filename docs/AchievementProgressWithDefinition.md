@@ -13,7 +13,7 @@
 | **name** | **String** | The internal name of the achievement used in API requests.  |  |
 | **title** | **String** | The display name of the achievement in the Campaign Manager. |  |
 | **description** | **String** | The description of the achievement in the Campaign Manager. |  |
-| **campaign_id** | **Integer** | This property is **deprecated**. Use &#x60;campaignIds&#x60; (Integration API) or &#x60;referencedByCampaigns&#x60; (Management API) instead. The first campaign ID in &#x60;campaignIds&#x60;. Only returned when &#x60;campaignIds&#x60; is not empty. |  |
+| **campaign_id** | **Integer** | This property is **deprecated**. Use &#x60;campaignIds&#x60; (Integration API) or &#x60;referencedByCampaigns&#x60; (Management API) instead. This field contains the first campaign ID from the related &#x60;campaignIds&#x60;, and is omitted when &#x60;campaignIds&#x60; is empty. | [optional] |
 | **campaign_ids** | **Array&lt;Integer&gt;** | The IDs of the campaigns that reference this achievement, in ascending order. |  |
 | **referenced_by_campaigns** | [**Array&lt;CampaignReference&gt;**](CampaignReference.md) | The campaigns that reference this achievement, in ascending order of their &#x60;id&#x60;. |  |
 | **target** | **Float** | The required number of actions or the transactional milestone to complete the achievement. | [optional] |

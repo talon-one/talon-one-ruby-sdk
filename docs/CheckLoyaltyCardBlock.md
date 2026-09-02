@@ -4,11 +4,11 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **id** | **String** | Unique identifier for this block. |  |
+| **id** | **String** | Unique identifier for this block. | [optional][readonly] |
 | **type** | **String** | Identifies the block variant and determines which additional properties are present in it. |  |
-| **tags** | **Array&lt;String&gt;** | Semantic labels attached to this block. | [optional] |
+| **tags** | **Array&lt;String&gt;** | Semantic labels attached to this block. | [optional][readonly] |
 | **operator** | **String** | An indicator of how the block compares its elements. |  |
-| **on_failure** | [**Array&lt;PromotionBlock&gt;**](PromotionBlock.md) | Promotion blocks evaluated when this block fails or returns false. | [optional] |
+| **on_failure** | [**Array&lt;Block&gt;**](Block.md) | Promotion blocks evaluated when this block fails or returns false. | [optional] |
 
 ## Example
 

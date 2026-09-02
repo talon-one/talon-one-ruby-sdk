@@ -5,7 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **path** | **String** | The entity type and the attribute name. |  |
-| **value** | **Object** |  |  |
+| **value** | **Object** | The new value of the attribute. |  |
 
 ## Example
 
