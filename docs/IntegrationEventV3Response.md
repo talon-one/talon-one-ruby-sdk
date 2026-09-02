@@ -14,6 +14,7 @@
 | **created_referrals** | [**Array&lt;Referral&gt;**](Referral.md) | The referrals that were created during the event processing. |  |
 | **awarded_giveaways** | [**Array&lt;Giveaway&gt;**](Giveaway.md) | The giveaways that were awarded during the event processing. | [optional] |
 | **achievements** | [**Array&lt;CustomerAchievement&gt;**](CustomerAchievement.md) | The achievements progress of the customer. | [optional] |
+| **rewards** | [**Array&lt;RewardWithUnlocks&gt;**](RewardWithUnlocks.md) | The unlocked rewards for the customer profile. | [optional] |
 | **advanced_event** | [**EventV3**](EventV3.md) | The advanced event that was processed. | [optional] |
 | **referral** | [**InventoryReferral**](InventoryReferral.md) | The referral that was processed. | [optional] |
 
@@ -33,6 +34,7 @@ instance = TalonOne::IntegrationEventV3Response.new(
   created_referrals: null,
   awarded_giveaways: null,
   achievements: null,
+  rewards: null,
   advanced_event: null,
   referral: null
 )

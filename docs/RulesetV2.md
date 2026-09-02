@@ -4,17 +4,17 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **id** | **Integer** | Internal ID of this entity. |  |
-| **created** | **Time** | The time this entity was created. |  |
-| **user_id** | **Integer** | The ID of the user that created this ruleset. |  |
-| **campaign_id** | **Integer** | The ID of the campaign that owns this entity. | [optional] |
-| **template_id** | **Integer** | The ID of the campaign template that owns this entity. | [optional] |
-| **activated_at** | **Time** | Timestamp indicating when this ruleset was activated. | [optional] |
-| **promotion_rules** | [**Array&lt;PromotionRuleV2&gt;**](PromotionRuleV2.md) | Set of promotion rules. |  |
-| **strikethrough_rules** | [**Array&lt;StrikethroughRuleV2&gt;**](StrikethroughRuleV2.md) | Set of strikethrough rules. |  |
-| **selectors** | [**Array&lt;Selector&gt;**](Selector.md) | Variable bindings of type selector. | [optional] |
-| **bundles** | [**Array&lt;Bundle&gt;**](Bundle.md) | Variable bindings of type bundle. | [optional] |
-| **parameters** | [**Array&lt;TemplateParameter&gt;**](TemplateParameter.md) | Variable bindings of type template parameter. | [optional] |
+| **id** | **Integer** | Internal ID of this entity. | [optional][readonly] |
+| **created** | **Time** | The time this entity was created. | [optional][readonly] |
+| **user_id** | **Integer** | The ID of the user that created this ruleset. | [optional][readonly] |
+| **campaign_id** | **Integer** | The ID of the campaign that owns this entity. | [optional][readonly] |
+| **template_id** | **Integer** | The ID of the campaign template that owns this entity. | [optional][readonly] |
+| **activated_at** | **Time** | Timestamp indicating when this ruleset was activated. | [optional][readonly] |
+| **promotion_rules** | [**Array&lt;RuleV2&gt;**](RuleV2.md) | Set of promotion rules. |  |
+| **strikethrough_rules** | [**Array&lt;RuleV2&gt;**](RuleV2.md) | Set of strikethrough rules. | [optional] |
+| **selectors** | [**Array&lt;Selector&gt;**](Selector.md) | Variable bindings of type selector. | [optional][readonly] |
+| **bundles** | [**Array&lt;Bundle&gt;**](Bundle.md) | Variable bindings of type bundle. | [optional][readonly] |
+| **parameters** | [**Array&lt;TemplateParameter&gt;**](TemplateParameter.md) | Variable bindings of type template parameter. | [optional][readonly] |
 
 ## Example
 

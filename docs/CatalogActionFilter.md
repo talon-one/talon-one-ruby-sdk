@@ -6,7 +6,7 @@
 | ---- | ---- | ----------- | ----- |
 | **attr** | **String** | The name of the attribute to filter on. |  |
 | **op** | **String** | The filtering operator. |  |
-| **value** | **Object** |  |  |
+| **value** | **Object** | The value to filter for. |  |
 
 ## Example
 

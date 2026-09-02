@@ -5,7 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **name** | **String** | The effect name. |  |
-| **value** | **Object** |  |  |
+| **value** | **Object** | The discount value. |  |
 | **excluded_from_price_history** | **Boolean** | When set to &#x60;true&#x60;, the applied discount is excluded from the item&#39;s price history. | [optional] |
 
 ## Example
@@ -15,7 +15,7 @@ require 'talon_one_sdk'
 
 instance = TalonOne::StrikethroughSetDiscountPerItemEffectProps.new(
   name: 1EuroOff,
-  value: null,
+  value: 1,
   excluded_from_price_history: null
 )
 ```

@@ -4,12 +4,12 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **id** | **String** | Unique identifier for this block. |  |
+| **id** | **String** | Unique identifier for this block. | [optional][readonly] |
 | **type** | **String** | Identifies the block variant and determines which additional properties are present in it. |  |
-| **tags** | **Array&lt;String&gt;** | Semantic labels attached to this block. | [optional] |
+| **tags** | **Array&lt;String&gt;** | Semantic labels attached to this block. | [optional][readonly] |
 | **event_type** | **String** | The event type to check against. |  |
-| **matchers** | [**Array&lt;PromotionBlock&gt;**](PromotionBlock.md) |  | [optional] |
-| **on_failure** | [**Array&lt;PromotionBlock&gt;**](PromotionBlock.md) | Promotion blocks evaluated when this block fails or returns false. | [optional] |
+| **matchers** | [**Array&lt;Block&gt;**](Block.md) |  | [optional] |
+| **on_failure** | [**Array&lt;Block&gt;**](Block.md) | Promotion blocks evaluated when this block fails or returns false. | [optional] |
 
 ## Example
 

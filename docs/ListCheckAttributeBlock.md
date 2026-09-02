@@ -5,7 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **operator** | **String** | The list membership operator applied to the attribute. | [optional] |
-| **values** | **Object** |  |  |
+| **values** | **Object** | The set of values to match against. |  |
 
 ## Example
 
