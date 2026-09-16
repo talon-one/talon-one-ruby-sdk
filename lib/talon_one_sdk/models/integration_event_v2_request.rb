@@ -36,6 +36,9 @@ module TalonOne
     # Identifiers of the loyalty cards used during this event.
     attr_accessor :loyalty_cards
 
+    # The integration IDs of the unlocked rewards that can be used in this event. 
+    attr_accessor :reward_integration_ids
+
     class EnumAttributeValidator
       attr_reader :datatype
       attr_reader :allowable_values
@@ -67,7 +70,8 @@ module TalonOne
         :'type' => :'type',
         :'attributes' => :'attributes',
         :'response_content' => :'responseContent',
-        :'loyalty_cards' => :'loyaltyCards'
+        :'loyalty_cards' => :'loyaltyCards',
+        :'reward_integration_ids' => :'rewardIntegrationIds'
       }
     end
 
@@ -90,7 +94,8 @@ module TalonOne
         :'type' => :'String',
         :'attributes' => :'Object',
         :'response_content' => :'Array<String>',
-        :'loyalty_cards' => :'Array<String>'
+        :'loyalty_cards' => :'Array<String>',
+        :'reward_integration_ids' => :'Array<String>'
       }
     end
 
@@ -157,6 +162,12 @@ module TalonOne
       if attributes.key?(:'loyalty_cards')
         if (value = attributes[:'loyalty_cards']).is_a?(Array)
           self.loyalty_cards = value
+        end
+      end
+
+      if attributes.key?(:'reward_integration_ids')
+        if (value = attributes[:'reward_integration_ids']).is_a?(Array)
+          self.reward_integration_ids = value
         end
       end
     end
@@ -258,7 +269,8 @@ module TalonOne
           type == o.type &&
           attributes == o.attributes &&
           response_content == o.response_content &&
-          loyalty_cards == o.loyalty_cards
+          loyalty_cards == o.loyalty_cards &&
+          reward_integration_ids == o.reward_integration_ids
     end
 
     # @see the `==` method
@@ -270,7 +282,7 @@ module TalonOne
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [profile_id, store_integration_id, evaluable_campaign_ids, type, attributes, response_content, loyalty_cards].hash
+      [profile_id, store_integration_id, evaluable_campaign_ids, type, attributes, response_content, loyalty_cards, reward_integration_ids].hash
     end
 
     # Builds the object from hash

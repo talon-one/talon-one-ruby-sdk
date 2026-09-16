@@ -14,6 +14,7 @@ require 'date'
 require 'time'
 
 module TalonOne
+  # Details of the permission sets configured for an Application.
   class RoleV2ApplicationDetails < ApiModelBase
     # Name of the Application-related permission set for the given Application.
     attr_accessor :application

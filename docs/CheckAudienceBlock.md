@@ -9,7 +9,7 @@
 | **tags** | **Array&lt;String&gt;** | Semantic labels attached to this block. | [optional][readonly] |
 | **operator** | **String** | An indicator of how the block compares its elements. |  |
 | **profile** | **String** | The customer profile to check against the audience. &#x60;Current&#x60; targets the customer in the current session; &#x60;Advocate&#x60; targets the person who invited their friend via referral program. |  |
-| **audience** | [**CheckAudienceBlock1Audience**](CheckAudienceBlock1Audience.md) |  |  |
+| **audience** | [**AudienceBlockReference**](AudienceBlockReference.md) | The audience to check the profile against. |  |
 | **on_failure** | [**Array&lt;Block&gt;**](Block.md) | Promotion blocks evaluated when this block fails or returns false. | [optional] |
 
 ## Example

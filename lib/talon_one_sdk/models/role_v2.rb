@@ -14,6 +14,7 @@ require 'date'
 require 'time'
 
 module TalonOne
+  # Represents a role with its associated permissions and members.
   class RoleV2 < ApiModelBase
     # The internal ID of this entity.
     attr_accessor :id
@@ -39,7 +40,7 @@ module TalonOne
     # A list of user IDs the role is assigned to.
     attr_accessor :members
 
-    # Identifies if the role is read-only. For read-only roles, you can only assign or unassign users. You cannot edit any other properties, such as the name, description, or permissions. The 'isReadonly' property cannot be set for new or existing roles. It is reserved for predefined roles, such as the Talon.One support role.
+    # Identifies if the role is read-only. For read-only roles, you can only assign or unassign users. You cannot edit any other properties, such as the name, description, or permissions. This property cannot be set for new or existing roles. It is reserved for predefined roles, such as the Talon.One support role.
     attr_accessor :is_readonly
 
     # Attribute mapping from ruby-style variable name to JSON key.

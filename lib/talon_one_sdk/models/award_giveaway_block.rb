@@ -87,7 +87,7 @@ module TalonOne
         :'id' => :'String',
         :'type' => :'String',
         :'tags' => :'Array<String>',
-        :'giveaway_pool' => :'GiveawayPoolReference',
+        :'giveaway_pool' => :'GiveawayPoolBlockReference',
         :'profile' => :'String',
         :'on_failure' => :'Array<Block>',
         :'on_error' => :'Hash<String, Array<Block>>'

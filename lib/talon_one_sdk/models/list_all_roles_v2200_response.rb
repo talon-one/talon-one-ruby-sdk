@@ -15,8 +15,10 @@ require 'time'
 
 module TalonOne
   class ListAllRolesV2200Response < ApiModelBase
+    # The total number of roles returned.
     attr_accessor :total_result_size
 
+    # The list of roles.
     attr_accessor :data
 
     # Attribute mapping from ruby-style variable name to JSON key.

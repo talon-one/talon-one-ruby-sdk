@@ -14,6 +14,7 @@ require 'date'
 require 'time'
 
 module TalonOne
+  # The permissions that this role gives.
   class RoleV2Permissions < ApiModelBase
     # List of grouped logical operations referenced by roles.
     attr_accessor :permission_sets

@@ -30,6 +30,7 @@ module TalonOne
     # The customer profile to check against the audience. `Current` targets the customer in the current session; `Advocate` targets the person who invited their friend via referral program.
     attr_accessor :profile
 
+    # The audience to check the profile against.
     attr_accessor :audience
 
     # Promotion blocks evaluated when this block fails or returns false.
@@ -88,7 +89,7 @@ module TalonOne
         :'tags' => :'Array<String>',
         :'operator' => :'String',
         :'profile' => :'String',
-        :'audience' => :'CheckAudienceBlock1Audience',
+        :'audience' => :'AudienceBlockReference',
         :'on_failure' => :'Array<Block>'
       }
     end

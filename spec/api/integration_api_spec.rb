@@ -75,7 +75,7 @@ describe 'IntegrationApi' do
   # @param coupon_value The code of the coupon.  **Important:** The coupon code requires [URL encoding](https://www.w3schools.com/tags//ref_urlencode.asp) if it contains special characters. For example, you must encode &#x60;SUMMER25%OFF&#x60; as &#x60;SUMMER25%25OFF&#x60;. 
   # @param coupon_reservations body
   # @param [Hash] opts the optional parameters
-  # @return [Coupon]
+  # @return [CouponWithReservations]
   describe 'create_coupon_reservation test' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
@@ -233,6 +233,22 @@ describe 'IntegrationApi' do
   # @option opts [Boolean] :unlocked_rewards Set to &#x60;true&#x60; to include &#x60;unlocked&#x60; rewards that have not been &#x60;used&#x60; in the response.
   # @return [CustomerInventory]
   describe 'get_customer_inventory test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  # unit tests for get_customer_rewards
+  # List customer&#39;s rewards
+  # List the rewards held by a given customer profile. This includes shared rewards unlocked with a loyalty card linked to the customer. 
+  # @param integration_id The integration identifier for this customer profile. Must be:  - Unique within the deployment. - Stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID. 
+  # @param [Hash] opts the optional parameters
+  # @option opts [Array<String>] :status Filter results by one or more customer reward statuses.  **Note:** If no status is specified, rewards of all statuses are returned. 
+  # @option opts [Integer] :page_size The number of items in the response.
+  # @option opts [Integer] :skip The number of items to skip when paging through large result sets.
+  # @option opts [Boolean] :with_total_result_size When this flag is set, the result includes the total number of results for this query. This might decrease performance on large data sets.   - When &#x60;true&#x60;: &#x60;totalResultSize&#x60; contains the total number of results for this query.  - When &#x60;false&#x60;: Only &#x60;hasMore&#x60; is returned, and it is set to &#x60;true&#x60; when there are more results than shown on the page. 
+  # @return [GetCustomerRewards200Response]
+  describe 'get_customer_rewards test' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
     end
@@ -421,8 +437,8 @@ describe 'IntegrationApi' do
   # @option opts [Boolean] :include_free Whether to include rewards that have no &#x60;pointsRequired&#x60;. These rewards are treated as free and available to all customers. 
   # @option opts [Integer] :loyalty_program_id Return only rewards available in this loyalty program. 
   # @option opts [String] :subledger_id Return only rewards available in this subledger. Must be combined with &#x60;loyaltyProgramId&#x60;. To specify the main ledger, provide an empty string (\&quot;\&quot;). 
-  # @option opts [String] :profile_integration_id The integration ID of the customer profile whose loyalty balances to include in the response. Balances are returned only when &#x60;loyaltyProgramId&#x60; is also provided.  **Note:** &#x60;profileIntegrationId&#x60; and &#x60;loyaltyCardId&#x60; are mutually exclusive. Do not send both in the same request. 
-  # @option opts [String] :loyalty_card_id The identifier of the loyalty card whose loyalty balances to include in the response. Balances are returned only when &#x60;loyaltyProgramId&#x60; is also provided.  **Note:** &#x60;profileIntegrationId&#x60; and &#x60;loyaltyCardId&#x60; are mutually exclusive. Do not send both in the same request. 
+  # @option opts [String] :profile_integration_id The integration ID of the customer profile whose loyalty balances to include in the response. Balances are returned only when &#x60;loyaltyProgramId&#x60; is also provided.  For a reward with &#x60;pointsRequired&#x60; configured for a card-based loyalty program, eligibility can be evaluated based on both &#x60;profileIntegrationId&#x60; and &#x60;loyaltyCardId&#x60;, if both are provided. The required points are then checked against the card&#39;s balance. 
+  # @option opts [String] :loyalty_card_id The identifier of the loyalty card whose loyalty balances to include in the response. Balances are returned only when &#x60;loyaltyProgramId&#x60; is also provided.  For a reward with &#x60;pointsRequired&#x60; configured for a card-based loyalty program, eligibility can be evaluated based on both &#x60;profileIntegrationId&#x60; and &#x60;loyaltyCardId&#x60;, if both are provided. The card must also be linked to that customer profile. - If &#x60;loyaltyCardId&#x60; is not provided, the reward returns the &#x60;CARD_REQUIRED&#x60; failure code, because there is no card balance to compare &#x60;pointsRequired&#x60; against. - If &#x60;profileIntegrationId&#x60; is not provided, the reward returns the &#x60;PROFILE_REQUIRED&#x60; failure code, because its eligibility cannot be evaluated without a customer profile. 
   # @return [IntegrationRewardsCatalog200Response]
   describe 'integration_rewards_catalog test' do
     it 'should work' do
@@ -551,7 +567,7 @@ describe 'IntegrationApi' do
   # @param integration_unlock_reward_request 
   # @param [Hash] opts the optional parameters
   # @option opts [Boolean] :dry When set to &#x60;true&#x60;, the rule evaluation is performed but no changes are persisted. Use this to preview the outcome of an unlocking.
-  # @return [IntegrationStateV2]
+  # @return [IntegrationUnlockRewardResponse]
   describe 'unlock_reward test' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/

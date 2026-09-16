@@ -80,13 +80,6 @@ module TalonOne
       ])
     end
 
-    # List of class defined in allOf (OpenAPI v3)
-    def self.openapi_all_of
-      [
-      :'CampaignNotificationBase'
-      ]
-    end
-
     # Initializes the object
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
@@ -119,6 +112,8 @@ module TalonOne
         if (value = attributes[:'data']).is_a?(Array)
           self.data = value
         end
+      else
+        self.data = nil
       end
     end
 
@@ -135,6 +130,10 @@ module TalonOne
         invalid_properties.push('invalid value for "total_result_size", total_result_size cannot be nil.')
       end
 
+      if @data.nil?
+        invalid_properties.push('invalid value for "data", data cannot be nil.')
+      end
+
       invalid_properties
     end
 
@@ -143,16 +142,17 @@ module TalonOne
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
       return false if @notification_type.nil?
-      notification_type_validator = EnumAttributeValidator.new('String', ["CampaignNotification"])
+      notification_type_validator = EnumAttributeValidator.new('String', ["CampaignEvaluationTreeChanged"])
       return false unless notification_type_validator.valid?(@notification_type)
       return false if @total_result_size.nil?
+      return false if @data.nil?
       true
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] notification_type Object to be assigned
     def notification_type=(notification_type)
-      validator = EnumAttributeValidator.new('String', ["CampaignNotification"])
+      validator = EnumAttributeValidator.new('String', ["CampaignEvaluationTreeChanged"])
       unless validator.valid?(notification_type)
         fail ArgumentError, "invalid value for \"notification_type\", must be one of #{validator.allowable_values}."
       end
@@ -167,6 +167,16 @@ module TalonOne
       end
 
       @total_result_size = total_result_size
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] data Value to be assigned
+    def data=(data)
+      if data.nil?
+        fail ArgumentError, 'data cannot be nil'
+      end
+
+      @data = data
     end
 
     # Checks equality by comparing each attribute.

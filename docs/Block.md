@@ -17,6 +17,7 @@ TalonOne::Block.openapi_one_of
 #   :'AwardDiscountBlock',
 #   :'AwardGiveawayBlock',
 #   :'AwardItemBlock',
+#   :'AwardLoyaltyPointsBlock',
 #   :'CheckAchievementBlock',
 #   :'CheckAttributeBlock',
 #   :'CheckAudienceBlock',
@@ -38,7 +39,8 @@ TalonOne::Block.openapi_one_of
 #   :'TriggerWebhookBlock',
 #   :'UpdateAchievementProgressBlock',
 #   :'UpdateAttributeValueBlock',
-#   :'UpdateAudienceMembershipBlock'
+#   :'UpdateAudienceMembershipBlock',
+#   :'UpdateLoyaltyPointsExpiryBlock'
 # ]
 ```
 
@@ -70,6 +72,7 @@ TalonOne::Block.openapi_discriminator_mapping
 #   :'awardDiscount' => :'AwardDiscountBlock',
 #   :'awardGiveaway' => :'AwardGiveawayBlock',
 #   :'awardItem' => :'AwardItemBlock',
+#   :'awardLoyaltyPoints' => :'AwardLoyaltyPointsBlock',
 #   :'checkAchievement' => :'CheckAchievementBlock',
 #   :'checkAttribute' => :'CheckAttributeBlock',
 #   :'checkAudience' => :'CheckAudienceBlock',
@@ -91,7 +94,8 @@ TalonOne::Block.openapi_discriminator_mapping
 #   :'triggerWebhook' => :'TriggerWebhookBlock',
 #   :'updateAchievementProgress' => :'UpdateAchievementProgressBlock',
 #   :'updateAttributeValue' => :'UpdateAttributeValueBlock',
-#   :'updateAudienceMembership' => :'UpdateAudienceMembershipBlock'
+#   :'updateAudienceMembership' => :'UpdateAudienceMembershipBlock',
+#   :'updateLoyaltyPointsExpiry' => :'UpdateLoyaltyPointsExpiryBlock'
 # }
 ```
 
@@ -122,6 +126,7 @@ TalonOne::Block.build(data_that_doesnt_match)
 - `AwardDiscountBlock`
 - `AwardGiveawayBlock`
 - `AwardItemBlock`
+- `AwardLoyaltyPointsBlock`
 - `CheckAchievementBlock`
 - `CheckAttributeBlock`
 - `CheckAudienceBlock`
@@ -144,5 +149,6 @@ TalonOne::Block.build(data_that_doesnt_match)
 - `UpdateAchievementProgressBlock`
 - `UpdateAttributeValueBlock`
 - `UpdateAudienceMembershipBlock`
+- `UpdateLoyaltyPointsExpiryBlock`
 - `nil` (if no type matches)
 
