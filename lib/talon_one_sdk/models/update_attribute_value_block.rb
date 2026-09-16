@@ -27,6 +27,7 @@ module TalonOne
     # The update operation applied to the attribute.
     attr_accessor :operator
 
+    # The attribute being updated.
     attr_accessor :attribute
 
     # The value of the attribute. Omitted when operator is set to `toggle`.
@@ -86,7 +87,7 @@ module TalonOne
         :'type' => :'String',
         :'tags' => :'Array<String>',
         :'operator' => :'String',
-        :'attribute' => :'UpdateAttributeValueBlock1Attribute',
+        :'attribute' => :'AttributeBlockReference',
         :'value' => :'Object',
         :'target' => :'UpdateAttributeValueBlock1Target'
       }

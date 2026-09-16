@@ -1,52 +1,199 @@
 # TalonOne::Effect
 
-## Properties
+## Class instance methods
 
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **experiment_id** | **Integer** | The ID of the experiment that campaign belongs to. | [optional] |
-| **campaign_id** | **Integer** | The ID of the campaign that triggered this effect. |  |
-| **ruleset_id** | **Integer** | The ID of the ruleset that was active in the campaign when this effect was triggered. |  |
-| **rule_index** | **Integer** | The position of the rule that triggered this effect within the ruleset. |  |
-| **rule_name** | **String** | The name of the rule that triggered this effect. |  |
-| **effect_type** | **String** | The type of effect that was triggered. See [API effects](https://docs.talon.one/docs/dev/integration-api/api-effects). |  |
-| **triggered_by_coupon** | **Integer** | The ID of the coupon that was being evaluated when this effect was triggered. | [optional] |
-| **triggered_for_catalog_item** | **Integer** | The ID of the catalog item that was being evaluated when this effect was triggered. | [optional] |
-| **condition_index** | **Integer** | The index of the condition that was triggered. | [optional] |
-| **evaluation_group_id** | **Integer** | The ID of the evaluation group. For more information, see [Managing campaign evaluation](https://docs.talon.one/docs/product/applications/managing-campaign-evaluation). | [optional] |
-| **evaluation_group_mode** | **String** | The evaluation mode of the evaluation group. For more information, see [Managing campaign evaluation](https://docs.talon.one/docs/product/applications/managing-campaign-evaluation). | [optional] |
-| **campaign_revision_id** | **Integer** | The revision ID of the campaign that was used when triggering the effect. | [optional] |
-| **campaign_revision_version_id** | **Integer** | The revision version ID of the campaign that was used when triggering the effect. | [optional] |
-| **selected_price_type** | **String** | The selected price type for the SKU targeted by this effect. | [optional] |
-| **selected_price** | **Float** | The value of the selected price type to apply to the SKU targeted by this effect, before any discounts are applied. | [optional] |
-| **adjustment_reference_id** | **String** | The reference identifier of the selected price adjustment for this SKU. This is only returned if the &#x60;selectedPrice&#x60; resulted from a price adjustment. | [optional] |
-| **reward_id** | **Integer** | The ID of the reward that was being evaluated when this effect was triggered. | [optional] |
-| **props** | **Object** |  |  |
+### `openapi_one_of`
 
-## Example
+Returns the list of classes defined in oneOf.
+
+#### Example
 
 ```ruby
 require 'talon_one_sdk'
 
-instance = TalonOne::Effect.new(
-  experiment_id: 12,
-  campaign_id: 244,
-  ruleset_id: 73,
-  rule_index: 2,
-  rule_name: Give 20% discount,
-  effect_type: rejectCoupon,
-  triggered_by_coupon: 4928,
-  triggered_for_catalog_item: 786,
-  condition_index: 786,
-  evaluation_group_id: 3,
-  evaluation_group_mode: stackable,
-  campaign_revision_id: 1,
-  campaign_revision_version_id: 5,
-  selected_price_type: member,
-  selected_price: 100,
-  adjustment_reference_id: 68851723-e6fa-488f-ace9-112581e6c19b,
-  reward_id: 7,
-  props: null
-)
+TalonOne::Effect.openapi_one_of
+# =>
+# [
+#   :'EffectAcceptCoupon',
+#   :'EffectAcceptReferral',
+#   :'EffectAddFreeItem',
+#   :'EffectAddLoyaltyPoints',
+#   :'EffectAddNegativeLoyaltyPoints',
+#   :'EffectAddToAudience',
+#   :'EffectAwardGiveaway',
+#   :'EffectCallApi',
+#   :'EffectChangeLoyaltyTierLevel',
+#   :'EffectCouponCreated',
+#   :'EffectCustomEffect',
+#   :'EffectDeductLoyaltyPoints',
+#   :'EffectError',
+#   :'EffectExtendLoyaltyPointsExpiryDate',
+#   :'EffectIncreaseAchievementProgress',
+#   :'EffectJoinLoyaltyProgram',
+#   :'EffectOffsetNegativeLoyaltyPoints',
+#   :'EffectRedeemReferral',
+#   :'EffectReferralCreated',
+#   :'EffectRejectCoupon',
+#   :'EffectRejectReferral',
+#   :'EffectRemoveFromAudience',
+#   :'EffectReserveCoupon',
+#   :'EffectRollbackAddedLoyaltyPoints',
+#   :'EffectRollbackCoupon',
+#   :'EffectRollbackDeductedLoyaltyPoints',
+#   :'EffectRollbackDiscount',
+#   :'EffectRollbackIncreasedAchievementProgress',
+#   :'EffectRollbackReferral',
+#   :'EffectRollbackUseReward',
+#   :'EffectSet',
+#   :'EffectSetDiscount',
+#   :'EffectSetDiscountPerAdditionalCost',
+#   :'EffectSetDiscountPerAdditionalCostPerItem',
+#   :'EffectSetDiscountPerItem',
+#   :'EffectSetLoyaltyPointsExpiryDate',
+#   :'EffectShowBundleMetadata',
+#   :'EffectShowNotification',
+#   :'EffectStartAchievementProgress',
+#   :'EffectUnlockReward',
+#   :'EffectUseReward',
+#   :'EffectWillAwardGiveaway'
+# ]
 ```
+
+### `openapi_discriminator_name`
+
+Returns the discriminator's property name.
+
+#### Example
+
+```ruby
+require 'talon_one_sdk'
+
+TalonOne::Effect.openapi_discriminator_name
+# => :'effect_type'
+```
+
+### `openapi_discriminator_name`
+
+Returns the discriminator's mapping.
+
+#### Example
+
+```ruby
+require 'talon_one_sdk'
+
+TalonOne::Effect.openapi_discriminator_mapping
+# =>
+# {
+#   :'acceptCoupon' => :'EffectAcceptCoupon',
+#   :'acceptReferral' => :'EffectAcceptReferral',
+#   :'addFreeItem' => :'EffectAddFreeItem',
+#   :'addLoyaltyPoints' => :'EffectAddLoyaltyPoints',
+#   :'addNegativeLoyaltyPoints' => :'EffectAddNegativeLoyaltyPoints',
+#   :'addToAudience' => :'EffectAddToAudience',
+#   :'awardGiveaway' => :'EffectAwardGiveaway',
+#   :'callApi' => :'EffectCallApi',
+#   :'changeLoyaltyTierLevel' => :'EffectChangeLoyaltyTierLevel',
+#   :'couponCreated' => :'EffectCouponCreated',
+#   :'customEffect' => :'EffectCustomEffect',
+#   :'deductLoyaltyPoints' => :'EffectDeductLoyaltyPoints',
+#   :'error' => :'EffectError',
+#   :'extendLoyaltyPointsExpiryDate' => :'EffectExtendLoyaltyPointsExpiryDate',
+#   :'increaseAchievementProgress' => :'EffectIncreaseAchievementProgress',
+#   :'joinLoyaltyProgram' => :'EffectJoinLoyaltyProgram',
+#   :'offsetNegativeLoyaltyPoints' => :'EffectOffsetNegativeLoyaltyPoints',
+#   :'redeemReferral' => :'EffectRedeemReferral',
+#   :'referralCreated' => :'EffectReferralCreated',
+#   :'rejectCoupon' => :'EffectRejectCoupon',
+#   :'rejectReferral' => :'EffectRejectReferral',
+#   :'removeFromAudience' => :'EffectRemoveFromAudience',
+#   :'reserveCoupon' => :'EffectReserveCoupon',
+#   :'rollbackAddedLoyaltyPoints' => :'EffectRollbackAddedLoyaltyPoints',
+#   :'rollbackCoupon' => :'EffectRollbackCoupon',
+#   :'rollbackDeductedLoyaltyPoints' => :'EffectRollbackDeductedLoyaltyPoints',
+#   :'rollbackDiscount' => :'EffectRollbackDiscount',
+#   :'rollbackIncreasedAchievementProgress' => :'EffectRollbackIncreasedAchievementProgress',
+#   :'rollbackReferral' => :'EffectRollbackReferral',
+#   :'rollbackUseReward' => :'EffectRollbackUseReward',
+#   :'set' => :'EffectSet',
+#   :'setDiscount' => :'EffectSetDiscount',
+#   :'setDiscountPerAdditionalCost' => :'EffectSetDiscountPerAdditionalCost',
+#   :'setDiscountPerAdditionalCostPerItem' => :'EffectSetDiscountPerAdditionalCostPerItem',
+#   :'setDiscountPerItem' => :'EffectSetDiscountPerItem',
+#   :'setLoyaltyPointsExpiryDate' => :'EffectSetLoyaltyPointsExpiryDate',
+#   :'showBundleMetadata' => :'EffectShowBundleMetadata',
+#   :'showNotification' => :'EffectShowNotification',
+#   :'startAchievementProgress' => :'EffectStartAchievementProgress',
+#   :'unlockReward' => :'EffectUnlockReward',
+#   :'useReward' => :'EffectUseReward',
+#   :'willAwardGiveaway' => :'EffectWillAwardGiveaway'
+# }
+```
+
+### build
+
+Find the appropriate object from the `openapi_one_of` list and casts the data into it.
+
+#### Example
+
+```ruby
+require 'talon_one_sdk'
+
+TalonOne::Effect.build(data)
+# => #<EffectAcceptCoupon:0x00007fdd4aab02a0>
+
+TalonOne::Effect.build(data_that_doesnt_match)
+# => nil
+```
+
+#### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| **data** | **Mixed** | data to be matched against the list of oneOf items |
+
+#### Return type
+
+- `EffectAcceptCoupon`
+- `EffectAcceptReferral`
+- `EffectAddFreeItem`
+- `EffectAddLoyaltyPoints`
+- `EffectAddNegativeLoyaltyPoints`
+- `EffectAddToAudience`
+- `EffectAwardGiveaway`
+- `EffectCallApi`
+- `EffectChangeLoyaltyTierLevel`
+- `EffectCouponCreated`
+- `EffectCustomEffect`
+- `EffectDeductLoyaltyPoints`
+- `EffectError`
+- `EffectExtendLoyaltyPointsExpiryDate`
+- `EffectIncreaseAchievementProgress`
+- `EffectJoinLoyaltyProgram`
+- `EffectOffsetNegativeLoyaltyPoints`
+- `EffectRedeemReferral`
+- `EffectReferralCreated`
+- `EffectRejectCoupon`
+- `EffectRejectReferral`
+- `EffectRemoveFromAudience`
+- `EffectReserveCoupon`
+- `EffectRollbackAddedLoyaltyPoints`
+- `EffectRollbackCoupon`
+- `EffectRollbackDeductedLoyaltyPoints`
+- `EffectRollbackDiscount`
+- `EffectRollbackIncreasedAchievementProgress`
+- `EffectRollbackReferral`
+- `EffectRollbackUseReward`
+- `EffectSet`
+- `EffectSetDiscount`
+- `EffectSetDiscountPerAdditionalCost`
+- `EffectSetDiscountPerAdditionalCostPerItem`
+- `EffectSetDiscountPerItem`
+- `EffectSetLoyaltyPointsExpiryDate`
+- `EffectShowBundleMetadata`
+- `EffectShowNotification`
+- `EffectStartAchievementProgress`
+- `EffectUnlockReward`
+- `EffectUseReward`
+- `EffectWillAwardGiveaway`
+- `nil` (if no type matches)
 

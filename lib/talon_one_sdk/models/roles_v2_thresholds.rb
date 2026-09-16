@@ -14,6 +14,7 @@ require 'date'
 require 'time'
 
 module TalonOne
+  # Support user limits for actions that require admin approval within the given loyalty program.
   class RolesV2Thresholds < ApiModelBase
     # Identifier of the loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.
     attr_accessor :loyalty_program_id

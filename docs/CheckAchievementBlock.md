@@ -8,7 +8,7 @@
 | **type** | **String** | Identifies the block variant and determines which additional properties are present in it. |  |
 | **tags** | **Array&lt;String&gt;** | Semantic labels attached to this block. | [optional][readonly] |
 | **operator** | **String** | The comparison operator applied to the achievement. |  |
-| **achievement** | [**CheckAchievementBlock1Achievement**](CheckAchievementBlock1Achievement.md) |  |  |
+| **achievement** | [**AchievementBlockReference**](AchievementBlockReference.md) | The achievement to check for. |  |
 | **on_failure** | [**Array&lt;Block&gt;**](Block.md) | Promotion blocks evaluated when this block fails or returns false. | [optional] |
 
 ## Example

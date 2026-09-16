@@ -23,6 +23,7 @@ module TalonOne
           :'AwardDiscountBlock',
           :'AwardGiveawayBlock',
           :'AwardItemBlock',
+          :'AwardLoyaltyPointsBlock',
           :'CheckAchievementBlock',
           :'CheckAttributeBlock',
           :'CheckAudienceBlock',
@@ -44,7 +45,8 @@ module TalonOne
           :'TriggerWebhookBlock',
           :'UpdateAchievementProgressBlock',
           :'UpdateAttributeValueBlock',
-          :'UpdateAudienceMembershipBlock'
+          :'UpdateAudienceMembershipBlock',
+          :'UpdateLoyaltyPointsExpiryBlock'
         ]
       end
 
@@ -59,6 +61,7 @@ module TalonOne
           :'awardDiscount' => :'AwardDiscountBlock',
           :'awardGiveaway' => :'AwardGiveawayBlock',
           :'awardItem' => :'AwardItemBlock',
+          :'awardLoyaltyPoints' => :'AwardLoyaltyPointsBlock',
           :'checkAchievement' => :'CheckAchievementBlock',
           :'checkAttribute' => :'CheckAttributeBlock',
           :'checkAudience' => :'CheckAudienceBlock',
@@ -80,7 +83,8 @@ module TalonOne
           :'triggerWebhook' => :'TriggerWebhookBlock',
           :'updateAchievementProgress' => :'UpdateAchievementProgressBlock',
           :'updateAttributeValue' => :'UpdateAttributeValueBlock',
-          :'updateAudienceMembership' => :'UpdateAudienceMembershipBlock'
+          :'updateAudienceMembership' => :'UpdateAudienceMembershipBlock',
+          :'updateLoyaltyPointsExpiry' => :'UpdateLoyaltyPointsExpiryBlock'
         }
       end
 

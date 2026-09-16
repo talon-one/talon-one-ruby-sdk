@@ -24,6 +24,7 @@ module TalonOne
     # Semantic labels attached to this block.
     attr_accessor :tags
 
+    # The custom effect to trigger.
     attr_accessor :custom_effect
 
     # The custom effect's parameters, in configured order. Each property name is the parameter's title, lowercased with spaces replaced by underscores (for example, `Order ID` becomes `order_id`); falls back to `param_0`, `param_1`, and so on if a title is blank or collides with another.
@@ -63,7 +64,7 @@ module TalonOne
         :'id' => :'String',
         :'type' => :'String',
         :'tags' => :'Array<String>',
-        :'custom_effect' => :'TriggerCustomEffectBlock1CustomEffect',
+        :'custom_effect' => :'CustomEffectBlockReference',
         :'params' => :'Hash<String, Object>',
         :'target' => :'TriggerCustomEffectBlock1Target',
         :'on_error' => :'Hash<String, Array<Block>>'

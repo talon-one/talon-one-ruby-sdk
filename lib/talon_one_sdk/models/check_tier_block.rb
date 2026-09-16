@@ -30,6 +30,7 @@ module TalonOne
     # The name of the subledger to check the balance of. Can be empty if this block checks the loyalty program's main ledger balance instead of a subledger.
     attr_accessor :subledger
 
+    # The tier to check for.
     attr_accessor :tier
 
     # Promotion blocks evaluated when this block fails or returns false.
@@ -88,7 +89,7 @@ module TalonOne
         :'tags' => :'Array<String>',
         :'operator' => :'String',
         :'subledger' => :'String',
-        :'tier' => :'CheckTierBlock1Tier',
+        :'tier' => :'TierBlockReference',
         :'on_failure' => :'Array<Block>'
       }
     end

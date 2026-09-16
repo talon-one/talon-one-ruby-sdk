@@ -9,7 +9,7 @@
 | **ruleset_id** | **Integer** | The ID of the ruleset that was active in the campaign when this effect was triggered. |  |
 | **rule_index** | **Integer** | The position of the rule that triggered this effect within the ruleset. |  |
 | **rule_name** | **String** | The name of the rule that triggered this effect. |  |
-| **effect_type** | **String** | The type of effect that was triggered. See [API effects](https://docs.talon.one/docs/dev/integration-api/api-effects). |  |
+| **effect_type** | **String** | See [API effects](https://docs.talon.one/docs/dev/integration-api/api-effects). |  |
 | **triggered_by_coupon** | **Integer** | The ID of the coupon that was being evaluated when this effect was triggered. | [optional] |
 | **triggered_for_catalog_item** | **Integer** | The ID of the catalog item that was being evaluated when this effect was triggered. | [optional] |
 | **condition_index** | **Integer** | The index of the condition that was triggered. | [optional] |

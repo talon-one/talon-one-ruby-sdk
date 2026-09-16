@@ -30,6 +30,7 @@ module TalonOne
     # The customer profile to add or remove from the audience. `Current` targets the customer in the current session; `Advocate` targets the person who invited their friend via referral program.
     attr_accessor :profile
 
+    # The audience to add the customer to or remove them from.
     attr_accessor :audience
 
     class EnumAttributeValidator
@@ -84,7 +85,7 @@ module TalonOne
         :'tags' => :'Array<String>',
         :'operator' => :'String',
         :'profile' => :'String',
-        :'audience' => :'UpdateAudienceMembershipBlock1Audience'
+        :'audience' => :'AudienceBlockReference'
       }
     end
 

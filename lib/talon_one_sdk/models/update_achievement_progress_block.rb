@@ -29,6 +29,7 @@ module TalonOne
     # The value to update the progress by. Supports template placeholders (e.g. \"{{$Session.Total / 2}}\") for dynamic quantities.
     attr_accessor :value
 
+    # The achievement to update.
     attr_accessor :achievement
 
     class EnumAttributeValidator
@@ -83,7 +84,7 @@ module TalonOne
         :'tags' => :'Array<String>',
         :'operator' => :'String',
         :'value' => :'String',
-        :'achievement' => :'UpdateAchievementProgressBlock1Achievement'
+        :'achievement' => :'AchievementBlockReference'
       }
     end
 

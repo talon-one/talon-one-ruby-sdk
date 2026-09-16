@@ -31,7 +31,7 @@ module TalonOne
     # The name of the rule that triggered this effect.
     attr_accessor :rule_name
 
-    # The type of effect that was triggered. See [API effects](https://docs.talon.one/docs/dev/integration-api/api-effects).
+    # See [API effects](https://docs.talon.one/docs/dev/integration-api/api-effects).
     attr_accessor :effect_type
 
     # The ID of the coupon that was being evaluated when this effect was triggered.

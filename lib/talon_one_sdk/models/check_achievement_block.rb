@@ -27,6 +27,7 @@ module TalonOne
     # The comparison operator applied to the achievement.
     attr_accessor :operator
 
+    # The achievement to check for.
     attr_accessor :achievement
 
     # Promotion blocks evaluated when this block fails or returns false.
@@ -83,7 +84,7 @@ module TalonOne
         :'type' => :'String',
         :'tags' => :'Array<String>',
         :'operator' => :'String',
-        :'achievement' => :'CheckAchievementBlock1Achievement',
+        :'achievement' => :'AchievementBlockReference',
         :'on_failure' => :'Array<Block>'
       }
     end
