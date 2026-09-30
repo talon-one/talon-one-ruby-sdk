@@ -12,7 +12,7 @@
 | **trigger** | [**StrikethroughTrigger**](StrikethroughTrigger.md) |  |  |
 | **changed_items** | [**Array&lt;StrikethroughChangedItem&gt;**](StrikethroughChangedItem.md) |  |  |
 | **notification_type** | **String** | The type of notification. |  |
-| **sent_at** | **Time** | Timestamp at which the notification was sent. |  |
+| **sent_at** | **Time** | Timestamp when the notification was sent by Talon.One. There may be a delay before the notification is delivered to the user. |  |
 
 ## Example
 

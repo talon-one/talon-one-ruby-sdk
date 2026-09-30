@@ -23,7 +23,7 @@ module TalonOne
     attr_accessor :profile_integration_id
 
     # The identifier of the loyalty card unlocking the reward. When provided, the required points are deducted from the card's balance and the unlocked reward belongs to the card, which makes it available to all customer profiles linked to that card. The customer profile given in `profileIntegrationId` must be linked to the card, and the card must be active.
-    attr_accessor :card_identifier
+    attr_accessor :loyalty_card_id
 
     # The ID of the loyalty program from which points will be deducted. Required when the reward has `pointsRequired` configured.
     attr_accessor :loyalty_program_id
@@ -61,7 +61,7 @@ module TalonOne
       {
         :'integration_id' => :'integrationId',
         :'profile_integration_id' => :'profileIntegrationId',
-        :'card_identifier' => :'cardIdentifier',
+        :'loyalty_card_id' => :'loyaltyCardId',
         :'loyalty_program_id' => :'loyaltyProgramId',
         :'subledger_id' => :'subledgerId',
         :'response_content' => :'responseContent'
@@ -83,7 +83,7 @@ module TalonOne
       {
         :'integration_id' => :'String',
         :'profile_integration_id' => :'String',
-        :'card_identifier' => :'String',
+        :'loyalty_card_id' => :'String',
         :'loyalty_program_id' => :'Integer',
         :'subledger_id' => :'String',
         :'response_content' => :'Array<String>'
@@ -124,8 +124,8 @@ module TalonOne
         self.profile_integration_id = nil
       end
 
-      if attributes.key?(:'card_identifier')
-        self.card_identifier = attributes[:'card_identifier']
+      if attributes.key?(:'loyalty_card_id')
+        self.loyalty_card_id = attributes[:'loyalty_card_id']
       end
 
       if attributes.key?(:'loyalty_program_id')
@@ -156,17 +156,17 @@ module TalonOne
         invalid_properties.push('invalid value for "profile_integration_id", profile_integration_id cannot be nil.')
       end
 
-      if !@card_identifier.nil? && @card_identifier.to_s.length > 108
-        invalid_properties.push('invalid value for "card_identifier", the character length must be smaller than or equal to 108.')
+      if !@loyalty_card_id.nil? && @loyalty_card_id.to_s.length > 108
+        invalid_properties.push('invalid value for "loyalty_card_id", the character length must be smaller than or equal to 108.')
       end
 
-      if !@card_identifier.nil? && @card_identifier.to_s.length < 4
-        invalid_properties.push('invalid value for "card_identifier", the character length must be greater than or equal to 4.')
+      if !@loyalty_card_id.nil? && @loyalty_card_id.to_s.length < 4
+        invalid_properties.push('invalid value for "loyalty_card_id", the character length must be greater than or equal to 4.')
       end
 
       pattern = Regexp.new(/^[A-Za-z0-9._%+@-]+$/)
-      if !@card_identifier.nil? && @card_identifier !~ pattern
-        invalid_properties.push("invalid value for \"card_identifier\", must conform to the pattern #{pattern}.")
+      if !@loyalty_card_id.nil? && @loyalty_card_id !~ pattern
+        invalid_properties.push("invalid value for \"loyalty_card_id\", must conform to the pattern #{pattern}.")
       end
 
       invalid_properties
@@ -178,9 +178,9 @@ module TalonOne
       warn '[DEPRECATED] the `valid?` method is obsolete'
       return false if @integration_id.nil?
       return false if @profile_integration_id.nil?
-      return false if !@card_identifier.nil? && @card_identifier.to_s.length > 108
-      return false if !@card_identifier.nil? && @card_identifier.to_s.length < 4
-      return false if !@card_identifier.nil? && @card_identifier !~ Regexp.new(/^[A-Za-z0-9._%+@-]+$/)
+      return false if !@loyalty_card_id.nil? && @loyalty_card_id.to_s.length > 108
+      return false if !@loyalty_card_id.nil? && @loyalty_card_id.to_s.length < 4
+      return false if !@loyalty_card_id.nil? && @loyalty_card_id !~ Regexp.new(/^[A-Za-z0-9._%+@-]+$/)
       true
     end
 
@@ -205,26 +205,26 @@ module TalonOne
     end
 
     # Custom attribute writer method with validation
-    # @param [Object] card_identifier Value to be assigned
-    def card_identifier=(card_identifier)
-      if card_identifier.nil?
-        fail ArgumentError, 'card_identifier cannot be nil'
+    # @param [Object] loyalty_card_id Value to be assigned
+    def loyalty_card_id=(loyalty_card_id)
+      if loyalty_card_id.nil?
+        fail ArgumentError, 'loyalty_card_id cannot be nil'
       end
 
-      if card_identifier.to_s.length > 108
-        fail ArgumentError, 'invalid value for "card_identifier", the character length must be smaller than or equal to 108.'
+      if loyalty_card_id.to_s.length > 108
+        fail ArgumentError, 'invalid value for "loyalty_card_id", the character length must be smaller than or equal to 108.'
       end
 
-      if card_identifier.to_s.length < 4
-        fail ArgumentError, 'invalid value for "card_identifier", the character length must be greater than or equal to 4.'
+      if loyalty_card_id.to_s.length < 4
+        fail ArgumentError, 'invalid value for "loyalty_card_id", the character length must be greater than or equal to 4.'
       end
 
       pattern = Regexp.new(/^[A-Za-z0-9._%+@-]+$/)
-      if card_identifier !~ pattern
-        fail ArgumentError, "invalid value for \"card_identifier\", must conform to the pattern #{pattern}."
+      if loyalty_card_id !~ pattern
+        fail ArgumentError, "invalid value for \"loyalty_card_id\", must conform to the pattern #{pattern}."
       end
 
-      @card_identifier = card_identifier
+      @loyalty_card_id = loyalty_card_id
     end
 
     # Checks equality by comparing each attribute.
@@ -234,7 +234,7 @@ module TalonOne
       self.class == o.class &&
           integration_id == o.integration_id &&
           profile_integration_id == o.profile_integration_id &&
-          card_identifier == o.card_identifier &&
+          loyalty_card_id == o.loyalty_card_id &&
           loyalty_program_id == o.loyalty_program_id &&
           subledger_id == o.subledger_id &&
           response_content == o.response_content
@@ -249,7 +249,7 @@ module TalonOne
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [integration_id, profile_integration_id, card_identifier, loyalty_program_id, subledger_id, response_content].hash
+      [integration_id, profile_integration_id, loyalty_card_id, loyalty_program_id, subledger_id, response_content].hash
     end
 
     # Builds the object from hash

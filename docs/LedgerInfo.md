@@ -30,7 +30,7 @@ instance = TalonOne::LedgerInfo.new(
   tentative_current_balance: 100,
   tentative_pending_balance: 20,
   tentative_negative_balance: 100,
-  current_tier: bronze,
+  current_tier: null,
   points_to_next_tier: 20,
   next_tier_name: Silver
 )

@@ -31,6 +31,9 @@ module TalonOne
 
     attr_accessor :is_primary
 
+    # The ID of the audience this variant targets. Only used when the experiment `assignmentType` is `audience`. 
+    attr_accessor :audience_id
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -40,7 +43,8 @@ module TalonOne
         :'experiment_id' => :'experimentId',
         :'ruleset' => :'ruleset',
         :'weight' => :'weight',
-        :'is_primary' => :'isPrimary'
+        :'is_primary' => :'isPrimary',
+        :'audience_id' => :'audienceId'
       }
     end
 
@@ -63,7 +67,8 @@ module TalonOne
         :'experiment_id' => :'Integer',
         :'ruleset' => :'Ruleset',
         :'weight' => :'Integer',
-        :'is_primary' => :'Boolean'
+        :'is_primary' => :'Boolean',
+        :'audience_id' => :'Integer'
       }
     end
 
@@ -130,6 +135,10 @@ module TalonOne
         self.is_primary = attributes[:'is_primary']
       else
         self.is_primary = nil
+      end
+
+      if attributes.key?(:'audience_id')
+        self.audience_id = attributes[:'audience_id']
       end
     end
 
@@ -219,7 +228,8 @@ module TalonOne
           experiment_id == o.experiment_id &&
           ruleset == o.ruleset &&
           weight == o.weight &&
-          is_primary == o.is_primary
+          is_primary == o.is_primary &&
+          audience_id == o.audience_id
     end
 
     # @see the `==` method
@@ -231,7 +241,7 @@ module TalonOne
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, created, name, experiment_id, ruleset, weight, is_primary].hash
+      [id, created, name, experiment_id, ruleset, weight, is_primary, audience_id].hash
     end
 
     # Builds the object from hash

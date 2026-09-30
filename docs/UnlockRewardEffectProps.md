@@ -9,7 +9,7 @@
 | **application_id** | **Integer** | The internal ID of the application the reward belongs to. |  |
 | **profile_integration_id** | **String** | The integration ID of the customer profile that unlocked the reward. |  |
 | **unlocked_at** | **Time** | The time the reward was unlocked. |  |
-| **card_identifier** | **String** | The identifier of the loyalty card that unlocked the reward. Only returned when the reward was unlocked with a loyalty card, in which case the reward belongs to the card and is available to all customer profiles linked to it.  | [optional] |
+| **loyalty_card_id** | **String** | The identifier of the loyalty card that unlocked the reward. Only returned when the reward was unlocked with a loyalty card, in which case the reward belongs to the card and is available to all customer profiles linked to it.  | [optional] |
 
 ## Example
 
@@ -22,7 +22,7 @@ instance = TalonOne::UnlockRewardEffectProps.new(
   application_id: 1,
   profile_integration_id: customer1,
   unlocked_at: 2024-05-29T15:04:05Z,
-  card_identifier: summer-loyalty-card-0543
+  loyalty_card_id: summer-loyalty-card-0543
 )
 ```
 

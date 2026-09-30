@@ -295,6 +295,14 @@ module TalonOne
         invalid_properties.push('invalid value for "number_of_coupons", number_of_coupons cannot be nil.')
       end
 
+      if @number_of_coupons > 20000
+        invalid_properties.push('invalid value for "number_of_coupons", must be smaller than or equal to 20000.')
+      end
+
+      if @number_of_coupons < 1
+        invalid_properties.push('invalid value for "number_of_coupons", must be greater than or equal to 1.')
+      end
+
       if !@coupon_pattern.nil? && @coupon_pattern.to_s.length > 100
         invalid_properties.push('invalid value for "coupon_pattern", the character length must be smaller than or equal to 100.')
       end
@@ -325,6 +333,8 @@ module TalonOne
       return false if @campaign_id.nil?
       return false if @batch_id.nil?
       return false if @number_of_coupons.nil?
+      return false if @number_of_coupons > 20000
+      return false if @number_of_coupons < 1
       return false if !@coupon_pattern.nil? && @coupon_pattern.to_s.length > 100
       return false if !@coupon_pattern.nil? && @coupon_pattern.to_s.length < 3
       return false if !@recipient_integration_id.nil? && @recipient_integration_id.to_s.length > 1000
@@ -420,6 +430,14 @@ module TalonOne
     def number_of_coupons=(number_of_coupons)
       if number_of_coupons.nil?
         fail ArgumentError, 'number_of_coupons cannot be nil'
+      end
+
+      if number_of_coupons > 20000
+        fail ArgumentError, 'invalid value for "number_of_coupons", must be smaller than or equal to 20000.'
+      end
+
+      if number_of_coupons < 1
+        fail ArgumentError, 'invalid value for "number_of_coupons", must be greater than or equal to 1.'
       end
 
       @number_of_coupons = number_of_coupons
