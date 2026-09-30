@@ -12,6 +12,8 @@
 | **old_tier** | **String** | The name of the customer&#39;s previous tier. |  |
 | **tier_expiration_date** | **Time** | The exact date and time the tier expires. | [optional] |
 | **timestamp_of_tier_change** | **Time** | The exact date and time the tier was changed. |  |
+| **source** | **String** | The source of the tier change, whether from a points change or boost.  | [optional][default to &#39;points&#39;] |
+| **reason** | **String** | The reason for the tier change.  | [optional] |
 
 ## Example
 
@@ -26,7 +28,9 @@ instance = TalonOne::TierDowngradeData.new(
   current_points: 120.55,
   old_tier: Gold,
   tier_expiration_date: 2023-12-01T12:23:00+02:00,
-  timestamp_of_tier_change: 2023-10-26T12:23:00+02:00
+  timestamp_of_tier_change: 2023-10-26T12:23:00+02:00,
+  source: null,
+  reason: null
 )
 ```
 

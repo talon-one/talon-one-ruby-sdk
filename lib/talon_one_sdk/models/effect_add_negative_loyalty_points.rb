@@ -66,6 +66,9 @@ module TalonOne
     # The ID of the reward that was being evaluated when this effect was triggered.
     attr_accessor :reward_id
 
+    # The integration ID of the specific customer reward whose usage produced this effect.
+    attr_accessor :reward_integration_id
+
     class EnumAttributeValidator
       attr_reader :datatype
       attr_reader :allowable_values
@@ -107,7 +110,8 @@ module TalonOne
         :'selected_price_type' => :'selectedPriceType',
         :'selected_price' => :'selectedPrice',
         :'adjustment_reference_id' => :'adjustmentReferenceId',
-        :'reward_id' => :'rewardId'
+        :'reward_id' => :'rewardId',
+        :'reward_integration_id' => :'rewardIntegrationId'
       }
     end
 
@@ -140,7 +144,8 @@ module TalonOne
         :'selected_price_type' => :'String',
         :'selected_price' => :'Float',
         :'adjustment_reference_id' => :'String',
-        :'reward_id' => :'Integer'
+        :'reward_id' => :'Integer',
+        :'reward_integration_id' => :'String'
       }
     end
 
@@ -249,6 +254,10 @@ module TalonOne
 
       if attributes.key?(:'reward_id')
         self.reward_id = attributes[:'reward_id']
+      end
+
+      if attributes.key?(:'reward_integration_id')
+        self.reward_integration_id = attributes[:'reward_integration_id']
       end
     end
 
@@ -365,7 +374,8 @@ module TalonOne
           selected_price_type == o.selected_price_type &&
           selected_price == o.selected_price &&
           adjustment_reference_id == o.adjustment_reference_id &&
-          reward_id == o.reward_id
+          reward_id == o.reward_id &&
+          reward_integration_id == o.reward_integration_id
     end
 
     # @see the `==` method
@@ -377,7 +387,7 @@ module TalonOne
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [experiment_id, campaign_id, ruleset_id, rule_index, rule_name, effect_type, triggered_by_coupon, triggered_for_catalog_item, condition_index, evaluation_group_id, evaluation_group_mode, campaign_revision_id, campaign_revision_version_id, selected_price_type, selected_price, adjustment_reference_id, reward_id].hash
+      [experiment_id, campaign_id, ruleset_id, rule_index, rule_name, effect_type, triggered_by_coupon, triggered_for_catalog_item, condition_index, evaluation_group_id, evaluation_group_mode, campaign_revision_id, campaign_revision_version_id, selected_price_type, selected_price, adjustment_reference_id, reward_id, reward_integration_id].hash
     end
 
     # Builds the object from hash

@@ -130,6 +130,14 @@ module TalonOne
         invalid_properties.push('invalid value for "number_of_cards", number_of_cards cannot be nil.')
       end
 
+      if @number_of_cards > 20000
+        invalid_properties.push('invalid value for "number_of_cards", must be smaller than or equal to 20000.')
+      end
+
+      if @number_of_cards < 1
+        invalid_properties.push('invalid value for "number_of_cards", must be greater than or equal to 1.')
+      end
+
       if !@batch_id.nil? && @batch_id.to_s.length > 20
         invalid_properties.push('invalid value for "batch_id", the character length must be smaller than or equal to 20.')
       end
@@ -151,6 +159,8 @@ module TalonOne
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
       return false if @number_of_cards.nil?
+      return false if @number_of_cards > 20000
+      return false if @number_of_cards < 1
       return false if !@batch_id.nil? && @batch_id.to_s.length > 20
       return false if !@batch_id.nil? && @batch_id.to_s.length < 4
       return false if !@batch_id.nil? && @batch_id !~ Regexp.new(/^[A-Za-z0-9_-]*$/)
@@ -164,6 +174,14 @@ module TalonOne
     def number_of_cards=(number_of_cards)
       if number_of_cards.nil?
         fail ArgumentError, 'number_of_cards cannot be nil'
+      end
+
+      if number_of_cards > 20000
+        fail ArgumentError, 'invalid value for "number_of_cards", must be smaller than or equal to 20000.'
+      end
+
+      if number_of_cards < 1
+        fail ArgumentError, 'invalid value for "number_of_cards", must be greater than or equal to 1.'
       end
 
       @number_of_cards = number_of_cards

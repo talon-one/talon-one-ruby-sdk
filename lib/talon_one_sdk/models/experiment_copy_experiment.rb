@@ -15,7 +15,10 @@ require 'time'
 
 module TalonOne
   class ExperimentCopyExperiment < ApiModelBase
-    # The source of the assignment. - false - The variant assignment is handled internally by Talon.One. - true - The variant assignment is handled externally. 
+    # Controls how customers are assigned to experiment variants in the copied experiment. - `random`: Talon.One assigns customers randomly based on variant weights. - `external`: The variant assignment is handled externally. - `audience`: Each variant targets a specific audience; customers are assigned based on audience membership. This is the source of truth. When omitted, it is derived from the deprecated `isVariantAssignmentExternal` flag (`true` maps to `external`, otherwise `random`). 
+    attr_accessor :assignment_type
+
+    # The source of the assignment. - false - The variant assignment is handled internally by Talon.One. - true - The variant assignment is handled externally. Deprecated: use `assignmentType` instead. Kept for backwards compatibility with older clients; when set and `assignmentType` is omitted, `true` maps to `external`. 
     attr_accessor :is_variant_assignment_external
 
     attr_accessor :campaign
@@ -51,6 +54,7 @@ module TalonOne
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'assignment_type' => :'assignmentType',
         :'is_variant_assignment_external' => :'isVariantAssignmentExternal',
         :'campaign' => :'campaign',
         :'goal_type' => :'goalType',
@@ -71,6 +75,7 @@ module TalonOne
     # Attribute type mapping.
     def self.openapi_types
       {
+        :'assignment_type' => :'String',
         :'is_variant_assignment_external' => :'Boolean',
         :'campaign' => :'ExperimentCampaignCopy',
         :'goal_type' => :'String',
@@ -100,10 +105,12 @@ module TalonOne
         h[k.to_sym] = v
       }
 
+      if attributes.key?(:'assignment_type')
+        self.assignment_type = attributes[:'assignment_type']
+      end
+
       if attributes.key?(:'is_variant_assignment_external')
         self.is_variant_assignment_external = attributes[:'is_variant_assignment_external']
-      else
-        self.is_variant_assignment_external = nil
       end
 
       if attributes.key?(:'campaign')
@@ -126,10 +133,6 @@ module TalonOne
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
-      if @is_variant_assignment_external.nil?
-        invalid_properties.push('invalid value for "is_variant_assignment_external", is_variant_assignment_external cannot be nil.')
-      end
-
       if @campaign.nil?
         invalid_properties.push('invalid value for "campaign", campaign cannot be nil.')
       end
@@ -141,21 +144,22 @@ module TalonOne
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
-      return false if @is_variant_assignment_external.nil?
+      assignment_type_validator = EnumAttributeValidator.new('String', ["random", "external", "audience"])
+      return false unless assignment_type_validator.valid?(@assignment_type)
       return false if @campaign.nil?
       goal_type_validator = EnumAttributeValidator.new('String', ["other", "maximize_revenue", "maximize_items_sold", "optimize_discount_efficiency"])
       return false unless goal_type_validator.valid?(@goal_type)
       true
     end
 
-    # Custom attribute writer method with validation
-    # @param [Object] is_variant_assignment_external Value to be assigned
-    def is_variant_assignment_external=(is_variant_assignment_external)
-      if is_variant_assignment_external.nil?
-        fail ArgumentError, 'is_variant_assignment_external cannot be nil'
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] assignment_type Object to be assigned
+    def assignment_type=(assignment_type)
+      validator = EnumAttributeValidator.new('String', ["random", "external", "audience"])
+      unless validator.valid?(assignment_type)
+        fail ArgumentError, "invalid value for \"assignment_type\", must be one of #{validator.allowable_values}."
       end
-
-      @is_variant_assignment_external = is_variant_assignment_external
+      @assignment_type = assignment_type
     end
 
     # Custom attribute writer method with validation
@@ -183,6 +187,7 @@ module TalonOne
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          assignment_type == o.assignment_type &&
           is_variant_assignment_external == o.is_variant_assignment_external &&
           campaign == o.campaign &&
           goal_type == o.goal_type &&
@@ -198,7 +203,7 @@ module TalonOne
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [is_variant_assignment_external, campaign, goal_type, goal_description].hash
+      [assignment_type, is_variant_assignment_external, campaign, goal_type, goal_description].hash
     end
 
     # Builds the object from hash

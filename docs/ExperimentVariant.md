@@ -11,6 +11,7 @@
 | **ruleset** | [**Ruleset**](Ruleset.md) |  | [optional] |
 | **weight** | **Integer** |  | [optional] |
 | **is_primary** | **Boolean** |  |  |
+| **audience_id** | **Integer** | The ID of the audience this variant targets. Only used when the experiment &#x60;assignmentType&#x60; is &#x60;audience&#x60;.  | [optional] |
 
 ## Example
 
@@ -24,7 +25,8 @@ instance = TalonOne::ExperimentVariant.new(
   experiment_id: 10,
   ruleset: null,
   weight: 12,
-  is_primary: true
+  is_primary: true,
+  audience_id: 55
 )
 ```
 

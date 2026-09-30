@@ -16,7 +16,7 @@ See our [migration guide](MIGRATION.md).
 Add this to the Gemfile:
 
 ```shell
-gem 'talon_one_sdk', '~> 26.19.0'
+gem 'talon_one_sdk', '~> 26.20.0'
 ```
 
 ### Build a gem
@@ -32,10 +32,10 @@ gem build talon_one_sdk.gemspec
 To install the gem locally:
 
 ```shell
-gem install ./talon_one_sdk-26.19.0.gem
+gem install ./talon_one_sdk-26.20.0.gem
 ```
 
-For development, run `gem install --dev ./talon_one_sdk-26.19.0.gem` to install the development dependencies.
+For development, run `gem install --dev ./talon_one_sdk-26.20.0.gem` to install the development dependencies.
 
 ### RubyGems
 
@@ -335,6 +335,7 @@ Class | Method | HTTP request | Description
 *TalonOne::ManagementApi* | [**get_event_types**](docs/ManagementApi.md#get_event_types) | **GET** /v1/event_types | List event types
 *TalonOne::ManagementApi* | [**get_experiment**](docs/ManagementApi.md#get_experiment) | **GET** /v1/applications/{applicationId}/experiments/{experimentId} | Get experiment in Application
 *TalonOne::ManagementApi* | [**get_exports**](docs/ManagementApi.md#get_exports) | **GET** /v1/exports | Get exports
+*TalonOne::ManagementApi* | [**get_giveaways_pool**](docs/ManagementApi.md#get_giveaways_pool) | **GET** /v1/giveaways/pools/{poolId} | Get giveaway pool
 *TalonOne::ManagementApi* | [**get_loyalty_card**](docs/ManagementApi.md#get_loyalty_card) | **GET** /v1/loyalty_programs/{loyaltyProgramId}/cards/{loyaltyCardId} | Get loyalty card
 *TalonOne::ManagementApi* | [**get_loyalty_card_transaction_logs**](docs/ManagementApi.md#get_loyalty_card_transaction_logs) | **GET** /v1/loyalty_programs/{loyaltyProgramId}/cards/{loyaltyCardId}/logs | List card's transactions (Management API)
 *TalonOne::ManagementApi* | [**get_loyalty_cards**](docs/ManagementApi.md#get_loyalty_cards) | **GET** /v1/loyalty_programs/{loyaltyProgramId}/cards | List loyalty cards
@@ -547,6 +548,7 @@ Class | Method | HTTP request | Description
 - [TalonOne::Binding](docs/Binding.md)
 - [TalonOne::Block](docs/Block.md)
 - [TalonOne::Blueprint](docs/Blueprint.md)
+- [TalonOne::BoostLoyaltyTierEffectProps](docs/BoostLoyaltyTierEffectProps.md)
 - [TalonOne::BulkApplicationNotification](docs/BulkApplicationNotification.md)
 - [TalonOne::BulkOperationOnCampaigns](docs/BulkOperationOnCampaigns.md)
 - [TalonOne::Bundle](docs/Bundle.md)
@@ -717,6 +719,7 @@ Class | Method | HTTP request | Description
 - [TalonOne::EffectAddNegativeLoyaltyPoints](docs/EffectAddNegativeLoyaltyPoints.md)
 - [TalonOne::EffectAddToAudience](docs/EffectAddToAudience.md)
 - [TalonOne::EffectAwardGiveaway](docs/EffectAwardGiveaway.md)
+- [TalonOne::EffectBoostLoyaltyTier](docs/EffectBoostLoyaltyTier.md)
 - [TalonOne::EffectCallApi](docs/EffectCallApi.md)
 - [TalonOne::EffectChangeLoyaltyTierLevel](docs/EffectChangeLoyaltyTierLevel.md)
 - [TalonOne::EffectCouponCreated](docs/EffectCouponCreated.md)
@@ -869,6 +872,7 @@ Class | Method | HTTP request | Description
 - [TalonOne::GetLoyaltyCardTransactionLogs200Response](docs/GetLoyaltyCardTransactionLogs200Response.md)
 - [TalonOne::GetLoyaltyCardTransactions200Response](docs/GetLoyaltyCardTransactions200Response.md)
 - [TalonOne::GetLoyaltyCards200Response](docs/GetLoyaltyCards200Response.md)
+- [TalonOne::GetLoyaltyProgramProfileLedgerTransactions200Response](docs/GetLoyaltyProgramProfileLedgerTransactions200Response.md)
 - [TalonOne::GetLoyaltyProgramProfilePoints200Response](docs/GetLoyaltyProgramProfilePoints200Response.md)
 - [TalonOne::GetLoyaltyProgramProfileTransactions200Response](docs/GetLoyaltyProgramProfileTransactions200Response.md)
 - [TalonOne::GetLoyaltyProgramTransactions200Response](docs/GetLoyaltyProgramTransactions200Response.md)
@@ -944,6 +948,7 @@ Class | Method | HTTP request | Description
 - [TalonOne::LedgerInfo](docs/LedgerInfo.md)
 - [TalonOne::LedgerPointsEntryIntegrationAPI](docs/LedgerPointsEntryIntegrationAPI.md)
 - [TalonOne::LedgerTransactionLogEntryIntegrationAPI](docs/LedgerTransactionLogEntryIntegrationAPI.md)
+- [TalonOne::LedgerTransactionLogEntryManagementAPI](docs/LedgerTransactionLogEntryManagementAPI.md)
 - [TalonOne::LibraryAttribute](docs/LibraryAttribute.md)
 - [TalonOne::LimitConfig](docs/LimitConfig.md)
 - [TalonOne::LimitCounter](docs/LimitCounter.md)
@@ -1100,6 +1105,14 @@ Class | Method | HTTP request | Description
 - [TalonOne::OktaEventPayloadData](docs/OktaEventPayloadData.md)
 - [TalonOne::OktaEventTarget](docs/OktaEventTarget.md)
 - [TalonOne::OneTimeCode](docs/OneTimeCode.md)
+- [TalonOne::OutboundLog](docs/OutboundLog.md)
+- [TalonOne::OutboundLogBase](docs/OutboundLogBase.md)
+- [TalonOne::OutboundLogRequest](docs/OutboundLogRequest.md)
+- [TalonOne::OutboundLogResponse](docs/OutboundLogResponse.md)
+- [TalonOne::OutboundLogs](docs/OutboundLogs.md)
+- [TalonOne::OutboundMessage](docs/OutboundMessage.md)
+- [TalonOne::OutboundMessageResponse](docs/OutboundMessageResponse.md)
+- [TalonOne::OutboundMessages](docs/OutboundMessages.md)
 - [TalonOne::OutgoingIntegrationBrazePolicy](docs/OutgoingIntegrationBrazePolicy.md)
 - [TalonOne::OutgoingIntegrationCleverTapPolicy](docs/OutgoingIntegrationCleverTapPolicy.md)
 - [TalonOne::OutgoingIntegrationConfiguration](docs/OutgoingIntegrationConfiguration.md)
@@ -1189,6 +1202,7 @@ Class | Method | HTTP request | Description
 - [TalonOne::RollbackDiscountEffectProps](docs/RollbackDiscountEffectProps.md)
 - [TalonOne::RollbackIncreasedAchievementProgressEffectProps](docs/RollbackIncreasedAchievementProgressEffectProps.md)
 - [TalonOne::RollbackReferralEffectProps](docs/RollbackReferralEffectProps.md)
+- [TalonOne::RollbackTierBoostEffectProps](docs/RollbackTierBoostEffectProps.md)
 - [TalonOne::RollbackUseRewardEffectProps](docs/RollbackUseRewardEffectProps.md)
 - [TalonOne::Rule](docs/Rule.md)
 - [TalonOne::RuleEligibility](docs/RuleEligibility.md)

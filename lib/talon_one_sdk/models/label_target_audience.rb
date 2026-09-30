@@ -14,7 +14,7 @@ require 'date'
 require 'time'
 
 module TalonOne
-  # Represents the targeted audience. 
+  # Target type when a specific audience is selected. 
   class LabelTargetAudience < ApiModelBase
     attr_accessor :type
 

@@ -14,7 +14,7 @@ require 'date'
 require 'time'
 
 module TalonOne
-  # Represents the target type when no entity is selected.
+  # Target type when no specific audience is selected. Targets all customers who are not members of an audience.
   class LabelTargetNone < ApiModelBase
     attr_accessor :type
 

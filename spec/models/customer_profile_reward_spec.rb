@@ -109,7 +109,7 @@ describe TalonOne::CustomerProfileReward do
     end
   end
 
-  describe 'test attribute "loyalty_card_identifier"' do
+  describe 'test attribute "loyalty_card_id"' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
     end

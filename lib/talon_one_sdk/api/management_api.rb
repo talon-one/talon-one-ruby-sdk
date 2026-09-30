@@ -4063,7 +4063,7 @@ module TalonOne
     end
 
     # Export triggered effects
-    # Download a CSV file containing the triggered effects that match the given attributes.  > [!tip] If the exported CSV file is too large to view, you can > [split it into multiple files](https://www.google.com/search?q=split+CSV+into+multiple+files).  The generated file can contain the following columns:  - `applicationid`: The ID of the Application. - `campaignid`: The ID of the campaign. - `couponid`: The ID of the coupon, when applicable to the effect. - `created`: The timestamp of the effect. - `event_type`: The name of the event. See the [docs](https://docs.talon.one/docs/dev/concepts/entities/events). - `eventid`: The internal ID of the effect. - `name`: The effect name. See the [docs](https://docs.talon.one/docs/dev/integration-api/api-effects). - `profileintegrationid`: The ID of the customer profile, when applicable. - `props`: The [properties](https://docs.talon.one/docs/dev/integration-api/api-effects) of the effect. - `ruleindex`: The index of the rule. - `rulesetid`: The ID of the rule set. - `sessionid`: The internal ID of the session that triggered the effect. - `profileid`: The internal ID of the customer profile. - `sessionintegrationid`: The integration ID of the session. - `total_revenue`: The total revenue. - `store_integration_id`: The integration ID of the store. You choose this ID when you create a store. 
+    # Download a CSV file containing the triggered effects that match the given attributes.  > [!tip] If the exported CSV file is too large to view, you can > [split it into multiple files](https://www.google.com/search?q=split+CSV+into+multiple+files).  The generated file can contain the following columns:  - `applicationid`: The ID of the Application. - `campaignid`: The ID of the campaign. - `couponid`: The ID of the coupon, when applicable to the effect. - `created`: The timestamp of the effect. - `event_type`: The name of the event. See the [docs](https://docs.talon.one/docs/dev/concepts/entities/events). - `eventid`: The internal ID of the effect. - `name`: The effect name. See the [docs](https://docs.talon.one/docs/dev/integration-api/api-effects). - `profileintegrationid`: The ID of the customer profile, when applicable. - `props`: The [properties](https://docs.talon.one/docs/dev/integration-api/api-effects) of the effect. - `ruleindex`: The index of the rule. - `rulesetid`: The ID of the rule set. - `sessionid`: The internal ID of the session that triggered the effect. - `profileid`: The internal ID of the customer profile. - `sessionintegrationid`: The integration ID of the session. - `total_revenue`: The total revenue. - `store_integration_id`: The integration ID of the store. You choose this ID when you create a store. - `reward_id`: The ID of the reward whose rule generated this effect, when applicable. - `reward_integration_id`: The integration ID of the specific customer reward whose usage produced this effect, when applicable. 
     # @param application_id [Integer] The ID of the Application. It is displayed in your Talon.One deployment URL.
     # @param [Hash] opts the optional parameters
     # @option opts [Float] :campaign_id Filter results by campaign ID.
@@ -4077,7 +4077,7 @@ module TalonOne
     end
 
     # Export triggered effects
-    # Download a CSV file containing the triggered effects that match the given attributes.  &gt; [!tip] If the exported CSV file is too large to view, you can &gt; [split it into multiple files](https://www.google.com/search?q&#x3D;split+CSV+into+multiple+files).  The generated file can contain the following columns:  - &#x60;applicationid&#x60;: The ID of the Application. - &#x60;campaignid&#x60;: The ID of the campaign. - &#x60;couponid&#x60;: The ID of the coupon, when applicable to the effect. - &#x60;created&#x60;: The timestamp of the effect. - &#x60;event_type&#x60;: The name of the event. See the [docs](https://docs.talon.one/docs/dev/concepts/entities/events). - &#x60;eventid&#x60;: The internal ID of the effect. - &#x60;name&#x60;: The effect name. See the [docs](https://docs.talon.one/docs/dev/integration-api/api-effects). - &#x60;profileintegrationid&#x60;: The ID of the customer profile, when applicable. - &#x60;props&#x60;: The [properties](https://docs.talon.one/docs/dev/integration-api/api-effects) of the effect. - &#x60;ruleindex&#x60;: The index of the rule. - &#x60;rulesetid&#x60;: The ID of the rule set. - &#x60;sessionid&#x60;: The internal ID of the session that triggered the effect. - &#x60;profileid&#x60;: The internal ID of the customer profile. - &#x60;sessionintegrationid&#x60;: The integration ID of the session. - &#x60;total_revenue&#x60;: The total revenue. - &#x60;store_integration_id&#x60;: The integration ID of the store. You choose this ID when you create a store. 
+    # Download a CSV file containing the triggered effects that match the given attributes.  &gt; [!tip] If the exported CSV file is too large to view, you can &gt; [split it into multiple files](https://www.google.com/search?q&#x3D;split+CSV+into+multiple+files).  The generated file can contain the following columns:  - &#x60;applicationid&#x60;: The ID of the Application. - &#x60;campaignid&#x60;: The ID of the campaign. - &#x60;couponid&#x60;: The ID of the coupon, when applicable to the effect. - &#x60;created&#x60;: The timestamp of the effect. - &#x60;event_type&#x60;: The name of the event. See the [docs](https://docs.talon.one/docs/dev/concepts/entities/events). - &#x60;eventid&#x60;: The internal ID of the effect. - &#x60;name&#x60;: The effect name. See the [docs](https://docs.talon.one/docs/dev/integration-api/api-effects). - &#x60;profileintegrationid&#x60;: The ID of the customer profile, when applicable. - &#x60;props&#x60;: The [properties](https://docs.talon.one/docs/dev/integration-api/api-effects) of the effect. - &#x60;ruleindex&#x60;: The index of the rule. - &#x60;rulesetid&#x60;: The ID of the rule set. - &#x60;sessionid&#x60;: The internal ID of the session that triggered the effect. - &#x60;profileid&#x60;: The internal ID of the customer profile. - &#x60;sessionintegrationid&#x60;: The integration ID of the session. - &#x60;total_revenue&#x60;: The total revenue. - &#x60;store_integration_id&#x60;: The integration ID of the store. You choose this ID when you create a store. - &#x60;reward_id&#x60;: The ID of the reward whose rule generated this effect, when applicable. - &#x60;reward_integration_id&#x60;: The integration ID of the specific customer reward whose usage produced this effect, when applicable. 
     # @param application_id [Integer] The ID of the Application. It is displayed in your Talon.One deployment URL.
     # @param [Hash] opts the optional parameters
     # @option opts [Float] :campaign_id Filter results by campaign ID.
@@ -4352,7 +4352,7 @@ module TalonOne
     end
 
     # Export card's ledger log
-    # Download a CSV file containing a loyalty card ledger log of the loyalty program.  > [!tip] If the exported CSV file is too large to view, you can > [split it into multiple files](https://www.google.com/search?q=split+CSV+into+multiple+files). 
+    # Download a CSV file containing a loyalty card ledger log of the loyalty program.  > [!tip] If the exported CSV file is too large to view, you can > [split it into multiple files](https://www.google.com/search?q=split+CSV+into+multiple+files).  The generated file can contain the following columns:  - `cardidentifier`: The identifier of the loyalty card. - `applicationid`: The ID of the Application. - `sessionid`: The ID of the session. - `customersessionid`: The integration ID of the customer session. - `rulesetid`: The ID of the rule set. - `rulename`: The name of the rule. - `programid`: The ID of the loyalty program. - `type`: The transaction type, such as `addition` or `subtraction`. - `name`: The reason for the transaction. - `subledgerid`: The ID of the subledger, when applicable. - `startdate`: The start date of the points. - `expirydate`: The expiration date of the points. - `id`: The ID of the transaction. - `created`: The timestamp of the transaction creation. - `amount`: The number of points in that transaction. - `archived`: Whether the session related to the transaction is archived. - `campaignid`: The ID of the campaign. - `transactionUUID`: Unique identifier of the transaction in the UUID format. - `validityDuration`: The duration for which the points remain active, relative to the activation date. - `remainingAmount`: The current unused amount of points, when applicable to `addition` transactions. 
     # @param loyalty_program_id [Integer] Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. 
     # @param loyalty_card_id [String] Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint.  **Important**: The loyalty card ID requires [URL encoding](https://www.w3schools.com/tags//ref_urlencode.asp) if it contains special characters. For example, you must encode &#x60;NewCard2026%&#x60; as &#x60;NewCard2026%25&#x60;. 
     # @param range_start [Time] Only return results from after this timestamp.  &gt; [!note] **Note** &gt; - This must be an RFC3339 timestamp string. &gt; - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting &gt;   considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered. 
@@ -4366,7 +4366,7 @@ module TalonOne
     end
 
     # Export card&#39;s ledger log
-    # Download a CSV file containing a loyalty card ledger log of the loyalty program.  &gt; [!tip] If the exported CSV file is too large to view, you can &gt; [split it into multiple files](https://www.google.com/search?q&#x3D;split+CSV+into+multiple+files). 
+    # Download a CSV file containing a loyalty card ledger log of the loyalty program.  &gt; [!tip] If the exported CSV file is too large to view, you can &gt; [split it into multiple files](https://www.google.com/search?q&#x3D;split+CSV+into+multiple+files).  The generated file can contain the following columns:  - &#x60;cardidentifier&#x60;: The identifier of the loyalty card. - &#x60;applicationid&#x60;: The ID of the Application. - &#x60;sessionid&#x60;: The ID of the session. - &#x60;customersessionid&#x60;: The integration ID of the customer session. - &#x60;rulesetid&#x60;: The ID of the rule set. - &#x60;rulename&#x60;: The name of the rule. - &#x60;programid&#x60;: The ID of the loyalty program. - &#x60;type&#x60;: The transaction type, such as &#x60;addition&#x60; or &#x60;subtraction&#x60;. - &#x60;name&#x60;: The reason for the transaction. - &#x60;subledgerid&#x60;: The ID of the subledger, when applicable. - &#x60;startdate&#x60;: The start date of the points. - &#x60;expirydate&#x60;: The expiration date of the points. - &#x60;id&#x60;: The ID of the transaction. - &#x60;created&#x60;: The timestamp of the transaction creation. - &#x60;amount&#x60;: The number of points in that transaction. - &#x60;archived&#x60;: Whether the session related to the transaction is archived. - &#x60;campaignid&#x60;: The ID of the campaign. - &#x60;transactionUUID&#x60;: Unique identifier of the transaction in the UUID format. - &#x60;validityDuration&#x60;: The duration for which the points remain active, relative to the activation date. - &#x60;remainingAmount&#x60;: The current unused amount of points, when applicable to &#x60;addition&#x60; transactions. 
     # @param loyalty_program_id [Integer] Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. 
     # @param loyalty_card_id [String] Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint.  **Important**: The loyalty card ID requires [URL encoding](https://www.w3schools.com/tags//ref_urlencode.asp) if it contains special characters. For example, you must encode &#x60;NewCard2026%&#x60; as &#x60;NewCard2026%25&#x60;. 
     # @param range_start [Time] Only return results from after this timestamp.  &gt; [!note] **Note** &gt; - This must be an RFC3339 timestamp string. &gt; - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting &gt;   considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered. 
@@ -4592,7 +4592,7 @@ module TalonOne
     end
 
     # Export customer's transaction logs
-    # Download a CSV file containing a customer's transaction logs in the loyalty program.  > [!tip] If the exported CSV file is too large to view, you can > [split it into multiple files](https://www.google.com/search?q=split+CSV+into+multiple+files).  The generated file can contain the following columns:  - `customerprofileid`: The ID of the profile. - `customersessionid`: The ID of the customer session. - `rulesetid`: The ID of the rule set. - `rulename`: The name of the rule. - `programid`: The ID of the loyalty program. - `type`: The transaction type, such as `addition` or `subtraction`. - `name`: The reason for the transaction. - `subledgerid`: The ID of the subledger, when applicable. - `startdate`: The start date of the program. - `expirydate`: The expiration date of the program. - `id`: The ID of the transaction. - `created`: The timestamp of the creation of the loyalty program. - `amount`: The number of points in that transaction. - `archived`: Whether the session related to the transaction is archived. - `campaignid`: The ID of the campaign. - `flags`: The flags of the transaction, when applicable. The `createsNegativeBalance` flag indicates whether the transaction results in a negative balance. - `transactionUUID`: Unique identifier of the transaction in the UUID format. 
+    # Download a CSV file containing a customer's transaction logs in the loyalty program.  > [!tip] If the exported CSV file is too large to view, you can > [split it into multiple files](https://www.google.com/search?q=split+CSV+into+multiple+files).  The generated file can contain the following columns:  - `customerprofileid`: The ID of the profile. - `customersessionid`: The ID of the customer session. - `rulesetid`: The ID of the rule set. - `rulename`: The name of the rule. - `programid`: The ID of the loyalty program. - `type`: The transaction type, such as `addition` or `subtraction`. - `name`: The reason for the transaction. - `subledgerid`: The ID of the subledger, when applicable. - `startdate`: The start date of the program. - `expirydate`: The expiration date of the program. - `id`: The ID of the transaction. - `created`: The timestamp of the creation of the loyalty program. - `amount`: The number of points in that transaction. - `archived`: Whether the session related to the transaction is archived. - `campaignid`: The ID of the campaign. - `flags`: The flags of the transaction, when applicable. The `createsNegativeBalance` flag indicates whether the transaction results in a negative balance. - `transactionUUID`: Unique identifier of the transaction in the UUID format. - `validityDuration`: The duration for which the points remain active, relative to the activation date. - `remainingAmount`: The current unused amount of points, when applicable to `addition` transactions. 
     # @param range_start [Time] Only return results from after this timestamp.  &gt; [!note] **Note** &gt; - This must be an RFC3339 timestamp string. &gt; - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting &gt;   considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered. 
     # @param range_end [Time] Only return results from before this timestamp.  &gt; [!note] **Note** &gt; - This must be an RFC3339 timestamp string. &gt; - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting &gt;   considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered. 
     # @param loyalty_program_id [String] The identifier for the loyalty program.
@@ -4606,7 +4606,7 @@ module TalonOne
     end
 
     # Export customer&#39;s transaction logs
-    # Download a CSV file containing a customer&#39;s transaction logs in the loyalty program.  &gt; [!tip] If the exported CSV file is too large to view, you can &gt; [split it into multiple files](https://www.google.com/search?q&#x3D;split+CSV+into+multiple+files).  The generated file can contain the following columns:  - &#x60;customerprofileid&#x60;: The ID of the profile. - &#x60;customersessionid&#x60;: The ID of the customer session. - &#x60;rulesetid&#x60;: The ID of the rule set. - &#x60;rulename&#x60;: The name of the rule. - &#x60;programid&#x60;: The ID of the loyalty program. - &#x60;type&#x60;: The transaction type, such as &#x60;addition&#x60; or &#x60;subtraction&#x60;. - &#x60;name&#x60;: The reason for the transaction. - &#x60;subledgerid&#x60;: The ID of the subledger, when applicable. - &#x60;startdate&#x60;: The start date of the program. - &#x60;expirydate&#x60;: The expiration date of the program. - &#x60;id&#x60;: The ID of the transaction. - &#x60;created&#x60;: The timestamp of the creation of the loyalty program. - &#x60;amount&#x60;: The number of points in that transaction. - &#x60;archived&#x60;: Whether the session related to the transaction is archived. - &#x60;campaignid&#x60;: The ID of the campaign. - &#x60;flags&#x60;: The flags of the transaction, when applicable. The &#x60;createsNegativeBalance&#x60; flag indicates whether the transaction results in a negative balance. - &#x60;transactionUUID&#x60;: Unique identifier of the transaction in the UUID format. 
+    # Download a CSV file containing a customer&#39;s transaction logs in the loyalty program.  &gt; [!tip] If the exported CSV file is too large to view, you can &gt; [split it into multiple files](https://www.google.com/search?q&#x3D;split+CSV+into+multiple+files).  The generated file can contain the following columns:  - &#x60;customerprofileid&#x60;: The ID of the profile. - &#x60;customersessionid&#x60;: The ID of the customer session. - &#x60;rulesetid&#x60;: The ID of the rule set. - &#x60;rulename&#x60;: The name of the rule. - &#x60;programid&#x60;: The ID of the loyalty program. - &#x60;type&#x60;: The transaction type, such as &#x60;addition&#x60; or &#x60;subtraction&#x60;. - &#x60;name&#x60;: The reason for the transaction. - &#x60;subledgerid&#x60;: The ID of the subledger, when applicable. - &#x60;startdate&#x60;: The start date of the program. - &#x60;expirydate&#x60;: The expiration date of the program. - &#x60;id&#x60;: The ID of the transaction. - &#x60;created&#x60;: The timestamp of the creation of the loyalty program. - &#x60;amount&#x60;: The number of points in that transaction. - &#x60;archived&#x60;: Whether the session related to the transaction is archived. - &#x60;campaignid&#x60;: The ID of the campaign. - &#x60;flags&#x60;: The flags of the transaction, when applicable. The &#x60;createsNegativeBalance&#x60; flag indicates whether the transaction results in a negative balance. - &#x60;transactionUUID&#x60;: Unique identifier of the transaction in the UUID format. - &#x60;validityDuration&#x60;: The duration for which the points remain active, relative to the activation date. - &#x60;remainingAmount&#x60;: The current unused amount of points, when applicable to &#x60;addition&#x60; transactions. 
     # @param range_start [Time] Only return results from after this timestamp.  &gt; [!note] **Note** &gt; - This must be an RFC3339 timestamp string. &gt; - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting &gt;   considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered. 
     # @param range_end [Time] Only return results from before this timestamp.  &gt; [!note] **Note** &gt; - This must be an RFC3339 timestamp string. &gt; - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting &gt;   considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered. 
     # @param loyalty_program_id [String] The identifier for the loyalty program.
@@ -8872,6 +8872,69 @@ module TalonOne
       return data, status_code, headers
     end
 
+    # Get giveaway pool
+    # Retrieve the details of a specified giveaway pool.
+    # @param pool_id [Integer] The ID of the pool. You can find it in the Campaign Manager, in the **Incentives** section.
+    # @param [Hash] opts the optional parameters
+    # @return [GiveawaysPool]
+    def get_giveaways_pool(pool_id, opts = {})
+      data, _status_code, _headers = get_giveaways_pool_with_http_info(pool_id, opts)
+      data
+    end
+
+    # Get giveaway pool
+    # Retrieve the details of a specified giveaway pool.
+    # @param pool_id [Integer] The ID of the pool. You can find it in the Campaign Manager, in the **Incentives** section.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(GiveawaysPool, Integer, Hash)>] GiveawaysPool data, response status code and response headers
+    def get_giveaways_pool_with_http_info(pool_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ManagementApi.get_giveaways_pool ...'
+      end
+      # verify the required parameter 'pool_id' is set
+      if @api_client.config.client_side_validation && pool_id.nil?
+        fail ArgumentError, "Missing the required parameter 'pool_id' when calling ManagementApi.get_giveaways_pool"
+      end
+      # resource path
+      local_var_path = '/v1/giveaways/pools/{poolId}'.sub('{poolId}', CGI.escape(pool_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'GiveawaysPool'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['api_key_v1']
+
+      new_options = opts.merge(
+        :operation => :"ManagementApi.get_giveaways_pool",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ManagementApi#get_giveaways_pool\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Get loyalty card
     # Get the given loyalty card.
     # @param loyalty_program_id [Integer] Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. 
@@ -9366,7 +9429,7 @@ module TalonOne
     end
 
     # List customer's loyalty transactions (Management API)
-    # Retrieve paginated results of loyalty transaction logs for the given Integration ID in the specified loyalty program.  You can filter transactions by date or by ledger (subledger or main ledger). If no filters are applied, the last 50 loyalty transactions for the given integration ID are returned.  > [!note] **Note** > - For most use cases, especially real-time integrations, use the Integration API endpoint: >   [List customer's loyalty transactions](https://docs.talon.one/integration-api#tag/Loyalty/operation/getLoyaltyProgramProfileTransactions). > - To retrieve all loyalty program transaction logs in a given loyalty program, use the >   [List loyalty program transactions](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyProgramTransactions) endpoint. 
+    # Retrieve paginated results of loyalty transaction logs for the given integration ID in the specified loyalty program.  You can filter transactions by date or by ledger (subledger or main ledger), and include the UUIDs of transactions referenced by deductions. If no filters are applied, the last 50 loyalty transactions for the given integration ID are returned.  > [!note] **Note** > - For most use cases, especially real-time integrations, use the Integration API endpoint: >   [List customer's loyalty transactions](https://docs.talon.one/integration-api#tag/Loyalty/operation/getLoyaltyProgramProfileTransactions). > - To retrieve all loyalty program transaction logs in a given loyalty program, use the >   [List loyalty program transactions](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyProgramTransactions) endpoint. 
     # @param loyalty_program_id [Integer] Identifier of the profile-based loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. 
     # @param integration_id [String] The integration identifier for this customer profile. Must be: - Unique within the deployment. - Stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID.  Once set, you cannot update this identifier. 
     # @param [Hash] opts the optional parameters
@@ -9378,15 +9441,16 @@ module TalonOne
     # @option opts [Time] :end_date Date and time by which results are returned. Results are filtered by transaction creation date.  &gt; [!note] **Note** &gt; - This must be an RFC3339 timestamp string. &gt; - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting &gt;   considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered. 
     # @option opts [Integer] :page_size The number of items in the response. (default to 50)
     # @option opts [Integer] :skip The number of items to skip when paging through large result sets.
+    # @option opts [Boolean] :include_references Whether to include the UUIDs of transactions referenced by deductions.  **Note:** Enabling this can decrease query performance, especially when no date filter is applied to a large transaction history.  (default to false)
     # @option opts [Boolean] :awaits_activation If &#x60;true&#x60;: Filters results to include only point transactions that have action-based activation and have not expired.  If &#x60;false&#x60;: Returns a &#x60;400&#x60; response. 
-    # @return [GetLoyaltyProgramProfileTransactions200Response]
+    # @return [GetLoyaltyProgramProfileLedgerTransactions200Response]
     def get_loyalty_program_profile_ledger_transactions(loyalty_program_id, integration_id, opts = {})
       data, _status_code, _headers = get_loyalty_program_profile_ledger_transactions_with_http_info(loyalty_program_id, integration_id, opts)
       data
     end
 
     # List customer&#39;s loyalty transactions (Management API)
-    # Retrieve paginated results of loyalty transaction logs for the given Integration ID in the specified loyalty program.  You can filter transactions by date or by ledger (subledger or main ledger). If no filters are applied, the last 50 loyalty transactions for the given integration ID are returned.  &gt; [!note] **Note** &gt; - For most use cases, especially real-time integrations, use the Integration API endpoint: &gt;   [List customer&#39;s loyalty transactions](https://docs.talon.one/integration-api#tag/Loyalty/operation/getLoyaltyProgramProfileTransactions). &gt; - To retrieve all loyalty program transaction logs in a given loyalty program, use the &gt;   [List loyalty program transactions](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyProgramTransactions) endpoint. 
+    # Retrieve paginated results of loyalty transaction logs for the given integration ID in the specified loyalty program.  You can filter transactions by date or by ledger (subledger or main ledger), and include the UUIDs of transactions referenced by deductions. If no filters are applied, the last 50 loyalty transactions for the given integration ID are returned.  &gt; [!note] **Note** &gt; - For most use cases, especially real-time integrations, use the Integration API endpoint: &gt;   [List customer&#39;s loyalty transactions](https://docs.talon.one/integration-api#tag/Loyalty/operation/getLoyaltyProgramProfileTransactions). &gt; - To retrieve all loyalty program transaction logs in a given loyalty program, use the &gt;   [List loyalty program transactions](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyProgramTransactions) endpoint. 
     # @param loyalty_program_id [Integer] Identifier of the profile-based loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. 
     # @param integration_id [String] The integration identifier for this customer profile. Must be: - Unique within the deployment. - Stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID.  Once set, you cannot update this identifier. 
     # @param [Hash] opts the optional parameters
@@ -9398,8 +9462,9 @@ module TalonOne
     # @option opts [Time] :end_date Date and time by which results are returned. Results are filtered by transaction creation date.  &gt; [!note] **Note** &gt; - This must be an RFC3339 timestamp string. &gt; - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting &gt;   considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered. 
     # @option opts [Integer] :page_size The number of items in the response. (default to 50)
     # @option opts [Integer] :skip The number of items to skip when paging through large result sets.
+    # @option opts [Boolean] :include_references Whether to include the UUIDs of transactions referenced by deductions.  **Note:** Enabling this can decrease query performance, especially when no date filter is applied to a large transaction history.  (default to false)
     # @option opts [Boolean] :awaits_activation If &#x60;true&#x60;: Filters results to include only point transactions that have action-based activation and have not expired.  If &#x60;false&#x60;: Returns a &#x60;400&#x60; response. 
-    # @return [Array<(GetLoyaltyProgramProfileTransactions200Response, Integer, Hash)>] GetLoyaltyProgramProfileTransactions200Response data, response status code and response headers
+    # @return [Array<(GetLoyaltyProgramProfileLedgerTransactions200Response, Integer, Hash)>] GetLoyaltyProgramProfileLedgerTransactions200Response data, response status code and response headers
     def get_loyalty_program_profile_ledger_transactions_with_http_info(loyalty_program_id, integration_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ManagementApi.get_loyalty_program_profile_ledger_transactions ...'
@@ -9437,6 +9502,7 @@ module TalonOne
       query_params[:'endDate'] = opts[:'end_date'] if !opts[:'end_date'].nil?
       query_params[:'pageSize'] = opts[:'page_size'] if !opts[:'page_size'].nil?
       query_params[:'skip'] = opts[:'skip'] if !opts[:'skip'].nil?
+      query_params[:'includeReferences'] = opts[:'include_references'] if !opts[:'include_references'].nil?
       query_params[:'awaitsActivation'] = opts[:'awaits_activation'] if !opts[:'awaits_activation'].nil?
 
       # header parameters
@@ -9451,7 +9517,7 @@ module TalonOne
       post_body = opts[:debug_body]
 
       # return_type
-      return_type = opts[:debug_return_type] || 'GetLoyaltyProgramProfileTransactions200Response'
+      return_type = opts[:debug_return_type] || 'GetLoyaltyProgramProfileLedgerTransactions200Response'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['api_key_v1']

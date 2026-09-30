@@ -15,7 +15,7 @@ require 'time'
 
 module TalonOne
   class UpdateExperiment < ApiModelBase
-    # The source of the assignment. - false - The variant assignment is handled internally by Talon.One. - true - The variant assignment is handled externally. 
+    # Deprecated and ignored. The assignment type is set at experiment creation and cannot be changed. Use `assignmentType` when creating an experiment instead. 
     attr_accessor :is_variant_assignment_external
 
     attr_accessor :campaign
@@ -102,8 +102,6 @@ module TalonOne
 
       if attributes.key?(:'is_variant_assignment_external')
         self.is_variant_assignment_external = attributes[:'is_variant_assignment_external']
-      else
-        self.is_variant_assignment_external = nil
       end
 
       if attributes.key?(:'campaign')
@@ -126,10 +124,6 @@ module TalonOne
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
-      if @is_variant_assignment_external.nil?
-        invalid_properties.push('invalid value for "is_variant_assignment_external", is_variant_assignment_external cannot be nil.')
-      end
-
       if @campaign.nil?
         invalid_properties.push('invalid value for "campaign", campaign cannot be nil.')
       end
@@ -141,21 +135,10 @@ module TalonOne
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
-      return false if @is_variant_assignment_external.nil?
       return false if @campaign.nil?
       goal_type_validator = EnumAttributeValidator.new('String', ["other", "maximize_revenue", "maximize_items_sold", "optimize_discount_efficiency"])
       return false unless goal_type_validator.valid?(@goal_type)
       true
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] is_variant_assignment_external Value to be assigned
-    def is_variant_assignment_external=(is_variant_assignment_external)
-      if is_variant_assignment_external.nil?
-        fail ArgumentError, 'is_variant_assignment_external cannot be nil'
-      end
-
-      @is_variant_assignment_external = is_variant_assignment_external
     end
 
     # Custom attribute writer method with validation

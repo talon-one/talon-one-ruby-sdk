@@ -21,6 +21,7 @@ TalonOne::Effect.openapi_one_of
 #   :'EffectAddNegativeLoyaltyPoints',
 #   :'EffectAddToAudience',
 #   :'EffectAwardGiveaway',
+#   :'EffectBoostLoyaltyTier',
 #   :'EffectCallApi',
 #   :'EffectChangeLoyaltyTierLevel',
 #   :'EffectCouponCreated',
@@ -91,6 +92,7 @@ TalonOne::Effect.openapi_discriminator_mapping
 #   :'addNegativeLoyaltyPoints' => :'EffectAddNegativeLoyaltyPoints',
 #   :'addToAudience' => :'EffectAddToAudience',
 #   :'awardGiveaway' => :'EffectAwardGiveaway',
+#   :'boostLoyaltyTier' => :'EffectBoostLoyaltyTier',
 #   :'callApi' => :'EffectCallApi',
 #   :'changeLoyaltyTierLevel' => :'EffectChangeLoyaltyTierLevel',
 #   :'couponCreated' => :'EffectCouponCreated',
@@ -160,6 +162,7 @@ TalonOne::Effect.build(data_that_doesnt_match)
 - `EffectAddNegativeLoyaltyPoints`
 - `EffectAddToAudience`
 - `EffectAwardGiveaway`
+- `EffectBoostLoyaltyTier`
 - `EffectCallApi`
 - `EffectChangeLoyaltyTierLevel`
 - `EffectCouponCreated`
