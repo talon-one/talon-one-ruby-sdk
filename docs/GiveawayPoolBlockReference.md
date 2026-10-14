@@ -5,7 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **id** | **Integer** | The unique identifier of the giveaway pool. |  |
-| **name** | **String** | The display name of the giveaway pool. | [readonly] |
+| **name** | **String** | The display name of the giveaway pool. | [optional][readonly] |
 
 ## Example
 

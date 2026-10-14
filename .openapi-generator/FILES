@@ -219,6 +219,7 @@ docs/CatalogActionRemove.md
 docs/CatalogActionRemoveMany.md
 docs/CatalogItem.md
 docs/CatalogRule.md
+docs/CatalogRuleset.md
 docs/CatalogSyncRequest.md
 docs/CatalogsStrikethroughNotificationPolicy.md
 docs/Change.md
@@ -281,6 +282,7 @@ docs/CustomEffect.md
 docs/CustomEffectBlockReference.md
 docs/CustomEffectProps.md
 docs/CustomerAchievement.md
+docs/CustomerAchievementHistoryEntry.md
 docs/CustomerActivityReport.md
 docs/CustomerAnalytics.md
 docs/CustomerInventory.md
@@ -323,6 +325,7 @@ docs/EffectEntity.md
 docs/EffectError.md
 docs/EffectExtendLoyaltyPointsExpiryDate.md
 docs/EffectIncreaseAchievementProgress.md
+docs/EffectIncreaseAchievementProgressPerItem.md
 docs/EffectJoinLoyaltyProgram.md
 docs/EffectOffsetNegativeLoyaltyPoints.md
 docs/EffectRedeemReferral.md
@@ -336,7 +339,9 @@ docs/EffectRollbackCoupon.md
 docs/EffectRollbackDeductedLoyaltyPoints.md
 docs/EffectRollbackDiscount.md
 docs/EffectRollbackIncreasedAchievementProgress.md
+docs/EffectRollbackIncreasedAchievementProgressPerItem.md
 docs/EffectRollbackReferral.md
+docs/EffectRollbackTierBoost.md
 docs/EffectRollbackUseReward.md
 docs/EffectSet.md
 docs/EffectSetDiscount.md
@@ -374,6 +379,8 @@ docs/EventV3ReferralEntity.md
 docs/EventV3RequestEntity.md
 docs/ExcludePriceObservationsRequest.md
 docs/Experiment.md
+docs/ExperimentBlueprint.md
+docs/ExperimentBlueprintVariant.md
 docs/ExperimentCampaignCopy.md
 docs/ExperimentConfidenceTimeline.md
 docs/ExperimentConfidenceTimelineDataPoint.md
@@ -488,6 +495,7 @@ docs/IdentifiableEntity.md
 docs/Import.md
 docs/ImportEntity.md
 docs/IncreaseAchievementProgressEffectProps.md
+docs/IncreaseAchievementProgressPerItemEffectProps.md
 docs/InfluencingCampaignDetails.md
 docs/IntegrationApi.md
 docs/IntegrationCampaign.md
@@ -558,6 +566,7 @@ docs/ListCampaignStoreBudgetsStore.md
 docs/ListCatalogItems200Response.md
 docs/ListCheckAttributeBlock.md
 docs/ListExperiments200Response.md
+docs/ListGiveawaysPool200Response.md
 docs/ListStores200Response.md
 docs/ListWithCountCheckAttributeBlock.md
 docs/LocationCheckAttributeBlock.md
@@ -656,6 +665,7 @@ docs/NewEvent.md
 docs/NewEventType.md
 docs/NewEventV3Entity.md
 docs/NewExperiment.md
+docs/NewExperimentBlueprint.md
 docs/NewExperimentVariant.md
 docs/NewExperimentVariantArray.md
 docs/NewExternalInvitation.md
@@ -797,6 +807,7 @@ docs/RollbackCouponEffectProps.md
 docs/RollbackDeductedLoyaltyPointsEffectProps.md
 docs/RollbackDiscountEffectProps.md
 docs/RollbackIncreasedAchievementProgressEffectProps.md
+docs/RollbackIncreasedAchievementProgressPerItemEffectProps.md
 docs/RollbackReferralEffectProps.md
 docs/RollbackTierBoostEffectProps.md
 docs/RollbackUseRewardEffectProps.md
@@ -902,6 +913,7 @@ docs/UnlockRewardEffectProps.md
 docs/UpdateAccount.md
 docs/UpdateAchievement.md
 docs/UpdateAchievementProgressBlock.md
+docs/UpdateAchievementProgressBlock1Value.md
 docs/UpdateAchievementV2.md
 docs/UpdateApplication.md
 docs/UpdateApplicationAPIKey.md
@@ -926,6 +938,7 @@ docs/UpdateCustomEffect.md
 docs/UpdateCustomerProfileV2409Response.md
 docs/UpdateCustomerSessionV2409Response.md
 docs/UpdateExperiment.md
+docs/UpdateExperimentBlueprint.md
 docs/UpdateExperimentVariant.md
 docs/UpdateExperimentVariantArray.md
 docs/UpdateExperimentVariantName.md
@@ -1173,6 +1186,7 @@ lib/talon_one_sdk/models/catalog_action_remove.rb
 lib/talon_one_sdk/models/catalog_action_remove_many.rb
 lib/talon_one_sdk/models/catalog_item.rb
 lib/talon_one_sdk/models/catalog_rule.rb
+lib/talon_one_sdk/models/catalog_ruleset.rb
 lib/talon_one_sdk/models/catalog_sync_request.rb
 lib/talon_one_sdk/models/catalogs_strikethrough_notification_policy.rb
 lib/talon_one_sdk/models/change.rb
@@ -1235,6 +1249,7 @@ lib/talon_one_sdk/models/custom_effect.rb
 lib/talon_one_sdk/models/custom_effect_block_reference.rb
 lib/talon_one_sdk/models/custom_effect_props.rb
 lib/talon_one_sdk/models/customer_achievement.rb
+lib/talon_one_sdk/models/customer_achievement_history_entry.rb
 lib/talon_one_sdk/models/customer_activity_report.rb
 lib/talon_one_sdk/models/customer_analytics.rb
 lib/talon_one_sdk/models/customer_inventory.rb
@@ -1277,6 +1292,7 @@ lib/talon_one_sdk/models/effect_entity.rb
 lib/talon_one_sdk/models/effect_error.rb
 lib/talon_one_sdk/models/effect_extend_loyalty_points_expiry_date.rb
 lib/talon_one_sdk/models/effect_increase_achievement_progress.rb
+lib/talon_one_sdk/models/effect_increase_achievement_progress_per_item.rb
 lib/talon_one_sdk/models/effect_join_loyalty_program.rb
 lib/talon_one_sdk/models/effect_offset_negative_loyalty_points.rb
 lib/talon_one_sdk/models/effect_redeem_referral.rb
@@ -1290,7 +1306,9 @@ lib/talon_one_sdk/models/effect_rollback_coupon.rb
 lib/talon_one_sdk/models/effect_rollback_deducted_loyalty_points.rb
 lib/talon_one_sdk/models/effect_rollback_discount.rb
 lib/talon_one_sdk/models/effect_rollback_increased_achievement_progress.rb
+lib/talon_one_sdk/models/effect_rollback_increased_achievement_progress_per_item.rb
 lib/talon_one_sdk/models/effect_rollback_referral.rb
+lib/talon_one_sdk/models/effect_rollback_tier_boost.rb
 lib/talon_one_sdk/models/effect_rollback_use_reward.rb
 lib/talon_one_sdk/models/effect_set.rb
 lib/talon_one_sdk/models/effect_set_discount.rb
@@ -1328,6 +1346,8 @@ lib/talon_one_sdk/models/event_v3_referral_entity.rb
 lib/talon_one_sdk/models/event_v3_request_entity.rb
 lib/talon_one_sdk/models/exclude_price_observations_request.rb
 lib/talon_one_sdk/models/experiment.rb
+lib/talon_one_sdk/models/experiment_blueprint.rb
+lib/talon_one_sdk/models/experiment_blueprint_variant.rb
 lib/talon_one_sdk/models/experiment_campaign_copy.rb
 lib/talon_one_sdk/models/experiment_confidence_timeline.rb
 lib/talon_one_sdk/models/experiment_confidence_timeline_data_point.rb
@@ -1442,6 +1462,7 @@ lib/talon_one_sdk/models/identifiable_entity.rb
 lib/talon_one_sdk/models/import.rb
 lib/talon_one_sdk/models/import_entity.rb
 lib/talon_one_sdk/models/increase_achievement_progress_effect_props.rb
+lib/talon_one_sdk/models/increase_achievement_progress_per_item_effect_props.rb
 lib/talon_one_sdk/models/influencing_campaign_details.rb
 lib/talon_one_sdk/models/integration_campaign.rb
 lib/talon_one_sdk/models/integration_campaign_base.rb
@@ -1511,6 +1532,7 @@ lib/talon_one_sdk/models/list_campaign_store_budgets_store.rb
 lib/talon_one_sdk/models/list_catalog_items200_response.rb
 lib/talon_one_sdk/models/list_check_attribute_block.rb
 lib/talon_one_sdk/models/list_experiments200_response.rb
+lib/talon_one_sdk/models/list_giveaways_pool200_response.rb
 lib/talon_one_sdk/models/list_stores200_response.rb
 lib/talon_one_sdk/models/list_with_count_check_attribute_block.rb
 lib/talon_one_sdk/models/location_check_attribute_block.rb
@@ -1608,6 +1630,7 @@ lib/talon_one_sdk/models/new_event.rb
 lib/talon_one_sdk/models/new_event_type.rb
 lib/talon_one_sdk/models/new_event_v3_entity.rb
 lib/talon_one_sdk/models/new_experiment.rb
+lib/talon_one_sdk/models/new_experiment_blueprint.rb
 lib/talon_one_sdk/models/new_experiment_variant.rb
 lib/talon_one_sdk/models/new_experiment_variant_array.rb
 lib/talon_one_sdk/models/new_external_invitation.rb
@@ -1749,6 +1772,7 @@ lib/talon_one_sdk/models/rollback_coupon_effect_props.rb
 lib/talon_one_sdk/models/rollback_deducted_loyalty_points_effect_props.rb
 lib/talon_one_sdk/models/rollback_discount_effect_props.rb
 lib/talon_one_sdk/models/rollback_increased_achievement_progress_effect_props.rb
+lib/talon_one_sdk/models/rollback_increased_achievement_progress_per_item_effect_props.rb
 lib/talon_one_sdk/models/rollback_referral_effect_props.rb
 lib/talon_one_sdk/models/rollback_tier_boost_effect_props.rb
 lib/talon_one_sdk/models/rollback_use_reward_effect_props.rb
@@ -1854,6 +1878,7 @@ lib/talon_one_sdk/models/unlock_reward_effect_props.rb
 lib/talon_one_sdk/models/update_account.rb
 lib/talon_one_sdk/models/update_achievement.rb
 lib/talon_one_sdk/models/update_achievement_progress_block.rb
+lib/talon_one_sdk/models/update_achievement_progress_block1_value.rb
 lib/talon_one_sdk/models/update_achievement_v2.rb
 lib/talon_one_sdk/models/update_application.rb
 lib/talon_one_sdk/models/update_application_api_key.rb
@@ -1878,6 +1903,7 @@ lib/talon_one_sdk/models/update_custom_effect.rb
 lib/talon_one_sdk/models/update_customer_profile_v2409_response.rb
 lib/talon_one_sdk/models/update_customer_session_v2409_response.rb
 lib/talon_one_sdk/models/update_experiment.rb
+lib/talon_one_sdk/models/update_experiment_blueprint.rb
 lib/talon_one_sdk/models/update_experiment_variant.rb
 lib/talon_one_sdk/models/update_experiment_variant_array.rb
 lib/talon_one_sdk/models/update_experiment_variant_name.rb
@@ -2119,6 +2145,7 @@ spec/models/catalog_action_remove_spec.rb
 spec/models/catalog_action_spec.rb
 spec/models/catalog_item_spec.rb
 spec/models/catalog_rule_spec.rb
+spec/models/catalog_ruleset_spec.rb
 spec/models/catalog_spec.rb
 spec/models/catalog_sync_request_spec.rb
 spec/models/catalogs_strikethrough_notification_policy_spec.rb
@@ -2181,6 +2208,7 @@ spec/models/create_template_campaign_spec.rb
 spec/models/custom_effect_block_reference_spec.rb
 spec/models/custom_effect_props_spec.rb
 spec/models/custom_effect_spec.rb
+spec/models/customer_achievement_history_entry_spec.rb
 spec/models/customer_achievement_spec.rb
 spec/models/customer_activity_report_spec.rb
 spec/models/customer_analytics_spec.rb
@@ -2222,6 +2250,7 @@ spec/models/effect_deduct_loyalty_points_spec.rb
 spec/models/effect_entity_spec.rb
 spec/models/effect_error_spec.rb
 spec/models/effect_extend_loyalty_points_expiry_date_spec.rb
+spec/models/effect_increase_achievement_progress_per_item_spec.rb
 spec/models/effect_increase_achievement_progress_spec.rb
 spec/models/effect_join_loyalty_program_spec.rb
 spec/models/effect_offset_negative_loyalty_points_spec.rb
@@ -2235,8 +2264,10 @@ spec/models/effect_rollback_added_loyalty_points_spec.rb
 spec/models/effect_rollback_coupon_spec.rb
 spec/models/effect_rollback_deducted_loyalty_points_spec.rb
 spec/models/effect_rollback_discount_spec.rb
+spec/models/effect_rollback_increased_achievement_progress_per_item_spec.rb
 spec/models/effect_rollback_increased_achievement_progress_spec.rb
 spec/models/effect_rollback_referral_spec.rb
+spec/models/effect_rollback_tier_boost_spec.rb
 spec/models/effect_rollback_use_reward_spec.rb
 spec/models/effect_set_discount_per_additional_cost_per_item_spec.rb
 spec/models/effect_set_discount_per_additional_cost_spec.rb
@@ -2274,6 +2305,8 @@ spec/models/event_v3_referral_entity_spec.rb
 spec/models/event_v3_request_entity_spec.rb
 spec/models/event_v3_spec.rb
 spec/models/exclude_price_observations_request_spec.rb
+spec/models/experiment_blueprint_spec.rb
+spec/models/experiment_blueprint_variant_spec.rb
 spec/models/experiment_campaign_copy_spec.rb
 spec/models/experiment_confidence_timeline_data_point_spec.rb
 spec/models/experiment_confidence_timeline_spec.rb
@@ -2389,6 +2422,7 @@ spec/models/identifiable_entity_spec.rb
 spec/models/import_entity_spec.rb
 spec/models/import_spec.rb
 spec/models/increase_achievement_progress_effect_props_spec.rb
+spec/models/increase_achievement_progress_per_item_effect_props_spec.rb
 spec/models/influencing_campaign_details_spec.rb
 spec/models/integration_campaign_base_spec.rb
 spec/models/integration_campaign_spec.rb
@@ -2458,6 +2492,7 @@ spec/models/list_campaign_store_budgets_store_spec.rb
 spec/models/list_catalog_items200_response_spec.rb
 spec/models/list_check_attribute_block_spec.rb
 spec/models/list_experiments200_response_spec.rb
+spec/models/list_giveaways_pool200_response_spec.rb
 spec/models/list_stores200_response_spec.rb
 spec/models/list_with_count_check_attribute_block_spec.rb
 spec/models/location_check_attribute_block_spec.rb
@@ -2554,6 +2589,7 @@ spec/models/new_digital_pass_spec.rb
 spec/models/new_event_spec.rb
 spec/models/new_event_type_spec.rb
 spec/models/new_event_v3_entity_spec.rb
+spec/models/new_experiment_blueprint_spec.rb
 spec/models/new_experiment_spec.rb
 spec/models/new_experiment_variant_array_spec.rb
 spec/models/new_experiment_variant_spec.rb
@@ -2696,6 +2732,7 @@ spec/models/rollback_coupon_effect_props_spec.rb
 spec/models/rollback_deducted_loyalty_points_effect_props_spec.rb
 spec/models/rollback_discount_effect_props_spec.rb
 spec/models/rollback_increased_achievement_progress_effect_props_spec.rb
+spec/models/rollback_increased_achievement_progress_per_item_effect_props_spec.rb
 spec/models/rollback_referral_effect_props_spec.rb
 spec/models/rollback_tier_boost_effect_props_spec.rb
 spec/models/rollback_use_reward_effect_props_spec.rb
@@ -2799,6 +2836,7 @@ spec/models/two_fa_config_spec.rb
 spec/models/unary_check_attribute_block_spec.rb
 spec/models/unlock_reward_effect_props_spec.rb
 spec/models/update_account_spec.rb
+spec/models/update_achievement_progress_block1_value_spec.rb
 spec/models/update_achievement_progress_block_spec.rb
 spec/models/update_achievement_spec.rb
 spec/models/update_achievement_v2_spec.rb
@@ -2824,6 +2862,7 @@ spec/models/update_coupons_data_spec.rb
 spec/models/update_custom_effect_spec.rb
 spec/models/update_customer_profile_v2409_response_spec.rb
 spec/models/update_customer_session_v2409_response_spec.rb
+spec/models/update_experiment_blueprint_spec.rb
 spec/models/update_experiment_spec.rb
 spec/models/update_experiment_variant_array_spec.rb
 spec/models/update_experiment_variant_name_spec.rb

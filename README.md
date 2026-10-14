@@ -16,7 +16,7 @@ See our [migration guide](MIGRATION.md).
 Add this to the Gemfile:
 
 ```shell
-gem 'talon_one_sdk', '~> 26.20.0'
+gem 'talon_one_sdk', '~> 26.21.0'
 ```
 
 ### Build a gem
@@ -32,10 +32,10 @@ gem build talon_one_sdk.gemspec
 To install the gem locally:
 
 ```shell
-gem install ./talon_one_sdk-26.20.0.gem
+gem install ./talon_one_sdk-26.21.0.gem
 ```
 
-For development, run `gem install --dev ./talon_one_sdk-26.20.0.gem` to install the development dependencies.
+For development, run `gem install --dev ./talon_one_sdk-26.21.0.gem` to install the development dependencies.
 
 ### RubyGems
 
@@ -324,6 +324,7 @@ Class | Method | HTTP request | Description
 *TalonOne::ManagementApi* | [**get_collection**](docs/ManagementApi.md#get_collection) | **GET** /v1/applications/{applicationId}/campaigns/{campaignId}/collections/{collectionId} | Get campaign-level collection
 *TalonOne::ManagementApi* | [**get_collection_items**](docs/ManagementApi.md#get_collection_items) | **GET** /v1/collections/{collectionId}/items | Get collection items
 *TalonOne::ManagementApi* | [**get_coupons_without_total_count**](docs/ManagementApi.md#get_coupons_without_total_count) | **GET** /v1/applications/{applicationId}/campaigns/{campaignId}/coupons/no_total | List coupons
+*TalonOne::ManagementApi* | [**get_current_revision**](docs/ManagementApi.md#get_current_revision) | **GET** /v1/applications/{applicationId}/campaigns/{campaignId}/revisions/current | Get current revision version
 *TalonOne::ManagementApi* | [**get_customer_activity_report**](docs/ManagementApi.md#get_customer_activity_report) | **GET** /v1/applications/{applicationId}/customer_activity_reports/{customerId} | Get customer's activity report
 *TalonOne::ManagementApi* | [**get_customer_activity_reports_without_total_count**](docs/ManagementApi.md#get_customer_activity_reports_without_total_count) | **GET** /v1/applications/{applicationId}/customer_activity_reports/no_total | Get Activity Reports for Application Customers
 *TalonOne::ManagementApi* | [**get_customer_analytics**](docs/ManagementApi.md#get_customer_analytics) | **GET** /v1/applications/{applicationId}/customers/{customerId}/analytics | Get customer's analytics report
@@ -381,6 +382,7 @@ Class | Method | HTTP request | Description
 *TalonOne::ManagementApi* | [**list_collections**](docs/ManagementApi.md#list_collections) | **GET** /v1/applications/{applicationId}/campaigns/{campaignId}/collections | List collections in campaign
 *TalonOne::ManagementApi* | [**list_collections_in_application**](docs/ManagementApi.md#list_collections_in_application) | **GET** /v1/applications/{applicationId}/collections | List collections in Application
 *TalonOne::ManagementApi* | [**list_experiments**](docs/ManagementApi.md#list_experiments) | **GET** /v1/applications/{applicationId}/experiments | List experiments
+*TalonOne::ManagementApi* | [**list_giveaways_pool**](docs/ManagementApi.md#list_giveaways_pool) | **GET** /v1/giveaways/pools | List giveaway pools
 *TalonOne::ManagementApi* | [**list_stores**](docs/ManagementApi.md#list_stores) | **GET** /v1/applications/{applicationId}/stores | List stores
 *TalonOne::ManagementApi* | [**okta_event_handler_challenge**](docs/ManagementApi.md#okta_event_handler_challenge) | **GET** /v1/provisioning/okta | Validate Okta API ownership
 *TalonOne::ManagementApi* | [**price_history**](docs/ManagementApi.md#price_history) | **POST** /v1/applications/{applicationId}/price_history | Get summary of price history
@@ -625,6 +627,7 @@ Class | Method | HTTP request | Description
 - [TalonOne::CatalogActionRemoveMany](docs/CatalogActionRemoveMany.md)
 - [TalonOne::CatalogItem](docs/CatalogItem.md)
 - [TalonOne::CatalogRule](docs/CatalogRule.md)
+- [TalonOne::CatalogRuleset](docs/CatalogRuleset.md)
 - [TalonOne::CatalogSyncRequest](docs/CatalogSyncRequest.md)
 - [TalonOne::CatalogsStrikethroughNotificationPolicy](docs/CatalogsStrikethroughNotificationPolicy.md)
 - [TalonOne::Change](docs/Change.md)
@@ -687,6 +690,7 @@ Class | Method | HTTP request | Description
 - [TalonOne::CustomEffectBlockReference](docs/CustomEffectBlockReference.md)
 - [TalonOne::CustomEffectProps](docs/CustomEffectProps.md)
 - [TalonOne::CustomerAchievement](docs/CustomerAchievement.md)
+- [TalonOne::CustomerAchievementHistoryEntry](docs/CustomerAchievementHistoryEntry.md)
 - [TalonOne::CustomerActivityReport](docs/CustomerActivityReport.md)
 - [TalonOne::CustomerAnalytics](docs/CustomerAnalytics.md)
 - [TalonOne::CustomerInventory](docs/CustomerInventory.md)
@@ -729,6 +733,7 @@ Class | Method | HTTP request | Description
 - [TalonOne::EffectError](docs/EffectError.md)
 - [TalonOne::EffectExtendLoyaltyPointsExpiryDate](docs/EffectExtendLoyaltyPointsExpiryDate.md)
 - [TalonOne::EffectIncreaseAchievementProgress](docs/EffectIncreaseAchievementProgress.md)
+- [TalonOne::EffectIncreaseAchievementProgressPerItem](docs/EffectIncreaseAchievementProgressPerItem.md)
 - [TalonOne::EffectJoinLoyaltyProgram](docs/EffectJoinLoyaltyProgram.md)
 - [TalonOne::EffectOffsetNegativeLoyaltyPoints](docs/EffectOffsetNegativeLoyaltyPoints.md)
 - [TalonOne::EffectRedeemReferral](docs/EffectRedeemReferral.md)
@@ -742,7 +747,9 @@ Class | Method | HTTP request | Description
 - [TalonOne::EffectRollbackDeductedLoyaltyPoints](docs/EffectRollbackDeductedLoyaltyPoints.md)
 - [TalonOne::EffectRollbackDiscount](docs/EffectRollbackDiscount.md)
 - [TalonOne::EffectRollbackIncreasedAchievementProgress](docs/EffectRollbackIncreasedAchievementProgress.md)
+- [TalonOne::EffectRollbackIncreasedAchievementProgressPerItem](docs/EffectRollbackIncreasedAchievementProgressPerItem.md)
 - [TalonOne::EffectRollbackReferral](docs/EffectRollbackReferral.md)
+- [TalonOne::EffectRollbackTierBoost](docs/EffectRollbackTierBoost.md)
 - [TalonOne::EffectRollbackUseReward](docs/EffectRollbackUseReward.md)
 - [TalonOne::EffectSet](docs/EffectSet.md)
 - [TalonOne::EffectSetDiscount](docs/EffectSetDiscount.md)
@@ -780,6 +787,8 @@ Class | Method | HTTP request | Description
 - [TalonOne::EventV3RequestEntity](docs/EventV3RequestEntity.md)
 - [TalonOne::ExcludePriceObservationsRequest](docs/ExcludePriceObservationsRequest.md)
 - [TalonOne::Experiment](docs/Experiment.md)
+- [TalonOne::ExperimentBlueprint](docs/ExperimentBlueprint.md)
+- [TalonOne::ExperimentBlueprintVariant](docs/ExperimentBlueprintVariant.md)
 - [TalonOne::ExperimentCampaignCopy](docs/ExperimentCampaignCopy.md)
 - [TalonOne::ExperimentConfidenceTimeline](docs/ExperimentConfidenceTimeline.md)
 - [TalonOne::ExperimentConfidenceTimelineDataPoint](docs/ExperimentConfidenceTimelineDataPoint.md)
@@ -894,6 +903,7 @@ Class | Method | HTTP request | Description
 - [TalonOne::Import](docs/Import.md)
 - [TalonOne::ImportEntity](docs/ImportEntity.md)
 - [TalonOne::IncreaseAchievementProgressEffectProps](docs/IncreaseAchievementProgressEffectProps.md)
+- [TalonOne::IncreaseAchievementProgressPerItemEffectProps](docs/IncreaseAchievementProgressPerItemEffectProps.md)
 - [TalonOne::InfluencingCampaignDetails](docs/InfluencingCampaignDetails.md)
 - [TalonOne::IntegrationCampaign](docs/IntegrationCampaign.md)
 - [TalonOne::IntegrationCampaignBase](docs/IntegrationCampaignBase.md)
@@ -963,6 +973,7 @@ Class | Method | HTTP request | Description
 - [TalonOne::ListCatalogItems200Response](docs/ListCatalogItems200Response.md)
 - [TalonOne::ListCheckAttributeBlock](docs/ListCheckAttributeBlock.md)
 - [TalonOne::ListExperiments200Response](docs/ListExperiments200Response.md)
+- [TalonOne::ListGiveawaysPool200Response](docs/ListGiveawaysPool200Response.md)
 - [TalonOne::ListStores200Response](docs/ListStores200Response.md)
 - [TalonOne::ListWithCountCheckAttributeBlock](docs/ListWithCountCheckAttributeBlock.md)
 - [TalonOne::LocationCheckAttributeBlock](docs/LocationCheckAttributeBlock.md)
@@ -1060,6 +1071,7 @@ Class | Method | HTTP request | Description
 - [TalonOne::NewEventType](docs/NewEventType.md)
 - [TalonOne::NewEventV3Entity](docs/NewEventV3Entity.md)
 - [TalonOne::NewExperiment](docs/NewExperiment.md)
+- [TalonOne::NewExperimentBlueprint](docs/NewExperimentBlueprint.md)
 - [TalonOne::NewExperimentVariant](docs/NewExperimentVariant.md)
 - [TalonOne::NewExperimentVariantArray](docs/NewExperimentVariantArray.md)
 - [TalonOne::NewExternalInvitation](docs/NewExternalInvitation.md)
@@ -1201,6 +1213,7 @@ Class | Method | HTTP request | Description
 - [TalonOne::RollbackDeductedLoyaltyPointsEffectProps](docs/RollbackDeductedLoyaltyPointsEffectProps.md)
 - [TalonOne::RollbackDiscountEffectProps](docs/RollbackDiscountEffectProps.md)
 - [TalonOne::RollbackIncreasedAchievementProgressEffectProps](docs/RollbackIncreasedAchievementProgressEffectProps.md)
+- [TalonOne::RollbackIncreasedAchievementProgressPerItemEffectProps](docs/RollbackIncreasedAchievementProgressPerItemEffectProps.md)
 - [TalonOne::RollbackReferralEffectProps](docs/RollbackReferralEffectProps.md)
 - [TalonOne::RollbackTierBoostEffectProps](docs/RollbackTierBoostEffectProps.md)
 - [TalonOne::RollbackUseRewardEffectProps](docs/RollbackUseRewardEffectProps.md)
@@ -1306,6 +1319,7 @@ Class | Method | HTTP request | Description
 - [TalonOne::UpdateAccount](docs/UpdateAccount.md)
 - [TalonOne::UpdateAchievement](docs/UpdateAchievement.md)
 - [TalonOne::UpdateAchievementProgressBlock](docs/UpdateAchievementProgressBlock.md)
+- [TalonOne::UpdateAchievementProgressBlock1Value](docs/UpdateAchievementProgressBlock1Value.md)
 - [TalonOne::UpdateAchievementV2](docs/UpdateAchievementV2.md)
 - [TalonOne::UpdateApplication](docs/UpdateApplication.md)
 - [TalonOne::UpdateApplicationAPIKey](docs/UpdateApplicationAPIKey.md)
@@ -1330,6 +1344,7 @@ Class | Method | HTTP request | Description
 - [TalonOne::UpdateCustomerProfileV2409Response](docs/UpdateCustomerProfileV2409Response.md)
 - [TalonOne::UpdateCustomerSessionV2409Response](docs/UpdateCustomerSessionV2409Response.md)
 - [TalonOne::UpdateExperiment](docs/UpdateExperiment.md)
+- [TalonOne::UpdateExperimentBlueprint](docs/UpdateExperimentBlueprint.md)
 - [TalonOne::UpdateExperimentVariant](docs/UpdateExperimentVariant.md)
 - [TalonOne::UpdateExperimentVariantArray](docs/UpdateExperimentVariantArray.md)
 - [TalonOne::UpdateExperimentVariantName](docs/UpdateExperimentVariantName.md)

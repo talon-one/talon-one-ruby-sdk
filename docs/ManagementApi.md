@@ -106,6 +106,7 @@ All URIs are relative to *https://yourbaseurl.talon.one*
 | [**get_collection**](ManagementApi.md#get_collection) | **GET** /v1/applications/{applicationId}/campaigns/{campaignId}/collections/{collectionId} | Get campaign-level collection |
 | [**get_collection_items**](ManagementApi.md#get_collection_items) | **GET** /v1/collections/{collectionId}/items | Get collection items |
 | [**get_coupons_without_total_count**](ManagementApi.md#get_coupons_without_total_count) | **GET** /v1/applications/{applicationId}/campaigns/{campaignId}/coupons/no_total | List coupons |
+| [**get_current_revision**](ManagementApi.md#get_current_revision) | **GET** /v1/applications/{applicationId}/campaigns/{campaignId}/revisions/current | Get current revision version |
 | [**get_customer_activity_report**](ManagementApi.md#get_customer_activity_report) | **GET** /v1/applications/{applicationId}/customer_activity_reports/{customerId} | Get customer&#39;s activity report |
 | [**get_customer_activity_reports_without_total_count**](ManagementApi.md#get_customer_activity_reports_without_total_count) | **GET** /v1/applications/{applicationId}/customer_activity_reports/no_total | Get Activity Reports for Application Customers |
 | [**get_customer_analytics**](ManagementApi.md#get_customer_analytics) | **GET** /v1/applications/{applicationId}/customers/{customerId}/analytics | Get customer&#39;s analytics report |
@@ -163,6 +164,7 @@ All URIs are relative to *https://yourbaseurl.talon.one*
 | [**list_collections**](ManagementApi.md#list_collections) | **GET** /v1/applications/{applicationId}/campaigns/{campaignId}/collections | List collections in campaign |
 | [**list_collections_in_application**](ManagementApi.md#list_collections_in_application) | **GET** /v1/applications/{applicationId}/collections | List collections in Application |
 | [**list_experiments**](ManagementApi.md#list_experiments) | **GET** /v1/applications/{applicationId}/experiments | List experiments |
+| [**list_giveaways_pool**](ManagementApi.md#list_giveaways_pool) | **GET** /v1/giveaways/pools | List giveaway pools |
 | [**list_stores**](ManagementApi.md#list_stores) | **GET** /v1/applications/{applicationId}/stores | List stores |
 | [**okta_event_handler_challenge**](ManagementApi.md#okta_event_handler_challenge) | **GET** /v1/provisioning/okta | Validate Okta API ownership |
 | [**price_history**](ManagementApi.md#price_history) | **POST** /v1/applications/{applicationId}/price_history | Get summary of price history |
@@ -1750,7 +1752,7 @@ end
 
 Create ruleset (V2)
 
-Create a ruleset from promotion and strikethrough rules in the V2 JSON block format. A ruleset is a revision of all the rules of a campaign.  Only `group` and `passthrough` blocks are currently writable, with optional `onFailure` blocks. A payload containing any other block type is rejected. Each rule's `blocks` array may contain at most one block.
+Create a ruleset from promotion and strikethrough rules in the V2 JSON block format. A ruleset is a revision of all the rules of a campaign.  Only the first block of a rule can be a condition. Every other block must be an effect.
 
 ### Examples
 
@@ -4390,7 +4392,7 @@ end
 
 Export customer loyalty balances
 
-Download a CSV file containing the balance of each customer in the loyalty program.  > [!tip] If the exported CSV file is too large to view, you can > [split it into multiple files](https://www.google.com/search?q=split+CSV+into+multiple+files).  The generated file can contain the following columns:  - `loyaltyProgramID`: The ID of the loyalty program. - `loyaltySubledger`: The name of the subledger, when applicable. - `profileIntegrationID`: The integration ID of the customer profile. - `currentBalance`: The current point balance. - `pendingBalance`: The number of pending points. - `expiredBalance`: The number of expired points. - `spentBalance`: The number of spent points. - `currentTier`: The tier that the customer is in at the time of the export. 
+Download a CSV file containing the balance of each customer in the loyalty program.  > [!tip] If the exported CSV file is too large to view, you can > [split it into multiple files](https://www.google.com/search?q=split+CSV+into+multiple+files).  The generated file contains the following columns:  - `loyaltyProgramID`: The ID of the loyalty program. - `loyaltySubledger`: The name of the subledger, when applicable. - `profileIntegrationID`: The integration ID of the customer profile. - `currentBalance`: The current point balance. - `pendingBalance`: The number of pending points. - `expiredBalance`: The number of expired points. - `spentBalance`: The number of spent points. - `currentTier`: The tier that the customer is in at the time of the export. - `negativeBalance`: The number of negative points. Only contains a value when requested via `balances` and the program uses negative points. 
 
 ### Examples
 
@@ -4410,7 +4412,7 @@ loyalty_program_id = 'loyalty_program_id_example' # String | The identifier for 
 opts = {
   end_date: Time.parse('2013-10-20T19:20:30+01:00'), # Time | Used to return expired, active, and pending loyalty balances before this timestamp. You can enter any past, present, or future timestamp value.  > [!note] **Note** > - This must be an RFC3339 timestamp string. > - You can include a time component in your string, for example, `T23:59:59` to specify the end of the day. The time zone setting >   considered is `UTC`. If you do not include a time component, a default time value of `T00:00:00` (midnight) in `UTC` is considered. > - This parameter does not affect the `currentTier` field in the CSV file, which shows the customer's tier at the time of export. 
   balances: 'balances_example', # String | Filters which balance fields are included in the CSV export. `currentBalance` is always returned.  By default, all balance fields are included. When this parameter is provided, only the listed fields contain values and the rest are returned empty.  Accepted values: - `currentBalance` - `pendingBalance` - `expiredBalance` - `spentBalance` - `negativeBalance`  Multiple values must be provided as a comma-separated list. 
-  subledger_ids: ['inner_example'] # Array<String> | Filter results by an array of subledger IDs. If no value is provided, the export includes all subledgers and main ledger data for the specified loyalty program.  To specify the main ledger, provide an empty string (\"\"). 
+  subledger_ids: ['inner_example'] # Array<String> | Filters the results to specific subledgers.  **Note:** - When this parameter is not provided, the export includes all subledgers   and main ledger data for the specified loyalty program. 
 }
 
 begin
@@ -4447,7 +4449,7 @@ end
 | **loyalty_program_id** | **String** | The identifier for the loyalty program. |  |
 | **end_date** | **Time** | Used to return expired, active, and pending loyalty balances before this timestamp. You can enter any past, present, or future timestamp value.  &gt; [!note] **Note** &gt; - This must be an RFC3339 timestamp string. &gt; - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting &gt;   considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered. &gt; - This parameter does not affect the &#x60;currentTier&#x60; field in the CSV file, which shows the customer&#39;s tier at the time of export.  | [optional] |
 | **balances** | **String** | Filters which balance fields are included in the CSV export. &#x60;currentBalance&#x60; is always returned.  By default, all balance fields are included. When this parameter is provided, only the listed fields contain values and the rest are returned empty.  Accepted values: - &#x60;currentBalance&#x60; - &#x60;pendingBalance&#x60; - &#x60;expiredBalance&#x60; - &#x60;spentBalance&#x60; - &#x60;negativeBalance&#x60;  Multiple values must be provided as a comma-separated list.  | [optional] |
-| **subledger_ids** | [**Array&lt;String&gt;**](String.md) | Filter results by an array of subledger IDs. If no value is provided, the export includes all subledgers and main ledger data for the specified loyalty program.  To specify the main ledger, provide an empty string (\&quot;\&quot;).  | [optional] |
+| **subledger_ids** | [**Array&lt;String&gt;**](String.md) | Filters the results to specific subledgers.  **Note:** - When this parameter is not provided, the export includes all subledgers   and main ledger data for the specified loyalty program.  | [optional] |
 
 ### Return type
 
@@ -6093,7 +6095,8 @@ opts = {
   integration_id: 'integration_id_example', # String | Filter results performing an exact matching against the profile integration identifier.
   page_size: 789, # Integer | The number of items in the response.
   skip: 789, # Integer | The number of items to skip when paging through large result sets.
-  with_total_result_size: true # Boolean | When this flag is set, the result includes the total number of results for this query. This might decrease performance on large data sets.  - When `true`: `totalResultSize` contains the total number of results for this query. - When `false`: Only `hasMore` is returned, and it is set to `true` when there are more results than shown on the page. 
+  with_total_result_size: true, # Boolean | When this flag is set, the result includes the total number of results for this query. This might decrease performance on large data sets.  - When `true`: `totalResultSize` contains the total number of results for this query. - When `false`: Only `hasMore` is returned, and it is set to `true` when there are more results than shown on the page. 
+  with_loyalty_memberships: true # Boolean | When set to `true`, the `loyaltyProgramJoinDates` property returns the dates on which each customer joined the profile-based loyalty programs they are part of. This might decrease performance on large data sets.
 }
 
 begin
@@ -6132,6 +6135,7 @@ end
 | **page_size** | **Integer** | The number of items in the response. | [optional][default to 1000] |
 | **skip** | **Integer** | The number of items to skip when paging through large result sets. | [optional] |
 | **with_total_result_size** | **Boolean** | When this flag is set, the result includes the total number of results for this query. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;totalResultSize&#x60; contains the total number of results for this query. - When &#x60;false&#x60;: Only &#x60;hasMore&#x60; is returned, and it is set to &#x60;true&#x60; when there are more results than shown on the page.  | [optional] |
+| **with_loyalty_memberships** | **Boolean** | When set to &#x60;true&#x60;, the &#x60;loyaltyProgramJoinDates&#x60; property returns the dates on which each customer joined the profile-based loyalty programs they are part of. This might decrease performance on large data sets. | [optional] |
 
 ### Return type
 
@@ -6174,7 +6178,8 @@ customer_profile_search_query = TalonOne::CustomerProfileSearchQuery.new # Custo
 opts = {
   page_size: 789, # Integer | The number of items in the response.
   skip: 789, # Integer | The number of items to skip when paging through large result sets.
-  with_total_result_size: true # Boolean | When this flag is set, the result includes the total number of results for this query. This might decrease performance on large data sets.  - When `true`: `totalResultSize` contains the total number of results for this query. - When `false`: Only `hasMore` is returned, and it is set to `true` when there are more results than shown on the page. 
+  with_total_result_size: true, # Boolean | When this flag is set, the result includes the total number of results for this query. This might decrease performance on large data sets.  - When `true`: `totalResultSize` contains the total number of results for this query. - When `false`: Only `hasMore` is returned, and it is set to `true` when there are more results than shown on the page. 
+  with_loyalty_memberships: true # Boolean | When set to `true`, the `loyaltyProgramJoinDates` property returns the dates on which each customer joined the profile-based loyalty programs they are part of. This might decrease performance on large data sets.
 }
 
 begin
@@ -6213,6 +6218,7 @@ end
 | **page_size** | **Integer** | The number of items in the response. | [optional][default to 1000] |
 | **skip** | **Integer** | The number of items to skip when paging through large result sets. | [optional] |
 | **with_total_result_size** | **Boolean** | When this flag is set, the result includes the total number of results for this query. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;totalResultSize&#x60; contains the total number of results for this query. - When &#x60;false&#x60;: Only &#x60;hasMore&#x60; is returned, and it is set to &#x60;true&#x60; when there are more results than shown on the page.  | [optional] |
+| **with_loyalty_memberships** | **Boolean** | When set to &#x60;true&#x60;, the &#x60;loyaltyProgramJoinDates&#x60; property returns the dates on which each customer joined the profile-based loyalty programs they are part of. This might decrease performance on large data sets. | [optional] |
 
 ### Return type
 
@@ -8051,6 +8057,79 @@ end
 ### Return type
 
 [**GetCouponsWithoutTotalCount200Response**](GetCouponsWithoutTotalCount200Response.md)
+
+### Authorization
+
+[api_key_v1](../README.md#api_key_v1)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_current_revision
+
+> <Revision> get_current_revision(application_id, campaign_id)
+
+Get current revision version
+
+Get the current revision version for the given campaign.  **Note:** The [Campaign staging and revisions](https://docs.talon.one/docs/product/applications/manage-general-settings#campaign-staging-and-revisions) feature must be enabled for your Application. For more information, see [Revise campaigns](https://docs.talon.one/docs/product/campaigns/revise-campaigns). 
+
+### Examples
+
+```ruby
+require 'time'
+require 'talon_one_sdk'
+# setup authorization
+TalonOne.configure do |config|
+  # Configure API key authorization: api_key_v1
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+end
+
+api_instance = TalonOne::ManagementApi.new
+application_id = 789 # Integer | The ID of the Application. It is displayed in your Talon.One deployment URL.
+campaign_id = 789 # Integer | The ID of the campaign. It is displayed in your Talon.One deployment URL.
+
+begin
+  # Get current revision version
+  result = api_instance.get_current_revision(application_id, campaign_id)
+  p result
+rescue TalonOne::ApiError => e
+  puts "Error when calling ManagementApi->get_current_revision: #{e}"
+end
+```
+
+#### Using the get_current_revision_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Revision>, Integer, Hash)> get_current_revision_with_http_info(application_id, campaign_id)
+
+```ruby
+begin
+  # Get current revision version
+  data, status_code, headers = api_instance.get_current_revision_with_http_info(application_id, campaign_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Revision>
+rescue TalonOne::ApiError => e
+  puts "Error when calling ManagementApi->get_current_revision_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **application_id** | **Integer** | The ID of the Application. It is displayed in your Talon.One deployment URL. |  |
+| **campaign_id** | **Integer** | The ID of the campaign. It is displayed in your Talon.One deployment URL. |  |
+
+### Return type
+
+[**Revision**](Revision.md)
 
 ### Authorization
 
@@ -11383,7 +11462,7 @@ end
 
 Import join dates for a loyalty program
 
-Upload a CSV file containing customer profile IDs and their join dates for the specified loyalty program. Send the file as multipart data.  > [!important] This endpoint only works with profile-based loyalty programs.  The CSV file **must** contain the following columns:  - `customerprofileid`: The integration ID of the customer profile whose join   date you want to update. - `joindate`: The join date for the customer in RFC3339 format. You   can use the time zone of your choice. It is converted to UTC internally   by Talon.One.  **Note**: - Customer profiles must already exist. If a referenced profile does not exist, the import fails with a `400` error. - If a join date already exists for a profile, the uploaded date replaces it.  > [!note] We recommend limiting your file size to 500 MB.  ## Example  ```csv customerprofileid,joindate customer1,2024-03-21T07:32:14Z customer2,2025-04-16T21:12:37Z customer3,2026-05-03T11:47:01Z ``` 
+Upload a CSV file containing customer profile IDs and their join dates for the specified loyalty program. Send the file as multipart data.  > [!important] This endpoint only works with profile-based loyalty programs.  The CSV file **must** contain the following columns:  - `customerprofileid`: The integration ID of the customer profile whose join   date you want to update. - `joindate`: The join date for the customer in RFC3339 format. You   can use the time zone of your choice. It is converted to UTC internally   by Talon.One.  **Note**: - Customer profiles must already exist. If a referenced profile does not exist, the import fails with a `400` error. - If a join date already exists for a profile, the uploaded date replaces it. - If a join date is in the future at the time of the import, the import fails with a `400` error.  > [!note] We recommend limiting your file size to 500 MB.  ## Example  ```csv customerprofileid,joindate customer1,2024-03-21T07:32:14Z customer2,2025-04-16T21:12:37Z customer3,2026-05-03T11:47:01Z ``` 
 
 ### Examples
 
@@ -12541,6 +12620,87 @@ end
 ### Return type
 
 [**ListExperiments200Response**](ListExperiments200Response.md)
+
+### Authorization
+
+[api_key_v1](../README.md#api_key_v1)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## list_giveaways_pool
+
+> <ListGiveawaysPool200Response> list_giveaways_pool(opts)
+
+List giveaway pools
+
+Retrieve all the giveaway pools for an account.
+
+### Examples
+
+```ruby
+require 'time'
+require 'talon_one_sdk'
+# setup authorization
+TalonOne.configure do |config|
+  # Configure API key authorization: api_key_v1
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+end
+
+api_instance = TalonOne::ManagementApi.new
+opts = {
+  page_size: 789, # Integer | The number of items in the response.
+  skip: 789, # Integer | The number of items to skip when paging through large result sets.
+  sort: 'sort_example', # String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. 
+  with_total_result_size: true, # Boolean | When this flag is set, the result includes the total number of results for this query. This might decrease performance on large data sets.  - When `true`: `totalResultSize` contains the total number of results for this query. - When `false`: Only `hasMore` is returned, and it is set to `true` when there are more results than shown on the page. 
+  application_ids: 'application_ids_example' # String | Filter by one or more Application IDs, separated by a comma.
+}
+
+begin
+  # List giveaway pools
+  result = api_instance.list_giveaways_pool(opts)
+  p result
+rescue TalonOne::ApiError => e
+  puts "Error when calling ManagementApi->list_giveaways_pool: #{e}"
+end
+```
+
+#### Using the list_giveaways_pool_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ListGiveawaysPool200Response>, Integer, Hash)> list_giveaways_pool_with_http_info(opts)
+
+```ruby
+begin
+  # List giveaway pools
+  data, status_code, headers = api_instance.list_giveaways_pool_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ListGiveawaysPool200Response>
+rescue TalonOne::ApiError => e
+  puts "Error when calling ManagementApi->list_giveaways_pool_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **page_size** | **Integer** | The number of items in the response. | [optional][default to 1000] |
+| **skip** | **Integer** | The number of items to skip when paging through large result sets. | [optional] |
+| **sort** | **String** | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations.  | [optional] |
+| **with_total_result_size** | **Boolean** | When this flag is set, the result includes the total number of results for this query. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;totalResultSize&#x60; contains the total number of results for this query. - When &#x60;false&#x60;: Only &#x60;hasMore&#x60; is returned, and it is set to &#x60;true&#x60; when there are more results than shown on the page.  | [optional] |
+| **application_ids** | **String** | Filter by one or more Application IDs, separated by a comma. | [optional] |
+
+### Return type
+
+[**ListGiveawaysPool200Response**](ListGiveawaysPool200Response.md)
 
 ### Authorization
 

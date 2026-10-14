@@ -4,7 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **activate_at** | **Time** |  | [optional] |
+| **activate_at** | **Time** | Timestamp when the revision will be activated. | [optional] |
 
 ## Example
 
@@ -12,7 +12,7 @@
 require 'talon_one_sdk'
 
 instance = TalonOne::RevisionActivation.new(
-  activate_at: null
+  activate_at: 2026-10-08T09:30:00Z
 )
 ```
 

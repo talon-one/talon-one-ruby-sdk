@@ -8,7 +8,7 @@
 | **type** | **String** | Identifies the block variant and determines which additional properties are present in it. |  |
 | **tags** | **Array&lt;String&gt;** | Semantic labels attached to this block. | [optional][readonly] |
 | **operator** | **String** |  |  |
-| **value** | **String** | The value to update the progress by. Supports template placeholders (e.g. \&quot;{{$Session.Total / 2}}\&quot;) for dynamic quantities. |  |
+| **value** | [**UpdateAchievementProgressBlock1Value**](UpdateAchievementProgressBlock1Value.md) |  |  |
 | **achievement** | [**AchievementBlockReference**](AchievementBlockReference.md) | The achievement to update. |  |
 
 ## Example
@@ -21,7 +21,7 @@ instance = TalonOne::UpdateAchievementProgressBlock.new(
   type: null,
   tags: null,
   operator: increaseBy,
-  value: 10,
+  value: null,
   achievement: null
 )
 ```
