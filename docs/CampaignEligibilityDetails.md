@@ -14,8 +14,8 @@
 require 'talon_one_sdk'
 
 instance = TalonOne::CampaignEligibilityDetails.new(
-  passed: null,
-  coupon_code: null,
+  passed: false,
+  coupon_code: XMAS-20-2021,
   details: null
 )
 ```

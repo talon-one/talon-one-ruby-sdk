@@ -19,7 +19,6 @@
 | **validity_duration** | **String** | Relative duration (e.g. &#x60;30D&#x60;) after which the awarded points expire. Mutually exclusive with &#x60;expiryDate&#x60;. | [optional] |
 | **expiry_date** | **Object** | Timestamp at which the awarded points expire. Mutually exclusive with &#x60;validityDuration&#x60;. | [optional] |
 | **pending_duration** | **String** | Relative duration (e.g. &#x60;3D&#x60;) the awarded points remain pending before activation. | [optional] |
-| **on_failure** | [**Array&lt;Block&gt;**](Block.md) | Promotion blocks evaluated when this block fails or returns false. | [optional] |
 
 ## Example
 
@@ -41,8 +40,7 @@ instance = TalonOne::AwardLoyaltyPointsBlock.new(
   start_date: 2026-12-24T14:15:22Z,
   validity_duration: 30D,
   expiry_date: 2026-12-31T00:00:00Z,
-  pending_duration: 3D,
-  on_failure: null
+  pending_duration: 3D
 )
 ```
 

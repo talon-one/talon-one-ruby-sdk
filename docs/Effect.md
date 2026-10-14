@@ -30,6 +30,7 @@ TalonOne::Effect.openapi_one_of
 #   :'EffectError',
 #   :'EffectExtendLoyaltyPointsExpiryDate',
 #   :'EffectIncreaseAchievementProgress',
+#   :'EffectIncreaseAchievementProgressPerItem',
 #   :'EffectJoinLoyaltyProgram',
 #   :'EffectOffsetNegativeLoyaltyPoints',
 #   :'EffectRedeemReferral',
@@ -43,7 +44,9 @@ TalonOne::Effect.openapi_one_of
 #   :'EffectRollbackDeductedLoyaltyPoints',
 #   :'EffectRollbackDiscount',
 #   :'EffectRollbackIncreasedAchievementProgress',
+#   :'EffectRollbackIncreasedAchievementProgressPerItem',
 #   :'EffectRollbackReferral',
+#   :'EffectRollbackTierBoost',
 #   :'EffectRollbackUseReward',
 #   :'EffectSet',
 #   :'EffectSetDiscount',
@@ -101,6 +104,7 @@ TalonOne::Effect.openapi_discriminator_mapping
 #   :'error' => :'EffectError',
 #   :'extendLoyaltyPointsExpiryDate' => :'EffectExtendLoyaltyPointsExpiryDate',
 #   :'increaseAchievementProgress' => :'EffectIncreaseAchievementProgress',
+#   :'increaseAchievementProgressPerItem' => :'EffectIncreaseAchievementProgressPerItem',
 #   :'joinLoyaltyProgram' => :'EffectJoinLoyaltyProgram',
 #   :'offsetNegativeLoyaltyPoints' => :'EffectOffsetNegativeLoyaltyPoints',
 #   :'redeemReferral' => :'EffectRedeemReferral',
@@ -114,7 +118,9 @@ TalonOne::Effect.openapi_discriminator_mapping
 #   :'rollbackDeductedLoyaltyPoints' => :'EffectRollbackDeductedLoyaltyPoints',
 #   :'rollbackDiscount' => :'EffectRollbackDiscount',
 #   :'rollbackIncreasedAchievementProgress' => :'EffectRollbackIncreasedAchievementProgress',
+#   :'rollbackIncreasedAchievementProgressPerItem' => :'EffectRollbackIncreasedAchievementProgressPerItem',
 #   :'rollbackReferral' => :'EffectRollbackReferral',
+#   :'rollbackTierBoost' => :'EffectRollbackTierBoost',
 #   :'rollbackUseReward' => :'EffectRollbackUseReward',
 #   :'set' => :'EffectSet',
 #   :'setDiscount' => :'EffectSetDiscount',
@@ -171,6 +177,7 @@ TalonOne::Effect.build(data_that_doesnt_match)
 - `EffectError`
 - `EffectExtendLoyaltyPointsExpiryDate`
 - `EffectIncreaseAchievementProgress`
+- `EffectIncreaseAchievementProgressPerItem`
 - `EffectJoinLoyaltyProgram`
 - `EffectOffsetNegativeLoyaltyPoints`
 - `EffectRedeemReferral`
@@ -184,7 +191,9 @@ TalonOne::Effect.build(data_that_doesnt_match)
 - `EffectRollbackDeductedLoyaltyPoints`
 - `EffectRollbackDiscount`
 - `EffectRollbackIncreasedAchievementProgress`
+- `EffectRollbackIncreasedAchievementProgressPerItem`
 - `EffectRollbackReferral`
+- `EffectRollbackTierBoost`
 - `EffectRollbackUseReward`
 - `EffectSet`
 - `EffectSetDiscount`

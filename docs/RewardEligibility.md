@@ -13,7 +13,7 @@
 require 'talon_one_sdk'
 
 instance = TalonOne::RewardEligibility.new(
-  passed: true,
+  passed: false,
   details: null
 )
 ```

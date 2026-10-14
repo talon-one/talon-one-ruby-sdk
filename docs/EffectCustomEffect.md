@@ -22,7 +22,7 @@
 | **adjustment_reference_id** | **String** | The reference identifier of the selected price adjustment for this SKU. This is only returned if the &#x60;selectedPrice&#x60; resulted from a price adjustment. | [optional] |
 | **reward_id** | **Integer** | The ID of the reward that was being evaluated when this effect was triggered. | [optional] |
 | **reward_integration_id** | **String** | The integration ID of the specific customer reward whose usage produced this effect. | [optional] |
-| **props** | [**CustomEffectProps**](CustomEffectProps.md) | The properties of the &#x60;customEffect&#x60; effect. |  |
+| **props** | [**CustomEffectProps**](CustomEffectProps.md) |  |  |
 
 ## Example
 
