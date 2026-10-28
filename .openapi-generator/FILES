@@ -358,6 +358,7 @@ docs/EffectWillAwardGiveaway.md
 docs/EmailEntity.md
 docs/EmbeddedAnalyticsConfiguration.md
 docs/EmbeddedAnalyticsConfigurationDashboards.md
+docs/EmbeddedAnalyticsToken.md
 docs/EmbeddedDashboardConfiguration.md
 docs/Endpoint.md
 docs/Entity.md
@@ -1325,6 +1326,7 @@ lib/talon_one_sdk/models/effect_will_award_giveaway.rb
 lib/talon_one_sdk/models/email_entity.rb
 lib/talon_one_sdk/models/embedded_analytics_configuration.rb
 lib/talon_one_sdk/models/embedded_analytics_configuration_dashboards.rb
+lib/talon_one_sdk/models/embedded_analytics_token.rb
 lib/talon_one_sdk/models/embedded_dashboard_configuration.rb
 lib/talon_one_sdk/models/endpoint.rb
 lib/talon_one_sdk/models/entity.rb
@@ -2285,6 +2287,7 @@ spec/models/effect_will_award_giveaway_spec.rb
 spec/models/email_entity_spec.rb
 spec/models/embedded_analytics_configuration_dashboards_spec.rb
 spec/models/embedded_analytics_configuration_spec.rb
+spec/models/embedded_analytics_token_spec.rb
 spec/models/embedded_dashboard_configuration_spec.rb
 spec/models/endpoint_spec.rb
 spec/models/entity_spec.rb

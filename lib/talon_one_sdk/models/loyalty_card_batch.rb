@@ -24,6 +24,9 @@ module TalonOne
     # Status of the loyalty cards in the batch.
     attr_accessor :status
 
+    # Set values for the [custom attributes](https://docs.talon.one/docs/dev/concepts/attributes#custom-attributes) of a loyalty card. These attributes must be created in the Campaign Manager before their values can be updated through this endpoint. 
+    attr_accessor :attributes
+
     attr_accessor :card_code_settings
 
     class EnumAttributeValidator
@@ -54,6 +57,7 @@ module TalonOne
         :'number_of_cards' => :'numberOfCards',
         :'batch_id' => :'batchId',
         :'status' => :'status',
+        :'attributes' => :'attributes',
         :'card_code_settings' => :'cardCodeSettings'
       }
     end
@@ -74,6 +78,7 @@ module TalonOne
         :'number_of_cards' => :'Integer',
         :'batch_id' => :'String',
         :'status' => :'String',
+        :'attributes' => :'Object',
         :'card_code_settings' => :'CodeGeneratorSettings'
       }
     end
@@ -124,6 +129,10 @@ module TalonOne
         self.status = attributes[:'status']
       else
         self.status = 'active'
+      end
+
+      if attributes.key?(:'attributes')
+        self.attributes = attributes[:'attributes']
       end
 
       if attributes.key?(:'card_code_settings')
@@ -238,6 +247,7 @@ module TalonOne
           number_of_cards == o.number_of_cards &&
           batch_id == o.batch_id &&
           status == o.status &&
+          attributes == o.attributes &&
           card_code_settings == o.card_code_settings
     end
 
@@ -250,7 +260,7 @@ module TalonOne
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [number_of_cards, batch_id, status, card_code_settings].hash
+      [number_of_cards, batch_id, status, attributes, card_code_settings].hash
     end
 
     # Builds the object from hash

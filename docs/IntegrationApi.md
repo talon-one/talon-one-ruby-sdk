@@ -31,6 +31,7 @@ All URIs are relative to *https://yourbaseurl.talon.one*
 | [**get_reserved_customers**](IntegrationApi.md#get_reserved_customers) | **GET** /v1/coupon_reservations/customerprofiles/{couponValue} | List customers that have this coupon reserved |
 | [**integration_get_all_campaigns**](IntegrationApi.md#integration_get_all_campaigns) | **GET** /v1/integration/campaigns | List all running campaigns |
 | [**integration_rewards_catalog**](IntegrationApi.md#integration_rewards_catalog) | **GET** /v1/rewards/catalog | List rewards in the catalog |
+| [**integration_update_loyalty_card**](IntegrationApi.md#integration_update_loyalty_card) | **PUT** /v1/loyalty_programs/{loyaltyProgramId}/cards/{loyaltyCardId}/update | Update loyalty card |
 | [**join_loyalty_program**](IntegrationApi.md#join_loyalty_program) | **POST** /v1/loyalty_programs/{loyaltyProgramId}/profile/{integrationId}/join | Join customer profile to loyalty program |
 | [**link_loyalty_card_to_profile**](IntegrationApi.md#link_loyalty_card_to_profile) | **POST** /v2/loyalty_programs/{loyaltyProgramId}/cards/{loyaltyCardId}/link_profile | Link customer profile to card |
 | [**reopen_customer_session**](IntegrationApi.md#reopen_customer_session) | **PUT** /v2/customer_sessions/{customerSessionId}/reopen | Reopen customer session |
@@ -2163,6 +2164,81 @@ end
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## integration_update_loyalty_card
+
+> <LoyaltyCard> integration_update_loyalty_card(loyalty_program_id, loyalty_card_id, update_loyalty_card_request)
+
+Update loyalty card
+
+Updates the details of a specific loyalty card. Use this endpoint to modify the card's status and custom attribute values.  You must provide at least one of the following parameters: -   `status` -  `attributes` 
+
+### Examples
+
+```ruby
+require 'time'
+require 'talon_one_sdk'
+# setup authorization
+TalonOne.configure do |config|
+  # Configure API key authorization: api_key_v1
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+end
+
+api_instance = TalonOne::IntegrationApi.new
+loyalty_program_id = 789 # Integer | Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. 
+loyalty_card_id = 'loyalty_card_id_example' # String | Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint.  **Important**: The loyalty card ID requires [URL encoding](https://www.w3schools.com/tags//ref_urlencode.asp) if it contains special characters. For example, you must encode `NewCard2026%` as `NewCard2026%25`. 
+update_loyalty_card_request = TalonOne::UpdateLoyaltyCardRequest.new # UpdateLoyaltyCardRequest | body
+
+begin
+  # Update loyalty card
+  result = api_instance.integration_update_loyalty_card(loyalty_program_id, loyalty_card_id, update_loyalty_card_request)
+  p result
+rescue TalonOne::ApiError => e
+  puts "Error when calling IntegrationApi->integration_update_loyalty_card: #{e}"
+end
+```
+
+#### Using the integration_update_loyalty_card_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<LoyaltyCard>, Integer, Hash)> integration_update_loyalty_card_with_http_info(loyalty_program_id, loyalty_card_id, update_loyalty_card_request)
+
+```ruby
+begin
+  # Update loyalty card
+  data, status_code, headers = api_instance.integration_update_loyalty_card_with_http_info(loyalty_program_id, loyalty_card_id, update_loyalty_card_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <LoyaltyCard>
+rescue TalonOne::ApiError => e
+  puts "Error when calling IntegrationApi->integration_update_loyalty_card_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **loyalty_program_id** | **Integer** | Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  |  |
+| **loyalty_card_id** | **String** | Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint.  **Important**: The loyalty card ID requires [URL encoding](https://www.w3schools.com/tags//ref_urlencode.asp) if it contains special characters. For example, you must encode &#x60;NewCard2026%&#x60; as &#x60;NewCard2026%25&#x60;.  |  |
+| **update_loyalty_card_request** | [**UpdateLoyaltyCardRequest**](UpdateLoyaltyCardRequest.md) | body |  |
+
+### Return type
+
+[**LoyaltyCard**](LoyaltyCard.md)
+
+### Authorization
+
+[api_key_v1](../README.md#api_key_v1)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 

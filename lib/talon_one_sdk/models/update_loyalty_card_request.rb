@@ -18,10 +18,14 @@ module TalonOne
     # Status of the loyalty card. Can be `active` or `inactive`. 
     attr_accessor :status
 
+    # Set values for the [custom attributes](https://docs.talon.one/docs/dev/concepts/attributes#custom-attributes) of a loyalty card. These attributes must be created in the Campaign Manager before their values can be updated through this endpoint. 
+    attr_accessor :attributes
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'status' => :'status'
+        :'status' => :'status',
+        :'attributes' => :'attributes'
       }
     end
 
@@ -38,7 +42,8 @@ module TalonOne
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'status' => :'String'
+        :'status' => :'String',
+        :'attributes' => :'Object'
       }
     end
 
@@ -77,6 +82,10 @@ module TalonOne
       if attributes.key?(:'status')
         self.status = attributes[:'status']
       end
+
+      if attributes.key?(:'attributes')
+        self.attributes = attributes[:'attributes']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -99,7 +108,8 @@ module TalonOne
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          status == o.status
+          status == o.status &&
+          attributes == o.attributes
     end
 
     # @see the `==` method
@@ -111,7 +121,7 @@ module TalonOne
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [status].hash
+      [status, attributes].hash
     end
 
     # Builds the object from hash
