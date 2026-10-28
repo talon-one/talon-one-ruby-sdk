@@ -14,7 +14,6 @@ require 'date'
 require 'time'
 
 module TalonOne
-  # Paginated list of outbound logs.
   class OutboundLogs < ApiModelBase
     # Cursor for the next page of results. Omitted when there are no more results.
     attr_accessor :next_cursor

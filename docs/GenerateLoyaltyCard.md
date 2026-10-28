@@ -7,6 +7,7 @@
 | **status** | **String** | Status of the loyalty card. | [optional][default to &#39;active&#39;] |
 | **customer_profile_ids** | **Array&lt;String&gt;** | Integration IDs of the customer profiles linked to the card. | [optional] |
 | **card_identifier** | **String** | The identifier of the loyalty card, which must match the regular expression &#x60;^[A-Za-z0-9._%+@-]+$&#x60;.  | [optional] |
+| **attributes** | **Object** | Set values for the [custom attributes](https://docs.talon.one/docs/dev/concepts/attributes#custom-attributes) of a loyalty card. These attributes must be created in the Campaign Manager before their values can be updated through this endpoint.  | [optional] |
 
 ## Example
 
@@ -16,7 +17,8 @@ require 'talon_one_sdk'
 instance = TalonOne::GenerateLoyaltyCard.new(
   status: active,
   customer_profile_ids: [R195412, G244519],
-  card_identifier: summer-loyalty-card-0543
+  card_identifier: summer-loyalty-card-0543,
+  attributes: {preferredReward&#x3D;discount}
 )
 ```
 

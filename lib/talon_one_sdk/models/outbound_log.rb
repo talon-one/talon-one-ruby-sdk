@@ -14,38 +14,37 @@ require 'date'
 require 'time'
 
 module TalonOne
-  # Log of an outbound notification or webhook request.
   class OutboundLog < ApiModelBase
     # UUID of the outbound message.
     attr_accessor :uuid
 
-    # ID of the notification that produced the outbound request.
+    # ID of the notification that triggered the outbound message.
     attr_accessor :notification_id
 
-    # Name of the notification that produced the outbound request.
+    # Name of the notification that triggered the outbound message.
     attr_accessor :notification_name
 
-    # ID of the webhook that produced the outbound request.
+    # ID of the webhook that triggered the outbound message.
     attr_accessor :webhook_id
 
-    # The name of the webhook that produced the outbound request.
+    # Name of the webhook that triggered the outbound message.
     attr_accessor :webhook_name
 
-    # Type of notification that produced the outbound request.
+    # Type of notification that triggered the outbound message.
     attr_accessor :notification_type
 
-    # ID of the Application associated with the outbound request.
+    # ID of the Application associated with the outbound message.
     attr_accessor :application_id
 
-    # ID of the loyalty program associated with the outbound request.
+    # ID of the loyalty program associated with the outbound message.
     attr_accessor :loyalty_program_id
 
     attr_accessor :request
 
-    # Timestamp when the log entry was created.
+    # Timestamp when the log was created.
     attr_accessor :created_at
 
-    # Processing time of the outbound request in milliseconds.
+    # Time in milliseconds between sending the outbound request and receiving the response.
     attr_accessor :processing_time_ms
 
     attr_accessor :response

@@ -14,30 +14,29 @@ require 'date'
 require 'time'
 
 module TalonOne
-  # Outbound notification or webhook message with its shared request details.
   class OutboundMessage < ApiModelBase
     # UUID of the outbound message.
     attr_accessor :uuid
 
-    # ID of the notification that produced the outbound request.
+    # ID of the notification that triggered the outbound message.
     attr_accessor :notification_id
 
-    # Name of the notification that produced the outbound request.
+    # Name of the notification that triggered the outbound message.
     attr_accessor :notification_name
 
-    # ID of the webhook that produced the outbound request.
+    # ID of the webhook that triggered the outbound message.
     attr_accessor :webhook_id
 
-    # The name of the webhook that produced the outbound request.
+    # Name of the webhook that triggered the outbound message.
     attr_accessor :webhook_name
 
-    # Type of notification that produced the outbound request.
+    # Type of notification that triggered the outbound message.
     attr_accessor :notification_type
 
-    # ID of the Application associated with the outbound request.
+    # ID of the Application associated with the outbound message.
     attr_accessor :application_id
 
-    # ID of the loyalty program associated with the outbound request.
+    # ID of the loyalty program associated with the outbound message.
     attr_accessor :loyalty_program_id
 
     attr_accessor :request
@@ -56,7 +55,7 @@ module TalonOne
     # Number of retries.
     attr_accessor :retry_count
 
-    # Log entries for this message. Omitted when `includeLogs=false`.
+    # Log entries for this message. One entry per delivery attempt. Empty when `includeLogs=false`.
     attr_accessor :responses
 
     # Attribute mapping from ruby-style variable name to JSON key.

@@ -34,6 +34,12 @@ module TalonOne
     # The customer's eligibility for the reward. Returned only when the request includes a `profileIntegrationId` or `loyaltyCardId`. 
     attr_accessor :eligibility
 
+    # The duration for which the customer rewards unlocked from this reward remain active, relative to when the customer reward was unlocked.  The time format is an **integer** followed by one letter indicating the time unit.  Examples: `30m`, `1h`, `5D`, `7W`, `10M`, `15Y`.  Available units:  - `m`: minutes - `h`: hours - `D`: days - `W`: weeks - `M`: months - `Y`: years  Certain units can be rounded up or down: - `_D` for rounding down days only. Signifies the start of the day. - `_U` for rounding up days, weeks, months and years. Signifies the end of the day, week, month or year.  This field is not returned in combination with `expiryDate`. If both `validityDuration` and `expiryDate` are not returned, customer rewards have unlimited validity. 
+    attr_accessor :validity_duration
+
+    # Expiry date of the customer rewards unlocked from this reward. Customer rewards never expire if this is omitted and `validityDuration` is not set.  **Note:** - This field is not returned in combination with `validityDuration`. 
+    attr_accessor :expiry_date
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -42,7 +48,9 @@ module TalonOne
         :'description' => :'description',
         :'points_required' => :'pointsRequired',
         :'rule' => :'rule',
-        :'eligibility' => :'eligibility'
+        :'eligibility' => :'eligibility',
+        :'validity_duration' => :'validityDuration',
+        :'expiry_date' => :'expiryDate'
       }
     end
 
@@ -64,7 +72,9 @@ module TalonOne
         :'description' => :'String',
         :'points_required' => :'Array<RewardPointsRequired>',
         :'rule' => :'RuleMetadata',
-        :'eligibility' => :'RewardEligibility'
+        :'eligibility' => :'RewardEligibility',
+        :'validity_duration' => :'String',
+        :'expiry_date' => :'Time'
       }
     end
 
@@ -131,6 +141,14 @@ module TalonOne
       if attributes.key?(:'eligibility')
         self.eligibility = attributes[:'eligibility']
       end
+
+      if attributes.key?(:'validity_duration')
+        self.validity_duration = attributes[:'validity_duration']
+      end
+
+      if attributes.key?(:'expiry_date')
+        self.expiry_date = attributes[:'expiry_date']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -150,6 +168,11 @@ module TalonOne
         invalid_properties.push('invalid value for "rule", rule cannot be nil.')
       end
 
+      pattern = Regexp.new(/^[1-9][0-9]*([mh]|D(_[DU])?|[WMY](_U)?)$/)
+      if !@validity_duration.nil? && @validity_duration !~ pattern
+        invalid_properties.push("invalid value for \"validity_duration\", must conform to the pattern #{pattern}.")
+      end
+
       invalid_properties
     end
 
@@ -160,6 +183,7 @@ module TalonOne
       return false if @id.nil?
       return false if @name.nil?
       return false if @rule.nil?
+      return false if !@validity_duration.nil? && @validity_duration !~ Regexp.new(/^[1-9][0-9]*([mh]|D(_[DU])?|[WMY](_U)?)$/)
       true
     end
 
@@ -193,6 +217,21 @@ module TalonOne
       @rule = rule
     end
 
+    # Custom attribute writer method with validation
+    # @param [Object] validity_duration Value to be assigned
+    def validity_duration=(validity_duration)
+      if validity_duration.nil?
+        fail ArgumentError, 'validity_duration cannot be nil'
+      end
+
+      pattern = Regexp.new(/^[1-9][0-9]*([mh]|D(_[DU])?|[WMY](_U)?)$/)
+      if validity_duration !~ pattern
+        fail ArgumentError, "invalid value for \"validity_duration\", must conform to the pattern #{pattern}."
+      end
+
+      @validity_duration = validity_duration
+    end
+
     # Checks equality by comparing each attribute.
     # @param [Object] Object to be compared
     def ==(o)
@@ -203,7 +242,9 @@ module TalonOne
           description == o.description &&
           points_required == o.points_required &&
           rule == o.rule &&
-          eligibility == o.eligibility
+          eligibility == o.eligibility &&
+          validity_duration == o.validity_duration &&
+          expiry_date == o.expiry_date
     end
 
     # @see the `==` method
@@ -215,7 +256,7 @@ module TalonOne
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, name, description, points_required, rule, eligibility].hash
+      [id, name, description, points_required, rule, eligibility, validity_duration, expiry_date].hash
     end
 
     # Builds the object from hash

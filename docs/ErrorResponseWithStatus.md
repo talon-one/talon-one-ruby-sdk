@@ -6,7 +6,7 @@
 | ---- | ---- | ----------- | ----- |
 | **message** | **String** |  | [optional] |
 | **errors** | [**Array&lt;APIError&gt;**](APIError.md) | An array of individual problems encountered during the request. | [optional] |
-| **status_code** | **Integer** | The error code | [optional] |
+| **status_code** | **Integer** | The error code. | [optional] |
 
 ## Example
 

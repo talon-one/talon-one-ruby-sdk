@@ -36,6 +36,9 @@ module TalonOne
     # Reason for transferring and blocking the loyalty card. 
     attr_accessor :block_reason
 
+    # Set values for the [custom attributes](https://docs.talon.one/docs/dev/concepts/attributes#custom-attributes) of a loyalty card. These attributes must be created in the Campaign Manager before their values can be updated through this endpoint. 
+    attr_accessor :attributes
+
     # The identifier of the loyalty card, which must match the regular expression `^[A-Za-z0-9._%+@-]+$`. 
     attr_accessor :identifier
 
@@ -73,6 +76,7 @@ module TalonOne
         :'program_title' => :'programTitle',
         :'status' => :'status',
         :'block_reason' => :'blockReason',
+        :'attributes' => :'attributes',
         :'identifier' => :'identifier',
         :'users_per_card_limit' => :'usersPerCardLimit',
         :'profiles' => :'profiles',
@@ -105,6 +109,7 @@ module TalonOne
         :'program_title' => :'String',
         :'status' => :'String',
         :'block_reason' => :'String',
+        :'attributes' => :'Object',
         :'identifier' => :'String',
         :'users_per_card_limit' => :'Integer',
         :'profiles' => :'Array<LoyaltyCardProfileRegistration>',
@@ -192,6 +197,10 @@ module TalonOne
 
       if attributes.key?(:'block_reason')
         self.block_reason = attributes[:'block_reason']
+      end
+
+      if attributes.key?(:'attributes')
+        self.attributes = attributes[:'attributes']
       end
 
       if attributes.key?(:'identifier')
@@ -472,6 +481,7 @@ module TalonOne
           program_title == o.program_title &&
           status == o.status &&
           block_reason == o.block_reason &&
+          attributes == o.attributes &&
           identifier == o.identifier &&
           users_per_card_limit == o.users_per_card_limit &&
           profiles == o.profiles &&
@@ -492,7 +502,7 @@ module TalonOne
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, created, program_id, program_name, program_title, status, block_reason, identifier, users_per_card_limit, profiles, ledger, subledgers, modified, old_card_identifier, new_card_identifier, batch_id].hash
+      [id, created, program_id, program_name, program_title, status, block_reason, attributes, identifier, users_per_card_limit, profiles, ledger, subledgers, modified, old_card_identifier, new_card_identifier, batch_id].hash
     end
 
     # Builds the object from hash

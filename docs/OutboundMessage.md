@@ -5,20 +5,20 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **uuid** | **String** | UUID of the outbound message. |  |
-| **notification_id** | **Integer** | ID of the notification that produced the outbound request. | [optional] |
-| **notification_name** | **String** | Name of the notification that produced the outbound request. | [optional] |
-| **webhook_id** | **Integer** | ID of the webhook that produced the outbound request. | [optional] |
-| **webhook_name** | **String** | The name of the webhook that produced the outbound request. | [optional] |
-| **notification_type** | **String** | Type of notification that produced the outbound request. |  |
-| **application_id** | **Integer** | ID of the Application associated with the outbound request. | [optional] |
-| **loyalty_program_id** | **Integer** | ID of the loyalty program associated with the outbound request. | [optional] |
+| **notification_id** | **Integer** | ID of the notification that triggered the outbound message. | [optional] |
+| **notification_name** | **String** | Name of the notification that triggered the outbound message. | [optional] |
+| **webhook_id** | **Integer** | ID of the webhook that triggered the outbound message. | [optional] |
+| **webhook_name** | **String** | Name of the webhook that triggered the outbound message. | [optional] |
+| **notification_type** | **String** | Type of notification that triggered the outbound message. |  |
+| **application_id** | **Integer** | ID of the Application associated with the outbound message. | [optional] |
+| **loyalty_program_id** | **Integer** | ID of the loyalty program associated with the outbound message. | [optional] |
 | **request** | [**OutboundLogRequest**](OutboundLogRequest.md) |  | [optional] |
 | **first_log_at** | **Time** | Timestamp of the first log entry for this message. |  |
 | **last_log_at** | **Time** | Timestamp of the last log entry for this message. |  |
 | **last_response_code** | **Integer** | HTTP status code from the latest response. | [optional] |
 | **status** | **String** |  |  |
 | **retry_count** | **Integer** | Number of retries. | [optional] |
-| **responses** | [**Array&lt;OutboundMessageResponse&gt;**](OutboundMessageResponse.md) | Log entries for this message. Omitted when &#x60;includeLogs&#x3D;false&#x60;. | [optional] |
+| **responses** | [**Array&lt;OutboundMessageResponse&gt;**](OutboundMessageResponse.md) | Log entries for this message. One entry per delivery attempt. Empty when &#x60;includeLogs&#x3D;false&#x60;. | [optional] |
 
 ## Example
 

@@ -20,7 +20,7 @@ module TalonOne
     # An array of individual problems encountered during the request.
     attr_accessor :errors
 
-    # The error code
+    # The error code.
     attr_accessor :status_code
 
     # Attribute mapping from ruby-style variable name to JSON key.

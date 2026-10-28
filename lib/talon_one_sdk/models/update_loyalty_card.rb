@@ -21,11 +21,15 @@ module TalonOne
     # Reason for transferring and blocking the loyalty card. 
     attr_accessor :block_reason
 
+    # Set values for the [custom attributes](https://docs.talon.one/docs/dev/concepts/attributes#custom-attributes) of a loyalty card. These attributes must be created in the Campaign Manager before their values can be updated through this endpoint. 
+    attr_accessor :attributes
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'status' => :'status',
-        :'block_reason' => :'blockReason'
+        :'block_reason' => :'blockReason',
+        :'attributes' => :'attributes'
       }
     end
 
@@ -43,7 +47,8 @@ module TalonOne
     def self.openapi_types
       {
         :'status' => :'String',
-        :'block_reason' => :'String'
+        :'block_reason' => :'String',
+        :'attributes' => :'Object'
       }
     end
 
@@ -88,6 +93,10 @@ module TalonOne
       if attributes.key?(:'block_reason')
         self.block_reason = attributes[:'block_reason']
       end
+
+      if attributes.key?(:'attributes')
+        self.attributes = attributes[:'attributes']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -126,7 +135,8 @@ module TalonOne
       return true if self.equal?(o)
       self.class == o.class &&
           status == o.status &&
-          block_reason == o.block_reason
+          block_reason == o.block_reason &&
+          attributes == o.attributes
     end
 
     # @see the `==` method
@@ -138,7 +148,7 @@ module TalonOne
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [status, block_reason].hash
+      [status, block_reason, attributes].hash
     end
 
     # Builds the object from hash

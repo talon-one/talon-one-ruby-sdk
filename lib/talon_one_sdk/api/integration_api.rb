@@ -2212,6 +2212,94 @@ module TalonOne
       return data, status_code, headers
     end
 
+    # Update loyalty card
+    # Updates the details of a specific loyalty card. Use this endpoint to modify the card's status and custom attribute values.  You must provide at least one of the following parameters: -   `status` -  `attributes` 
+    # @param loyalty_program_id [Integer] Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. 
+    # @param loyalty_card_id [String] Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint.  **Important**: The loyalty card ID requires [URL encoding](https://www.w3schools.com/tags//ref_urlencode.asp) if it contains special characters. For example, you must encode &#x60;NewCard2026%&#x60; as &#x60;NewCard2026%25&#x60;. 
+    # @param update_loyalty_card_request [UpdateLoyaltyCardRequest] body
+    # @param [Hash] opts the optional parameters
+    # @return [LoyaltyCard]
+    def integration_update_loyalty_card(loyalty_program_id, loyalty_card_id, update_loyalty_card_request, opts = {})
+      data, _status_code, _headers = integration_update_loyalty_card_with_http_info(loyalty_program_id, loyalty_card_id, update_loyalty_card_request, opts)
+      data
+    end
+
+    # Update loyalty card
+    # Updates the details of a specific loyalty card. Use this endpoint to modify the card&#39;s status and custom attribute values.  You must provide at least one of the following parameters: -   &#x60;status&#x60; -  &#x60;attributes&#x60; 
+    # @param loyalty_program_id [Integer] Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. 
+    # @param loyalty_card_id [String] Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint.  **Important**: The loyalty card ID requires [URL encoding](https://www.w3schools.com/tags//ref_urlencode.asp) if it contains special characters. For example, you must encode &#x60;NewCard2026%&#x60; as &#x60;NewCard2026%25&#x60;. 
+    # @param update_loyalty_card_request [UpdateLoyaltyCardRequest] body
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(LoyaltyCard, Integer, Hash)>] LoyaltyCard data, response status code and response headers
+    def integration_update_loyalty_card_with_http_info(loyalty_program_id, loyalty_card_id, update_loyalty_card_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: IntegrationApi.integration_update_loyalty_card ...'
+      end
+      # verify the required parameter 'loyalty_program_id' is set
+      if @api_client.config.client_side_validation && loyalty_program_id.nil?
+        fail ArgumentError, "Missing the required parameter 'loyalty_program_id' when calling IntegrationApi.integration_update_loyalty_card"
+      end
+      # verify the required parameter 'loyalty_card_id' is set
+      if @api_client.config.client_side_validation && loyalty_card_id.nil?
+        fail ArgumentError, "Missing the required parameter 'loyalty_card_id' when calling IntegrationApi.integration_update_loyalty_card"
+      end
+      if @api_client.config.client_side_validation && loyalty_card_id.to_s.length > 108
+        fail ArgumentError, 'invalid value for "loyalty_card_id" when calling IntegrationApi.integration_update_loyalty_card, the character length must be smaller than or equal to 108.'
+      end
+
+      if @api_client.config.client_side_validation && loyalty_card_id.to_s.length < 4
+        fail ArgumentError, 'invalid value for "loyalty_card_id" when calling IntegrationApi.integration_update_loyalty_card, the character length must be greater than or equal to 4.'
+      end
+
+      # verify the required parameter 'update_loyalty_card_request' is set
+      if @api_client.config.client_side_validation && update_loyalty_card_request.nil?
+        fail ArgumentError, "Missing the required parameter 'update_loyalty_card_request' when calling IntegrationApi.integration_update_loyalty_card"
+      end
+      # resource path
+      local_var_path = '/v1/loyalty_programs/{loyaltyProgramId}/cards/{loyaltyCardId}/update'.sub('{loyaltyProgramId}', CGI.escape(loyalty_program_id.to_s)).sub('{loyaltyCardId}', CGI.escape(loyalty_card_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(update_loyalty_card_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'LoyaltyCard'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['api_key_v1']
+
+      new_options = opts.merge(
+        :operation => :"IntegrationApi.integration_update_loyalty_card",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: IntegrationApi#integration_update_loyalty_card\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Join customer profile to loyalty program
     # Join a customer profile to the specified loyalty program.  If the customer profile does not exist, it will be created first using the provided `integrationId`, then joined to the loyalty program.  > [!note] This endpoint only works with profile-based loyalty programs.  **Behavior**: - If the loyalty program does not exist, the request fails. - If the customer profile is already joined to the loyalty program, the request fails. - If the customer profile does not exist, it is created and then joined to the loyalty program. 
     # @param loyalty_program_id [Integer] Identifier of the profile-based loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. 

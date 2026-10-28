@@ -25,6 +25,9 @@ module TalonOne
     # The identifier of the loyalty card, which must match the regular expression `^[A-Za-z0-9._%+@-]+$`. 
     attr_accessor :card_identifier
 
+    # Set values for the [custom attributes](https://docs.talon.one/docs/dev/concepts/attributes#custom-attributes) of a loyalty card. These attributes must be created in the Campaign Manager before their values can be updated through this endpoint. 
+    attr_accessor :attributes
+
     class EnumAttributeValidator
       attr_reader :datatype
       attr_reader :allowable_values
@@ -52,7 +55,8 @@ module TalonOne
       {
         :'status' => :'status',
         :'customer_profile_ids' => :'customerProfileIds',
-        :'card_identifier' => :'cardIdentifier'
+        :'card_identifier' => :'cardIdentifier',
+        :'attributes' => :'attributes'
       }
     end
 
@@ -71,7 +75,8 @@ module TalonOne
       {
         :'status' => :'String',
         :'customer_profile_ids' => :'Array<String>',
-        :'card_identifier' => :'String'
+        :'card_identifier' => :'String',
+        :'attributes' => :'Object'
       }
     end
 
@@ -121,6 +126,10 @@ module TalonOne
 
       if attributes.key?(:'card_identifier')
         self.card_identifier = attributes[:'card_identifier']
+      end
+
+      if attributes.key?(:'attributes')
+        self.attributes = attributes[:'attributes']
       end
     end
 
@@ -197,7 +206,8 @@ module TalonOne
       self.class == o.class &&
           status == o.status &&
           customer_profile_ids == o.customer_profile_ids &&
-          card_identifier == o.card_identifier
+          card_identifier == o.card_identifier &&
+          attributes == o.attributes
     end
 
     # @see the `==` method
@@ -209,7 +219,7 @@ module TalonOne
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [status, customer_profile_ids, card_identifier].hash
+      [status, customer_profile_ids, card_identifier, attributes].hash
     end
 
     # Builds the object from hash

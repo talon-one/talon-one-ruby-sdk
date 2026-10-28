@@ -16,7 +16,7 @@ See our [migration guide](MIGRATION.md).
 Add this to the Gemfile:
 
 ```shell
-gem 'talon_one_sdk', '~> 26.21.0'
+gem 'talon_one_sdk', '~> 26.22.0'
 ```
 
 ### Build a gem
@@ -32,10 +32,10 @@ gem build talon_one_sdk.gemspec
 To install the gem locally:
 
 ```shell
-gem install ./talon_one_sdk-26.21.0.gem
+gem install ./talon_one_sdk-26.22.0.gem
 ```
 
-For development, run `gem install --dev ./talon_one_sdk-26.21.0.gem` to install the development dependencies.
+For development, run `gem install --dev ./talon_one_sdk-26.22.0.gem` to install the development dependencies.
 
 ### RubyGems
 
@@ -207,6 +207,7 @@ Class | Method | HTTP request | Description
 *TalonOne::IntegrationApi* | [**get_reserved_customers**](docs/IntegrationApi.md#get_reserved_customers) | **GET** /v1/coupon_reservations/customerprofiles/{couponValue} | List customers that have this coupon reserved
 *TalonOne::IntegrationApi* | [**integration_get_all_campaigns**](docs/IntegrationApi.md#integration_get_all_campaigns) | **GET** /v1/integration/campaigns | List all running campaigns
 *TalonOne::IntegrationApi* | [**integration_rewards_catalog**](docs/IntegrationApi.md#integration_rewards_catalog) | **GET** /v1/rewards/catalog | List rewards in the catalog
+*TalonOne::IntegrationApi* | [**integration_update_loyalty_card**](docs/IntegrationApi.md#integration_update_loyalty_card) | **PUT** /v1/loyalty_programs/{loyaltyProgramId}/cards/{loyaltyCardId}/update | Update loyalty card
 *TalonOne::IntegrationApi* | [**join_loyalty_program**](docs/IntegrationApi.md#join_loyalty_program) | **POST** /v1/loyalty_programs/{loyaltyProgramId}/profile/{integrationId}/join | Join customer profile to loyalty program
 *TalonOne::IntegrationApi* | [**link_loyalty_card_to_profile**](docs/IntegrationApi.md#link_loyalty_card_to_profile) | **POST** /v2/loyalty_programs/{loyaltyProgramId}/cards/{loyaltyCardId}/link_profile | Link customer profile to card
 *TalonOne::IntegrationApi* | [**reopen_customer_session**](docs/IntegrationApi.md#reopen_customer_session) | **PUT** /v2/customer_sessions/{customerSessionId}/reopen | Reopen customer session
@@ -766,6 +767,7 @@ Class | Method | HTTP request | Description
 - [TalonOne::EmailEntity](docs/EmailEntity.md)
 - [TalonOne::EmbeddedAnalyticsConfiguration](docs/EmbeddedAnalyticsConfiguration.md)
 - [TalonOne::EmbeddedAnalyticsConfigurationDashboards](docs/EmbeddedAnalyticsConfigurationDashboards.md)
+- [TalonOne::EmbeddedAnalyticsToken](docs/EmbeddedAnalyticsToken.md)
 - [TalonOne::EmbeddedDashboardConfiguration](docs/EmbeddedDashboardConfiguration.md)
 - [TalonOne::Endpoint](docs/Endpoint.md)
 - [TalonOne::Entity](docs/Entity.md)
