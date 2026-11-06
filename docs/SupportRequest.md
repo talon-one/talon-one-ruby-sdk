@@ -32,7 +32,7 @@ instance = TalonOne::SupportRequest.new(
   campaign_id: 100,
   loyalty_program_id: 8,
   subledger_id: sub-123,
-  created_by_user: support.agent.name@company.com,
+  created_by_user: jane.smith@example.com,
   created_at: 2025-07-20T22:00:00Z,
   customer_profile_id: URNGV8294NV,
   request_type: personal_coupon,
@@ -41,7 +41,7 @@ instance = TalonOne::SupportRequest.new(
   request_status: approved,
   processed_at: 2025-07-20T22:10:00Z,
   processing_note: Rejected as the customer was awarded points already.,
-  processed_by_user: admin.name@company.com,
+  processed_by_user: john.doe@example.com,
   coupon_code: SUMMER-2025-XYZ
 )
 ```

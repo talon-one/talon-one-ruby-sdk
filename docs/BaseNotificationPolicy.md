@@ -14,17 +14,17 @@ require 'talon_one_sdk'
 TalonOne::BaseNotificationPolicy.openapi_one_of
 # =>
 # [
-#   :'AddedDeductedPointsBalancesNotificationPolicy',
-#   :'AddedDeductedPointsNotificationPolicy',
 #   :'CampaignNotificationPolicy',
-#   :'CardAddedDeductedPointsBalancesNotificationPolicy',
-#   :'CardAddedDeductedPointsNotificationPolicy',
-#   :'CardExpiringPointsNotificationPolicy',
-#   :'CatalogsStrikethroughNotificationPolicy',
+#   :'CouponCodeExpiringNotificationPolicy',
 #   :'CouponsNotificationPolicy',
-#   :'ExpiringCouponsNotificationPolicy',
-#   :'ExpiringPointsNotificationPolicy',
-#   :'PendingPointsNotificationPolicy',
+#   :'LoyaltyAddedDeductedPointsBalancesNotificationPolicy',
+#   :'LoyaltyCardAddedDeductedPointsBalancesNotificationPolicy',
+#   :'LoyaltyCardPointsAddedDeductedNotificationPolicy',
+#   :'LoyaltyCardPointsExpiringNotificationPolicy',
+#   :'LoyaltyPointsAddedDeductedNotificationPolicy',
+#   :'LoyaltyPointsExpiringNotificationPolicy',
+#   :'LoyaltyPointsPendingToActiveNotificationPolicy',
+#   :'StrikethroughPriceNotificationPolicy',
 #   :'TierDowngradeNotificationPolicy',
 #   :'TierUpgradeNotificationPolicy',
 #   :'TierWillDowngradeNotificationPolicy'
@@ -41,7 +41,7 @@ Find the appropriate object from the `openapi_one_of` list and casts the data in
 require 'talon_one_sdk'
 
 TalonOne::BaseNotificationPolicy.build(data)
-# => #<AddedDeductedPointsBalancesNotificationPolicy:0x00007fdd4aab02a0>
+# => #<CampaignNotificationPolicy:0x00007fdd4aab02a0>
 
 TalonOne::BaseNotificationPolicy.build(data_that_doesnt_match)
 # => nil
@@ -55,17 +55,17 @@ TalonOne::BaseNotificationPolicy.build(data_that_doesnt_match)
 
 #### Return type
 
-- `AddedDeductedPointsBalancesNotificationPolicy`
-- `AddedDeductedPointsNotificationPolicy`
 - `CampaignNotificationPolicy`
-- `CardAddedDeductedPointsBalancesNotificationPolicy`
-- `CardAddedDeductedPointsNotificationPolicy`
-- `CardExpiringPointsNotificationPolicy`
-- `CatalogsStrikethroughNotificationPolicy`
+- `CouponCodeExpiringNotificationPolicy`
 - `CouponsNotificationPolicy`
-- `ExpiringCouponsNotificationPolicy`
-- `ExpiringPointsNotificationPolicy`
-- `PendingPointsNotificationPolicy`
+- `LoyaltyAddedDeductedPointsBalancesNotificationPolicy`
+- `LoyaltyCardAddedDeductedPointsBalancesNotificationPolicy`
+- `LoyaltyCardPointsAddedDeductedNotificationPolicy`
+- `LoyaltyCardPointsExpiringNotificationPolicy`
+- `LoyaltyPointsAddedDeductedNotificationPolicy`
+- `LoyaltyPointsExpiringNotificationPolicy`
+- `LoyaltyPointsPendingToActiveNotificationPolicy`
+- `StrikethroughPriceNotificationPolicy`
 - `TierDowngradeNotificationPolicy`
 - `TierUpgradeNotificationPolicy`
 - `TierWillDowngradeNotificationPolicy`

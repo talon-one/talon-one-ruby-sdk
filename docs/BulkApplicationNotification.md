@@ -5,7 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **total_result_size** | **Integer** |  |  |
-| **data** | [**Array&lt;CampaignEvaluationTreeChangedNotification&gt;**](CampaignEvaluationTreeChangedNotification.md) |  |  |
+| **data** | [**Array&lt;CampaignEvaluationTreeChangedNotificationData&gt;**](CampaignEvaluationTreeChangedNotificationData.md) |  |  |
 
 ## Example
 
