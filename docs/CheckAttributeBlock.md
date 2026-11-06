@@ -14,8 +14,13 @@ require 'talon_one_sdk'
 TalonOne::CheckAttributeBlock.openapi_one_of
 # =>
 # [
-#   :'CheckAttributeBlockBase',
-#   :'Object'
+#   :'BetweenCheckAttributeBlock',
+#   :'ListCheckAttributeBlock',
+#   :'ListWithCountCheckAttributeBlock',
+#   :'LocationCheckAttributeBlock',
+#   :'ScalarCheckAttributeBlock',
+#   :'UnaryCheckAttributeBlock',
+#   :'WithinCheckAttributeBlock'
 # ]
 ```
 
@@ -90,7 +95,7 @@ Find the appropriate object from the `openapi_one_of` list and casts the data in
 require 'talon_one_sdk'
 
 TalonOne::CheckAttributeBlock.build(data)
-# => #<CheckAttributeBlockBase:0x00007fdd4aab02a0>
+# => #<BetweenCheckAttributeBlock:0x00007fdd4aab02a0>
 
 TalonOne::CheckAttributeBlock.build(data_that_doesnt_match)
 # => nil
@@ -104,7 +109,12 @@ TalonOne::CheckAttributeBlock.build(data_that_doesnt_match)
 
 #### Return type
 
-- `CheckAttributeBlockBase`
-- `Object`
+- `BetweenCheckAttributeBlock`
+- `ListCheckAttributeBlock`
+- `ListWithCountCheckAttributeBlock`
+- `LocationCheckAttributeBlock`
+- `ScalarCheckAttributeBlock`
+- `UnaryCheckAttributeBlock`
+- `WithinCheckAttributeBlock`
 - `nil` (if no type matches)
 

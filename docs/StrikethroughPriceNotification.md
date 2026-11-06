@@ -1,0 +1,34 @@
+# TalonOne::StrikethroughPriceNotification
+
+## Properties
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **version** | **String** | The version of the strikethrough pricing notification. Set for **scheduled** strikethrough pricing updates only.  | [optional] |
+| **valid_from** | **Time** | Timestamp at which the strikethrough pricing update becomes valid. Set for **scheduled** strikethrough pricing updates (version: v2) only.  | [optional] |
+| **application_id** | **Integer** | The ID of the Application to which the catalog items labels belongs. |  |
+| **current_batch** | **Integer** | The batch number of the notification. Notifications might be sent in different batches. |  |
+| **total_batches** | **Integer** | The total number of batches for the notification. |  |
+| **trigger** | [**StrikethroughTrigger**](StrikethroughTrigger.md) |  |  |
+| **changed_items** | [**Array&lt;StrikethroughChangedItem&gt;**](StrikethroughChangedItem.md) |  |  |
+| **notification_type** | **String** | The type of notification. |  |
+| **sent_at** | **Time** | Timestamp when the notification was sent by Talon.One. There may be a delay before the notification is delivered to the user. |  |
+
+## Example
+
+```ruby
+require 'talon_one_sdk'
+
+instance = TalonOne::StrikethroughPriceNotification.new(
+  version: null,
+  valid_from: 2021-07-20T22:00:00Z,
+  application_id: 322,
+  current_batch: 1,
+  total_batches: 10,
+  trigger: null,
+  changed_items: null,
+  notification_type: null,
+  sent_at: null
+)
+```
+
