@@ -5,7 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **next_cursor** | **String** | Cursor for the next page of results. Omitted when there are no more results. | [optional] |
-| **data** | [**Array&lt;OutboundLog&gt;**](OutboundLog.md) | List of outbound logs. |  |
+| **data** | [**Array&lt;OutboundLogsDataInner&gt;**](OutboundLogsDataInner.md) | List of outbound logs. When an error ends the response, an &#x60;OutboundLogStreamError&#x60; is the last item and the response is incomplete. |  |
 
 ## Example
 

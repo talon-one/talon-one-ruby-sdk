@@ -14,7 +14,7 @@ require 'talon_one_sdk'
 
 instance = TalonOne::NewMCPOAuthClient.new(
   client_name: My MCP Integration,
-  redirect_uris: [&quot;http://localhost:3000/callback&quot;]
+  redirect_uris: [http://localhost:3000/callback]
 )
 ```
 

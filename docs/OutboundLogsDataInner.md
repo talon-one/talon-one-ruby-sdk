@@ -1,4 +1,4 @@
-# TalonOne::WebhookAuthenticationAllOfData
+# TalonOne::OutboundLogsDataInner
 
 ## Class instance methods
 
@@ -11,11 +11,11 @@ Returns the list of classes defined in oneOf.
 ```ruby
 require 'talon_one_sdk'
 
-TalonOne::WebhookAuthenticationAllOfData.openapi_one_of
+TalonOne::OutboundLogsDataInner.openapi_one_of
 # =>
 # [
-#   :'WebhookAuthenticationDataBasic',
-#   :'WebhookAuthenticationDataCustom'
+#   :'OutboundLog',
+#   :'OutboundLogStreamError'
 # ]
 ```
 
@@ -28,10 +28,10 @@ Find the appropriate object from the `openapi_one_of` list and casts the data in
 ```ruby
 require 'talon_one_sdk'
 
-TalonOne::WebhookAuthenticationAllOfData.build(data)
-# => #<WebhookAuthenticationDataBasic:0x00007fdd4aab02a0>
+TalonOne::OutboundLogsDataInner.build(data)
+# => #<OutboundLog:0x00007fdd4aab02a0>
 
-TalonOne::WebhookAuthenticationAllOfData.build(data_that_doesnt_match)
+TalonOne::OutboundLogsDataInner.build(data_that_doesnt_match)
 # => nil
 ```
 
@@ -43,7 +43,7 @@ TalonOne::WebhookAuthenticationAllOfData.build(data_that_doesnt_match)
 
 #### Return type
 
-- `WebhookAuthenticationDataBasic`
-- `WebhookAuthenticationDataCustom`
+- `OutboundLog`
+- `OutboundLogStreamError`
 - `nil` (if no type matches)
 
