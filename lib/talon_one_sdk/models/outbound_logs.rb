@@ -18,7 +18,7 @@ module TalonOne
     # Cursor for the next page of results. Omitted when there are no more results.
     attr_accessor :next_cursor
 
-    # List of outbound logs.
+    # List of outbound logs. When an error ends the response, an `OutboundLogStreamError` is the last item and the response is incomplete.
     attr_accessor :data
 
     # Attribute mapping from ruby-style variable name to JSON key.
@@ -43,7 +43,7 @@ module TalonOne
     def self.openapi_types
       {
         :'next_cursor' => :'String',
-        :'data' => :'Array<OutboundLog>'
+        :'data' => :'Array<OutboundLogsDataInner>'
       }
     end
 

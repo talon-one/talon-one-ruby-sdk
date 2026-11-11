@@ -16,7 +16,7 @@ See our [migration guide](MIGRATION.md).
 Add this to the Gemfile:
 
 ```shell
-gem 'talon_one_sdk', '~> 26.22.1'
+gem 'talon_one_sdk', '~> 26.23.0'
 ```
 
 ### Build a gem
@@ -32,10 +32,10 @@ gem build talon_one_sdk.gemspec
 To install the gem locally:
 
 ```shell
-gem install ./talon_one_sdk-26.22.1.gem
+gem install ./talon_one_sdk-26.23.0.gem
 ```
 
-For development, run `gem install --dev ./talon_one_sdk-26.22.1.gem` to install the development dependencies.
+For development, run `gem install --dev ./talon_one_sdk-26.23.0.gem` to install the development dependencies.
 
 ### RubyGems
 
@@ -1017,6 +1017,8 @@ Class | Method | HTTP request | Description
 - [TalonOne::MCPOAuthProtectedResource](docs/MCPOAuthProtectedResource.md)
 - [TalonOne::MCPOAuthServerMetadata](docs/MCPOAuthServerMetadata.md)
 - [TalonOne::MCPOAuthSessionInfo](docs/MCPOAuthSessionInfo.md)
+- [TalonOne::MCPOAuthStaticClient](docs/MCPOAuthStaticClient.md)
+- [TalonOne::MCPOAuthStaticClientWithSecret](docs/MCPOAuthStaticClientWithSecret.md)
 - [TalonOne::MCPOAuthToken](docs/MCPOAuthToken.md)
 - [TalonOne::MCPOAuthTokenError](docs/MCPOAuthTokenError.md)
 - [TalonOne::MCPOAuthTokenRequest](docs/MCPOAuthTokenRequest.md)
@@ -1088,6 +1090,7 @@ Class | Method | HTTP request | Description
 - [TalonOne::NewLoyaltyTier](docs/NewLoyaltyTier.md)
 - [TalonOne::NewMCPKey](docs/NewMCPKey.md)
 - [TalonOne::NewMCPOAuthClient](docs/NewMCPOAuthClient.md)
+- [TalonOne::NewMCPOAuthStaticClient](docs/NewMCPOAuthStaticClient.md)
 - [TalonOne::NewManagementKey](docs/NewManagementKey.md)
 - [TalonOne::NewMessageTest](docs/NewMessageTest.md)
 - [TalonOne::NewMultipleAudiencesItem](docs/NewMultipleAudiencesItem.md)
@@ -1125,7 +1128,16 @@ Class | Method | HTTP request | Description
 - [TalonOne::OutboundLogBase](docs/OutboundLogBase.md)
 - [TalonOne::OutboundLogRequest](docs/OutboundLogRequest.md)
 - [TalonOne::OutboundLogResponse](docs/OutboundLogResponse.md)
+- [TalonOne::OutboundLogStreamCursor](docs/OutboundLogStreamCursor.md)
+- [TalonOne::OutboundLogStreamCursorEntry](docs/OutboundLogStreamCursorEntry.md)
+- [TalonOne::OutboundLogStreamEntry](docs/OutboundLogStreamEntry.md)
+- [TalonOne::OutboundLogStreamEntryType](docs/OutboundLogStreamEntryType.md)
+- [TalonOne::OutboundLogStreamError](docs/OutboundLogStreamError.md)
+- [TalonOne::OutboundLogStreamErrorEntry](docs/OutboundLogStreamErrorEntry.md)
+- [TalonOne::OutboundLogStreamLogEntry](docs/OutboundLogStreamLogEntry.md)
 - [TalonOne::OutboundLogs](docs/OutboundLogs.md)
+- [TalonOne::OutboundLogsDataInner](docs/OutboundLogsDataInner.md)
+- [TalonOne::OutboundLogsFormat](docs/OutboundLogsFormat.md)
 - [TalonOne::OutboundMessage](docs/OutboundMessage.md)
 - [TalonOne::OutboundMessageResponse](docs/OutboundMessageResponse.md)
 - [TalonOne::OutboundMessages](docs/OutboundMessages.md)
@@ -1374,12 +1386,14 @@ Class | Method | HTTP request | Description
 - [TalonOne::ValueMap](docs/ValueMap.md)
 - [TalonOne::Webhook](docs/Webhook.md)
 - [TalonOne::WebhookAuthentication](docs/WebhookAuthentication.md)
-- [TalonOne::WebhookAuthenticationAllOfData](docs/WebhookAuthenticationAllOfData.md)
 - [TalonOne::WebhookAuthenticationBase](docs/WebhookAuthenticationBase.md)
 - [TalonOne::WebhookAuthenticationBaseBasic](docs/WebhookAuthenticationBaseBasic.md)
 - [TalonOne::WebhookAuthenticationBaseCustom](docs/WebhookAuthenticationBaseCustom.md)
+- [TalonOne::WebhookAuthenticationBasic](docs/WebhookAuthenticationBasic.md)
+- [TalonOne::WebhookAuthenticationCustom](docs/WebhookAuthenticationCustom.md)
 - [TalonOne::WebhookAuthenticationDataBasic](docs/WebhookAuthenticationDataBasic.md)
 - [TalonOne::WebhookAuthenticationDataCustom](docs/WebhookAuthenticationDataCustom.md)
+- [TalonOne::WebhookAuthenticationEntity](docs/WebhookAuthenticationEntity.md)
 - [TalonOne::WebhookAuthenticationWebhookRef](docs/WebhookAuthenticationWebhookRef.md)
 - [TalonOne::WebhookBlockReference](docs/WebhookBlockReference.md)
 - [TalonOne::WebhookWithOutgoingIntegrationDetails](docs/WebhookWithOutgoingIntegrationDetails.md)

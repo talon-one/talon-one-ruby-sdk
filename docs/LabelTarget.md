@@ -19,6 +19,36 @@ TalonOne::LabelTarget.openapi_one_of
 # ]
 ```
 
+### `openapi_discriminator_name`
+
+Returns the discriminator's property name.
+
+#### Example
+
+```ruby
+require 'talon_one_sdk'
+
+TalonOne::LabelTarget.openapi_discriminator_name
+# => :'type'
+```
+
+### `openapi_discriminator_name`
+
+Returns the discriminator's mapping.
+
+#### Example
+
+```ruby
+require 'talon_one_sdk'
+
+TalonOne::LabelTarget.openapi_discriminator_mapping
+# =>
+# {
+#   :'AUDIENCE' => :'LabelTargetAudience',
+#   :'NONE' => :'LabelTargetNone'
+# }
+```
+
 ### build
 
 Find the appropriate object from the `openapi_one_of` list and casts the data into it.

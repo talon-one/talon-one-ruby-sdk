@@ -14,13 +14,13 @@ require 'date'
 require 'time'
 
 module TalonOne
-  module WebhookAuthenticationAllOfData
+  module OutboundLogsDataInner
     class << self
       # List of class defined in oneOf (OpenAPI v3)
       def openapi_one_of
         [
-          :'WebhookAuthenticationDataBasic',
-          :'WebhookAuthenticationDataCustom'
+          :'OutboundLog',
+          :'OutboundLogStreamError'
         ]
       end
 
