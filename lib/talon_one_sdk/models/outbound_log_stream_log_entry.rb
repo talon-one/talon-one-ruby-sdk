@@ -14,7 +14,7 @@ require 'date'
 require 'time'
 
 module TalonOne
-  # An outbound log entry in an `ndjson` stream.
+  # An outbound log entry in a stream of outbound logs.
   class OutboundLogStreamLogEntry < ApiModelBase
     attr_accessor :type
 

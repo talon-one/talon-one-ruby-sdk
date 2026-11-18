@@ -48,7 +48,7 @@ describe TalonOne::CheckAchievementBlock do
   describe 'test attribute "operator"' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-      # validator = Petstore::EnumTest::EnumAttributeValidator.new('String', ["justCompleted", "started", "not(started)", "inProgress", "not(inProgress)", "completed", "not(completed)"])
+      # validator = Petstore::EnumTest::EnumAttributeValidator.new('String', ["justCompleted", "started", "not(started)", "inProgress", "not(inProgress)", "completed", "not(completed)", "expired", "not(expired)"])
       # validator.allowable_values.each do |value|
       #   expect { instance.operator = value }.not_to raise_error
       # end

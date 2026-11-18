@@ -28,6 +28,9 @@ module TalonOne
     # The date and time when the reward was unlocked.
     attr_accessor :unlocked_at
 
+    # The date and time when the customer reward expires, based on the  `validityDuration` or `expiryDate` of the reward when the reward was  unlocked. If the reward does not specify either property, the customer reward  has unlimited validity and this field is omitted.  **Note**: The expiry date is calculated using the time zone of the  Application connected to the reward. 
+    attr_accessor :expiry_date
+
     # The date and time when the reward was used.
     attr_accessor :used_at
 
@@ -38,6 +41,7 @@ module TalonOne
         :'profile_integration_id' => :'profileIntegrationId',
         :'integration_id' => :'integrationId',
         :'unlocked_at' => :'unlockedAt',
+        :'expiry_date' => :'expiryDate',
         :'used_at' => :'usedAt'
       }
     end
@@ -59,6 +63,7 @@ module TalonOne
         :'profile_integration_id' => :'String',
         :'integration_id' => :'String',
         :'unlocked_at' => :'Time',
+        :'expiry_date' => :'Time',
         :'used_at' => :'Time'
       }
     end
@@ -117,6 +122,10 @@ module TalonOne
         self.unlocked_at = attributes[:'unlocked_at']
       else
         self.unlocked_at = nil
+      end
+
+      if attributes.key?(:'expiry_date')
+        self.expiry_date = attributes[:'expiry_date']
       end
 
       if attributes.key?(:'used_at')
@@ -208,6 +217,7 @@ module TalonOne
           profile_integration_id == o.profile_integration_id &&
           integration_id == o.integration_id &&
           unlocked_at == o.unlocked_at &&
+          expiry_date == o.expiry_date &&
           used_at == o.used_at
     end
 
@@ -220,7 +230,7 @@ module TalonOne
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [application_id, profile_integration_id, integration_id, unlocked_at, used_at].hash
+      [application_id, profile_integration_id, integration_id, unlocked_at, expiry_date, used_at].hash
     end
 
     # Builds the object from hash

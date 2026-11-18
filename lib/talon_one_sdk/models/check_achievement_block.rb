@@ -189,7 +189,7 @@ module TalonOne
       warn '[DEPRECATED] the `valid?` method is obsolete'
       return false if @type.nil?
       return false if @operator.nil?
-      operator_validator = EnumAttributeValidator.new('String', ["justCompleted", "started", "not(started)", "inProgress", "not(inProgress)", "completed", "not(completed)"])
+      operator_validator = EnumAttributeValidator.new('String', ["justCompleted", "started", "not(started)", "inProgress", "not(inProgress)", "completed", "not(completed)", "expired", "not(expired)"])
       return false unless operator_validator.valid?(@operator)
       return false if @achievement.nil?
       true
@@ -208,7 +208,7 @@ module TalonOne
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] operator Object to be assigned
     def operator=(operator)
-      validator = EnumAttributeValidator.new('String', ["justCompleted", "started", "not(started)", "inProgress", "not(inProgress)", "completed", "not(completed)"])
+      validator = EnumAttributeValidator.new('String', ["justCompleted", "started", "not(started)", "inProgress", "not(inProgress)", "completed", "not(completed)", "expired", "not(expired)"])
       unless validator.valid?(operator)
         fail ArgumentError, "invalid value for \"operator\", must be one of #{validator.allowable_values}."
       end

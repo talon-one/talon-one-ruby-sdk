@@ -16,7 +16,7 @@ See our [migration guide](MIGRATION.md).
 Add this to the Gemfile:
 
 ```shell
-gem 'talon_one_sdk', '~> 26.23.0'
+gem 'talon_one_sdk', '~> 99.99.98'
 ```
 
 ### Build a gem
@@ -32,10 +32,10 @@ gem build talon_one_sdk.gemspec
 To install the gem locally:
 
 ```shell
-gem install ./talon_one_sdk-26.23.0.gem
+gem install ./talon_one_sdk-99.99.98.gem
 ```
 
-For development, run `gem install --dev ./talon_one_sdk-26.23.0.gem` to install the development dependencies.
+For development, run `gem install --dev ./talon_one_sdk-99.99.98.gem` to install the development dependencies.
 
 ### RubyGems
 
@@ -1106,6 +1106,7 @@ Class | Method | HTTP request | Description
 - [TalonOne::NewReturn](docs/NewReturn.md)
 - [TalonOne::NewRevisionVersion](docs/NewRevisionVersion.md)
 - [TalonOne::NewReward](docs/NewReward.md)
+- [TalonOne::NewRewardBudget](docs/NewRewardBudget.md)
 - [TalonOne::NewRiskNotification](docs/NewRiskNotification.md)
 - [TalonOne::NewRole](docs/NewRole.md)
 - [TalonOne::NewRoleV2](docs/NewRoleV2.md)
@@ -1202,11 +1203,15 @@ Class | Method | HTTP request | Description
 - [TalonOne::RevisionActivationRequest](docs/RevisionActivationRequest.md)
 - [TalonOne::RevisionVersion](docs/RevisionVersion.md)
 - [TalonOne::Reward](docs/Reward.md)
+- [TalonOne::RewardBudget](docs/RewardBudget.md)
+- [TalonOne::RewardBudgetLimitCounter](docs/RewardBudgetLimitCounter.md)
+- [TalonOne::RewardBudgetWithLimitCounter](docs/RewardBudgetWithLimitCounter.md)
 - [TalonOne::RewardCatalogItem](docs/RewardCatalogItem.md)
 - [TalonOne::RewardEligibility](docs/RewardEligibility.md)
 - [TalonOne::RewardEligibilityFailureDetails](docs/RewardEligibilityFailureDetails.md)
 - [TalonOne::RewardPointsRequired](docs/RewardPointsRequired.md)
 - [TalonOne::RewardUnlockRejection](docs/RewardUnlockRejection.md)
+- [TalonOne::RewardWithBudgets](docs/RewardWithBudgets.md)
 - [TalonOne::RewardWithUnlocks](docs/RewardWithUnlocks.md)
 - [TalonOne::Risk](docs/Risk.md)
 - [TalonOne::RiskAffectedEntityItem](docs/RiskAffectedEntityItem.md)
@@ -1375,6 +1380,7 @@ Class | Method | HTTP request | Description
 - [TalonOne::UpdateReferral](docs/UpdateReferral.md)
 - [TalonOne::UpdateReferralBatch](docs/UpdateReferralBatch.md)
 - [TalonOne::UpdateReward](docs/UpdateReward.md)
+- [TalonOne::UpdateRewardBudget](docs/UpdateRewardBudget.md)
 - [TalonOne::UpdateRiskNotification](docs/UpdateRiskNotification.md)
 - [TalonOne::UpdateRole](docs/UpdateRole.md)
 - [TalonOne::UpdateStore](docs/UpdateStore.md)

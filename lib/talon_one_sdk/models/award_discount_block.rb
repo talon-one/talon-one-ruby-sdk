@@ -34,6 +34,9 @@ module TalonOne
 
     attr_accessor :target
 
+    # When set to `true`, the applied discount is excluded from the item's [price history](https://docs.talon.one/docs/dev/integration-guides/best-prior-price#price-history).
+    attr_accessor :excluded_from_price_history
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -43,7 +46,8 @@ module TalonOne
         :'name' => :'name',
         :'value' => :'value',
         :'partial' => :'partial',
-        :'target' => :'target'
+        :'target' => :'target',
+        :'excluded_from_price_history' => :'excludedFromPriceHistory'
       }
     end
 
@@ -66,7 +70,8 @@ module TalonOne
         :'name' => :'String',
         :'value' => :'AwardDiscountBlock1Value',
         :'partial' => :'Boolean',
-        :'target' => :'AwardDiscountTarget'
+        :'target' => :'AwardDiscountTarget',
+        :'excluded_from_price_history' => :'Boolean'
       }
     end
 
@@ -147,6 +152,10 @@ module TalonOne
         self.target = attributes[:'target']
       else
         self.target = nil
+      end
+
+      if attributes.key?(:'excluded_from_price_history')
+        self.excluded_from_price_history = attributes[:'excluded_from_price_history']
       end
     end
 
@@ -251,7 +260,8 @@ module TalonOne
           name == o.name &&
           value == o.value &&
           partial == o.partial &&
-          target == o.target
+          target == o.target &&
+          excluded_from_price_history == o.excluded_from_price_history
     end
 
     # @see the `==` method
@@ -263,7 +273,7 @@ module TalonOne
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, type, tags, name, value, partial, target].hash
+      [id, type, tags, name, value, partial, target, excluded_from_price_history].hash
     end
 
     # Builds the object from hash
