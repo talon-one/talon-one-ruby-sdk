@@ -6,7 +6,7 @@
 | ---- | ---- | ----------- | ----- |
 | **start_date** | **Time** | Timestamp at which point the referral code becomes valid. | [optional] |
 | **expiry_date** | **Time** | Expiration date of the referral code. Referral never expires if this is omitted. | [optional] |
-| **usage_limit** | **Integer** | The number of times a referral code can be used. &#x60;0&#x60; means no limit but any campaign usage limits will still apply.  | [optional] |
+| **usage_limit** | **Integer** | The number of times a referral code can be used. &#x60;0&#x60; means no limit but any campaign usage limits will still apply.  |  |
 | **campaign_id** | **Integer** | The ID of the campaign from which the referral received the referral code. |  |
 | **advocate_profile_integration_ids** | **Array&lt;String&gt;** | An array containing all the respective advocate profiles. |  |
 | **attributes** | **Object** | Arbitrary properties associated with this referral code. | [optional] |

@@ -16,13 +16,13 @@ require 'time'
 module TalonOne
   # The properties for a single filtering condition in a catalog sync action.
   class CatalogActionFilter < ApiModelBase
-    # The name of the attribute to filter on.
+    # The name of the attribute to filter on. The attribute must exist in the catalog. For the `LT`, `LE`, `GT`, and `GE` comparison operators, the attribute must be of type `number`.
     attr_accessor :attr
 
     # The filtering operator.
     attr_accessor :op
 
-    # The value to filter for.
+    # The value to filter for. For the `LT`, `LE`, `GT`, and `GE` comparison operators, the value must be a number or a numeric string.
     attr_accessor :value
 
     class EnumAttributeValidator

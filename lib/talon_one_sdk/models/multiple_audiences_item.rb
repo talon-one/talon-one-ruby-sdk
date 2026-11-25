@@ -155,6 +155,8 @@ module TalonOne
 
       if attributes.key?(:'integration_id')
         self.integration_id = attributes[:'integration_id']
+      else
+        self.integration_id = nil
       end
 
       if attributes.key?(:'status')
@@ -185,11 +187,15 @@ module TalonOne
         invalid_properties.push('invalid value for "name", the character length must be greater than or equal to 1.')
       end
 
-      if !@integration_id.nil? && @integration_id.to_s.length > 1000
+      if @integration_id.nil?
+        invalid_properties.push('invalid value for "integration_id", integration_id cannot be nil.')
+      end
+
+      if @integration_id.to_s.length > 1000
         invalid_properties.push('invalid value for "integration_id", the character length must be smaller than or equal to 1000.')
       end
 
-      if !@integration_id.nil? && @integration_id.to_s.length < 1
+      if @integration_id.to_s.length < 1
         invalid_properties.push('invalid value for "integration_id", the character length must be greater than or equal to 1.')
       end
 
@@ -208,8 +214,9 @@ module TalonOne
       return false if @created.nil?
       return false if @name.nil?
       return false if @name.to_s.length < 1
-      return false if !@integration_id.nil? && @integration_id.to_s.length > 1000
-      return false if !@integration_id.nil? && @integration_id.to_s.length < 1
+      return false if @integration_id.nil?
+      return false if @integration_id.to_s.length > 1000
+      return false if @integration_id.to_s.length < 1
       return false if @status.nil?
       status_validator = EnumAttributeValidator.new('String', ["unmodified", "updated", "new"])
       return false unless status_validator.valid?(@status)

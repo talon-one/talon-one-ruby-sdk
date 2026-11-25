@@ -126,6 +126,8 @@ module TalonOne
 
       if attributes.key?(:'usage_limit')
         self.usage_limit = attributes[:'usage_limit']
+      else
+        self.usage_limit = nil
       end
 
       if attributes.key?(:'campaign_id')
@@ -162,11 +164,15 @@ module TalonOne
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
-      if !@usage_limit.nil? && @usage_limit > 999999
+      if @usage_limit.nil?
+        invalid_properties.push('invalid value for "usage_limit", usage_limit cannot be nil.')
+      end
+
+      if @usage_limit > 999999
         invalid_properties.push('invalid value for "usage_limit", must be smaller than or equal to 999999.')
       end
 
-      if !@usage_limit.nil? && @usage_limit < 0
+      if @usage_limit < 0
         invalid_properties.push('invalid value for "usage_limit", must be greater than or equal to 0.')
       end
 
@@ -201,8 +207,9 @@ module TalonOne
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
-      return false if !@usage_limit.nil? && @usage_limit > 999999
-      return false if !@usage_limit.nil? && @usage_limit < 0
+      return false if @usage_limit.nil?
+      return false if @usage_limit > 999999
+      return false if @usage_limit < 0
       return false if @campaign_id.nil?
       return false if @advocate_profile_integration_ids.nil?
       return false if @advocate_profile_integration_ids.length > 1000

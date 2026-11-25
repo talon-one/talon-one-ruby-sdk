@@ -165,6 +165,12 @@ describe TalonOne::RiskDetail do
     end
   end
 
+  describe 'test attribute "application_name"' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
   describe 'test attribute "affected_entities"' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/

@@ -11,6 +11,7 @@
 | **response_types_supported** | **Array&lt;String&gt;** | List of supported OAuth2 response types. |  |
 | **grant_types_supported** | **Array&lt;String&gt;** | List of supported OAuth2 grant types. |  |
 | **code_challenge_methods_supported** | **Array&lt;String&gt;** | List of supported PKCE code challenge methods. |  |
+| **token_endpoint_auth_methods_supported** | **Array&lt;String&gt;** | List of supported client authentication methods at the token endpoint. Public clients use &#x60;none&#x60;; confidential clients use &#x60;client_secret_post&#x60; or &#x60;client_secret_basic&#x60;. | [optional] |
 
 ## Example
 
@@ -24,7 +25,8 @@ instance = TalonOne::MCPOAuthServerMetadata.new(
   registration_endpoint: https://mycompany.talon.one/v1/mcp/auth/register,
   response_types_supported: [&quot;code&quot;],
   grant_types_supported: [&quot;authorization_code&quot;],
-  code_challenge_methods_supported: [&quot;S256&quot;]
+  code_challenge_methods_supported: [&quot;S256&quot;],
+  token_endpoint_auth_methods_supported: [&quot;none&quot;,&quot;client_secret_post&quot;,&quot;client_secret_basic&quot;]
 )
 ```
 

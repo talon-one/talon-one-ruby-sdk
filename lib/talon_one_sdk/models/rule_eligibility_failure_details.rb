@@ -16,7 +16,7 @@ require 'time'
 module TalonOne
   # The details about why the customer was not eligible for the rule in the current session.
   class RuleEligibilityFailureDetails < ApiModelBase
-    # A code identifying why the customer was not eligible for the rule in the current session.
+    # A code identifying why the customer was not eligible for the rule in the current session.  - `CONDITION_NOT_MET`: One or more conditions of the rule did not evaluate  to `true` for the customer.  - `EFFECT_FAILED`: The conditions of the rule were met but one of its effects  could not be applied. 
     attr_accessor :failure_code
 
     # The ID of the coupon that was being evaluated when the rule failed. 

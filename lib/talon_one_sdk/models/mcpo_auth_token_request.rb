@@ -24,6 +24,9 @@ module TalonOne
     # Client ID. Required for `authorization_code` grant.
     attr_accessor :client_id
 
+    # Client secret for confidential (static) clients. May also be supplied via HTTP Basic authentication. Public clients registered via dynamic client registration omit it.
+    attr_accessor :client_secret
+
     # Redirect URI. Required for `authorization_code` grant.
     attr_accessor :redirect_uri
 
@@ -61,6 +64,7 @@ module TalonOne
         :'grant_type' => :'grant_type',
         :'code' => :'code',
         :'client_id' => :'client_id',
+        :'client_secret' => :'client_secret',
         :'redirect_uri' => :'redirect_uri',
         :'code_verifier' => :'code_verifier',
         :'refresh_token' => :'refresh_token'
@@ -83,6 +87,7 @@ module TalonOne
         :'grant_type' => :'String',
         :'code' => :'String',
         :'client_id' => :'String',
+        :'client_secret' => :'String',
         :'redirect_uri' => :'String',
         :'code_verifier' => :'String',
         :'refresh_token' => :'String'
@@ -133,6 +138,10 @@ module TalonOne
 
       if attributes.key?(:'client_id')
         self.client_id = attributes[:'client_id']
+      end
+
+      if attributes.key?(:'client_secret')
+        self.client_secret = attributes[:'client_secret']
       end
 
       if attributes.key?(:'redirect_uri')
@@ -188,6 +197,7 @@ module TalonOne
           grant_type == o.grant_type &&
           code == o.code &&
           client_id == o.client_id &&
+          client_secret == o.client_secret &&
           redirect_uri == o.redirect_uri &&
           code_verifier == o.code_verifier &&
           refresh_token == o.refresh_token
@@ -202,7 +212,7 @@ module TalonOne
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [grant_type, code, client_id, redirect_uri, code_verifier, refresh_token].hash
+      [grant_type, code, client_id, client_secret, redirect_uri, code_verifier, refresh_token].hash
     end
 
     # Builds the object from hash

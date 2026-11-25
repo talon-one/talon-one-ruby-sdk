@@ -211,10 +211,14 @@ module TalonOne
 
       if attributes.key?(:'value')
         self.value = attributes[:'value']
+      else
+        self.value = nil
       end
 
       if attributes.key?(:'usage_limit')
         self.usage_limit = attributes[:'usage_limit']
+      else
+        self.usage_limit = nil
       end
 
       if attributes.key?(:'discount_limit')
@@ -317,15 +321,23 @@ module TalonOne
         invalid_properties.push('invalid value for "campaign_id", campaign_id cannot be nil.')
       end
 
-      if !@value.nil? && @value.to_s.length < 4
+      if @value.nil?
+        invalid_properties.push('invalid value for "value", value cannot be nil.')
+      end
+
+      if @value.to_s.length < 4
         invalid_properties.push('invalid value for "value", the character length must be greater than or equal to 4.')
       end
 
-      if !@usage_limit.nil? && @usage_limit > 999999
+      if @usage_limit.nil?
+        invalid_properties.push('invalid value for "usage_limit", usage_limit cannot be nil.')
+      end
+
+      if @usage_limit > 999999
         invalid_properties.push('invalid value for "usage_limit", must be smaller than or equal to 999999.')
       end
 
-      if !@usage_limit.nil? && @usage_limit < 0
+      if @usage_limit < 0
         invalid_properties.push('invalid value for "usage_limit", must be greater than or equal to 0.')
       end
 
@@ -367,9 +379,11 @@ module TalonOne
       return false if @id.nil?
       return false if @created.nil?
       return false if @campaign_id.nil?
-      return false if !@value.nil? && @value.to_s.length < 4
-      return false if !@usage_limit.nil? && @usage_limit > 999999
-      return false if !@usage_limit.nil? && @usage_limit < 0
+      return false if @value.nil?
+      return false if @value.to_s.length < 4
+      return false if @usage_limit.nil?
+      return false if @usage_limit > 999999
+      return false if @usage_limit < 0
       return false if !@discount_limit.nil? && @discount_limit > 1000000000000000
       return false if !@discount_limit.nil? && @discount_limit < 0
       return false if !@reservation_limit.nil? && @reservation_limit > 999999

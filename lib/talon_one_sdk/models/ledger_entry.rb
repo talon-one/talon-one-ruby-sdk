@@ -141,6 +141,8 @@ module TalonOne
 
       if attributes.key?(:'profile_id')
         self.profile_id = attributes[:'profile_id']
+      else
+        self.profile_id = nil
       end
 
       if attributes.key?(:'account_id')
@@ -197,6 +199,10 @@ module TalonOne
         invalid_properties.push('invalid value for "created", created cannot be nil.')
       end
 
+      if @profile_id.nil?
+        invalid_properties.push('invalid value for "profile_id", profile_id cannot be nil.')
+      end
+
       if @account_id.nil?
         invalid_properties.push('invalid value for "account_id", account_id cannot be nil.')
       end
@@ -230,6 +236,7 @@ module TalonOne
       warn '[DEPRECATED] the `valid?` method is obsolete'
       return false if @id.nil?
       return false if @created.nil?
+      return false if @profile_id.nil?
       return false if @account_id.nil?
       return false if @loyalty_program_id.nil?
       return false if @event_id.nil?
@@ -257,6 +264,16 @@ module TalonOne
       end
 
       @created = created
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] profile_id Value to be assigned
+    def profile_id=(profile_id)
+      if profile_id.nil?
+        fail ArgumentError, 'profile_id cannot be nil'
+      end
+
+      @profile_id = profile_id
     end
 
     # Custom attribute writer method with validation

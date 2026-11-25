@@ -54,6 +54,9 @@ module TalonOne
     # The required number of actions or the transactional milestone to complete the achievement.
     attr_accessor :target
 
+    # The relative duration after which the achievement ends and resets for a particular customer profile. This property is omitted for on-completion achievements which have no specified period.  The period is a positive real number followed by one letter indicating the time unit, and an optional rounding suffix.  Examples: `30s`, `40m`, `1h`, `5D`, `7W`, `10M`, `15Y`, `30D_D`, `1W_U`.  The letters indicate the following time units:  - `s`: Seconds.  - `m`: Minutes.  - `h`: Hours.  - `D`: Days.  - `W`: Weeks.  - `M`: Months.  - `Y`: Years.  If a suffix is present, it indicates the following rounding:  - `_D`: Rounds down, to the start of the day. It applies to days only. For example, `30D_D` ends at the start of the day, 30 days after the customer starts the achievement.  - `_U`: Rounds up, to the end of the day, week, month or year. It applies to days, weeks, months and years. For example, `1W_U` ends at the end of the week in which the one-week period would end. 
+    attr_accessor :achievement_period
+
     # The policy that determines if and how the achievement recurs. - `no_recurrence`: The achievement can be completed only once. - `on_expiration`: The achievement resets after it expires and becomes available again. - `on_completion`: When the customer progress status reaches `completed`, the achievement resets and becomes available again. 
     attr_accessor :achievement_recurrence_policy
 
@@ -107,6 +110,7 @@ module TalonOne
         :'campaign_ids' => :'campaignIds',
         :'referenced_by_campaigns' => :'referencedByCampaigns',
         :'target' => :'target',
+        :'achievement_period' => :'achievementPeriod',
         :'achievement_recurrence_policy' => :'achievementRecurrencePolicy',
         :'achievement_activation_policy' => :'achievementActivationPolicy',
         :'achievement_fixed_start_date' => :'achievementFixedStartDate',
@@ -141,6 +145,7 @@ module TalonOne
         :'campaign_ids' => :'Array<Integer>',
         :'referenced_by_campaigns' => :'Array<CampaignReference>',
         :'target' => :'Float',
+        :'achievement_period' => :'String',
         :'achievement_recurrence_policy' => :'String',
         :'achievement_activation_policy' => :'String',
         :'achievement_fixed_start_date' => :'Time',
@@ -258,6 +263,10 @@ module TalonOne
 
       if attributes.key?(:'target')
         self.target = attributes[:'target']
+      end
+
+      if attributes.key?(:'achievement_period')
+        self.achievement_period = attributes[:'achievement_period']
       end
 
       if attributes.key?(:'achievement_recurrence_policy')
@@ -503,6 +512,7 @@ module TalonOne
           campaign_ids == o.campaign_ids &&
           referenced_by_campaigns == o.referenced_by_campaigns &&
           target == o.target &&
+          achievement_period == o.achievement_period &&
           achievement_recurrence_policy == o.achievement_recurrence_policy &&
           achievement_activation_policy == o.achievement_activation_policy &&
           achievement_fixed_start_date == o.achievement_fixed_start_date &&
@@ -519,7 +529,7 @@ module TalonOne
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [status, progress, start_date, completion_date, end_date, achievement_id, name, title, description, campaign_id, campaign_ids, referenced_by_campaigns, target, achievement_recurrence_policy, achievement_activation_policy, achievement_fixed_start_date, achievement_end_date, achievement_allow_rollback_after_completion].hash
+      [status, progress, start_date, completion_date, end_date, achievement_id, name, title, description, campaign_id, campaign_ids, referenced_by_campaigns, target, achievement_period, achievement_recurrence_policy, achievement_activation_policy, achievement_fixed_start_date, achievement_end_date, achievement_allow_rollback_after_completion].hash
     end
 
     # Builds the object from hash

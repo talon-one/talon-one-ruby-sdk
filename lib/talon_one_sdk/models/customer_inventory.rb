@@ -26,9 +26,10 @@ module TalonOne
 
     attr_accessor :giveaways
 
+    # The customer's progress in each achievement they have participated in.  Only achievements the customer has started are included, whether they  are in progress, completed, or expired. Recurring achievements can appear  more than once, once per iteration. 
     attr_accessor :achievements
 
-    # The customer rewards that are `unlocked` and not yet `used`.
+    # The rewards that the customer has unlocked but not used. Expired customer rewards are not returned.
     attr_accessor :rewards
 
     # Attribute mapping from ruby-style variable name to JSON key.

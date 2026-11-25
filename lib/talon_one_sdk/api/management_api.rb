@@ -1073,7 +1073,8 @@ module TalonOne
     # @param campaign_id [Integer] The ID of the campaign. It is displayed in your Talon.One deployment URL.
     # @param new_coupons [NewCoupons] body
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :silent Possible values: &#x60;yes&#x60; or &#x60;no&#x60;. - &#x60;yes&#x60;: Increases the performance of the API call by returning a 204 response. - &#x60;no&#x60;: Returns a 200 response that contains the updated customer profiles.  (default to 'yes')
+    # @option opts [String] :silent Possible values: &#x60;yes&#x60; or &#x60;no&#x60;. - &#x60;yes&#x60;: Increases the performance of the API call by returning a 204 response. Requires &#x60;full&#x60; to be &#x60;no&#x60;; otherwise a 400 error is returned. - &#x60;no&#x60;: Returns a 200 response that contains the created coupons.  (default to 'no')
+    # @option opts [String] :full Possible values: &#x60;yes&#x60; or &#x60;no&#x60;. - &#x60;yes&#x60;: Returns all created coupons. Requires &#x60;silent&#x60; to be &#x60;no&#x60;; otherwise a 400 error is returned. - &#x60;no&#x60;: Returns at most 1000 created coupons.  (default to 'no')
     # @return [CreateCoupons200Response]
     def create_coupons(application_id, campaign_id, new_coupons, opts = {})
       data, _status_code, _headers = create_coupons_with_http_info(application_id, campaign_id, new_coupons, opts)
@@ -1086,7 +1087,8 @@ module TalonOne
     # @param campaign_id [Integer] The ID of the campaign. It is displayed in your Talon.One deployment URL.
     # @param new_coupons [NewCoupons] body
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :silent Possible values: &#x60;yes&#x60; or &#x60;no&#x60;. - &#x60;yes&#x60;: Increases the performance of the API call by returning a 204 response. - &#x60;no&#x60;: Returns a 200 response that contains the updated customer profiles.  (default to 'yes')
+    # @option opts [String] :silent Possible values: &#x60;yes&#x60; or &#x60;no&#x60;. - &#x60;yes&#x60;: Increases the performance of the API call by returning a 204 response. Requires &#x60;full&#x60; to be &#x60;no&#x60;; otherwise a 400 error is returned. - &#x60;no&#x60;: Returns a 200 response that contains the created coupons.  (default to 'no')
+    # @option opts [String] :full Possible values: &#x60;yes&#x60; or &#x60;no&#x60;. - &#x60;yes&#x60;: Returns all created coupons. Requires &#x60;silent&#x60; to be &#x60;no&#x60;; otherwise a 400 error is returned. - &#x60;no&#x60;: Returns at most 1000 created coupons.  (default to 'no')
     # @return [Array<(CreateCoupons200Response, Integer, Hash)>] CreateCoupons200Response data, response status code and response headers
     def create_coupons_with_http_info(application_id, campaign_id, new_coupons, opts = {})
       if @api_client.config.debugging
@@ -1110,6 +1112,7 @@ module TalonOne
       # query parameters
       query_params = opts[:query_params] || {}
       query_params[:'silent'] = opts[:'silent'] if !opts[:'silent'].nil?
+      query_params[:'full'] = opts[:'full'] if !opts[:'full'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}

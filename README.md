@@ -16,7 +16,7 @@ See our [migration guide](MIGRATION.md).
 Add this to the Gemfile:
 
 ```shell
-gem 'talon_one_sdk', '~> 26.23.0'
+gem 'talon_one_sdk', '~> 26.24.0'
 ```
 
 ### Build a gem
@@ -32,10 +32,10 @@ gem build talon_one_sdk.gemspec
 To install the gem locally:
 
 ```shell
-gem install ./talon_one_sdk-26.23.0.gem
+gem install ./talon_one_sdk-26.24.0.gem
 ```
 
-For development, run `gem install --dev ./talon_one_sdk-26.23.0.gem` to install the development dependencies.
+For development, run `gem install --dev ./talon_one_sdk-26.24.0.gem` to install the development dependencies.
 
 ### RubyGems
 
@@ -617,6 +617,7 @@ Class | Method | HTTP request | Description
 - [TalonOne::CatalogActionRemove](docs/CatalogActionRemove.md)
 - [TalonOne::CatalogActionRemoveMany](docs/CatalogActionRemoveMany.md)
 - [TalonOne::CatalogItem](docs/CatalogItem.md)
+- [TalonOne::CatalogItemSummary](docs/CatalogItemSummary.md)
 - [TalonOne::CatalogRule](docs/CatalogRule.md)
 - [TalonOne::CatalogRuleset](docs/CatalogRuleset.md)
 - [TalonOne::CatalogSyncRequest](docs/CatalogSyncRequest.md)
@@ -807,6 +808,12 @@ Class | Method | HTTP request | Description
 - [TalonOne::ExpiringCardPointsData](docs/ExpiringCardPointsData.md)
 - [TalonOne::ExpiringPointsData](docs/ExpiringPointsData.md)
 - [TalonOne::Export](docs/Export.md)
+- [TalonOne::ExportJob](docs/ExportJob.md)
+- [TalonOne::ExportJobDestination](docs/ExportJobDestination.md)
+- [TalonOne::ExportJobLog](docs/ExportJobLog.md)
+- [TalonOne::ExportJobLogResult](docs/ExportJobLogResult.md)
+- [TalonOne::ExportJobStatus](docs/ExportJobStatus.md)
+- [TalonOne::ExportJobType](docs/ExportJobType.md)
 - [TalonOne::ExtendLoyaltyPointsExpiryDateEffectProps](docs/ExtendLoyaltyPointsExpiryDateEffectProps.md)
 - [TalonOne::ExtendedCoupon](docs/ExtendedCoupon.md)
 - [TalonOne::FeatureFlag](docs/FeatureFlag.md)
@@ -1080,6 +1087,7 @@ Class | Method | HTTP request | Description
 - [TalonOne::NewExperimentBlueprint](docs/NewExperimentBlueprint.md)
 - [TalonOne::NewExperimentVariant](docs/NewExperimentVariant.md)
 - [TalonOne::NewExperimentVariantArray](docs/NewExperimentVariantArray.md)
+- [TalonOne::NewExportJob](docs/NewExportJob.md)
 - [TalonOne::NewExternalInvitation](docs/NewExternalInvitation.md)
 - [TalonOne::NewGiveawaysPool](docs/NewGiveawaysPool.md)
 - [TalonOne::NewIntegrationHubCoupons](docs/NewIntegrationHubCoupons.md)
@@ -1106,6 +1114,7 @@ Class | Method | HTTP request | Description
 - [TalonOne::NewReturn](docs/NewReturn.md)
 - [TalonOne::NewRevisionVersion](docs/NewRevisionVersion.md)
 - [TalonOne::NewReward](docs/NewReward.md)
+- [TalonOne::NewRewardBudget](docs/NewRewardBudget.md)
 - [TalonOne::NewRiskNotification](docs/NewRiskNotification.md)
 - [TalonOne::NewRole](docs/NewRole.md)
 - [TalonOne::NewRoleV2](docs/NewRoleV2.md)
@@ -1202,11 +1211,15 @@ Class | Method | HTTP request | Description
 - [TalonOne::RevisionActivationRequest](docs/RevisionActivationRequest.md)
 - [TalonOne::RevisionVersion](docs/RevisionVersion.md)
 - [TalonOne::Reward](docs/Reward.md)
+- [TalonOne::RewardBudget](docs/RewardBudget.md)
+- [TalonOne::RewardBudgetLimitCounter](docs/RewardBudgetLimitCounter.md)
+- [TalonOne::RewardBudgetWithLimitCounter](docs/RewardBudgetWithLimitCounter.md)
 - [TalonOne::RewardCatalogItem](docs/RewardCatalogItem.md)
 - [TalonOne::RewardEligibility](docs/RewardEligibility.md)
 - [TalonOne::RewardEligibilityFailureDetails](docs/RewardEligibilityFailureDetails.md)
 - [TalonOne::RewardPointsRequired](docs/RewardPointsRequired.md)
 - [TalonOne::RewardUnlockRejection](docs/RewardUnlockRejection.md)
+- [TalonOne::RewardWithBudgets](docs/RewardWithBudgets.md)
 - [TalonOne::RewardWithUnlocks](docs/RewardWithUnlocks.md)
 - [TalonOne::Risk](docs/Risk.md)
 - [TalonOne::RiskAffectedEntityItem](docs/RiskAffectedEntityItem.md)
@@ -1364,17 +1377,21 @@ Class | Method | HTTP request | Description
 - [TalonOne::UpdateExperimentVariant](docs/UpdateExperimentVariant.md)
 - [TalonOne::UpdateExperimentVariantArray](docs/UpdateExperimentVariantArray.md)
 - [TalonOne::UpdateExperimentVariantName](docs/UpdateExperimentVariantName.md)
+- [TalonOne::UpdateExportJob](docs/UpdateExportJob.md)
 - [TalonOne::UpdateLoyaltyCard](docs/UpdateLoyaltyCard.md)
 - [TalonOne::UpdateLoyaltyCardRequest](docs/UpdateLoyaltyCardRequest.md)
 - [TalonOne::UpdateLoyaltyPointsExpiryBlock](docs/UpdateLoyaltyPointsExpiryBlock.md)
 - [TalonOne::UpdateLoyaltyPointsExpiryBlock1Program](docs/UpdateLoyaltyPointsExpiryBlock1Program.md)
 - [TalonOne::UpdateLoyaltyProgram](docs/UpdateLoyaltyProgram.md)
+- [TalonOne::UpdateLoyaltyProgramMembershipBlock](docs/UpdateLoyaltyProgramMembershipBlock.md)
+- [TalonOne::UpdateLoyaltyProgramMembershipBlock1Program](docs/UpdateLoyaltyProgramMembershipBlock1Program.md)
 - [TalonOne::UpdateLoyaltyProgramTier](docs/UpdateLoyaltyProgramTier.md)
 - [TalonOne::UpdatePicklist](docs/UpdatePicklist.md)
 - [TalonOne::UpdatePriceType](docs/UpdatePriceType.md)
 - [TalonOne::UpdateReferral](docs/UpdateReferral.md)
 - [TalonOne::UpdateReferralBatch](docs/UpdateReferralBatch.md)
 - [TalonOne::UpdateReward](docs/UpdateReward.md)
+- [TalonOne::UpdateRewardBudget](docs/UpdateRewardBudget.md)
 - [TalonOne::UpdateRiskNotification](docs/UpdateRiskNotification.md)
 - [TalonOne::UpdateRole](docs/UpdateRole.md)
 - [TalonOne::UpdateStore](docs/UpdateStore.md)

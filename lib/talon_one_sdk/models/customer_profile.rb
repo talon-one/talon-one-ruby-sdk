@@ -155,6 +155,8 @@ module TalonOne
         if (value = attributes[:'attributes']).is_a?(Hash)
           self.attributes = value
         end
+      else
+        self.attributes = nil
       end
 
       if attributes.key?(:'account_id')
@@ -219,6 +221,10 @@ module TalonOne
         invalid_properties.push('invalid value for "integration_id", the character length must be smaller than or equal to 1000.')
       end
 
+      if @attributes.nil?
+        invalid_properties.push('invalid value for "attributes", attributes cannot be nil.')
+      end
+
       if @account_id.nil?
         invalid_properties.push('invalid value for "account_id", account_id cannot be nil.')
       end
@@ -246,6 +252,7 @@ module TalonOne
       return false if @created.nil?
       return false if @integration_id.nil?
       return false if @integration_id.to_s.length > 1000
+      return false if @attributes.nil?
       return false if @account_id.nil?
       return false if @closed_sessions.nil?
       return false if @total_sales.nil?
@@ -285,6 +292,16 @@ module TalonOne
       end
 
       @integration_id = integration_id
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] attributes Value to be assigned
+    def attributes=(attributes)
+      if attributes.nil?
+        fail ArgumentError, 'attributes cannot be nil'
+      end
+
+      @attributes = attributes
     end
 
     # Custom attribute writer method with validation

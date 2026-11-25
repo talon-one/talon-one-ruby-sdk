@@ -666,7 +666,7 @@ TalonOne.configure do |config|
 end
 
 api_instance = TalonOne::ManagementApi.new
-create_achievement_v2 = TalonOne::CreateAchievementV2.new({sandbox: true, timezone: 'Europe/Berlin'}) # CreateAchievementV2 | body
+create_achievement_v2 = TalonOne::CreateAchievementV2.new({name: 'Order50Discount', title: '50% off on 50th purchase.', description: '50% off for every 50th purchase in a year.', target: 50, sandbox: true, timezone: 'Europe/Berlin'}) # CreateAchievementV2 | body
 
 begin
   # Create achievement
@@ -1249,9 +1249,10 @@ end
 api_instance = TalonOne::ManagementApi.new
 application_id = 789 # Integer | The ID of the Application. It is displayed in your Talon.One deployment URL.
 campaign_id = 789 # Integer | The ID of the campaign. It is displayed in your Talon.One deployment URL.
-new_coupons = TalonOne::NewCoupons.new({number_of_coupons: 1}) # NewCoupons | body
+new_coupons = TalonOne::NewCoupons.new({usage_limit: 100, number_of_coupons: 1}) # NewCoupons | body
 opts = {
-  silent: 'silent_example' # String | Possible values: `yes` or `no`. - `yes`: Increases the performance of the API call by returning a 204 response. - `no`: Returns a 200 response that contains the updated customer profiles. 
+  silent: 'silent_example', # String | Possible values: `yes` or `no`. - `yes`: Increases the performance of the API call by returning a 204 response. Requires `full` to be `no`; otherwise a 400 error is returned. - `no`: Returns a 200 response that contains the created coupons. 
+  full: 'full_example' # String | Possible values: `yes` or `no`. - `yes`: Returns all created coupons. Requires `silent` to be `no`; otherwise a 400 error is returned. - `no`: Returns at most 1000 created coupons. 
 }
 
 begin
@@ -1288,7 +1289,8 @@ end
 | **application_id** | **Integer** | The ID of the Application. It is displayed in your Talon.One deployment URL. |  |
 | **campaign_id** | **Integer** | The ID of the campaign. It is displayed in your Talon.One deployment URL. |  |
 | **new_coupons** | [**NewCoupons**](NewCoupons.md) | body |  |
-| **silent** | **String** | Possible values: &#x60;yes&#x60; or &#x60;no&#x60;. - &#x60;yes&#x60;: Increases the performance of the API call by returning a 204 response. - &#x60;no&#x60;: Returns a 200 response that contains the updated customer profiles.  | [optional][default to &#39;yes&#39;] |
+| **silent** | **String** | Possible values: &#x60;yes&#x60; or &#x60;no&#x60;. - &#x60;yes&#x60;: Increases the performance of the API call by returning a 204 response. Requires &#x60;full&#x60; to be &#x60;no&#x60;; otherwise a 400 error is returned. - &#x60;no&#x60;: Returns a 200 response that contains the created coupons.  | [optional][default to &#39;no&#39;] |
+| **full** | **String** | Possible values: &#x60;yes&#x60; or &#x60;no&#x60;. - &#x60;yes&#x60;: Returns all created coupons. Requires &#x60;silent&#x60; to be &#x60;no&#x60;; otherwise a 400 error is returned. - &#x60;no&#x60;: Returns at most 1000 created coupons.  | [optional][default to &#39;no&#39;] |
 
 ### Return type
 
@@ -1328,7 +1330,7 @@ end
 api_instance = TalonOne::ManagementApi.new
 application_id = 789 # Integer | The ID of the Application. It is displayed in your Talon.One deployment URL.
 campaign_id = 789 # Integer | The ID of the campaign. It is displayed in your Talon.One deployment URL.
-new_coupon_creation_job = TalonOne::NewCouponCreationJob.new({number_of_coupons: 200000, attributes: 3.56}) # NewCouponCreationJob | body
+new_coupon_creation_job = TalonOne::NewCouponCreationJob.new({usage_limit: 100, number_of_coupons: 200000, attributes: 3.56}) # NewCouponCreationJob | body
 
 begin
   # Create coupons asynchronously
@@ -1478,7 +1480,7 @@ end
 api_instance = TalonOne::ManagementApi.new
 application_id = 789 # Integer | The ID of the Application. It is displayed in your Talon.One deployment URL.
 campaign_id = 789 # Integer | The ID of the campaign. It is displayed in your Talon.One deployment URL.
-new_coupons_for_multiple_recipients = TalonOne::NewCouponsForMultipleRecipients.new({recipients_integration_ids: [URNGV8294NV,  BZGGC2454PA]}) # NewCouponsForMultipleRecipients | body
+new_coupons_for_multiple_recipients = TalonOne::NewCouponsForMultipleRecipients.new({usage_limit: 100, recipients_integration_ids: [URNGV8294NV,  BZGGC2454PA]}) # NewCouponsForMultipleRecipients | body
 opts = {
   silent: 'silent_example' # String | Possible values: `yes` or `no`. - `yes`: Increases the performance of the API call by returning a 204 response. - `no`: Returns a 200 response that contains the updated customer profiles. 
 }
