@@ -159,10 +159,14 @@ module TalonOne
 
       if attributes.key?(:'description')
         self.description = attributes[:'description']
+      else
+        self.description = nil
       end
 
       if attributes.key?(:'help')
         self.help = attributes[:'help']
+      else
+        self.help = nil
       end
 
       if attributes.key?(:'category')
@@ -225,6 +229,14 @@ module TalonOne
         invalid_properties.push('invalid value for "title", the character length must be greater than or equal to 1.')
       end
 
+      if @description.nil?
+        invalid_properties.push('invalid value for "description", description cannot be nil.')
+      end
+
+      if @help.nil?
+        invalid_properties.push('invalid value for "help", help cannot be nil.')
+      end
+
       if @category.nil?
         invalid_properties.push('invalid value for "category", category cannot be nil.')
       end
@@ -261,6 +273,8 @@ module TalonOne
       return false if @application_id.nil?
       return false if @title.nil?
       return false if @title.to_s.length < 1
+      return false if @description.nil?
+      return false if @help.nil?
       return false if @category.nil?
       return false if @category.to_s.length < 1
       return false if @expr.nil?
@@ -312,6 +326,26 @@ module TalonOne
       end
 
       @title = title
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] description Value to be assigned
+    def description=(description)
+      if description.nil?
+        fail ArgumentError, 'description cannot be nil'
+      end
+
+      @description = description
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] help Value to be assigned
+    def help=(help)
+      if help.nil?
+        fail ArgumentError, 'help cannot be nil'
+      end
+
+      @help = help
     end
 
     # Custom attribute writer method with validation

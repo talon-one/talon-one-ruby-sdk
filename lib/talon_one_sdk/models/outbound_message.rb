@@ -187,6 +187,8 @@ module TalonOne
 
       if attributes.key?(:'request')
         self.request = attributes[:'request']
+      else
+        self.request = nil
       end
 
       if attributes.key?(:'first_log_at')
@@ -235,6 +237,10 @@ module TalonOne
         invalid_properties.push('invalid value for "notification_type", notification_type cannot be nil.')
       end
 
+      if @request.nil?
+        invalid_properties.push('invalid value for "request", request cannot be nil.')
+      end
+
       if @first_log_at.nil?
         invalid_properties.push('invalid value for "first_log_at", first_log_at cannot be nil.')
       end
@@ -256,6 +262,7 @@ module TalonOne
       warn '[DEPRECATED] the `valid?` method is obsolete'
       return false if @uuid.nil?
       return false if @notification_type.nil?
+      return false if @request.nil?
       return false if @first_log_at.nil?
       return false if @last_log_at.nil?
       return false if @status.nil?
@@ -280,6 +287,16 @@ module TalonOne
       end
 
       @notification_type = notification_type
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] request Value to be assigned
+    def request=(request)
+      if request.nil?
+        fail ArgumentError, 'request cannot be nil'
+      end
+
+      @request = request
     end
 
     # Custom attribute writer method with validation

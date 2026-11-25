@@ -203,7 +203,7 @@ describe 'IntegrationApi' do
 
   # unit tests for get_customer_achievements
   # List customer&#39;s available achievements
-  # Retrieve all the achievements available to a given customer and their progress in them. 
+  # Retrieve all the achievements available to a given customer and their progress  in them. Use this endpoint to build an achievements page where customers can  browse the achievements they can participate in and see the details of each one.   The response contains one entry for each active achievement connected to  the Application, whether or not the customer has started it. Each entry  includes the achievement&#39;s details such as &#x60;target&#x60; and &#x60;period&#x60;, and the  customer&#39;s progress in the achievement. If the customer has not started  the achievement, &#x60;currentProgress.status&#x60; is &#x60;not_started&#x60;.   &gt; [!note] The [List customer data](https://docs.talon.one/integration-api#tag/Customer-profiles/operation/getCustomerInventory) &gt; endpoint also returns achievement data when &#x60;achievements&#x3D;true&#x60;, but with a &gt; different scope and structure: &gt; - It returns only the achievements the customer has started, completed, or &gt;  that have expired for them, one entry per progress record. Achievements the &gt;  customer has not started are not returned. &gt; - The results cannot be filtered or paginated. &gt; &gt; Use this endpoint when you need the customer&#39;s achievement progress &gt; together with other customer data, such as loyalty or coupons, in a single request. 
   # @param integration_id The integration identifier for this customer profile. Must be: - Unique within the deployment. - Stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID.  Once set, you cannot update this identifier. 
   # @param [Hash] opts the optional parameters
   # @option opts [Array<String>] :campaign_ids Filter by one or more Campaign IDs, separated by a comma.  **Note:** If no campaigns are specified, data for all the campaigns in the Application is returned. 
@@ -221,7 +221,7 @@ describe 'IntegrationApi' do
 
   # unit tests for get_customer_inventory
   # List customer data
-  # Return the customer inventory regarding entities referencing this customer profile&#39;s &#x60;integrationId&#x60;.  Typical entities returned are: customer profile information, referral codes, loyalty points, loyalty cards and reserved coupons. Reserved coupons also include redeemed coupons. 
+  # Return a snapshot of the customer profile including the entities referencing this customer profile&#39;s &#x60;integrationId&#x60;. Typical entities returned are: customer profile information, referral codes, loyalty points, loyalty cards, reserved coupons and achievements.   &gt; [!note] Reserved coupons also include redeemed coupons.  When &#x60;achievements&#x3D;true&#x60;, the &#x60;achievements&#x60; array contains the customer&#39;s progress  in the achievements they have participated in. Only achievements the customer  has started are returned, whether they are in progress, completed, or expired.   Recurring achievements can appear more than once, once per iteration. The  achievements cannot be filtered or paginated.  &gt; [!note] To list all the achievements available to the customer, including the ones &gt; they have not started, and to filter or paginate the results, use the [List customer&#39;s available achievements](https://docs.talon.one/integration-api#tag/Achievements/operation/getCustomerAchievements) &gt; endpoint. 
   # @param integration_id The integration ID of the customer profile. You can get the &#x60;integrationId&#x60; of a profile using: - A customer session integration ID with the [Update customer session](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/updateCustomerSessionV2) endpoint. - The Management API with the [List application&#39;s customers](https://docs.talon.one/management-api#tag/Customer-data/operation/getApplicationCustomers) endpoint. 
   # @param [Hash] opts the optional parameters
   # @option opts [Boolean] :profile Set to &#x60;true&#x60; to include customer profile information in the response.
@@ -229,8 +229,8 @@ describe 'IntegrationApi' do
   # @option opts [Boolean] :coupons Set to &#x60;true&#x60; to include coupon information in the response.
   # @option opts [Boolean] :loyalty Set to &#x60;true&#x60; to include loyalty information in the response.
   # @option opts [Boolean] :giveaways Set to &#x60;true&#x60; to include giveaways information in the response.
-  # @option opts [Boolean] :achievements Set to &#x60;true&#x60; to include achievement information in the response.
-  # @option opts [Boolean] :unlocked_rewards Set to &#x60;true&#x60; to include &#x60;unlocked&#x60; rewards that have not been &#x60;used&#x60; in the response.
+  # @option opts [Boolean] :achievements Set to &#x60;true&#x60; to include the customer&#39;s progress in achievements in the  response. Only achievements the customer has started are returned, whether  they are in progress, completed, or expired.  Recurring achievements can appear more than once, once per iteration. The  achievements cannot be filtered or paginated. 
+  # @option opts [Boolean] :unlocked_rewards The instances of this reward that the customer has unlocked but not used. Expired customer rewards are not returned.
   # @return [CustomerInventory]
   describe 'get_customer_inventory test' do
     it 'should work' do

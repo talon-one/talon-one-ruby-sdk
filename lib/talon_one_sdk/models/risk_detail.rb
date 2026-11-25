@@ -73,6 +73,9 @@ module TalonOne
     # Timestamp of the most recent update.
     attr_accessor :modified
 
+    # The current name of the Application this risk belongs to. Shown even if the user does not have access to that Application. Omitted if the Application has been deleted or the risk is not associated with an Application. 
+    attr_accessor :application_name
+
     # The affected entities with the highest severity ratios, in descending order.
     attr_accessor :affected_entities
 
@@ -120,6 +123,7 @@ module TalonOne
         :'status_changed_by' => :'statusChangedBy',
         :'status_changed_at' => :'statusChangedAt',
         :'modified' => :'modified',
+        :'application_name' => :'applicationName',
         :'affected_entities' => :'affectedEntities'
       }
     end
@@ -156,6 +160,7 @@ module TalonOne
         :'status_changed_by' => :'Integer',
         :'status_changed_at' => :'Time',
         :'modified' => :'Time',
+        :'application_name' => :'String',
         :'affected_entities' => :'Array<RiskAffectedEntityItem>'
       }
     end
@@ -299,6 +304,10 @@ module TalonOne
         self.modified = attributes[:'modified']
       else
         self.modified = nil
+      end
+
+      if attributes.key?(:'application_name')
+        self.application_name = attributes[:'application_name']
       end
 
       if attributes.key?(:'affected_entities')
@@ -581,6 +590,7 @@ module TalonOne
           status_changed_by == o.status_changed_by &&
           status_changed_at == o.status_changed_at &&
           modified == o.modified &&
+          application_name == o.application_name &&
           affected_entities == o.affected_entities
     end
 
@@ -593,7 +603,7 @@ module TalonOne
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, created, notification_id, feature_date, group_key, application_id, status, criticality, entity, activity, time_frame, reported_date, affected_entity_count, description, discard_reason, status_comment, status_changed_by, status_changed_at, modified, affected_entities].hash
+      [id, created, notification_id, feature_date, group_key, application_id, status, criticality, entity, activity, time_frame, reported_date, affected_entity_count, description, discard_reason, status_comment, status_changed_by, status_changed_at, modified, application_name, affected_entities].hash
     end
 
     # Builds the object from hash

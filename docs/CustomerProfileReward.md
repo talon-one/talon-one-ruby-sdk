@@ -11,9 +11,10 @@
 | **reward_name** | **String** | The name of the reward. |  |
 | **description** | **String** | The customer-facing description of the reward. | [optional] |
 | **rule** | [**RuleMetadata**](RuleMetadata.md) | Customer-facing rule metadata for the reward. Only returned when the reward defines a rule. | [optional] |
-| **status** | **String** | The status of the customer reward: - &#x60;unlocked&#x60;: The reward is available for use. - &#x60;used&#x60;: The reward has been used.  |  |
+| **status** | **String** | The status of the customer reward: - &#x60;unlocked&#x60;: The reward is available for use. - &#x60;used&#x60;: The reward has been used. - &#x60;expired&#x60;: The reward was not used before its expiry date.  |  |
 | **unlocked_at** | **Time** | The date and time when the reward was unlocked. |  |
 | **unlocked_by_profile_integration_id** | **String** | The integration ID of the customer profile that unlocked the reward.   For rewards unlocked with a loyalty card, this can be any customer profile  linked to that loyalty card.  | [optional] |
+| **expiry_date** | **Time** | The date and time when the customer reward expires, based on the  &#x60;validityDuration&#x60; or &#x60;expiryDate&#x60; of the reward when the reward was  unlocked. If the reward does not specify either property, the customer reward  has unlimited validity and this field is omitted.  **Note**: The expiry date is calculated using the time zone of the  Application connected to the reward.  | [optional] |
 | **used_at** | **Time** | The date and time when the reward was used. | [optional] |
 | **used_by_profile_integration_id** | **String** | The integration ID of the customer profile that used the reward.   For rewards unlocked with a loyalty card, this can be any customer profile  linked to that loyalty card.   Only returned when the reward has been used.  | [optional] |
 | **loyalty_program_id** | **Integer** | The ID of the loyalty program that the loyalty card belongs to. Only returned for rewards unlocked with a loyalty card. | [optional] |
@@ -35,6 +36,7 @@ instance = TalonOne::CustomerProfileReward.new(
   status: unlocked,
   unlocked_at: 2026-07-01T09:00:00Z,
   unlocked_by_profile_integration_id: customer2839,
+  expiry_date: 2026-08-31T23:59:59Z,
   used_at: 2026-07-02T10:30:00Z,
   used_by_profile_integration_id: customer2840,
   loyalty_program_id: 9,

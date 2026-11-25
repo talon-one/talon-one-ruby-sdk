@@ -46,7 +46,8 @@ module TalonOne
           :'UpdateAchievementProgressBlock',
           :'UpdateAttributeValueBlock',
           :'UpdateAudienceMembershipBlock',
-          :'UpdateLoyaltyPointsExpiryBlock'
+          :'UpdateLoyaltyPointsExpiryBlock',
+          :'UpdateLoyaltyProgramMembershipBlock'
         ]
       end
 
@@ -84,7 +85,8 @@ module TalonOne
           :'updateAchievementProgress' => :'UpdateAchievementProgressBlock',
           :'updateAttributeValue' => :'UpdateAttributeValueBlock',
           :'updateAudienceMembership' => :'UpdateAudienceMembershipBlock',
-          :'updateLoyaltyPointsExpiry' => :'UpdateLoyaltyPointsExpiryBlock'
+          :'updateLoyaltyPointsExpiry' => :'UpdateLoyaltyPointsExpiryBlock',
+          :'updateLoyaltyProgramMembership' => :'UpdateLoyaltyProgramMembershipBlock'
         }
       end
 

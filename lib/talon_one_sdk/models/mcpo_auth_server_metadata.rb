@@ -36,6 +36,9 @@ module TalonOne
     # List of supported PKCE code challenge methods.
     attr_accessor :code_challenge_methods_supported
 
+    # List of supported client authentication methods at the token endpoint. Public clients use `none`; confidential clients use `client_secret_post` or `client_secret_basic`.
+    attr_accessor :token_endpoint_auth_methods_supported
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -45,7 +48,8 @@ module TalonOne
         :'registration_endpoint' => :'registration_endpoint',
         :'response_types_supported' => :'response_types_supported',
         :'grant_types_supported' => :'grant_types_supported',
-        :'code_challenge_methods_supported' => :'code_challenge_methods_supported'
+        :'code_challenge_methods_supported' => :'code_challenge_methods_supported',
+        :'token_endpoint_auth_methods_supported' => :'token_endpoint_auth_methods_supported'
       }
     end
 
@@ -68,7 +72,8 @@ module TalonOne
         :'registration_endpoint' => :'String',
         :'response_types_supported' => :'Array<String>',
         :'grant_types_supported' => :'Array<String>',
-        :'code_challenge_methods_supported' => :'Array<String>'
+        :'code_challenge_methods_supported' => :'Array<String>',
+        :'token_endpoint_auth_methods_supported' => :'Array<String>'
       }
     end
 
@@ -150,6 +155,12 @@ module TalonOne
         end
       else
         self.code_challenge_methods_supported = nil
+      end
+
+      if attributes.key?(:'token_endpoint_auth_methods_supported')
+        if (value = attributes[:'token_endpoint_auth_methods_supported']).is_a?(Array)
+          self.token_endpoint_auth_methods_supported = value
+        end
       end
     end
 
@@ -284,7 +295,8 @@ module TalonOne
           registration_endpoint == o.registration_endpoint &&
           response_types_supported == o.response_types_supported &&
           grant_types_supported == o.grant_types_supported &&
-          code_challenge_methods_supported == o.code_challenge_methods_supported
+          code_challenge_methods_supported == o.code_challenge_methods_supported &&
+          token_endpoint_auth_methods_supported == o.token_endpoint_auth_methods_supported
     end
 
     # @see the `==` method
@@ -296,7 +308,7 @@ module TalonOne
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [issuer, authorization_endpoint, token_endpoint, registration_endpoint, response_types_supported, grant_types_supported, code_challenge_methods_supported].hash
+      [issuer, authorization_endpoint, token_endpoint, registration_endpoint, response_types_supported, grant_types_supported, code_challenge_methods_supported, token_endpoint_auth_methods_supported].hash
     end
 
     # Builds the object from hash

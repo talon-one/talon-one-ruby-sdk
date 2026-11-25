@@ -8,7 +8,7 @@
 | **created** | **Time** | The time this entity was created. |  |
 | **start_date** | **Time** | Timestamp at which point the referral code becomes valid. | [optional] |
 | **expiry_date** | **Time** | Expiration date of the referral code. Referral never expires if this is omitted. | [optional] |
-| **usage_limit** | **Integer** | The number of times a referral code can be used. &#x60;0&#x60; means no limit but any campaign usage limits will still apply.  | [optional] |
+| **usage_limit** | **Integer** | The number of times a referral code can be used. &#x60;0&#x60; means no limit but any campaign usage limits will still apply.  |  |
 | **campaign_id** | **Integer** | ID of the campaign from which the referral received the referral code. |  |
 | **advocate_profile_integration_id** | **String** | The Integration ID of the Advocate&#39;s Profile. |  |
 | **friend_profile_integration_id** | **String** | An optional Integration ID of the Friend&#39;s Profile. | [optional] |

@@ -23,6 +23,7 @@
 | **status_changed_by** | **Integer** | The ID of the user who performed the latest reclassification action. | [optional] |
 | **status_changed_at** | **Time** | The time of the latest reclassification action. | [optional] |
 | **modified** | **Time** | Timestamp of the most recent update. |  |
+| **application_name** | **String** | The current name of the Application this risk belongs to. Shown even if the user does not have access to that Application. Omitted if the Application has been deleted or the risk is not associated with an Application.  | [optional] |
 | **affected_entities** | [**Array&lt;RiskAffectedEntityItem&gt;**](RiskAffectedEntityItem.md) | The affected entities with the highest severity ratios, in descending order. |  |
 
 ## Example
@@ -50,6 +51,7 @@ instance = TalonOne::RiskDetail.new(
   status_changed_by: 42,
   status_changed_at: 2026-06-06T09:12:45.000000Z,
   modified: 2026-06-05T06:26:13.698884Z,
+  application_name: My Application,
   affected_entities: null
 )
 ```

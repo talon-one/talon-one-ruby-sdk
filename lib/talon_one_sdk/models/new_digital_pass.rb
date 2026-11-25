@@ -18,11 +18,11 @@ module TalonOne
     # The ID of the associated loyalty program.
     attr_accessor :loyalty_program_id
 
-    # The ID of the digital pass template used to generate the pass. 
+    # The ID of the digital pass template used to generate the pass.
     attr_accessor :pass_template_id
 
     # The integration ID of the customer profile the pass is issued for.
-    attr_accessor :profile_id
+    attr_accessor :profile_integration_id
 
     # The identifier of the loyalty card the pass is issued for.  **Note**: Only applicable for card-based loyalty programs. 
     attr_accessor :loyalty_card_id
@@ -30,7 +30,7 @@ module TalonOne
     # The wallet platform the pass is generated for. Possible values:  - `apple`: The digital pass is generated for Apple Wallet. - `google`: The digital pass is generated for Google Wallet. 
     attr_accessor :platform
 
-    # A map of placeholder values that you provide to fill in the pass template. These values are not validated against the template. 
+    # A map of placeholder values that you provide to fill in the pass template. Pass templates reference each value as `CustomerProfile.Attributes.<key>`.  Each key must start with a letter or an underscore and can contain only letters, digits, and underscores. If the template requires a value that is missing, the request fails with a `422` error. 
     attr_accessor :attributes
 
     class EnumAttributeValidator
@@ -60,7 +60,7 @@ module TalonOne
       {
         :'loyalty_program_id' => :'loyaltyProgramId',
         :'pass_template_id' => :'passTemplateId',
-        :'profile_id' => :'profileId',
+        :'profile_integration_id' => :'profileIntegrationId',
         :'loyalty_card_id' => :'loyaltyCardId',
         :'platform' => :'platform',
         :'attributes' => :'attributes'
@@ -82,7 +82,7 @@ module TalonOne
       {
         :'loyalty_program_id' => :'Integer',
         :'pass_template_id' => :'String',
-        :'profile_id' => :'String',
+        :'profile_integration_id' => :'String',
         :'loyalty_card_id' => :'String',
         :'platform' => :'String',
         :'attributes' => :'Hash<String, String>'
@@ -133,10 +133,10 @@ module TalonOne
         self.pass_template_id = nil
       end
 
-      if attributes.key?(:'profile_id')
-        self.profile_id = attributes[:'profile_id']
+      if attributes.key?(:'profile_integration_id')
+        self.profile_integration_id = attributes[:'profile_integration_id']
       else
-        self.profile_id = nil
+        self.profile_integration_id = nil
       end
 
       if attributes.key?(:'loyalty_card_id')
@@ -173,16 +173,12 @@ module TalonOne
         invalid_properties.push('invalid value for "pass_template_id", pass_template_id cannot be nil.')
       end
 
-      if @pass_template_id.to_s.length < 1
-        invalid_properties.push('invalid value for "pass_template_id", the character length must be greater than or equal to 1.')
+      if @profile_integration_id.nil?
+        invalid_properties.push('invalid value for "profile_integration_id", profile_integration_id cannot be nil.')
       end
 
-      if @profile_id.nil?
-        invalid_properties.push('invalid value for "profile_id", profile_id cannot be nil.')
-      end
-
-      if @profile_id.to_s.length < 1
-        invalid_properties.push('invalid value for "profile_id", the character length must be greater than or equal to 1.')
+      if @profile_integration_id.to_s.length < 1
+        invalid_properties.push('invalid value for "profile_integration_id", the character length must be greater than or equal to 1.')
       end
 
       if @platform.nil?
@@ -199,9 +195,8 @@ module TalonOne
       return false if @loyalty_program_id.nil?
       return false if @loyalty_program_id < 1
       return false if @pass_template_id.nil?
-      return false if @pass_template_id.to_s.length < 1
-      return false if @profile_id.nil?
-      return false if @profile_id.to_s.length < 1
+      return false if @profile_integration_id.nil?
+      return false if @profile_integration_id.to_s.length < 1
       return false if @platform.nil?
       platform_validator = EnumAttributeValidator.new('String', ["apple", "google"])
       return false unless platform_validator.valid?(@platform)
@@ -229,25 +224,21 @@ module TalonOne
         fail ArgumentError, 'pass_template_id cannot be nil'
       end
 
-      if pass_template_id.to_s.length < 1
-        fail ArgumentError, 'invalid value for "pass_template_id", the character length must be greater than or equal to 1.'
-      end
-
       @pass_template_id = pass_template_id
     end
 
     # Custom attribute writer method with validation
-    # @param [Object] profile_id Value to be assigned
-    def profile_id=(profile_id)
-      if profile_id.nil?
-        fail ArgumentError, 'profile_id cannot be nil'
+    # @param [Object] profile_integration_id Value to be assigned
+    def profile_integration_id=(profile_integration_id)
+      if profile_integration_id.nil?
+        fail ArgumentError, 'profile_integration_id cannot be nil'
       end
 
-      if profile_id.to_s.length < 1
-        fail ArgumentError, 'invalid value for "profile_id", the character length must be greater than or equal to 1.'
+      if profile_integration_id.to_s.length < 1
+        fail ArgumentError, 'invalid value for "profile_integration_id", the character length must be greater than or equal to 1.'
       end
 
-      @profile_id = profile_id
+      @profile_integration_id = profile_integration_id
     end
 
     # Custom attribute writer method checking allowed values (enum).
@@ -267,7 +258,7 @@ module TalonOne
       self.class == o.class &&
           loyalty_program_id == o.loyalty_program_id &&
           pass_template_id == o.pass_template_id &&
-          profile_id == o.profile_id &&
+          profile_integration_id == o.profile_integration_id &&
           loyalty_card_id == o.loyalty_card_id &&
           platform == o.platform &&
           attributes == o.attributes
@@ -282,7 +273,7 @@ module TalonOne
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [loyalty_program_id, pass_template_id, profile_id, loyalty_card_id, platform, attributes].hash
+      [loyalty_program_id, pass_template_id, profile_integration_id, loyalty_card_id, platform, attributes].hash
     end
 
     # Builds the object from hash

@@ -52,7 +52,7 @@ instance = TalonOne::CartItem.new(
   adjustment_reference_id: 68851723-e6fa-488f-ace9-112581e6c19b,
   adjustment_effective_from: 2021-09-12T10:12:42Z,
   adjustment_effective_until: 2021-09-12T10:12:42Z,
-  prices: {member&#x3D;{price&#x3D;90, adjustmentReferenceId&#x3D;68851723-e6fa-488f-ace9-112581e6c19b, effectiveFrom&#x3D;2025-05-25T00:00:00Z, effectiveUntil&#x3D;2025-05-30T00:00:00Z}, base&#x3D;{price&#x3D;100}}
+  prices: {member&#x3D;{price&#x3D;90, adjustmentReferenceId&#x3D;68851723-e6fa-488f-ace9-112581e6c19b, adjustmentEffectiveFrom&#x3D;2025-05-25T00:00:00Z, adjustmentEffectiveUntil&#x3D;2025-05-30T00:00:00Z}, base&#x3D;{price&#x3D;100}}
 )
 ```
 

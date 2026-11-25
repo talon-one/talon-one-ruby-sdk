@@ -7,7 +7,7 @@
 | **id** | **Integer** | The internal ID of the customer profile. |  |
 | **created** | **Time** | The time this entity was created. |  |
 | **integration_id** | **String** | The integration ID set by your integration layer. |  |
-| **attributes** | **Hash&lt;String, Object&gt;** | Arbitrary properties associated with this item. | [optional] |
+| **attributes** | **Hash&lt;String, Object&gt;** | Arbitrary properties associated with this item. |  |
 | **account_id** | **Integer** | The ID of the Talon.One account that owns this profile. |  |
 | **closed_sessions** | **Integer** | The total number of closed sessions. Does not include closed sessions that have been cancelled or reopened. See the [docs](https://docs.talon.one/docs/dev/concepts/entities/customer-sessions#customer-session-states). |  |
 | **total_sales** | **Float** | The total amount of money spent by the customer **before** discounts are applied.  The total sales amount excludes the following: - Cancelled or reopened sessions. - Returned items.  |  |

@@ -398,6 +398,8 @@ module TalonOne
 
       if attributes.key?(:'description')
         self.description = attributes[:'description']
+      else
+        self.description = nil
       end
 
       if attributes.key?(:'start_time')
@@ -650,6 +652,10 @@ module TalonOne
         invalid_properties.push('invalid value for "name", the character length must be greater than or equal to 1.')
       end
 
+      if @description.nil?
+        invalid_properties.push('invalid value for "description", description cannot be nil.')
+      end
+
       if @state.nil?
         invalid_properties.push('invalid value for "state", state cannot be nil.')
       end
@@ -674,6 +680,10 @@ module TalonOne
         invalid_properties.push('invalid value for "limits", limits cannot be nil.')
       end
 
+      if @type.nil?
+        invalid_properties.push('invalid value for "type", type cannot be nil.')
+      end
+
       if @frontend_state.nil?
         invalid_properties.push('invalid value for "frontend_state", frontend_state cannot be nil.')
       end
@@ -695,6 +705,7 @@ module TalonOne
       return false if @user_id.nil?
       return false if @name.nil?
       return false if @name.to_s.length < 1
+      return false if @description.nil?
       return false if @state.nil?
       state_validator = EnumAttributeValidator.new('String', ["enabled", "disabled", "archived"])
       return false unless state_validator.valid?(@state)
@@ -703,6 +714,7 @@ module TalonOne
       return false if @reevaluate_on_return.nil?
       return false if @features.nil?
       return false if @limits.nil?
+      return false if @type.nil?
       type_validator = EnumAttributeValidator.new('String', ["cartItem", "advanced"])
       return false unless type_validator.valid?(@type)
       return false if @frontend_state.nil?
@@ -766,6 +778,16 @@ module TalonOne
       end
 
       @name = name
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] description Value to be assigned
+    def description=(description)
+      if description.nil?
+        fail ArgumentError, 'description cannot be nil'
+      end
+
+      @description = description
     end
 
     # Custom attribute writer method checking allowed values (enum).

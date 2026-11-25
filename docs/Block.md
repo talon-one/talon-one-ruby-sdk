@@ -40,7 +40,8 @@ TalonOne::Block.openapi_one_of
 #   :'UpdateAchievementProgressBlock',
 #   :'UpdateAttributeValueBlock',
 #   :'UpdateAudienceMembershipBlock',
-#   :'UpdateLoyaltyPointsExpiryBlock'
+#   :'UpdateLoyaltyPointsExpiryBlock',
+#   :'UpdateLoyaltyProgramMembershipBlock'
 # ]
 ```
 
@@ -95,7 +96,8 @@ TalonOne::Block.openapi_discriminator_mapping
 #   :'updateAchievementProgress' => :'UpdateAchievementProgressBlock',
 #   :'updateAttributeValue' => :'UpdateAttributeValueBlock',
 #   :'updateAudienceMembership' => :'UpdateAudienceMembershipBlock',
-#   :'updateLoyaltyPointsExpiry' => :'UpdateLoyaltyPointsExpiryBlock'
+#   :'updateLoyaltyPointsExpiry' => :'UpdateLoyaltyPointsExpiryBlock',
+#   :'updateLoyaltyProgramMembership' => :'UpdateLoyaltyProgramMembershipBlock'
 # }
 ```
 
@@ -150,5 +152,6 @@ TalonOne::Block.build(data_that_doesnt_match)
 - `UpdateAttributeValueBlock`
 - `UpdateAudienceMembershipBlock`
 - `UpdateLoyaltyPointsExpiryBlock`
+- `UpdateLoyaltyProgramMembershipBlock`
 - `nil` (if no type matches)
 

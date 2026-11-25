@@ -109,6 +109,12 @@ describe TalonOne::AchievementProgressWithDefinition do
     end
   end
 
+  describe 'test attribute "achievement_period"' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
   describe 'test attribute "achievement_recurrence_policy"' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/

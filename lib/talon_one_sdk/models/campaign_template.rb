@@ -443,6 +443,10 @@ module TalonOne
         invalid_properties.push('invalid value for "applications_ids", applications_ids cannot be nil.')
       end
 
+      if @campaign_type.nil?
+        invalid_properties.push('invalid value for "campaign_type", campaign_type cannot be nil.')
+      end
+
       if @valid_application_ids.nil?
         invalid_properties.push('invalid value for "valid_application_ids", valid_application_ids cannot be nil.')
       end
@@ -468,6 +472,7 @@ module TalonOne
       return false if !@tags.nil? && @tags.length > 50
       return false if @reevaluate_on_return.nil?
       return false if @applications_ids.nil?
+      return false if @campaign_type.nil?
       campaign_type_validator = EnumAttributeValidator.new('String', ["cartItem", "advanced"])
       return false unless campaign_type_validator.valid?(@campaign_type)
       return false if @valid_application_ids.nil?

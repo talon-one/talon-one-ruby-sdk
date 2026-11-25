@@ -194,14 +194,20 @@ module TalonOne
 
       if attributes.key?(:'profile_id')
         self.profile_id = attributes[:'profile_id']
+      else
+        self.profile_id = nil
       end
 
       if attributes.key?(:'coupon')
         self.coupon = attributes[:'coupon']
+      else
+        self.coupon = nil
       end
 
       if attributes.key?(:'referral')
         self.referral = attributes[:'referral']
+      else
+        self.referral = nil
       end
 
       if attributes.key?(:'state')
@@ -214,6 +220,8 @@ module TalonOne
         if (value = attributes[:'cart_items']).is_a?(Array)
           self.cart_items = value
         end
+      else
+        self.cart_items = nil
       end
 
       if attributes.key?(:'identifiers')
@@ -224,10 +232,14 @@ module TalonOne
 
       if attributes.key?(:'total')
         self.total = attributes[:'total']
+      else
+        self.total = nil
       end
 
       if attributes.key?(:'attributes')
         self.attributes = attributes[:'attributes']
+      else
+        self.attributes = nil
       end
 
       if attributes.key?(:'first_session')
@@ -278,16 +290,44 @@ module TalonOne
         invalid_properties.push('invalid value for "application_id", application_id cannot be nil.')
       end
 
-      if !@coupon.nil? && @coupon.to_s.length > 100
+      if @profile_id.nil?
+        invalid_properties.push('invalid value for "profile_id", profile_id cannot be nil.')
+      end
+
+      if @coupon.nil?
+        invalid_properties.push('invalid value for "coupon", coupon cannot be nil.')
+      end
+
+      if @coupon.to_s.length > 100
         invalid_properties.push('invalid value for "coupon", the character length must be smaller than or equal to 100.')
       end
 
-      if !@referral.nil? && @referral.to_s.length > 100
+      if @referral.nil?
+        invalid_properties.push('invalid value for "referral", referral cannot be nil.')
+      end
+
+      if @referral.to_s.length > 100
         invalid_properties.push('invalid value for "referral", the character length must be smaller than or equal to 100.')
+      end
+
+      if @state.nil?
+        invalid_properties.push('invalid value for "state", state cannot be nil.')
+      end
+
+      if @cart_items.nil?
+        invalid_properties.push('invalid value for "cart_items", cart_items cannot be nil.')
       end
 
       if !@identifiers.nil? && @identifiers.length > 5
         invalid_properties.push('invalid value for "identifiers", number of items must be less than or equal to 5.')
+      end
+
+      if @total.nil?
+        invalid_properties.push('invalid value for "total", total cannot be nil.')
+      end
+
+      if @attributes.nil?
+        invalid_properties.push('invalid value for "attributes", attributes cannot be nil.')
       end
 
       if @first_session.nil?
@@ -317,11 +357,18 @@ module TalonOne
       return false if @integration_id.to_s.length > 1000
       return false if @created.nil?
       return false if @application_id.nil?
-      return false if !@coupon.nil? && @coupon.to_s.length > 100
-      return false if !@referral.nil? && @referral.to_s.length > 100
+      return false if @profile_id.nil?
+      return false if @coupon.nil?
+      return false if @coupon.to_s.length > 100
+      return false if @referral.nil?
+      return false if @referral.to_s.length > 100
+      return false if @state.nil?
       state_validator = EnumAttributeValidator.new('String', ["open", "closed", "partially_returned", "cancelled"])
       return false unless state_validator.valid?(@state)
+      return false if @cart_items.nil?
       return false if !@identifiers.nil? && @identifiers.length > 5
+      return false if @total.nil?
+      return false if @attributes.nil?
       return false if @first_session.nil?
       return false if @update_count.nil?
       return false if @discounts.nil?
@@ -364,6 +411,16 @@ module TalonOne
     end
 
     # Custom attribute writer method with validation
+    # @param [Object] profile_id Value to be assigned
+    def profile_id=(profile_id)
+      if profile_id.nil?
+        fail ArgumentError, 'profile_id cannot be nil'
+      end
+
+      @profile_id = profile_id
+    end
+
+    # Custom attribute writer method with validation
     # @param [Object] coupon Value to be assigned
     def coupon=(coupon)
       if coupon.nil?
@@ -402,6 +459,16 @@ module TalonOne
     end
 
     # Custom attribute writer method with validation
+    # @param [Object] cart_items Value to be assigned
+    def cart_items=(cart_items)
+      if cart_items.nil?
+        fail ArgumentError, 'cart_items cannot be nil'
+      end
+
+      @cart_items = cart_items
+    end
+
+    # Custom attribute writer method with validation
     # @param [Object] identifiers Value to be assigned
     def identifiers=(identifiers)
       if identifiers.nil?
@@ -413,6 +480,26 @@ module TalonOne
       end
 
       @identifiers = identifiers
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] total Value to be assigned
+    def total=(total)
+      if total.nil?
+        fail ArgumentError, 'total cannot be nil'
+      end
+
+      @total = total
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] attributes Value to be assigned
+    def attributes=(attributes)
+      if attributes.nil?
+        fail ArgumentError, 'attributes cannot be nil'
+      end
+
+      @attributes = attributes
     end
 
     # Custom attribute writer method with validation

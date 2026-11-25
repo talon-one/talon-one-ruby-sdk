@@ -242,28 +242,40 @@ module TalonOne
 
       if attributes.key?(:'title')
         self.title = attributes[:'title']
+      else
+        self.title = nil
       end
 
       if attributes.key?(:'description')
         self.description = attributes[:'description']
+      else
+        self.description = nil
       end
 
       if attributes.key?(:'subscribed_applications')
         if (value = attributes[:'subscribed_applications']).is_a?(Array)
           self.subscribed_applications = value
         end
+      else
+        self.subscribed_applications = nil
       end
 
       if attributes.key?(:'default_validity')
         self.default_validity = attributes[:'default_validity']
+      else
+        self.default_validity = nil
       end
 
       if attributes.key?(:'default_pending')
         self.default_pending = attributes[:'default_pending']
+      else
+        self.default_pending = nil
       end
 
       if attributes.key?(:'allow_subledger')
         self.allow_subledger = attributes[:'allow_subledger']
+      else
+        self.allow_subledger = nil
       end
 
       if attributes.key?(:'users_per_card_limit')
@@ -272,6 +284,8 @@ module TalonOne
 
       if attributes.key?(:'sandbox')
         self.sandbox = attributes[:'sandbox']
+      else
+        self.sandbox = nil
       end
 
       if attributes.key?(:'program_join_policy')
@@ -368,8 +382,36 @@ module TalonOne
         invalid_properties.push('invalid value for "created", created cannot be nil.')
       end
 
+      if @title.nil?
+        invalid_properties.push('invalid value for "title", title cannot be nil.')
+      end
+
+      if @description.nil?
+        invalid_properties.push('invalid value for "description", description cannot be nil.')
+      end
+
+      if @subscribed_applications.nil?
+        invalid_properties.push('invalid value for "subscribed_applications", subscribed_applications cannot be nil.')
+      end
+
+      if @default_validity.nil?
+        invalid_properties.push('invalid value for "default_validity", default_validity cannot be nil.')
+      end
+
+      if @default_pending.nil?
+        invalid_properties.push('invalid value for "default_pending", default_pending cannot be nil.')
+      end
+
+      if @allow_subledger.nil?
+        invalid_properties.push('invalid value for "allow_subledger", allow_subledger cannot be nil.')
+      end
+
       if !@users_per_card_limit.nil? && @users_per_card_limit < 0
         invalid_properties.push('invalid value for "users_per_card_limit", must be greater than or equal to 0.')
+      end
+
+      if @sandbox.nil?
+        invalid_properties.push('invalid value for "sandbox", sandbox cannot be nil.')
       end
 
       if @account_id.nil?
@@ -401,7 +443,14 @@ module TalonOne
       warn '[DEPRECATED] the `valid?` method is obsolete'
       return false if @id.nil?
       return false if @created.nil?
+      return false if @title.nil?
+      return false if @description.nil?
+      return false if @subscribed_applications.nil?
+      return false if @default_validity.nil?
+      return false if @default_pending.nil?
+      return false if @allow_subledger.nil?
       return false if !@users_per_card_limit.nil? && @users_per_card_limit < 0
+      return false if @sandbox.nil?
       program_join_policy_validator = EnumAttributeValidator.new('String', ["not_join", "points_activated", "points_earned"])
       return false unless program_join_policy_validator.valid?(@program_join_policy)
       tiers_expiration_policy_validator = EnumAttributeValidator.new('String', ["tier_start_date", "program_join_date", "customer_attribute", "absolute_expiration"])
@@ -439,6 +488,66 @@ module TalonOne
     end
 
     # Custom attribute writer method with validation
+    # @param [Object] title Value to be assigned
+    def title=(title)
+      if title.nil?
+        fail ArgumentError, 'title cannot be nil'
+      end
+
+      @title = title
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] description Value to be assigned
+    def description=(description)
+      if description.nil?
+        fail ArgumentError, 'description cannot be nil'
+      end
+
+      @description = description
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] subscribed_applications Value to be assigned
+    def subscribed_applications=(subscribed_applications)
+      if subscribed_applications.nil?
+        fail ArgumentError, 'subscribed_applications cannot be nil'
+      end
+
+      @subscribed_applications = subscribed_applications
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] default_validity Value to be assigned
+    def default_validity=(default_validity)
+      if default_validity.nil?
+        fail ArgumentError, 'default_validity cannot be nil'
+      end
+
+      @default_validity = default_validity
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] default_pending Value to be assigned
+    def default_pending=(default_pending)
+      if default_pending.nil?
+        fail ArgumentError, 'default_pending cannot be nil'
+      end
+
+      @default_pending = default_pending
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] allow_subledger Value to be assigned
+    def allow_subledger=(allow_subledger)
+      if allow_subledger.nil?
+        fail ArgumentError, 'allow_subledger cannot be nil'
+      end
+
+      @allow_subledger = allow_subledger
+    end
+
+    # Custom attribute writer method with validation
     # @param [Object] users_per_card_limit Value to be assigned
     def users_per_card_limit=(users_per_card_limit)
       if users_per_card_limit.nil?
@@ -450,6 +559,16 @@ module TalonOne
       end
 
       @users_per_card_limit = users_per_card_limit
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] sandbox Value to be assigned
+    def sandbox=(sandbox)
+      if sandbox.nil?
+        fail ArgumentError, 'sandbox cannot be nil'
+      end
+
+      @sandbox = sandbox
     end
 
     # Custom attribute writer method checking allowed values (enum).

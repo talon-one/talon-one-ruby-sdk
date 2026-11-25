@@ -37,7 +37,7 @@ module TalonOne
     # Customer-facing rule metadata for the reward. Only returned when the reward defines a rule.
     attr_accessor :rule
 
-    # The status of the customer reward: - `unlocked`: The reward is available for use. - `used`: The reward has been used. 
+    # The status of the customer reward: - `unlocked`: The reward is available for use. - `used`: The reward has been used. - `expired`: The reward was not used before its expiry date. 
     attr_accessor :status
 
     # The date and time when the reward was unlocked.
@@ -45,6 +45,9 @@ module TalonOne
 
     # The integration ID of the customer profile that unlocked the reward.   For rewards unlocked with a loyalty card, this can be any customer profile  linked to that loyalty card. 
     attr_accessor :unlocked_by_profile_integration_id
+
+    # The date and time when the customer reward expires, based on the  `validityDuration` or `expiryDate` of the reward when the reward was  unlocked. If the reward does not specify either property, the customer reward  has unlimited validity and this field is omitted.  **Note**: The expiry date is calculated using the time zone of the  Application connected to the reward. 
+    attr_accessor :expiry_date
 
     # The date and time when the reward was used.
     attr_accessor :used_at
@@ -93,6 +96,7 @@ module TalonOne
         :'status' => :'status',
         :'unlocked_at' => :'unlockedAt',
         :'unlocked_by_profile_integration_id' => :'unlockedByProfileIntegrationId',
+        :'expiry_date' => :'expiryDate',
         :'used_at' => :'usedAt',
         :'used_by_profile_integration_id' => :'usedByProfileIntegrationId',
         :'loyalty_program_id' => :'loyaltyProgramId',
@@ -123,6 +127,7 @@ module TalonOne
         :'status' => :'String',
         :'unlocked_at' => :'Time',
         :'unlocked_by_profile_integration_id' => :'String',
+        :'expiry_date' => :'Time',
         :'used_at' => :'Time',
         :'used_by_profile_integration_id' => :'String',
         :'loyalty_program_id' => :'Integer',
@@ -216,6 +221,10 @@ module TalonOne
         self.unlocked_by_profile_integration_id = attributes[:'unlocked_by_profile_integration_id']
       end
 
+      if attributes.key?(:'expiry_date')
+        self.expiry_date = attributes[:'expiry_date']
+      end
+
       if attributes.key?(:'used_at')
         self.used_at = attributes[:'used_at']
       end
@@ -292,7 +301,7 @@ module TalonOne
       return false if @reward_integration_id.nil?
       return false if @reward_name.nil?
       return false if @status.nil?
-      status_validator = EnumAttributeValidator.new('String', ["unlocked", "used"])
+      status_validator = EnumAttributeValidator.new('String', ["unlocked", "used", "expired"])
       return false unless status_validator.valid?(@status)
       return false if @unlocked_at.nil?
       return false if !@loyalty_card_id.nil? && @loyalty_card_id.to_s.length > 108
@@ -354,7 +363,7 @@ module TalonOne
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] status Object to be assigned
     def status=(status)
-      validator = EnumAttributeValidator.new('String', ["unlocked", "used"])
+      validator = EnumAttributeValidator.new('String', ["unlocked", "used", "expired"])
       unless validator.valid?(status)
         fail ArgumentError, "invalid value for \"status\", must be one of #{validator.allowable_values}."
       end
@@ -409,6 +418,7 @@ module TalonOne
           status == o.status &&
           unlocked_at == o.unlocked_at &&
           unlocked_by_profile_integration_id == o.unlocked_by_profile_integration_id &&
+          expiry_date == o.expiry_date &&
           used_at == o.used_at &&
           used_by_profile_integration_id == o.used_by_profile_integration_id &&
           loyalty_program_id == o.loyalty_program_id &&
@@ -424,7 +434,7 @@ module TalonOne
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, integration_id, reward_id, reward_integration_id, reward_name, description, rule, status, unlocked_at, unlocked_by_profile_integration_id, used_at, used_by_profile_integration_id, loyalty_program_id, loyalty_card_id].hash
+      [id, integration_id, reward_id, reward_integration_id, reward_name, description, rule, status, unlocked_at, unlocked_by_profile_integration_id, expiry_date, used_at, used_by_profile_integration_id, loyalty_program_id, loyalty_card_id].hash
     end
 
     # Builds the object from hash
